@@ -1,0 +1,27 @@
+slug: confianca
+status: published
+name: Confiança
+description:
+  pt: >-
+    Saboaria fundada em 1894 que mantém a produção em Braga, com sabões, sabonetes e
+    produtos de banho que recuperam fórmulas e rótulos antigos.
+  en: >-
+    Soap works founded in 1894 that still manufactures in Braga, making soaps and bath
+    products built on recovered historic formulas and labels.
+website: https://confianca1894.com
+category: cosmetica-e-higiene
+subcategory: sabonetes-e-banho
+tags: [tradicional, vintage, fabrica-centenaria]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: braga
+where_to_buy:
+  online_store: https://confianca1894.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

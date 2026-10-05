@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from 'astro';
+import CategoryPage from '~/components/pages/CategoryPage.astro';
+import { landingCategories, landingSubcategories } from '~/lib/data.ts';
+
+export const getStaticPaths = (() =>
+  landingCategories().flatMap((category) =>
+    landingSubcategories(category).map((subcategory) => ({
+      params: { category: category.slug.pt, subcategory: subcategory.slug.pt },
+      props: { category, subcategory },
+    })),
+  )) satisfies GetStaticPaths;
+
+const { category, subcategory } = Astro.props;
+---
+
+<CategoryPage lang="pt" category={category} subcategory={subcategory} />

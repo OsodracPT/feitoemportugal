@@ -1,0 +1,24 @@
+slug: zilian
+status: published
+name: Zilian
+description:
+  pt: >-
+    Calçado e malas de mulher feitos em Portugal, de sabrinas e loafers a botas e
+    sandálias, com materiais certificados.
+  en: >-
+    Women's footwear and bags made in Portugal, from flats and loafers to boots and
+    sandals, using certified materials.
+website: https://zilian.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://zilian.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

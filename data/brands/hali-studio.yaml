@@ -1,0 +1,26 @@
+slug: hali-studio
+status: published
+name: Hali Studio
+description:
+  pt: >-
+    Pequena marca de vestuário cujas coleções são produzidas num ateliê de modelação e
+    costura em Cascais.
+  en: >-
+    Small clothing label whose collections are produced in a pattern-making and sewing
+    workshop in Cascais.
+website: https://hali-studio.pt
+category: moda-e-vestuario
+tags: [pequena-serie, contemporaneo]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: cascais
+where_to_buy:
+  online_store: https://hali-studio.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

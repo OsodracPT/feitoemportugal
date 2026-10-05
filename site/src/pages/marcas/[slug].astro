@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BrandPage from '~/components/pages/BrandPage.astro';
+import { brands } from '~/lib/data.ts';
+
+export const getStaticPaths = (() =>
+  brands.map((brand) => ({ params: { slug: brand.slug }, props: { brand } }))) satisfies GetStaticPaths;
+
+const { brand } = Astro.props;
+---
+
+<BrandPage lang="pt" brand={brand} />

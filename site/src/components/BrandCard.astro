@@ -1,0 +1,115 @@
+---
+import type { Brand } from '@fep/schema';
+import Badges from './Badges.astro';
+import { getCategory, getRegion, getSubcategory } from '~/lib/data.ts';
+import { brandFacets, serializeFacets } from '~/lib/filters.ts';
+import { localized, paths, type Lang } from '~/lib/i18n.ts';
+import { truncate } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  brand: Brand;
+}
+
+const { lang, brand } = Astro.props;
+const category = getCategory(brand.category);
+const subcategory = brand.subcategory ? getSubcategory(brand.category, brand.subcategory) : undefined;
+const region = brand.location ? getRegion(brand.location.district) : undefined;
+const label = subcategory ?? category;
+// No logo yet: the card falls back to the brand's initials.
+const initials = brand.name
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((word) => word[0])
+  .join('')
+  .toUpperCase();
+---
+
+<!-- `data-facets` lets the listing filter and sort without a second fetch. -->
+<article
+  class="card brand-card"
+  data-slug={brand.slug}
+  data-added={brand.meta.added}
+  data-facets={serializeFacets(brandFacets(brand))}
+>
+  <a class="brand-card__link" href={paths.brand(lang, brand.slug)}>
+    <span class="brand-card__logo" aria-hidden="true">{initials}</span>
+    <h3 class="brand-card__name">{brand.name}</h3>
+  </a>
+  <p class="brand-card__meta">
+    {label && localized(label.label, lang)}
+    {region && <span class="brand-card__region"> · {localized(region.label, lang)}</span>}
+  </p>
+  <p class="brand-card__description">{truncate(localized(brand.description, lang), 110)}</p>
+  <Badges lang={lang} brand={brand} />
+</article>
+
+<style>
+  .brand-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+  }
+
+  .brand-card:hover {
+    border-color: var(--line-strong);
+  }
+
+  .brand-card__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* The whole card is clickable, while the link text stays the accessible name. */
+  .brand-card__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+  }
+
+  .brand-card {
+    position: relative;
+  }
+
+  .brand-card__logo {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: none;
+    border-radius: var(--radius);
+    background: var(--bg-sunken);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-card__name {
+    margin: 0;
+    font-size: var(--text-lg);
+  }
+
+  .brand-card__link:hover .brand-card__name {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .brand-card__meta {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .brand-card__description {
+    margin: 0;
+    flex: 1;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+</style>

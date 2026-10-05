@@ -1,0 +1,27 @@
+slug: sapataria-do-carmo
+status: published
+name: Sapataria do Carmo
+description:
+  pt: >-
+    Loja centenária no centro de Lisboa, aberta em 1904, que vende sapatos de homem
+    feitos à mão por artesãos portugueses, em pele selecionada.
+  en: >-
+    Century-old shop in central Lisbon, opened in 1904, selling men's shoes handmade by
+    Portuguese artisans in selected leathers.
+website: https://sapatariadocarmo.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, feito-a-mao, classico, tradicional]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://sapatariadocarmo.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

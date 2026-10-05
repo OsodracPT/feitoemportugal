@@ -1,0 +1,28 @@
+slug: benamor
+status: published
+name: Benamôr
+description:
+  pt: >-
+    Marca de cosmética criada em Lisboa em 1925, conhecida pelo creme de rosto em bisnaga
+    e pelo desenho das embalagens, que se mantém quase inalterado.
+  en: >-
+    Cosmetics brand created in Lisbon in 1925, known for its face cream in a tube and for
+    packaging that has barely changed since.
+website: https://benamor1925.com
+category: cosmetica-e-higiene
+subcategory: rosto
+tags: [classico, vintage, presente]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+price_range: 2
+where_to_buy:
+  online_store: https://benamor1925.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

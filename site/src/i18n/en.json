@@ -1,0 +1,183 @@
+{
+  "site": {
+    "name": "Feito em Portugal",
+    "tagline": "An open database of brands that manufacture in Portugal",
+    "description": "Search brands that manufacture in Portugal by category, region and tag. A community project with open code and open data."
+  },
+  "nav": {
+    "brands": "Brands",
+    "categories": "Categories",
+    "blog": "Blog",
+    "submit": "Suggest a brand",
+    "about": "About",
+    "skipToContent": "Skip to content",
+    "menu": "Menu"
+  },
+  "lang": {
+    "switchTo": "Português",
+    "label": "Language",
+    "pt": "Português",
+    "en": "English"
+  },
+  "home": {
+    "title": "Brands that manufacture in Portugal",
+    "intro": "An open, community-run database of brands that make their products in Portugal. Anyone can search it, correct it and suggest brands.",
+    "searchPlaceholder": "Search brands, categories or tags",
+    "browseCategories": "Browse by category",
+    "recentBrands": "Recently added",
+    "allBrands": "See all brands",
+    "stats": {
+      "brands": "brands",
+      "categories": "categories",
+      "regions": "regions"
+    },
+    "searchButton": "Search"
+  },
+  "brands": {
+    "title": "Brands",
+    "intro": "Every published brand, in alphabetical order.",
+    "count": "{count} brands",
+    "countOne": "1 brand",
+    "empty": "No brands in this list yet.",
+    "byCategory": "By category",
+    "filtered": "{count} of {total} brands",
+    "filteredOne": "1 of {total} brands"
+  },
+  "brand": {
+    "verified": "Verified",
+    "verifiedOn": "Verified on {date}",
+    "notVerified": "Not verified yet",
+    "verifiedHelp": "A maintainer confirmed that this brand manufactures in Portugal.",
+    "production": "Production",
+    "productionTotal": "Fully made in Portugal",
+    "productionPartial": "Partly made in Portugal",
+    "productionNotes": "What is made in Portugal",
+    "website": "Official website",
+    "visitWebsite": "Visit website",
+    "category": "Category",
+    "tags": "Tags",
+    "location": "Where it is made",
+    "priceRange": "Price",
+    "whereToBuy": "Where to buy",
+    "onlineStore": "Online store",
+    "marketplaces": "Other shops",
+    "physicalStores": "Physical stores",
+    "social": "Social media",
+    "sustainability": "Sustainability",
+    "practices": "Practices",
+    "certifications": "Certifications",
+    "proof": "proof",
+    "related": "Related brands",
+    "suggestCorrection": "Suggest a correction",
+    "addedOn": "Added on {date}",
+    "updatedOn": "Updated on {date}",
+    "logoOf": "{name} logo",
+    "details": "Details"
+  },
+  "category": {
+    "brandsIn": "{category} brands made in Portugal",
+    "subcategories": "Subcategories",
+    "faq": "Frequently asked questions",
+    "otherCategories": "Other categories",
+    "noPage": "This category does not have enough brands yet to get its own page."
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "label": "Breadcrumb"
+  },
+  "footer": {
+    "about": "About the project",
+    "contribute": "Contribute",
+    "github": "GitHub",
+    "api": "API",
+    "dataLicense": "Data under CC BY 4.0",
+    "codeLicense": "Code under MIT",
+    "builtBy": "An open source community project.",
+    "noTracking": "No cookies, no tracking."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "intro": "The address you are looking for does not exist or has moved.",
+    "backHome": "Back to the homepage",
+    "browseBrands": "See all brands"
+  },
+  "common": {
+    "brandsCount": "{count} brands",
+    "brandCount": "1 brand",
+    "seeAll": "See all",
+    "externalLink": "opens on another site"
+  },
+  "search": {
+    "label": "Search brands",
+    "placeholder": "Search brands, categories or tags",
+    "clear": "Clear search",
+    "results": "{count} brands found",
+    "resultsOne": "1 brand found",
+    "empty": "No brand matches \"{query}\".",
+    "emptyHint": "Try another word, or browse by category.",
+    "loading": "Loading search…",
+    "error": "Search could not be loaded. Reload the page, or browse by category."
+  },
+  "filters": {
+    "title": "Filters",
+    "toggle": "Filters",
+    "groups": {
+      "cat": "Category",
+      "sub": "Subcategory",
+      "dist": "Region",
+      "tag": "Tag",
+      "price": "Price",
+      "scope": "Production",
+      "sust": "Sustainability",
+      "verified": "Verification",
+      "shop": "Where to buy"
+    },
+    "scopeTotal": "Fully in Portugal",
+    "scopePartial": "Partly in Portugal",
+    "priceLevel": "Price level {level} of 4",
+    "clear": "Clear filters",
+    "clearOne": "Remove {label} filter",
+    "active": "{count} active filters",
+    "activeOne": "1 active filter",
+    "empty": "No brand matches the chosen filters.",
+    "emptyHint": "Try removing one filter.",
+    "optionCount": "{count} brands",
+    "optionCountOne": "1 brand"
+  },
+  "sort": {
+    "label": "Sort",
+    "relevance": "Relevance",
+    "name": "Name (A–Z)",
+    "recent": "Newest"
+  },
+  "api": {
+    "title": "Public API",
+    "intro": "Every published brand is available as JSON under the CC BY 4.0 licence. No keys, no sign-up.",
+    "endpoints": "Endpoints",
+    "endpoint": "Address",
+    "returns": "Returns",
+    "envelope": "Response shape",
+    "envelopeIntro": "Every response is an object with the metadata and the payload in `data`:",
+    "versioning": "Versioning",
+    "versioningBody": "The API is at {version}. Breaking changes — removing a field or changing its meaning — move to a new version; adding fields does not count as breaking.",
+    "attribution": "Attribution",
+    "attributionBody": "The data is CC BY 4.0: use it, including commercially, as long as you credit the source with a link to {site}.",
+    "schema": "Schema",
+    "schemaBody": "A brand's JSON Schema is generated from the project's Zod schema, so it always follows the data. Cross-field rules that JSON Schema cannot express are still checked by the project validator.",
+    "notes": "Notes",
+    "notesSearch": "`/search-index.json` is not part of the API: it is an internal detail of the search and may change without notice.",
+    "notesDrafts": "Only published brands reach the API. Drafts stay in the repository.",
+    "notesPrivacy": "No personal data and no exact coordinates: location is the municipality and, on maps, the municipality centroid.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "rows": {
+      "brands": "Every published brand.",
+      "brand": "A single brand, by slug.",
+      "categories": "Categories and subcategories, with brand counts.",
+      "tags": "Tags and synonyms, with brand counts.",
+      "regions": "Districts and autonomous regions, municipalities and centroids.",
+      "sustainability": "Recognised practices and certifications.",
+      "schema": "A brand's JSON Schema (no envelope)."
+    }
+  }
+}

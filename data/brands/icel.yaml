@@ -1,0 +1,28 @@
+slug: icel
+status: published
+name: Icel
+description:
+  pt: >-
+    Cutelaria fundada a partir de uma oficina familiar dos anos quarenta e instalada na
+    Benedita, onde produz facas de cozinha, de talho e utensílios para uso doméstico e
+    profissional.
+  en: >-
+    Cutlery maker grown out of a 1940s family workshop and based in Benedita, where it
+    makes kitchen and butcher knives and utensils for home and professional use.
+website: https://www.icel.pt
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, tradicional, empresa-familiar]
+production:
+  scope: total
+location:
+  district: leiria
+  municipality: alcobaca
+where_to_buy:
+  online_store: https://www.icel.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

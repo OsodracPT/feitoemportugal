@@ -1,0 +1,604 @@
+# 18 distritos + 2 regiões autónomas, com os respetivos concelhos (308 no total).
+#
+# Os `centroid` são aproximados e servem apenas para centrar um mapa futuro.
+# Estão preenchidos ao nível do distrito e dos concelhos-sede;
+# os restantes serão importados dos dados oficiais da CAOP (DGT).
+# Formato: [latitude, longitude].
+
+- id: aveiro
+  type: distrito
+  label: { pt: Aveiro, en: Aveiro }
+  slug: { pt: aveiro, en: aveiro }
+  intro:
+    pt: >-
+      Entre a ria e a serra, o distrito de Aveiro concentra o maior cluster de
+      calçado do país, em São João da Madeira e arredores, além da porcelana de
+      Ílhavo e de uma forte indústria de metalomecânica e cerâmica.
+    en: >-
+      Between the lagoon and the hills, the Aveiro district holds Portugal's largest
+      footwear cluster around São João da Madeira, alongside the porcelain works of
+      Ílhavo and a strong metal and ceramics industry.
+  centroid: [40.6405, -8.6538]
+  municipalities:
+    - { id: agueda, name: Águeda }
+    - { id: albergaria-a-velha, name: Albergaria-a-Velha }
+    - { id: anadia, name: Anadia }
+    - { id: arouca, name: Arouca }
+    - { id: aveiro, name: Aveiro, centroid: [40.6405, -8.6538] }
+    - { id: castelo-de-paiva, name: Castelo de Paiva }
+    - { id: espinho, name: Espinho }
+    - { id: estarreja, name: Estarreja }
+    - { id: ilhavo, name: Ílhavo, centroid: [40.5997, -8.6677] }
+    - { id: mealhada, name: Mealhada }
+    - { id: murtosa, name: Murtosa }
+    - { id: oliveira-de-azemeis, name: Oliveira de Azeméis, centroid: [40.8408, -8.4753] }
+    - { id: oliveira-do-bairro, name: Oliveira do Bairro }
+    - { id: ovar, name: Ovar }
+    - { id: santa-maria-da-feira, name: Santa Maria da Feira }
+    - { id: sao-joao-da-madeira, name: São João da Madeira, centroid: [40.9009, -8.4903] }
+    - { id: sever-do-vouga, name: Sever do Vouga }
+    - { id: vagos, name: Vagos }
+    - { id: vale-de-cambra, name: Vale de Cambra }
+
+- id: beja
+  type: distrito
+  label: { pt: Beja, en: Beja }
+  slug: { pt: beja, en: beja }
+  intro:
+    pt: >-
+      O maior distrito do país em área, com produção agroalimentar de referência —
+      azeite, queijo, mel e vinho — e artesanato ligado à cortiça e à lã alentejana.
+    en: >-
+      Portugal's largest district by area, known for food production — olive oil,
+      cheese, honey and wine — and for crafts built around cork and Alentejo wool.
+  centroid: [38.0150, -7.8632]
+  municipalities:
+    - { id: aljustrel, name: Aljustrel }
+    - { id: almodovar, name: Almodôvar }
+    - { id: alvito, name: Alvito }
+    - { id: barrancos, name: Barrancos }
+    - { id: beja, name: Beja, centroid: [38.0150, -7.8632] }
+    - { id: castro-verde, name: Castro Verde }
+    - { id: cuba, name: Cuba }
+    - { id: ferreira-do-alentejo, name: Ferreira do Alentejo }
+    - { id: mertola, name: Mértola }
+    - { id: moura, name: Moura }
+    - { id: odemira, name: Odemira }
+    - { id: ourique, name: Ourique }
+    - { id: serpa, name: Serpa }
+    - { id: vidigueira, name: Vidigueira }
+
+- id: braga
+  type: distrito
+  label: { pt: Braga, en: Braga }
+  slug: { pt: braga, en: braga }
+  intro:
+    pt: >-
+      O centro do têxtil português. Entre Guimarães, Famalicão e o Vale do Ave estão
+      fiações, malhas, confeções e têxteis-lar que produzem para marcas de todo o mundo.
+    en: >-
+      The heart of Portuguese textiles. Guimarães, Famalicão and the Ave valley host
+      spinning mills, knitwear factories, garment makers and home textile plants that
+      supply brands worldwide.
+  centroid: [41.5454, -8.4265]
+  municipalities:
+    - { id: amares, name: Amares }
+    - { id: barcelos, name: Barcelos }
+    - { id: braga, name: Braga, centroid: [41.5454, -8.4265] }
+    - { id: cabeceiras-de-basto, name: Cabeceiras de Basto }
+    - { id: celorico-de-basto, name: Celorico de Basto }
+    - { id: esposende, name: Esposende }
+    - { id: fafe, name: Fafe }
+    - { id: guimaraes, name: Guimarães, centroid: [41.4425, -8.2918] }
+    - { id: povoa-de-lanhoso, name: Póvoa de Lanhoso }
+    - { id: terras-de-bouro, name: Terras de Bouro }
+    - { id: vieira-do-minho, name: Vieira do Minho }
+    - { id: vila-nova-de-famalicao, name: Vila Nova de Famalicão, centroid: [41.4085, -8.5194] }
+    - { id: vila-verde, name: Vila Verde }
+    - { id: vizela, name: Vizela }
+
+- id: braganca
+  type: distrito
+  label: { pt: Bragança, en: Bragança }
+  slug: { pt: braganca, en: braganca }
+  intro:
+    pt: >-
+      No nordeste transmontano, um distrito de produção alimentar de altitude —
+      azeite, castanha, fumeiro e queijo — e de artesanato têxtil e de cerâmica
+      com raízes antigas.
+    en: >-
+      In the north-east, a district of high-altitude food production — olive oil,
+      chestnuts, cured meats and cheese — plus textile and ceramic crafts with deep roots.
+  centroid: [41.8061, -6.7567]
+  municipalities:
+    - { id: alfandega-da-fe, name: Alfândega da Fé }
+    - { id: braganca, name: Bragança, centroid: [41.8061, -6.7567] }
+    - { id: carrazeda-de-ansiaes, name: Carrazeda de Ansiães }
+    - { id: freixo-de-espada-a-cinta, name: Freixo de Espada à Cinta }
+    - { id: macedo-de-cavaleiros, name: Macedo de Cavaleiros }
+    - { id: miranda-do-douro, name: Miranda do Douro }
+    - { id: mirandela, name: Mirandela }
+    - { id: mogadouro, name: Mogadouro }
+    - { id: torre-de-moncorvo, name: Torre de Moncorvo }
+    - { id: vila-flor, name: Vila Flor }
+    - { id: vimioso, name: Vimioso }
+    - { id: vinhais, name: Vinhais }
+
+- id: castelo-branco
+  type: distrito
+  label: { pt: Castelo Branco, en: Castelo Branco }
+  slug: { pt: castelo-branco, en: castelo-branco }
+  intro:
+    pt: >-
+      Da Beira Baixa à Serra da Estrela, um distrito com tradição de lanifícios na
+      Covilhã, bordado de Castelo Branco e produção de queijo, mel e azeite.
+    en: >-
+      From the Beira Baixa to the Serra da Estrela, a district with a wool industry
+      in Covilhã, the embroidery of Castelo Branco and production of cheese, honey
+      and olive oil.
+  centroid: [39.8222, -7.4918]
+  municipalities:
+    - { id: belmonte, name: Belmonte }
+    - { id: castelo-branco, name: Castelo Branco, centroid: [39.8222, -7.4918] }
+    - { id: covilha, name: Covilhã, centroid: [40.2807, -7.5041] }
+    - { id: fundao, name: Fundão }
+    - { id: idanha-a-nova, name: Idanha-a-Nova }
+    - { id: oleiros, name: Oleiros }
+    - { id: penamacor, name: Penamacor }
+    - { id: proenca-a-nova, name: Proença-a-Nova }
+    - { id: serta, name: Sertã }
+    - { id: vila-de-rei, name: Vila de Rei }
+    - { id: vila-velha-de-rodao, name: Vila Velha de Ródão }
+
+- id: coimbra
+  type: distrito
+  label: { pt: Coimbra, en: Coimbra }
+  slug: { pt: coimbra, en: coimbra }
+  intro:
+    pt: >-
+      Entre o mar e a serra, o distrito de Coimbra junta cestaria de buinho no Baixo
+      Mondego, cerâmica, mobiliário e uma rede de pequenos produtores alimentares.
+    en: >-
+      Between sea and mountains, the Coimbra district combines rush basketry in the
+      lower Mondego valley with ceramics, furniture and a network of small food producers.
+  centroid: [40.2111, -8.4291]
+  municipalities:
+    - { id: arganil, name: Arganil }
+    - { id: cantanhede, name: Cantanhede }
+    - { id: coimbra, name: Coimbra, centroid: [40.2111, -8.4291] }
+    - { id: condeixa-a-nova, name: Condeixa-a-Nova }
+    - { id: figueira-da-foz, name: Figueira da Foz }
+    - { id: gois, name: Góis }
+    - { id: lousa, name: Lousã }
+    - { id: mira, name: Mira }
+    - { id: miranda-do-corvo, name: Miranda do Corvo }
+    - { id: montemor-o-velho, name: Montemor-o-Velho, centroid: [40.1725, -8.6836] }
+    - { id: oliveira-do-hospital, name: Oliveira do Hospital }
+    - { id: pampilhosa-da-serra, name: Pampilhosa da Serra }
+    - { id: penacova, name: Penacova }
+    - { id: penela, name: Penela }
+    - { id: soure, name: Soure }
+    - { id: tabua, name: Tábua }
+    - { id: vila-nova-de-poiares, name: Vila Nova de Poiares }
+
+- id: evora
+  type: distrito
+  label: { pt: Évora, en: Évora }
+  slug: { pt: evora, en: evora }
+  intro:
+    pt: >-
+      No coração do Alentejo, com olarias de São Pedro do Corval, mantas de Reguengos,
+      cadeiras pintadas, cortiça e vinho entre as produções mais conhecidas.
+    en: >-
+      In the heart of the Alentejo, known for the potteries of São Pedro do Corval,
+      Reguengos blankets, painted chairs, cork and wine.
+  centroid: [38.5714, -7.9135]
+  municipalities:
+    - { id: alandroal, name: Alandroal }
+    - { id: arraiolos, name: Arraiolos }
+    - { id: borba, name: Borba }
+    - { id: estremoz, name: Estremoz }
+    - { id: evora, name: Évora, centroid: [38.5714, -7.9135] }
+    - { id: montemor-o-novo, name: Montemor-o-Novo }
+    - { id: mora, name: Mora }
+    - { id: mourao, name: Mourão }
+    - { id: portel, name: Portel }
+    - { id: redondo, name: Redondo }
+    - { id: reguengos-de-monsaraz, name: Reguengos de Monsaraz }
+    - { id: vendas-novas, name: Vendas Novas }
+    - { id: viana-do-alentejo, name: Viana do Alentejo }
+    - { id: vila-vicosa, name: Vila Viçosa }
+
+- id: faro
+  type: distrito
+  label: { pt: Faro, en: Faro }
+  slug: { pt: faro, en: faro }
+  intro:
+    pt: >-
+      No Algarve, a produção local vive da alfarroba, do figo, da flor de sal, das
+      conservas de peixe, da cestaria de palma e de um conjunto crescente de marcas
+      ligadas ao surf.
+    en: >-
+      In the Algarve, local production centres on carob, figs, sea salt, tinned fish,
+      palm basketry and a growing group of surf-related brands.
+  centroid: [37.0194, -7.9304]
+  municipalities:
+    - { id: albufeira, name: Albufeira }
+    - { id: alcoutim, name: Alcoutim }
+    - { id: aljezur, name: Aljezur }
+    - { id: castro-marim, name: Castro Marim }
+    - { id: faro, name: Faro, centroid: [37.0194, -7.9304] }
+    - { id: lagoa, name: Lagoa }
+    - { id: lagos, name: Lagos }
+    - { id: loule, name: Loulé }
+    - { id: monchique, name: Monchique }
+    - { id: olhao, name: Olhão }
+    - { id: portimao, name: Portimão }
+    - { id: sao-bras-de-alportel, name: São Brás de Alportel }
+    - { id: silves, name: Silves }
+    - { id: tavira, name: Tavira }
+    - { id: vila-do-bispo, name: Vila do Bispo }
+    - { id: vila-real-de-santo-antonio, name: Vila Real de Santo António }
+
+- id: guarda
+  type: distrito
+  label: { pt: Guarda, en: Guarda }
+  slug: { pt: guarda, en: guarda }
+  intro:
+    pt: >-
+      O distrito mais alto do país, onde a lã da Serra da Estrela sustenta fábricas de
+      burel em Manteigas e a produção de queijo Serra da Estrela com Denominação de Origem.
+    en: >-
+      Portugal's highest district, where Serra da Estrela wool supports burel mills in
+      Manteigas and the protected-origin Serra da Estrela cheese.
+  centroid: [40.5373, -7.2683]
+  municipalities:
+    - { id: aguiar-da-beira, name: Aguiar da Beira }
+    - { id: almeida, name: Almeida }
+    - { id: celorico-da-beira, name: Celorico da Beira }
+    - { id: figueira-de-castelo-rodrigo, name: Figueira de Castelo Rodrigo }
+    - { id: fornos-de-algodres, name: Fornos de Algodres }
+    - { id: gouveia, name: Gouveia }
+    - { id: guarda, name: Guarda, centroid: [40.5373, -7.2683] }
+    - { id: manteigas, name: Manteigas, centroid: [40.4022, -7.5383] }
+    - { id: meda, name: Meda }
+    - { id: pinhel, name: Pinhel }
+    - { id: sabugal, name: Sabugal }
+    - { id: seia, name: Seia }
+    - { id: trancoso, name: Trancoso }
+    - { id: vila-nova-de-foz-coa, name: Vila Nova de Foz Côa }
+
+- id: leiria
+  type: distrito
+  label: { pt: Leiria, en: Leiria }
+  slug: { pt: leiria, en: leiria }
+  intro:
+    pt: >-
+      Distrito de indústria: o vidro da Marinha Grande, a faiança das Caldas da Rainha
+      e de Alcobaça, moldes, plásticos e uma tradição de louça decorativa com mais de
+      um século.
+    en: >-
+      An industrial district: glass in Marinha Grande, faience in Caldas da Rainha and
+      Alcobaça, moulds, plastics and a tradition of decorative ware over a century old.
+  centroid: [39.7436, -8.8071]
+  municipalities:
+    - { id: alcobaca, name: Alcobaça }
+    - { id: alvaiazere, name: Alvaiázere }
+    - { id: ansiao, name: Ansião }
+    - { id: batalha, name: Batalha }
+    - { id: bombarral, name: Bombarral }
+    - { id: caldas-da-rainha, name: Caldas da Rainha, centroid: [39.4072, -9.1363] }
+    - { id: castanheira-de-pera, name: Castanheira de Pera }
+    - { id: figueiro-dos-vinhos, name: Figueiró dos Vinhos }
+    - { id: leiria, name: Leiria, centroid: [39.7436, -8.8071] }
+    - { id: marinha-grande, name: Marinha Grande, centroid: [39.7504, -8.9299] }
+    - { id: nazare, name: Nazaré }
+    - { id: obidos, name: Óbidos }
+    - { id: pedrogao-grande, name: Pedrógão Grande }
+    - { id: peniche, name: Peniche }
+    - { id: pombal, name: Pombal }
+    - { id: porto-de-mos, name: Porto de Mós }
+
+- id: lisboa
+  type: distrito
+  label: { pt: Lisboa, en: Lisbon }
+  slug: { pt: lisboa, en: lisbon }
+  intro:
+    pt: >-
+      Lisboa concentra marcas, estúdios de design e oficinas pequenas, de perfumaria e
+      cosmética a papelaria, joalharia e confeção em séries curtas.
+    en: >-
+      Lisbon concentrates brands, design studios and small workshops, from perfume and
+      cosmetics to stationery, jewellery and short-run garment making.
+  centroid: [38.7223, -9.1393]
+  municipalities:
+    - { id: alenquer, name: Alenquer }
+    - { id: amadora, name: Amadora }
+    - { id: arruda-dos-vinhos, name: Arruda dos Vinhos }
+    - { id: azambuja, name: Azambuja }
+    - { id: cadaval, name: Cadaval }
+    - { id: cascais, name: Cascais, centroid: [38.6968, -9.4215] }
+    - { id: lisboa, name: Lisboa, centroid: [38.7223, -9.1393] }
+    - { id: loures, name: Loures }
+    - { id: lourinha, name: Lourinhã }
+    - { id: mafra, name: Mafra }
+    - { id: odivelas, name: Odivelas }
+    - { id: oeiras, name: Oeiras }
+    - { id: sintra, name: Sintra }
+    - { id: sobral-de-monte-agraco, name: Sobral de Monte Agraço }
+    - { id: torres-vedras, name: Torres Vedras }
+    - { id: vila-franca-de-xira, name: Vila Franca de Xira }
+
+- id: portalegre
+  type: distrito
+  label: { pt: Portalegre, en: Portalegre }
+  slug: { pt: portalegre, en: portalegre }
+  intro:
+    pt: >-
+      No Alto Alentejo, com a tapeçaria de Portalegre, torrefação de café em Campo Maior,
+      cortiça, azeite e queijo de ovelha entre as produções mais reconhecidas.
+    en: >-
+      In the Alto Alentejo, known for Portalegre tapestry, coffee roasting in Campo Maior,
+      cork, olive oil and sheep's cheese.
+  centroid: [39.2967, -7.4287]
+  municipalities:
+    - { id: alter-do-chao, name: Alter do Chão }
+    - { id: arronches, name: Arronches }
+    - { id: avis, name: Avis }
+    - { id: campo-maior, name: Campo Maior, centroid: [39.0167, -7.0708] }
+    - { id: castelo-de-vide, name: Castelo de Vide }
+    - { id: crato, name: Crato }
+    - { id: elvas, name: Elvas }
+    - { id: fronteira, name: Fronteira }
+    - { id: gaviao, name: Gavião }
+    - { id: marvao, name: Marvão }
+    - { id: monforte, name: Monforte }
+    - { id: nisa, name: Nisa }
+    - { id: ponte-de-sor, name: Ponte de Sor }
+    - { id: portalegre, name: Portalegre, centroid: [39.2967, -7.4287] }
+    - { id: sousel, name: Sousel }
+
+- id: porto
+  type: distrito
+  label: { pt: Porto, en: Porto }
+  slug: { pt: porto, en: porto }
+  intro:
+    pt: >-
+      Do calçado de Felgueiras ao mobiliário de Paços de Ferreira, passando pelas
+      saboarias de Vila do Conde e pela ourivesaria de Gondomar, é o distrito com maior
+      diversidade industrial do país.
+    en: >-
+      From footwear in Felgueiras to furniture in Paços de Ferreira, soap works in Vila
+      do Conde and goldsmiths in Gondomar, this is the most industrially diverse district
+      in the country.
+  centroid: [41.1579, -8.6291]
+  municipalities:
+    - { id: amarante, name: Amarante }
+    - { id: baiao, name: Baião }
+    - { id: felgueiras, name: Felgueiras, centroid: [41.3717, -8.1950] }
+    - { id: gondomar, name: Gondomar }
+    - { id: lousada, name: Lousada }
+    - { id: maia, name: Maia }
+    - { id: marco-de-canaveses, name: Marco de Canaveses }
+    - { id: matosinhos, name: Matosinhos, centroid: [41.1821, -8.6895] }
+    - { id: pacos-de-ferreira, name: Paços de Ferreira }
+    - { id: paredes, name: Paredes }
+    - { id: penafiel, name: Penafiel }
+    - { id: porto, name: Porto, centroid: [41.1579, -8.6291] }
+    - { id: povoa-de-varzim, name: Póvoa de Varzim }
+    - { id: santo-tirso, name: Santo Tirso }
+    - { id: trofa, name: Trofa }
+    - { id: valongo, name: Valongo }
+    - { id: vila-do-conde, name: Vila do Conde, centroid: [41.3517, -8.7442] }
+    - { id: vila-nova-de-gaia, name: Vila Nova de Gaia, centroid: [41.1239, -8.6118] }
+
+- id: santarem
+  type: distrito
+  label: { pt: Santarém, en: Santarém }
+  slug: { pt: santarem, en: santarem }
+  intro:
+    pt: >-
+      No Ribatejo, com forte produção agroalimentar e doçaria conventual, indústria de
+      papel e cartão e oficinas de artigos em pele e equipamento equestre.
+    en: >-
+      In the Ribatejo, with strong food production and convent sweets, a paper and board
+      industry, and workshops making leather goods and equestrian gear.
+  centroid: [39.2362, -8.6859]
+  municipalities:
+    - { id: abrantes, name: Abrantes }
+    - { id: alcanena, name: Alcanena }
+    - { id: almeirim, name: Almeirim }
+    - { id: alpiarca, name: Alpiarça }
+    - { id: benavente, name: Benavente }
+    - { id: cartaxo, name: Cartaxo }
+    - { id: chamusca, name: Chamusca }
+    - { id: constancia, name: Constância }
+    - { id: coruche, name: Coruche }
+    - { id: entroncamento, name: Entroncamento }
+    - { id: ferreira-do-zezere, name: Ferreira do Zêzere }
+    - { id: golega, name: Golegã }
+    - { id: macao, name: Mação }
+    - { id: ourem, name: Ourém }
+    - { id: rio-maior, name: Rio Maior }
+    - { id: salvaterra-de-magos, name: Salvaterra de Magos }
+    - { id: santarem, name: Santarém, centroid: [39.2362, -8.6859] }
+    - { id: sardoal, name: Sardoal }
+    - { id: tomar, name: Tomar }
+    - { id: torres-novas, name: Torres Novas }
+    - { id: vila-nova-da-barquinha, name: Vila Nova da Barquinha }
+
+- id: setubal
+  type: distrito
+  label: { pt: Setúbal, en: Setúbal }
+  slug: { pt: setubal, en: setubal }
+  intro:
+    pt: >-
+      Da margem sul ao litoral alentejano, com conservas e moscatel em Setúbal, cortiça
+      em Palmela e Grândola, e estúdios de cerâmica e design em Almada e no Seixal.
+    en: >-
+      From the south bank of the Tagus to the Alentejo coast, with tinned fish and
+      moscatel in Setúbal, cork in Palmela and Grândola, and ceramics and design studios
+      in Almada and Seixal.
+  centroid: [38.5244, -8.8882]
+  municipalities:
+    - { id: alcacer-do-sal, name: Alcácer do Sal }
+    - { id: alcochete, name: Alcochete }
+    - { id: almada, name: Almada }
+    - { id: barreiro, name: Barreiro }
+    - { id: grandola, name: Grândola }
+    - { id: moita, name: Moita }
+    - { id: montijo, name: Montijo }
+    - { id: palmela, name: Palmela }
+    - { id: santiago-do-cacem, name: Santiago do Cacém }
+    - { id: seixal, name: Seixal }
+    - { id: sesimbra, name: Sesimbra }
+    - { id: setubal, name: Setúbal, centroid: [38.5244, -8.8882] }
+    - { id: sines, name: Sines }
+
+- id: viana-do-castelo
+  type: distrito
+  label: { pt: Viana do Castelo, en: Viana do Castelo }
+  slug: { pt: viana-do-castelo, en: viana-do-castelo }
+  intro:
+    pt: >-
+      No Alto Minho, terra do ouro de filigrana, do bordado de Viana, dos lenços de
+      namorados e de uma produção têxtil e alimentar de pequena escala.
+    en: >-
+      In the Alto Minho, home to filigree gold, Viana embroidery, the "lenços de
+      namorados" handkerchiefs and small-scale textile and food production.
+  centroid: [41.6918, -8.8345]
+  municipalities:
+    - { id: arcos-de-valdevez, name: Arcos de Valdevez }
+    - { id: caminha, name: Caminha }
+    - { id: melgaco, name: Melgaço }
+    - { id: moncao, name: Monção }
+    - { id: paredes-de-coura, name: Paredes de Coura }
+    - { id: ponte-da-barca, name: Ponte da Barca }
+    - { id: ponte-de-lima, name: Ponte de Lima }
+    - { id: valenca, name: Valença }
+    - { id: viana-do-castelo, name: Viana do Castelo, centroid: [41.6918, -8.8345] }
+    - { id: vila-nova-de-cerveira, name: Vila Nova de Cerveira }
+
+- id: vila-real
+  type: distrito
+  label: { pt: Vila Real, en: Vila Real }
+  slug: { pt: vila-real, en: vila-real }
+  intro:
+    pt: >-
+      Entre o Douro e o Barroso, distrito de vinho, azeite, mel, carne certificada e
+      cerâmica negra de Bisalhães, classificada como património imaterial.
+    en: >-
+      Between the Douro and the Barroso highlands: wine, olive oil, honey, certified meat
+      and the black pottery of Bisalhães, listed as intangible heritage.
+  centroid: [41.3006, -7.7441]
+  municipalities:
+    - { id: alijo, name: Alijó }
+    - { id: boticas, name: Boticas }
+    - { id: chaves, name: Chaves }
+    - { id: mesao-frio, name: Mesão Frio }
+    - { id: mondim-de-basto, name: Mondim de Basto }
+    - { id: montalegre, name: Montalegre }
+    - { id: murca, name: Murça }
+    - { id: peso-da-regua, name: Peso da Régua }
+    - { id: ribeira-de-pena, name: Ribeira de Pena }
+    - { id: sabrosa, name: Sabrosa }
+    - { id: santa-marta-de-penaguiao, name: Santa Marta de Penaguião }
+    - { id: valpacos, name: Valpaços }
+    - { id: vila-pouca-de-aguiar, name: Vila Pouca de Aguiar }
+    - { id: vila-real, name: Vila Real, centroid: [41.3006, -7.7441] }
+
+- id: viseu
+  type: distrito
+  label: { pt: Viseu, en: Viseu }
+  slug: { pt: viseu, en: viseu }
+  intro:
+    pt: >-
+      Na Beira Alta, com mobiliário, cutelaria, vinho do Dão e do Douro, cerâmica de
+      Molelos e uma rede densa de pequenas oficinas rurais.
+    en: >-
+      In the Beira Alta: furniture, cutlery, Dão and Douro wines, the black ceramics of
+      Molelos and a dense network of small rural workshops.
+  centroid: [40.6610, -7.9097]
+  municipalities:
+    - { id: armamar, name: Armamar }
+    - { id: carregal-do-sal, name: Carregal do Sal }
+    - { id: castro-daire, name: Castro Daire }
+    - { id: cinfaes, name: Cinfães }
+    - { id: lamego, name: Lamego }
+    - { id: mangualde, name: Mangualde }
+    - { id: moimenta-da-beira, name: Moimenta da Beira }
+    - { id: mortagua, name: Mortágua }
+    - { id: nelas, name: Nelas }
+    - { id: oliveira-de-frades, name: Oliveira de Frades }
+    - { id: penalva-do-castelo, name: Penalva do Castelo }
+    - { id: penedono, name: Penedono }
+    - { id: resende, name: Resende }
+    - { id: santa-comba-dao, name: Santa Comba Dão }
+    - { id: sao-joao-da-pesqueira, name: São João da Pesqueira }
+    - { id: sao-pedro-do-sul, name: São Pedro do Sul }
+    - { id: satao, name: Sátão }
+    - { id: sernancelhe, name: Sernancelhe }
+    - { id: tabuaco, name: Tabuaço }
+    - { id: tarouca, name: Tarouca }
+    - { id: tondela, name: Tondela }
+    - { id: vila-nova-de-paiva, name: Vila Nova de Paiva }
+    - { id: viseu, name: Viseu, centroid: [40.6610, -7.9097] }
+    - { id: vouzela, name: Vouzela }
+
+- id: acores
+  type: regiao-autonoma
+  label: { pt: Açores, en: Azores }
+  slug: { pt: acores, en: azores }
+  intro:
+    pt: >-
+      Nas nove ilhas, a produção vai do queijo e dos lácteos ao chá da Gorreana, ao
+      ananás, ao licor e ao artesanato em escama de peixe, vime e cerâmica.
+    en: >-
+      Across the nine islands, production ranges from cheese and dairy to Gorreana tea,
+      pineapple, liqueurs and crafts in fish scale, wicker and ceramics.
+  centroid: [38.6611, -27.2167]
+  municipalities:
+    - { id: angra-do-heroismo, name: Angra do Heroísmo, centroid: [38.6556, -27.2186] }
+    - { id: calheta-sao-jorge, name: Calheta }
+    - { id: corvo, name: Corvo }
+    - { id: horta, name: Horta, centroid: [38.5376, -28.6262] }
+    - { id: lagoa-acores, name: Lagoa }
+    - { id: lajes-das-flores, name: Lajes das Flores }
+    - { id: lajes-do-pico, name: Lajes do Pico }
+    - { id: madalena, name: Madalena }
+    - { id: nordeste, name: Nordeste }
+    - { id: ponta-delgada, name: Ponta Delgada, centroid: [37.7412, -25.6756] }
+    - { id: povoacao, name: Povoação }
+    - { id: praia-da-vitoria, name: Praia da Vitória }
+    - { id: ribeira-grande, name: Ribeira Grande }
+    - { id: santa-cruz-da-graciosa, name: Santa Cruz da Graciosa }
+    - { id: santa-cruz-das-flores, name: Santa Cruz das Flores }
+    - { id: sao-roque-do-pico, name: São Roque do Pico }
+    - { id: velas, name: Velas }
+    - { id: vila-do-porto, name: Vila do Porto }
+    - { id: vila-franca-do-campo, name: Vila Franca do Campo }
+
+- id: madeira
+  type: regiao-autonoma
+  label: { pt: Madeira, en: Madeira }
+  slug: { pt: madeira, en: madeira }
+  intro:
+    pt: >-
+      Na Madeira e no Porto Santo, o bordado da Madeira, o vime da Camacha, o vinho
+      generoso, o mel de cana e a flor de produção local marcam a oferta.
+    en: >-
+      On Madeira and Porto Santo: Madeira embroidery, Camacha wickerwork, fortified wine,
+      sugar cane honey and locally grown flowers.
+  centroid: [32.6669, -16.9241]
+  municipalities:
+    - { id: calheta-madeira, name: Calheta }
+    - { id: camara-de-lobos, name: Câmara de Lobos }
+    - { id: funchal, name: Funchal, centroid: [32.6669, -16.9241] }
+    - { id: machico, name: Machico }
+    - { id: ponta-do-sol, name: Ponta do Sol }
+    - { id: porto-moniz, name: Porto Moniz }
+    - { id: porto-santo, name: Porto Santo }
+    - { id: ribeira-brava, name: Ribeira Brava }
+    - { id: santa-cruz, name: Santa Cruz }
+    - { id: santana, name: Santana }
+    - { id: sao-vicente, name: São Vicente }

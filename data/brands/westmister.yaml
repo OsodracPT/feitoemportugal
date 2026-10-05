@@ -1,0 +1,24 @@
+slug: westmister
+status: published
+name: Westmister
+description:
+  pt: >-
+    Meias de homem produzidas em Portugal, em algodão e com padrões clássicos ou
+    estampados, incluindo serviço de personalização.
+  en: >-
+    Men's socks produced in Portugal, in cotton and in either classic or patterned
+    designs, with a personalisation service.
+website: https://www.westmister.pt
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+tags: [algodao, classico, personalizavel]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.westmister.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

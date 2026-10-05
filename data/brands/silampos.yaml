@@ -1,0 +1,24 @@
+slug: silampos
+status: published
+name: Silampos
+description:
+  pt: >-
+    Fabricante português de panelas, tachos e artigos de cozinha em aço inoxidável, com
+    produção em Portugal e exportação para dezenas de mercados.
+  en: >-
+    Portuguese maker of stainless steel pans, pots and kitchen articles, manufacturing in
+    Portugal and exporting to dozens of markets.
+website: https://www.silampos.pt
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, classico]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.silampos.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

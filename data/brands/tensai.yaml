@@ -1,0 +1,27 @@
+slug: tensai
+status: published
+name: Tensai
+description:
+  pt: >-
+    Fabricante de eletrodomésticos com produção em Estarreja, com gamas de frio, lavagem
+    e cozinha para o mercado nacional e para exportação.
+  en: >-
+    Home appliance manufacturer producing in Estarreja, with refrigeration, laundry and
+    cooking ranges for the domestic market and for export.
+website: https://www.tensai.pt
+category: tecnologia
+subcategory: eletronica
+tags: [metal, contemporaneo]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: estarreja
+where_to_buy:
+  online_store: https://www.tensai.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

@@ -1,0 +1,272 @@
+---
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { SORTS } from '~/lib/filters.ts';
+
+interface Props {
+  lang: Lang;
+  /** id of the <BrandFilters> panel this toolbar controls. */
+  filtersId: string;
+}
+
+const { lang, filtersId } = Astro.props;
+
+const config = {
+  strings: {
+    results: t(lang, 'search.results'),
+    resultsOne: t(lang, 'search.resultsOne'),
+    searchEmpty: t(lang, 'search.empty'),
+    searchEmptyHint: t(lang, 'search.emptyHint'),
+    loading: t(lang, 'search.loading'),
+    error: t(lang, 'search.error'),
+    filtered: t(lang, 'brands.filtered'),
+    filteredOne: t(lang, 'brands.filteredOne'),
+    filtersEmpty: t(lang, 'filters.empty'),
+    filtersEmptyHint: t(lang, 'filters.emptyHint'),
+    clearOne: t(lang, 'filters.clearOne'),
+  },
+};
+---
+
+<!-- Hidden until the script runs: without JavaScript the full list is already
+     on the page and the category links below it still work. -->
+<div class="browser" data-browser data-config={JSON.stringify(config)} hidden>
+  <form class="search" role="search" method="get" action={paths.brands(lang)}>
+    <label class="visually-hidden" for="q-listing">{t(lang, 'search.label')}</label>
+    <svg class="search__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        d="M8.6 15.2a6.6 6.6 0 1 0 0-13.2 6.6 6.6 0 0 0 0 13.2Zm4.8-1.8 4.2 4.2"
+      />
+    </svg>
+    <input
+      id="q-listing"
+      name="q"
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      enterkeyhint="search"
+      placeholder={t(lang, 'search.placeholder')}
+      data-search-input
+    />
+    <button class="search__clear" type="button" data-search-clear hidden>
+      <span class="visually-hidden">{t(lang, 'search.clear')}</span>
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" width="14" height="14">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m4 4 8 8M12 4l-8 8" />
+      </svg>
+    </button>
+  </form>
+
+  <div class="browser__bar">
+    <button
+      class="browser__toggle"
+      type="button"
+      data-filters-toggle
+      aria-expanded="false"
+      aria-controls={filtersId}
+    >
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" width="14" height="14">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          d="M1.5 4h13M3.5 8h9M6 12h4"
+        />
+      </svg>
+      {t(lang, 'filters.toggle')}
+      <span class="browser__badge" data-filters-total hidden></span>
+    </button>
+
+    <label class="browser__sort">
+      <span class="browser__sort-label">{t(lang, 'sort.label')}</span>
+      <select data-sort>
+        {SORTS.map((sort) => <option value={sort}>{t(lang, `sort.${sort}`)}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <div class="browser__chips" data-chips hidden></div>
+
+  <p class="browser__status" role="status" aria-live="polite" data-status></p>
+</div>
+
+<script>
+  // The controller lives in a module so it can be read (and later tested)
+  // outside the component.
+  import { initListing } from '~/lib/listing-controller.ts';
+
+  initListing();
+</script>
+
+<style>
+  .browser {
+    display: grid;
+    gap: var(--space-3);
+    margin-block: var(--space-5) var(--space-4);
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--bg-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 0 var(--space-4);
+  }
+
+  .search:focus-within {
+    border-color: var(--accent);
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .search__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    color: var(--text-faint);
+  }
+
+  .search input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--space-3) 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  .search input:focus {
+    outline: none;
+  }
+
+  .search input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .search__clear {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--bg-sunken);
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .search__clear:hover {
+    color: var(--text);
+  }
+
+  .browser__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .browser__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: var(--bg-raised);
+    color: inherit;
+    font: inherit;
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .browser__toggle:hover {
+    border-color: var(--text-faint);
+  }
+
+  .browser__badge {
+    min-width: 1.3rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .browser__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .browser__sort-label {
+    color: var(--text-muted);
+  }
+
+  .browser__sort select {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    color: inherit;
+    font: inherit;
+    font-size: var(--text-sm);
+  }
+
+  .browser__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Chips are created by the script, so their rules have to be global. */
+  .browser__chips :global(.chip) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font: inherit;
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .browser__chips :global(.chip:hover) {
+    border-color: var(--accent);
+  }
+
+  .browser__chips :global(.chip__x) {
+    font-size: 1.05em;
+    line-height: 1;
+    opacity: 0.7;
+  }
+
+  .browser__status {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    min-height: 1.4em;
+  }
+
+  /* The filter panel is a sidebar on wide screens and a drop-down below. */
+  @media (min-width: 900px) {
+    .browser__toggle {
+      display: none;
+    }
+  }
+</style>

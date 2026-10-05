@@ -1,0 +1,26 @@
+slug: isto
+status: published
+name: ISTO
+description:
+  pt: >-
+    Marca de Lisboa que produz vestuário essencial em Portugal e publica a estrutura
+    de custos de cada peça. Trabalha sobretudo algodão, lã e ganga, em cortes simples
+    pensados para durar.
+  en: >-
+    Lisbon label making essential clothing in Portugal and publishing the cost
+    breakdown of every garment. Works mostly in cotton, wool and denim, with plain
+    cuts meant to last.
+website: https://isto.pt
+category: moda-e-vestuario
+tags: [algodao, minimalista, contemporaneo]
+production:
+  scope: total
+price_range: 3
+where_to_buy:
+  online_store: https://isto.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

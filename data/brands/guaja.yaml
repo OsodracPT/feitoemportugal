@@ -1,0 +1,25 @@
+slug: guaja
+status: published
+name: Guaja
+description:
+  pt: >-
+    Roupa de mulher feita à mão em Portugal, exclusivamente com fabricantes nacionais,
+    com malhas e peças de corte simples em séries pequenas.
+  en: >-
+    Womenswear handmade in Portugal, exclusively with Portuguese manufacturers, built on
+    knitwear and simple cuts in small runs.
+website: https://guajastudio.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [feito-a-mao, malha, pequena-serie]
+production:
+  scope: total
+price_range: 3
+where_to_buy:
+  online_store: https://guajastudio.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

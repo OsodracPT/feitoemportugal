@@ -1,0 +1,27 @@
+slug: torres-novas
+status: published
+name: Torres Novas
+description:
+  pt: >-
+    Marca de toalhas e roupa de banho com origem numa das primeiras linhas de produção de
+    turcos do país, instalada em Torres Novas desde o século XIX.
+  en: >-
+    Towel and bath linen brand grown from one of the country's first terry weaving lines,
+    based in Torres Novas since the 19th century.
+website: https://www.torresnovas.com
+category: texteis-lar
+subcategory: toalhas
+tags: [algodao, classico, fabrica-centenaria]
+production:
+  scope: total
+location:
+  district: santarem
+  municipality: torres-novas
+where_to_buy:
+  online_store: https://www.torresnovas.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

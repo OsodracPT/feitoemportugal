@@ -1,0 +1,24 @@
+slug: sirtile
+status: published
+name: SirTile
+description:
+  pt: >-
+    Meias feitas em Portugal com padrões inspirados nos azulejos portugueses, vendidas
+    também como lembrança de viagem.
+  en: >-
+    Socks made in Portugal with patterns drawn from Portuguese tiles, also sold as a
+    travel keepsake.
+website: https://sirtile.com
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+tags: [tradicional, presente, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://sirtile.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

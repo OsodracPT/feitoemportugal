@@ -1,0 +1,29 @@
+slug: viarco
+status: published
+name: Viarco
+description:
+  pt: >-
+    A única fábrica de lápis em Portugal, em São João da Madeira. Além do lápis de
+    escola, produz grafites, pastéis e materiais de desenho para artistas.
+  en: >-
+    The only pencil factory in Portugal, in São João da Madeira. Beyond school pencils
+    it makes graphite sticks, pastels and drawing materials for artists.
+website: https://www.viarco.pt
+category: papelaria-e-livros
+subcategory: escrita
+tags: [madeira, tradicional, fabrica-centenaria]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+where_to_buy:
+  online_store: https://www.viarco.pt
+social:
+  instagram: viarcoportugal
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

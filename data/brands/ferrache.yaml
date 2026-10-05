@@ -1,0 +1,28 @@
+slug: ferrache
+status: published
+name: Ferrache
+description:
+  pt: >-
+    Roupa de mulher desenhada e confecionada em Barcelos, numa unidade própria com cerca
+    de quarenta pessoas, com foco em modelismo e costura.
+  en: >-
+    Womenswear designed and sewn in Barcelos, in the brand's own workshop of around forty
+    people, with a focus on pattern making and tailoring.
+website: https://www.ferrache.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [contemporaneo]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: barcelos
+price_range: 3
+where_to_buy:
+  online_store: https://www.ferrache.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

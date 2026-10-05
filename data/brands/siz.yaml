@@ -1,0 +1,26 @@
+slug: siz
+status: published
+name: Siz
+description:
+  pt: >-
+    Marca de vestuário com ateliê próprio em Sesimbra, onde desenha e produz peças em
+    séries curtas.
+  en: >-
+    Clothing label with its own workshop in Sesimbra, where it designs and makes pieces in
+    short runs.
+website: https://www.siz-online.com
+category: moda-e-vestuario
+tags: [pequena-serie, contemporaneo]
+production:
+  scope: total
+location:
+  district: setubal
+  municipality: sesimbra
+where_to_buy:
+  online_store: https://www.siz-online.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

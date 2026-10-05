@@ -1,0 +1,26 @@
+slug: mdc
+status: published
+name: MDC
+description:
+  pt: >-
+    Acessórios de homem produzidos em Portugal e feitos à mão, a partir de sobras de
+    tecidos industriais que de outro modo seriam desperdício.
+  en: >-
+    Men's accessories produced in Portugal and made by hand, from leftover industrial
+    textiles that would otherwise go to waste.
+website: https://www.mdcstore.pt
+category: acessorios
+tags: [upcycling, feito-a-mao, pequena-serie]
+production:
+  scope: total
+price_range: 2
+where_to_buy:
+  online_store: https://www.mdcstore.pt
+sustainability:
+  practices: [materiais-reciclados]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,324 @@
+---
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+/**
+ * Suggestion box: a dropdown of the best matches, used on the home page.
+ * The listing page has its own control (`BrandBrowser`), which filters the
+ * grid in place and combines the query with the filters.
+ */
+const config = {
+  lang,
+  listing: paths.brands(lang),
+  strings: {
+    results: t(lang, 'search.results'),
+    resultsOne: t(lang, 'search.resultsOne'),
+    empty: t(lang, 'search.empty'),
+    emptyHint: t(lang, 'search.emptyHint'),
+    loading: t(lang, 'search.loading'),
+    error: t(lang, 'search.error'),
+    seeAll: t(lang, 'home.allBrands'),
+  },
+};
+---
+
+<!-- Hidden until the script runs: without JavaScript the full list is already on the page. -->
+<div class="search" data-search data-config={JSON.stringify(config)} hidden>
+  <form class="search__form" role="search" method="get" action={paths.brands(lang)}>
+    <label class="visually-hidden" for="q-suggest">{t(lang, 'search.label')}</label>
+    <svg class="search__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        d="M8.6 15.2a6.6 6.6 0 1 0 0-13.2 6.6 6.6 0 0 0 0 13.2Zm4.8-1.8 4.2 4.2"
+      />
+    </svg>
+    <input
+      id="q-suggest"
+      name="q"
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      enterkeyhint="search"
+      placeholder={t(lang, 'search.placeholder')}
+      data-search-input
+    />
+    <button class="search__clear" type="button" data-search-clear hidden>
+      <span class="visually-hidden">{t(lang, 'search.clear')}</span>
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" width="14" height="14">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m4 4 8 8M12 4l-8 8" />
+      </svg>
+    </button>
+  </form>
+
+  <div class="search__panel" data-search-panel hidden>
+    <ul class="search__list" data-search-list></ul>
+    <a class="search__all" href={paths.brands(lang)} data-search-all>
+      {t(lang, 'home.allBrands')}
+    </a>
+  </div>
+
+  <p class="search__status" role="status" aria-live="polite" data-search-status></p>
+</div>
+
+<script>
+  import { isReady, loadIndex, searchBrands, type SearchHit } from '~/lib/search-loader.ts';
+
+  const root = document.querySelector<HTMLElement>('[data-search]');
+
+  if (root) {
+    const { lang, listing, strings } = JSON.parse(root.dataset.config ?? '{}');
+    const MAX_SUGGESTIONS = 6;
+
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const clear = root.querySelector<HTMLButtonElement>('[data-search-clear]')!;
+    const status = root.querySelector<HTMLElement>('[data-search-status]')!;
+    const panel = root.querySelector<HTMLElement>('[data-search-panel]')!;
+    const list = root.querySelector<HTMLElement>('[data-search-list]')!;
+    const seeAll = root.querySelector<HTMLAnchorElement>('[data-search-all]')!;
+
+    // Now that the script is running, the control is usable.
+    root.hidden = false;
+
+    let current = '';
+
+    const countLabel = (count: number) =>
+      count === 1 ? strings.resultsOne : strings.results.replace('{count}', String(count));
+
+    function render(results: SearchHit[], query: string) {
+      list.replaceChildren();
+      for (const result of results.slice(0, MAX_SUGGESTIONS)) {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = result.display[lang as 'pt' | 'en'].url;
+        const name = document.createElement('span');
+        name.className = 'search__name';
+        name.textContent = result.display.name;
+        const meta = document.createElement('span');
+        meta.className = 'search__meta';
+        meta.textContent = result.display[lang as 'pt' | 'en'].label;
+        link.append(name, meta);
+        item.append(link);
+        list.append(item);
+      }
+      seeAll.href = `${listing}?q=${encodeURIComponent(query)}`;
+      seeAll.hidden = results.length <= MAX_SUGGESTIONS;
+      panel.hidden = false;
+      status.textContent = results.length
+        ? countLabel(results.length)
+        : `${strings.empty.replace('{query}', query)} ${strings.emptyHint}`;
+    }
+
+    function closePanel() {
+      panel.hidden = true;
+    }
+
+    async function run(raw: string) {
+      const query = raw.trim();
+      current = query;
+      clear.hidden = query.length === 0;
+
+      if (!query) {
+        closePanel();
+        status.textContent = '';
+        return;
+      }
+
+      if (!isReady()) status.textContent = strings.loading;
+      let results: SearchHit[];
+      try {
+        results = await searchBrands(query);
+      } catch (error) {
+        console.error('[search] index failed to load', error);
+        status.textContent = strings.error;
+        return;
+      }
+      // A later keystroke already took over.
+      if (current !== query) return;
+      render(results, query);
+    }
+
+    let timer: number | undefined;
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => void run(input.value), 120);
+    });
+
+    // Warm the index on first focus so the first keystroke feels instant.
+    input.addEventListener('focus', () => void loadIndex().catch(() => {}), { once: true });
+
+    clear.addEventListener('click', () => {
+      input.value = '';
+      void run('');
+      input.focus();
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closePanel();
+        input.blur();
+        return;
+      }
+      // Arrow down walks into the suggestions; the form still submits on Enter,
+      // which lands on the listing with ?q=.
+      if (event.key === 'ArrowDown' && !panel.hidden) {
+        event.preventDefault();
+        list.querySelector<HTMLAnchorElement>('a')?.focus();
+      }
+    });
+
+    list.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+      const links = Array.from(list.querySelectorAll<HTMLAnchorElement>('a'));
+      const index = links.indexOf(document.activeElement as HTMLAnchorElement);
+      if (index === -1) return;
+      event.preventDefault();
+      const next = index + (event.key === 'ArrowDown' ? 1 : -1);
+      if (next < 0) input.focus();
+      else links[next]?.focus();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!root.contains(event.target as Node)) closePanel();
+    });
+
+    // Arriving with ?q= — for example from the 404 page form.
+    const initial = new URL(window.location.href).searchParams.get('q');
+    if (initial) {
+      input.value = initial;
+      void run(initial);
+    }
+  }
+</script>
+
+<style>
+  .search {
+    position: relative;
+  }
+
+  .search__form {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: var(--bg-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 0 var(--space-4);
+  }
+
+  .search__form:focus-within {
+    border-color: var(--accent);
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .search__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    color: var(--text-faint);
+  }
+
+  .search__form input {
+    flex: 1;
+    min-width: 0;
+    padding: var(--space-3) 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  .search__form input:focus {
+    outline: none;
+  }
+
+  .search__form input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .search__clear {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--bg-sunken);
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .search__clear:hover {
+    color: var(--text);
+  }
+
+  .search__status {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    min-height: 1.4em;
+  }
+
+  .search__panel {
+    position: absolute;
+    z-index: 5;
+    inset-inline: 0;
+    top: calc(100% + var(--space-2));
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2);
+    box-shadow: 0 10px 30px -18px rgb(0 0 0 / 45%);
+  }
+
+  .search__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search__list :global(li) {
+    list-style: none;
+  }
+
+  .search__list :global(a) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .search__list :global(a:hover),
+  .search__list :global(a:focus-visible) {
+    background: var(--bg-sunken);
+  }
+
+  .search__list :global(.search__name) {
+    font-weight: 560;
+  }
+
+  .search__list :global(.search__meta) {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .search__all {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+  }
+</style>

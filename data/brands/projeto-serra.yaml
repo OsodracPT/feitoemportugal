@@ -1,0 +1,24 @@
+slug: projeto-serra
+status: published
+name: Projeto Serra
+description:
+  pt: >-
+    Casacos e malhas polares produzidos em Portugal, com peças sem género ligadas às
+    serras e parques naturais do interior do país.
+  en: >-
+    Fleece jackets and knits produced in Portugal, genderless and tied to the mountain
+    ranges and natural parks of the country's interior.
+website: https://projetoserra.com
+category: desporto-e-outdoor
+subcategory: montanha-e-trail
+tags: [unissexo, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://projetoserra.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

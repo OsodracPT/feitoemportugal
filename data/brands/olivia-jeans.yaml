@@ -1,0 +1,23 @@
+slug: olivia-jeans
+status: published
+name: Olivia Jeans
+description:
+  pt: >-
+    Marca de Lisboa dedicada a ganga, com cada peça produzida em Portugal em pequenas
+    quantidades.
+  en: >-
+    Lisbon denim label, with every piece produced in Portugal in small quantities.
+website: https://oliviajeanslisbon.com
+category: moda-e-vestuario
+subcategory: denim
+tags: [denim, pequena-serie, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://oliviajeanslisbon.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,33 @@
+---
+import type { Category } from '@fep/schema';
+import { localized, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  value: number;
+  category?: Category | undefined;
+}
+
+const { lang, value, category } = Astro.props;
+const level = category?.price_levels.find((entry) => entry.level === value);
+const label = level ? localized(level.label, lang) : undefined;
+const symbols = '€'.repeat(value);
+---
+
+<span class="price">
+  <span class="price__symbols">{symbols}</span>
+  {label && <span class="price__label">{label}</span>}
+</span>
+
+<style>
+  .price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .price__label {
+    color: var(--text-muted);
+  }
+</style>

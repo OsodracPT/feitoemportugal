@@ -1,0 +1,183 @@
+{
+  "site": {
+    "name": "Feito em Portugal",
+    "tagline": "Base de dados aberta de marcas que produzem em Portugal",
+    "description": "Pesquisa marcas que produzem em Portugal por categoria, região e etiqueta. Projeto comunitário, de código e dados abertos."
+  },
+  "nav": {
+    "brands": "Marcas",
+    "categories": "Categorias",
+    "blog": "Blog",
+    "submit": "Sugerir marca",
+    "about": "Sobre",
+    "skipToContent": "Ir para o conteúdo",
+    "menu": "Menu"
+  },
+  "lang": {
+    "switchTo": "English",
+    "label": "Língua",
+    "pt": "Português",
+    "en": "English"
+  },
+  "home": {
+    "title": "Marcas que produzem em Portugal",
+    "intro": "Uma base de dados aberta e comunitária de marcas que fabricam em Portugal. Qualquer pessoa pode pesquisar, corrigir e sugerir marcas.",
+    "searchPlaceholder": "Pesquisar marcas, categorias ou etiquetas",
+    "browseCategories": "Navegar por categoria",
+    "recentBrands": "Marcas recentes",
+    "allBrands": "Ver todas as marcas",
+    "stats": {
+      "brands": "marcas",
+      "categories": "categorias",
+      "regions": "regiões"
+    },
+    "searchButton": "Pesquisar"
+  },
+  "brands": {
+    "title": "Marcas",
+    "intro": "Todas as marcas publicadas, por ordem alfabética.",
+    "count": "{count} marcas",
+    "countOne": "1 marca",
+    "empty": "Ainda não há marcas nesta lista.",
+    "byCategory": "Por categoria",
+    "filtered": "{count} de {total} marcas",
+    "filteredOne": "1 de {total} marcas"
+  },
+  "brand": {
+    "verified": "Verificado",
+    "verifiedOn": "Verificado em {date}",
+    "notVerified": "Ainda não verificado",
+    "verifiedHelp": "Um maintainer confirmou que a marca produz em Portugal.",
+    "production": "Produção",
+    "productionTotal": "Produção total em Portugal",
+    "productionPartial": "Produção parcial em Portugal",
+    "productionNotes": "O que é feito em Portugal",
+    "website": "Site oficial",
+    "visitWebsite": "Visitar site",
+    "category": "Categoria",
+    "tags": "Etiquetas",
+    "location": "Onde produz",
+    "priceRange": "Preço",
+    "whereToBuy": "Onde comprar",
+    "onlineStore": "Loja online",
+    "marketplaces": "Outros sites",
+    "physicalStores": "Lojas físicas",
+    "social": "Redes sociais",
+    "sustainability": "Sustentabilidade",
+    "practices": "Práticas",
+    "certifications": "Certificações",
+    "proof": "comprovativo",
+    "related": "Marcas relacionadas",
+    "suggestCorrection": "Sugerir correção",
+    "addedOn": "Adicionada em {date}",
+    "updatedOn": "Atualizada em {date}",
+    "logoOf": "Logótipo de {name}",
+    "details": "Ficha"
+  },
+  "category": {
+    "brandsIn": "Marcas de {category} feitas em Portugal",
+    "subcategories": "Subcategorias",
+    "faq": "Perguntas frequentes",
+    "otherCategories": "Outras categorias",
+    "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria."
+  },
+  "breadcrumbs": {
+    "home": "Início",
+    "label": "Caminho"
+  },
+  "footer": {
+    "about": "Sobre o projeto",
+    "contribute": "Contribuir",
+    "github": "GitHub",
+    "api": "API",
+    "dataLicense": "Dados sob CC BY 4.0",
+    "codeLicense": "Código sob MIT",
+    "builtBy": "Projeto comunitário e de código aberto.",
+    "noTracking": "Sem cookies e sem rastreio."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "intro": "O endereço que procuras não existe ou mudou.",
+    "backHome": "Voltar ao início",
+    "browseBrands": "Ver todas as marcas"
+  },
+  "common": {
+    "brandsCount": "{count} marcas",
+    "brandCount": "1 marca",
+    "seeAll": "Ver tudo",
+    "externalLink": "abre noutro site"
+  },
+  "search": {
+    "label": "Pesquisar marcas",
+    "placeholder": "Pesquisar marcas, categorias ou etiquetas",
+    "clear": "Limpar pesquisa",
+    "results": "{count} marcas encontradas",
+    "resultsOne": "1 marca encontrada",
+    "empty": "Nenhuma marca corresponde a \"{query}\".",
+    "emptyHint": "Tenta outra palavra, ou navega por categoria.",
+    "loading": "A carregar a pesquisa…",
+    "error": "Não foi possível carregar a pesquisa. Atualiza a página ou navega por categoria."
+  },
+  "filters": {
+    "title": "Filtros",
+    "toggle": "Filtros",
+    "groups": {
+      "cat": "Categoria",
+      "sub": "Subcategoria",
+      "dist": "Região",
+      "tag": "Etiqueta",
+      "price": "Preço",
+      "scope": "Produção",
+      "sust": "Sustentabilidade",
+      "verified": "Verificação",
+      "shop": "Onde comprar"
+    },
+    "scopeTotal": "Total em Portugal",
+    "scopePartial": "Parcial em Portugal",
+    "priceLevel": "Nível de preço {level} de 4",
+    "clear": "Limpar filtros",
+    "clearOne": "Remover filtro {label}",
+    "active": "{count} filtros ativos",
+    "activeOne": "1 filtro ativo",
+    "empty": "Nenhuma marca corresponde aos filtros escolhidos.",
+    "emptyHint": "Tenta remover um filtro.",
+    "optionCount": "{count} marcas",
+    "optionCountOne": "1 marca"
+  },
+  "sort": {
+    "label": "Ordenar",
+    "relevance": "Relevância",
+    "name": "Nome (A–Z)",
+    "recent": "Mais recentes"
+  },
+  "api": {
+    "title": "API pública",
+    "intro": "Todos os dados das marcas publicadas estão disponíveis em JSON, sob a licença CC BY 4.0. Sem chaves e sem registo.",
+    "endpoints": "Endpoints",
+    "endpoint": "Endereço",
+    "returns": "Devolve",
+    "envelope": "Formato da resposta",
+    "envelopeIntro": "Todas as respostas são um objeto com os metadados e os dados em `data`:",
+    "versioning": "Versões",
+    "versioningBody": "A API está em {version}. Alterações incompatíveis — remover ou mudar o significado de um campo — passam para uma versão nova; acrescentar campos não é considerado incompatível.",
+    "attribution": "Atribuição",
+    "attributionBody": "Os dados estão sob CC BY 4.0: podes usá-los, incluindo comercialmente, desde que atribuas a fonte com um link para {site}.",
+    "schema": "Schema",
+    "schemaBody": "O JSON Schema de uma marca é gerado a partir do schema Zod do projeto, por isso acompanha sempre os dados. As regras entre campos que o JSON Schema não consegue expressar continuam a ser validadas pelo validador do projeto.",
+    "notes": "Notas",
+    "notesSearch": "`/search-index.json` não faz parte da API: é um detalhe interno da pesquisa e pode mudar sem aviso.",
+    "notesDrafts": "Só marcas publicadas entram na API. Rascunhos ficam no repositório.",
+    "notesPrivacy": "Não há dados pessoais nem coordenadas exatas: a localização é o concelho e, nos mapas, o centroide do concelho.",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "rows": {
+      "brands": "Todas as marcas publicadas.",
+      "brand": "Uma marca, pelo seu slug.",
+      "categories": "Categorias e subcategorias, com o número de marcas.",
+      "tags": "Etiquetas e sinónimos, com o número de marcas.",
+      "regions": "Distritos e regiões autónomas, concelhos e centroides.",
+      "sustainability": "Práticas e certificações reconhecidas.",
+      "schema": "JSON Schema de uma marca (sem envelope)."
+    }
+  }
+}

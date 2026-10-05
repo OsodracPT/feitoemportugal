@@ -1,0 +1,25 @@
+slug: cutipol
+status: published
+name: Cutipol
+description:
+  pt: >-
+    Cutelaria produzida em Portugal, reconhecida pelos cabos finos e pelas coleções em
+    aço inoxidável com acabamentos mate, usadas em restaurantes dentro e fora do país.
+  en: >-
+    Cutlery made in Portugal, known for its slim handles and stainless steel ranges with
+    matte finishes, used in restaurants at home and abroad.
+website: https://www.cutipol.pt
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, minimalista, contemporaneo]
+production:
+  scope: total
+price_range: 3
+where_to_buy:
+  online_store: https://www.cutipol.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

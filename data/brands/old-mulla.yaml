@@ -1,0 +1,27 @@
+slug: old-mulla
+status: published
+name: Old Mulla
+description:
+  pt: >-
+    Botas de homem em pele, feitas à mão em séries pequenas por uma empresa familiar de
+    Leiria, com solas que podem ser substituídas.
+  en: >-
+    Men's leather boots, handmade in small batches by a family business in Leiria, built
+    with resoleable construction.
+website: https://oldmulla.com
+category: calcado
+subcategory: botas
+tags: [pele, feito-a-mao, pequena-serie, empresa-familiar]
+production:
+  scope: total
+location:
+  district: leiria
+  municipality: leiria
+where_to_buy:
+  online_store: https://oldmulla.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,24 @@
+slug: ivo-cutelarias
+status: published
+name: IVO Cutelarias
+description:
+  pt: >-
+    Produz facas de cozinha e facas profissionais em Portugal desde 1954, com gamas para
+    uso doméstico e para restauração.
+  en: >-
+    Has been making kitchen and professional knives in Portugal since 1954, with ranges
+    for home cooks and for the restaurant trade.
+website: https://www.ivocutelarias.com
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, tradicional, classico]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.ivocutelarias.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,24 @@
+slug: armazem-das-malhas
+status: published
+name: Armazém das Malhas
+description:
+  pt: >-
+    Camisolas, casacos, camisas de linho e meias produzidos em Portugal, com lojas
+    próprias em Lisboa e um ateliê de alfaiataria para arranjos e peças à medida.
+  en: >-
+    Jumpers, cardigans, linen shirts and socks made in Portugal, with its own shops in
+    Lisbon and a tailoring workshop for alterations and made-to-measure pieces.
+website: https://armazemdasmalhas.com
+category: moda-e-vestuario
+subcategory: malhas
+tags: [malha, classico]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://armazemdasmalhas.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

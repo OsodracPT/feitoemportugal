@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+  - site
+  - submit-api
+
+# esbuild (via Astro/Vite) and sharp need their postinstall to fetch native binaries.
+allowBuilds:
+  esbuild: true
+  sharp: true

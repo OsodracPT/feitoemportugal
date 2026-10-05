@@ -1,0 +1,36 @@
+---
+import BaseHead from '~/components/BaseHead.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
+import { HTML_LANG, type Alternates, type Lang } from '~/lib/i18n.ts';
+import type { JsonLdNode } from '~/lib/seo.ts';
+import '~/styles/base.css';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  canonical: string;
+  alternates: Alternates;
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  jsonLd?: JsonLdNode[];
+}
+
+const { lang, alternates, ...head } = Astro.props;
+---
+
+<!doctype html>
+<html lang={HTML_LANG[lang]}>
+  <head>
+    <BaseHead lang={lang} alternates={alternates} {...head} />
+  </head>
+  <body>
+    <Header lang={lang} alternates={alternates} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

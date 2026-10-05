@@ -1,0 +1,160 @@
+---
+import type { Category, Subcategory } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import {
+  brandsInCategory,
+  brandsInSubcategory,
+  landingSubcategories,
+  landingCategories,
+} from '~/lib/data.ts';
+import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import {
+  breadcrumbJsonLd,
+  faqJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  category: Category;
+  /** Set on a subcategory page. */
+  subcategory?: Subcategory;
+}
+
+const { lang, category, subcategory } = Astro.props;
+
+const brands = subcategory
+  ? brandsInSubcategory(category.id, subcategory.id)
+  : brandsInCategory(category.id);
+
+const label = localized((subcategory ?? category).label, lang);
+const headline = t(lang, 'category.brandsIn', { category: labelInSentence(label, lang) });
+const intro = localized((subcategory?.intro ?? category.intro), lang);
+
+const alternates = subcategory
+  ? {
+      pt: paths.subcategory('pt', category.slug.pt, subcategory.slug.pt),
+      en: paths.subcategory('en', category.slug.en, subcategory.slug.en),
+    }
+  : {
+      pt: paths.category('pt', category.slug.pt),
+      en: paths.category('en', category.slug.en),
+    };
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'nav.categories'), path: paths.categories(lang) },
+  ...(subcategory
+    ? [
+        { name: localized(category.label, lang), path: paths.category(lang, category.slug[lang]) },
+        { name: localized(subcategory.label, lang) },
+      ]
+    : [{ name: localized(category.label, lang) }]),
+];
+
+const faq = subcategory
+  ? []
+  : category.faq.map((entry) => ({
+      question: localized(entry.question, lang),
+      answer: localized(entry.answer, lang),
+    }));
+
+const subcategoryLinks = subcategory ? [] : landingSubcategories(category);
+const otherCategories = landingCategories().filter((other) => other.id !== category.id);
+
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+const faqNode = faqJsonLd(faq);
+if (faqNode) jsonLd.push(faqNode);
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(headline, lang)}
+  description={truncate(intro || t(lang, 'site.description'), 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{headline}</h1>
+    {intro && <p class="lede">{intro}</p>}
+
+    {
+      subcategoryLinks.length > 0 && (
+        <nav class="subcategories" aria-label={t(lang, 'category.subcategories')}>
+          <h2 class="eyebrow">{t(lang, 'category.subcategories')}</h2>
+          <ul class="pill-list">
+            {subcategoryLinks.map((sub) => (
+              <li>
+                <a class="pill" href={paths.subcategory(lang, category.slug[lang], sub.slug[lang])}>
+                  {localized(sub.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      faq.length > 0 && (
+        <section class="section faq">
+          <h2>{t(lang, 'category.faq')}</h2>
+          <dl>
+            {faq.map((entry) => (
+              <>
+                <dt>{entry.question}</dt>
+                <dd>{entry.answer}</dd>
+              </>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+
+    {
+      otherCategories.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'category.otherCategories')}>
+          <h2 class="eyebrow">{t(lang, 'category.otherCategories')}</h2>
+          <ul class="pill-list">
+            {otherCategories.map((other) => (
+              <li>
+                <a class="pill" href={paths.category(lang, other.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .subcategories {
+    margin-block: var(--space-5);
+  }
+
+  .faq dt {
+    font-weight: 600;
+    margin-top: var(--space-4);
+  }
+
+  .faq dd {
+    margin: var(--space-2) 0 0;
+    color: var(--text-muted);
+    max-width: var(--measure);
+  }
+</style>

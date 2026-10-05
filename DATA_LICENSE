@@ -1,0 +1,15 @@
+# Data license
+
+The contents of `data/` (brands and taxonomy) are published under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+You are free to share and adapt the data, including commercially, as long as
+you credit "Feito em Portugal" and link back to the project.
+
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Attribution example:
+  Data from Feito em Portugal (https://feitoemportugal.org), CC BY 4.0.
+
+The code is licensed separately. That choice (MIT or AGPL) is still open, so no
+code licence ships with this repository yet.

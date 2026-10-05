@@ -1,0 +1,28 @@
+slug: claus-porto
+status: published
+name: Claus Porto
+description:
+  pt: >-
+    Saboaria com origem no Porto em 1887, hoje produzida em Vila do Conde. Faz sabonetes
+    triplamente moídos, perfumes e produtos de banho com embalagens de litografia.
+  en: >-
+    Soap house founded in Porto in 1887 and now produced in Vila do Conde. Makes triple-milled
+    soaps, fragrances and bath products wrapped in lithographed packaging.
+website: https://clausporto.com
+category: cosmetica-e-higiene
+subcategory: sabonetes-e-banho
+tags: [classico, vintage, fabrica-centenaria, presente]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: vila-do-conde
+price_range: 2
+where_to_buy:
+  online_store: https://clausporto.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

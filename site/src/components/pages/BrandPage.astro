@@ -1,0 +1,362 @@
+---
+import type { Brand } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import Badges from '~/components/Badges.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import PriceRange from '~/components/PriceRange.astro';
+import { SITE } from '~/lib/config.ts';
+import {
+  getCategory,
+  getCertification,
+  getMunicipality,
+  getPractice,
+  getRegion,
+  getSubcategory,
+  getTag,
+  hasLandingPage,
+  relatedBrands,
+} from '~/lib/data.ts';
+import { formatDate, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import {
+  brandDescription,
+  brandJsonLd,
+  brandTitle,
+  breadcrumbJsonLd,
+  socialLinks,
+  type Crumb,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  brand: Brand;
+}
+
+const { lang, brand } = Astro.props;
+
+const category = getCategory(brand.category);
+const subcategory = brand.subcategory ? getSubcategory(brand.category, brand.subcategory) : undefined;
+const region = brand.location ? getRegion(brand.location.district) : undefined;
+const municipality =
+  brand.location?.municipality && region
+    ? getMunicipality(region.id, brand.location.municipality)
+    : undefined;
+
+const alternates = {
+  pt: paths.brand('pt', brand.slug),
+  en: paths.brand('en', brand.slug),
+};
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'brands.title'), path: paths.brands(lang) },
+  ...(category && hasLandingPage(category)
+    ? [{ name: localized(category.label, lang), path: paths.category(lang, category.slug[lang]) }]
+    : []),
+  { name: brand.name },
+];
+
+const related = relatedBrands(brand, 4);
+const social = socialLinks(brand);
+const practices = brand.sustainability?.practices.map(getPractice).filter(Boolean) ?? [];
+const certifications = brand.sustainability?.certifications ?? [];
+const notes = brand.production.notes ? localized(brand.production.notes, lang) : '';
+
+const correctionUrl = `${SITE.repo}/issues/new?labels=correcao&template=correcao.yml&title=${encodeURIComponent(
+  `[correção] ${brand.name}`,
+)}&brand=${encodeURIComponent(brand.slug)}`;
+
+const locationLabel = [municipality?.name, region ? localized(region.label, lang) : null]
+  .filter(Boolean)
+  .join(', ');
+---
+
+<Layout
+  lang={lang}
+  title={brandTitle(brand, { category, subcategory, regionLabel: region ? localized(region.label, lang) : undefined }, lang)}
+  description={brandDescription(brand, lang)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={[
+    brandJsonLd(brand, lang, {
+      category,
+      subcategory,
+      districtLabel: region ? localized(region.label, lang) : undefined,
+    }),
+    breadcrumbJsonLd(crumbs),
+  ]}
+>
+  <div class="container brand">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+
+    <header class="brand__header">
+      <h1>{brand.name}</h1>
+      <Badges lang={lang} brand={brand} withDate />
+      <p class="lede">{localized(brand.description, lang)}</p>
+      <p class="brand__actions">
+        <a class="button" href={brand.website} rel="nofollow noopener">
+          {t(lang, 'brand.visitWebsite')}
+          <span class="visually-hidden"> ({t(lang, 'common.externalLink')})</span>
+        </a>
+      </p>
+    </header>
+
+    <div class="brand__grid">
+      <section class="brand__facts">
+        <h2 class="eyebrow">{t(lang, 'brand.details')}</h2>
+        <dl class="facts">
+          <div>
+            <dt>{t(lang, 'brand.production')}</dt>
+            <dd>
+              {brand.production.scope === 'parcial'
+                ? t(lang, 'brand.productionPartial')
+                : t(lang, 'brand.productionTotal')}
+              {notes && <><br /><span class="muted">{notes}</span></>}
+            </dd>
+          </div>
+
+          {
+            category && (
+              <div>
+                <dt>{t(lang, 'brand.category')}</dt>
+                <dd>
+                  {hasLandingPage(category) ? (
+                    <a href={paths.category(lang, category.slug[lang])}>
+                      {localized(category.label, lang)}
+                    </a>
+                  ) : (
+                    localized(category.label, lang)
+                  )}
+                  {subcategory && <> · {localized(subcategory.label, lang)}</>}
+                </dd>
+              </div>
+            )
+          }
+
+          {
+            locationLabel && (
+              <div>
+                <dt>{t(lang, 'brand.location')}</dt>
+                <dd>{locationLabel}</dd>
+              </div>
+            )
+          }
+
+          {
+            brand.price_range && (
+              <div>
+                <dt>{t(lang, 'brand.priceRange')}</dt>
+                <dd><PriceRange lang={lang} value={brand.price_range} category={category} /></dd>
+              </div>
+            )
+          }
+
+          <div>
+            <dt>{t(lang, 'brand.website')}</dt>
+            <dd>
+              <a href={brand.website} rel="nofollow noopener">{new URL(brand.website).host.replace(/^www\./, '')}</a>
+            </dd>
+          </div>
+        </dl>
+
+        {
+          brand.tags.length > 0 && (
+            <>
+              <h2 class="eyebrow">{t(lang, 'brand.tags')}</h2>
+              <ul class="pill-list">
+                {brand.tags.map((tagId) => {
+                  const tag = getTag(tagId);
+                  return tag ? <li class="pill">{localized(tag.label, lang)}</li> : null;
+                })}
+              </ul>
+            </>
+          )
+        }
+      </section>
+
+      <aside class="brand__aside stack">
+        {
+          (brand.where_to_buy?.online_store ||
+            (brand.where_to_buy?.physical_stores.length ?? 0) > 0 ||
+            (brand.where_to_buy?.marketplaces.length ?? 0) > 0) && (
+            <section>
+              <h2 class="eyebrow">{t(lang, 'brand.whereToBuy')}</h2>
+              <ul class="links">
+                {brand.where_to_buy?.online_store && (
+                  <li>
+                    <a href={brand.where_to_buy.online_store} rel="nofollow noopener">
+                      {t(lang, 'brand.onlineStore')}
+                    </a>
+                  </li>
+                )}
+                {brand.where_to_buy?.marketplaces.map((url) => (
+                  <li>
+                    <a href={url} rel="nofollow noopener">{new URL(url).host.replace(/^www\./, '')}</a>
+                  </li>
+                ))}
+                {brand.where_to_buy?.physical_stores.map((store) => (
+                  <li>
+                    {store.url ? (
+                      <a href={store.url} rel="nofollow noopener">{store.name}</a>
+                    ) : (
+                      store.name
+                    )}
+                    <span class="muted"> · {store.city}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          social.length > 0 && (
+            <section>
+              <h2 class="eyebrow">{t(lang, 'brand.social')}</h2>
+              <ul class="links">
+                {social.map((link) => (
+                  <li>
+                    <a href={link.url} rel="nofollow noopener">{link.network}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          (practices.length > 0 || certifications.length > 0) && (
+            <section>
+              <h2 class="eyebrow">{t(lang, 'brand.sustainability')}</h2>
+              {practices.length > 0 && (
+                <ul class="pill-list">
+                  {practices.map((practice) => (
+                    <li class="pill">{practice && localized(practice.label, lang)}</li>
+                  ))}
+                </ul>
+              )}
+              {certifications.length > 0 && (
+                <ul class="links">
+                  {certifications.map((certification) => {
+                    const definition = getCertification(certification.id);
+                    return (
+                      <li>
+                        {definition ? localized(definition.label, lang) : certification.id}
+                        {certification.proof_url && (
+                          <>
+                            {' '}
+                            <a href={certification.proof_url} rel="nofollow noopener">
+                              ({t(lang, 'brand.proof')})
+                            </a>
+                          </>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+          )
+        }
+
+        <section class="meta">
+          <p class="muted">
+            {t(lang, 'brand.addedOn', { date: formatDate(brand.meta.added, lang) })}<br />
+            {t(lang, 'brand.updatedOn', { date: formatDate(brand.meta.updated, lang) })}
+          </p>
+          <p><a href={correctionUrl} rel="nofollow noopener">{t(lang, 'brand.suggestCorrection')}</a></p>
+        </section>
+      </aside>
+    </div>
+
+    {
+      related.length > 0 && (
+        <section class="section related">
+          <h2>{t(lang, 'brand.related')}</h2>
+          <BrandGrid lang={lang} brands={related} />
+        </section>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .brand__header {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-6);
+  }
+
+  .brand__header h1 {
+    margin-bottom: var(--space-3);
+  }
+
+  .brand__header .lede {
+    margin-top: var(--space-4);
+  }
+
+  .brand__actions {
+    margin: var(--space-5) 0 0;
+  }
+
+  .brand__grid {
+    display: grid;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  @media (min-width: 52rem) {
+    .brand__grid {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .facts {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0 0 var(--space-6);
+  }
+
+  .facts dt {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+
+  .facts dd {
+    margin: var(--space-1) 0 0;
+  }
+
+  .brand__aside {
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-5);
+  }
+
+  @media (min-width: 52rem) {
+    .brand__aside {
+      border-top: 0;
+      border-left: 1px solid var(--line);
+      padding: 0 0 0 var(--space-6);
+    }
+  }
+
+  .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .meta {
+    font-size: var(--text-sm);
+  }
+
+  .meta p {
+    margin-bottom: var(--space-2);
+  }
+
+  .related {
+    margin-top: var(--space-8);
+  }
+</style>

@@ -1,0 +1,48 @@
+# Runs on every pull request: data, types, tests and a full build.
+# The blog checks (PT/EN pairs, BrandCard references) join this workflow with
+# the blog itself, in phase 3.
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12
+
+      - uses: actions/setup-node@v4
+        with:
+          # The scripts run TypeScript directly, which needs Node 22.18 or newer.
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Brand schema, taxonomy references, duplicate slugs, municipality in district.
+      - name: Validate data
+        run: pnpm validate
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      # Catches anything the checks above cannot see, such as a broken route.
+      - name: Build
+        run: pnpm build

@@ -1,0 +1,25 @@
+slug: semogue
+status: published
+name: Semogue
+description:
+  pt: >-
+    Fábrica de pincéis de barba na Granja, Vila Nova de Gaia, em funcionamento no mesmo
+    edifício desde 1955, com pincéis em cerda natural e em pelo de texugo.
+  en: >-
+    Shaving brush factory in Granja, Vila Nova de Gaia, running in the same building since
+    1955, making brushes in natural bristle and badger hair.
+website: https://semogue.com
+category: cosmetica-e-higiene
+subcategory: barba
+tags: [feito-a-mao, tradicional, empresa-familiar]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: vila-nova-de-gaia
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

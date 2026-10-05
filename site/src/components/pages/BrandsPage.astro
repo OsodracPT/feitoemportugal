@@ -1,0 +1,118 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import BrandBrowser from '~/components/BrandBrowser.astro';
+import BrandFilters from '~/components/BrandFilters.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { brands, categories, brandsInCategory, hasLandingPage } from '~/lib/data.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, itemListJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: paths.brands('pt'), en: paths.brands('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'brands.title') },
+];
+const withBrands = categories
+  .map((category) => ({ category, count: brandsInCategory(category.id).length }))
+  .filter((entry) => entry.count > 0);
+
+/** Ties the toolbar button to the panel it opens. */
+const filtersId = 'brand-filters';
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(`${t(lang, 'brands.title')} (${brands.length})`, lang)}
+  description={t(lang, 'brands.intro')}
+  canonical={paths.brands(lang)}
+  alternates={alternates}
+  jsonLd={[itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{t(lang, 'brands.title')}</h1>
+    <p class="lede">{t(lang, 'brands.intro')}</p>
+
+    <BrandBrowser lang={lang} filtersId={filtersId} />
+
+    <div class="listing">
+      <BrandFilters lang={lang} id={filtersId} />
+
+      <div class="listing__main">
+        <p class="count muted" data-brand-total>
+          {brands.length === 1 ? t(lang, 'brands.countOne') : t(lang, 'brands.count', { count: brands.length })}
+        </p>
+        <BrandGrid lang={lang} brands={brands} />
+
+        <!-- Degraded, no-JavaScript browsing by category. -->
+        <nav class="by-category" aria-label={t(lang, 'brands.byCategory')}>
+          <h2 class="by-category__title">{t(lang, 'brands.byCategory')}</h2>
+          <ul class="pill-list">
+            {
+              withBrands.map(({ category, count }) =>
+                hasLandingPage(category) ? (
+                  <li>
+                    <a class="pill" href={paths.category(lang, category.slug[lang])}>
+                      {localized(category.label, lang)} <span class="muted">{count}</span>
+                    </a>
+                  </li>
+                ) : (
+                  <li>
+                    <span class="pill pill--quiet">
+                      {localized(category.label, lang)} <span class="muted">{count}</span>
+                    </span>
+                  </li>
+                ),
+              )
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .listing {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .listing {
+      grid-template-columns: 16rem minmax(0, 1fr);
+      gap: var(--space-6);
+    }
+
+    /* The panel follows the page while the grid scrolls past it. */
+    .listing > :global([data-filters-panel]) {
+      position: sticky;
+      top: var(--space-4);
+      max-height: calc(100vh - var(--space-7));
+      overflow-y: auto;
+    }
+  }
+
+  .count {
+    font-size: var(--text-sm);
+    margin: 0 0 var(--space-4);
+  }
+
+  .by-category {
+    margin-block: var(--space-7) 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--line);
+  }
+
+  .by-category__title {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-3);
+  }
+</style>

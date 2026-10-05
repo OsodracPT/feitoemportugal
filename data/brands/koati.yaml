@@ -1,0 +1,24 @@
+slug: koati
+status: published
+name: Koati
+description:
+  pt: >-
+    Marca de roupa de homem nascida de uma fábrica de vestuário portuguesa em atividade
+    desde 1983, com polos, camisas e casacos produzidos na própria unidade.
+  en: >-
+    Menswear brand born out of a Portuguese garment factory running since 1983, with
+    polos, shirts and jackets made in its own plant.
+website: https://koati.pt
+category: moda-e-vestuario
+subcategory: roupa-homem
+tags: [classico, empresa-familiar]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://koati.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,9 @@
+# Normalise line endings in the repository; check out native.
+* text=auto eol=lf
+
+# Binary assets.
+*.woff2 binary
+*.png binary
+
+# Generated; keep it out of diffs and language statistics.
+pnpm-lock.yaml linguist-generated=true -diff

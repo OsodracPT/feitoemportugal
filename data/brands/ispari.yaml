@@ -1,0 +1,25 @@
+slug: ispari
+status: published
+name: Ispari
+description:
+  pt: >-
+    Marca de roupa de mulher com confeção local, que usa sobretudo tecidos de stock
+    sobrante para fazer peças confortáveis em séries curtas.
+  en: >-
+    Womenswear label sewn locally, working mostly from deadstock fabrics to make
+    comfortable pieces in short runs.
+website: https://ispari.pt
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [upcycling, pequena-serie, contemporaneo]
+production:
+  scope: total
+price_range: 2
+where_to_buy:
+  online_store: https://ispari.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

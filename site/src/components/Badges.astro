@@ -1,0 +1,66 @@
+---
+import type { Brand } from '@fep/schema';
+import { formatDate, t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  brand: Brand;
+  /** Verified badges carry the date on the brand page, not on cards. */
+  withDate?: boolean;
+}
+
+const { lang, brand, withDate = false } = Astro.props;
+const verified = brand.verification?.verified === true;
+const verifiedDate = brand.verification?.date ?? null;
+const partial = brand.production.scope === 'parcial';
+---
+
+<ul class="badges">
+  {
+    verified && (
+      <li class="badge badge--verified" title={t(lang, 'brand.verifiedHelp')}>
+        <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M8 .8 9.9 2.4l2.5-.2.6 2.4 2.2 1.2-1 2.3 1 2.3-2.2 1.2-.6 2.4-2.5-.2L8 15.2l-1.9-1.6-2.5.2-.6-2.4L.8 10.2l1-2.3-1-2.3 2.2-1.2.6-2.4 2.5.2L8 .8Zm-.8 9.9 4-4-1.1-1.1-2.9 2.9-1.3-1.3-1.1 1.1 2.4 2.4Z"
+          />
+        </svg>
+        {withDate && verifiedDate
+          ? t(lang, 'brand.verifiedOn', { date: formatDate(verifiedDate, lang) })
+          : t(lang, 'brand.verified')}
+      </li>
+    )
+  }
+  <li class={`badge ${partial ? 'badge--partial' : 'badge--total'}`}>
+    {partial ? t(lang, 'brand.productionPartial') : t(lang, 'brand.productionTotal')}
+  </li>
+</ul>
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    border: 1px solid var(--line-strong);
+    color: var(--text-muted);
+  }
+
+  .badge--verified {
+    color: var(--accent-text);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 560;
+  }
+</style>

@@ -1,0 +1,25 @@
+slug: newve
+status: published
+name: Newve
+description:
+  pt: >-
+    Calçado minimalista desenhado e produzido em Portugal desde 2022, com componentes que
+    incorporam fibras naturais como o bambu.
+  en: >-
+    Minimalist footwear designed and produced in Portugal since 2022, with components that
+    incorporate natural fibres such as bamboo.
+website: https://newve.pt
+category: calcado
+tags: [contemporaneo, minimalista]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://newve.pt
+sustainability:
+  practices: [fibras-naturais]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

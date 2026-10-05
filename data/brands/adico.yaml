@@ -1,0 +1,27 @@
+slug: adico
+status: published
+name: Adico
+description:
+  pt: >-
+    Fábrica de mobiliário metálico em Avanca desde 1920, a mais antiga do país, conhecida
+    pelas cadeiras de esplanada e por coleções assinadas por designers.
+  en: >-
+    Metal furniture factory in Avanca since 1920, the oldest in the country, known for its
+    café terrace chairs and for designer-signed collections.
+website: https://www.adico.pt
+category: mobiliario
+subcategory: cadeiras-e-bancos
+tags: [metal, tradicional, fabrica-centenaria]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: estarreja
+where_to_buy:
+  online_store: https://www.adico.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

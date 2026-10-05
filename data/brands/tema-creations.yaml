@@ -1,0 +1,24 @@
+slug: tema-creations
+status: published
+name: Tema Creations
+description:
+  pt: >-
+    Marca de Lisboa que desenha e produz em Portugal coleções de vestuário pensadas para
+    durar além da estação, com peças para ocasião.
+  en: >-
+    Lisbon label that designs and produces its collections in Portugal, built to outlast
+    the season, with pieces for occasion wear.
+website: https://temacreations.pt
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [contemporaneo, pequena-serie]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://temacreations.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

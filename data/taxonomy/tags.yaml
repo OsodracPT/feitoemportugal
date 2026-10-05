@@ -1,0 +1,186 @@
+# Vocabulário controlado de etiquetas.
+# `synonyms` alimenta a pesquisa (MiniSearch) e não é mostrado na interface.
+# Novas etiquetas são propostas por PR.
+
+# --- Materiais ---
+- id: pele
+  label: { pt: Pele, en: Leather }
+  synonyms:
+    pt: [couro, cabedal, peles]
+    en: [leather, hide]
+- id: cortica
+  label: { pt: Cortiça, en: Cork }
+  synonyms:
+    pt: [cortiça, sobreiro]
+    en: [cork, cork oak]
+- id: la
+  label: { pt: Lã, en: Wool }
+  synonyms:
+    pt: [lã, burel, merino]
+    en: [wool, merino, woollen]
+- id: linho
+  label: { pt: Linho, en: Linen }
+  synonyms:
+    pt: [linho]
+    en: [linen, flax]
+- id: algodao
+  label: { pt: Algodão, en: Cotton }
+  synonyms:
+    pt: [algodão, algodao organico, algodão orgânico]
+    en: [cotton, organic cotton]
+- id: malha
+  label: { pt: Malha, en: Knit }
+  synonyms:
+    pt: [malhas, tricot, jersey]
+    en: [knit, knitwear, jersey]
+- id: denim
+  label: { pt: Denim, en: Denim }
+  synonyms:
+    pt: [ganga, jeans]
+    en: [denim, jeans]
+- id: madeira
+  label: { pt: Madeira, en: Wood }
+  synonyms:
+    pt: [madeira, carvalho, pinho, freixo]
+    en: [wood, oak, pine, ash]
+- id: metal
+  label: { pt: Metal, en: Metal }
+  synonyms:
+    pt: [aço, latão, inox, ferro]
+    en: [metal, steel, brass, iron]
+- id: ceramica
+  label: { pt: Cerâmica, en: Ceramic }
+  synonyms:
+    pt: [barro, louça, olaria, faiança, porcelana]
+    en: [ceramic, pottery, earthenware, porcelain]
+- id: vidro
+  label: { pt: Vidro, en: Glass }
+  synonyms:
+    pt: [vidro, cristal]
+    en: [glass, crystal]
+- id: fibras-vegetais
+  label: { pt: Fibras vegetais, en: Plant fibres }
+  synonyms:
+    pt: [buinho, palma, vime, junco, cestaria]
+    en: [rush, palm, wicker, straw, basketry]
+
+# --- Técnicas ---
+- id: feito-a-mao
+  label: { pt: Feito à mão, en: Handmade }
+  synonyms:
+    pt: [artesanal, à mão, feito a mao, oficina]
+    en: [handmade, handcrafted, artisanal, workshop]
+- id: tecido-em-tear
+  label: { pt: Tecido em tear, en: Loom woven }
+  synonyms:
+    pt: [tear, tecelagem, tecido manual]
+    en: [loom, handwoven, weaving]
+- id: pintado-a-mao
+  label: { pt: Pintado à mão, en: Hand painted }
+  synonyms:
+    pt: [pintura manual, pintado a mao]
+    en: [hand painted, hand decorated]
+- id: cosido-a-mao
+  label: { pt: Cosido à mão, en: Hand stitched }
+  synonyms:
+    pt: [costura manual, cosido a mao, sola cosida]
+    en: [hand stitched, hand sewn, stitched sole]
+- id: soprado-a-boca
+  label: { pt: Soprado à boca, en: Mouth blown }
+  synonyms:
+    pt: [vidro soprado]
+    en: [mouth blown, hand blown glass]
+- id: filigrana
+  label: { pt: Filigrana, en: Filigree }
+  synonyms:
+    pt: [filigrana, ourivesaria]
+    en: [filigree, goldsmithing]
+- id: serigrafia
+  label: { pt: Serigrafia, en: Screen printing }
+  synonyms:
+    pt: [serigrafia, estampagem]
+    en: [screen print, silkscreen]
+- id: letterpress
+  label: { pt: Tipografia manual, en: Letterpress }
+  synonyms:
+    pt: [tipografia, impressão tipográfica]
+    en: [letterpress, hand printing]
+
+# --- Estilo ---
+- id: classico
+  label: { pt: Clássico, en: Classic }
+  synonyms:
+    pt: [clássico, tradicional, atemporal]
+    en: [classic, timeless]
+- id: contemporaneo
+  label: { pt: Contemporâneo, en: Contemporary }
+  synonyms:
+    pt: [moderno, design contemporâneo]
+    en: [contemporary, modern]
+- id: minimalista
+  label: { pt: Minimalista, en: Minimalist }
+  synonyms:
+    pt: [minimal, simples]
+    en: [minimalist, minimal]
+- id: tradicional
+  label: { pt: Tradicional, en: Traditional }
+  synonyms:
+    pt: [herança, popular, regional]
+    en: [traditional, heritage, folk]
+- id: vintage
+  label: { pt: Vintage, en: Vintage }
+  synonyms:
+    pt: [retro, antigo]
+    en: [vintage, retro]
+
+# --- Produção e valores ---
+- id: pequena-serie
+  label: { pt: Pequena série, en: Small batch }
+  synonyms:
+    pt: [edição limitada, pequena producao, série limitada]
+    en: [small batch, limited edition, short run]
+- id: producao-por-encomenda
+  label: { pt: Produção por encomenda, en: Made to order }
+  synonyms:
+    pt: [por encomenda, sob medida, feito à medida]
+    en: [made to order, on demand, bespoke]
+- id: personalizavel
+  label: { pt: Personalizável, en: Customisable }
+  synonyms:
+    pt: [personalização, gravação, monograma]
+    en: [customisable, personalised, monogram]
+- id: vegano
+  label: { pt: Vegano, en: Vegan }
+  synonyms:
+    pt: [sem produtos animais, vegan]
+    en: [vegan, animal free]
+- id: sem-plastico
+  label: { pt: Sem plástico, en: Plastic free }
+  synonyms:
+    pt: [zero plástico, embalagem sem plástico]
+    en: [plastic free, zero plastic]
+- id: upcycling
+  label: { pt: Upcycling, en: Upcycling }
+  synonyms:
+    pt: [reaproveitamento, sobras, reutilização]
+    en: [upcycled, deadstock, reclaimed]
+- id: fabrica-centenaria
+  label: { pt: Fábrica centenária, en: Century-old factory }
+  synonyms:
+    pt: [centenária, fundada no século xix, histórica]
+    en: [century old, heritage factory, historic]
+- id: empresa-familiar
+  label: { pt: Empresa familiar, en: Family run }
+  synonyms:
+    pt: [familiar, geração]
+    en: [family run, family owned]
+- id: unissexo
+  label: { pt: Unissexo, en: Unisex }
+  synonyms:
+    pt: [unissexo, sem género]
+    en: [unisex, genderless]
+- id: presente
+  label: { pt: Presente, en: Gift }
+  synonyms:
+    pt: [prenda, presentes, oferta]
+    en: [gift, present]

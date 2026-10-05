@@ -1,0 +1,28 @@
+slug: carlos-santos
+status: published
+name: Carlos Santos
+description:
+  pt: >-
+    Fábrica de São João da Madeira especializada em sapato clássico de homem, com sola
+    cosida e patinas pintadas à mão, para a marca própria e para outras marcas.
+  en: >-
+    Factory in São João da Madeira specialising in classic men's shoes with stitched soles
+    and hand-painted patinas, for its own label and for other brands.
+website: https://carlossantosshoes.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, cosido-a-mao, classico, empresa-familiar]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+price_range: 4
+where_to_buy:
+  online_store: https://carlossantosshoes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

@@ -1,0 +1,27 @@
+slug: famo
+status: published
+name: Famo
+description:
+  pt: >-
+    Fábrica de mobiliário metálico em Lousada, fundada em 1947, com soluções para
+    escritório, saúde e espaços públicos.
+  en: >-
+    Metal furniture factory in Lousada, founded in 1947, making solutions for offices,
+    healthcare and public spaces.
+website: https://famo.pt
+category: mobiliario
+subcategory: arrumacao
+tags: [metal, contemporaneo]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: lousada
+where_to_buy:
+  online_store: https://famo.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

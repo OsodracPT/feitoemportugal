@@ -1,0 +1,29 @@
+slug: asportuguesas
+status: published
+name: ASPORTUGUESAS
+description:
+  pt: >-
+    Calçado desenvolvido e fabricado em Portugal, a partir de Guimarães, com solas de
+    cortiça em chinelos, sandálias, sapatilhas e botas de mulher e de homem.
+  en: >-
+    Footwear developed and manufactured in Portugal, out of Guimarães, built on cork
+    soles across flip-flops, sandals, trainers and boots for women and men.
+website: https://asportuguesas.shoes
+category: calcado
+subcategory: sandalias-e-chinelos
+tags: [cortica, contemporaneo]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: guimaraes
+where_to_buy:
+  online_store: https://asportuguesas.shoes
+social:
+  instagram: asportuguesasshoes
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

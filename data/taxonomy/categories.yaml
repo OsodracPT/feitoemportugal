@@ -1,0 +1,678 @@
+# Categorias e subcategorias do Feito em Portugal.
+# Lista fixa: só muda por PR revisto.
+# `price_levels` define a referência de cada nível (1-4) dentro da categoria,
+# para a classificação ser consistente entre marcas.
+
+- id: moda-e-vestuario
+  label: { pt: Moda e vestuário, en: Fashion and clothing }
+  slug: { pt: moda-e-vestuario, en: fashion-and-clothing }
+  intro:
+    pt: >-
+      Marcas portuguesas de roupa que produzem no país, da malha do Vale do Ave
+      à confeção de alfaiataria. Inclui coleções próprias e projetos de autor que
+      trabalham com oficinas nacionais.
+    en: >-
+      Portuguese clothing brands that manufacture in the country, from knitwear in
+      the Ave valley to tailoring workshops. Includes own-label collections and
+      designer projects produced with local factories.
+  faq:
+    - question:
+        pt: Porque é que tanta roupa é feita em Portugal?
+        en: Why is so much clothing made in Portugal?
+      answer:
+        pt: >-
+          O norte do país concentra fiação, malhas, tinturarias e confeção a poucos
+          quilómetros de distância, o que permite séries pequenas e prazos curtos.
+          Muitas marcas internacionais produzem aqui pela mesma razão.
+        en: >-
+          Northern Portugal has spinning, knitting, dyeing and sewing within a few
+          kilometres of each other, which makes small runs and short lead times
+          possible. Many international labels produce here for the same reason.
+  price_levels:
+    - level: 1
+      label: { pt: "peças até 30 €", en: "items under €30" }
+    - level: 2
+      label: { pt: "30 € a 80 €", en: "€30 to €80" }
+    - level: 3
+      label: { pt: "80 € a 200 €", en: "€80 to €200" }
+    - level: 4
+      label: { pt: "acima de 200 €", en: "over €200" }
+  subcategories:
+    - id: roupa-mulher
+      label: { pt: Roupa de mulher, en: Womenswear }
+      slug: { pt: roupa-mulher, en: womenswear }
+    - id: roupa-homem
+      label: { pt: Roupa de homem, en: Menswear }
+      slug: { pt: roupa-homem, en: menswear }
+    - id: malhas
+      label: { pt: Malhas, en: Knitwear }
+      slug: { pt: malhas, en: knitwear }
+    - id: denim
+      label: { pt: Denim, en: Denim }
+      slug: { pt: denim, en: denim }
+    - id: roupa-interior-e-meias
+      label: { pt: Roupa interior e meias, en: Underwear and socks }
+      slug: { pt: roupa-interior-e-meias, en: underwear-and-socks }
+    - id: banho
+      label: { pt: Moda de banho, en: Swimwear }
+      slug: { pt: moda-de-banho, en: swimwear }
+    - id: trabalho-e-uniformes
+      label: { pt: Vestuário de trabalho, en: Workwear }
+      slug: { pt: vestuario-de-trabalho, en: workwear }
+
+- id: calcado
+  label: { pt: Calçado, en: Footwear }
+  slug: { pt: calcado, en: footwear }
+  intro:
+    pt: >-
+      O calçado é a indústria portuguesa mais conhecida fora do país. Em São João
+      da Madeira, Felgueiras e Guimarães há fábricas que fazem sapatos de pele
+      cosidos à mão para marcas próprias e para o resto do mundo.
+    en: >-
+      Footwear is Portugal's best-known export industry. Around São João da Madeira,
+      Felgueiras and Guimarães, factories hand-stitch leather shoes for their own
+      labels and for brands worldwide.
+  faq:
+    - question:
+        pt: O que distingue o calçado feito em Portugal?
+        en: What sets Portuguese-made footwear apart?
+      answer:
+        pt: >-
+          A combinação de curtumes, componentes e fábricas na mesma região permite
+          construções tradicionais — como a sola cosida — em séries pequenas, com
+          controlo de qualidade próximo e salários europeus.
+        en: >-
+          Tanneries, component makers and factories sit in the same region, which
+          allows traditional constructions such as stitched soles in small runs,
+          with close quality control and European labour standards.
+    - question:
+        pt: Como sei que um sapato foi mesmo feito em Portugal?
+        en: How do I know a shoe was really made in Portugal?
+      answer:
+        pt: >-
+          Procura a indicação de origem na palmilha ou na caixa e, na dúvida,
+          pergunta à marca onde fica a fábrica. As marcas listadas aqui declaram a
+          origem, e o selo "verificado" indica que confirmámos essa informação.
+        en: >-
+          Look for the origin marking on the insole or box and, if in doubt, ask the
+          brand where its factory is. Brands listed here declare their origin, and the
+          "verified" badge means we confirmed it.
+  price_levels:
+    - level: 1
+      label: { pt: "até 50 €", en: "under €50" }
+    - level: 2
+      label: { pt: "50 € a 120 €", en: "€50 to €120" }
+    - level: 3
+      label: { pt: "120 € a 250 €", en: "€120 to €250" }
+    - level: 4
+      label: { pt: "acima de 250 €", en: "over €250" }
+  subcategories:
+    - id: sapatos-homem
+      label: { pt: Sapatos de homem, en: Men's shoes }
+      slug: { pt: sapatos-homem, en: mens-shoes }
+    - id: sapatos-mulher
+      label: { pt: Sapatos de mulher, en: Women's shoes }
+      slug: { pt: sapatos-mulher, en: womens-shoes }
+    - id: sapatilhas
+      label: { pt: Sapatilhas, en: Sneakers }
+      slug: { pt: sapatilhas, en: sneakers }
+    - id: botas
+      label: { pt: Botas, en: Boots }
+      slug: { pt: botas, en: boots }
+    - id: sandalias-e-chinelos
+      label: { pt: Sandálias e chinelos, en: Sandals and slippers }
+      slug: { pt: sandalias-e-chinelos, en: sandals-and-slippers }
+    - id: calcado-crianca
+      label: { pt: Calçado de criança, en: Kids' footwear }
+      slug: { pt: calcado-crianca, en: kids-footwear }
+
+- id: acessorios
+  label: { pt: Acessórios, en: Accessories }
+  slug: { pt: acessorios, en: accessories }
+  intro:
+    pt: >-
+      Malas, carteiras, cintos, chapéus e óculos feitos em Portugal, de oficinas de pele
+      a artesãos que trabalham fibras vegetais como o buinho e a palma.
+    en: >-
+      Bags, wallets, belts, hats and eyewear made in Portugal, from leather workshops
+      to artisans weaving plant fibres such as rush and palm.
+  price_levels:
+    - level: 1
+      label: { pt: "até 40 €", en: "under €40" }
+    - level: 2
+      label: { pt: "40 € a 100 €", en: "€40 to €100" }
+    - level: 3
+      label: { pt: "100 € a 250 €", en: "€100 to €250" }
+    - level: 4
+      label: { pt: "acima de 250 €", en: "over €250" }
+  subcategories:
+    - id: malas-e-mochilas
+      label: { pt: Malas e mochilas, en: Bags and backpacks }
+      slug: { pt: malas-e-mochilas, en: bags-and-backpacks }
+    - id: carteiras-e-cintos
+      label: { pt: Carteiras e cintos, en: Wallets and belts }
+      slug: { pt: carteiras-e-cintos, en: wallets-and-belts }
+    - id: chapeus
+      label: { pt: Chapéus, en: Hats }
+      slug: { pt: chapeus, en: hats }
+    - id: lencos-e-echarpes
+      label: { pt: Lenços e echarpes, en: Scarves }
+      slug: { pt: lencos-e-echarpes, en: scarves }
+    - id: oculos
+      label: { pt: Óculos, en: Eyewear }
+      slug: { pt: oculos, en: eyewear }
+    - id: guarda-chuvas
+      label: { pt: Guarda-chuvas, en: Umbrellas }
+      slug: { pt: guarda-chuvas, en: umbrellas }
+
+- id: joalharia
+  label: { pt: Joalharia, en: Jewellery }
+  slug: { pt: joalharia, en: jewellery }
+  intro:
+    pt: >-
+      Joalharia e ourivesaria produzidas em Portugal, com destaque para a filigrana
+      de Gondomar e Viana do Castelo e para o design contemporâneo em prata e ouro.
+    en: >-
+      Jewellery and goldsmithing made in Portugal, including the filigree traditions
+      of Gondomar and Viana do Castelo alongside contemporary silver and gold design.
+  price_levels:
+    - level: 1
+      label: { pt: "até 50 €", en: "under €50" }
+    - level: 2
+      label: { pt: "50 € a 150 €", en: "€50 to €150" }
+    - level: 3
+      label: { pt: "150 € a 500 €", en: "€150 to €500" }
+    - level: 4
+      label: { pt: "acima de 500 €", en: "over €500" }
+  subcategories:
+    - id: prata
+      label: { pt: Prata, en: Silver }
+      slug: { pt: prata, en: silver }
+    - id: ouro
+      label: { pt: Ouro, en: Gold }
+      slug: { pt: ouro, en: gold }
+    - id: filigrana
+      label: { pt: Filigrana, en: Filigree }
+      slug: { pt: filigrana, en: filigree }
+    - id: relogios
+      label: { pt: Relógios, en: Watches }
+      slug: { pt: relogios, en: watches }
+    - id: bijuteria
+      label: { pt: Bijuteria, en: Costume jewellery }
+      slug: { pt: bijuteria, en: costume-jewellery }
+
+- id: casa-e-decoracao
+  label: { pt: Casa e decoração, en: Home and decor }
+  slug: { pt: casa-e-decoracao, en: home-and-decor }
+  intro:
+    pt: >-
+      Objetos para a casa feitos em Portugal: cutelaria, iluminação, cestaria,
+      cortiça e peças decorativas de pequenas oficinas e de fábricas antigas.
+    en: >-
+      Objects for the home made in Portugal: cutlery, lighting, basketry, cork and
+      decorative pieces from small workshops and long-established factories.
+  price_levels:
+    - level: 1
+      label: { pt: "até 25 €", en: "under €25" }
+    - level: 2
+      label: { pt: "25 € a 75 €", en: "€25 to €75" }
+    - level: 3
+      label: { pt: "75 € a 200 €", en: "€75 to €200" }
+    - level: 4
+      label: { pt: "acima de 200 €", en: "over €200" }
+  subcategories:
+    - id: cutelaria-e-mesa
+      label: { pt: Cutelaria e mesa, en: Cutlery and tableware }
+      slug: { pt: cutelaria-e-mesa, en: cutlery-and-tableware }
+    - id: iluminacao
+      label: { pt: Iluminação, en: Lighting }
+      slug: { pt: iluminacao, en: lighting }
+    - id: cortica
+      label: { pt: Cortiça, en: Cork }
+      slug: { pt: cortica, en: cork }
+    - id: cestaria
+      label: { pt: Cestaria, en: Basketry }
+      slug: { pt: cestaria, en: basketry }
+    - id: velas-e-aromas
+      label: { pt: Velas e aromas, en: Candles and scents }
+      slug: { pt: velas-e-aromas, en: candles-and-scents }
+    - id: decoracao
+      label: { pt: Peças decorativas, en: Decorative objects }
+      slug: { pt: pecas-decorativas, en: decorative-objects }
+
+- id: texteis-lar
+  label: { pt: Têxteis-lar, en: Home textiles }
+  slug: { pt: texteis-lar, en: home-textiles }
+  intro:
+    pt: >-
+      Toalhas, roupa de cama, mantas e tapetes tecidos em Portugal. A região de
+      Guimarães e do Vale do Ave concentra a maior parte da produção, com lã, linho
+      e algodão.
+    en: >-
+      Towels, bed linen, blankets and rugs woven in Portugal. Most production is
+      concentrated around Guimarães and the Ave valley, working with wool, linen
+      and cotton.
+  price_levels:
+    - level: 1
+      label: { pt: "até 30 €", en: "under €30" }
+    - level: 2
+      label: { pt: "30 € a 80 €", en: "€30 to €80" }
+    - level: 3
+      label: { pt: "80 € a 200 €", en: "€80 to €200" }
+    - level: 4
+      label: { pt: "acima de 200 €", en: "over €200" }
+  subcategories:
+    - id: roupa-de-cama
+      label: { pt: Roupa de cama, en: Bed linen }
+      slug: { pt: roupa-de-cama, en: bed-linen }
+    - id: toalhas
+      label: { pt: Toalhas, en: Towels }
+      slug: { pt: toalhas, en: towels }
+    - id: mantas-e-plaids
+      label: { pt: Mantas e plaids, en: Blankets and throws }
+      slug: { pt: mantas-e-plaids, en: blankets-and-throws }
+    - id: tapetes
+      label: { pt: Tapetes, en: Rugs }
+      slug: { pt: tapetes, en: rugs }
+    - id: mesa-e-cozinha
+      label: { pt: Têxteis de mesa e cozinha, en: Table and kitchen linen }
+      slug: { pt: texteis-de-mesa-e-cozinha, en: table-and-kitchen-linen }
+
+- id: mobiliario
+  label: { pt: Mobiliário, en: Furniture }
+  slug: { pt: mobiliario, en: furniture }
+  intro:
+    pt: >-
+      Mobiliário desenhado e fabricado em Portugal, de pequenas carpintarias a
+      fábricas de Paços de Ferreira e Rio Furado, em madeira maciça, metal e cortiça.
+    en: >-
+      Furniture designed and manufactured in Portugal, from small joineries to the
+      factories of Paços de Ferreira, working in solid wood, metal and cork.
+  price_levels:
+    - level: 1
+      label: { pt: "até 150 €", en: "under €150" }
+    - level: 2
+      label: { pt: "150 € a 500 €", en: "€150 to €500" }
+    - level: 3
+      label: { pt: "500 € a 1500 €", en: "€500 to €1,500" }
+    - level: 4
+      label: { pt: "acima de 1500 €", en: "over €1,500" }
+  subcategories:
+    - id: cadeiras-e-bancos
+      label: { pt: Cadeiras e bancos, en: Chairs and stools }
+      slug: { pt: cadeiras-e-bancos, en: chairs-and-stools }
+    - id: mesas
+      label: { pt: Mesas, en: Tables }
+      slug: { pt: mesas, en: tables }
+    - id: sofas-e-estofos
+      label: { pt: Sofás e estofos, en: Sofas and upholstery }
+      slug: { pt: sofas-e-estofos, en: sofas-and-upholstery }
+    - id: arrumacao
+      label: { pt: Arrumação, en: Storage }
+      slug: { pt: arrumacao, en: storage }
+    - id: exterior
+      label: { pt: Mobiliário de exterior, en: Outdoor furniture }
+      slug: { pt: mobiliario-de-exterior, en: outdoor-furniture }
+
+- id: ceramica-e-vidro
+  label: { pt: Cerâmica e vidro, en: Ceramics and glass }
+  slug: { pt: ceramica-e-vidro, en: ceramics-and-glass }
+  intro:
+    pt: >-
+      Louça, porcelana, faiança, azulejo e vidro produzidos em Portugal. Caldas da
+      Rainha, Alcobaça, Ílhavo e a Marinha Grande mantêm fábricas e olarias com mais
+      de um século.
+    en: >-
+      Tableware, porcelain, faience, tiles and glass made in Portugal. Caldas da
+      Rainha, Alcobaça, Ílhavo and Marinha Grande still host factories and potteries
+      over a century old.
+  faq:
+    - question:
+        pt: Qual é a diferença entre faiança e porcelana?
+        en: What is the difference between faience and porcelain?
+      answer:
+        pt: >-
+          A faiança cozida a temperatura mais baixa é mais porosa e espessa, e é a
+          base da louça pintada à mão das Caldas e de Alcobaça. A porcelana é cozida
+          a temperaturas altas, fica translúcida e é mais resistente.
+        en: >-
+          Faience is fired at lower temperatures, which makes it thicker and more
+          porous — it is the base of the hand-painted ware from Caldas and Alcobaça.
+          Porcelain is fired hotter, turning translucent and more durable.
+  price_levels:
+    - level: 1
+      label: { pt: "até 20 €", en: "under €20" }
+    - level: 2
+      label: { pt: "20 € a 60 €", en: "€20 to €60" }
+    - level: 3
+      label: { pt: "60 € a 150 €", en: "€60 to €150" }
+    - level: 4
+      label: { pt: "acima de 150 €", en: "over €150" }
+  subcategories:
+    - id: louca-de-mesa
+      label: { pt: Louça de mesa, en: Tableware }
+      slug: { pt: louca-de-mesa, en: tableware }
+    - id: porcelana
+      label: { pt: Porcelana, en: Porcelain }
+      slug: { pt: porcelana, en: porcelain }
+    - id: faianca
+      label: { pt: Faiança, en: Faience }
+      slug: { pt: faianca, en: faience }
+    - id: azulejo
+      label: { pt: Azulejo, en: Tiles }
+      slug: { pt: azulejo, en: tiles }
+    - id: vidro
+      label: { pt: Vidro, en: Glass }
+      slug: { pt: vidro, en: glass }
+    - id: ceramica-de-autor
+      label: { pt: Cerâmica de autor, en: Studio ceramics }
+      slug: { pt: ceramica-de-autor, en: studio-ceramics }
+
+- id: alimentacao
+  label: { pt: Alimentação, en: Food }
+  slug: { pt: alimentacao, en: food }
+  intro:
+    pt: >-
+      Produtores e marcas de alimentos feitos em Portugal: conservas, azeite, queijo,
+      doçaria, mel e produtos de mercearia de pequena escala.
+    en: >-
+      Producers and brands of food made in Portugal: tinned fish, olive oil, cheese,
+      confectionery, honey and small-scale pantry goods.
+  price_levels:
+    - level: 1
+      label: { pt: "até 5 €", en: "under €5" }
+    - level: 2
+      label: { pt: "5 € a 15 €", en: "€5 to €15" }
+    - level: 3
+      label: { pt: "15 € a 40 €", en: "€15 to €40" }
+    - level: 4
+      label: { pt: "acima de 40 €", en: "over €40" }
+  subcategories:
+    - id: conservas
+      label: { pt: Conservas, en: Tinned food }
+      slug: { pt: conservas, en: tinned-food }
+    - id: azeite-e-vinagre
+      label: { pt: Azeite e vinagre, en: Olive oil and vinegar }
+      slug: { pt: azeite-e-vinagre, en: olive-oil-and-vinegar }
+    - id: queijo-e-lacteos
+      label: { pt: Queijo e lácteos, en: Cheese and dairy }
+      slug: { pt: queijo-e-lacteos, en: cheese-and-dairy }
+    - id: doces-e-chocolate
+      label: { pt: Doces e chocolate, en: Sweets and chocolate }
+      slug: { pt: doces-e-chocolate, en: sweets-and-chocolate }
+    - id: mercearia
+      label: { pt: Mercearia, en: Pantry }
+      slug: { pt: mercearia, en: pantry }
+    - id: mel-e-compotas
+      label: { pt: Mel e compotas, en: Honey and preserves }
+      slug: { pt: mel-e-compotas, en: honey-and-preserves }
+
+- id: bebidas
+  label: { pt: Bebidas, en: Drinks }
+  slug: { pt: bebidas, en: drinks }
+  intro:
+    pt: >-
+      Bebidas produzidas em Portugal, do café torrado no país às cervejas
+      artesanais, licores, vinhos, espumantes e refrigerantes de marcas independentes.
+    en: >-
+      Drinks produced in Portugal, from coffee roasted in the country to craft beers,
+      liqueurs, wines, sparkling wines and soft drinks from independent brands.
+  price_levels:
+    - level: 1
+      label: { pt: "até 5 €", en: "under €5" }
+    - level: 2
+      label: { pt: "5 € a 12 €", en: "€5 to €12" }
+    - level: 3
+      label: { pt: "12 € a 30 €", en: "€12 to €30" }
+    - level: 4
+      label: { pt: "acima de 30 €", en: "over €30" }
+  subcategories:
+    - id: cafe
+      label: { pt: Café, en: Coffee }
+      slug: { pt: cafe, en: coffee }
+    - id: cerveja
+      label: { pt: Cerveja, en: Beer }
+      slug: { pt: cerveja, en: beer }
+    - id: vinho
+      label: { pt: Vinho, en: Wine }
+      slug: { pt: vinho, en: wine }
+    - id: licores-e-destilados
+      label: { pt: Licores e destilados, en: Spirits and liqueurs }
+      slug: { pt: licores-e-destilados, en: spirits-and-liqueurs }
+    - id: cha-e-infusoes
+      label: { pt: Chá e infusões, en: Tea and infusions }
+      slug: { pt: cha-e-infusoes, en: tea-and-infusions }
+    - id: refrigerantes-e-aguas
+      label: { pt: Refrigerantes e águas, en: Soft drinks and water }
+      slug: { pt: refrigerantes-e-aguas, en: soft-drinks-and-water }
+
+- id: cosmetica-e-higiene
+  label: { pt: Cosmética e higiene, en: Cosmetics and personal care }
+  slug: { pt: cosmetica-e-higiene, en: cosmetics-and-personal-care }
+  intro:
+    pt: >-
+      Sabões, cremes, perfumes e produtos de higiene fabricados em Portugal. A região
+      do Porto tem saboarias em atividade desde o século XIX, com embalagens que se
+      tornaram um género próprio.
+    en: >-
+      Soaps, creams, perfumes and personal care products manufactured in Portugal.
+      The Porto region has had soap works running since the 19th century, with
+      packaging that became a style of its own.
+  faq:
+    - question:
+        pt: Os ingredientes também são portugueses?
+        en: Are the ingredients Portuguese too?
+      answer:
+        pt: >-
+          Nem sempre. Muitas fórmulas usam óleos e ativos importados, mas a produção,
+          o enchimento e a embalagem são feitos em Portugal. Quando o âmbito é parcial,
+          a ficha da marca explica o que é feito no país.
+        en: >-
+          Not always. Many formulas use imported oils and actives, while manufacturing,
+          filling and packaging happen in Portugal. When the scope is partial, the
+          brand page explains what is actually made here.
+  price_levels:
+    - level: 1
+      label: { pt: "até 10 €", en: "under €10" }
+    - level: 2
+      label: { pt: "10 € a 25 €", en: "€10 to €25" }
+    - level: 3
+      label: { pt: "25 € a 60 €", en: "€25 to €60" }
+    - level: 4
+      label: { pt: "acima de 60 €", en: "over €60" }
+  subcategories:
+    - id: sabonetes-e-banho
+      label: { pt: Sabonetes e banho, en: Soap and bath }
+      slug: { pt: sabonetes-e-banho, en: soap-and-bath }
+    - id: rosto
+      label: { pt: Cuidado de rosto, en: Face care }
+      slug: { pt: cuidado-de-rosto, en: face-care }
+    - id: corpo
+      label: { pt: Cuidado de corpo, en: Body care }
+      slug: { pt: cuidado-de-corpo, en: body-care }
+    - id: cabelo
+      label: { pt: Cabelo, en: Hair }
+      slug: { pt: cabelo, en: hair }
+    - id: perfumes
+      label: { pt: Perfumes, en: Perfume }
+      slug: { pt: perfumes, en: perfume }
+    - id: barba
+      label: { pt: Barba, en: Shaving }
+      slug: { pt: barba, en: shaving }
+
+- id: bebe-e-crianca
+  label: { pt: Bebé e criança, en: Baby and kids }
+  slug: { pt: bebe-e-crianca, en: baby-and-kids }
+  intro:
+    pt: >-
+      Roupa, brinquedos, puericultura e mobiliário infantil feitos em Portugal, muitas
+      vezes pelas mesmas fábricas têxteis e de madeira que servem marcas internacionais.
+    en: >-
+      Clothing, toys, nursery goods and children's furniture made in Portugal, often
+      by the same textile and woodworking factories that supply international brands.
+  price_levels:
+    - level: 1
+      label: { pt: "até 20 €", en: "under €20" }
+    - level: 2
+      label: { pt: "20 € a 50 €", en: "€20 to €50" }
+    - level: 3
+      label: { pt: "50 € a 120 €", en: "€50 to €120" }
+    - level: 4
+      label: { pt: "acima de 120 €", en: "over €120" }
+  subcategories:
+    - id: roupa-bebe
+      label: { pt: Roupa de bebé, en: Baby clothing }
+      slug: { pt: roupa-de-bebe, en: baby-clothing }
+    - id: roupa-crianca
+      label: { pt: Roupa de criança, en: Kids' clothing }
+      slug: { pt: roupa-de-crianca, en: kids-clothing }
+    - id: brinquedos
+      label: { pt: Brinquedos, en: Toys }
+      slug: { pt: brinquedos, en: toys }
+    - id: puericultura
+      label: { pt: Puericultura, en: Nursery }
+      slug: { pt: puericultura, en: nursery }
+    - id: mobiliario-infantil
+      label: { pt: Mobiliário infantil, en: Children's furniture }
+      slug: { pt: mobiliario-infantil, en: childrens-furniture }
+
+- id: desporto-e-outdoor
+  label: { pt: Desporto e outdoor, en: Sports and outdoor }
+  slug: { pt: desporto-e-outdoor, en: sports-and-outdoor }
+  intro:
+    pt: >-
+      Equipamento e vestuário desportivo feito em Portugal, incluindo surf, ciclismo,
+      montanha e desportos de equipa, de pranchas a camisolas técnicas.
+    en: >-
+      Sports equipment and apparel made in Portugal — surf, cycling, mountain and team
+      sports — from surfboards to technical jerseys.
+  price_levels:
+    - level: 1
+      label: { pt: "até 30 €", en: "under €30" }
+    - level: 2
+      label: { pt: "30 € a 90 €", en: "€30 to €90" }
+    - level: 3
+      label: { pt: "90 € a 250 €", en: "€90 to €250" }
+    - level: 4
+      label: { pt: "acima de 250 €", en: "over €250" }
+  subcategories:
+    - id: surf-e-mar
+      label: { pt: Surf e mar, en: Surf and sea }
+      slug: { pt: surf-e-mar, en: surf-and-sea }
+    - id: ciclismo
+      label: { pt: Ciclismo, en: Cycling }
+      slug: { pt: ciclismo, en: cycling }
+    - id: montanha-e-trail
+      label: { pt: Montanha e trail, en: Hiking and trail }
+      slug: { pt: montanha-e-trail, en: hiking-and-trail }
+    - id: vestuario-desportivo
+      label: { pt: Vestuário desportivo, en: Sportswear }
+      slug: { pt: vestuario-desportivo, en: sportswear }
+    - id: equipamento
+      label: { pt: Equipamento, en: Equipment }
+      slug: { pt: equipamento, en: equipment }
+
+- id: papelaria-e-livros
+  label: { pt: Papelaria e livros, en: Stationery and books }
+  slug: { pt: papelaria-e-livros, en: stationery-and-books }
+  intro:
+    pt: >-
+      Cadernos, agendas, material de escrita, cartazes e edições impressas em Portugal,
+      de gráficas tradicionais a estúdios de design que editam o seu próprio trabalho.
+    en: >-
+      Notebooks, diaries, writing tools, prints and books produced in Portugal, from
+      traditional print shops to design studios publishing their own work.
+  price_levels:
+    - level: 1
+      label: { pt: "até 10 €", en: "under €10" }
+    - level: 2
+      label: { pt: "10 € a 25 €", en: "€10 to €25" }
+    - level: 3
+      label: { pt: "25 € a 60 €", en: "€25 to €60" }
+    - level: 4
+      label: { pt: "acima de 60 €", en: "over €60" }
+  subcategories:
+    - id: cadernos-e-agendas
+      label: { pt: Cadernos e agendas, en: Notebooks and diaries }
+      slug: { pt: cadernos-e-agendas, en: notebooks-and-diaries }
+    - id: escrita
+      label: { pt: Material de escrita, en: Writing tools }
+      slug: { pt: material-de-escrita, en: writing-tools }
+    - id: impressao-e-cartazes
+      label: { pt: Impressão e cartazes, en: Prints and posters }
+      slug: { pt: impressao-e-cartazes, en: prints-and-posters }
+    - id: editoras
+      label: { pt: Editoras, en: Publishers }
+      slug: { pt: editoras, en: publishers }
+    - id: jogos
+      label: { pt: Jogos, en: Games }
+      slug: { pt: jogos, en: games }
+
+- id: tecnologia
+  label: { pt: Tecnologia, en: Technology }
+  slug: { pt: tecnologia, en: technology }
+  intro:
+    pt: >-
+      Hardware desenhado e montado em Portugal: áudio, bicicletas e veículos elétricos,
+      instrumentos musicais e eletrónica de pequena série.
+    en: >-
+      Hardware designed and assembled in Portugal: audio, bicycles and electric
+      vehicles, musical instruments and small-batch electronics.
+  price_levels:
+    - level: 1
+      label: { pt: "até 50 €", en: "under €50" }
+    - level: 2
+      label: { pt: "50 € a 200 €", en: "€50 to €200" }
+    - level: 3
+      label: { pt: "200 € a 800 €", en: "€200 to €800" }
+    - level: 4
+      label: { pt: "acima de 800 €", en: "over €800" }
+  subcategories:
+    - id: audio
+      label: { pt: Áudio, en: Audio }
+      slug: { pt: audio, en: audio }
+    - id: bicicletas-e-mobilidade
+      label: { pt: Bicicletas e mobilidade, en: Bicycles and mobility }
+      slug: { pt: bicicletas-e-mobilidade, en: bicycles-and-mobility }
+    - id: instrumentos-musicais
+      label: { pt: Instrumentos musicais, en: Musical instruments }
+      slug: { pt: instrumentos-musicais, en: musical-instruments }
+    - id: eletronica
+      label: { pt: Eletrónica, en: Electronics }
+      slug: { pt: eletronica, en: electronics }
+    - id: acessorios-tecnologia
+      label: { pt: Acessórios, en: Accessories }
+      slug: { pt: acessorios, en: accessories }
+
+- id: animais
+  label: { pt: Animais, en: Pets }
+  slug: { pt: animais, en: pets }
+  intro:
+    pt: >-
+      Produtos para animais de companhia feitos em Portugal: camas, trelas, coleiras,
+      brinquedos e alimentação de produção nacional.
+    en: >-
+      Products for pets made in Portugal: beds, leads, collars, toys and food produced
+      in the country.
+  price_levels:
+    - level: 1
+      label: { pt: "até 15 €", en: "under €15" }
+    - level: 2
+      label: { pt: "15 € a 40 €", en: "€15 to €40" }
+    - level: 3
+      label: { pt: "40 € a 100 €", en: "€40 to €100" }
+    - level: 4
+      label: { pt: "acima de 100 €", en: "over €100" }
+  subcategories:
+    - id: camas-e-casas
+      label: { pt: Camas e casas, en: Beds and houses }
+      slug: { pt: camas-e-casas, en: beds-and-houses }
+    - id: trelas-e-coleiras
+      label: { pt: Trelas e coleiras, en: Leads and collars }
+      slug: { pt: trelas-e-coleiras, en: leads-and-collars }
+    - id: brinquedos-animais
+      label: { pt: Brinquedos, en: Toys }
+      slug: { pt: brinquedos, en: toys }
+    - id: alimentacao-animal
+      label: { pt: Alimentação, en: Food }
+      slug: { pt: alimentacao, en: food }

@@ -1,0 +1,32 @@
+slug: citadin
+status: published
+name: Citadin
+description:
+  pt: >-
+    Sapatos clássicos de homem produzidos em São João da Madeira, com peles, solas e
+    fivelas de origem nacional, e loja própria em Lisboa.
+  en: >-
+    Classic men's shoes made in São João da Madeira, with Portuguese leathers, soles and
+    buckles, and the brand's own shop in Lisbon.
+website: https://citadinshoes.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, classico, cosido-a-mao]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+where_to_buy:
+  online_store: https://citadinshoes.com
+  physical_stores:
+    - name: Citadin
+      city: Lisboa
+sustainability:
+  practices: [circuito-curto]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

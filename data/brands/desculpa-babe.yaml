@@ -1,0 +1,23 @@
+slug: desculpa-babe
+status: published
+name: Desculpa Babe
+description:
+  pt: >-
+    Marca de vestuário com produção inteiramente nacional, de linhas simples e peças
+    pensadas para uso diário.
+  en: >-
+    Clothing brand with entirely Portuguese production, built on simple lines and pieces
+    made for everyday wear.
+website: https://desculpababe.pt
+category: moda-e-vestuario
+tags: [contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://desculpababe.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,25 @@
+slug: atelier-estorninho
+status: published
+name: Atelier Estorninho
+description:
+  pt: >-
+    Vestuário de homem inspirado em fardas militares, de trabalho e académicas,
+    fabricado em Portugal com algodões de gramagem média e acabamentos reforçados.
+  en: >-
+    Menswear drawing on military, work and academic uniforms, manufactured in Portugal
+    with midweight cottons and reinforced finishes.
+website: https://atelierestorninho.com
+category: moda-e-vestuario
+subcategory: roupa-homem
+tags: [algodao, classico, vintage]
+production:
+  scope: total
+price_range: 2
+where_to_buy:
+  online_store: https://atelierestorninho.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

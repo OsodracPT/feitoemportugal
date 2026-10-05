@@ -1,0 +1,331 @@
+# Collecting the data for a brand
+
+Brief for an agent (or a person) tasked with researching one brand and producing
+`data/brands/<slug>.yaml`.
+
+**Definition of done:** one YAML file that `pnpm validate` accepts with zero
+errors, every field traceable to a source you can name, and a short report
+listing those sources and anything you could not confirm.
+
+---
+
+## 1. Rules that override everything else
+
+1. **Never guess.** A field you cannot confirm is left out, not filled with a
+   plausible value. Every optional field is genuinely optional; an absent field
+   costs nothing, a wrong one damages the database.
+2. **Write the description yourself.** Never copy text from the brand's website,
+   an online shop, or another directory. Read, understand, then write two or
+   three original sentences. This is a licensing requirement (the data ships
+   under CC BY 4.0), not a style preference.
+3. **Respect each source's terms.** Do not scrape sites that forbid it, and do
+   not lift structured data from directories that assert database rights. Public
+   pages read by hand, press coverage and the brand's own statements are fine.
+4. **Collect facts, not marketing.** "Handmade in Guimarães since 1994" is a
+   fact. "The finest shoes in Europe" is not; it never enters the file.
+5. **Never touch the `verification` block.** Only maintainers set it. You always
+   write `verified: false` with no date.
+6. **Default to `status: draft`.** A maintainer flips it to `published` after
+   review. Only set `published` yourself if you were explicitly told to.
+7. **Publish no personal data.** Many small producers work from home. Record the
+   district, and the municipality only when the brand itself states it publicly.
+   Never exact addresses, coordinates, personal phone numbers or personal emails.
+8. **"Made in Portugal" is the entry criterion.** If you cannot establish that
+   the brand manufactures in Portugal — fully or partly — the brand does not
+   belong in the database. Say so and stop; do not produce a file.
+
+---
+
+## 2. Before you start: check it is not already there
+
+```bash
+ls data/brands/                                  # existing slugs
+grep -ril "<brand name>" data/brands/            # name match
+grep -ri "<domain.pt>" data/brands/              # website match (the stronger signal)
+```
+
+A brand already present means you report the existing file instead of writing a
+new one. If the existing entry is wrong or incomplete, propose a correction to
+that file.
+
+---
+
+## 3. What to collect
+
+Required fields are the ones the schema refuses to build without. "Recommended"
+fields produce a warning, not an error — collect them anyway when you can.
+
+The same rules are published as a JSON Schema at `/api/v1/schema.json`. Put this
+line at the top of a brand file and an editor with the YAML language server will
+flag a wrong field as you type:
+
+```yaml
+# yaml-language-server: $schema=https://feitoemportugal.org/api/v1/schema.json
+```
+
+It covers the shape of each field, not the rules that cross fields ("partial
+production needs notes", "verified needs a date and a method") — those still come
+from `pnpm validate`.
+
+### 3.1 Identity
+
+| Field | Required | What to collect | Format and rules |
+|---|---|---|---|
+| `slug` | yes | Short id derived from the brand name | kebab-case, ASCII only, equal to the file name. Strip accents (`ç`→`c`, `ê`→`e`) and legal suffixes (`Lda`, `S.A.`, `Unipessoal`). "Burel Factory" → `burel-factory` |
+| `name` | yes | The name the brand uses on its own site | Keep its real casing and accents: `Benamôr`, not `BENAMOR` |
+| `website` | yes | Official site | Must be HTTPS and must resolve. Prefer the apex or `www` home page, not a deep link. If the brand has no site, it needs an active, official shop or profile — note this in your report, since a brand with no web presence is usually not ready to list |
+| `status` | yes | — | `draft` unless told otherwise |
+
+### 3.2 Description
+
+| Field | Required | What to collect |
+|---|---|---|
+| `description.pt` | yes | 1–3 original sentences in European Portuguese |
+| `description.en` | recommended | The same content in English — a translation of your own text, not a second research pass |
+
+What the description should answer, in this order: **what they make**, **where
+in Portugal they make it**, and **what is distinctive** (material, technique,
+history, scale). Aim for 120–220 characters; the listing cards truncate at ~110
+and the meta description at 155.
+
+Do not open with the brand name (it is already the heading), do not use
+superlatives, and do not promise things you have not verified.
+
+### 3.3 Classification
+
+| Field | Required | Source of valid values |
+|---|---|---|
+| `category` | yes | `data/taxonomy/categories.yaml` — one id |
+| `subcategory` | recommended | the `subcategories` of that same category |
+| `tags` | recommended | `data/taxonomy/tags.yaml` — 2 to 5 ids |
+
+```bash
+grep -n "^- id:" data/taxonomy/categories.yaml          # categories
+grep -n "^    - id:" data/taxonomy/categories.yaml      # subcategories, in file order
+grep -n "^- id:" data/taxonomy/tags.yaml                # tags
+```
+
+Rules:
+
+- **One category only.** Pick the one covering most of what the brand sells. A
+  footwear brand that also sells belts is `calcado`, not `acessorios`.
+- **The subcategory must belong to the chosen category.** The validator enforces
+  this; `chapeus` under `calcado` is an error.
+- **Tags come from the controlled vocabulary.** Never invent one. If the brand's
+  defining trait has no tag, leave it out and propose the new tag separately —
+  new tags are added by a reviewed PR.
+- Prefer tags that someone would actually search: material (`pele`, `cortica`,
+  `la`), technique (`feito-a-mao`, `tecido-em-tear`), and at most one or two
+  about style or values.
+
+### 3.4 Production — the core claim
+
+| Field | Required | Rules |
+|---|---|---|
+| `production.scope` | yes | `total` or `parcial` |
+| `production.notes.pt` | required when `parcial` | What specifically is made in Portugal |
+| `production.notes.en` | recommended | Same, in English |
+
+How to decide:
+
+- **`total`** — the finished product is manufactured in Portugal. Imported raw
+  materials (leather, cotton, essential oils) do not break this: what matters is
+  where the product is made.
+- **`parcial`** — part of the process happens elsewhere: assembly here and
+  components abroad, some lines made in Portugal and others not, or a brand that
+  is clear that only a specific collection is national.
+- **Cannot tell?** Then you do not have the entry criterion. Ask the brand, or
+  report it as unresolved. Do not default to `total`.
+
+Evidence that counts, strongest first: the brand's own statement of where its
+factory or workshop is; a factory or workshop address; origin certification
+(for example "Portugal Sou Eu"); press coverage naming the production site;
+images of the workshop with a location. "Designed in Portugal" is **not**
+evidence of manufacturing — it is a common way of saying the opposite.
+
+### 3.5 Location (optional, but collect it when public)
+
+| Field | Required | Rules |
+|---|---|---|
+| `location.district` | no | A district id from `data/taxonomy/regions.yaml` |
+| `location.municipality` | no | A municipality id **belonging to that district** |
+
+```bash
+grep -n "^- id:" data/taxonomy/regions.yaml             # 18 districts + 2 autonomous regions
+grep -n "id: .*name: Guimarães" data/taxonomy/regions.yaml
+```
+
+This is the production location, not the office or the shop. If a brand is
+headquartered in Lisbon but its factory is in Felgueiras, record Porto /
+`felgueiras`. If only the district is public, give the district alone. Never add
+coordinates — the future map uses the municipality centroid on purpose, so that
+people working from home are not pinpointed.
+
+### 3.6 Price and where to buy
+
+| Field | Required | Rules |
+|---|---|---|
+| `price_range` | no | Integer 1–4, read off `price_levels` **for that category** |
+| `where_to_buy.online_store` | no | HTTPS URL of the brand's own shop |
+| `where_to_buy.marketplaces` | no | Other sites that sell it officially |
+| `where_to_buy.physical_stores` | no | `name`, `city`, optional `url` — the brand's own stores or named stockists |
+
+Price is relative to the category, not absolute: €120 is level 2 in footwear and
+level 4 in cosmetics. Look up the thresholds in the category's `price_levels`
+and base the level on the brand's **typical** product, not its cheapest keyring
+or its most expensive limited edition. If the range is wide or prices are not
+public, leave the field out.
+
+### 3.7 Social handles
+
+`social.instagram`, `facebook`, `tiktok`, `linkedin`, `pinterest`, `youtube` —
+all optional.
+
+Record the **handle only**: `burelfactory`, never `@burelfactory` and never a
+full URL (the schema rejects both). The site builds the links. Only record
+accounts you actually opened and confirmed belong to this brand — a wrong handle
+becomes a public link to a stranger's profile. An unverified handle is worse
+than no handle.
+
+### 3.8 Media
+
+| Field | Required | Rules |
+|---|---|---|
+| `media.logo` | no | File name inside `assets/brands/<slug>/`, e.g. `logo.svg` |
+| `media.photos` | no | Up to 4 file names, same folder |
+
+Only reference a file you actually placed in `assets/brands/<slug>/`. Format
+rules: logo as SVG, or PNG/WebP at 256px or wider; photos under 2 MB each. Use
+images the brand supplied or published for press use, and record where each came
+from in your report — never hotlink and never take photos whose licence you have
+not checked. Leaving both out is fine; the card falls back to the brand initials
+and `pnpm validate` emits a warning, not an error.
+
+### 3.9 Sustainability (optional — claims, carefully)
+
+| Field | Rules |
+|---|---|
+| `sustainability.practices` | Ids from `data/taxonomy/sustainability.yaml`, only when the brand states the practice |
+| `sustainability.certifications` | `id` from the same file, plus a `proof_url` whenever one exists |
+| `sustainability.notes` | Short, factual clarification |
+
+Treat this as the most abuse-prone section of the file. A practice is the
+brand's own claim and is presented as such; a certification is checkable, so
+record the certifying body's page or the brand's certificate, not a blog post.
+If a claim is vague ("we care about the planet"), it maps to nothing — leave the
+block out entirely.
+
+### 3.10 Blocks you fill mechanically
+
+```yaml
+verification:
+  verified: false       # maintainers only — never set true
+
+meta:
+  added: <today, YYYY-MM-DD>
+  updated: <today, YYYY-MM-DD>
+  source: maintainer    # github | web-form | maintainer | import | outreach
+```
+
+Pick `source` by how the brand reached the project: `github` (issue or PR),
+`web-form` (site form), `outreach` (we invited them), `import` (bulk list),
+`maintainer` (someone added it directly). It is provenance, not a quality mark.
+
+---
+
+## 4. Output template
+
+Copy this, delete every block you could not fill, keep the key order.
+
+```yaml
+slug: exemplo-marca
+status: draft
+name: Exemplo Marca
+description:
+  pt: >-
+    O que fazem, onde produzem em Portugal e o que os distingue.
+  en: >-
+    What they make, where in Portugal they make it, and what sets them apart.
+website: https://exemplo.pt
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, feito-a-mao, classico]
+
+production:
+  scope: total
+  # notes is required when scope is "parcial":
+  # notes:
+  #   pt: A costura e a montagem são feitas em São João da Madeira.
+  #   en: Stitching and assembly happen in São João da Madeira.
+
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+
+price_range: 3
+
+where_to_buy:
+  online_store: https://exemplo.pt/loja
+  marketplaces: []
+  physical_stores:
+    - name: Loja Porto
+      city: Porto
+      url: https://exemplo.pt/lojas/porto
+
+social:
+  instagram: exemplomarca
+
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg]
+
+sustainability:
+  practices: [circuito-curto]
+  certifications:
+    - id: oeko-tex
+      proof_url: https://exemplo.pt/certificados
+
+verification:
+  verified: false
+
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer
+```
+
+---
+
+## 5. Check your own work
+
+```bash
+pnpm validate
+```
+
+- **Errors must be zero.** They name the file and the field.
+- **Warnings are expected** for a missing English description or logo; fix them
+  if you can, leave them if you cannot.
+- Re-read `description.pt` against the source pages and confirm no sentence
+  survived verbatim.
+- Confirm every id you used exists: a typo in a tag is an error, a wrong-but-real
+  tag silently misfiles the brand.
+
+---
+
+## 6. Report back
+
+The YAML file has no field for evidence, and that is deliberate — sources belong
+in the issue or pull request, not in the published data. Alongside the file,
+hand over:
+
+1. **Sources per claim** — specifically for the manufacturing claim, the
+   location, and any certification. URL plus one line on what it establishes.
+2. **Production scope reasoning** — one or two sentences on why `total` or
+   `parcial`.
+3. **What you could not confirm** — the fields you deliberately left empty and
+   what would be needed to fill them.
+4. **Anything a maintainer should double-check** before flipping the brand to
+   `published` — for example a claim resting only on the brand's own wording.
+
+A short, honest report with three confirmed fields is worth more to this project
+than a complete file with two invented ones.

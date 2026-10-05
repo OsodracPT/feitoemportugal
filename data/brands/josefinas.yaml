@@ -1,0 +1,28 @@
+slug: josefinas
+status: published
+name: Josefinas
+description:
+  pt: >-
+    Sabrinas e sapatos de senhora feitos à mão em Guimarães, em pequenas séries, com pele
+    portuguesa e palmilhas acolchoadas.
+  en: >-
+    Hand-made ballet flats and women's shoes produced in small runs in Guimarães, using
+    Portuguese leather and padded insoles.
+website: https://josefinas.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, feito-a-mao, pequena-serie, contemporaneo]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: guimaraes
+price_range: 4
+where_to_buy:
+  online_store: https://josefinas.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: maintainer

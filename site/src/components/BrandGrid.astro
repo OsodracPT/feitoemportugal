@@ -1,0 +1,24 @@
+---
+import type { Brand } from '@fep/schema';
+import BrandCard from './BrandCard.astro';
+import { t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  brands: Brand[];
+}
+
+const { lang, brands } = Astro.props;
+---
+
+{
+  brands.length === 0 ? (
+    <p class="muted">{t(lang, 'brands.empty')}</p>
+  ) : (
+    <div class="grid" data-brand-grid>
+      {brands.map((brand) => (
+        <BrandCard lang={lang} brand={brand} />
+      ))}
+    </div>
+  )
+}

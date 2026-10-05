@@ -1,0 +1,26 @@
+slug: stro
+status: published
+name: Stró
+description:
+  pt: >-
+    Mantas, cobertores e capas de almofada de produção local em pequena escala, com
+    matérias-primas naturais e uma paleta de cores própria.
+  en: >-
+    Throws, blankets and cushion covers made locally on a small scale, from natural raw
+    materials and in the brand's own colour palette.
+website: https://pt.by-stro.com
+category: texteis-lar
+subcategory: mantas-e-plaids
+tags: [la, pequena-serie, tradicional]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://pt.by-stro.com
+sustainability:
+  practices: [fibras-naturais]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

@@ -1,0 +1,34 @@
+slug: wolf-and-rita
+status: published
+name: Wolf & Rita
+description:
+  pt: >-
+    Roupa de criança e de bebé de inspiração vintage, produzida sobretudo por oficinas de
+    Guimarães, com algodões e materiais certificados sempre que possível.
+  en: >-
+    Vintage-leaning children's and baby clothing, made mostly by workshops in Guimarães,
+    using certified cottons and materials whenever possible.
+website: https://wolfandrita.com
+category: bebe-e-crianca
+subcategory: roupa-crianca
+tags: [algodao, vintage, pequena-serie]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A marca indica que a maior parte dos seus fornecedores está em Guimarães, mas não
+      declara que a totalidade da produção é feita em Portugal.
+    en: >-
+      The brand states that most of its suppliers are in Guimarães, but does not claim
+      that all production happens in Portugal.
+location:
+  district: braga
+  municipality: guimaraes
+where_to_buy:
+  online_store: https://wolfandrita.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

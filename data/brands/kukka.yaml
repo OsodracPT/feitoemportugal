@@ -1,0 +1,24 @@
+slug: kukka
+status: published
+name: Kukka
+description:
+  pt: >-
+    Fitas e cordões para óculos criados e confecionados à mão em Portugal, com uma linha
+    para crianças e bebés.
+  en: >-
+    Eyeglass straps and cords created and handmade in Portugal, with a line for children
+    and babies.
+website: https://kukka.pt
+category: acessorios
+subcategory: oculos
+tags: [feito-a-mao, pequena-serie, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://kukka.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

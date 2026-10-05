@@ -1,0 +1,31 @@
+slug: thclothes
+status: published
+name: THClothes
+description:
+  pt: >-
+    Marca portuguesa de vestuário promocional e de trabalho, com uma gama própria
+    identificada como fabricada em Portugal dentro de um catálogo mais alargado.
+  en: >-
+    Portuguese promotional and workwear brand, with a dedicated range identified as made
+    in Portugal inside a wider catalogue.
+website: https://thclothes.com
+category: moda-e-vestuario
+subcategory: trabalho-e-uniformes
+tags: [algodao, contemporaneo]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A marca identifica uma gama "Fabricada em Portugal" e uma coleção cápsula totalmente
+      produzida no país; o restante catálogo não declara origem portuguesa.
+    en: >-
+      The brand flags a "Fabricada em Portugal" range and a capsule collection fully made
+      in the country; the rest of the catalogue does not state Portuguese origin.
+where_to_buy:
+  online_store: https://thclothes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

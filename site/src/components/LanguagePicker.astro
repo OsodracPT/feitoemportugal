@@ -1,0 +1,33 @@
+---
+import { HTML_LANG, otherLang, t, type Alternates, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  alternates: Alternates;
+}
+
+const { lang, alternates } = Astro.props;
+const target = otherLang(lang);
+---
+
+<a class="lang" href={alternates[target]} hreflang={HTML_LANG[target]} lang={HTML_LANG[target]}>
+  <span class="visually-hidden">{t(lang, 'lang.label')}:</span>
+  {t(target, 'lang.' + target)}
+</a>
+
+<style>
+  .lang {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    padding: 0.2rem 0.7rem;
+    white-space: nowrap;
+  }
+
+  .lang:hover {
+    border-color: var(--text);
+    color: var(--text);
+  }
+</style>

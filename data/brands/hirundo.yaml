@@ -1,0 +1,27 @@
+slug: hirundo
+status: published
+name: Hirundo
+description:
+  pt: >-
+    Sapatilhas de desenho minimalista feitas à mão no Porto, com materiais escolhidos
+    para durar e construções pensadas para resolar.
+  en: >-
+    Minimalist sneakers handmade in Porto, using materials picked for durability and
+    constructions meant to be resoled.
+website: https://hirundo.pt
+category: calcado
+subcategory: sapatilhas
+tags: [feito-a-mao, minimalista, pequena-serie]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://hirundo.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

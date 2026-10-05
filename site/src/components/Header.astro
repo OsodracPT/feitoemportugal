@@ -1,0 +1,116 @@
+---
+import LanguagePicker from './LanguagePicker.astro';
+import { paths, t, type Alternates, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  alternates: Alternates;
+}
+
+const { lang, alternates } = Astro.props;
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+// Only pages that exist in this phase are linked, so the site has no dead ends.
+const links = [
+  { href: paths.brands(lang), label: t(lang, 'nav.brands') },
+  { href: paths.categories(lang), label: t(lang, 'nav.categories') },
+];
+---
+
+<a class="skip" href="#main">{t(lang, 'nav.skipToContent')}</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href={paths.home(lang)}>
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">{t(lang, 'site.name')}</span>
+    </a>
+    <nav aria-label={t(lang, 'nav.menu')}>
+      <ul class="nav">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={current === link.href || current.startsWith(`${link.href}/`) ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <LanguagePicker lang={lang} alternates={alternates} />
+  </div>
+</header>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--bg-raised);
+    padding: var(--space-3) var(--space-4);
+    z-index: 10;
+  }
+
+  .skip:focus {
+    left: var(--space-4);
+    top: var(--space-2);
+  }
+
+  .header {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-height: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 640;
+    letter-spacing: var(--tracking-tight);
+    margin-right: auto;
+  }
+
+  .brand__mark {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+
+  .nav {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+
+  .nav a:hover,
+  .nav a[aria-current='page'] {
+    color: var(--text);
+  }
+
+  .nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+</style>

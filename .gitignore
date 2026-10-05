@@ -1,0 +1,36 @@
+# --- dependencies ---
+node_modules/
+.pnpm-store/
+
+# --- build output and caches ---
+dist/
+.astro/
+*.tsbuildinfo
+coverage/
+.vite/
+
+# --- environment ---
+.env
+.env.*
+!.env.example
+
+# --- editors and operating systems ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- logs ---
+*.log
+
+# --- planning ---
+# Internal working document; the code no longer refers to it.
+SPEC.md
+
+# --- research sources ---
+# Saved community threads and spreadsheets, dropped at the repo root and used
+# only as leads. They carry other people's usernames and content, so they stay
+# out of the repository; what was extracted from them lives in docs/leads/.
+/*.html
+/portuguesebrands/

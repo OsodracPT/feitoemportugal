@@ -1,0 +1,28 @@
+slug: urbrand
+status: published
+name: UR Brand
+description:
+  pt: >-
+    Roupa e fatos de banho desenhados, cortados e produzidos no ateliê da marca no Porto,
+    com tecidos reciclados e excedentes de produção nacional.
+  en: >-
+    Clothing and swimwear designed, cut and produced in the brand's own workshop in Porto,
+    from recycled fabrics and leftover stock from Portuguese production.
+website: https://urbrandonline.com
+category: moda-e-vestuario
+tags: [upcycling, feito-a-mao, pequena-serie]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://urbrandonline.com
+sustainability:
+  practices: [materiais-reciclados, circuito-curto]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

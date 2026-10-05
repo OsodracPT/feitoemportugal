@@ -1,0 +1,58 @@
+---
+import { t, type Lang } from '~/lib/i18n.ts';
+import type { Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  crumbs: Crumb[];
+}
+
+const { lang, crumbs } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label={t(lang, 'breadcrumbs.label')}>
+  <ol>
+    {
+      crumbs.map((crumb, index) => (
+        <li>
+          {crumb.path ? <a href={crumb.path}>{crumb.name}</a> : <span aria-current="page">{crumb.name}</span>}
+          {index < crumbs.length - 1 && <span class="sep" aria-hidden="true">/</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-flex;
+    gap: var(--space-2);
+    color: var(--text-muted);
+  }
+
+  a {
+    color: var(--text-muted);
+  }
+
+  a:hover {
+    color: var(--text);
+  }
+
+  .sep {
+    color: var(--text-faint);
+  }
+</style>

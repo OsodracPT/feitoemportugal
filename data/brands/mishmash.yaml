@@ -1,0 +1,24 @@
+slug: mishmash
+status: published
+name: Mishmash
+description:
+  pt: >-
+    Cadernos e agendas produzidos em Portugal com encadernadores que acumulam mais de cem
+    anos de ofício, em papéis e formatos próprios.
+  en: >-
+    Notebooks and diaries produced in Portugal with bookbinders carrying more than a
+    century of craft, in the brand's own papers and formats.
+website: https://mishmash.pt
+category: papelaria-e-livros
+subcategory: cadernos-e-agendas
+tags: [feito-a-mao, tradicional, minimalista]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://mishmash.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import

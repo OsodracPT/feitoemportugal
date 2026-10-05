@@ -1,0 +1,90 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { categories, brandsInCategory, hasLandingPage } from '~/lib/data.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, pageTitle, truncate, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: paths.categories('pt'), en: paths.categories('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'nav.categories') },
+];
+const entries = categories.map((category) => ({
+  category,
+  count: brandsInCategory(category.id).length,
+}));
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'nav.categories'), lang)}
+  description={t(lang, 'site.description')}
+  canonical={paths.categories(lang)}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{t(lang, 'nav.categories')}</h1>
+    <ul class="list">
+      {
+        entries.map(({ category, count }) => (
+          <li class="card entry">
+            <h2 class="entry__name">
+              {hasLandingPage(category) ? (
+                <a href={paths.category(lang, category.slug[lang])}>{localized(category.label, lang)}</a>
+              ) : (
+                localized(category.label, lang)
+              )}
+            </h2>
+            <p class="entry__intro muted">{truncate(localized(category.intro, lang), 150)}</p>
+            <p class="entry__count muted">
+              {count === 0
+                ? t(lang, 'brands.empty')
+                : count === 1
+                  ? t(lang, 'common.brandCount')
+                  : t(lang, 'common.brandsCount', { count })}
+              {count > 0 && !hasLandingPage(category) && <> — {t(lang, 'category.noPage')}</>}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .list {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    list-style: none;
+    margin: var(--space-5) 0 0;
+    padding: 0;
+  }
+
+  .entry {
+    padding: var(--space-4);
+  }
+
+  .entry__name {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .entry__intro,
+  .entry__count {
+    font-size: var(--text-sm);
+    margin: 0 0 var(--space-2);
+  }
+
+  .entry__count {
+    margin-bottom: 0;
+  }
+</style>

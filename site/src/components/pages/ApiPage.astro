@@ -1,0 +1,171 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { brands } from '~/lib/data.ts';
+import { API_VERSION, apiPath, envelope } from '~/lib/api.ts';
+import { SITE } from '~/lib/config.ts';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { absolute, breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: paths.api('pt'), en: paths.api('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'api.title') },
+];
+
+const endpoints = [
+  { path: apiPath('brands.json'), description: t(lang, 'api.rows.brands') },
+  { path: apiPath('brands', '<slug>.json'), description: t(lang, 'api.rows.brand') },
+  { path: apiPath('categories.json'), description: t(lang, 'api.rows.categories') },
+  { path: apiPath('tags.json'), description: t(lang, 'api.rows.tags') },
+  { path: apiPath('regions.json'), description: t(lang, 'api.rows.regions') },
+  { path: apiPath('sustainability.json'), description: t(lang, 'api.rows.sustainability') },
+  { path: apiPath('schema.json'), description: t(lang, 'api.rows.schema') },
+];
+
+/**
+ * The example comes from the real envelope, so the documentation cannot drift
+ * from the responses. The payload itself is replaced by a placeholder.
+ */
+const example = JSON.stringify(envelope(['…'], brands.length), null, 2).replace('"…"', '…');
+
+const notes = [
+  t(lang, 'api.notesDrafts'),
+  t(lang, 'api.notesPrivacy'),
+  t(lang, 'api.notesSearch'),
+];
+
+/** `code` spans inside translated sentences, without raw HTML in the JSON. */
+const withCode = (text: string): string[] => text.split('`');
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'api.title'), lang)}
+  description={t(lang, 'api.intro')}
+  canonical={paths.api(lang)}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container narrow">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{t(lang, 'api.title')}</h1>
+    <p class="lede">{t(lang, 'api.intro')}</p>
+
+    <h2>{t(lang, 'api.endpoints')}</h2>
+    <div class="table-wrap">
+      <table class="endpoints">
+        <thead>
+          <tr>
+            <th scope="col">{t(lang, 'api.endpoint')}</th>
+            <th scope="col">{t(lang, 'api.returns')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            endpoints.map((endpoint) => (
+              <tr>
+                <td>
+                  {endpoint.path.includes('<slug>') ? (
+                    <code>{endpoint.path}</code>
+                  ) : (
+                    <a href={endpoint.path}><code>{endpoint.path}</code></a>
+                  )}
+                </td>
+                <td>{endpoint.description}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <h2>{t(lang, 'api.envelope')}</h2>
+    <p>
+      {withCode(t(lang, 'api.envelopeIntro')).map((part, index) => (index % 2 === 0 ? part : <code>{part}</code>))}
+    </p>
+    <pre class="code"><code>{example}</code></pre>
+
+    <h2>{t(lang, 'api.schema')}</h2>
+    <p>{t(lang, 'api.schemaBody')}</p>
+
+    <h2>{t(lang, 'api.versioning')}</h2>
+    <p>{t(lang, 'api.versioningBody', { version: `/api/${API_VERSION}` })}</p>
+
+    <h2>{t(lang, 'api.attribution')}</h2>
+    <p>
+      {t(lang, 'api.attributionBody', { site: '' })}
+      <a href={absolute(paths.home(lang))}>{SITE.origin.replace('https://', '')}</a>
+    </p>
+
+    <h2>{t(lang, 'api.notes')}</h2>
+    <ul>
+      {
+        notes.map((note) => (
+          <li>
+            {withCode(note).map((part, index) => (index % 2 === 0 ? part : <code>{part}</code>))}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .narrow {
+    max-width: var(--container-narrow);
+  }
+
+  h2 {
+    margin-block: var(--space-6) var(--space-3);
+    font-size: var(--text-xl);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .endpoints {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .endpoints th,
+  .endpoints td {
+    text-align: start;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .endpoints th {
+    color: var(--text-muted);
+    font-weight: 560;
+    white-space: nowrap;
+  }
+
+  .endpoints code {
+    white-space: nowrap;
+  }
+
+  .code {
+    overflow-x: auto;
+    padding: var(--space-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--bg-sunken);
+    font-size: var(--text-sm);
+    line-height: var(--leading-snug);
+  }
+
+  .code code {
+    background: none;
+    padding: 0;
+  }
+</style>

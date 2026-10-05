@@ -1,0 +1,63 @@
+---
+import { SITE } from '~/lib/config.ts';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__note">
+      {t(lang, 'footer.builtBy')}<br />
+      <span class="muted">{t(lang, 'footer.noTracking')}</span>
+    </p>
+    <ul class="footer__links">
+      <li><a href={paths.api(lang)}>{t(lang, 'footer.api')}</a></li>
+      <li><a href={SITE.repo} rel="noopener">{t(lang, 'footer.github')}</a></li>
+      <li><a href={SITE.dataLicense.url} rel="license noopener">{t(lang, 'footer.dataLicense')}</a></li>
+      <li><a href={SITE.codeLicense.url} rel="license noopener">{t(lang, 'footer.codeLicense')}</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding-block: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4) var(--space-6);
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .footer__note {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__links a {
+    color: var(--text-muted);
+  }
+
+  .footer__links a:hover {
+    color: var(--text);
+  }
+</style>

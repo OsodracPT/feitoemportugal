@@ -1,0 +1,24 @@
+slug: costa-nova
+status: published
+name: Costa Nova
+description:
+  pt: >-
+    Loiça de mesa fabricada em Portugal em grés, com peças que vão ao forno e à mesa e uma
+    paleta de tons naturais.
+  en: >-
+    Tableware manufactured in Portugal in stoneware, with pieces that go from oven to
+    table in a palette of natural tones.
+website: https://costanova.pt
+category: ceramica-e-vidro
+subcategory: louca-de-mesa
+tags: [ceramica, contemporaneo]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://costanova.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-04
+  source: import
