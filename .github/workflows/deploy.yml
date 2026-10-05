@@ -62,8 +62,13 @@ jobs:
             exit 1
           fi
           install -d -m 700 ~/.ssh
+          # The key may be stored as-is or as one line of base64 (`base64 -w0`),
+          # which survives copy and paste far better than a multi-line block.
           # tr: a key pasted from Windows carries CRs that OpenSSH refuses.
-          printf '%s\n' "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy
+          case $DEPLOY_SSH_KEY in
+            -----BEGIN*) printf '%s\n' "$DEPLOY_SSH_KEY" ;;
+            *) printf '%s' "$DEPLOY_SSH_KEY" | tr -d ' \r\n' | base64 -d ;;
+          esac | tr -d '\r' > ~/.ssh/deploy
           chmod 600 ~/.ssh/deploy
           # The fingerprint is public; printing it shows at once whether the
           # secret holds the key the server expects (see deploy/README.md).

@@ -49,7 +49,9 @@ else.
 
 GitHub configuration, in the `production` environment:
 
-- secret `DEPLOY_SSH_KEY`: private key of `fep-deploy`
+- secret `DEPLOY_SSH_KEY`: private key of `fep-deploy`, either as-is or as one line of
+  `base64 -w0 <keyfile>`. The one-line form survives copy and paste, which a
+  multi-line key often does not.
 - secret `DEPLOY_KNOWN_HOSTS`: the server's host key line (`ssh-keyscan -t ed25519 <host>`,
   checked against `SHA256:4cltlUawPl8qwDmZ8WeOhQiVk43/KXN6RQUNMHgZHow`)
 - variable `DEPLOY_HOST`: server address (a *variable*, not a secret)
