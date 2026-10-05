@@ -52,7 +52,10 @@ GitHub configuration, in the `production` environment:
 - secret `DEPLOY_SSH_KEY`: private key of `fep-deploy`
 - secret `DEPLOY_KNOWN_HOSTS`: the server's host key line (`ssh-keyscan -t ed25519 <host>`,
   checked against `SHA256:4cltlUawPl8qwDmZ8WeOhQiVk43/KXN6RQUNMHgZHow`)
-- variable `DEPLOY_HOST`: server address
+- variable `DEPLOY_HOST`: server address (a *variable*, not a secret)
+
+The "Configure SSH" step prints the fingerprint of the key it loaded. It must match
+the server's: `sudo ssh-keygen -lf /opt/feitoemportugal/.ssh/authorized_keys`.
 
 ## Common tasks
 

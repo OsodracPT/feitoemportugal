@@ -62,8 +62,13 @@ jobs:
             exit 1
           fi
           install -d -m 700 ~/.ssh
-          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy
+          # tr: a key pasted from Windows carries CRs that OpenSSH refuses.
+          printf '%s\n' "$DEPLOY_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy
           chmod 600 ~/.ssh/deploy
+          # The fingerprint is public; printing it shows at once whether the
+          # secret holds the key the server expects (see deploy/README.md).
+          ssh-keygen -lf ~/.ssh/deploy \
+            || { echo "::error::DEPLOY_SSH_KEY is not a valid private key"; exit 1; }
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
           # One multiplexed connection for upload and switch: the server
           # rate-limits new SSH connections per source address.
