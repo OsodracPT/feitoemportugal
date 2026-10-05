@@ -1,0 +1,27 @@
+# Runs on the VPS from /opt/feitoemportugal/deploy. TLS, certificates and the
+# public ports belong to the Pangolin stack; this only serves the static build.
+name: feitoemportugal
+
+networks:
+  # The bridge gerbil (and so Traefik) is attached to. Not the `pangolin`
+  # network: Pangolin's internal API on :3001 is unauthenticated there.
+  nostr-net:
+    external: true
+
+services:
+  web:
+    image: docker.io/nginx:1.30-alpine
+    container_name: fep-web
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro
+      # Releases plus the `current` symlink, written by the fep-deploy user.
+      - /opt/feitoemportugal/www:/srv/www:ro
+    networks:
+      nostr-net:
+        ipv4_address: 172.22.0.40

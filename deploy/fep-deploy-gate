@@ -1,0 +1,72 @@
+#!/bin/sh
+# Forced command for the CI deploy key (authorized_keys `command=`). The key can
+# do exactly two things: upload a release with rsync, and switch the site to a
+# release. No shell, no other paths.
+#
+#   www/<sha>/         one directory per build, uploaded by rsync
+#   www/current        symlink to the live release, read by nginx
+#
+# Install: /usr/local/bin/fep-deploy-gate, root:root 0755.
+# Rollback by hand (as an admin):
+#   sudo -u fep-deploy env SSH_ORIGINAL_COMMAND="activate <sha>" /usr/local/bin/fep-deploy-gate
+set -eu
+
+ROOT=/opt/feitoemportugal/www
+KEEP=5
+
+cmd=${SSH_ORIGINAL_COMMAND:-}
+
+case $cmd in
+  'rsync --server '*)
+    # rrsync confines every path, --link-dest included, to $ROOT.
+    exec /usr/bin/rrsync "$ROOT"
+    ;;
+  'activate '*)
+    sha=${cmd#activate }
+    ;;
+  *)
+    echo "fep-deploy-gate: command not allowed" >&2
+    exit 1
+    ;;
+esac
+
+is_sha() {
+  case $1 in *[!0-9a-f]*) return 1 ;; esac
+  [ ${#1} -eq 40 ]
+}
+
+is_sha "$sha" || { echo "fep-deploy-gate: not a commit sha: $sha" >&2; exit 1; }
+
+cd "$ROOT"
+[ -f "$sha/index.html" ] || { echo "fep-deploy-gate: release $sha not uploaded" >&2; exit 1; }
+
+# Record this build's own hashed assets before anything is carried in, so the
+# carry-over below stays one generation deep instead of growing forever.
+if [ ! -f "$sha/.assets" ]; then
+  (cd "$sha" && find _assets -type f 2>/dev/null) > "$sha/.assets"
+fi
+
+# A tab opened before the switch still holds the old HTML and will lazy-load the
+# old hashed chunks (the search client). Hard-link them in, never overwriting.
+prev=$(readlink current 2>/dev/null || true)
+if [ -n "$prev" ] && [ "$prev" != "$sha" ] && [ -f "$prev/.assets" ]; then
+  while IFS= read -r f; do
+    [ -e "$sha/$f" ] || { mkdir -p "$sha/${f%/*}" && ln "$prev/$f" "$sha/$f"; }
+  done < "$prev/.assets"
+fi
+
+# Atomic switch: rename(2) over the old link.
+ln -sfn "$sha" current.tmp
+mv -T current.tmp current
+echo "fep-deploy-gate: live release is now $sha"
+
+# Keep the newest $KEEP releases (and always the live one).
+n=0
+for d in $(ls -1dt -- */ 2>/dev/null); do
+  d=${d%/}
+  is_sha "$d" || continue
+  n=$((n + 1))
+  [ "$n" -le "$KEEP" ] && continue
+  [ "$d" = "$sha" ] && continue
+  rm -rf -- "$d"
+done

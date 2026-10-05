@@ -1,0 +1,99 @@
+# Builds main and ships it to the VPS. The upload goes to a dedicated user whose
+# key is pinned to a forced command (deploy/fep-deploy-gate): it can write a
+# release directory and switch the live symlink, nothing else.
+#
+# Needs, in the `production` environment:
+#   secrets  DEPLOY_SSH_KEY      private key for fep-deploy
+#            DEPLOY_KNOWN_HOSTS  the server's pinned host key line(s)
+#   vars     DEPLOY_HOST         address of the server
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never cancel a deploy halfway; queue the next one instead.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      # No `version:` here on purpose — the action reads `packageManager` from
+      # package.json, and giving it both is an error.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # The same four gates as validate.yml: never ship what CI would reject.
+      - run: pnpm validate
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy
+          chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # One multiplexed connection for upload and switch: the server
+          # rate-limits new SSH connections per source address.
+          cat > ~/.ssh/config <<EOF
+          Host deploy
+            HostName $DEPLOY_HOST
+            User fep-deploy
+            IdentityFile ~/.ssh/deploy
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+            ConnectTimeout 20
+            ControlMaster auto
+            ControlPath ~/.ssh/cm-%C
+            ControlPersist 120
+          EOF
+
+      # -c without -t: unchanged files are hard-linked from the live release
+      # and keep their old mtime, so their ETags survive the deploy. The
+      # link-dest is absolute because rrsync roots every path at www/.
+      # One retry: a runner address can sit on a CrowdSec blocklist, which
+      # drops the connection silently.
+      - name: Upload release
+        run: |
+          for attempt in 1 2; do
+            rsync -rlc --delete --link-dest=/current \
+              site/dist/ "deploy:${GITHUB_SHA}/" && exit 0
+            echo "upload failed (attempt $attempt)"; sleep 30
+          done
+          exit 1
+
+      - name: Activate release
+        run: ssh deploy "activate ${GITHUB_SHA}"
+
+      - name: Smoke test
+        run: |
+          expected=$(node -p "require('./site/dist/api/v1/brands.json').generated_at")
+          for attempt in 1 2 3; do
+            live=$(curl -fsS https://feitoemportugal.org/api/v1/brands.json \
+              | node -p "JSON.parse(require('fs').readFileSync(0)).generated_at") || live=
+            [ "$live" = "$expected" ] && { echo "live: $live"; exit 0; }
+            echo "live '$live' != expected '$expected' (attempt $attempt)"; sleep 10
+          done
+          exit 1

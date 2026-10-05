@@ -43,11 +43,20 @@ packages/schema/            shared Zod schema + loaders + dataset checks
 site/                       Astro site (pt at /, en at /en)
 site/src/pages/api/v1/      the public JSON API, generated at build time
 .github/workflows/validate.yml  data, types, tests and build on every PR
+.github/workflows/deploy.yml    same gates, then ships main to the server
+deploy/                     nginx origin, compose file, deploy gate (see deploy/README.md)
 scripts/validate-data.ts    runs in CI and via `pnpm validate`
 docs/collecting-brand-data.md  brief for researching and filling one brand
 docs/leads/                 community leads and the evidence behind each import
 assets/brands/<slug>/       brand logos and photos (empty for now)
 ```
+
+## Deploy
+
+Every push to `main` is built and published to https://feitoemportugal.org by
+`.github/workflows/deploy.yml`. The site is served by nginx behind the Pangolin reverse
+proxy on the project VPS; topology, rollback and the traps are in
+[`deploy/README.md`](deploy/README.md).
 
 ## Adding or editing a brand
 
@@ -114,8 +123,8 @@ site, CI and (from phase 5) the submission API.
   Schema generated from the Zod schema, so documentation cannot drift from validation;
   the cross-field rules Zod enforces (such as "partial production needs notes") have no
   JSON Schema equivalent and stay with `pnpm validate`. The open CORS header the API
-  needs has to be set by the web server — it belongs in the Caddy config of phase 5,
-  since a static build cannot send headers.
+  needs comes from the web server (`deploy/nginx.conf`), since a static build cannot
+  send headers.
 - `/search-index.json` is deliberately **not** part of the API: it is an internal
   detail of the search and can change shape at any time.
 - Brands are loaded and validated by `packages/schema` rather than through Astro

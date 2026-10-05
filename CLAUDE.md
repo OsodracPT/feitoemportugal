@@ -51,6 +51,7 @@ site/src/lib/             data layer, i18n, SEO, search, filters, API helpers
 site/src/pages/api/v1/    the public JSON API, generated at build time
 docs/collecting-brand-data.md   brief for researching and filling one brand
 docs/leads/               leads and the evidence behind every import
+deploy/                   nginx origin, compose file, CI deploy gate — see deploy/README.md
 ```
 
 ## Architecture, and why
@@ -94,6 +95,10 @@ docs/leads/               leads and the evidence behind every import
 - **MiniSearch is in `optimizeDeps.include`.** It is only reached through a lazy
   import, so Vite would otherwise discover it late, re-optimise, and 504 the URL the
   page already holds. Symptom: search works, then breaks until reload.
+- **Production is nginx behind Pangolin, not Caddy.** Traefik on the VPS owns TLS and
+  ports 80/443; `deploy/nginx.conf` is a plain-HTTP origin. Its CSP is `script-src
+  'self'` with no inline allowance — client code that needs an inline script will be
+  blocked in production but not in `pnpm dev`.
 - **A headless screenshot fires at `load`**, before the async index resolves. A
   screenshot is not proof the search works — read the browser console instead.
 
@@ -108,9 +113,12 @@ Phases 1 and 2 are done: schema and taxonomy, 90 published brands, the bilingual
 site with translated URLs, technical SEO, search, the ten combinable filters with
 sort order, and the public JSON API.
 
+The static site is deployed: every push to `main` goes live at feitoemportugal.org
+through `deploy.yml` (nginx behind the Pangolin proxy on the project VPS).
+
 Next: the bilingual blog and the landing pages (region, category × region), then
 contributions (issue forms, `CONTRIBUTING.md`, issue-to-PR), then the submission
-API and deploy, then verification and polish.
+API (and Umami), then verification and polish.
 
 Open decisions a maintainer still owns: the code licence (MIT or AGPL — there is no
 `LICENSE` file until it is settled, though the footer already says MIT), the final
