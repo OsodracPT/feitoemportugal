@@ -3,7 +3,7 @@ export const SITE = {
   /** Canonical origin; mirrors `site` in astro.config.mjs. */
   origin: process.env.SITE_URL ?? 'https://feitoemportugal.org',
   /** Repository used for issue links (corrections, submissions). */
-  repo: process.env.GITHUB_REPO_URL ?? 'https://github.com/feitoemportugal/feitoemportugal',
+  repo: process.env.GITHUB_REPO_URL ?? 'https://github.com/OsodracPT/feitoemportugal',
   dataLicense: { id: 'CC-BY-4.0', url: 'https://creativecommons.org/licenses/by/4.0/' },
   codeLicense: { id: 'MIT', url: 'https://opensource.org/licenses/MIT' },
 } as const;
