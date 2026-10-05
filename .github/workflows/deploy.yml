@@ -51,6 +51,16 @@ jobs:
           DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
           DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
         run: |
+          # An unset secret or variable arrives as an empty string, and ssh then
+          # fails without a word about which one. Name it instead.
+          missing=
+          [ -n "$DEPLOY_SSH_KEY" ] || missing="$missing secret:DEPLOY_SSH_KEY"
+          [ -n "$DEPLOY_KNOWN_HOSTS" ] || missing="$missing secret:DEPLOY_KNOWN_HOSTS"
+          [ -n "$DEPLOY_HOST" ] || missing="$missing variable:DEPLOY_HOST"
+          if [ -n "$missing" ]; then
+            echo "::error::Not set in the production environment:$missing"
+            exit 1
+          fi
           install -d -m 700 ~/.ssh
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy
           chmod 600 ~/.ssh/deploy
@@ -78,7 +88,7 @@ jobs:
       - name: Upload release
         run: |
           for attempt in 1 2; do
-            rsync -rlc --delete --link-dest=/current \
+            rsync -rlc --delete --link-dest=/current --stats \
               site/dist/ "deploy:${GITHUB_SHA}/" && exit 0
             echo "upload failed (attempt $attempt)"; sleep 30
           done
