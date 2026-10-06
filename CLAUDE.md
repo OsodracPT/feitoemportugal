@@ -38,8 +38,8 @@ pnpm typecheck    # tsc + astro check
 ```
 
 Run `validate`, `typecheck`, `test` and `build` before calling a change done; CI
-runs exactly those four. If `pnpm` is not on `PATH`, it is installed standalone at
-`~/.local/share/pnpm/bin`.
+runs exactly those four. If `pnpm` is not on `PATH`, `corepack enable` provides the
+version pinned in `package.json` (or call it as `corepack pnpm`).
 
 ## Layout
 
@@ -51,7 +51,8 @@ site/src/lib/             data layer, i18n, SEO, search, filters, API helpers
 site/src/pages/api/v1/    the public JSON API, generated at build time
 docs/collecting-brand-data.md   brief for researching and filling one brand
 docs/leads/               leads and the evidence behind every import
-deploy/                   nginx origin, compose file, CI deploy gate — see deploy/README.md
+deploy/                   reference nginx config, compose file, CI deploy gate — see deploy/README.md
+docs/design-notes.md      design rationale and open decisions
 ```
 
 ## Architecture, and why
@@ -95,10 +96,13 @@ deploy/                   nginx origin, compose file, CI deploy gate — see dep
 - **MiniSearch is in `optimizeDeps.include`.** It is only reached through a lazy
   import, so Vite would otherwise discover it late, re-optimise, and 504 the URL the
   page already holds. Symptom: search works, then breaks until reload.
-- **Production is nginx behind Pangolin, not Caddy.** Traefik on the VPS owns TLS and
-  ports 80/443; `deploy/nginx.conf` is a plain-HTTP origin. Its CSP is `script-src
-  'self'` with no inline allowance — client code that needs an inline script will be
-  blocked in production but not in `pnpm dev`.
+- **The repo stays host-agnostic.** `deploy/` is a reference setup, not a description
+  of any one server: no hostnames, IPs, proxy products or personal infrastructure in
+  tracked files. Site-specific settings belong in `.env` /
+  `docker-compose.override.yml` on the server.
+- **Production sends a CSP the dev server does not.** `deploy/security-headers.conf`
+  has `script-src 'self'` with no inline allowance, so client code that needs an
+  inline script works in `pnpm dev` and is blocked in production.
 - **A headless screenshot fires at `load`**, before the async index resolves. A
   screenshot is not proof the search works — read the browser console instead.
 
@@ -114,7 +118,8 @@ site with translated URLs, technical SEO, search, the ten combinable filters wit
 sort order, and the public JSON API.
 
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
-through `deploy.yml` (nginx behind the Pangolin proxy on the project VPS).
+through `deploy.yml`. The README is written for people running the code;
+`deploy/README.md` covers hosting.
 
 Next: the bilingual blog and the landing pages (region, category × region), then
 contributions (issue forms, `CONTRIBUTING.md`, issue-to-PR), then the submission

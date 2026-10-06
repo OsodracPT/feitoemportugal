@@ -1,11 +1,19 @@
-# Builds main and ships it to the VPS. The upload goes to a dedicated user whose
-# key is pinned to a forced command (deploy/fep-deploy-gate): it can write a
-# release directory and switch the live symlink, nothing else.
+# Builds main and ships it to a server over SSH. Optional: when no deploy target
+# is configured (a fork, a fresh clone) the job says so and stops, green.
 #
-# Needs, in the `production` environment:
-#   secrets  DEPLOY_SSH_KEY      private key for fep-deploy
-#            DEPLOY_KNOWN_HOSTS  the server's pinned host key line(s)
-#   vars     DEPLOY_HOST         address of the server
+# The upload goes to a dedicated user whose key is pinned to a forced command
+# (deploy/fep-deploy-gate): it can write a release directory and switch the live
+# symlink, nothing else. Setup in deploy/README.md.
+#
+# Configure in the `production` environment:
+#   secrets  DEPLOY_SSH_KEY      private key of the deploy user (as-is, or one
+#                                line of `base64 -w0`)
+#            DEPLOY_KNOWN_HOSTS  the server's host key line(s), pinned
+#   vars     DEPLOY_HOST         server address
+#            DEPLOY_USER         optional, default fep-deploy
+#            DEPLOY_PORT         optional, default 22
+#            SITE_URL            public origin, used for canonicals and the
+#                                smoke test (default https://feitoemportugal.org)
 name: deploy
 
 on:
@@ -25,42 +33,68 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
+    env:
+      SITE_URL: ${{ vars.SITE_URL || 'https://feitoemportugal.org' }}
     steps:
-      - uses: actions/checkout@v4
-
-      # No `version:` here on purpose — the action reads `packageManager` from
-      # package.json, and giving it both is an error.
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: pnpm
-
-      - run: pnpm install --frozen-lockfile
-
-      # The same four gates as validate.yml: never ship what CI would reject.
-      - run: pnpm validate
-      - run: pnpm typecheck
-      - run: pnpm test
-      - run: pnpm build
-
-      - name: Configure SSH
+      # An unset secret or variable arrives as an empty string. None set means
+      # "no deploy here"; some set means a broken setup, so name what is missing.
+      - name: Check deploy target
+        id: target
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
           DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
           DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
         run: |
-          # An unset secret or variable arrives as an empty string, and ssh then
-          # fails without a word about which one. Name it instead.
           missing=
           [ -n "$DEPLOY_SSH_KEY" ] || missing="$missing secret:DEPLOY_SSH_KEY"
           [ -n "$DEPLOY_KNOWN_HOSTS" ] || missing="$missing secret:DEPLOY_KNOWN_HOSTS"
           [ -n "$DEPLOY_HOST" ] || missing="$missing variable:DEPLOY_HOST"
-          if [ -n "$missing" ]; then
+          if [ "$missing" = " secret:DEPLOY_SSH_KEY secret:DEPLOY_KNOWN_HOSTS variable:DEPLOY_HOST" ]; then
+            echo "::notice::No deploy target configured; skipping. See deploy/README.md."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          elif [ -n "$missing" ]; then
             echo "::error::Not set in the production environment:$missing"
             exit 1
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - if: steps.target.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+
+      # No `version:` here on purpose — the action reads `packageManager` from
+      # package.json, and giving it both is an error.
+      - if: steps.target.outputs.enabled == 'true'
+        uses: pnpm/action-setup@v4
+
+      - if: steps.target.outputs.enabled == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - if: steps.target.outputs.enabled == 'true'
+        run: pnpm install --frozen-lockfile
+
+      # The same four gates as validate.yml: never ship what CI would reject.
+      - if: steps.target.outputs.enabled == 'true'
+        run: pnpm validate
+      - if: steps.target.outputs.enabled == 'true'
+        run: pnpm typecheck
+      - if: steps.target.outputs.enabled == 'true'
+        run: pnpm test
+      - if: steps.target.outputs.enabled == 'true'
+        run: pnpm build
+
+      - name: Configure SSH
+        if: steps.target.outputs.enabled == 'true'
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER || 'fep-deploy' }}
+          DEPLOY_PORT: ${{ vars.DEPLOY_PORT || '22' }}
+        run: |
           install -d -m 700 ~/.ssh
           # The key may be stored as-is or as one line of base64 (`base64 -w0`),
           # which survives copy and paste far better than a multi-line block.
@@ -75,12 +109,13 @@ jobs:
           ssh-keygen -lf ~/.ssh/deploy \
             || { echo "::error::DEPLOY_SSH_KEY is not a valid private key"; exit 1; }
           printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          # One multiplexed connection for upload and switch: the server
-          # rate-limits new SSH connections per source address.
+          # One multiplexed connection for upload and switch: servers often
+          # rate-limit new SSH connections per source address.
           cat > ~/.ssh/config <<EOF
           Host deploy
             HostName $DEPLOY_HOST
-            User fep-deploy
+            Port $DEPLOY_PORT
+            User $DEPLOY_USER
             IdentityFile ~/.ssh/deploy
             IdentitiesOnly yes
             StrictHostKeyChecking yes
@@ -92,10 +127,11 @@ jobs:
 
       # -c without -t: unchanged files are hard-linked from the live release
       # and keep their old mtime, so their ETags survive the deploy. The
-      # link-dest is absolute because rrsync roots every path at www/.
-      # One retry: a runner address can sit on a CrowdSec blocklist, which
-      # drops the connection silently.
+      # link-dest is absolute because rrsync roots every path at the release
+      # directory. One retry: a server-side blocklist or IPS may drop the
+      # runner's address, and a retry often comes from elsewhere.
       - name: Upload release
+        if: steps.target.outputs.enabled == 'true'
         run: |
           for attempt in 1 2; do
             rsync -rlc --delete --link-dest=/current --stats \
@@ -105,13 +141,15 @@ jobs:
           exit 1
 
       - name: Activate release
+        if: steps.target.outputs.enabled == 'true'
         run: ssh deploy "activate ${GITHUB_SHA}"
 
       - name: Smoke test
+        if: steps.target.outputs.enabled == 'true'
         run: |
           expected=$(node -p "require('./site/dist/api/v1/brands.json').generated_at")
           for attempt in 1 2 3; do
-            live=$(curl -fsS https://feitoemportugal.org/api/v1/brands.json \
+            live=$(curl -fsS "$SITE_URL/api/v1/brands.json" \
               | node -p "JSON.parse(require('fs').readFileSync(0)).generated_at") || live=
             [ "$live" = "$expected" ] && { echo "live: $live"; exit 0; }
             echo "live '$live' != expected '$expected' (attempt $attempt)"; sleep 10

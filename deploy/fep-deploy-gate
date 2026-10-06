@@ -3,16 +3,20 @@
 # do exactly two things: upload a release with rsync, and switch the site to a
 # release. No shell, no other paths.
 #
-#   www/<sha>/         one directory per build, uploaded by rsync
-#   www/current        symlink to the live release, read by nginx
+#   $ROOT/<sha>/       one directory per build, uploaded by rsync
+#   $ROOT/current      symlink to the live release, served by the web server
 #
-# Install: /usr/local/bin/fep-deploy-gate, root:root 0755.
-# Rollback by hand (as an admin):
-#   sudo -u fep-deploy env SSH_ORIGINAL_COMMAND="activate <sha>" /usr/local/bin/fep-deploy-gate
+# Install as /usr/local/bin/fep-deploy-gate (root:root 0755) and pin the deploy
+# key to it in the deploy user's authorized_keys:
+#   restrict,command="/usr/local/bin/fep-deploy-gate" ssh-ed25519 AAAA... ci-deploy
+# A different location: command="FEP_WWW_ROOT=/srv/fep/www /usr/local/bin/fep-deploy-gate"
+#
+# Roll back by hand, as an admin on the server:
+#   sudo -u <deploy-user> env SSH_ORIGINAL_COMMAND="activate <sha>" /usr/local/bin/fep-deploy-gate
 set -eu
 
-ROOT=/opt/feitoemportugal/www
-KEEP=5
+ROOT=${FEP_WWW_ROOT:-/opt/feitoemportugal/www}
+KEEP=${FEP_KEEP_RELEASES:-5}
 
 cmd=${SSH_ORIGINAL_COMMAND:-}
 

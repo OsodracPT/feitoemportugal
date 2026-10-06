@@ -1,27 +1,28 @@
-# Runs on the VPS from /opt/feitoemportugal/deploy. TLS, certificates and the
-# public ports belong to the Pangolin stack; this only serves the static build.
+# Serves the static build with the reference nginx config. TLS is left to
+# whatever sits in front (see README.md in this directory).
+#
+#   FEP_WWW_DIR   directory holding `current/` — the build itself, or a symlink
+#                 to one release (default ./www)
+#   FEP_BIND      address to publish on (default 127.0.0.1: only a local reverse
+#                 proxy can reach it; use 0.0.0.0 to expose it directly)
+#   FEP_PORT      port to publish on (default 8080)
+#
+# Settings go in a .env file next to this one. Site-specific changes (networks,
+# no published port) belong in docker-compose.override.yml, which Compose merges
+# automatically and which should stay out of the repository.
 name: feitoemportugal
-
-networks:
-  # The bridge gerbil (and so Traefik) is attached to. Not the `pangolin`
-  # network: Pangolin's internal API on :3001 is unauthenticated there.
-  nostr-net:
-    external: true
 
 services:
   web:
     image: docker.io/nginx:1.30-alpine
-    container_name: fep-web
     restart: unless-stopped
     read_only: true
     tmpfs:
       - /var/cache/nginx
       - /var/run
+    ports:
+      - "${FEP_BIND:-127.0.0.1}:${FEP_PORT:-8080}:80"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro
-      # Releases plus the `current` symlink, written by the fep-deploy user.
-      - /opt/feitoemportugal/www:/srv/www:ro
-    networks:
-      nostr-net:
-        ipv4_address: 172.22.0.40
+      - ${FEP_WWW_DIR:-./www}:/srv/www:ro

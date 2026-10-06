@@ -9,7 +9,7 @@ const dataDir = fileURLToPath(new URL('../data', import.meta.url));
  * The canonical origin. Overridable so a staging host or a local build can
  * produce matching canonicals and sitemap URLs.
  */
-const site = process.env.SITE_URL ?? 'https://feitoemportugal.org';
+const site = process.env.SITE_URL || 'https://feitoemportugal.org';
 
 export default defineConfig({
   site,
