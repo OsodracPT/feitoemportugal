@@ -1,0 +1,27 @@
+slug: life-in-a-bag
+status: draft
+name: Life in a Bag
+description:
+  pt: >-
+    Kits para cultivar ervas aromáticas, flores e frutos em casa e papel com sementes,
+    feitos em Portugal desde 2013.
+  en: >-
+    Kits for growing herbs, flowers and fruit at home, and seed paper, made in Portugal
+    since 2013.
+website: https://www.lifeinabag.pt
+category: casa-e-decoracao
+subcategory: decoracao
+tags: [presente]
+founded: 2013
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.lifeinabag.pt
+social:
+  instagram: lifeinabagpt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

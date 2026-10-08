@@ -1,0 +1,26 @@
+slug: ghome
+status: draft
+name: Ghome
+description:
+  pt: >-
+    Mobiliário e acessórios de design contemporâneo, fabricados em Portugal sobretudo
+    com matérias-primas portuguesas.
+  en: >-
+    Contemporary furniture and home accessories, made in Portugal mostly from Portuguese
+    materials.
+website: https://www.ghome.pt
+category: mobiliario
+tags: [madeira]
+products: [mesas, estantes]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.ghome.pt
+social:
+  instagram: ghome.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

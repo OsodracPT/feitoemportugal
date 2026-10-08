@@ -1,0 +1,27 @@
+slug: cinco
+status: draft
+name: CINCO
+description:
+  pt: >-
+    Joias em prata 925 e ouro de 18 quilates, desenhadas em Coimbra e feitas à mão em
+    Portugal, a maioria perto do estúdio.
+  en: >-
+    Fine jewellery in sterling silver and 18-carat gold, designed in Coimbra and
+    handmade in Portugal, mostly near the studio.
+website: https://cinco-store.com
+category: joalharia
+subcategory: prata
+tags: [feito-a-mao]
+products: [joias]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://cinco-store.com
+social:
+  instagram: cincostore
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -21,6 +21,8 @@ location:
   municipality: braga
 where_to_buy:
   online_store: https://confianca1894.com
+social:
+  instagram: confiancasp
 verification:
   verified: false
 meta:

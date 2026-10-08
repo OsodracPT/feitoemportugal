@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://camport.pt
+social:
+  instagram: camport_pt
 verification:
   verified: false
 meta:

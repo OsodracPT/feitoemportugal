@@ -21,6 +21,8 @@ location:
 price_range: 3
 where_to_buy:
   online_store: https://burelfactory.com
+social:
+  instagram: burel.factory
 media:
   photos: []
 sustainability:

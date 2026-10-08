@@ -22,6 +22,8 @@ location:
 price_range: 3
 where_to_buy:
   online_store: https://vistaalegre.com
+social:
+  instagram: vistaalegreofficial
 verification:
   verified: false
 meta:

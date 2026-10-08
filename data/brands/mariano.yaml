@@ -21,6 +21,8 @@ location:
   municipality: oliveira-de-azemeis
 where_to_buy:
   online_store: https://marianoshoes.com
+social:
+  instagram: marianoshoes
 verification:
   verified: false
 meta:

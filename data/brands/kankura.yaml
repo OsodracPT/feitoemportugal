@@ -13,6 +13,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://kankuragolf.com
+social:
+  instagram: kankuragolf
 verification:
   verified: false
 meta:

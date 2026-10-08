@@ -1,0 +1,29 @@
+slug: dancers-by-georgia
+status: draft
+name: Dancers by Georgia
+description:
+  pt: >-
+    Roupa urbana e de dança feita a partir de peças em segunda mão, transformadas uma a
+    uma no atelier da marca em Lisboa.
+  en: >-
+    Urban and dancewear made from second-hand garments, reworked one by one at the
+    brand's Lisbon workshop.
+website: https://www.dancersbygeorgia.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [upcycling]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://www.dancersbygeorgia.com
+social:
+  instagram: dancersbygeorgia
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,31 @@
+slug: licor-beirao
+status: draft
+name: Licor Beirão
+description:
+  pt: >-
+    Licor de receita familiar produzido na Lousã, na fábrica que a família Redondo
+    comprou em 1940 e onde continua a destilar.
+  en: >-
+    Family-recipe liqueur produced in Lousã, at the plant the Redondo family bought in
+    1940 and still distils in.
+website: https://www.licorbeirao.com
+category: bebidas
+subcategory: licores-e-destilados
+tags: [empresa-familiar, tradicional]
+products: [licores]
+founded: 1929
+production:
+  scope: total
+location:
+  district: coimbra
+  municipality: lousa
+where_to_buy:
+  online_store: https://www.licorbeirao.com
+social:
+  instagram: licor_beirao
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

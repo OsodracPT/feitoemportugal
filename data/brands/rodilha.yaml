@@ -1,0 +1,23 @@
+slug: rodilha
+status: draft
+name: Rodilha
+description:
+  pt: >-
+    Bonés e meias com motivos portugueses, inspirados, desenhados e produzidos em
+    Portugal.
+  en: >-
+    Caps and socks with Portuguese motifs, inspired, designed and made in Portugal.
+website: https://rodilha.com
+category: acessorios
+subcategory: chapeus
+products: [meias]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://rodilha.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

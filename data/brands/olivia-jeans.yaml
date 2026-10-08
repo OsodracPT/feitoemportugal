@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://oliviajeanslisbon.com
+social:
+  instagram: oliviajeanslisbon
 verification:
   verified: false
 meta:

@@ -1,0 +1,28 @@
+slug: alameda-turquesa
+status: draft
+name: Alameda Turquesa
+description:
+  pt: >-
+    Casa familiar fundada em 2012 por mãe e filha, com calçado, malas e joias feitos à
+    mão por encomenda em Portugal.
+  en: >-
+    Family house founded in 2012 by a mother and daughter, making shoes, bags and
+    jewellery by hand to order in Portugal.
+website: https://www.alamedaturquesa.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [feito-a-mao, producao-por-encomenda, empresa-familiar]
+products: [sapatos, sandalias, malas]
+founded: 2012
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.alamedaturquesa.com
+social:
+  instagram: alamedaturquesa
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

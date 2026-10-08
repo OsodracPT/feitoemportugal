@@ -1,0 +1,30 @@
+slug: carolina-machado
+status: draft
+name: Carolina Machado
+description:
+  pt: >-
+    Roupa de mulher contemporânea confecionada em três pequenos ateliês do Porto que a
+    marca acompanha de perto.
+  en: >-
+    Contemporary womenswear sewn in three small Porto ateliers that the brand works with
+    closely.
+website: https://www.carolina-machado.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [pequena-serie]
+products: [vestidos, calcas, casacos]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://www.carolina-machado.com
+social:
+  instagram: carolinamachado_official
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -20,6 +20,8 @@ location:
   municipality: tomar
 where_to_buy:
   online_store: https://www.temahome.com
+social:
+  instagram: temahome
 verification:
   verified: false
 meta:

@@ -1,0 +1,27 @@
+slug: mia-mo
+status: draft
+name: MÏA-MÔ
+description:
+  pt: >-
+    Roupa de mulher de linhas clássicas, feita à mão em Portugal em edições limitadas,
+    com fornecedores portugueses.
+  en: >-
+    Classic-lined womenswear, handmade in Portugal in limited editions with Portuguese
+    suppliers.
+website: https://www.mia-mo.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [feito-a-mao, pequena-serie]
+products: [vestidos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.mia-mo.com
+social:
+  instagram: fallinlovewith.miamo
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

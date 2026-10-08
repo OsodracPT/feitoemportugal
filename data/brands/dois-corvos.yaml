@@ -20,6 +20,8 @@ location:
   municipality: lisboa
 where_to_buy:
   online_store: https://doiscorvos.pt
+social:
+  instagram: doiscorvos
 verification:
   verified: false
 meta:

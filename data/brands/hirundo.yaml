@@ -20,6 +20,8 @@ location:
   municipality: porto
 where_to_buy:
   online_store: https://hirundo.pt
+social:
+  instagram: hirundo
 verification:
   verified: false
 meta:

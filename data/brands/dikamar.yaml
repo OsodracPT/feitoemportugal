@@ -19,6 +19,8 @@ production:
 location:
   district: leiria
   municipality: pombal
+social:
+  instagram: dikamareurope
 verification:
   verified: false
 meta:

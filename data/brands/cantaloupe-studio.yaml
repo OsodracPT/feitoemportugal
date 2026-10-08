@@ -1,0 +1,28 @@
+slug: cantaloupe-studio
+status: draft
+name: Cantaloupe Studio
+description:
+  pt: >-
+    Sapatilhas, alpercatas e sandálias estampadas, criadas em Guimarães em 2020 por uma
+    família com experiência em estamparia têxtil e feitas em Portugal.
+  en: >-
+    Printed sneakers, espadrilles and sandals, started in Guimarães in 2020 by a family
+    of textile printers and made in Portugal.
+website: https://cantaloupe-studio.com
+category: calcado
+subcategory: sapatilhas
+tags: [serigrafia]
+products: [sapatilhas, alpercatas, sandalias]
+founded: 2020
+production:
+  scope: total
+where_to_buy:
+  online_store: https://cantaloupe-studio.com
+social:
+  instagram: cantaloupestudio
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

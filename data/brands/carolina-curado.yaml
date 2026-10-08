@@ -1,0 +1,31 @@
+slug: carolina-curado
+status: draft
+name: Carolina Curado
+description:
+  pt: >-
+    Joias em prata e ouro de inspiração natural, feitas à mão desde 2012 no atelier da
+    marca na Avenida de Madrid, em Lisboa.
+  en: >-
+    Nature-inspired silver and gold jewellery, handmade since 2012 at the brand's
+    atelier on Avenida de Madrid, Lisbon.
+website: https://www.carolinacurado.com
+category: joalharia
+subcategory: prata
+tags: [feito-a-mao]
+products: [joias]
+founded: 2012
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://www.carolinacurado.com
+social:
+  instagram: carolinacurado
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

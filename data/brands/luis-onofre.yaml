@@ -21,6 +21,8 @@ location:
 price_range: 4
 where_to_buy:
   online_store: https://luisonofre.com
+social:
+  instagram: luisonofreofficial
 verification:
   verified: false
 meta:

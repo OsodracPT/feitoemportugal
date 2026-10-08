@@ -19,11 +19,13 @@ location:
   municipality: setubal
 where_to_buy:
   online_store: https://beneditaformosinho.com
+social:
+  instagram: beneditaformosinhobrand
 sustainability:
   practices: [fibras-naturais, circuito-curto]
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

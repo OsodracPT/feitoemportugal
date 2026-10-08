@@ -1,0 +1,32 @@
+slug: piupiuchick
+status: draft
+name: PiuPiuChick
+description:
+  pt: >-
+    Roupa de bebé e criança dos 3 meses aos 14 anos, desenhada no Porto e produzida
+    sobretudo em Portugal.
+  en: >-
+    Clothing for babies and children from 3 months to 14 years, designed in Porto and
+    made mostly in Portugal.
+website: https://www.piupiuchick.com
+category: bebe-e-crianca
+subcategory: roupa-crianca
+products: [roupa-de-crianca]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A maior parte das peças é produzida em Portugal; a marca não indica onde é feito o
+      resto.
+    en: >-
+      Most pieces are made in Portugal; the brand does not say where the rest are made.
+where_to_buy:
+  online_store: https://www.piupiuchick.com
+social:
+  instagram: piupiuchick
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

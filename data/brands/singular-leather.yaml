@@ -20,6 +20,8 @@ location:
   municipality: tondela
 where_to_buy:
   online_store: https://www.singularleather.com
+social:
+  instagram: singularleather
 verification:
   verified: false
 meta:

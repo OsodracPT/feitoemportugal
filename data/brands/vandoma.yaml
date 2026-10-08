@@ -1,0 +1,30 @@
+slug: vandoma
+status: draft
+name: Vandoma
+description:
+  pt: >-
+    Gravatas, laços e lenços de bolso em seda, lã e algodão, fabricados no Porto por uma
+    empresa familiar fundada em 1982.
+  en: >-
+    Ties, bow ties and pocket squares in silk, wool and cotton, made in Porto by a
+    family firm founded in 1982.
+website: https://vandomaties.com
+category: acessorios
+tags: [empresa-familiar]
+products: [gravatas]
+founded: 1982
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://vandomaties.com
+social:
+  instagram: vandoma_ties
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

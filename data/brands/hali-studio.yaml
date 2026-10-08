@@ -18,9 +18,11 @@ location:
   municipality: cascais
 where_to_buy:
   online_store: https://hali-studio.pt
+social:
+  instagram: halistudio.pt
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

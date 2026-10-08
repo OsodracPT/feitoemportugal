@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.portdance.pt
+social:
+  instagram: portdance.pt
 verification:
   verified: false
 meta:

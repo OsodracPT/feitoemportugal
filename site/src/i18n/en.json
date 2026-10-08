@@ -231,5 +231,10 @@
     "labelNone": "{name}: no brands",
     "legend": "Stronger colour, more brands.",
     "source": "Boundaries: CAOP 2025, DGT (CC BY 4.0)."
+  },
+  "terms": {
+    "filterLabel": "Filter",
+    "filterPlaceholder": "Filter by name, for example socks or olive oil",
+    "filterEmpty": "Nothing matches that filter."
   }
 }

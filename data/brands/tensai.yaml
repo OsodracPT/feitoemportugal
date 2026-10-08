@@ -20,6 +20,8 @@ location:
   municipality: estarreja
 where_to_buy:
   online_store: https://www.tensai.pt
+social:
+  instagram: tensaiindustria
 verification:
   verified: false
 meta:

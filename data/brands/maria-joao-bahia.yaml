@@ -20,6 +20,8 @@ location:
   municipality: lisboa
 where_to_buy:
   online_store: https://mariajoaobahia.com
+social:
+  instagram: mariajoaobahia
 verification:
   verified: false
 meta:

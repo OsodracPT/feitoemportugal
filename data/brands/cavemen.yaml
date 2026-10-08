@@ -1,0 +1,27 @@
+slug: cavemen
+status: draft
+name: Cavemen
+description:
+  pt: >-
+    Fatos, calçado e acessórios de homem, com fatos de noivo e medidas personalizadas,
+    de fabrico português.
+  en: >-
+    Menswear, shoes and accessories, including wedding suits and made-to-measure fits,
+    manufactured in Portugal.
+website: https://cavemenstore.com
+category: moda-e-vestuario
+subcategory: roupa-homem
+tags: [classico]
+products: [fatos, sapatos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://cavemenstore.com
+social:
+  instagram: cavemen.brand
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

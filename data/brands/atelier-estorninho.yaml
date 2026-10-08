@@ -18,6 +18,8 @@ production:
 price_range: 2
 where_to_buy:
   online_store: https://atelierestorninho.com
+social:
+  instagram: atelierestorninho
 verification:
   verified: false
 meta:

@@ -20,6 +20,8 @@ location:
   municipality: vagos
 where_to_buy:
   online_store: https://costa-verde.com
+social:
+  instagram: costaverdeporcelanas
 verification:
   verified: false
 meta:

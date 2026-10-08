@@ -21,6 +21,8 @@ location:
   municipality: lisboa
 where_to_buy:
   online_store: https://sapatariadocarmo.com
+social:
+  instagram: sapatariadocarmo
 verification:
   verified: false
 meta:

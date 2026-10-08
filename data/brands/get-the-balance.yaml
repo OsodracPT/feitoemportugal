@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://gtbalance.com
+social:
+  instagram: get.thebalance
 verification:
   verified: false
 meta:

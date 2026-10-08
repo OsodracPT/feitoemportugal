@@ -27,6 +27,8 @@ location:
   municipality: guimaraes
 where_to_buy:
   online_store: https://wolfandrita.com
+social:
+  instagram: wolfandrita
 verification:
   verified: false
 meta:

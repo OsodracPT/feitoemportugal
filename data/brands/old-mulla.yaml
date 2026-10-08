@@ -20,6 +20,8 @@ location:
   municipality: leiria
 where_to_buy:
   online_store: https://oldmulla.com
+social:
+  instagram: oldmulla_
 verification:
   verified: false
 meta:

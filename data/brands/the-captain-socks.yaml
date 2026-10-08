@@ -18,6 +18,8 @@ location:
   municipality: lousa
 where_to_buy:
   online_store: https://www.thecaptainsocks.com
+social:
+  instagram: thecaptainsocks
 verification:
   verified: false
 meta:

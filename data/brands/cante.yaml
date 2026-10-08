@@ -1,0 +1,27 @@
+slug: cante
+status: draft
+name: Cantê
+description:
+  pt: >-
+    Biquínis, trikinis e fatos de banho para mulher, homem e criança, confecionados em
+    fábricas portuguesas desde 2011.
+  en: >-
+    Bikinis, trikinis and swimsuits for women, men and children, sewn in Portuguese
+    factories since 2011.
+website: https://www.cantelisboa.com
+category: moda-e-vestuario
+subcategory: banho
+products: [roupa-de-banho]
+founded: 2011
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.cantelisboa.com
+social:
+  instagram: cantelisboa
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,29 @@
+slug: ambar
+status: draft
+name: Ambar
+description:
+  pt: >-
+    Material escolar e de escritório, agendas e brinquedos científicos de uma empresa de
+    transformação de papel com fábrica no Porto.
+  en: >-
+    School and office supplies, diaries and science toys from a paper converter with its
+    factory in Porto.
+website: https://www.ambar.pt
+category: papelaria-e-livros
+subcategory: cadernos-e-agendas
+products: [cadernos, agendas]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://www.ambar.pt
+social:
+  instagram: ambarideiasnopapel
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

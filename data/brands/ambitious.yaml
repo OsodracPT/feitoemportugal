@@ -20,6 +20,8 @@ location:
   municipality: guimaraes
 where_to_buy:
   online_store: https://www.ambitious-brand.com
+social:
+  instagram: ambitiousbrand
 verification:
   verified: false
 meta:

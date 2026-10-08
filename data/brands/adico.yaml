@@ -21,6 +21,8 @@ location:
   municipality: estarreja
 where_to_buy:
   online_store: https://www.adico.pt
+social:
+  instagram: adico1920
 verification:
   verified: false
 meta:

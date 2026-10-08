@@ -18,6 +18,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://broolls.com
+social:
+  instagram: broollsofficial
 verification:
   verified: false
 meta:

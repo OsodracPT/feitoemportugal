@@ -1,0 +1,31 @@
+slug: inedit
+status: draft
+name: Inedit
+description:
+  pt: >-
+    Roupa de mulher com padrões próprios, lançada em 2018 e cosida à mão num pequeno
+    atelier de Lisboa.
+  en: >-
+    Womenswear in original prints, launched in 2018 and sewn by hand in a small Lisbon
+    atelier.
+website: https://www.ineditdesign.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [feito-a-mao, pequena-serie]
+products: [vestidos]
+founded: 2018
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://www.ineditdesign.com
+social:
+  instagram: inedit.design
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

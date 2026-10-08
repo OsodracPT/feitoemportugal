@@ -23,6 +23,8 @@ where_to_buy:
   physical_stores:
     - name: Citadin
       city: Lisboa
+social:
+  instagram: citadinshoes
 sustainability:
   practices: [circuito-curto]
 verification:

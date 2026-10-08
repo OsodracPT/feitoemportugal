@@ -1,0 +1,27 @@
+slug: baby-gi
+status: draft
+name: Baby Gi
+description:
+  pt: >-
+    Roupa e acessórios em fibras naturais para recém-nascidos, bebés e crianças, de uma
+    marca familiar do norte inteiramente produzida em Portugal.
+  en: >-
+    Natural-fibre clothes and care accessories for babies and young children, from a
+    northern family brand made entirely in Portugal.
+website: https://babygi.pt
+category: bebe-e-crianca
+subcategory: roupa-bebe
+tags: [empresa-familiar]
+products: [roupa-de-crianca]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://babygi.pt
+social:
+  instagram: babygi_newborn
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

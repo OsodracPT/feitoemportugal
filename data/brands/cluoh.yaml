@@ -1,0 +1,27 @@
+slug: cluoh
+status: draft
+name: Cluoh
+description:
+  pt: >-
+    Malas, lenços e acessórios estampados, feitos à mão por artesãos em Portugal, com
+    loja no Porto.
+  en: >-
+    Printed bags, scarves and accessories, made by hand by artisans in Portugal, with a
+    shop in Porto.
+website: https://www.cluoh.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [feito-a-mao]
+products: [malas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.cluoh.com
+social:
+  instagram: cluoh
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

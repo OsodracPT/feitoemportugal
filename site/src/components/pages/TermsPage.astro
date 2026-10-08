@@ -26,6 +26,8 @@ interface Entry {
   label: string;
   count: number;
   href?: string;
+  /** Both labels and the synonyms, so the filter finds "peúgas" under Meias. */
+  terms: string;
 }
 
 const { lang, kind } = Astro.props;
@@ -50,6 +52,12 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
           .filter((product) => product.category === category.id)
           .map((product) => ({
             label: localized(product.label, lang),
+            terms: [
+              product.label.pt,
+              product.label.en,
+              ...product.synonyms.pt,
+              ...product.synonyms.en,
+            ].join(' '),
             count: brandsWithProduct(product.id).length,
             href: hasProductPage(product.id) ? paths.product(lang, product.slug[lang]) : undefined,
           }))
@@ -63,6 +71,7 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
         entries: tags
           .map((tag) => ({
             label: localized(tag.label, lang),
+            terms: [tag.label.pt, tag.label.en, ...tag.synonyms.pt, ...tag.synonyms.en].join(' '),
             count: brandsWithTag(tag.id).length,
             href: hasTagPage(tag.id) ? paths.tag(lang, tag.id) : undefined,
           }))
@@ -84,13 +93,25 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
     <Breadcrumbs lang={lang} crumbs={crumbs} />
     <h1>{title}</h1>
     <p class="lede">{intro}</p>
+
+    <!-- Hidden until the script runs; without it the full list is already here. -->
+    <div class="term-filter" data-term-filter hidden>
+      <label for="term-filter">{t(lang, 'terms.filterLabel')}</label>
+      <input
+        id="term-filter"
+        type="search"
+        autocomplete="off"
+        placeholder={t(lang, 'terms.filterPlaceholder')}
+      />
+      <p class="muted" data-term-status role="status" hidden>{t(lang, 'terms.filterEmpty')}</p>
+    </div>
     {
       groups.map((group) => (
-        <section class="group">
+        <section class="group" data-term-group>
           {group.heading && <h2 class="eyebrow">{group.heading}</h2>}
           <ul class="pill-list">
             {group.entries.map((entry) => (
-              <li>
+              <li data-terms={entry.terms}>
                 {entry.href ? (
                   <a class="pill" href={entry.href}>
                     {entry.label} <span class="muted">{entry.count}</span>
@@ -109,7 +130,29 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
   </div>
 </Layout>
 
+<script>
+  import { initTermFilter } from '~/lib/term-filter.ts';
+
+  initTermFilter();
+</script>
+
 <style>
+  .term-filter {
+    display: grid;
+    gap: var(--space-2);
+    max-width: 28rem;
+    margin-top: var(--space-5);
+  }
+
+  .term-filter input {
+    font: inherit;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    background: var(--bg-raised);
+    color: var(--text);
+  }
+
   .group {
     margin-top: var(--space-5);
   }

@@ -1,0 +1,27 @@
+slug: bamandboo
+status: draft
+name: BAMandBOO
+description:
+  pt: >-
+    Cosmética vegana com ingredientes dos Açores, como algas, feita em Portugal, com
+    loja na LX Factory.
+  en: >-
+    Vegan skincare built on Azorean ingredients such as algae, made in Portugal, with a
+    shop at LX Factory.
+website: https://thebamandboo.com
+category: cosmetica-e-higiene
+subcategory: rosto
+tags: [vegano]
+products: [cremes]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://thebamandboo.com
+social:
+  instagram: thebamandboo
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

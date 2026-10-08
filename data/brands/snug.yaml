@@ -1,0 +1,27 @@
+slug: snug
+status: draft
+name: Snug
+description:
+  pt: >-
+    Roupa de bebé e criança do Porto, em algodão orgânico e materiais reciclados,
+    produzida a menos de 50 km da sede.
+  en: >-
+    Porto baby and children’s clothing in organic cotton and recycled materials, made
+    within 50 km of the head office.
+website: https://www.snug.com.pt
+category: bebe-e-crianca
+subcategory: roupa-bebe
+tags: [algodao]
+products: [roupa-de-crianca]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.snug.com.pt
+social:
+  instagram: snugbyportuguesehands
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

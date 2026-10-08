@@ -231,5 +231,10 @@
     "labelNone": "{name}: sem marcas",
     "legend": "Cor mais intensa, mais marcas.",
     "source": "Limites: CAOP 2025, DGT (CC BY 4.0)."
+  },
+  "terms": {
+    "filterLabel": "Filtrar",
+    "filterPlaceholder": "Filtrar por nome, por exemplo meias ou azeite",
+    "filterEmpty": "Nenhum resultado para esse filtro."
   }
 }

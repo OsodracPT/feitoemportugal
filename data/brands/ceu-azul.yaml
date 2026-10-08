@@ -1,0 +1,26 @@
+slug: ceu-azul
+status: draft
+name: Céu Azul
+description:
+  pt: >-
+    Álbuns de fotografias personalizados, criados a partir do telemóvel e impressos e
+    encadernados em Portugal.
+  en: >-
+    Personalised photo albums, put together from a phone and printed and bound in
+    Portugal.
+website: https://ceu-azul.pt
+category: papelaria-e-livros
+subcategory: impressao-e-cartazes
+tags: [personalizavel]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://ceu-azul.pt
+social:
+  instagram: ceuazulpt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

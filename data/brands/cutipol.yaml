@@ -21,6 +21,8 @@ location:
 price_range: 3
 where_to_buy:
   online_store: https://www.cutipol.pt
+social:
+  instagram: cutipol
 verification:
   verified: false
 meta:

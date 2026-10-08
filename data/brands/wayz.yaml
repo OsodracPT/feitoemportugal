@@ -20,6 +20,8 @@ location:
   municipality: porto
 where_to_buy:
   online_store: https://wayzforlife.com
+social:
+  instagram: wayzforlife
 verification:
   verified: false
 meta:

@@ -15,11 +15,13 @@ production:
   scope: total
 where_to_buy:
   online_store: https://seapathclothing.com
+social:
+  instagram: seapathclothing
 sustainability:
   practices: [materiais-reciclados, fibras-naturais]
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

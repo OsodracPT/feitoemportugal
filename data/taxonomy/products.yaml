@@ -98,6 +98,14 @@
     pt: [calça, chinos]
     en: [pants, chinos]
 
+- id: gravatas
+  category: moda-e-vestuario
+  label: { pt: Gravatas e laços, en: Ties and bow ties }
+  slug: { pt: gravatas, en: ties }
+  synonyms:
+    pt: [laços, lenços de bolso]
+    en: [bow ties, pocket squares]
+
 # --- Calçado ---
 - id: sapatos
   category: calcado
@@ -230,6 +238,14 @@
   synonyms:
     pt: [difusores, aromas, vela]
     en: [diffusers, home fragrance, candle]
+
+- id: candeeiros
+  category: casa-e-decoracao
+  label: { pt: Candeeiros, en: Lamps }
+  slug: { pt: candeeiros, en: lamps }
+  synonyms:
+    pt: [iluminação, candeeiro]
+    en: [lighting, lamp]
 
 # --- Têxteis-lar ---
 - id: mantas
@@ -369,6 +385,14 @@
     pt: [roupa de bebé, roupa infantil]
     en: [baby clothes, kidswear]
 
+- id: brinquedos
+  category: bebe-e-crianca
+  label: { pt: Brinquedos, en: Toys }
+  slug: { pt: brinquedos, en: toys }
+  synonyms:
+    pt: [brinquedo, jogos]
+    en: [toy, games]
+
 # --- Desporto ---
 - id: polares
   category: desporto-e-outdoor
@@ -377,6 +401,14 @@
   synonyms:
     pt: [malhas polares, polar]
     en: [fleece, fleece jackets]
+
+- id: pranchas-de-surf
+  category: desporto-e-outdoor
+  label: { pt: Pranchas de surf, en: Surfboards }
+  slug: { pt: pranchas-de-surf, en: surfboards }
+  synonyms:
+    pt: [prancha]
+    en: [surfboard]
 
 # --- Papelaria ---
 - id: cadernos
@@ -441,3 +473,47 @@
   synonyms:
     pt: [cerveja artesanal, IPA, lager]
     en: [craft beer, ale, lager]
+- id: licores
+  category: bebidas
+  label: { pt: Licores e destilados, en: Liqueurs and spirits }
+  slug: { pt: licores, en: spirits }
+  synonyms:
+    pt: [gin, licor, limoncello, aguardente]
+    en: [gin, liqueur, limoncello]
+- id: sumos
+  category: bebidas
+  label: { pt: Sumos e néctares, en: Juices }
+  slug: { pt: sumos, en: juices }
+  synonyms:
+    pt: [néctares, sumo]
+    en: [nectar, juice]
+
+# --- Alimentação ---
+- id: chocolate
+  category: alimentacao
+  label: { pt: Chocolate, en: Chocolate }
+  slug: { pt: chocolate, en: chocolate }
+  synonyms:
+    pt: [bombons, tabletes]
+    en: [bonbons, chocolate bars]
+- id: mel
+  category: alimentacao
+  label: { pt: Mel, en: Honey }
+  slug: { pt: mel, en: honey }
+  synonyms:
+    pt: [mel biológico]
+    en: [raw honey]
+- id: azeite
+  category: alimentacao
+  label: { pt: Azeite, en: Olive oil }
+  slug: { pt: azeite, en: olive-oil }
+  synonyms:
+    pt: [azeite virgem extra]
+    en: [extra virgin olive oil]
+- id: snacks
+  category: alimentacao
+  label: { pt: Snacks e granola, en: Snacks and granola }
+  slug: { pt: snacks, en: snacks }
+  synonyms:
+    pt: [granola, barras, chips, frutos secos]
+    en: [granola, bars, chips, nuts]

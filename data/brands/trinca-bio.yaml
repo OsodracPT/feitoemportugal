@@ -1,0 +1,27 @@
+slug: trinca-bio
+status: draft
+name: Trinca Bio
+description:
+  pt: >-
+    Granola, pão e cremes de barrar biológicos e sem glúten, feitos em Portugal numa
+    microempresa que começou a vender em 2012.
+  en: >-
+    Organic, gluten-free granola, bread and spreads, made in Portugal by a
+    micro-business that first sold its granola in 2012.
+website: https://www.trincabio.com
+category: alimentacao
+subcategory: mercearia
+products: [snacks]
+founded: 2012
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.trincabio.com
+social:
+  instagram: trinca.bio
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

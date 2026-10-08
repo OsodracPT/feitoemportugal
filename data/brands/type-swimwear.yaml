@@ -1,0 +1,27 @@
+slug: type-swimwear
+status: draft
+name: Type Swimwear
+description:
+  pt: >-
+    Fatos de banho e biquínis de Lisboa, desenhados e confecionados em Portugal desde
+    2012, parte deles a partir de peças recicladas.
+  en: >-
+    Lisbon swimsuits and bikinis, designed and sewn in Portugal since 2012, some from
+    reworked and recycled pieces.
+website: https://www.type.pt
+category: moda-e-vestuario
+subcategory: banho
+products: [roupa-de-banho]
+founded: 2012
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.type.pt
+social:
+  instagram: ilovetype
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

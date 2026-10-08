@@ -18,6 +18,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://pedemeia.pt
+social:
+  instagram: pedemeia_socks
 verification:
   verified: false
 meta:

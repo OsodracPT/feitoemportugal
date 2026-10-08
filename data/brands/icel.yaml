@@ -21,6 +21,8 @@ location:
   municipality: alcobaca
 where_to_buy:
   online_store: https://www.icel.pt
+social:
+  instagram: icel_knives
 verification:
   verified: false
 meta:

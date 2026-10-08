@@ -18,6 +18,8 @@ production:
 price_range: 4
 where_to_buy:
   online_store: https://beeq.pt
+social:
+  instagram: beeq.bicycles
 verification:
   verified: false
 meta:

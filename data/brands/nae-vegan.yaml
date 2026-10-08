@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://nae-vegan.com
+social:
+  instagram: naeveganshoes
 sustainability:
   practices: [materiais-reciclados]
 verification:

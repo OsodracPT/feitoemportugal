@@ -18,6 +18,8 @@ production:
 price_range: 4
 where_to_buy:
   online_store: https://tatararazors.com
+social:
+  instagram: tatara.razors
 verification:
   verified: false
 meta:

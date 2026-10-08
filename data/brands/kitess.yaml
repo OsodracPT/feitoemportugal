@@ -1,0 +1,27 @@
+slug: kitess
+status: draft
+name: Kitess
+description:
+  pt: >-
+    Biquínis, fatos de banho e roupa de festa em séries curtas, produzidos a meia hora
+    do atelier da marca no Porto.
+  en: >-
+    Bikinis, swimsuits and party wear in short runs, made half an hour from the brand's
+    Porto workshop.
+website: https://kitess-clothing.com
+category: moda-e-vestuario
+subcategory: banho
+tags: [pequena-serie]
+products: [roupa-de-banho, vestidos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://kitess-clothing.com
+social:
+  instagram: kitessclothing
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

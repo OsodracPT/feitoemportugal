@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://collady.com
+social:
+  instagram: colladystore
 verification:
   verified: false
 meta:

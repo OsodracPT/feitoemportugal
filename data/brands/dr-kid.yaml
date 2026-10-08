@@ -1,0 +1,24 @@
+slug: dr-kid
+status: draft
+name: Dr. Kid
+description:
+  pt: >-
+    Roupa de bebé e criança de desenho próprio, feita em Portugal.
+  en: >-
+    Baby and children’s clothing of its own design, made in Portugal.
+website: https://www.dr-kid.com
+category: bebe-e-crianca
+subcategory: roupa-crianca
+products: [roupa-de-crianca]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.dr-kid.com
+social:
+  instagram: dr.kid_
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

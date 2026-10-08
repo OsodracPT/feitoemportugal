@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://shirakawaliving.com
+social:
+  instagram: shirakawa.pt
 verification:
   verified: false
 meta:

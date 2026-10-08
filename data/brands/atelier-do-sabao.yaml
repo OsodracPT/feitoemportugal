@@ -1,0 +1,30 @@
+slug: atelier-do-sabao
+status: draft
+name: Atelier do Sabão
+description:
+  pt: >-
+    Sabonetes e cosmética natural feitos à mão em pequenos lotes no atelier da marca em
+    Espinho, aberto ao público.
+  en: >-
+    Soaps and natural cosmetics made by hand in small batches at the brand's Espinho
+    workshop, which is open to visitors.
+website: https://www.atelierdosabao.com
+category: cosmetica-e-higiene
+subcategory: sabonetes-e-banho
+tags: [feito-a-mao, pequena-serie]
+products: [sabonetes, cremes]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: espinho
+where_to_buy:
+  online_store: https://www.atelierdosabao.com
+social:
+  instagram: _atelier_do_sabao_
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

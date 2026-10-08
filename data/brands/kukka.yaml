@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://kukka.pt
+social:
+  instagram: kukka.pt
 verification:
   verified: false
 meta:

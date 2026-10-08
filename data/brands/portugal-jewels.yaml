@@ -1,0 +1,28 @@
+slug: portugal-jewels
+status: draft
+name: Portugal Jewels
+description:
+  pt: >-
+    Joias em ouro português e prata, produzidas em Portugal por uma família de ourives
+    de Gondomar com origem em 1955.
+  en: >-
+    Portuguese gold and silver jewellery, made in Portugal by a Gondomar goldsmith
+    family dating back to 1955.
+website: https://www.portugaljewels.com
+category: joalharia
+subcategory: ouro
+tags: [empresa-familiar, tradicional]
+products: [joias]
+founded: 1955
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.portugaljewels.com
+social:
+  instagram: portugaljewels
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

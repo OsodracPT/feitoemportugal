@@ -1,0 +1,28 @@
+slug: util
+status: draft
+name: UTIL
+description:
+  pt: >-
+    Mobiliário de arrumação em metal de uma marca de design de Lisboa fundada em 2017,
+    inteiramente produzido em Portugal.
+  en: >-
+    Metal storage furniture from a Lisbon design brand founded in 2017, made entirely in
+    Portugal.
+website: https://thisisutil.com
+category: mobiliario
+subcategory: arrumacao
+tags: [metal, contemporaneo]
+products: [estantes]
+founded: 2017
+production:
+  scope: total
+where_to_buy:
+  online_store: https://thisisutil.com
+social:
+  instagram: this_is_util
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

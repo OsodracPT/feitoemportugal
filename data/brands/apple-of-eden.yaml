@@ -18,6 +18,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.appleofedenshoes.com
+social:
+  instagram: appleofedenshoes
 verification:
   verified: false
 meta:

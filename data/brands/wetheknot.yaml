@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.wetheknot.com
+social:
+  instagram: wetheknot
 verification:
   verified: false
 meta:

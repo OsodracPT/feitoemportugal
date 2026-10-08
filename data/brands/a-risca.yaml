@@ -1,0 +1,28 @@
+slug: a-risca
+status: draft
+name: A.Risca
+description:
+  pt: >-
+    Peças de barro vermelho e grés feitas à mão na roda de oleiro desde 2022, com muitas
+    personalizações para casamentos e batizados.
+  en: >-
+    Red clay and stoneware pieces thrown by hand on the wheel since 2022, many
+    personalised for weddings and christenings.
+website: https://arisca.shop
+category: ceramica-e-vidro
+subcategory: ceramica-de-autor
+tags: [ceramica, feito-a-mao, personalizavel]
+products: [loica-de-mesa, pecas-decorativas]
+founded: 2022
+production:
+  scope: total
+where_to_buy:
+  online_store: https://arisca.shop
+social:
+  instagram: a.risca.concept
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -21,6 +21,8 @@ location:
   municipality: lousada
 where_to_buy:
   online_store: https://famo.pt
+social:
+  instagram: famo.office.furniture
 verification:
   verified: false
 meta:

@@ -1,0 +1,28 @@
+slug: matta
+status: draft
+name: Matta Surfboards
+description:
+  pt: >-
+    Pranchas de surf feitas na fábrica da marca, fundada em 1996 na Costa da Caparica
+    por um antigo campeão nacional.
+  en: >-
+    Surfboards shaped in the brand's own factory, started in Costa da Caparica in 1996
+    by a former Portuguese champion.
+website: https://www.matta.surf
+category: desporto-e-outdoor
+subcategory: surf-e-mar
+tags: [producao-por-encomenda]
+products: [pranchas-de-surf]
+founded: 1996
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.matta.surf
+social:
+  instagram: mattashapes
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

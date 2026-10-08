@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://casta.pt
+social:
+  instagram: castashoes
 verification:
   verified: false
 meta:

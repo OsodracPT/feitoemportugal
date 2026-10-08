@@ -22,6 +22,8 @@ location:
 price_range: 2
 where_to_buy:
   online_store: https://benamor1925.com
+social:
+  instagram: benamor1925
 verification:
   verified: false
 meta:

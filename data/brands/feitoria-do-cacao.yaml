@@ -1,0 +1,29 @@
+slug: feitoria-do-cacao
+status: draft
+name: Feitoria do Cacao
+description:
+  pt: >-
+    Chocolate artesanal feito a partir da fava de cacau, em micro-lotes, em Aveiro.
+  en: >-
+    Bean-to-bar chocolate made in micro-batches in Aveiro.
+website: https://www.feitoriadocacao.com
+category: alimentacao
+subcategory: doces-e-chocolate
+tags: [pequena-serie]
+products: [chocolate]
+founded: 2015
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: aveiro
+where_to_buy:
+  online_store: https://www.feitoriadocacao.com
+social:
+  instagram: feitoria_do_cacao
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

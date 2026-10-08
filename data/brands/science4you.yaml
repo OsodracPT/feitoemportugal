@@ -1,0 +1,29 @@
+slug: science4you
+status: draft
+name: Science4you
+description:
+  pt: >-
+    Brinquedos educativos e científicos desenvolvidos e produzidos na fábrica da empresa
+    no MARL, em Loures.
+  en: >-
+    Educational and science toys developed and made at the company's factory in the
+    MARL, Loures.
+website: https://www.science4you.pt
+category: bebe-e-crianca
+subcategory: brinquedos
+products: [brinquedos]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: loures
+where_to_buy:
+  online_store: https://www.science4you.pt
+social:
+  instagram: science4you_pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

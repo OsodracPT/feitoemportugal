@@ -18,6 +18,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://alineclothing.com
+social:
+  instagram: alineclothing_official
 verification:
   verified: false
 meta:

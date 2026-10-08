@@ -1,0 +1,28 @@
+slug: entrudo
+status: draft
+name: Entrudo
+description:
+  pt: >-
+    Cestos e malas inspirados nas máscaras e no carnaval português, pintados à mão e
+    produzidos em Portugal por encomenda.
+  en: >-
+    Baskets and bags inspired by Portuguese carnival masks, hand-painted and made to
+    order in Portugal.
+website: https://www.entrudo.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [pintado-a-mao, producao-por-encomenda]
+products: [malas]
+founded: 2017
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.entrudo.com
+social:
+  instagram: entrudopt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

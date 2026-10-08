@@ -1,0 +1,30 @@
+slug: malu-pet-wear
+status: draft
+name: MALÜ Pet Wear
+description:
+  pt: >-
+    Coleiras, trelas e peitorais para cães e gatos cosidos à mão no atelier da marca no
+    centro de Lisboa, muitas vezes só depois da encomenda.
+  en: >-
+    Collars, leads and harnesses for dogs and cats, sewn by hand at the brand's central
+    Lisbon workshop, often only once ordered.
+website: https://malupetwear.pt
+category: animais
+subcategory: trelas-e-coleiras
+tags: [feito-a-mao, producao-por-encomenda]
+founded: 2021
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://malupetwear.pt
+social:
+  instagram: malupetwear
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

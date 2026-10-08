@@ -47,13 +47,10 @@ still undecided. For running the code, see the [README](../README.md).
 - **Open: photos and logos versus CC BY.** Brand photos are not ours to license.
   Before `media` is filled, decide whether media is excluded from the dataset
   licence and collected only with the brand's permission.
-- **41 drafts wait for review.** The open-source lead pass of 2026-10-08 (footwear
-  association list, press round-ups, an r/BuyFromEU thread) checked 152 candidates
-  and found a production claim for 41. Each quote is in
+- **123 drafts wait for review.** The lead pass of 2026-10-08 (a brand directory, the
+  footwear association list, press round-ups, Reddit threads) checked 583 candidates
+  and found a production claim for 123. Each quote is in
   `docs/leads/evidence-sources-2026-10.md`, with points to check before publishing.
-- **Competitor's catalogue is not a lead source.** feitoem.pt's terms forbid
-  systematic extraction of its brand database, so it was not scraped. Leads come
-  from sources that allow reuse; a partnership is a maintainer's call.
 - **Logo is provisional.** Three variants in `site/public/brand/`. Once one is
   chosen, outline the text to paths so it no longer depends on a font.
 - **Accent colour** (`--accent`, a deep green) and the **code licence** (MIT or AGPL)

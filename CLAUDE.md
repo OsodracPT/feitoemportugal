@@ -131,7 +131,7 @@ district outlines, the district map as a listing filter, and region pages
 (`/regioes`). Only 38 of the 90 brands have a known production location, so the map
 covers less than half the catalogue until more are found. A second lead pass
 (`docs/leads/sources-2026-10.csv`, evidence in `evidence-sources-2026-10.md`) added
-41 drafts awaiting a maintainer's review; they are not published.
+123 drafts awaiting a maintainer's review; they are not published.
 
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
 through `deploy.yml`. The README is written for people running the code;

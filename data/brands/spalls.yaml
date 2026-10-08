@@ -1,0 +1,20 @@
+slug: spalls
+status: draft
+name: Spall’s
+description:
+  pt: >-
+    Chips de batata-doce de Aljezur com sal de Tavira, fabricados em Portugal.
+  en: >-
+    Sweet potato chips from Aljezur potatoes with Tavira salt, made in Portugal.
+website: https://spalls.pt
+category: alimentacao
+subcategory: mercearia
+products: [snacks]
+production:
+  scope: total
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,27 @@
+slug: amalia-home-collection
+status: draft
+name: Amalia Home Collection
+description:
+  pt: >-
+    Têxteis-lar de inspiração portuguesa, desenvolvidos e fabricados em Portugal pela
+    mesma casa desde 1922.
+  en: >-
+    Portuguese-inspired home textiles, developed and made in Portugal by the same house
+    since 1922.
+website: https://shop.amaliahomecollection.com
+category: texteis-lar
+tags: [tradicional]
+products: [toalhas, mantas]
+founded: 1922
+production:
+  scope: total
+where_to_buy:
+  online_store: https://shop.amaliahomecollection.com
+social:
+  instagram: amaliahomecollection
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

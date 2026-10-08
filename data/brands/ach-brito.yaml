@@ -21,6 +21,8 @@ location:
 price_range: 1
 where_to_buy:
   online_store: https://achbrito.com
+social:
+  instagram: ach.brito
 verification:
   verified: false
 meta:

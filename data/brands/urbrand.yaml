@@ -19,6 +19,8 @@ location:
   municipality: porto
 where_to_buy:
   online_store: https://urbrandonline.com
+social:
+  instagram: urbrand.insta
 sustainability:
   practices: [materiais-reciclados, circuito-curto]
 verification:

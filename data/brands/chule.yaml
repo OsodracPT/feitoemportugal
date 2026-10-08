@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://chule.pt
+social:
+  instagram: chule_socks
 sustainability:
   practices: [fibras-naturais]
   certifications:

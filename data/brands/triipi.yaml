@@ -1,0 +1,27 @@
+slug: triipi
+status: draft
+name: triipi
+description:
+  pt: >-
+    Almofadas inclinadas para leitura e pufes de exterior e interior, feitos à mão em
+    Portugal desde 2014.
+  en: >-
+    Angled reading pillows and indoor and outdoor bean bags, handmade in Portugal since
+    2014.
+website: https://www.triipi.com
+category: texteis-lar
+tags: [feito-a-mao]
+products: [almofadas]
+founded: 2014
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.triipi.com
+social:
+  instagram: triipi_lisboa
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

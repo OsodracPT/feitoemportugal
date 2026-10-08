@@ -1,0 +1,27 @@
+slug: azeite-caixeiro
+status: draft
+name: Azeite Caixeiro
+description:
+  pt: >-
+    Azeite de produção própria, da apanha à garrafa, em Santa Maria de Émeres, no
+    concelho de Valpaços.
+  en: >-
+    Olive oil produced from harvest to bottle on its own land in Santa Maria de Émeres,
+    Valpaços.
+website: https://azeitecaixeiro.pt
+category: alimentacao
+subcategory: azeite-e-vinagre
+products: [azeite]
+production:
+  scope: total
+location:
+  district: vila-real
+  municipality: valpacos
+where_to_buy:
+  online_store: https://azeitecaixeiro.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

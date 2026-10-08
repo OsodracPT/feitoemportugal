@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://lambdagolf.com
+social:
+  instagram: lambdagolf
 verification:
   verified: false
 meta:

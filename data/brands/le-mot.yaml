@@ -1,0 +1,28 @@
+slug: le-mot
+status: draft
+name: Le Mot
+description:
+  pt: >-
+    T-shirts e sweatshirts de inspiração parisiense em algodão orgânico, de uma marca de
+    Lisboa fundada em 2017 e produzida em Portugal.
+  en: >-
+    Paris-inspired organic cotton tees and sweatshirts from a Lisbon label founded in
+    2017 and made in Portugal.
+website: https://www.le-mot.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [algodao]
+products: [t-shirts, camisolas]
+founded: 2017
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.le-mot.com
+social:
+  instagram: lemot.tees
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

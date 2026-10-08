@@ -1,0 +1,27 @@
+slug: bennie
+status: draft
+name: Bennie
+description:
+  pt: >-
+    Roupa de bebé e criança, incluindo uniformes escolares, criada e produzida em
+    Portugal por uma empresa fundada em Barcelos em 1998.
+  en: >-
+    Baby and children’s clothing, school uniforms included, from a company set up in
+    Barcelos in 1998 that designs and sews it in Portugal.
+website: https://www.bennie.pt
+category: bebe-e-crianca
+subcategory: roupa-crianca
+products: [roupa-de-crianca]
+founded: 1998
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.bennie.pt
+social:
+  instagram: benniekids
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

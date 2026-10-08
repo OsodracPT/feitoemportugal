@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://armazemdasmalhas.com
+social:
+  instagram: armazemdasmalhas
 verification:
   verified: false
 meta:

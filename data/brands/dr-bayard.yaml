@@ -1,0 +1,28 @@
+slug: dr-bayard
+status: draft
+name: Dr. Bayard
+description:
+  pt: >-
+    Rebuçados de mel e eucalipto feitos segundo uma receita antiga, produzidos na
+    fábrica da marca na Amadora.
+  en: >-
+    Honey and eucalyptus sweets made to an old recipe at the brand's factory in Amadora.
+website: https://www.drbayard.com
+category: alimentacao
+subcategory: doces-e-chocolate
+tags: [tradicional]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: amadora
+where_to_buy:
+  online_store: https://www.drbayard.com
+social:
+  instagram: dr.bayard
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

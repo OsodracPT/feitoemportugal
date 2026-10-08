@@ -1,0 +1,27 @@
+slug: pinknounou
+status: draft
+name: PinkNounou
+description:
+  pt: >-
+    Bonecos de pano, almofadas e decoração para quartos de criança com ilustrações
+    próprias, feitos à mão em Portugal.
+  en: >-
+    Rag dolls, cushions and nursery décor with original illustrations, handmade in
+    Portugal.
+website: https://www.pinknounou.com
+category: bebe-e-crianca
+subcategory: brinquedos
+tags: [feito-a-mao]
+products: [brinquedos, almofadas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.pinknounou.com
+social:
+  instagram: anafrompinknounou
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

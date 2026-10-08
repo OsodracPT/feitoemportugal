@@ -1,0 +1,26 @@
+slug: marqqa
+status: draft
+name: Marqqa
+description:
+  pt: >-
+    Mobiliário personalizável de um atelier de arquitetura do Porto, desenhado e
+    produzido em Portugal por artesãos.
+  en: >-
+    Customisable furniture from a Porto architecture studio, made in Portugal by local
+    craftspeople.
+website: https://marqqa.com
+category: mobiliario
+tags: [personalizavel]
+products: [mesas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://marqqa.com
+social:
+  instagram: marqqa_furniture
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

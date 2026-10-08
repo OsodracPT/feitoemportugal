@@ -1,0 +1,26 @@
+slug: imma
+status: draft
+name: IMMA
+description:
+  pt: >-
+    Peças essenciais de guarda-roupa, como camisas e casacos, desenvolvidas e produzidas
+    em ateliês e fábricas especializados em Portugal.
+  en: >-
+    Wardrobe staples such as shirts and coats, developed and made in specialist ateliers
+    and factories in Portugal.
+website: https://immathebrand.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+products: [camisas, casacos, calcas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://immathebrand.com
+social:
+  instagram: immathebrand
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

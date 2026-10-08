@@ -1,0 +1,25 @@
+slug: miristica
+status: draft
+name: Miristica
+description:
+  pt: >-
+    Cosmética vegana e de desperdício zero, com sabões, champôs sólidos e cremes
+    formulados com ingredientes vegetais e produzidos em Portugal.
+  en: >-
+    Vegan, zero-waste cosmetics, with soaps, solid shampoos and creams formulated from
+    plant ingredients and made in Portugal.
+website: https://miristica.pt
+category: cosmetica-e-higiene
+subcategory: corpo
+tags: [vegano]
+products: [sabonetes, cremes]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://miristica.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

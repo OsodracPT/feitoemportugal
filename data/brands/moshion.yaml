@@ -19,6 +19,8 @@ production:
 location:
   district: porto
   municipality: felgueiras
+social:
+  instagram: moshion.footwear
 verification:
   verified: false
 meta:

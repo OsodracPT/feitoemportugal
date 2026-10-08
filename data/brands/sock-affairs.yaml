@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.sockaffairs.com
+social:
+  instagram: sockaffairs
 verification:
   verified: false
 meta:

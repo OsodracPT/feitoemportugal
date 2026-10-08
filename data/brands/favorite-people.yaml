@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.favoritepeoplestore.com
+social:
+  instagram: favoritepeoplestore
 verification:
   verified: false
 meta:

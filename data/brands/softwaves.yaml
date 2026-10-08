@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.softwavesshop.com
+social:
+  instagram: softwaves_shoes
 verification:
   verified: false
 meta:

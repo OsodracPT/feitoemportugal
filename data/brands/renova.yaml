@@ -1,0 +1,34 @@
+slug: renova
+status: draft
+name: Renova
+description:
+  pt: >-
+    Papel higiénico, rolos de cozinha, guardanapos e lenços produzidos sobretudo nas
+    fábricas de Torres Novas.
+  en: >-
+    Toilet paper, kitchen rolls, napkins and tissues made mainly at its Torres Novas
+    plants.
+website: https://www.myrenova.com
+category: casa-e-decoracao
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      Duas unidades industriais ficam em Torres Novas; uma terceira unidade de produção
+      fica em Saint-Yorre, França.
+    en: >-
+      Two industrial units are in Torres Novas; a third production unit is in Saint-Yorre,
+      France.
+location:
+  district: santarem
+  municipality: torres-novas
+where_to_buy:
+  online_store: https://www.myrenova.com
+social:
+  instagram: myrenova
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

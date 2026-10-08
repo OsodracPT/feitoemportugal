@@ -1,0 +1,27 @@
+slug: sharish-gin
+status: draft
+name: Sharish Gin
+description:
+  pt: >-
+    Gin destilado lentamente no Alentejo desde 2014, com versões aromatizadas com fruta
+    portuguesa.
+  en: >-
+    Gin slowly distilled in the Alentejo since 2014, with versions flavoured with
+    Portuguese fruit.
+website: https://sharishgin.pt
+category: bebidas
+subcategory: licores-e-destilados
+products: [licores]
+founded: 2014
+production:
+  scope: total
+where_to_buy:
+  online_store: https://sharishgin.pt
+social:
+  instagram: sharish_gin
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

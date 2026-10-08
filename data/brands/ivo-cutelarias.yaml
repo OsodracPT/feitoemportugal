@@ -18,6 +18,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.ivocutelarias.com
+social:
+  instagram: ivocutelarias
 verification:
   verified: false
 meta:

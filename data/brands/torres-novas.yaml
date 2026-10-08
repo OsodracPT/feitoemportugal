@@ -20,6 +20,8 @@ location:
   municipality: torres-novas
 where_to_buy:
   online_store: https://www.torresnovas.com
+social:
+  instagram: torresnovas1845
 verification:
   verified: false
 meta:

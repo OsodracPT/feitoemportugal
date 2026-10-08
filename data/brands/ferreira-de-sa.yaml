@@ -19,6 +19,8 @@ production:
 location:
   district: aveiro
   municipality: espinho
+social:
+  instagram: ferreiradesarugs
 verification:
   verified: false
 meta:

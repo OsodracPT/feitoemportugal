@@ -20,6 +20,8 @@ location:
   municipality: vagos
 where_to_buy:
   online_store: https://costanova.pt
+social:
+  instagram: costanovatableware
 verification:
   verified: false
 meta:

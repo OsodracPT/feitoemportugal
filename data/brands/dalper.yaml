@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.dalper.pt
+social:
+  instagram: dalpercutlery
 verification:
   verified: false
 meta:

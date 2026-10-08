@@ -1,0 +1,24 @@
+slug: sugo-cork-rugs
+status: draft
+name: Sugo Cork Rugs
+description:
+  pt: >-
+    Tapetes tecidos à mão com cortiça, desenhados por Susana Godinho e feitos em
+    Portugal.
+  en: >-
+    Hand-woven cork rugs designed by Susana Godinho and made in Portugal.
+website: https://sugocorkrugs.com
+category: texteis-lar
+subcategory: tapetes
+tags: [cortica, tecido-em-tear]
+products: [tapetes]
+production:
+  scope: total
+social:
+  instagram: sugocorkrugs
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

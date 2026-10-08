@@ -18,6 +18,8 @@ production:
 price_range: 3
 where_to_buy:
   online_store: https://guajastudio.com
+social:
+  instagram: guaja.studio
 verification:
   verified: false
 meta:

@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://heeltread.com
+social:
+  instagram: heeltread
 verification:
   verified: false
 meta:

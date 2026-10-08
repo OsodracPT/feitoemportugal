@@ -1,0 +1,26 @@
+slug: cucawik
+status: draft
+name: Cucawik
+description:
+  pt: >-
+    Bolsas, estojos e papelaria com padrões exclusivos, artesanais e produzidos em
+    Portugal.
+  en: >-
+    Pouches, pencil cases and stationery in exclusive prints, handmade in Portugal.
+website: https://cucawik.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [feito-a-mao]
+products: [malas, cadernos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://cucawik.com
+social:
+  instagram: cucawik
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

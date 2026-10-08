@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://pt.by-stro.com
+social:
+  instagram: by_stro
 sustainability:
   practices: [fibras-naturais]
 verification:

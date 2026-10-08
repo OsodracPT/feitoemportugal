@@ -24,6 +24,8 @@ production:
       in the country; the rest of the catalogue does not state Portuguese origin.
 where_to_buy:
   online_store: https://thclothes.com
+social:
+  instagram: thclothes.brand
 verification:
   verified: false
 meta:

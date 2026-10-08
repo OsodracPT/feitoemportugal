@@ -1,0 +1,24 @@
+slug: hands-on-earth
+status: draft
+name: Hands on Earth
+description:
+  pt: >-
+    Infusões, compotas, fruta desidratada, flor de sal e outros produtos biológicos
+    feitos em Portugal a partir de ingredientes nacionais.
+  en: >-
+    Herbal teas, jams, dried fruit, salt flower and other organic goods produced in
+    Portugal from Portuguese ingredients.
+website: https://www.handsonearth.com.pt
+category: alimentacao
+subcategory: mercearia
+products: [mel]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.handsonearth.com.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

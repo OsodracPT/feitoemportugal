@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://shop-eu.flylondon.com
+social:
+  instagram: fly.london
 verification:
   verified: false
 meta:

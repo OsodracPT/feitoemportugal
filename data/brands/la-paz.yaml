@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://lapaz.pt
+social:
+  instagram: lapaz_diary
 verification:
   verified: false
 meta:

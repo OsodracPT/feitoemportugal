@@ -1,0 +1,30 @@
+slug: valle-das-corujas
+status: draft
+name: Valle das Corujas
+description:
+  pt: >-
+    Mel, azeite e amêndoa de produção própria no concelho de Mirandela, a partir de uma
+    antiga casa de família em Mascarenhas.
+  en: >-
+    Honey, olive oil and almonds of its own production in Mirandela, run from an old
+    family house in Mascarenhas.
+website: https://valledascorujas.pt
+category: alimentacao
+subcategory: mel-e-compotas
+tags: [empresa-familiar]
+products: [mel, azeite]
+production:
+  scope: total
+location:
+  district: braganca
+  municipality: mirandela
+where_to_buy:
+  online_store: https://valledascorujas.pt
+social:
+  instagram: valledascorujas
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

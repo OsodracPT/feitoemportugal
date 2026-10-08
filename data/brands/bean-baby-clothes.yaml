@@ -1,0 +1,27 @@
+slug: bean-baby-clothes
+status: draft
+name: Bean Baby Clothes
+description:
+  pt: >-
+    Roupa clássica de bebé e criança até aos seis anos, de desenho próprio e
+    confecionada inteiramente em Portugal.
+  en: >-
+    Classic clothing for babies and children up to six, designed in-house and made
+    entirely in Portugal.
+website: https://www.bean.pt
+category: bebe-e-crianca
+subcategory: roupa-bebe
+tags: [classico]
+products: [roupa-de-crianca]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.bean.pt
+social:
+  instagram: beanbabyclothes
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

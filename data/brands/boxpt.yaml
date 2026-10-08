@@ -1,0 +1,28 @@
+slug: boxpt
+status: draft
+name: BOXPT
+description:
+  pt: >-
+    Equipamento de treino, estruturas metálicas e arrumação para ginásios e casas,
+    produzidos em Boticas.
+  en: >-
+    Training equipment, metal rigs and storage for gyms and homes, produced in Boticas.
+website: https://www.boxpt.com
+category: desporto-e-outdoor
+subcategory: equipamento
+tags: [metal]
+production:
+  scope: total
+location:
+  district: vila-real
+  municipality: boticas
+where_to_buy:
+  online_store: https://www.boxpt.com
+social:
+  instagram: boxptequipment
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

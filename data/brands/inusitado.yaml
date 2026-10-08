@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.inusitado.pt
+social:
+  instagram: inusitado.estudio
 verification:
   verified: false
 meta:

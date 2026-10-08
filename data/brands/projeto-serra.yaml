@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://projetoserra.com
+social:
+  instagram: projetoserraoficial
 verification:
   verified: false
 meta:

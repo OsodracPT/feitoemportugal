@@ -1,0 +1,24 @@
+slug: marita-moreno
+status: draft
+name: Marita Moreno
+description:
+  pt: >-
+    Calçado, malas e acessórios veganos ou em pele reaproveitada, feitos em Portugal.
+  en: >-
+    Vegan or upcycled-leather shoes, bags and accessories, made in Portugal.
+website: https://www.maritamoreno.com
+category: calcado
+tags: [vegano, upcycling]
+products: [sapatos, sapatilhas, botas, malas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.maritamoreno.com
+social:
+  instagram: maritamoreno_pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,27 @@
+slug: companhia-atlantica
+status: draft
+name: Companhia Atlântica
+description:
+  pt: >-
+    Serviços de mesa, peças de cozinha e objetos de cerâmica portuguesa fabricados em
+    Portugal, também para hotelaria e restauração.
+  en: >-
+    Tableware, kitchenware and ceramic objects made in Portugal, also for hotels and
+    restaurants.
+website: https://www.companhiaatlantica.pt
+category: ceramica-e-vidro
+subcategory: louca-de-mesa
+tags: [ceramica]
+products: [loica-de-mesa, pecas-decorativas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.companhiaatlantica.pt
+social:
+  instagram: ca_atlantica
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

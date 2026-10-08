@@ -17,6 +17,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://zilian.com
+social:
+  instagram: zilianofficial
 verification:
   verified: false
 meta:

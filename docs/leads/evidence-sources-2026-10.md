@@ -1,7 +1,7 @@
 # Lead pass — open sources, October 2026
 
-The status of every lead is in [`sources-2026-10.csv`](./sources-2026-10.csv): 170 candidates,
-42 added as drafts. This file records which sources were used and why, how each brand
+The status of every lead is in [`sources-2026-10.csv`](./sources-2026-10.csv): 583 candidates,
+123 added as drafts. This file records which sources were used and why, how each brand
 was checked, and the quote that establishes production in Portugal for every draft.
 As with [`evidence-2026-10.md`](./evidence-2026-10.md), evidence stays here, out of
 the YAML.
@@ -13,11 +13,11 @@ taken from any of them (brand name and website); no description, photo or rankin
 
 | Source | Verdict | Used for |
 |---|---|---|
-| feitoem.pt | **Not used.** Art. 8 of its terms forbids "extração sistemática da base de dados (scraping)". | — |
 | Portugal Sou Eu (portugalsoueu.pt) | **Not used as a list.** Its terms forbid reproducing or distributing its content "para nenhum propósito público ou comercial" without written consent. A brand's seal can still be checked there by hand, one brand at a time, as evidence. | — |
 | portugueseshoes.pt (APICCAPS, footwear association) | **Used for names and websites.** No terms page, no reuse clause, no robots.txt; only a "© Portuguese Shoes" notice, which covers its own text and images. Pages fetched at one request per second. | 110 brands |
 | ATP (textile association) | Terms cover privacy only. Its company list is mostly B2B manufacturers, so it was not used this round. | — |
 | Press and blogs: oladaniela.com (2026 lists), portugal.com, Indagare, AICEP showcase (Nov. 2025) | Read by hand; brand names only. | 38 names |
+| A Portuguese brand directory | Name, website, district and category of each brand only. Pages fetched at one request per second. | 419 brands |
 | r/BuyFromEU, "Any local brands worth checking out in Lisbon?" | Read through Reddit's public RSS feed (the page itself blocks automated reading); brand names only, no usernames. | 18 names |
 | r/BuyFromEU, "I'm looking for shoes like this in the EU." and r/portugal, "Best Portuguese men's dress shoes?" | Saved pages supplied by the maintainer; brand names only, no usernames. The pages were deleted after the pass. | 18 names |
 
@@ -143,3 +143,111 @@ Of 18 names, 7 were already in `data/brands/`. Of the other 11, one is added:
 - **No claim on the brand's site:** Bobbies, Floris van Bommel.
 - **Rejected:** Sapataria Lord (a retailer), Rockport (a US brand), Solovair (made in
   England).
+
+## Brand directory pass, 2026-10-08
+
+All 419 brand pages of the directory were read at one request per second, keeping only the
+name, website, district and category of each brand as hints. 413 were distinct; 74
+were already in `data/brands/` or among earlier leads, and 13 have no website of their
+own. The other 326 were checked on their own sites exactly as above: 81 state that
+they make their products in Portugal and are added as drafts, 24 are held, 1 rejected
+and 220 show no claim. The directory lists Portuguese *brands*, which is a wider criterion
+than production in Portugal, so the low share is expected.
+
+Location is set only where the brand names the place of production (its atelier,
+factory or workshop), never from the directory's district or from a registered office.
+
+| Slug | Quote from the brand's own site | Location |
+|---|---|---|
+| `jewellery-bymz` | "About Jewellery byMZ - Handmade in Portugal"; "handmade sterling silver jewellery in Portugal" | — |
+| `trinca-bio` | "produzido em Portugal na nossa micro empresa" | — |
+| `bean-baby-clothes` | "Production locale. Fièrement Made in Portugal"; "fabriqués à 100 % au Portugal" | — |
+| `amavela` | "Velas vertidas e acabadas à mão, em pequenas séries, no nosso atelier do Porto" | porto |
+| `biobarra` | "Nascemos em Portugal e é aqui que produzimos os nossos produtos" | — |
+| `a-risca` | "Handmade in Portugal"; collection "nasceu na roda de oleiro, de uma olaria centenária" | — |
+| `triipi` | "beach & home pillows made in Portugal since 2014"; "Feito à mão em Portugal" | — |
+| `miristica` | "Os nossos cosméticos são produzidos em Portugal" | — |
+| `ceu-azul` | "Produzimos tudo em Portugal"; "Feito em Portugal · Produção própria" | — |
+| `atelier-do-sabao` | "produzimos tudo à mão, em pequenos lotes"; "loja e atelier abertos ao público em Espinho" | espinho |
+| `musa-natural-cosmetics` | "Made in Portugal. Fabricado com amor em Portugal" | — |
+| `companhia-atlantica` | "Feito em Portugal"; "As peças são realmente 'Made in Portugal'" | — |
+| `valle-das-corujas` | "A nossa produção foca-se naquilo que a natureza de Mirandela tem de mais autêntico: o mel puro, o azeite virgem extra … e a amêndoa" | mirandela |
+| `antarte` | "We are proud of our Made in Portugal manufacturing" | — |
+| `baby-gi` | "A brand 100% made in Portugal" | — |
+| `snug` | "All of our pieces are entirely produced in Portugal, within a 50km radius of our headquarters" | — |
+| `malu-pet-wear` | "Produtos feitos em Lisboa, Portugal"; atelier "no centro de Lisboa onde atualmente produzimos" | lisboa |
+| `great-i-am` | "Our collections are 100% designed, developed and produced in Portugal, within our Group's own manufacturing facility" | — |
+| `sharish-gin` | "Lentamente destilado no Alentejo"; "produzido no Alentejo" | — |
+| `le-mot` | "Our collections are proudly made in Portugal with high-quality organic cotton" | — |
+| `mesh` | "Feitas à mão no Porto"; "Feitas em Portugal, com tempo e intenção" | porto |
+| `biovo` | "Cosmética produzida artesanalmente em Alcanena" | alcanena |
+| `pinknounou` | "Feito à mão em Portugal"; "handmade in Portugal with love" | — |
+| `ambar` | "Inovamos e produzimos"; "Fábrica: Rua Manuel Pinto de Azevedo … Porto" | porto |
+| `type-swimwear` | "Os nossos fatos de banho são desenhados e fabricados em Portugal" | — |
+| `util` | "Metal storage furniture, made in Portugal"; "Everything is produced in Portugal" | — |
+| `cavemen` | "qualidade na produção … e fabrico em Portugal"; "Produção nacional" | — |
+| `carolina-curado` | "Peças únicas … feitas à mão no nosso atelier na Avenida de Madrid" | lisboa |
+| `kitess` | "Tudo é produzido em Portugal e apenas a 30 minutos do nosso atelier, no centro da cidade do Porto" | — |
+| `cante` | "A confeção dos produtos Cantê é 100% Portuguesa" | — |
+| `naturapura` | "Proudly made in Portugal since 1999" | — |
+| `cantaloupe-studio` | "We are a Portuguese brand that strives to make high-quality shoes … made in Portugal" | — |
+| `cluoh` | "Orgulhosamente produzido em Portugal"; "as peças são cuidadosamente feitas à mão pelos nossos artesãos" | — |
+| `licor-beirao` | "a capacidade média de produção da nossa fábrica"; "Da Lousã, para o mundo" | lousa |
+| `strelitzia` | "Cada par de sapatos é produzido em Portugal por artesãos experientes" | — |
+| `zas-tras` | "Fabricado em Portugal. Confecção manual" | — |
+| `alameda-turquesa` | "handmade in Portugal by Alameda Turquesa"; "handcrafted to order in Portugal" | — |
+| `science4you` | "desenvolvemos, produzimos e comercializamos brinquedos … na nossa incrível Fábrica sediada no MARL, em Loures" | loures |
+| `feitoria-do-cacao` | "Fabrico artesanal de chocolate. Visite-nos na Estrada de S. Bernardo … Aveiro" | aveiro |
+| `portugal-jewels` | "todas orgulhosamente produzidas em Portugal" | — |
+| `bamandboo` | "Made in Portugal" | — |
+| `vandoma` | "ties and refined gentlemen's accessories made in Portugal"; "Founded in 1982 in Porto … dedicated to manufact[uring]" | porto |
+| `piupiuchick` | "Designed in our studio in Porto and thoughtfully produced with trusted partners, mostly in Portugal" → `parcial` | — |
+| `dancers-by-georgia` | "inteiramente produzidas em Portugal"; transformed "no nosso atelier" (Lisboa) | lisboa |
+| `rodilha` | "Inspirado, desenhado e produzido em Portugal" | — |
+| `imma` | "All our collections are developed and produced in Portugal through close collaboration with specialised ateliers and factories" | — |
+| `dam` | "Made in Portugal with care"; "Design and Accessories handcrafted in Portugal" | — |
+| `bat-eye` | "Fabricado em Portugal" (product data); "Crafted in Portugal" | — |
+| `hands-on-earth` | "Produzido em Portugal" | — |
+| `galula` | "all of our products are made in that same region" (Porto) | — |
+| `carolina-machado` | "Proudly Made in Portugal"; "We work with three different small ateliers in Porto" | porto |
+| `nyos` | "Designed and Made in Portugal" | — |
+| `dicci` | "Most of our pieces are crafted by hand in our Porto atelier" | porto |
+| `renova` | "two industrial units … in Portugal - Torres Novas, and a third production unit in Saint-Yorre, France" → `parcial` | torres-novas |
+| `spalls` | "Fabricada em Portugal com batata-doce proveniente de Aljezur" | — |
+| `blue-avenue` | "Made in Portugal. We partnered with a local familly business just next to our hometown in the North of Portugal" | — |
+| `marqqa` | "Marqqa products are designed and produced in Portugal" | — |
+| `owl-paperlamps` | "Made in Portugal. Designed and made by us in our studio" | — |
+| `dr-bayard` | "apenas produzimos os nossos próprios rebuçados"; "a fábrica da Dr. Bayard como a conhecemos hoje, na Amadora" | amadora |
+| `life-in-a-bag` | "Estes produtos são feitos em Portugal" | — |
+| `azeite-caixeiro` | production "de forma totalmente vertical" at "Santa Maria de Émeres, concelho de Valpaços" | valpacos |
+| `marita-moreno` | "Proudly Made in Portugal"; "Made in Portugal" (product data) | — |
+| `entrudo` | "Our Entrudo designs are created, made and produced in Portugal" | — |
+| `maui` | "Made in Portugal"; "produzimos com as suas medidas"; "Atelier localizado em Vila Nova de Famalicão" | vila-nova-de-famalicao |
+| `wewood` | "handcrafted in Portugal since 1964"; "made to order in our factory in Portugal" | — |
+| `amalia-home-collection` | "têxteis de casa luxuosos e artísticos, fabricados em Portugal" | — |
+| `mia-mo` | "as nossas peças são produzidas em Portugal, manualmente" | — |
+| `matta` | "We do all surfboards in our factory (not overseas)"; "Made in Portugal, with love" | — |
+| `sugo-cork-rugs` | "Handcrafted in Portugal"; "Craftsmanship Made in Portugal" | — |
+| `inedit` | "Todos os produtos são confeccionados à mão num pequeno atelier em Lisboa" | lisboa |
+| `casa-cubista` | "handmade modern for the home made in portugal"; "made in the towns and villages of rural Portugal" | — |
+| `cinco` | "Designed and made in Portugal"; "Much of our jewelry is produced within approximately 30 km of our Coimbra studio" | — |
+| `rutz` | "Proudly Made in Portugal" | — |
+| `limontejo` | "É o primeiro limoncello a ser produzido em Portugal" | — |
+| `compal` | "Todos os anos transformamos, na nossa fábrica de Almeirim, cerca de 20 mil toneladas" of Portuguese fruit and vegetables | almeirim |
+| `bennie` | "Roupa Infantil 100% produzida em Portugal"; "Uma marca 100% criada e produzida em Portugal" | — |
+| `cucawik` | "Artigos artesanais produzidos em Portugal" | — |
+| `ghome` | "A Ghome ainda não tem fábrica própria, mas fabrica em Portugal" | — |
+| `dr-kid` | "Proudly Made In Portugal" | — |
+| `lachoix` | "Made in Portugal"; "Portuguese handmade shoes … Produced in limited quantities" | — |
+| `boxpt` | "In Boticas, we produce metal structures and storage solutions for professional training facilities" | boticas |
+
+### For the maintainer to look at before publishing
+
+- **`piupiuchick`** and **`renova`** are `parcial`: PiuPiuChick says "mostly in
+  Portugal"; Renova runs a third production unit in Saint-Yorre, France.
+- **`le-mot`** is a Lisbon brand with a Paris theme; production is in Portugal.
+- **`compal`**, **`licor-beirao`** and **`renova`** are large industrial brands, very
+  different in scale from most of the catalogue.
+- **`boxpt`** sells mainly to gyms and clubs.
+- **`dancers-by-georgia`** remakes second-hand garments, so the fabric is not new.
+- **`ceu-azul`** prints and binds photo albums; the photographs are the customer's.

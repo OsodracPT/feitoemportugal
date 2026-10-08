@@ -19,6 +19,8 @@ location:
   municipality: lisboa
 where_to_buy:
   online_store: https://www.aindustria.pt
+social:
+  instagram: aindustrialisboa
 verification:
   verified: false
 meta:

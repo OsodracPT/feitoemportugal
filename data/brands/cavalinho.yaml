@@ -21,6 +21,8 @@ location:
   municipality: santa-maria-da-feira
 where_to_buy:
   online_store: https://www.cavalinho.com
+social:
+  instagram: cavalinho_oficial
 verification:
   verified: false
 meta:

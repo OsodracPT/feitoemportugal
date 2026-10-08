@@ -20,6 +20,8 @@ location:
   municipality: lisboa
 where_to_buy:
   online_store: https://www.oitavacolina.pt
+social:
+  instagram: oitavacolina
 verification:
   verified: false
 meta:

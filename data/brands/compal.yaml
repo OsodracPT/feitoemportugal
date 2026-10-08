@@ -1,0 +1,28 @@
+slug: compal
+status: draft
+name: Compal
+description:
+  pt: >-
+    Sumos, néctares e derivados de fruta e tomate produzidos desde 1952, com fruta
+    nacional transformada na fábrica de Almeirim.
+  en: >-
+    Juices, nectars and fruit and tomato products since 1952, from Portuguese fruit
+    processed at its Almeirim plant.
+website: https://www.compal.pt
+category: bebidas
+subcategory: refrigerantes-e-aguas
+products: [sumos]
+founded: 1952
+production:
+  scope: total
+location:
+  district: santarem
+  municipality: almeirim
+social:
+  instagram: compal
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,25 @@
+slug: casa-cubista
+status: draft
+name: Casa Cubista
+description:
+  pt: >-
+    Objetos para a casa que dão um toque atual a ofícios tradicionais, feitos à mão em
+    vilas e aldeias do interior de Portugal.
+  en: >-
+    Home objects that update traditional crafts, made by hand by makers spread across
+    the Portuguese countryside.
+website: https://www.casacubista.com
+category: casa-e-decoracao
+subcategory: decoracao
+tags: [feito-a-mao, tradicional]
+products: [pecas-decorativas]
+production:
+  scope: total
+social:
+  instagram: casacubista
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

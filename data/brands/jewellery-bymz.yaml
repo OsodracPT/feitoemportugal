@@ -1,0 +1,27 @@
+slug: jewellery-bymz
+status: draft
+name: Jewellery byMZ
+description:
+  pt: >-
+    Joias minimalistas em prata de lei, feitas à mão em Portugal por uma ourives
+    autodidata que começou a trabalhar o metal em 2020.
+  en: >-
+    Minimalist sterling silver jewellery, handmade in Portugal by a self-taught
+    silversmith who took up the craft in 2020.
+website: https://jewellerybymz.com
+category: joalharia
+subcategory: prata
+tags: [feito-a-mao, pequena-serie]
+products: [joias]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://jewellerybymz.com
+social:
+  instagram: jewellery_bymz
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,27 @@
+slug: nyos
+status: draft
+name: NYOS
+description:
+  pt: >-
+    Fatos de banho, biquínis e moda de praia desenhados e feitos em Portugal, por uma
+    marca lançada em 2014.
+  en: >-
+    Swimsuits, bikinis and beachwear from a label launched in 2014, with design and
+    production in Portugal.
+website: https://nyosswimwear.com
+category: moda-e-vestuario
+subcategory: banho
+products: [roupa-de-banho]
+founded: 2014
+production:
+  scope: total
+where_to_buy:
+  online_store: https://nyosswimwear.com
+social:
+  instagram: nyos_swimwear
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

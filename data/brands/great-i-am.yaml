@@ -1,0 +1,26 @@
+slug: great-i-am
+status: draft
+name: Great I Am
+description:
+  pt: >-
+    Roupa desportiva e de dia a dia concebida e confecionada em Portugal, numa unidade
+    fabril do próprio grupo.
+  en: >-
+    Sportswear and everyday clothing designed and sewn in Portugal, in a factory owned
+    by the brand's group.
+website: https://greatiamwear.com
+category: desporto-e-outdoor
+subcategory: vestuario-desportivo
+products: [t-shirts, camisolas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://greatiamwear.com
+social:
+  instagram: greatiamwear
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

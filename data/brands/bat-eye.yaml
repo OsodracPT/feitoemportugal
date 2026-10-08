@@ -1,0 +1,24 @@
+slug: bat-eye
+status: draft
+name: Bat Eye
+description:
+  pt: >-
+    Mobiliário de autor inspirado em cidades do mundo, desenhado por um arquiteto e
+    fabricado em Portugal.
+  en: >-
+    Signature furniture inspired by cities around the world, designed by an architect
+    and made in Portugal.
+website: https://www.bateye.com
+category: mobiliario
+tags: [contemporaneo]
+products: [mesas]
+production:
+  scope: total
+social:
+  instagram: bateye
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

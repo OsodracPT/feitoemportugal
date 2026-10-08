@@ -1,0 +1,30 @@
+slug: maui
+status: draft
+name: Mauî
+description:
+  pt: >-
+    Vestidos de festa, cerimónia e noiva personalizáveis em cor e medida, confecionados
+    no atelier de Vila Nova de Famalicão.
+  en: >-
+    Party, ceremony and bridal dresses customisable in colour and size, sewn at its Vila
+    Nova de Famalicão atelier.
+website: https://mauiofficial.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [personalizavel]
+products: [vestidos]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: vila-nova-de-famalicao
+where_to_buy:
+  online_store: https://mauiofficial.com
+social:
+  instagram: shopmauiofficial
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

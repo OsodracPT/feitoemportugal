@@ -1,0 +1,26 @@
+slug: musa-natural-cosmetics
+status: draft
+name: Musa Natural Cosmetics
+description:
+  pt: >-
+    Sabonetes, champôs sólidos e cuidados de rosto e lábios artesanais, feitos com
+    matérias-primas naturais num espaço de fabrico licenciado em Portugal.
+  en: >-
+    Handmade soaps, solid shampoos and face and lip care from natural ingredients,
+    produced in a licensed workshop in Portugal.
+website: https://musanaturalcosmetics.com
+category: cosmetica-e-higiene
+subcategory: cabelo
+products: [sabonetes, cremes]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://musanaturalcosmetics.com
+social:
+  instagram: musanaturalcosmetics
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

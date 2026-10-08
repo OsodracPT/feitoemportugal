@@ -21,6 +21,8 @@ production:
       Most pieces are made in Portugal; the brand does not say where the rest are made.
 where_to_buy:
   online_store: https://almande.com
+social:
+  instagram: almande.label
 verification:
   verified: false
 meta:

@@ -1,0 +1,27 @@
+slug: wewood
+status: draft
+name: Wewood
+description:
+  pt: >-
+    Mobiliário em madeira maciça de designers internacionais, feito por encomenda numa
+    carpintaria do norte de Portugal ativa desde 1964.
+  en: >-
+    Solid wood furniture by international designers, made to order in a northern
+    Portuguese joinery working since 1964.
+website: https://wewood.eu
+category: mobiliario
+tags: [madeira, fabrica-centenaria]
+products: [mesas, cadeiras, estantes]
+founded: 1964
+production:
+  scope: total
+where_to_buy:
+  online_store: https://wewood.eu
+social:
+  instagram: wewoodportuguesejoinery
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

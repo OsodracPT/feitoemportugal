@@ -16,6 +16,8 @@ production:
   scope: total
 where_to_buy:
   online_store: https://vaddia.com
+social:
+  instagram: vaddiashoes
 verification:
   verified: false
 meta:
