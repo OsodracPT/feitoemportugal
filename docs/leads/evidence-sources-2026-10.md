@@ -251,3 +251,17 @@ factory or workshop), never from the directory's district or from a registered o
 - **`boxpt`** sells mainly to gyms and clubs.
 - **`dancers-by-georgia`** remakes second-hand garments, so the fabric is not new.
 - **`ceu-azul`** prints and binds photo albums; the photographs are the customer's.
+
+## Publishing, 2026-10-08
+
+The maintainer asked to publish the drafts with strong evidence. Strong means the
+brand's own site says in a sentence where or how it makes its products (a factory, a
+workshop, a town, "we produce in Portugal"). 93 drafts met that and are now
+`status: published`, still `verified: false`.
+
+These 30 stay `draft`. Their evidence is a bare "Made in Portugal" or "Handcrafted in
+Portugal" label or slogan, a `parcial` scope, or an open point listed above (the
+foreign-brand question for `apple-of-eden`, the contradiction for `wetheknot`, the
+B2B-only shop for `campobello`):
+
+`almande`, `apple-of-eden`, `baby-gi`, `bamandboo`, `bat-eye`, `campobello`, `cavemen`, `dam`, `dr-kid`, `hands-on-earth`, `helena-mar`, `jj-heitor`, `lachoix`, `limontejo`, `marita-moreno`, `musa-natural-cosmetics`, `naturapura`, `nyos`, `pinknounou`, `piupiuchick`, `portdance`, `renova`, `rodilha`, `rutz`, `shoevenir`, `sugo-cork-rugs`, `vaddia`, `victoria-handmade`, `wetheknot`, `zas-tras`.

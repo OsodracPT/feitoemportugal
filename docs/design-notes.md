@@ -3,10 +3,11 @@
 Background for contributors: why things are built the way they are, and what is
 still undecided. For running the code, see the [README](../README.md).
 
-- **No brand is `verified` yet.** 90 brands are published. The first 11 were entered
+- **No brand is `verified` yet.** 183 brands are published. The first 11 were entered
   by hand; 72 came from the community leads in `docs/leads/`, each checked against the
   brand's own website, and 7 were added from maintainer-confirmed production locations, with the quote that establishes production in
-  Portugal recorded in `docs/leads/evidence-2026-10.md`. The `verified` badge still
+  Portugal recorded in `docs/leads/evidence-2026-10.md`. Another 93 came from the second lead pass
+  (see below). The `verified` badge still
   requires a maintainer, and municipalities and price ranges are often absent on
   purpose rather than guessed.
 - **83 leads produced no origin claim.** `docs/leads/reddit-2026-10.csv` tracks all 182
@@ -28,7 +29,7 @@ still undecided. For running the code, see the [README](../README.md).
   is the `dist` filter drawn as a picture, with the same faceted counts as the
   checkboxes; on a region page it links to the other regions and puts a dot on each
   municipality centroid that has brands, never on an address.
-- **The map covers 38 of 90 brands.** `location` is the *production* site, not the
+- **The map covers 74 of 183 brands.** `location` is the *production* site, not the
   office or the shop, and most brand sites never say where they manufacture. The
   backfill on 2026-10-08 found six more (see `docs/leads/evidence-2026-10.md`); the
   rest stay empty rather than guessed. More will come from outreach and from leads
@@ -47,10 +48,12 @@ still undecided. For running the code, see the [README](../README.md).
 - **Open: photos and logos versus CC BY.** Brand photos are not ours to license.
   Before `media` is filled, decide whether media is excluded from the dataset
   licence and collected only with the brand's permission.
-- **123 drafts wait for review.** The lead pass of 2026-10-08 (a brand directory, the
+- **30 drafts wait for review.** The lead pass of 2026-10-08 (a brand directory, the
   footwear association list, press round-ups, Reddit threads) checked 583 candidates
-  and found a production claim for 123. Each quote is in
-  `docs/leads/evidence-sources-2026-10.md`, with points to check before publishing.
+  and found a production claim for 123. The 93 whose site says in a sentence where or
+  how they make things were published; the 30 left rest on a bare "Made in Portugal"
+  label, a partial claim or an open point. Each quote is in
+  `docs/leads/evidence-sources-2026-10.md`, with the split at the end.
 - **Logo is provisional.** Three variants in `site/public/brand/`. Once one is
   chosen, outline the text to paths so it no longer depends on a font.
 - **Accent colour** (`--accent`, a deep green) and the **code licence** (MIT or AGPL)
@@ -70,7 +73,7 @@ still undecided. For running the code, see the [README](../README.md).
   they reflect the search and every *other* group, so an option tells you how many
   brands it would leave. A group with no brand behind it is not rendered at all —
   which is why "verified" does not appear yet.
-- **"Newest" currently equals A–Z.** All 90 brands were added on the same day, so
+- **"Newest" barely sorts yet.** Every brand was added on one of two days, so
   `meta.added` cannot order them apart yet; the sort becomes meaningful as brands
   arrive over time.
 - **One search index, not one per language.** Search covers both languages at the same

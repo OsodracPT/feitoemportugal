@@ -122,16 +122,17 @@ TypeScript. Conventional Commits. pnpm workspaces. Comments explain *why*, not w
 
 ## State
 
-Phases 1 and 2 are done: schema and taxonomy, 90 published brands, the bilingual
+Phases 1 and 2 are done: schema and taxonomy, the first 90 published brands, the bilingual
 site with translated URLs, technical SEO, search, the eleven combinable filters with
 sort order, and the public JSON API. Since then: product types (`products.yaml`,
 the `prod` filter, `/produtos` pages), tag pages (`/etiquetas`), a `founded` field,
 the "how we know" block on brand pages, CAOP-derived municipality centroids and
 district outlines, the district map as a listing filter, and region pages
-(`/regioes`). Only 38 of the 90 brands have a known production location, so the map
-covers less than half the catalogue until more are found. A second lead pass
-(`docs/leads/sources-2026-10.csv`, evidence in `evidence-sources-2026-10.md`) added
-123 drafts awaiting a maintainer's review; they are not published.
+(`/regioes`). A second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
+`evidence-sources-2026-10.md`) added 123 drafts; 93 with a production sentence were
+published on 2026-10-08, so 183 brands are live, and 30 drafts with only a label,
+a partial claim or an open point still await a maintainer. Only 74 of the 183 have a
+known production location, so the map covers about 40 % of the catalogue.
 
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
 through `deploy.yml`. The README is written for people running the code;

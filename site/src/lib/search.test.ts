@@ -49,8 +49,8 @@ describe('brand search', () => {
   it('searches Portuguese and English at the same time', () => {
     expect(hits('socks', 20)).toContain('chule');
     expect(hits('meias', 20)).toContain('chule');
-    expect(hits('leather', 20)).toContain('singular-leather');
-    expect(hits('pele', 20)).toContain('singular-leather');
+    expect(hits('leather', 100)).toContain('singular-leather');
+    expect(hits('pele', 100)).toContain('singular-leather');
   });
 
   it('finds brands by category and by region', () => {
