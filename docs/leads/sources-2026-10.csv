@@ -151,3 +151,21 @@ Sanjo,https://sanjo.pt/,already in data/brands,,,,reddit-buyfromeu,duplicate
 Benamor,,already in data/brands,,,,reddit-buyfromeu,duplicate
 We The Knot,https://www.wetheknot.com/,also listed by oladaniela,,,,reddit-buyfromeu,duplicate
 Ementa,https://www.ementasb.com/,also listed by oladaniela,,,,reddit-buyfromeu,duplicate
+Undandy,https://www.undandy.com/,"made-to-order shoes, Lisbon; press (WorldFootwear) places production in São João da Madeira; own domain did not resolve on 2026-10-08",calcado,,aveiro,reddit-portugal,no-website
+Sapataria Lord,,shoe retailer in Baixa (CAE 47721 retail); no own production,calcado,,,reddit-portugal,rejected
+Sapataria do Carmo,,already in data/brands,,,,reddit-portugal,duplicate
+Citadin,,already in data/brands,,,,reddit-portugal,duplicate
+Carlos Santos,http://santosshoes.com/,already in data/brands,,,,reddit-portugal,duplicate
+Rockport,,US brand; not Portuguese despite the comment,,,,reddit-portugal,rejected
+Urban Shepherd,https://urbanshepherdboots.com/,draft: data/brands/urban-shepherd.yaml,calcado,,leiria,reddit-buyfromeu,added
+Wills Vegan Shoes,https://wills-vegan-shoes.com/,"UK brand; own site: ""ethically made in Italy & Portugal""; foreign and partial, waits for the foreign-brand scope decision",calcado,,,reddit-buyfromeu,held
+Solovair,https://www.nps-solovair.com/,made in England,,,,reddit-buyfromeu,rejected
+Floris van Bommel,https://www.florisvanbommel.com/,Dutch brand; own site names no country of production,calcado,,,reddit-buyfromeu,no-claim-found
+Sneaky Steve,https://www.sneakysteve.se/,"Swedish brand (Gothenburg); retailers list a Felgueiras manufacturer, own site has no claim; foreign brand",calcado,,,reddit-buyfromeu,held
+Bobbies,https://www.bobbies.com/,French brand; own site names no country of production,calcado,,,reddit-buyfromeu,no-claim-found
+Pied de Biche,https://www.pieddebiche-paris.com/,"French brand; own site: ""fabrication chaussures en cuir au Portugal""; waits for the foreign-brand scope decision",calcado,,,reddit-buyfromeu,held
+Asphalte,https://www.asphalte.com/,"French clothing brand; its boots page says ""Fabriquées au Portugal"" (only that product checked); waits for the foreign-brand scope decision",moda-e-vestuario,,,reddit-buyfromeu,held
+NAE Vegan Shoes,https://nae-vegan.com/,already in data/brands,,,,reddit-buyfromeu,duplicate
+Fly London,,already in data/brands,,,,reddit-buyfromeu,duplicate
+Camport,https://camport.pt/,already in data/brands,,,,reddit-buyfromeu,duplicate
+Old Mulla,https://oldmulla.com/,already in data/brands,,,,reddit-buyfromeu,duplicate

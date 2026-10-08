@@ -1,0 +1,30 @@
+slug: urban-shepherd
+status: draft
+name: Urban Shepherd
+description:
+  pt: >-
+    Botas de pele montadas à mão numa oficina familiar da Benedita, em Alcobaça, com
+    construção Goodyear que permite trocar a sola e pele curtida em Alcanena.
+  en: >-
+    Leather boots assembled by hand in a family workshop in Benedita, Alcobaça, with a
+    resoleable Goodyear welt and leather tanned in Alcanena.
+website: https://urbanshepherdboots.com
+category: calcado
+subcategory: botas
+tags: [pele, feito-a-mao, producao-por-encomenda]
+products: [botas]
+production:
+  scope: total
+location:
+  district: leiria
+  municipality: alcobaca
+where_to_buy:
+  online_store: https://urbanshepherdboots.com
+social:
+  instagram: urbanshepherdboots
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

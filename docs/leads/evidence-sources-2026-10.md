@@ -1,7 +1,7 @@
 # Lead pass — open sources, October 2026
 
-The status of every lead is in [`sources-2026-10.csv`](./sources-2026-10.csv): 152 candidates,
-41 added as drafts. This file records which sources were used and why, how each brand
+The status of every lead is in [`sources-2026-10.csv`](./sources-2026-10.csv): 170 candidates,
+42 added as drafts. This file records which sources were used and why, how each brand
 was checked, and the quote that establishes production in Portugal for every draft.
 As with [`evidence-2026-10.md`](./evidence-2026-10.md), evidence stays here, out of
 the YAML.
@@ -19,6 +19,7 @@ taken from any of them (brand name and website); no description, photo or rankin
 | ATP (textile association) | Terms cover privacy only. Its company list is mostly B2B manufacturers, so it was not used this round. | — |
 | Press and blogs: oladaniela.com (2026 lists), portugal.com, Indagare, AICEP showcase (Nov. 2025) | Read by hand; brand names only. | 38 names |
 | r/BuyFromEU, "Any local brands worth checking out in Lisbon?" | Read through Reddit's public RSS feed (the page itself blocks automated reading); brand names only, no usernames. | 18 names |
+| r/BuyFromEU, "I'm looking for shoes like this in the EU." and r/portugal, "Best Portuguese men's dress shoes?" | Saved pages supplied by the maintainer; brand names only, no usernames. The pages were deleted after the pass. | 18 names |
 
 Mustique (portugal.com) was renamed Gandaia in 2025, so it appears once, as Gandaia.
 
@@ -86,6 +87,7 @@ All brands below are `status: draft`, `meta.source: import`, `verified: false`.
 | `victoria-handmade` | "Handmade in Portugal" | — |
 | `wayz` | "Fabricadas no Porto"; "Concebido e fabricado de forma ética e transparente no Porto" | same quote |
 | `wetheknot` | "Our collections … all exclusively made in Portugal" | — |
+| `urban-shepherd` | "Urban Shepherd Boots are meticulously handcrafted at a small, family-owned workshop in Benedita, Portugal"; leather "locally sourced … from Alcanena" | Benedita → Alcobaça |
 | `conscious` | "Crafted in Portugal from 100% organic cotton" | — |
 
 ### For the maintainer to look at before publishing
@@ -119,3 +121,25 @@ sentence places production in Portugal. Lapierce has a clear claim but its site 
 not show what it makes. ColieCo moved its production to Portugal from abroad and waits
 for the foreign-brand scope decision. Ementa only describes one season as made in
 Portugal. The CSV notes the reason for each.
+
+## Second Reddit batch (two threads, 2026-10-08)
+
+Of 18 names, 7 were already in `data/brands/`. Of the other 11, one is added:
+
+- **Added:** Urban Shepherd. Its old domain is for sale, but the maintainer pointed to
+  the current one, urbanshepherdboots.com, which carries the claim (see the table
+  above). Press from 2019 says the business moved its head office to Houston, Texas;
+  the site itself names only the Benedita workshop. Check this against the
+  foreign-brand question before publishing. Price is left out because the site shows
+  none; `producao-por-encomenda` rests on "allow us from 2 to 4 weeks to make your
+  order".
+- **No working site:** Undandy (made-to-order shoes; press places production in São
+  João da Madeira, but its domain does not resolve). Worth a recheck.
+- **Foreign brands with a Portugal claim**, held for the foreign-brand scope decision:
+  Pied de Biche ("fabrication chaussures en cuir au Portugal"), Asphalte (its boots:
+  "Fabriquées au Portugal"), Wills Vegan Shoes ("ethically made in Italy & Portugal",
+  so partial at best) and Sneaky Steve (no claim on its own site; retailer listings
+  name a Felgueiras manufacturer).
+- **No claim on the brand's site:** Bobbies, Floris van Bommel.
+- **Rejected:** Sapataria Lord (a retailer), Rockport (a US brand), Solovair (made in
+  England).
