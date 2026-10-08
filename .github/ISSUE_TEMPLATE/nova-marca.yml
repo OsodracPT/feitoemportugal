@@ -1,0 +1,159 @@
+# Suggest a brand. The labels below are read by scripts/issue-to-pr.ts when a
+# maintainer adds the `aprovado` label; change a label there and here together.
+# The category and district options must match data/taxonomy (a test checks).
+name: Sugerir uma marca / Suggest a brand
+description: Uma marca que fabrica em Portugal e ainda não está na lista. / A brand that makes its products in Portugal and is not listed yet.
+title: "[marca] "
+labels: [nova-marca]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado! Só entram marcas cujo **próprio site** diga que fabricam em Portugal. "Marca portuguesa" ou "desenhado em Portugal" não chega. Uma marca estrangeira entra quando a maior parte do que vende é feita cá.
+        Antes de submeter, pesquisa a marca em [feitoemportugal.org](https://feitoemportugal.org/marcas) para não a repetir.
+
+        Thank you! A brand is listed only when **its own website** says it makes its products in Portugal. "Portuguese brand" or "designed in Portugal" is not enough. A foreign brand qualifies when most of what it sells is made here.
+        Before you submit, search for the brand on [feitoemportugal.org](https://feitoemportugal.org/en/brands) so it is not listed twice.
+
+  - type: input
+    id: name
+    attributes:
+      label: Nome da marca / Brand name
+    validations:
+      required: true
+
+  - type: input
+    id: website
+    attributes:
+      label: Site oficial / Official website
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: input
+    id: evidence_url
+    attributes:
+      label: Página onde a marca diz que fabrica em Portugal / Page where the brand says it makes its products in Portugal
+      description: Do site da própria marca, não de uma loja ou artigo. / On the brand's own site, not a shop or an article.
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence_quote
+    attributes:
+      label: Frase dessa página / Sentence from that page
+      description: Copia a frase tal como está. Fica no registo de fontes, não na ficha da marca. / Copy the sentence as it is. It goes into the source notes, not the brand page.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Produção / Production
+      options:
+        - Tudo é feito em Portugal / Everything is made in Portugal (total)
+        - Uma parte é feita fora / Part of it is made elsewhere (parcial)
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope_notes
+    attributes:
+      label: Se é parcial, o que é feito em Portugal? / If partial, what is made in Portugal?
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria / Category
+      options:
+        - Moda e vestuário / Fashion and clothing (moda-e-vestuario)
+        - Calçado / Footwear (calcado)
+        - Acessórios / Accessories (acessorios)
+        - Joalharia / Jewellery (joalharia)
+        - Casa e decoração / Home and decor (casa-e-decoracao)
+        - Têxteis-lar / Home textiles (texteis-lar)
+        - Mobiliário / Furniture (mobiliario)
+        - Cerâmica e vidro / Ceramics and glass (ceramica-e-vidro)
+        - Alimentação / Food (alimentacao)
+        - Bebidas / Drinks (bebidas)
+        - Cosmética e higiene / Cosmetics and personal care (cosmetica-e-higiene)
+        - Bebé e criança / Baby and kids (bebe-e-crianca)
+        - Desporto e outdoor / Sports and outdoor (desporto-e-outdoor)
+        - Papelaria e livros / Stationery and books (papelaria-e-livros)
+        - Tecnologia / Technology (tecnologia)
+        - Animais / Pets (animais)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: district
+    attributes:
+      label: Distrito onde fabrica / District where it makes its products
+      description: Só se a marca o disser. Escritório e loja não contam. / Only if the brand says so. An office or a shop does not count.
+      options:
+        - Não sei / Don't know (none)
+        - Aveiro (aveiro)
+        - Beja (beja)
+        - Braga (braga)
+        - Bragança (braganca)
+        - Castelo Branco (castelo-branco)
+        - Coimbra (coimbra)
+        - Évora (evora)
+        - Faro (faro)
+        - Guarda (guarda)
+        - Leiria (leiria)
+        - Lisboa (lisboa)
+        - Portalegre (portalegre)
+        - Porto (porto)
+        - Santarém (santarem)
+        - Setúbal (setubal)
+        - Viana do Castelo (viana-do-castelo)
+        - Vila Real (vila-real)
+        - Viseu (viseu)
+        - Açores (acores)
+        - Madeira (madeira)
+
+  - type: input
+    id: municipality
+    attributes:
+      label: Concelho onde fabrica (opcional) / Municipality where it makes its products (optional)
+
+  - type: textarea
+    id: description_pt
+    attributes:
+      label: Descrição em português / Description in Portuguese
+      description: Duas ou três frases tuas sobre o que a marca faz e onde. Não copies o texto da marca; os dados são publicados sob CC BY 4.0. / Two or three sentences of your own about what the brand makes and where. Do not copy the brand's text; the data is published under CC BY 4.0.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description_en
+    attributes:
+      label: Descrição em inglês (opcional) / Description in English (optional)
+
+  - type: input
+    id: instagram
+    attributes:
+      label: Instagram (opcional) / Instagram (optional)
+      placeholder: nomedamarca
+
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: A tua ligação à marca / Your connection to the brand
+      options:
+        - Nenhuma / None
+        - Trabalho na marca ou sou dono / I work for or own the brand
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmações / Confirmations
+      options:
+        - label: A descrição é texto meu e pode ser publicada sob CC BY 4.0. / The description is my own text and may be published under CC BY 4.0.
+          required: true
+        - label: Não incluí dados pessoais (moradas, telefones ou emails pessoais). / I included no personal data (home addresses, personal phones or emails).
+          required: true

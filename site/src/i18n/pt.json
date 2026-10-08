@@ -50,7 +50,7 @@
     "verified": "Verificado",
     "verifiedOn": "Verificado em {date}",
     "notVerified": "Ainda não verificado",
-    "verifiedHelp": "Um maintainer confirmou que a marca produz em Portugal.",
+    "verifiedHelp": "Um responsável pelo projeto confirmou que a marca produz em Portugal.",
     "production": "Produção",
     "productionTotal": "Produção total em Portugal",
     "productionPartial": "Produção parcial em Portugal",
@@ -79,9 +79,9 @@
     "founded": "Fundada em",
     "products": "Produtos",
     "howWeKnow": "Como sabemos que é feito em Portugal",
-    "howImport": "A própria marca afirma, no seu site, que fabrica em Portugal. Lemos essa afirmação antes de publicar e guardámos a citação nas notas de evidência do projeto.",
-    "howMaintainer": "Adicionada por um maintainer que conhece a produção da marca.",
-    "evidenceLink": "Ver as notas de evidência",
+    "howImport": "A própria marca diz, no seu site, que fabrica em Portugal. Lemos essa informação antes de publicar e guardámos a citação no registo de fontes do projeto.",
+    "howMaintainer": "Adicionada por um responsável pelo projeto que conhece a produção da marca.",
+    "evidenceLink": "Ver o registo de fontes",
     "howNotVerified": "Ainda não foi verificada de forma independente."
   },
   "category": {
@@ -103,7 +103,7 @@
   },
   "tags": {
     "title": "Etiquetas",
-    "intro": "Materiais, ofícios e outras características que atravessam as categorias.",
+    "intro": "Materiais, ofícios e outras características, seja qual for a categoria.",
     "brandsWith": "Marcas com a etiqueta «{tag}»",
     "lede": "{count} marcas feitas em Portugal com esta etiqueta.",
     "other": "Outras etiquetas",
@@ -117,7 +117,7 @@
   "region": {
     "district": "Distrito",
     "autonomous": "Região autónoma",
-    "title": "{region} — marcas feitas em Portugal",
+    "title": "Marcas feitas {inRegion}",
     "lede": "{count} marcas produzem aqui.",
     "other": "Outras regiões",
     "refine": "Filtrar estas marcas no catálogo",
@@ -136,7 +136,7 @@
     "dataLicense": "Dados sob CC BY 4.0",
     "codeLicense": "Código sob MIT",
     "builtBy": "Projeto comunitário e de código aberto.",
-    "noTracking": "Sem cookies e sem rastreio."
+    "noTracking": "Sem cookies. Não seguimos quem nos visita."
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -156,8 +156,8 @@
     "clear": "Limpar pesquisa",
     "results": "{count} marcas encontradas",
     "resultsOne": "1 marca encontrada",
-    "empty": "Nenhuma marca corresponde a \"{query}\".",
-    "emptyHint": "Tenta outra palavra, ou navega por categoria.",
+    "empty": "Nenhuma marca corresponde a «{query}».",
+    "emptyHint": "Tenta outra palavra ou navega por categoria.",
     "loading": "A carregar a pesquisa…",
     "error": "Não foi possível carregar a pesquisa. Atualiza a página ou navega por categoria."
   },
@@ -203,9 +203,9 @@
     "envelope": "Formato da resposta",
     "envelopeIntro": "Todas as respostas são um objeto com os metadados e os dados em `data`:",
     "versioning": "Versões",
-    "versioningBody": "A API está em {version}. Alterações incompatíveis — remover ou mudar o significado de um campo — passam para uma versão nova; acrescentar campos não é considerado incompatível.",
+    "versioningBody": "A API está na {version}. Remover um campo ou mudar o seu significado obriga a uma versão nova; acrescentar campos não.",
     "attribution": "Atribuição",
-    "attributionBody": "Os dados estão sob CC BY 4.0: podes usá-los, incluindo comercialmente, desde que atribuas a fonte com um link para {site}.",
+    "attributionBody": "Os dados estão sob CC BY 4.0: podes usá-los, também para fins comerciais, desde que indiques a fonte com uma ligação para {site}.",
     "schema": "Schema",
     "schemaBody": "O JSON Schema de uma marca é gerado a partir do schema Zod do projeto, por isso acompanha sempre os dados. As regras entre campos que o JSON Schema não consegue expressar continuam a ser validadas pelo validador do projeto.",
     "notes": "Notas",

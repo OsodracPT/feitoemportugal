@@ -1,0 +1,97 @@
+# Turns an approved brand suggestion into a pull request. A maintainer adds the
+# `aprovado` label to an issue opened with the "Sugerir uma marca" form; this
+# job writes data/brands/<slug>.yaml (as a draft) and the evidence row, checks
+# the whole dataset, and opens a PR that closes the issue. If the suggestion
+# cannot be converted, it comments on the issue with the reasons and removes
+# the label, so adding it again after an edit retries.
+#
+# The issue body is untrusted. It reaches the script only through an
+# environment variable and is never expanded inside a `run:` line.
+#
+# Repository settings: Actions need "Read and write permissions" and "Allow
+# GitHub Actions to create and approve pull requests". A PR opened with the
+# default token does not start other workflows, so validate.yml will not run on
+# it; set the optional SUBMISSIONS_TOKEN secret (a fine-grained token with
+# contents and pull-requests write on this repository) to change that.
+name: issue-to-pr
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: issue-to-pr-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  convert:
+    if: >-
+      github.event.label.name == 'aprovado' &&
+      contains(github.event.issue.labels.*.name, 'nova-marca')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.SUBMISSIONS_TOKEN || github.token }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      BRANCH: sugestao/issue-${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SUBMISSIONS_TOKEN || github.token }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Convert the issue
+        id: convert
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: node scripts/issue-to-pr.ts
+
+      - name: Validate the dataset
+        if: steps.convert.outputs.ok == 'true'
+        run: pnpm validate
+
+      - name: Open the pull request
+        if: steps.convert.outputs.ok == 'true'
+        env:
+          SLUG: ${{ steps.convert.outputs.slug }}
+          MESSAGE: ${{ steps.convert.outputs.message }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git add "data/brands/$SLUG.yaml" docs/leads/evidence-community.md
+          git commit -m "feat(data): suggest $SLUG (#$ISSUE_NUMBER)"
+          git push --force origin "HEAD:refs/heads/$BRANCH"
+          if gh pr view "$BRANCH" --json state --jq .state | grep -q OPEN; then
+            gh pr edit "$BRANCH" --body-file "$MESSAGE"
+          else
+            gh pr create --head "$BRANCH" --base "$BASE" \
+              --title "Nova marca: $SLUG" --body-file "$MESSAGE" --label nova-marca
+          fi
+
+      - name: Explain what went wrong
+        if: steps.convert.outputs.ok == 'false'
+        env:
+          MESSAGE: ${{ steps.convert.outputs.message }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body-file "$MESSAGE"
+          gh issue edit "$ISSUE_NUMBER" --remove-label aprovado
+
+      - name: Report a failed check
+        if: failure()
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "A conversão falhou numa verificação; um responsável vai ver o registo da execução. / The conversion failed a check; a maintainer will look at the run log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

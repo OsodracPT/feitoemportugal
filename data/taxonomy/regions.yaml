@@ -12,13 +12,12 @@
   slug: { pt: aveiro, en: aveiro }
   intro:
     pt: >-
-      Entre a ria e a serra, o distrito de Aveiro concentra o maior cluster de
-      calçado do país, em São João da Madeira e arredores, além da porcelana de
-      Ílhavo e de uma forte indústria de metalomecânica e cerâmica.
+      O distrito de Aveiro tem o maior polo de calçado do país, em São João da Madeira e
+      arredores, a porcelana de Ílhavo e muita indústria metalomecânica e cerâmica.
     en: >-
-      Between the lagoon and the hills, the Aveiro district holds Portugal's largest
-      footwear cluster around São João da Madeira, alongside the porcelain works of
-      Ílhavo and a strong metal and ceramics industry.
+      The Aveiro district has Portugal's largest footwear cluster, around São João da
+      Madeira, plus the porcelain works of Ílhavo and plenty of metalworking and
+      ceramics.
   centroid: [40.6405, -8.6538]
   municipalities:
     - { id: agueda, name: Águeda, centroid: [40.586, -8.3956] }
@@ -47,11 +46,11 @@
   slug: { pt: beja, en: beja }
   intro:
     pt: >-
-      O maior distrito do país em área, com produção agroalimentar de referência —
-      azeite, queijo, mel e vinho — e artesanato ligado à cortiça e à lã alentejana.
+      O maior distrito do país em área. Produz azeite, queijo, mel e vinho de
+      referência, e tem artesanato de cortiça e de lã alentejana.
     en: >-
-      Portugal's largest district by area, known for food production — olive oil,
-      cheese, honey and wine — and for crafts built around cork and Alentejo wool.
+      Portugal's largest district by area. It is known for olive oil, cheese, honey and
+      wine, and for crafts in cork and Alentejo wool.
   centroid: [38.0150, -7.8632]
   municipalities:
     - { id: aljustrel, name: Aljustrel, centroid: [37.8879, -8.1881] }
@@ -78,7 +77,7 @@
       O centro do têxtil português. Entre Guimarães, Famalicão e o Vale do Ave estão
       fiações, malhas, confeções e têxteis-lar que produzem para marcas de todo o mundo.
     en: >-
-      The heart of Portuguese textiles. Guimarães, Famalicão and the Ave valley host
+      The centre of Portuguese textiles. Guimarães, Famalicão and the Ave valley have
       spinning mills, knitwear factories, garment makers and home textile plants that
       supply brands worldwide.
   centroid: [41.5454, -8.4265]
@@ -104,12 +103,11 @@
   slug: { pt: braganca, en: braganca }
   intro:
     pt: >-
-      No nordeste transmontano, um distrito de produção alimentar de altitude —
-      azeite, castanha, fumeiro e queijo — e de artesanato têxtil e de cerâmica
-      com raízes antigas.
+      No nordeste transmontano, um distrito de azeite, castanha, fumeiro e queijo, com
+      artesanato têxtil e cerâmica de tradição antiga.
     en: >-
-      In the north-east, a district of high-altitude food production — olive oil,
-      chestnuts, cured meats and cheese — plus textile and ceramic crafts with deep roots.
+      In the far north-east: olive oil, chestnuts, cured meats and cheese, with textile
+      and pottery crafts that go back a long way.
   centroid: [41.8061, -6.7567]
   municipalities:
     - { id: alfandega-da-fe, name: Alfândega da Fé, centroid: [41.3498, -6.9511] }
@@ -157,11 +155,11 @@
   slug: { pt: coimbra, en: coimbra }
   intro:
     pt: >-
-      Entre o mar e a serra, o distrito de Coimbra junta cestaria de buinho no Baixo
-      Mondego, cerâmica, mobiliário e uma rede de pequenos produtores alimentares.
+      O distrito de Coimbra tem cestaria de buinho no Baixo Mondego, cerâmica,
+      mobiliário e muitos pequenos produtores alimentares.
     en: >-
-      Between sea and mountains, the Coimbra district combines rush basketry in the
-      lower Mondego valley with ceramics, furniture and a network of small food producers.
+      The Coimbra district has rush basketry in the lower Mondego valley, ceramics,
+      furniture and many small food producers.
   centroid: [40.2111, -8.4291]
   municipalities:
     - { id: arganil, name: Arganil, centroid: [40.229, -7.9855] }
@@ -188,11 +186,11 @@
   slug: { pt: evora, en: evora }
   intro:
     pt: >-
-      No coração do Alentejo, com olarias de São Pedro do Corval, mantas de Reguengos,
+      No Alentejo central, com olarias de São Pedro do Corval, mantas de Reguengos,
       cadeiras pintadas, cortiça e vinho entre as produções mais conhecidas.
     en: >-
-      In the heart of the Alentejo, known for the potteries of São Pedro do Corval,
-      Reguengos blankets, painted chairs, cork and wine.
+      In central Alentejo, known for the potteries of São Pedro do Corval, Reguengos
+      blankets, painted chairs, cork and wine.
   centroid: [38.5714, -7.9135]
   municipalities:
     - { id: alandroal, name: Alandroal, centroid: [38.6158, -7.3829] }
@@ -309,8 +307,8 @@
       Lisboa concentra marcas, estúdios de design e oficinas pequenas, de perfumaria e
       cosmética a papelaria, joalharia e confeção em séries curtas.
     en: >-
-      Lisbon concentrates brands, design studios and small workshops, from perfume and
-      cosmetics to stationery, jewellery and short-run garment making.
+      Lisbon is home to many brands, design studios and small workshops, from perfume
+      and cosmetics to stationery, jewellery and short-run garment making.
   centroid: [38.7223, -9.1393]
   municipalities:
     - { id: alenquer, name: Alenquer, centroid: [39.0982, -9.0391] }
@@ -515,10 +513,10 @@
   intro:
     pt: >-
       Na Beira Alta, com mobiliário, cutelaria, vinho do Dão e do Douro, cerâmica de
-      Molelos e uma rede densa de pequenas oficinas rurais.
+      Molelos e muitas pequenas oficinas rurais.
     en: >-
       In the Beira Alta: furniture, cutlery, Dão and Douro wines, the black ceramics of
-      Molelos and a dense network of small rural workshops.
+      Molelos and many small rural workshops.
   centroid: [40.6610, -7.9097]
   municipalities:
     - { id: armamar, name: Armamar, centroid: [41.0949, -7.6776] }
@@ -585,8 +583,8 @@
   slug: { pt: madeira, en: madeira }
   intro:
     pt: >-
-      Na Madeira e no Porto Santo, o bordado da Madeira, o vime da Camacha, o vinho
-      generoso, o mel de cana e a flor de produção local marcam a oferta.
+      Na Madeira e no Porto Santo, as produções mais conhecidas são o bordado da
+      Madeira, o vime da Camacha, o vinho generoso, o mel de cana e as flores.
     en: >-
       On Madeira and Porto Santo: Madeira embroidery, Camacha wickerwork, fortified wine,
       sugar cane honey and locally grown flowers.

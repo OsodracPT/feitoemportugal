@@ -95,6 +95,7 @@ Rules that keep the dataset honest and licensable:
 - **No personal data and no exact addresses.** Location stops at the municipality.
 - **Leave `verification` alone.** Only maintainers set it.
 
+To suggest a brand without editing files, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [`docs/collecting-brand-data.md`](docs/collecting-brand-data.md) explains how to
 research and fill in one brand.
 

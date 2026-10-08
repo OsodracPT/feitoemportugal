@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+// Suggestions go through the GitHub issue form until the site has its own form.
+const suggestUrl = `${SITE.repo}/issues/new?template=nova-marca.yml`;
+const contributeUrl = `${SITE.repo}/blob/main/CONTRIBUTING.md`;
 ---
 
 <footer class="footer">
@@ -16,6 +19,8 @@ const { lang } = Astro.props;
       <span class="muted">{t(lang, 'footer.noTracking')}</span>
     </p>
     <ul class="footer__links">
+      <li><a href={suggestUrl} rel="noopener">{t(lang, 'nav.submit')}</a></li>
+      <li><a href={contributeUrl} rel="noopener">{t(lang, 'footer.contribute')}</a></li>
       <li><a href={paths.api(lang)}>{t(lang, 'footer.api')}</a></li>
       <li><a href={SITE.repo} rel="noopener">{t(lang, 'footer.github')}</a></li>
       <li><a href={SITE.dataLicense.url} rel="license noopener">{t(lang, 'footer.dataLicense')}</a></li>

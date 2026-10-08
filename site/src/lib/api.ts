@@ -34,7 +34,7 @@ export function envelope<T>(data: T, count?: number): Envelope<T> {
     license: {
       id: SITE.dataLicense.id,
       url: SITE.dataLicense.url,
-      attribution: `Feito em Portugal — ${SITE.origin}`,
+      attribution: `Feito em Portugal (${SITE.origin})`,
     },
     ...(count === undefined ? {} : { count }),
     data,

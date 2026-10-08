@@ -15,7 +15,7 @@ export function brandJsonSchema(schemaUrl?: string): Record<string, unknown> {
   const generated = z.toJSONSchema(brandSchema, { io: 'input', unrepresentable: 'any' });
   return {
     ...(schemaUrl ? { $id: schemaUrl } : {}),
-    title: 'Feito em Portugal — brand',
+    title: 'Feito em Portugal brand',
     description:
       'A single brand file from data/brands/<slug>.yaml. Cross-field rules that JSON Schema cannot express are checked by the project validator.',
     ...generated,

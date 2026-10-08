@@ -11,8 +11,8 @@ SITE_URL=https://your-domain.example pnpm build
 `robots.txt`. It defaults to `https://feitoemportugal.org`, so set it when you
 deploy anywhere else.
 
-This directory holds a reference setup — nginx in Docker, plus an optional push
-deploy from GitHub Actions — but none of it is required. What matters is that the
+This directory holds a reference setup (nginx in Docker, plus an optional push
+deploy from GitHub Actions), but none of it is required. What matters is that the
 web server does what the next section lists.
 
 ## What the web server must do
@@ -33,7 +33,7 @@ the CSP and HSTS, and other sites' browser code can no longer read the API.
 ## Option 1: a static host
 
 Upload `site/dist/` to any static host and recreate the table above with its
-tools — redirect rules, a headers file, a custom 404. Check that `/marcas` is
+tools: redirect rules, a headers file, a custom 404. Check that `/marcas` is
 not redirected to `/marcas/` or `/marcas.html`, which many hosts do by default.
 
 ## Option 2: the reference nginx
@@ -66,8 +66,8 @@ EOF
 docker compose up -d
 ```
 
-Then point your TLS terminator — Caddy, Traefik, nginx, HAProxy, a load balancer
-or a CDN — at that port. Have it redirect `http://` to `https://` with a 301 or
+Then point your TLS terminator (Caddy, Traefik, nginx, HAProxy, a load balancer
+or a CDN) at that port. Have it redirect `http://` to `https://` with a 301 or
 308 and pass the original `Host` header through.
 
 If your proxy reaches containers over a Docker network instead of a published

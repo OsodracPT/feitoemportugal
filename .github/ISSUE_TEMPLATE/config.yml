@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Guia de contribuição / Contributing guide
+    url: https://github.com/OsodracPT/feitoemportugal/blob/main/CONTRIBUTING.md
+    about: Como sugerir marcas, corrigir dados e abrir pull requests. / How to suggest brands, fix data and open pull requests.
+  - name: API pública / Public API
+    url: https://feitoemportugal.org/api
+    about: Os dados em JSON, sob CC BY 4.0. / The data as JSON, under CC BY 4.0.

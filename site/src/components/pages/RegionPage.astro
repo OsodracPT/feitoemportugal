@@ -17,7 +17,7 @@ import {
   regions,
 } from '~/lib/data.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
-import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { inRegion, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { municipalityDots } from '~/lib/map.ts';
 import {
   breadcrumbJsonLd,
@@ -64,7 +64,7 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
 
 <Layout
   lang={lang}
-  title={pageTitle(t(lang, 'region.title', { region: name }), lang)}
+  title={pageTitle(t(lang, 'region.title', { inRegion: inRegion(lang, region.id, name) }), lang)}
   description={truncate(intro || t(lang, 'site.description'), 155)}
   canonical={alternates[lang]}
   alternates={alternates}

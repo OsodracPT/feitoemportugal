@@ -95,7 +95,9 @@ All brands below are `status: draft`, `meta.source: import`, `verified: false`.
 - **`wetheknot`**: the home page says "exclusively made in Portugal", the about page
   "mainly produced in Portugal". Recorded as `total`; `parcial` may be fairer.
 - **`apple-of-eden`**: a German-Portuguese brand, co-founded from Hamburg, with its head
-  office in the Porto region. Covered by the open foreign-brand scope question.
+  office in the Porto region. Published on 2026-10-08 once the maintainer ruled that a
+  foreign brand qualifies when most of its range is made in Portugal; this one says
+  all of it is.
 - **`campobello`**: its only shop is a B2B store for retailers; consumers buy it
   elsewhere.
 - **`dikamar`** and **`kankura`**: professional safety boots and golf shoes, fine for
@@ -259,9 +261,10 @@ brand's own site says in a sentence where or how it makes its products (a factor
 workshop, a town, "we produce in Portugal"). 93 drafts met that and are now
 `status: published`, still `verified: false`.
 
-These 30 stay `draft`. Their evidence is a bare "Made in Portugal" or "Handcrafted in
+These 30 stayed `draft`. Their evidence is a bare "Made in Portugal" or "Handcrafted in
 Portugal" label or slogan, a `parcial` scope, or an open point listed above (the
 foreign-brand question for `apple-of-eden`, the contradiction for `wetheknot`, the
-B2B-only shop for `campobello`):
+B2B-only shop for `campobello`). `apple-of-eden` was published later the same day, once
+the foreign-brand question was settled; the other 29 remain:
 
-`almande`, `apple-of-eden`, `baby-gi`, `bamandboo`, `bat-eye`, `campobello`, `cavemen`, `dam`, `dr-kid`, `hands-on-earth`, `helena-mar`, `jj-heitor`, `lachoix`, `limontejo`, `marita-moreno`, `musa-natural-cosmetics`, `naturapura`, `nyos`, `pinknounou`, `piupiuchick`, `portdance`, `renova`, `rodilha`, `rutz`, `shoevenir`, `sugo-cork-rugs`, `vaddia`, `victoria-handmade`, `wetheknot`, `zas-tras`.
+`almande`, `baby-gi`, `bamandboo`, `bat-eye`, `campobello`, `cavemen`, `dam`, `dr-kid`, `hands-on-earth`, `helena-mar`, `jj-heitor`, `lachoix`, `limontejo`, `marita-moreno`, `musa-natural-cosmetics`, `naturapura`, `nyos`, `pinknounou`, `piupiuchick`, `portdance`, `renova`, `rodilha`, `rutz`, `shoevenir`, `sugo-cork-rugs`, `vaddia`, `victoria-handmade`, `wetheknot`, `zas-tras`.

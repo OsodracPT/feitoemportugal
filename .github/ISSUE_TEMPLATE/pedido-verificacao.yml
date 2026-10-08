@@ -1,0 +1,50 @@
+# For brands that want the "verificado" badge. Only maintainers set the
+# verification block; this form collects what they need to decide.
+name: Pedir verificação / Request verification
+description: Para marcas que querem o selo de verificação. / For brands that want the verified badge.
+title: "[verificação] "
+labels: [verificacao]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        O selo diz que alguém do projeto confirmou, por um meio independente do site da marca, que a produção é em Portugal. Não se paga e não se compra.
+        The badge says someone on the project confirmed, independently of the brand's website, that production is in Portugal. It is free and cannot be bought.
+
+  - type: input
+    id: brand
+    attributes:
+      label: Marca / Brand
+      description: O endereço da ficha, se a marca já estiver listada. / The page address, if the brand is already listed.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: method
+    attributes:
+      label: Como podemos confirmar? / How can we confirm it?
+      multiple: true
+      options:
+        - Visita à fábrica ou oficina / Visit to the factory or workshop
+        - Certificado ou registo oficial / Certificate or official registration
+        - Fotografias da produção / Photos of production
+        - Contacto com o fabricante / Contact with the manufacturer
+        - Outro / Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Detalhes / Details
+      description: Não publiques aqui documentos com dados pessoais; diz-nos que os tens e combinamos outra via. / Do not post documents with personal data here; tell us you have them and we will arrange another way.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmação / Confirmation
+      options:
+        - label: Trabalho na marca ou sou dono. / I work for or own the brand.
+          required: true

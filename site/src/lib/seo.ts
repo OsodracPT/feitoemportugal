@@ -38,7 +38,7 @@ export function brandTitle(
       ? localized(context.category.label, lang)
       : '';
   const parts = [label, context.regionLabel].filter(Boolean).join(', ');
-  return pageTitle(parts ? `${brand.name} — ${parts}` : brand.name, lang);
+  return pageTitle(parts ? `${brand.name} · ${parts}` : brand.name, lang);
 }
 
 export function brandDescription(brand: Brand, lang: Lang): string {

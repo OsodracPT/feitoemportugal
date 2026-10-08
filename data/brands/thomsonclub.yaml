@@ -3,11 +3,11 @@ status: published
 name: Thomson Club
 description:
   pt: >-
-    Vestuário desenhado no Porto e fabricado em Portugal, com peças intemporais de
-    linhas simples e materiais de gramagem alta.
+    Vestuário desenhado no Porto e fabricado em Portugal, com peças de linhas simples em
+    tecidos de gramagem alta.
   en: >-
-    Clothing designed in Porto and manufactured in Portugal, with timeless pieces in
-    simple lines and heavier fabrics.
+    Clothing designed in Porto and manufactured in Portugal, with simply cut pieces in
+    heavier fabrics.
 website: https://thomsonclub.com
 category: moda-e-vestuario
 tags: [minimalista, classico]
@@ -19,5 +19,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

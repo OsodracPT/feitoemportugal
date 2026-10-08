@@ -79,7 +79,7 @@
       answer:
         pt: >-
           A combinação de curtumes, componentes e fábricas na mesma região permite
-          construções tradicionais — como a sola cosida — em séries pequenas, com
+          construções tradicionais, como a sola cosida, em séries pequenas, com
           controlo de qualidade próximo e salários europeus.
         en: >-
           Tanneries, component makers and factories sit in the same region, which
@@ -92,7 +92,7 @@
         pt: >-
           Procura a indicação de origem na palmilha ou na caixa e, na dúvida,
           pergunta à marca onde fica a fábrica. As marcas listadas aqui declaram a
-          origem, e o selo "verificado" indica que confirmámos essa informação.
+          origem, e o selo «verificado» indica que confirmámos essa informação.
         en: >-
           Look for the origin marking on the insole or box and, if in doubt, ask the
           brand where its factory is. Brands listed here declare their origin, and the
@@ -337,7 +337,7 @@
           a temperaturas altas, fica translúcida e é mais resistente.
         en: >-
           Faience is fired at lower temperatures, which makes it thicker and more
-          porous — it is the base of the hand-painted ware from Caldas and Alcobaça.
+          porous. It is the base of the hand-painted ware from Caldas and Alcobaça.
           Porcelain is fired hotter, turning translucent and more durable.
   price_levels:
     - level: 1
@@ -451,13 +451,13 @@
   slug: { pt: cosmetica-e-higiene, en: cosmetics-and-personal-care }
   intro:
     pt: >-
-      Sabões, cremes, perfumes e produtos de higiene fabricados em Portugal. A região
-      do Porto tem saboarias em atividade desde o século XIX, com embalagens que se
-      tornaram um género próprio.
+      Sabões, cremes, perfumes e produtos de higiene fabricados em Portugal. A região do
+      Porto tem saboarias em atividade desde o século XIX, com embalagens que muita
+      gente reconhece à primeira vista.
     en: >-
-      Soaps, creams, perfumes and personal care products manufactured in Portugal.
-      The Porto region has had soap works running since the 19th century, with
-      packaging that became a style of its own.
+      Soaps, creams, perfumes and personal care products manufactured in Portugal. The
+      Porto region has had soap works running since the 19th century, with packaging
+      many people recognise at a glance.
   faq:
     - question:
         pt: Os ingredientes também são portugueses?
@@ -544,8 +544,8 @@
       Equipamento e vestuário desportivo feito em Portugal, incluindo surf, ciclismo,
       montanha e desportos de equipa, de pranchas a camisolas técnicas.
     en: >-
-      Sports equipment and apparel made in Portugal — surf, cycling, mountain and team
-      sports — from surfboards to technical jerseys.
+      Sports equipment and apparel made in Portugal for surf, cycling, mountain and team
+      sports, from surfboards to technical jerseys.
   price_levels:
     - level: 1
       label: { pt: "até 30 €", en: "under €30" }

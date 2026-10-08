@@ -79,9 +79,9 @@
     "founded": "Founded",
     "products": "Products",
     "howWeKnow": "How we know it is made in Portugal",
-    "howImport": "The brand itself states on its website that it manufactures in Portugal. We read that statement before publishing and kept the quote in the project’s evidence notes.",
+    "howImport": "The brand says on its own website that it manufactures in Portugal. We read that before publishing and saved the quote in the project's source notes.",
     "howMaintainer": "Added by a maintainer who knows where the brand produces.",
-    "evidenceLink": "See the evidence notes",
+    "evidenceLink": "See the source notes",
     "howNotVerified": "Not independently verified yet."
   },
   "category": {
@@ -103,8 +103,8 @@
   },
   "tags": {
     "title": "Tags",
-    "intro": "Materials, crafts and other traits that cut across categories.",
-    "brandsWith": "Brands tagged “{tag}”",
+    "intro": "Materials, crafts and other traits, whatever the category.",
+    "brandsWith": "Brands tagged \"{tag}\"",
     "lede": "{count} brands made in Portugal with this tag.",
     "other": "Other tags",
     "refine": "Filter these brands in the catalogue"
@@ -117,7 +117,7 @@
   "region": {
     "district": "District",
     "autonomous": "Autonomous region",
-    "title": "{region} — brands made in Portugal",
+    "title": "Brands made {inRegion}",
     "lede": "{count} brands make their products here.",
     "other": "Other regions",
     "refine": "Filter these brands in the catalogue",
@@ -203,7 +203,7 @@
     "envelope": "Response shape",
     "envelopeIntro": "Every response is an object with the metadata and the payload in `data`:",
     "versioning": "Versioning",
-    "versioningBody": "The API is at {version}. Breaking changes — removing a field or changing its meaning — move to a new version; adding fields does not count as breaking.",
+    "versioningBody": "The API is at {version}. Removing a field or changing its meaning means a new version; adding fields does not.",
     "attribution": "Attribution",
     "attributionBody": "The data is CC BY 4.0: use it, including commercially, as long as you credit the source with a link to {site}.",
     "schema": "Schema",

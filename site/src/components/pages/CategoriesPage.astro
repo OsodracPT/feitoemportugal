@@ -50,7 +50,7 @@ const entries = categories.map((category) => ({
                 : count === 1
                   ? t(lang, 'common.brandCount')
                   : t(lang, 'common.brandsCount', { count })}
-              {count > 0 && !hasLandingPage(category) && <> — {t(lang, 'category.noPage')}</>}
+              {count > 0 && !hasLandingPage(category) && <>. {t(lang, 'category.noPage')}</>}
             </p>
           </li>
         ))

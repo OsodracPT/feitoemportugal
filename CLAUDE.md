@@ -17,7 +17,8 @@ when everything builds.
   has to come from the brand's own site (or a maintainer who knows). "Portuguese
   brand" and "designed in Portugal" are *not* the same thing and do not qualify. If
   production cannot be established, the brand is not listed — a lead, not an entry.
-  Record the quote in `docs/leads/`, never in the YAML.
+  Record the quote in `docs/leads/`, never in the YAML. A foreign brand qualifies
+  when most of its range is made in Portugal; origin alone decides nothing.
 - **Only maintainers set `verification`.** An agent or a contributor never flips
   `verified: true`. No brand is verified yet.
 - **No personal data, no exact coordinates.** Location stops at the municipality;
@@ -135,8 +136,9 @@ district outlines, the district map as a listing filter, region pages
 (`/regioes`) and category × region pages (`/regioes/<region>/<category>`). A
 second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
 `evidence-sources-2026-10.md`) added 123 drafts; 93 with a production sentence were
-published on 2026-10-08, so 183 brands are live, and 30 drafts with only a label,
-a partial claim or an open point still await a maintainer. Only 74 of the 183 have a
+published on 2026-10-08 (plus `apple-of-eden` once the foreign-brand rule was
+settled), so 184 brands are live, and 29 drafts with only a label, a partial claim
+or an open point still await a maintainer. Only 74 of the 184 have a
 known production location, so the map covers about 40 % of the catalogue.
 
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
@@ -149,5 +151,5 @@ API (and Umami), then verification and polish.
 
 Open decisions a maintainer still owns: the code licence (MIT or AGPL — there is no
 `LICENSE` file until it is settled, though the footer already says MIT), the final
-accent colour and logo, whether a foreign brand producing in Portugal qualifies
-(`fly-london` is listed), and who verifies a brand for the badge.
+accent colour and logo, and who verifies a brand for the badge. Settled: a foreign
+brand qualifies when most of its range is made in Portugal.

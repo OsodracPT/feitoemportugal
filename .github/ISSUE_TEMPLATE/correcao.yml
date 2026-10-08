@@ -1,0 +1,43 @@
+# Opened from the "Sugerir correção" link on every brand page, which fills in
+# the title and the `brand` field through the URL.
+name: Corrigir uma marca / Correct a brand
+description: Algo errado ou desatualizado na ficha de uma marca. / Something wrong or out of date on a brand page.
+title: "[correção] "
+labels: [correcao]
+body:
+  - type: input
+    id: brand
+    attributes:
+      label: Marca / Brand
+      description: O endereço da ficha ou o identificador (por exemplo `vista-alegre`). / The page address or the id (for example `vista-alegre`).
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: O que está errado? / What is wrong?
+      multiple: true
+      options:
+        - Já não fabrica em Portugal / No longer makes its products in Portugal
+        - Local de produção / Production location
+        - Site ou lojas / Website or shops
+        - Descrição / Description
+        - Categoria, etiquetas ou produtos / Category, tags or products
+        - Fechou / Closed down
+        - Outra coisa / Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: O que deve mudar / What should change
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Fonte / Source
+      description: Um link que o confirme, de preferência do site da marca. / A link that confirms it, preferably on the brand's own site.
