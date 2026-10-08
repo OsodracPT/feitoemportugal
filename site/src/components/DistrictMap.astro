@@ -13,14 +13,9 @@
 import { getRegion, hasRegionPage } from '~/lib/data.ts';
 import { mapShade } from '~/lib/filters.ts';
 import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
-import { MAP_HEIGHT, MAP_WIDTH, mapDistricts, mapInsets } from '~/lib/map.ts';
+import { MAP_HEIGHT, MAP_WIDTH, mapDistricts, mapInsets, type MapDot } from '~/lib/map.ts';
 
-export interface MapDot {
-  x: number;
-  y: number;
-  count: number;
-  label: string;
-}
+export type { MapDot };
 
 interface Props {
   lang: Lang;

@@ -7,7 +7,7 @@
  */
 import { geoConicConformal, geoMercator, type GeoProjection } from 'd3-geo';
 import type { Feature, MultiPolygon, Polygon } from 'geojson';
-import { loadDistrictShapes } from '@fep/schema';
+import { loadDistrictShapes, type Brand, type Region } from '@fep/schema';
 import { regions } from './data.ts';
 
 const dataDir = import.meta.env.DATA_DIR;
@@ -139,4 +139,29 @@ export const mapInsets: MapInset[] = (['acores', 'madeira'] as const).map((id) =
 export function projectPoint(district: string, [lat, lon]: [number, number]): [number, number] {
   const point = projections[frameOf(district)]([lon, lat]) ?? [0, 0];
   return [Math.round(point[0] * 10) / 10, Math.round(point[1] * 10) / 10];
+}
+
+export interface MapDot {
+  x: number;
+  y: number;
+  count: number;
+  label: string;
+}
+
+/**
+ * One dot per municipality of `region` that has brands, on its centroid and
+ * never on an address. Brands without a municipality add no dot.
+ */
+export function municipalityDots(region: Region, brands: Brand[]): MapDot[] {
+  const perMunicipality = new Map<string, number>();
+  for (const brand of brands) {
+    const id = brand.location?.municipality;
+    if (id) perMunicipality.set(id, (perMunicipality.get(id) ?? 0) + 1);
+  }
+  return region.municipalities.flatMap((municipality) => {
+    const count = perMunicipality.get(municipality.id) ?? 0;
+    if (count === 0 || !municipality.centroid) return [];
+    const [x, y] = projectPoint(region.id, municipality.centroid);
+    return [{ x, y, count, label: municipality.name }];
+  });
 }

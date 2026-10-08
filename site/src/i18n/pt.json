@@ -89,7 +89,8 @@
     "subcategories": "Subcategorias",
     "faq": "Perguntas frequentes",
     "otherCategories": "Outras categorias",
-    "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria."
+    "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria.",
+    "byRegion": "Por região"
   },
   "products": {
     "title": "Produtos",
@@ -120,7 +121,8 @@
     "lede": "{count} marcas produzem aqui.",
     "other": "Outras regiões",
     "refine": "Filtrar estas marcas no catálogo",
-    "noPage": "Ainda sem marcas suficientes para ter página própria."
+    "noPage": "Ainda sem marcas suficientes para ter página própria.",
+    "byCategory": "Por categoria"
   },
   "breadcrumbs": {
     "home": "Início",
@@ -236,5 +238,23 @@
     "filterLabel": "Filtrar",
     "filterPlaceholder": "Filtrar por nome, por exemplo meias ou azeite",
     "filterEmpty": "Nenhum resultado para esse filtro."
+  },
+  "place": {
+    "in": {
+      "default": "em {region}",
+      "porto": "no Porto",
+      "guarda": "na Guarda",
+      "acores": "nos Açores",
+      "madeira": "na Madeira"
+    }
+  },
+  "regionCategory": {
+    "title": "Marcas de {category} {inRegion}",
+    "lede": "{count} marcas desta categoria produzem {inRegion}.",
+    "refine": "Filtrar estas marcas no catálogo",
+    "allCategory": "Todas as marcas de {category}",
+    "allRegion": "Todas as marcas {inRegion}",
+    "otherCategories": "Outras categorias {inRegion}",
+    "otherRegions": "A mesma categoria noutras regiões"
   }
 }

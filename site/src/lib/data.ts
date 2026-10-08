@@ -88,6 +88,11 @@ export const brandsInSubcategory = (categoryId: string, subcategoryId: string): 
 export const brandsInDistrict = (districtId: string): Brand[] =>
   brands.filter((brand) => brand.location?.district === districtId);
 
+export const brandsInDistrictCategory = (districtId: string, categoryId: string): Brand[] =>
+  brands.filter(
+    (brand) => brand.location?.district === districtId && brand.category === categoryId,
+  );
+
 export const brandsWithProduct = (productId: string): Brand[] =>
   brands.filter((brand) => brand.products.includes(productId));
 
@@ -100,6 +105,29 @@ export const landingRegions = (): Region[] =>
 
 export const hasRegionPage = (regionId: string): boolean =>
   brandsInDistrict(regionId).length >= MIN_BRANDS_FOR_LANDING;
+
+/** Categories with enough brands in one district for a category x region page. */
+export const regionLandingCategories = (region: Region): Category[] =>
+  categories.filter(
+    (category) =>
+      brandsInDistrictCategory(region.id, category.id).length >= MIN_BRANDS_FOR_LANDING,
+  );
+
+/** Districts with enough brands of one category for a category x region page. */
+export const categoryLandingRegions = (category: Category): Region[] =>
+  regions.filter(
+    (region) =>
+      brandsInDistrictCategory(region.id, category.id).length >= MIN_BRANDS_FOR_LANDING,
+  );
+
+/**
+ * Every category x region page. Each implies a region page, since the district
+ * holds at least as many brands as any one category in it.
+ */
+export const landingRegionCategories = (): { region: Region; category: Category }[] =>
+  regions.flatMap((region) =>
+    regionLandingCategories(region).map((category) => ({ region, category })),
+  );
 
 /** Resolves a public, per-language region slug back to its region. */
 export const regionBySlug = (slug: string, lang: Lang): Region | undefined =>

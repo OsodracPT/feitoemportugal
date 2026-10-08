@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { MIN_BRANDS_FOR_LANDING } from './config.ts';
 import {
   brandsInDistrict,
+  brandsInDistrictCategory,
+  categories,
+  landingRegionCategories,
   brandsWithProduct,
   brandsWithTag,
   landingProducts,
@@ -11,6 +14,7 @@ import {
   regions,
   tags,
 } from './data.ts';
+import { inRegion, paths } from './i18n.ts';
 import { mapShade } from './filters.ts';
 import { MAP_HEIGHT, MAP_WIDTH, mapDistricts, projectPoint } from './map.ts';
 import { searchDocs } from './search.ts';
@@ -28,6 +32,39 @@ describe('landing pages', () => {
         expect(ids.has(entry.id)).toBe(count(entry.id) >= MIN_BRANDS_FOR_LANDING);
       }
     }
+  });
+});
+
+describe('category x region pages', () => {
+  it('exist for every combination at the threshold, and only those', () => {
+    const pages = new Set(landingRegionCategories().map(({ region, category }) => `${region.id}/${category.id}`));
+    for (const region of regions) {
+      for (const category of categories) {
+        const count = brandsInDistrictCategory(region.id, category.id).length;
+        expect(pages.has(`${region.id}/${category.id}`)).toBe(count >= MIN_BRANDS_FOR_LANDING);
+      }
+    }
+  });
+
+  it('only sit under a region that has a page of its own', () => {
+    const regionPages = new Set(landingRegions().map((region) => region.id));
+    for (const { region } of landingRegionCategories()) expect(regionPages.has(region.id)).toBe(true);
+  });
+
+  it('never share a URL with each other', () => {
+    for (const lang of ['pt', 'en'] as const) {
+      const urls = landingRegionCategories().map(({ region, category }) =>
+        paths.regionCategory(lang, region.slug[lang], category.slug[lang]),
+      );
+      expect(new Set(urls).size).toBe(urls.length);
+    }
+  });
+
+  it('contracts the Portuguese preposition and leaves English alone', () => {
+    expect(inRegion('pt', 'aveiro', 'Aveiro')).toBe('em Aveiro');
+    expect(inRegion('pt', 'porto', 'Porto')).toBe('no Porto');
+    expect(inRegion('en', 'porto', 'Porto')).toBe('in Porto');
+    expect(inRegion('en', 'acores', 'Azores')).toBe('in the Azores');
   });
 });
 

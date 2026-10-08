@@ -1,0 +1,174 @@
+---
+/**
+ * Landing page for one category in one district ("Marcas de calçado em
+ * Aveiro"). Generated only at MIN_BRANDS_FOR_LANDING brands, like every
+ * other landing page.
+ */
+import type { Category, Region } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import DistrictMap from '~/components/DistrictMap.astro';
+import {
+  brandsInDistrictCategory,
+  categoryLandingRegions,
+  regionLandingCategories,
+  regions,
+} from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
+import { inRegion, labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { municipalityDots } from '~/lib/map.ts';
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  region: Region;
+  category: Category;
+}
+
+const { lang, region, category } = Astro.props;
+
+const regionName = localized(region.label, lang);
+const categoryName = localized(category.label, lang);
+const place = inRegion(lang, region.id, regionName);
+const brands = brandsInDistrictCategory(region.id, category.id);
+const headline = t(lang, 'regionCategory.title', {
+  category: labelInSentence(categoryName, lang),
+  inRegion: place,
+});
+const lede = t(lang, 'regionCategory.lede', { count: brands.length, inRegion: place });
+const alternates = {
+  pt: paths.regionCategory('pt', region.slug.pt, category.slug.pt),
+  en: paths.regionCategory('en', region.slug.en, category.slug.en),
+};
+
+// The map shades this category only, so the other districts show where else it is made.
+const counts = new Map(
+  regions.map((r) => [r.id, brandsInDistrictCategory(r.id, category.id).length]),
+);
+const dots = municipalityDots(region, brands);
+
+const filters = emptyFilters();
+filters.dist = [region.id];
+filters.cat = [category.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'regions.title'), path: paths.regions(lang) },
+  { name: regionName, path: paths.region(lang, region.slug[lang]) },
+  { name: categoryName },
+];
+
+const otherCategories = regionLandingCategories(region).filter((other) => other.id !== category.id);
+const otherRegions = categoryLandingRegions(category).filter((other) => other.id !== region.id);
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(headline, lang)}
+  description={truncate(`${lede} ${localized(category.intro, lang)}`, 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{headline}</h1>
+
+    <div class="combo">
+      <div class="combo__text">
+        <p class="lede">{lede}</p>
+        <ul class="combo__links">
+          <li><a href={catalogueLink}>{t(lang, 'regionCategory.refine')}</a></li>
+          <li>
+            <a href={paths.category(lang, category.slug[lang])}>
+              {t(lang, 'regionCategory.allCategory', { category: labelInSentence(categoryName, lang) })}
+            </a>
+          </li>
+          <li>
+            <a href={paths.region(lang, region.slug[lang])}>
+              {t(lang, 'regionCategory.allRegion', { inRegion: place })}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="combo__map">
+        <DistrictMap lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
+      </div>
+    </div>
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      otherCategories.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'regionCategory.otherCategories', { inRegion: place })}>
+          <h2 class="eyebrow">{t(lang, 'regionCategory.otherCategories', { inRegion: place })}</h2>
+          <ul class="pill-list">
+            {otherCategories.map((other) => (
+              <li>
+                <a class="pill" href={paths.regionCategory(lang, region.slug[lang], other.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      otherRegions.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'regionCategory.otherRegions')}>
+          <h2 class="eyebrow">{t(lang, 'regionCategory.otherRegions')}</h2>
+          <ul class="pill-list">
+            {otherRegions.map((other) => (
+              <li>
+                <a class="pill" href={paths.regionCategory(lang, other.slug[lang], category.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .combo {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 52rem) {
+    .combo {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .combo__links {
+    padding-left: 1.2em;
+  }
+
+  .combo__links li + li {
+    margin-top: var(--space-2);
+  }
+
+  .combo__map {
+    max-width: 20rem;
+  }
+</style>

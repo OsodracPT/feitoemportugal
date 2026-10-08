@@ -109,9 +109,13 @@ docs/design-notes.md      design rationale and open decisions
   paths. `districts.geojson` is RFC 7946 (counter-clockwise rings), which d3 reads
   as "the whole globe minus the district" — `map.ts` reverses rings before fitting.
   A collapsed projection shows up as paths like `M207 194.6z`.
-- **Landing pages (category, product, tag, region) exist only at ≥ 3 brands**
+- **Landing pages (category, product, tag, region, category × region) exist only
+  at ≥ 3 brands**
   (`MIN_BRANDS_FOR_LANDING`). Below that the page is not generated at all, and
   links to it render as a dashed pill instead.
+- **Portuguese place names take contracted prepositions** ("no Porto", "nos Açores").
+  `inRegion()` in `i18n.ts` reads the exceptions from `place.in` in `pt.json`; a new
+  region whose name takes an article needs an entry there.
 - **A headless screenshot fires at `load`**, before the async index resolves. A
   screenshot is not proof the search works — read the browser console instead.
 
@@ -127,8 +131,9 @@ site with translated URLs, technical SEO, search, the eleven combinable filters 
 sort order, and the public JSON API. Since then: product types (`products.yaml`,
 the `prod` filter, `/produtos` pages), tag pages (`/etiquetas`), a `founded` field,
 the "how we know" block on brand pages, CAOP-derived municipality centroids and
-district outlines, the district map as a listing filter, and region pages
-(`/regioes`). A second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
+district outlines, the district map as a listing filter, region pages
+(`/regioes`) and category × region pages (`/regioes/<region>/<category>`). A
+second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
 `evidence-sources-2026-10.md`) added 123 drafts; 93 with a production sentence were
 published on 2026-10-08, so 183 brands are live, and 30 drafts with only a label,
 a partial claim or an open point still await a maintainer. Only 74 of the 183 have a
@@ -138,7 +143,7 @@ The static site is deployed: every push to `main` goes live at feitoemportugal.o
 through `deploy.yml`. The README is written for people running the code;
 `deploy/README.md` covers hosting.
 
-Next: the bilingual blog and the category × region landing pages, then
+Next: the bilingual blog, then
 contributions (issue forms, `CONTRIBUTING.md`, issue-to-PR), then the submission
 API (and Umami), then verification and polish.
 

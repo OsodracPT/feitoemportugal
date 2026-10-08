@@ -8,6 +8,8 @@ import {
   brandsWithProduct,
   brandsWithTag,
   brandsInDistrict,
+  brandsInDistrictCategory,
+  landingRegionCategories,
   landingRegions,
   landingProducts,
   landingTags,
@@ -60,6 +62,16 @@ function entries(): SitemapEntry[] {
     result.push({
       urls: { pt: paths.region('pt', region.slug.pt), en: paths.region('en', region.slug.en) },
       lastmod: latestUpdate(brandsInDistrict(region.id)),
+    });
+  }
+
+  for (const { region, category } of landingRegionCategories()) {
+    result.push({
+      urls: {
+        pt: paths.regionCategory('pt', region.slug.pt, category.slug.pt),
+        en: paths.regionCategory('en', region.slug.en, category.slug.en),
+      },
+      lastmod: latestUpdate(brandsInDistrictCategory(region.id, category.id)),
     });
   }
 

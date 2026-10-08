@@ -8,11 +8,17 @@ import type { Region } from '@fep/schema';
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
-import DistrictMap, { type MapDot } from '~/components/DistrictMap.astro';
-import { brandsInDistrict, landingRegions, regions } from '~/lib/data.ts';
+import DistrictMap from '~/components/DistrictMap.astro';
+import {
+  brandsInDistrict,
+  brandsInDistrictCategory,
+  landingRegions,
+  regionLandingCategories,
+  regions,
+} from '~/lib/data.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
-import { projectPoint } from '~/lib/map.ts';
+import { municipalityDots } from '~/lib/map.ts';
 import {
   breadcrumbJsonLd,
   itemListJsonLd,
@@ -39,17 +45,8 @@ const alternates = {
 
 const counts = new Map(regions.map((r) => [r.id, brandsInDistrict(r.id).length]));
 
-const perMunicipality = new Map<string, number>();
-for (const brand of brands) {
-  const id = brand.location?.municipality;
-  if (id) perMunicipality.set(id, (perMunicipality.get(id) ?? 0) + 1);
-}
-const dots: MapDot[] = region.municipalities.flatMap((municipality) => {
-  const count = perMunicipality.get(municipality.id) ?? 0;
-  if (count === 0 || !municipality.centroid) return [];
-  const [x, y] = projectPoint(region.id, municipality.centroid);
-  return [{ x, y, count, label: municipality.name }];
-});
+const dots = municipalityDots(region, brands);
+const byCategory = regionLandingCategories(region);
 
 const filters = emptyFilters();
 filters.dist = [region.id];
@@ -90,6 +87,27 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
         <DistrictMap lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
       </div>
     </div>
+
+    {
+      byCategory.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'region.byCategory')}>
+          <h2 class="eyebrow">{t(lang, 'region.byCategory')}</h2>
+          <ul class="pill-list">
+            {byCategory.map((category) => (
+              <li>
+                <a
+                  class="pill"
+                  href={paths.regionCategory(lang, region.slug[lang], category.slug[lang])}
+                >
+                  {localized(category.label, lang)}{' '}
+                  <span class="muted">{brandsInDistrictCategory(region.id, category.id).length}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
 
     <div class="section">
       <BrandGrid lang={lang} brands={brands} />

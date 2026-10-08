@@ -89,7 +89,8 @@
     "subcategories": "Subcategories",
     "faq": "Frequently asked questions",
     "otherCategories": "Other categories",
-    "noPage": "This category does not have enough brands yet to get its own page."
+    "noPage": "This category does not have enough brands yet to get its own page.",
+    "byRegion": "By region"
   },
   "products": {
     "title": "Products",
@@ -120,7 +121,8 @@
     "lede": "{count} brands make their products here.",
     "other": "Other regions",
     "refine": "Filter these brands in the catalogue",
-    "noPage": "Not enough brands for a page of its own yet."
+    "noPage": "Not enough brands for a page of its own yet.",
+    "byCategory": "By category"
   },
   "breadcrumbs": {
     "home": "Home",
@@ -236,5 +238,20 @@
     "filterLabel": "Filter",
     "filterPlaceholder": "Filter by name, for example socks or olive oil",
     "filterEmpty": "Nothing matches that filter."
+  },
+  "place": {
+    "in": {
+      "default": "in {region}",
+      "acores": "in the Azores"
+    }
+  },
+  "regionCategory": {
+    "title": "{category} brands {inRegion}",
+    "lede": "{count} brands in this category make their products {inRegion}.",
+    "refine": "Filter these brands in the catalogue",
+    "allCategory": "Every brand in {category}",
+    "allRegion": "All brands {inRegion}",
+    "otherCategories": "Other categories {inRegion}",
+    "otherRegions": "The same category in other regions"
   }
 }

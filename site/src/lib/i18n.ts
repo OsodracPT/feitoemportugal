@@ -69,6 +69,8 @@ export const paths = {
     href(lang, SEGMENTS.categories[lang], categorySlug, subcategorySlug),
   regions: (lang: Lang) => href(lang, SEGMENTS.regions[lang]),
   region: (lang: Lang, regionSlug: string) => href(lang, SEGMENTS.regions[lang], regionSlug),
+  regionCategory: (lang: Lang, regionSlug: string, categorySlug: string) =>
+    href(lang, SEGMENTS.regions[lang], regionSlug, categorySlug),
   products: (lang: Lang) => href(lang, SEGMENTS.products[lang]),
   product: (lang: Lang, productSlug: string) => href(lang, SEGMENTS.products[lang], productSlug),
   tags: (lang: Lang) => href(lang, SEGMENTS.tags[lang]),
@@ -111,6 +113,18 @@ export function formatDate(date: string, lang: Lang): string {
  * Taxonomy labels are capitalised; inside a sentence the Portuguese ones read
  * better in lower case ("Marcas de calçado…"). English keeps the capital.
  */
+/**
+ * "em Aveiro", "no Porto", "nos Açores": Portuguese contracts the preposition
+ * with the article some place names take, so the exceptions are listed in
+ * `place.in` by region id. Looked up in the page's own dictionary only, so
+ * English never borrows a Portuguese form.
+ */
+export function inRegion(lang: Lang, regionId: string, regionName: string): string {
+  const form = lookup(dictionaries[lang], `place.in.${regionId}`);
+  if (typeof form === 'string') return form;
+  return t(lang, 'place.in.default', { region: regionName });
+}
+
 export function labelInSentence(label: string, lang: Lang): string {
   if (lang !== 'pt') return label;
   return label.charAt(0).toLocaleLowerCase('pt-PT') + label.slice(1);
