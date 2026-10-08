@@ -1,0 +1,26 @@
+slug: lazuli
+status: draft
+name: Lazuli
+description:
+  pt: >-
+    Calçado de mulher vegano com fabrico inteiramente português, lançado em 2014 com
+    motivos inspirados no azulejo.
+  en: >-
+    Vegan women’s footwear made entirely in Portugal, launched in 2014 with patterns
+    drawn from azulejo tiles.
+website: https://www.lazuli.pt
+category: calcado
+subcategory: sapatilhas
+tags: [vegano]
+products: [sapatilhas, sandalias, alpercatas, botas]
+founded: 2014
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.lazuli.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

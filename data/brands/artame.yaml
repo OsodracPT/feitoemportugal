@@ -12,13 +12,17 @@ website: https://artame.pt
 category: casa-e-decoracao
 subcategory: cutelaria-e-mesa
 tags: [metal, classico]
+products: [utensilios-de-cozinha]
 production:
   scope: total
+location:
+  district: porto
+  municipality: gondomar
 where_to_buy:
   online_store: https://artame.pt
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

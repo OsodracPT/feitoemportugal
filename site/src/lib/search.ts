@@ -7,6 +7,7 @@ import {
   getMunicipality,
   getRegion,
   getSubcategory,
+  getProduct,
   getTag,
 } from './data.ts';
 
@@ -30,11 +31,22 @@ function docFor(brand: Brand): SearchDoc {
     if (!tag) return [];
     return [tag.label.pt, tag.label.en, ...tag.synonyms.pt, ...tag.synonyms.en];
   });
+  // Product types weigh like tags: "azeite" or "talheres" is what people type.
+  const productTerms = brand.products.flatMap((id) => {
+    const product = getProduct(id);
+    if (!product) return [];
+    return [
+      product.label.pt,
+      product.label.en,
+      ...product.synonyms.pt,
+      ...product.synonyms.en,
+    ];
+  });
 
   return {
     id: brand.slug,
     name: join([brand.name, brand.slug.replace(/-/g, ' ')]),
-    tags: join(tags),
+    tags: join([...tags, ...productTerms]),
     category: join([
       category?.label.pt,
       category?.label.en,

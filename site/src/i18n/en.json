@@ -11,7 +11,10 @@
     "submit": "Suggest a brand",
     "about": "About",
     "skipToContent": "Skip to content",
-    "menu": "Menu"
+    "menu": "Menu",
+    "products": "Products",
+    "tags": "Tags",
+    "regions": "Regions"
   },
   "lang": {
     "switchTo": "Português",
@@ -35,7 +38,7 @@
   },
   "brands": {
     "title": "Brands",
-    "intro": "Every published brand, in alphabetical order.",
+    "intro": "Every published brand. Search, filter and sort as you like.",
     "count": "{count} brands",
     "countOne": "1 brand",
     "empty": "No brands in this list yet.",
@@ -72,7 +75,14 @@
     "addedOn": "Added on {date}",
     "updatedOn": "Updated on {date}",
     "logoOf": "{name} logo",
-    "details": "Details"
+    "details": "Details",
+    "founded": "Founded",
+    "products": "Products",
+    "howWeKnow": "How we know it is made in Portugal",
+    "howImport": "The brand itself states on its website that it manufactures in Portugal. We read that statement before publishing and kept the quote in the project’s evidence notes.",
+    "howMaintainer": "Added by a maintainer who knows where the brand produces.",
+    "evidenceLink": "See the evidence notes",
+    "howNotVerified": "Not independently verified yet."
   },
   "category": {
     "brandsIn": "{category} brands made in Portugal",
@@ -80,6 +90,37 @@
     "faq": "Frequently asked questions",
     "otherCategories": "Other categories",
     "noPage": "This category does not have enough brands yet to get its own page."
+  },
+  "products": {
+    "title": "Products",
+    "intro": "Kinds of product made in Portugal, with the brands that make them.",
+    "brandsOf": "{product} brands made in Portugal",
+    "lede": "{count} brands make {product} in Portugal.",
+    "other": "Other product types",
+    "refine": "Filter these brands in the catalogue",
+    "noPage": "Not enough brands for a page of its own yet."
+  },
+  "tags": {
+    "title": "Tags",
+    "intro": "Materials, crafts and other traits that cut across categories.",
+    "brandsWith": "Brands tagged “{tag}”",
+    "lede": "{count} brands made in Portugal with this tag.",
+    "other": "Other tags",
+    "refine": "Filter these brands in the catalogue"
+  },
+  "regions": {
+    "title": "Regions",
+    "intro": "Where the brands make their products, by district and autonomous region. A brand only appears on the map once its production site is known.",
+    "located": "{count} of {total} brands have a known production site."
+  },
+  "region": {
+    "district": "District",
+    "autonomous": "Autonomous region",
+    "title": "{region} — brands made in Portugal",
+    "lede": "{count} brands make their products here.",
+    "other": "Other regions",
+    "refine": "Filter these brands in the catalogue",
+    "noPage": "Not enough brands for a page of its own yet."
   },
   "breadcrumbs": {
     "home": "Home",
@@ -126,6 +167,7 @@
       "sub": "Subcategory",
       "dist": "Region",
       "tag": "Tag",
+      "prod": "Product",
       "price": "Price",
       "scope": "Production",
       "sust": "Sustainability",
@@ -175,9 +217,19 @@
       "brand": "A single brand, by slug.",
       "categories": "Categories and subcategories, with brand counts.",
       "tags": "Tags and synonyms, with brand counts.",
+      "products": "Product types and synonyms, with brand counts.",
       "regions": "Districts and autonomous regions, municipalities and centroids.",
       "sustainability": "Recognised practices and certifications.",
       "schema": "A brand's JSON Schema (no envelope)."
     }
+  },
+  "map": {
+    "title": "Map",
+    "hint": "Tap a district to filter.",
+    "label": "{name}: {count} brands",
+    "labelOne": "{name}: 1 brand",
+    "labelNone": "{name}: no brands",
+    "legend": "Stronger colour, more brands.",
+    "source": "Boundaries: CAOP 2025, DGT (CC BY 4.0)."
   }
 }

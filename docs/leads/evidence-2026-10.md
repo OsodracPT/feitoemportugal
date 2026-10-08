@@ -181,3 +181,34 @@ Singular Leather, Mishmash, Meireles (historic claims only), Americo Tavar, Newv
 plus every Instagram-only and Etsy-only lead.
 
 The full list with status is in `reddit-2026-10.csv`.
+
+## Production locations — backfill, 2026-10-08
+
+58 published brands had no `location`. Each brand's own site was read again (home,
+about, contact and legal pages, rendered in a browser where the site needs
+JavaScript), looking for where the product is **made**. A registered office, a shop
+or a showroom does not count. Six sites name the place:
+
+| Slug | Location | Quote from the brand's own site |
+|---|---|---|
+| `artame` | Porto / `gondomar` | "especializada no fabrico de artigos de cozinha, em aço inoxidável … Está localizada em Baguim do Monte, Gondomar" |
+| `costa-nova` | Aveiro / `vagos` | "Grestel - Produtos Cerâmicos, fundada em 1998 e sediada em Vagos … dedica-se à produção de artigos de mesa, forno e acessórios de servir em grés fino" |
+| `cutipol` | Braga / `guimaraes` | "Located at Cutipol's factory in Guimarães, Portugal"; "Guimarães Store (Factory) … 4805-157 Caldas das Taipas" |
+| `ispari` | Leiria / `leiria` | "Morada Atelier: … Leiria 2400-076", with "processo de confecção local" |
+| `koati` | Porto / `santo-tirso` | "Costafil, Lda, uma fábrica de vestuário"; "Costafil, Indústria e Comércio de Vestuário, LDA., com sede na … Palmeira – 4780-324 Santo Tirso" |
+| `singular-leather` | Viseu / `tondela` | "carteiras minimalistas em couro, feitas à mão no seu atelier em Tondela desde 2016" |
+
+Left empty on purpose (the site states something, but not where production happens):
+
+- **Region only:** `plus351`, `seapath`, `portuguese-flannel` and `zilian` say "north
+  of Portugal"; `coup-the-label` says "within 60 km of Porto".
+- **Office or shop only:** `labrador`, `tema-creations`, `stro`, `chule`, `nae-vegan`,
+  `lobo-apparel`, `travelling-socks`, `mishmash`, `thclothes`.
+- **Not production:** `desculpa-babe` develops its collections in Viana do Castelo
+  but does not say where they are made. `silampos` only gives its 1951 origin in
+  Cesar (recorded as `founded: 1951`), not a current site. `tatara-razors` says
+  "based in Porto" about the team.
+- **No statement found:** the other 37.
+
+The same pass recorded `founded` where the brand's own history gives the year, and
+`products` from the ranges each site sells.

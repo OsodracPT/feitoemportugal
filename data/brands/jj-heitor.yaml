@@ -1,0 +1,25 @@
+slug: jj-heitor
+status: draft
+name: JJ Heitor
+description:
+  pt: >-
+    Fabricante familiar de Santa Maria da Feira com quase setenta anos, que desenha e
+    produz em Portugal sabrinas e sapatos de mulher.
+  en: >-
+    Family shoemaker from Santa Maria da Feira, nearly seventy years in business,
+    designing and making ballet flats and women’s shoes in Portugal.
+website: https://jjheitorshoes.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [classico, empresa-familiar]
+products: [sapatos, sabrinas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://jjheitorshoes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

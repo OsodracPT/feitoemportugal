@@ -1,0 +1,24 @@
+slug: get-the-balance
+status: draft
+name: Get The Balance
+description:
+  pt: >-
+    Projeto de calçado do Porto, desenhado e produzido em Portugal, com sapatilhas de
+    materiais orgânicos.
+  en: >-
+    Porto footwear project, designed and made in Portugal, with sneakers in organic
+    materials.
+website: https://gtbalance.com
+category: calcado
+subcategory: sapatilhas
+products: [sapatilhas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://gtbalance.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

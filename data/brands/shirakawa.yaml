@@ -1,0 +1,24 @@
+slug: shirakawa
+status: draft
+name: Shirakawa
+description:
+  pt: >-
+    Pantufas, calçado de casa e pequenos acessórios para o lar, inteiramente feitos à
+    mão em Portugal.
+  en: >-
+    Slippers, house shoes and small home accessories, made entirely by hand in Portugal.
+website: https://shirakawaliving.com
+category: calcado
+subcategory: sandalias-e-chinelos
+tags: [feito-a-mao]
+products: [pantufas, sapatos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://shirakawaliving.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

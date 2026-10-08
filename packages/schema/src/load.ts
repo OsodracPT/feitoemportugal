@@ -4,8 +4,10 @@ import { parse } from 'yaml';
 import { z } from 'zod';
 import { brandSchema } from './brand.ts';
 import type { LoadedBrand } from './dataset.ts';
+import { districtShapesSchema, type DistrictShapes } from './geo.ts';
 import {
   categoriesFileSchema,
+  productsFileSchema,
   regionsFileSchema,
   sustainabilityFileSchema,
   tagsFileSchema,
@@ -51,6 +53,11 @@ export function loadTaxonomy(dataDir: string): Taxonomy {
       'data/taxonomy/categories.yaml',
     ),
     tags: parseWith(tagsFileSchema, readYaml(file('tags.yaml')), 'data/taxonomy/tags.yaml'),
+    products: parseWith(
+      productsFileSchema,
+      readYaml(file('products.yaml')),
+      'data/taxonomy/products.yaml',
+    ),
     regions: parseWith(
       regionsFileSchema,
       readYaml(file('regions.yaml')),
@@ -62,6 +69,15 @@ export function loadTaxonomy(dataDir: string): Taxonomy {
       'data/taxonomy/sustainability.yaml',
     ),
   };
+}
+
+/** District outlines for the map. JSON is YAML, so the same reader parses it. */
+export function loadDistrictShapes(dataDir: string): DistrictShapes {
+  return parseWith(
+    districtShapesSchema,
+    readYaml(join(dataDir, 'geo', 'districts.geojson')),
+    'data/geo/districts.geojson',
+  );
 }
 
 export function loadBrands(dataDir: string): LoadedBrand[] {

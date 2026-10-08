@@ -1,0 +1,28 @@
+slug: dois-corvos
+status: draft
+name: Dois Corvos
+description:
+  pt: >-
+    Cervejeira de Lisboa fundada em 2015, com fábrica e taproom em Marvila e vários
+    lançamentos novos por mês.
+  en: >-
+    Lisbon brewery founded in 2015, with its brewery and taproom in Marvila and several
+    new releases a month.
+website: https://doiscorvos.pt
+category: bebidas
+subcategory: cerveja
+products: [cerveja]
+founded: 2015
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://doiscorvos.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

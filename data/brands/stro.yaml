@@ -12,6 +12,7 @@ website: https://pt.by-stro.com
 category: texteis-lar
 subcategory: mantas-e-plaids
 tags: [la, pequena-serie, tradicional]
+products: [mantas, almofadas]
 production:
   scope: total
 where_to_buy:
@@ -22,5 +23,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

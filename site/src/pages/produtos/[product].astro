@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from 'astro';
+import TermPage from '~/components/pages/TermPage.astro';
+import { landingProducts } from '~/lib/data.ts';
+
+export const getStaticPaths = (() =>
+  landingProducts().map((product) => ({
+    params: { product: product.slug.pt },
+    props: { product },
+  }))) satisfies GetStaticPaths;
+
+const { product } = Astro.props;
+---
+
+<TermPage lang="pt" kind="product" term={product} />

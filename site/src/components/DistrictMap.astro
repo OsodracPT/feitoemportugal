@@ -1,0 +1,203 @@
+---
+/**
+ * Map of Portugal's districts, drawn at build time as plain SVG.
+ *
+ * - `filter`: each district is a toggle for the listing's `dist` filter;
+ *   listing-controller.ts wires the clicks and re-shades it after every change.
+ * - `link`: each district with a landing page links to it; one can be marked
+ *   as the current page, and municipality dots can be added.
+ *
+ * Shades come from the brand count (`mapShade`), so the map reads correctly
+ * before, and without, any JavaScript.
+ */
+import { getRegion, hasRegionPage } from '~/lib/data.ts';
+import { mapShade } from '~/lib/filters.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { MAP_HEIGHT, MAP_WIDTH, mapDistricts, mapInsets } from '~/lib/map.ts';
+
+export interface MapDot {
+  x: number;
+  y: number;
+  count: number;
+  label: string;
+}
+
+interface Props {
+  lang: Lang;
+  mode: 'filter' | 'link';
+  /** Brands per district id. */
+  counts: Map<string, number>;
+  /** District drawn as the current one (link mode). */
+  current?: string;
+  dots?: MapDot[];
+}
+
+const { lang, mode, counts, current, dots = [] } = Astro.props;
+
+const labelFor = (name: string, count: number): string =>
+  count === 0
+    ? t(lang, 'map.labelNone', { name })
+    : count === 1
+      ? t(lang, 'map.labelOne', { name })
+      : t(lang, 'map.label', { name, count });
+
+const districts = mapDistricts.map((district) => {
+  const region = getRegion(district.id);
+  const name = region ? localized(region.label, lang) : district.id;
+  const count = counts.get(district.id) ?? 0;
+  return {
+    ...district,
+    name,
+    count,
+    label: labelFor(name, count),
+    shade: mapShade(count),
+    href:
+      mode === 'link' && region && hasRegionPage(region.id)
+        ? paths.region(lang, region.slug[lang])
+        : undefined,
+  };
+});
+
+const strings = {
+  label: t(lang, 'map.label'),
+  labelOne: t(lang, 'map.labelOne'),
+  labelNone: t(lang, 'map.labelNone'),
+};
+// Radius grows with the square root of the count, so area tracks brands.
+const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6) * 10) / 10;
+---
+
+<figure
+  class="dmap"
+  data-district-map={mode === 'filter' ? '' : undefined}
+  data-strings={mode === 'filter' ? JSON.stringify(strings) : undefined}
+>
+  <svg
+    viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
+    role={mode === 'filter' ? 'group' : 'img'}
+    aria-label={t(lang, 'map.title')}
+  >
+    {mapInsets.map((inset) => (
+      <rect class="dmap__inset" x={inset.x} y={inset.y} width={inset.width} height={inset.height} rx="4" />
+    ))}
+    {
+      districts.map((district) =>
+        mode === 'filter' ? (
+          <path
+            class={`dmap__district s${district.shade}`}
+            d={district.d}
+            data-dist={district.id}
+            data-name={district.name}
+            role="button"
+            tabindex={district.count > 0 ? '0' : '-1'}
+            aria-pressed="false"
+            aria-disabled={district.count === 0 ? 'true' : undefined}
+            aria-label={district.label}
+          >
+            <title>{district.label}</title>
+          </path>
+        ) : district.href ? (
+          <a href={district.href} aria-label={district.label}>
+            <path
+              class={`dmap__district s${district.shade}`}
+              d={district.d}
+              data-current={district.id === current ? '' : undefined}
+            >
+              <title>{district.label}</title>
+            </path>
+          </a>
+        ) : (
+          <path
+            class={`dmap__district s${district.shade}`}
+            d={district.d}
+            data-current={district.id === current ? '' : undefined}
+          >
+            <title>{district.label}</title>
+          </path>
+        ),
+      )
+    }
+    {
+      dots.map((dot) => (
+        <circle class="dmap__dot" cx={dot.x} cy={dot.y} r={radius(dot.count)}>
+          <title>{labelFor(dot.label, dot.count)}</title>
+        </circle>
+      ))
+    }
+  </svg>
+  <figcaption class="dmap__caption muted">
+    {mode === 'filter' ? `${t(lang, 'map.hint')} ` : ''}{t(lang, 'map.legend')}
+    <br />
+    <a href="https://dados.gov.pt/datasets/carta-administrativa-oficial-de-portugal-caop2025-continente" rel="noopener">{t(lang, 'map.source')}</a>
+  </figcaption>
+</figure>
+
+<style>
+  .dmap {
+    margin: 0;
+  }
+
+  .dmap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 26rem;
+  }
+
+  .dmap__inset {
+    fill: none;
+    stroke: var(--line);
+    stroke-dasharray: 3 3;
+  }
+
+  /* Shades are mixed from the accent, so they follow the dark theme too. */
+  .dmap__district {
+    stroke: var(--bg-raised);
+    stroke-width: 0.8;
+    stroke-linejoin: round;
+    transition: fill 120ms ease;
+  }
+
+  .s0 { fill: var(--line); }
+  .s1 { fill: color-mix(in srgb, var(--accent) 22%, var(--bg-raised)); }
+  .s2 { fill: color-mix(in srgb, var(--accent) 42%, var(--bg-raised)); }
+  .s3 { fill: color-mix(in srgb, var(--accent) 64%, var(--bg-raised)); }
+  .s4 { fill: color-mix(in srgb, var(--accent) 88%, var(--bg-raised)); }
+
+  [data-district-map] .dmap__district:not([aria-disabled='true']),
+  a .dmap__district {
+    cursor: pointer;
+  }
+
+  [data-district-map] .dmap__district:not([aria-disabled='true']):hover,
+  a:hover .dmap__district,
+  a:focus-visible .dmap__district {
+    stroke: var(--text);
+    stroke-width: 1.2;
+  }
+
+  .dmap__district:focus-visible {
+    outline: none;
+    stroke: var(--text);
+    stroke-width: 1.6;
+  }
+
+  .dmap__district[aria-pressed='true'],
+  .dmap__district[data-current] {
+    stroke: var(--text);
+    stroke-width: 1.6;
+  }
+
+  .dmap__dot {
+    fill: var(--text);
+    fill-opacity: 0.75;
+    stroke: var(--bg-raised);
+    stroke-width: 0.8;
+  }
+
+  .dmap__caption {
+    font-size: var(--text-xs);
+    margin-top: var(--space-2);
+    text-align: center;
+  }
+</style>

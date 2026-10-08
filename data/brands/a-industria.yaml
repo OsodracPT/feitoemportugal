@@ -1,0 +1,27 @@
+slug: a-industria
+status: draft
+name: A Indústria
+description:
+  pt: >-
+    Marca de Lisboa de vestuário e artigos em pele para homem, feitos à mão na cidade
+    com couro de vaca escolhido pela resistência.
+  en: >-
+    Lisbon label making menswear and leather goods by hand in the city, using cowhide
+    chosen for how well it wears.
+website: https://www.aindustria.pt
+category: moda-e-vestuario
+subcategory: roupa-homem
+tags: [pele, feito-a-mao]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://www.aindustria.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

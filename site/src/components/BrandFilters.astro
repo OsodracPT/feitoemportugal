@@ -1,4 +1,5 @@
 ---
+import DistrictMap from '~/components/DistrictMap.astro';
 import { filterGroups } from '~/lib/filter-groups.ts';
 import { t, type Lang } from '~/lib/i18n.ts';
 
@@ -9,6 +10,8 @@ interface Props {
 
 const { lang, id } = Astro.props;
 const groups = filterGroups(lang);
+const districtGroup = groups.find((group) => group.key === 'dist');
+const districtCounts = new Map(districtGroup?.options.map((option) => [option.value, option.count]));
 ---
 
 <!--
@@ -23,6 +26,14 @@ const groups = filterGroups(lang);
       {t(lang, 'filters.clear')}
     </button>
   </div>
+
+  {
+    districtGroup && (
+      <div class="facets__map">
+        <DistrictMap lang={lang} mode="filter" counts={districtCounts} />
+      </div>
+    )
+  }
 
   {
     groups.map((group) => (
@@ -60,6 +71,17 @@ const groups = filterGroups(lang);
     border-radius: var(--radius-lg);
     background: var(--bg-raised);
     padding: var(--space-3) var(--space-4);
+  }
+
+  .facets__map {
+    padding-block: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* In the narrow panel (and the mobile drop-down) the map is a control, not
+     the point of the page: keep it short enough to reach the groups below. */
+  .facets__map :global(svg) {
+    max-height: 18rem;
   }
 
   .facets__head {

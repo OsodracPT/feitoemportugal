@@ -1,0 +1,25 @@
+slug: gandaia
+status: draft
+name: Gandaia
+description:
+  pt: >-
+    Marca de Lisboa lançada em 2025 pela equipa da Mustique, com coleções produzidas
+    numa pequena rede de fábricas portuguesas.
+  en: >-
+    Lisbon label that took over from Mustique in 2025 under the same founders, with
+    collections made by a small network of Portuguese factories.
+website: https://www.gandaia.store
+category: moda-e-vestuario
+tags: [unissexo]
+products: [camisas, t-shirts, polos, casacos, vestidos]
+founded: 2025
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.gandaia.store
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

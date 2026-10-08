@@ -1,0 +1,27 @@
+slug: ferreira-de-sa
+status: draft
+name: Ferreira de Sá
+description:
+  pt: >-
+    Tapetes de nó manual, tecelagem manual e tufting produzidos desde 1946 na fábrica da
+    marca em Silvalde, Espinho.
+  en: >-
+    Hand-knotted, hand-woven and tufted rugs made since 1946 at the company's factory in
+    Silvalde, Espinho.
+website: https://ferreiradesa.com
+category: texteis-lar
+subcategory: tapetes
+tags: [feito-a-mao, tecido-em-tear]
+products: [tapetes]
+founded: 1946
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: espinho
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

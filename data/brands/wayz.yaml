@@ -1,0 +1,28 @@
+slug: wayz
+status: draft
+name: Wayz
+description:
+  pt: >-
+    Ténis unissexo em pele de curtimenta vegetal, desenhados e fabricados no Porto, com
+    lojas próprias no Porto e em Lisboa.
+  en: >-
+    Unisex sneakers in vegetable-tanned leather, designed and made in Porto, with shops
+    in Porto and Lisbon.
+website: https://wayzforlife.com
+category: calcado
+subcategory: sapatilhas
+tags: [pele, unissexo]
+products: [sapatilhas]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+where_to_buy:
+  online_store: https://wayzforlife.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

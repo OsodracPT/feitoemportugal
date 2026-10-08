@@ -7,6 +7,7 @@ import {
   categories,
   getCategory,
   getPractice,
+  getProduct,
   getRegion,
   getSubcategory,
   getTag,
@@ -65,6 +66,8 @@ function labelFor(key: FilterKey, value: string, lang: Lang): string | undefined
       return localized(getRegion(value)?.label, lang) || undefined;
     case 'tag':
       return localized(getTag(value)?.label, lang) || undefined;
+    case 'prod':
+      return localized(getProduct(value)?.label, lang) || undefined;
     case 'sust':
       return localized(getPractice(value)?.label, lang) || undefined;
     case 'price':
@@ -120,5 +123,6 @@ export const filterStats = {
   categories: categories.length,
   regions: regions.length,
   tags: tags.length,
+  products: taxonomy.products.length,
   practices: taxonomy.sustainability.practices.length,
 };

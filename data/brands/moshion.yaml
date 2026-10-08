@@ -1,0 +1,27 @@
+slug: moshion
+status: draft
+name: Moshion
+description:
+  pt: >-
+    Calçado de homem feito à mão no ateliê da marca em Felgueiras, com passaporte
+    digital que acompanha cada par.
+  en: >-
+    Men’s shoes made by hand in the brand's Felgueiras workshop, each pair with a
+    digital passport.
+website: https://www.moshion.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, feito-a-mao]
+products: [sapatos, sapatilhas]
+founded: 2002
+production:
+  scope: total
+location:
+  district: porto
+  municipality: felgueiras
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

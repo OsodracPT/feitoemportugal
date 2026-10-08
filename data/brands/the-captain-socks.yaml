@@ -1,0 +1,26 @@
+slug: the-captain-socks
+status: draft
+name: The Captain Socks
+description:
+  pt: >-
+    Meias com padrões, de desporto e de compressão, desenhadas no Porto e produzidas na
+    Lousã.
+  en: >-
+    Patterned, athletic and compression socks, designed in Porto and knitted in Lousã.
+website: https://www.thecaptainsocks.com
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+products: [meias]
+production:
+  scope: total
+location:
+  district: coimbra
+  municipality: lousa
+where_to_buy:
+  online_store: https://www.thecaptainsocks.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

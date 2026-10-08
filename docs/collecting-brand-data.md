@@ -98,11 +98,14 @@ superlatives, and do not promise things you have not verified.
 | `category` | yes | `data/taxonomy/categories.yaml` — one id |
 | `subcategory` | recommended | the `subcategories` of that same category |
 | `tags` | recommended | `data/taxonomy/tags.yaml` — 2 to 5 ids |
+| `products` | recommended | `data/taxonomy/products.yaml` — every kind of product the brand makes, from any category |
+| `founded` | no | The year the brand (or the workshop it continues) was founded, as the brand states it |
 
 ```bash
 grep -n "^- id:" data/taxonomy/categories.yaml          # categories
 grep -n "^    - id:" data/taxonomy/categories.yaml      # subcategories, in file order
 grep -n "^- id:" data/taxonomy/tags.yaml                # tags
+grep -n "^- id:" data/taxonomy/products.yaml            # product types
 ```
 
 Rules:
@@ -114,6 +117,11 @@ Rules:
 - **Tags come from the controlled vocabulary.** Never invent one. If the brand's
   defining trait has no tag, leave it out and propose the new tag separately —
   new tags are added by a reviewed PR.
+- **Products are what is on sale, not what the brand is.** A soap works that also
+  sells candles gets `[sabonetes, velas]`, even though its category is
+  `cosmetica-e-higiene`. Products are what people type ("azeite", "meias"), so
+  they matter more for search than tags do. A missing type is proposed in its own
+  PR, like a tag.
 - Prefer tags that someone would actually search: material (`pele`, `cortica`,
   `la`), technique (`feito-a-mao`, `tecido-em-tear`), and at most one or two
   about style or values.
@@ -250,6 +258,8 @@ website: https://exemplo.pt
 category: calcado
 subcategory: sapatos-homem
 tags: [pele, feito-a-mao, classico]
+products: [sapatos, botas]
+founded: 1994
 
 production:
   scope: total

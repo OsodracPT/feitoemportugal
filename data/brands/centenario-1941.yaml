@@ -1,0 +1,26 @@
+slug: centenario-1941
+status: draft
+name: Centenário 1941
+description:
+  pt: >-
+    Fábrica de calçado aberta em 1941 que continua a produzir sapatos clássicos de homem
+    e de mulher, incluindo construções Goodyear.
+  en: >-
+    Shoe factory opened in 1941 that still makes classic men’s and women’s shoes,
+    Goodyear-welted models among them.
+website: https://centenario1941.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, classico, empresa-familiar]
+products: [sapatos, botas, sapatilhas]
+founded: 1941
+production:
+  scope: total
+where_to_buy:
+  online_store: https://centenario1941.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

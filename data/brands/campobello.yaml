@@ -1,0 +1,23 @@
+slug: campobello
+status: draft
+name: Campobello
+description:
+  pt: >-
+    Calçado de pele feito à mão em Portugal por uma família com mais de oito décadas na
+    indústria, vendido sobretudo através de lojas revendedoras.
+  en: >-
+    Handmade leather footwear from a family with more than eighty years in the trade,
+    sold mainly through retailers.
+website: https://campobelloshoes.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, feito-a-mao]
+products: [sapatos, sapatilhas, sandalias, botas]
+production:
+  scope: total
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

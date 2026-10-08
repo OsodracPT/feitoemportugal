@@ -1,0 +1,26 @@
+slug: broolls
+status: draft
+name: Broolls
+description:
+  pt: >-
+    Óculos de sol e armações graduadas montados à mão em Portugal, com acetato e lentes
+    vindos de Itália.
+  en: >-
+    Sunglasses and optical frames assembled by hand in Portugal from Italian acetate and
+    lenses.
+website: https://broolls.com
+category: acessorios
+subcategory: oculos
+tags: [feito-a-mao]
+products: [oculos]
+founded: 2020
+production:
+  scope: total
+where_to_buy:
+  online_store: https://broolls.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

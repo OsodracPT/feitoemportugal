@@ -1,0 +1,26 @@
+slug: a-line
+status: draft
+name: A LINE
+description:
+  pt: >-
+    Empresa familiar do Porto, fundada em 2016 a partir da camisaria, que confeciona as
+    coleções numa fábrica própria no norte do país.
+  en: >-
+    Family-run Porto label, started in 2016 with shirts, whose clothes are sewn in a
+    factory it owns in northern Portugal.
+website: https://alineclothing.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [contemporaneo, empresa-familiar]
+products: [camisas, casacos, vestidos, fatos]
+founded: 2016
+production:
+  scope: total
+where_to_buy:
+  online_store: https://alineclothing.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

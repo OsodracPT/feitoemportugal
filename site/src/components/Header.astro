@@ -14,6 +14,8 @@ const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { href: paths.brands(lang), label: t(lang, 'nav.brands') },
   { href: paths.categories(lang), label: t(lang, 'nav.categories') },
+  { href: paths.products(lang), label: t(lang, 'nav.products') },
+  { href: paths.regions(lang), label: t(lang, 'nav.regions') },
 ];
 ---
 

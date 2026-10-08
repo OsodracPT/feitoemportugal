@@ -1,0 +1,24 @@
+slug: la-paz
+status: draft
+name: La Paz
+description:
+  pt: >-
+    Roupa de homem inspirada no Atlântico, feita em Portugal em parceria direta com
+    fábricas do norte.
+  en: >-
+    Atlantic-inspired menswear made in Portugal, working directly with factories in the
+    north.
+website: https://lapaz.pt
+category: moda-e-vestuario
+subcategory: roupa-homem
+products: [t-shirts, camisas, polos, camisolas, casacos, calcas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://lapaz.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

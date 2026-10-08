@@ -1,0 +1,24 @@
+slug: portdance
+status: draft
+name: Portdance
+description:
+  pt: >-
+    Sapatos de dança de salão, latinos e de tango, em pele e feitos em Portugal, para
+    competição e para uso social.
+  en: >-
+    Ballroom, Latin and tango dance shoes in leather, made in Portugal for competition
+    and social dancing.
+website: https://www.portdance.pt
+category: calcado
+tags: [pele]
+products: [sapatos, sapatilhas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.portdance.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

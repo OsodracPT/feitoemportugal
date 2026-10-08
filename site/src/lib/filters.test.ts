@@ -47,6 +47,7 @@ describe('brandFacets', () => {
     expect(values.dist).toEqual(['porto']);
     expect(values.scope).toEqual(['total']);
     expect(values.tag).toContain('fabrica-centenaria');
+    expect(values.prod).toEqual(['sabonetes', 'perfumes']);
   });
 
   it('survives a round trip through the card attribute', () => {
@@ -164,10 +165,17 @@ describe('URL state', () => {
     const state = {
       q: 'sapatos pele',
       sort: 'recent' as const,
-      filters: withFilters({ cat: ['calcado'], dist: ['porto', 'braga'], price: ['2', '3'] }),
+      filters: withFilters({
+        cat: ['calcado'],
+        dist: ['porto', 'braga'],
+        prod: ['botas'],
+        price: ['2', '3'],
+      }),
     };
     const query = serializeListingState(state);
-    expect(query).toBe('?q=sapatos+pele&cat=calcado&dist=porto%2Cbraga&price=2%2C3&sort=recent');
+    expect(query).toBe(
+      '?q=sapatos+pele&cat=calcado&dist=porto%2Cbraga&prod=botas&price=2%2C3&sort=recent',
+    );
     expect(parseListingState(query)).toEqual(state);
   });
 
@@ -196,8 +204,8 @@ describe('filter groups built from the real data', () => {
   const groups = filterGroups('pt');
   const byKey = new Map(groups.map((group) => [group.key, group]));
 
-  it('offers a category, region and tag filter', () => {
-    for (const key of ['cat', 'dist', 'tag'] as const) {
+  it('offers a category, region, tag and product filter', () => {
+    for (const key of ['cat', 'dist', 'tag', 'prod'] as const) {
       expect(byKey.get(key)?.options.length).toBeGreaterThan(1);
     }
   });

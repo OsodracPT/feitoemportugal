@@ -64,11 +64,12 @@ SITE_URL=http://localhost:4321 pnpm build
 
 ```
 data/brands/<slug>.yaml     one brand per file, the source of truth
-data/taxonomy/              categories, tags, regions, sustainability practices
+data/taxonomy/              categories, tags, product types, regions, sustainability practices
+data/geo/                   district outlines for the map (generated, see below)
 packages/schema/            shared Zod schema, YAML loaders, cross-file checks
 site/                       the Astro site (Portuguese at /, English at /en)
 site/src/pages/api/v1/      the public JSON API, generated at build time
-scripts/                    command-line tools (pnpm validate)
+scripts/                    command-line tools (pnpm validate, the CAOP import)
 deploy/                     reference web server config and deploy tooling
 docs/                       contributor guides, design notes, research evidence
 .github/workflows/          CI (validate.yml) and the optional deploy (deploy.yml)
@@ -78,8 +79,8 @@ docs/                       contributor guides, design notes, research evidence
 
 1. Copy an existing file in `data/brands/` and edit it. The file name must equal
    its `slug`.
-2. Every `category`, `subcategory`, `tag`, `practice`, `certification`, `district`
-   and `municipality` must exist in `data/taxonomy/`.
+2. Every `category`, `subcategory`, `tag`, `products` entry, `practice`,
+   `certification`, `district` and `municipality` must exist in `data/taxonomy/`.
 3. New brands start as `status: draft`, which keeps them off the site, the API and
    the sitemap. A maintainer sets `published`.
 4. Run `pnpm validate`. Errors fail the build; warnings (such as a missing English
@@ -105,12 +106,21 @@ The site publishes the dataset as static JSON, open to any origin:
 |---|---|
 | `/api/v1/brands.json` | All published brands |
 | `/api/v1/brands/<slug>.json` | One brand |
-| `/api/v1/categories.json`, `tags.json`, `regions.json`, `sustainability.json` | The taxonomy |
+| `/api/v1/categories.json`, `tags.json`, `products.json`, `regions.json`, `sustainability.json` | The taxonomy |
 | `/api/v1/schema.json` | JSON Schema of a brand file, generated from the Zod schema |
 
 Every response except `schema.json` carries `version`, `generated_at` and
 `license`. Breaking changes will get a new `/v2/`. The same data is in `data/`
 if you would rather clone it.
+
+## Map data
+
+The municipality centroids in `data/taxonomy/regions.yaml` and the district outlines
+in `data/geo/districts.geojson` are derived from the
+[Carta Administrativa Oficial de Portugal (CAOP 2025)](https://dados.gov.pt/datasets/carta-administrativa-oficial-de-portugal-caop2025-continente)
+by the Direção-Geral do Território, published under CC BY 4.0. They are generated,
+not edited by hand: when a new CAOP is released, run `node scripts/import-caop.ts`
+(it needs the network and runs mapshaper through `pnpm dlx`) and commit the result.
 
 ## Deploying your own copy
 
@@ -131,4 +141,6 @@ setup and optional automatic deploys from GitHub Actions.
 
 The data in `data/` is licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (see
-[`DATA_LICENSE`](DATA_LICENSE)). The licence for the code is still being decided.
+[`DATA_LICENSE`](DATA_LICENSE)). The administrative boundaries come from CAOP 2025,
+© Direção-Geral do Território, CC BY 4.0. The licence for the code is still being
+decided.

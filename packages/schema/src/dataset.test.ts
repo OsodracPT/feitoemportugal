@@ -2,8 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { brandSchema } from './brand.ts';
-import { checkBrandReferences, validateDataset, type LoadedBrand } from './dataset.ts';
-import { loadBrands, loadTaxonomy } from './load.ts';
+import {
+  checkBrandReferences,
+  validateDataset,
+  validateTaxonomy,
+  type LoadedBrand,
+} from './dataset.ts';
+import { validateDistrictShapes } from './geo.ts';
+import { loadBrands, loadDistrictShapes, loadTaxonomy } from './load.ts';
 import type { Taxonomy } from './taxonomy.ts';
 
 const dataDir = join(fileURLToPath(new URL('../../../', import.meta.url)), 'data');
@@ -55,6 +61,15 @@ describe('checkBrandReferences', () => {
     expect(
       errors(checkBrandReferences(brand({ tags: ['pele', 'neon'] }), taxonomy, 'f.yaml')),
     ).toEqual(['unknown tag "neon"']);
+  });
+
+  it('rejects unknown product types', () => {
+    expect(errors(checkBrandReferences(brand({ products: ['sapatos'] }), taxonomy, 'f.yaml'))).toEqual(
+      [],
+    );
+    expect(
+      errors(checkBrandReferences(brand({ products: ['sapatos', 'foguetoes'] }), taxonomy, 'f.yaml')),
+    ).toEqual(['unknown product type "foguetoes"']);
   });
 
   it('rejects unknown practices and certifications', () => {
@@ -131,5 +146,50 @@ describe('validateDataset', () => {
 
   it('finds no errors in the repository data', () => {
     expect(errors(validateDataset(loadBrands(dataDir), taxonomy))).toEqual([]);
+  });
+});
+
+describe('validateDistrictShapes', () => {
+  const shapes = loadDistrictShapes(dataDir);
+
+  it('has exactly one shape per district in the repository data', () => {
+    expect(errors(validateDistrictShapes(shapes, taxonomy))).toEqual([]);
+  });
+
+  it('reports a missing and an unknown district', () => {
+    const [first, ...rest] = shapes.features;
+    const issues = validateDistrictShapes(
+      { ...shapes, features: [...rest, { ...first!, properties: { district: 'atlantida' } }] },
+      taxonomy,
+    );
+    expect(errors(issues)).toEqual([
+      'unknown district "atlantida"',
+      `district "${first!.properties.district}" has 0 shapes, expected 1`,
+    ]);
+  });
+
+  it('places every municipality centroid inside the country', () => {
+    const missing = taxonomy.regions.flatMap((region) =>
+      region.municipalities.filter((m) => !m.centroid).map((m) => m.id),
+    );
+    expect(missing).toEqual([]);
+  });
+});
+
+describe('validateTaxonomy', () => {
+  it('requires every product type to point at a real category, with unique slugs', () => {
+    const [first, second] = taxonomy.products;
+    const issues = validateTaxonomy({
+      ...taxonomy,
+      products: [
+        { ...first!, category: 'naves' },
+        { ...second!, slug: first!.slug },
+      ],
+    });
+    expect(errors(issues)).toEqual([
+      `duplicate product pt slug "${first!.slug.pt}"`,
+      `duplicate product en slug "${first!.slug.en}"`,
+      `unknown category "naves"`,
+    ]);
   });
 });

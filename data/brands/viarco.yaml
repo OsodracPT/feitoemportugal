@@ -12,6 +12,7 @@ website: https://www.viarco.pt
 category: papelaria-e-livros
 subcategory: escrita
 tags: [madeira, tradicional, fabrica-centenaria]
+products: [lapis, materiais-de-desenho]
 production:
   scope: total
 location:
@@ -25,5 +26,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

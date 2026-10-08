@@ -12,6 +12,7 @@ website: https://www.portugueseflannel.com
 category: moda-e-vestuario
 subcategory: roupa-homem
 tags: [classico, tradicional]
+products: [camisas]
 production:
   scope: total
 price_range: 3
@@ -23,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

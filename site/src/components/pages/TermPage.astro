@@ -1,0 +1,106 @@
+---
+/**
+ * Landing page for one product type or one tag: the brands that carry it,
+ * a link into the filtered catalogue, and the sibling pages. Both kinds only
+ * exist above MIN_BRANDS_FOR_LANDING, like categories.
+ */
+import type { Product, Tag } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { brandsWithProduct, brandsWithTag, landingProducts, landingTags } from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
+import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+type Props = { lang: Lang } & (
+  | { kind: 'product'; term: Product }
+  | { kind: 'tag'; term: Tag }
+);
+
+const { lang, kind, term } = Astro.props;
+
+const label = localized(term.label, lang);
+// Mid-sentence, English drops the capital too ("make socks"), unlike headings.
+const inSentence = lang === 'en' ? label.toLocaleLowerCase('en-GB') : labelInSentence(label, lang);
+
+const isProduct = kind === 'product';
+const brands = isProduct ? brandsWithProduct(term.id) : brandsWithTag(term.id);
+const headline = isProduct
+  ? t(lang, 'products.brandsOf', { product: labelInSentence(label, lang) })
+  : t(lang, 'tags.brandsWith', { tag: label });
+const lede = isProduct
+  ? t(lang, 'products.lede', { count: brands.length, product: inSentence })
+  : t(lang, 'tags.lede', { count: brands.length });
+
+const pagePath = (target: Lang): string =>
+  kind === 'product'
+    ? paths.product(target, (term as Product).slug[target])
+    : paths.tag(target, term.id);
+const alternates = { pt: pagePath('pt'), en: pagePath('en') };
+
+const filters = emptyFilters();
+filters[isProduct ? 'prod' : 'tag'] = [term.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  isProduct
+    ? { name: t(lang, 'products.title'), path: paths.products(lang) }
+    : { name: t(lang, 'tags.title'), path: paths.tags(lang) },
+  { name: label },
+];
+
+const siblings = (isProduct ? landingProducts() : landingTags())
+  .filter((other) => other.id !== term.id)
+  .map((other) => ({
+    label: localized(other.label, lang),
+    href: isProduct
+      ? paths.product(lang, (other as Product).slug[lang])
+      : paths.tag(lang, other.id),
+  }));
+
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(headline, lang)}
+  description={truncate(lede, 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{headline}</h1>
+    <p class="lede">{lede}</p>
+    <p><a href={catalogueLink}>{t(lang, isProduct ? 'products.refine' : 'tags.refine')}</a></p>
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      siblings.length > 0 && (
+        <nav class="section" aria-label={t(lang, isProduct ? 'products.other' : 'tags.other')}>
+          <h2 class="eyebrow">{t(lang, isProduct ? 'products.other' : 'tags.other')}</h2>
+          <ul class="pill-list">
+            {siblings.map((sibling) => (
+              <li>
+                <a class="pill" href={sibling.href}>{sibling.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>

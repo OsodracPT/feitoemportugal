@@ -12,6 +12,8 @@ website: https://confianca1894.com
 category: cosmetica-e-higiene
 subcategory: sabonetes-e-banho
 tags: [tradicional, vintage, fabrica-centenaria]
+products: [sabonetes]
+founded: 1894
 production:
   scope: total
 location:
@@ -23,5 +25,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

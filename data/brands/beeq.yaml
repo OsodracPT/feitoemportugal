@@ -12,6 +12,7 @@ website: https://beeq.pt
 category: tecnologia
 subcategory: bicicletas-e-mobilidade
 tags: [contemporaneo]
+products: [bicicletas]
 production:
   scope: total
 price_range: 4
@@ -21,5 +22,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

@@ -1,0 +1,26 @@
+slug: apple-of-eden
+status: draft
+name: Apple of Eden
+description:
+  pt: >-
+    Marca germano-portuguesa criada em 2010, com sede na região do Porto, cujo calçado é
+    produzido por fabricantes portugueses selecionados.
+  en: >-
+    German-Portuguese label founded in 2010 and run from the Porto region, whose shoes
+    are made by selected Portuguese factories.
+website: https://www.appleofedenshoes.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele]
+products: [sapatos]
+founded: 2010
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.appleofedenshoes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

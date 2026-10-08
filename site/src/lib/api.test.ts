@@ -1,6 +1,16 @@
 import { describe, expect, it } from 'vitest';
-import { API_VERSION, apiBrand, apiCategory, apiPath, apiRegion, apiTag, envelope } from './api.ts';
-import { brands, categories, regions, tags } from './data.ts';
+import { loadBrands } from '@fep/schema';
+import {
+  API_VERSION,
+  apiBrand,
+  apiCategory,
+  apiPath,
+  apiProduct,
+  apiRegion,
+  apiTag,
+  envelope,
+} from './api.ts';
+import { brands, categories, products, regions, tags } from './data.ts';
 
 describe('envelope', () => {
   it('states the version, the build and the licence', () => {
@@ -36,6 +46,13 @@ describe('payloads', () => {
 
     const tagged = tags.filter((tag) => apiTag(tag).brands > 0).length;
     expect(tagged).toBeGreaterThan(0);
+
+    // Every product type is made by at least one brand in data/, drafts included:
+    // a type can arrive with a draft, before any brand using it is published.
+    const all = loadBrands(import.meta.env.DATA_DIR).map((entry) => entry.data);
+    const unused = products.filter((p) => !all.some((brand) => brand.products.includes(p.id)));
+    expect(unused.map((p) => p.id)).toEqual([]);
+    expect(products.some((product) => apiProduct(product).brands > 0)).toBe(true);
 
     const located = regions.reduce((sum, region) => sum + apiRegion(region).brands, 0);
     expect(located).toBe(brands.filter((brand) => brand.location).length);

@@ -11,7 +11,10 @@
     "submit": "Sugerir marca",
     "about": "Sobre",
     "skipToContent": "Ir para o conteúdo",
-    "menu": "Menu"
+    "menu": "Menu",
+    "products": "Produtos",
+    "tags": "Etiquetas",
+    "regions": "Regiões"
   },
   "lang": {
     "switchTo": "English",
@@ -35,7 +38,7 @@
   },
   "brands": {
     "title": "Marcas",
-    "intro": "Todas as marcas publicadas, por ordem alfabética.",
+    "intro": "Todas as marcas publicadas. Pesquisa, filtra e ordena como quiseres.",
     "count": "{count} marcas",
     "countOne": "1 marca",
     "empty": "Ainda não há marcas nesta lista.",
@@ -72,7 +75,14 @@
     "addedOn": "Adicionada em {date}",
     "updatedOn": "Atualizada em {date}",
     "logoOf": "Logótipo de {name}",
-    "details": "Ficha"
+    "details": "Ficha",
+    "founded": "Fundada em",
+    "products": "Produtos",
+    "howWeKnow": "Como sabemos que é feito em Portugal",
+    "howImport": "A própria marca afirma, no seu site, que fabrica em Portugal. Lemos essa afirmação antes de publicar e guardámos a citação nas notas de evidência do projeto.",
+    "howMaintainer": "Adicionada por um maintainer que conhece a produção da marca.",
+    "evidenceLink": "Ver as notas de evidência",
+    "howNotVerified": "Ainda não foi verificada de forma independente."
   },
   "category": {
     "brandsIn": "Marcas de {category} feitas em Portugal",
@@ -80,6 +90,37 @@
     "faq": "Perguntas frequentes",
     "otherCategories": "Outras categorias",
     "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria."
+  },
+  "products": {
+    "title": "Produtos",
+    "intro": "Tipos de produto feitos em Portugal, com as marcas que os fabricam.",
+    "brandsOf": "Marcas de {product} feitas em Portugal",
+    "lede": "{count} marcas fabricam {product} em Portugal.",
+    "other": "Outros tipos de produto",
+    "refine": "Filtrar estas marcas no catálogo",
+    "noPage": "Ainda sem marcas suficientes para ter página própria."
+  },
+  "tags": {
+    "title": "Etiquetas",
+    "intro": "Materiais, ofícios e outras características que atravessam as categorias.",
+    "brandsWith": "Marcas com a etiqueta «{tag}»",
+    "lede": "{count} marcas feitas em Portugal com esta etiqueta.",
+    "other": "Outras etiquetas",
+    "refine": "Filtrar estas marcas no catálogo"
+  },
+  "regions": {
+    "title": "Regiões",
+    "intro": "Onde as marcas fabricam, por distrito e região autónoma. Uma marca só entra no mapa quando o local de produção é conhecido.",
+    "located": "{count} de {total} marcas têm local de produção conhecido."
+  },
+  "region": {
+    "district": "Distrito",
+    "autonomous": "Região autónoma",
+    "title": "{region} — marcas feitas em Portugal",
+    "lede": "{count} marcas produzem aqui.",
+    "other": "Outras regiões",
+    "refine": "Filtrar estas marcas no catálogo",
+    "noPage": "Ainda sem marcas suficientes para ter página própria."
   },
   "breadcrumbs": {
     "home": "Início",
@@ -126,6 +167,7 @@
       "sub": "Subcategoria",
       "dist": "Região",
       "tag": "Etiqueta",
+      "prod": "Produto",
       "price": "Preço",
       "scope": "Produção",
       "sust": "Sustentabilidade",
@@ -175,9 +217,19 @@
       "brand": "Uma marca, pelo seu slug.",
       "categories": "Categorias e subcategorias, com o número de marcas.",
       "tags": "Etiquetas e sinónimos, com o número de marcas.",
+      "products": "Tipos de produto e sinónimos, com o número de marcas.",
       "regions": "Distritos e regiões autónomas, concelhos e centroides.",
       "sustainability": "Práticas e certificações reconhecidas.",
       "schema": "JSON Schema de uma marca (sem envelope)."
     }
+  },
+  "map": {
+    "title": "Mapa",
+    "hint": "Toca num distrito para filtrar.",
+    "label": "{name}: {count} marcas",
+    "labelOne": "{name}: 1 marca",
+    "labelNone": "{name}: sem marcas",
+    "legend": "Cor mais intensa, mais marcas.",
+    "source": "Limites: CAOP 2025, DGT (CC BY 4.0)."
   }
 }

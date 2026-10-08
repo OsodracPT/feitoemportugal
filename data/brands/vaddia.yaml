@@ -1,0 +1,24 @@
+slug: vaddia
+status: draft
+name: Vaddia
+description:
+  pt: >-
+    Sapatilhas nascidas no Porto e feitas à mão em Portugal, com peles curtidas sem
+    crómio.
+  en: >-
+    Sneakers from Porto, made by hand in Portugal with chrome-free leathers.
+website: https://vaddia.com
+category: calcado
+subcategory: sapatilhas
+tags: [feito-a-mao]
+products: [sapatilhas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://vaddia.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

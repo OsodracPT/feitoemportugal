@@ -12,6 +12,7 @@ export const FILTER_KEYS = [
   'sub',
   'dist',
   'tag',
+  'prod',
   'price',
   'scope',
   'sust',
@@ -64,6 +65,7 @@ export function brandFacets(brand: Brand): BrandFacets {
       sub: brand.subcategory ? [subValue(brand.category, brand.subcategory)] : [],
       dist: brand.location ? [brand.location.district] : [],
       tag: brand.tags,
+      prod: brand.products,
       price: brand.price_range ? [String(brand.price_range)] : [],
       scope: [brand.production.scope],
       sust: brand.sustainability?.practices ?? [],
@@ -106,6 +108,18 @@ export function matchesFilters(
     if (selected.length > 0 && !hasOverlap(selected, facets.values[key])) return false;
   }
   return true;
+}
+
+/**
+ * Shade step of a district on the map, 0 (no brand) to 4. Fixed steps rather
+ * than a scale of the maximum, so a district keeps its shade as others change.
+ */
+export function mapShade(count: number): 0 | 1 | 2 | 3 | 4 {
+  if (count <= 0) return 0;
+  if (count <= 2) return 1;
+  if (count <= 5) return 2;
+  if (count <= 10) return 3;
+  return 4;
 }
 
 export const activeFilterCount = (filters: Filters): number =>

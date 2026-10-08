@@ -12,6 +12,7 @@ website: https://guajastudio.com
 category: moda-e-vestuario
 subcategory: roupa-mulher
 tags: [feito-a-mao, malha, pequena-serie]
+products: [camisolas]
 production:
   scope: total
 price_range: 3
@@ -21,5 +22,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

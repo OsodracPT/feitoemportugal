@@ -1,0 +1,25 @@
+slug: shoevenir
+status: draft
+name: Shoevenir
+description:
+  pt: >-
+    Sandálias do Porto sem materiais de origem animal, com desenhos de artistas
+    convidados, desenhadas e produzidas em Portugal.
+  en: >-
+    Animal-free sandals from Porto featuring designs by guest artists, designed and made
+    in Portugal.
+website: https://www.shoevenirworld.com
+category: calcado
+subcategory: sandalias-e-chinelos
+tags: [vegano]
+products: [sandalias, t-shirts]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.shoevenirworld.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

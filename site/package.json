@@ -17,7 +17,10 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@types/d3-geo": "^3.1.1",
+    "@types/geojson": "^7946.0.16",
     "@types/node": "^26.6.4",
+    "d3-geo": "^3.1.1",
     "typescript": "^6.0.3",
     "vitest": "^5.0.3"
   }

@@ -12,6 +12,8 @@ website: https://www.adico.pt
 category: mobiliario
 subcategory: cadeiras-e-bancos
 tags: [metal, tradicional, fabrica-centenaria]
+products: [cadeiras]
+founded: 1920
 production:
   scope: total
 location:
@@ -23,5 +25,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

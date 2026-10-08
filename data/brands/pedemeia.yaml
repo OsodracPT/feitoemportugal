@@ -1,0 +1,26 @@
+slug: pedemeia
+status: draft
+name: Pedemeia
+description:
+  pt: >-
+    Meias para mulher, homem e criança de uma empresa familiar nascida em Braga em 1966,
+    produzidas em Portugal.
+  en: >-
+    Socks for women, men and children from a family firm founded in Braga in 1966, made
+    in Portugal.
+website: https://pedemeia.pt
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+tags: [empresa-familiar]
+products: [meias]
+founded: 1966
+production:
+  scope: total
+where_to_buy:
+  online_store: https://pedemeia.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

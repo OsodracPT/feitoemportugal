@@ -12,6 +12,7 @@ website: https://costa-verde.com
 category: ceramica-e-vidro
 subcategory: porcelana
 tags: [ceramica, classico, contemporaneo]
+products: [loica-de-mesa]
 production:
   scope: total
 location:
@@ -23,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: maintainer

@@ -8,6 +8,7 @@
 import {
   activeFilterCount,
   facetCounts,
+  mapShade,
   orderedSlugs,
   parseFacets,
   parseListingState,
@@ -45,6 +46,9 @@ export function initListing(): void {
   const clearAll = panel?.querySelector<HTMLButtonElement>('[data-filters-clear]') ?? null;
   const groupEls = panel ? Array.from(panel.querySelectorAll<HTMLElement>('[data-group]')) : [];
   const totalLabel = document.querySelector<HTMLElement>('[data-brand-total]');
+  const map = panel?.querySelector<HTMLElement>('[data-district-map]') ?? null;
+  const mapDistricts = map ? Array.from(map.querySelectorAll<SVGPathElement>('[data-dist]')) : [];
+  const mapStrings = JSON.parse(map?.dataset.strings ?? '{}');
 
   const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-slug]'));
   // The cards arrive in the server's order (alphabetical), which is what the
@@ -141,10 +145,40 @@ export function initListing(): void {
       badge.hidden = selected === 0;
     }
 
+    updateMap(matched);
+
     const active = activeFilterCount(state.filters);
     toggleBadge.textContent = String(active);
     toggleBadge.hidden = active === 0;
     if (clearAll) clearAll.hidden = active === 0;
+  }
+
+  /** Same faceted counts as the region checkboxes, shown as shades. */
+  function updateMap(matched: Set<string> | null) {
+    if (mapDistricts.length === 0) return;
+    const counts = facetCounts(facets, state.filters, 'dist', matched);
+    for (const path of mapDistricts) {
+      const id = path.dataset.dist ?? '';
+      const count = counts.get(id) ?? 0;
+      const selected = state.filters.dist.includes(id);
+      const name = path.dataset.name ?? id;
+      const label =
+        count === 0
+          ? fill(mapStrings.labelNone, { name })
+          : count === 1
+            ? fill(mapStrings.labelOne, { name })
+            : fill(mapStrings.label, { name, count });
+      // SVG elements have no writable className, hence setAttribute.
+      path.setAttribute('class', `dmap__district s${mapShade(count)}`);
+      path.setAttribute('aria-pressed', String(selected));
+      path.setAttribute('aria-label', label);
+      const title = path.querySelector('title');
+      if (title) title.textContent = label;
+      const disabled = count === 0 && !selected;
+      if (disabled) path.setAttribute('aria-disabled', 'true');
+      else path.removeAttribute('aria-disabled');
+      path.setAttribute('tabindex', disabled ? '-1' : '0');
+    }
   }
 
   function updateChips() {
@@ -284,6 +318,21 @@ export function initListing(): void {
     if (!key) return;
     setFilter(key, box.value, box.checked);
     render();
+  });
+
+  function toggleDistrict(target: EventTarget | null) {
+    const path = target instanceof Element ? target.closest<SVGPathElement>('[data-dist]') : null;
+    if (!path || path.getAttribute('aria-disabled') === 'true') return;
+    const id = path.dataset.dist ?? '';
+    setFilter('dist', id, !state.filters.dist.includes(id));
+    render();
+  }
+
+  map?.addEventListener('click', (event) => toggleDistrict(event.target));
+  map?.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    toggleDistrict(event.target);
   });
 
   clearAll?.addEventListener('click', () => {

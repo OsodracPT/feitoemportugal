@@ -1,0 +1,28 @@
+slug: maria-joao-bahia
+status: draft
+name: Maria João Bahia
+description:
+  pt: >-
+    Joalharia de autor feita à mão em Lisboa, com muitas peças feitas por encomenda e um
+    ateliê na Avenida da Liberdade.
+  en: >-
+    Fine jewellery handmade in Lisbon, much of it made to order, with an atelier on
+    Avenida da Liberdade.
+website: https://mariajoaobahia.com
+category: joalharia
+subcategory: ouro
+tags: [feito-a-mao, personalizavel]
+products: [joias]
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://mariajoaobahia.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

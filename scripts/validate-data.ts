@@ -6,7 +6,15 @@
  */
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { DataError, loadBrands, loadTaxonomy, validateDataset, type Issue } from '@fep/schema';
+import {
+  DataError,
+  loadBrands,
+  loadDistrictShapes,
+  loadTaxonomy,
+  validateDataset,
+  validateDistrictShapes,
+  type Issue,
+} from '@fep/schema';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(repoRoot, 'data');
@@ -22,7 +30,10 @@ function report(issues: Issue[]): void {
 try {
   const taxonomy = loadTaxonomy(dataDir);
   const brands = loadBrands(dataDir);
-  const issues = validateDataset(brands, taxonomy);
+  const issues = [
+    ...validateDataset(brands, taxonomy),
+    ...validateDistrictShapes(loadDistrictShapes(dataDir), taxonomy),
+  ];
   const errors = issues.filter((i) => i.level === 'error');
   const warnings = issues.filter((i) => i.level === 'warning');
 
@@ -32,7 +43,8 @@ try {
   const published = brands.filter((b) => b.data.status === 'published').length;
   console.log(
     `\n${brands.length} brands (${published} published), ${taxonomy.categories.length} categories, ` +
-      `${taxonomy.tags.length} tags, ${taxonomy.regions.length} regions, ` +
+      `${taxonomy.tags.length} tags, ${taxonomy.products.length} product types, ` +
+      `${taxonomy.regions.length} regions, ` +
       `${taxonomy.regions.reduce((n, r) => n + r.municipalities.length, 0)} municipalities`,
   );
   console.log(`${errors.length} error(s), ${warnings.length} warning(s)`);

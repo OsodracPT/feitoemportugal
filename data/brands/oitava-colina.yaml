@@ -1,0 +1,28 @@
+slug: oitava-colina
+status: draft
+name: Oitava Colina
+description:
+  pt: >-
+    Cervejeira artesanal de Lisboa, fundada em 2015 na Graça e hoje a produzir numa
+    fábrica maior em Cabo Ruivo.
+  en: >-
+    Lisbon craft brewery founded in 2015 in Graça, now brewing in a larger plant in Cabo
+    Ruivo.
+website: https://www.oitavacolina.pt
+category: bebidas
+subcategory: cerveja
+products: [cerveja]
+founded: 2015
+production:
+  scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+where_to_buy:
+  online_store: https://www.oitavacolina.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

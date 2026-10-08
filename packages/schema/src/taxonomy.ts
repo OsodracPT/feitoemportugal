@@ -49,6 +49,22 @@ export const tagSchema = z.object({
 
 export const tagsFileSchema = z.array(tagSchema).min(1);
 
+/** A kind of product (azeite, meias, talheres), grouped under one category. */
+export const productSchema = z.object({
+  id: idSchema,
+  category: idSchema,
+  label: localizedSchema,
+  slug: localizedSchema,
+  synonyms: z
+    .object({
+      pt: z.array(z.string().min(1)).default([]),
+      en: z.array(z.string().min(1)).default([]),
+    })
+    .default({ pt: [], en: [] }),
+});
+
+export const productsFileSchema = z.array(productSchema).min(1);
+
 export const REGION_TYPES = ['distrito', 'regiao-autonoma'] as const;
 
 export const municipalitySchema = z.object({
@@ -90,6 +106,7 @@ export const sustainabilityFileSchema = z.object({
 export type Category = z.infer<typeof categorySchema>;
 export type Subcategory = z.infer<typeof subcategorySchema>;
 export type Tag = z.infer<typeof tagSchema>;
+export type Product = z.infer<typeof productSchema>;
 export type Region = z.infer<typeof regionSchema>;
 export type Municipality = z.infer<typeof municipalitySchema>;
 export type SustainabilityFile = z.infer<typeof sustainabilityFileSchema>;
@@ -99,6 +116,7 @@ export type CertificationDef = z.infer<typeof certificationDefSchema>;
 export interface Taxonomy {
   categories: Category[];
   tags: Tag[];
+  products: Product[];
   regions: Region[];
   sustainability: SustainabilityFile;
 }

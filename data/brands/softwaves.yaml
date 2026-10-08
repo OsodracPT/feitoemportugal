@@ -1,0 +1,25 @@
+slug: softwaves
+status: draft
+name: Softwaves
+description:
+  pt: >-
+    Marca familiar de calçado confortável fundada em 1970 e hoje gerida por três irmãos,
+    que fabrica em Portugal.
+  en: >-
+    Family brand of comfortable footwear, founded in 1970 and now run by three siblings,
+    made in Portugal.
+website: https://www.softwavesshop.com
+category: calcado
+tags: [empresa-familiar]
+products: [sapatos, sapatilhas, botas, sandalias]
+founded: 1970
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.softwavesshop.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

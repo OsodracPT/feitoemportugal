@@ -1,0 +1,28 @@
+slug: ambitious
+status: draft
+name: Ambitious
+description:
+  pt: >-
+    Sapatilhas, sapatos e botas para homem e mulher, produzidos nas unidades fabris da
+    marca em Guimarães.
+  en: >-
+    Sneakers, shoes and boots for men and women, produced in the brand's own factories
+    in Guimarães.
+website: https://www.ambitious-brand.com
+category: calcado
+subcategory: sapatilhas
+tags: [pele]
+products: [sapatilhas, sapatos, botas]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: guimaraes
+where_to_buy:
+  online_store: https://www.ambitious-brand.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -5,6 +5,12 @@ import {
   landingSubcategories,
   brandsInCategory,
   brandsInSubcategory,
+  brandsWithProduct,
+  brandsWithTag,
+  brandsInDistrict,
+  landingRegions,
+  landingProducts,
+  landingTags,
   lastDataUpdate,
 } from '~/lib/data.ts';
 import { LANGUAGES, paths, type Lang } from '~/lib/i18n.ts';
@@ -24,6 +30,9 @@ function entries(): SitemapEntry[] {
     { urls: { pt: paths.home('pt'), en: paths.home('en') }, lastmod: lastDataUpdate },
     { urls: { pt: paths.brands('pt'), en: paths.brands('en') }, lastmod: lastDataUpdate },
     { urls: { pt: paths.categories('pt'), en: paths.categories('en') }, lastmod: lastDataUpdate },
+    { urls: { pt: paths.products('pt'), en: paths.products('en') }, lastmod: lastDataUpdate },
+    { urls: { pt: paths.tags('pt'), en: paths.tags('en') }, lastmod: lastDataUpdate },
+    { urls: { pt: paths.regions('pt'), en: paths.regions('en') }, lastmod: lastDataUpdate },
     { urls: { pt: paths.api('pt'), en: paths.api('en') }, lastmod: lastDataUpdate },
   ];
 
@@ -45,6 +54,30 @@ function entries(): SitemapEntry[] {
         lastmod: latestUpdate(brandsInSubcategory(category.id, subcategory.id)),
       });
     }
+  }
+
+  for (const region of landingRegions()) {
+    result.push({
+      urls: { pt: paths.region('pt', region.slug.pt), en: paths.region('en', region.slug.en) },
+      lastmod: latestUpdate(brandsInDistrict(region.id)),
+    });
+  }
+
+  for (const product of landingProducts()) {
+    result.push({
+      urls: {
+        pt: paths.product('pt', product.slug.pt),
+        en: paths.product('en', product.slug.en),
+      },
+      lastmod: latestUpdate(brandsWithProduct(product.id)),
+    });
+  }
+
+  for (const tag of landingTags()) {
+    result.push({
+      urls: { pt: paths.tag('pt', tag.id), en: paths.tag('en', tag.id) },
+      lastmod: latestUpdate(brandsWithTag(tag.id)),
+    });
   }
 
   for (const brand of brands) {

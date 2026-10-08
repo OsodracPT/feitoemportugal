@@ -12,6 +12,7 @@ website: https://zilian.com
 category: calcado
 subcategory: sapatos-mulher
 tags: [pele, contemporaneo]
+products: [sabrinas, sapatos, botas, sandalias, malas]
 production:
   scope: total
 where_to_buy:
@@ -20,5 +21,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

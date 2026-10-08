@@ -1,0 +1,120 @@
+---
+/**
+ * Index of every product type (grouped by category) or every tag, with brand
+ * counts. Only terms above MIN_BRANDS_FOR_LANDING link to a page of their own.
+ */
+import Layout from '~/layouts/Layout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import {
+  brandsWithProduct,
+  brandsWithTag,
+  categories,
+  hasProductPage,
+  hasTagPage,
+  products,
+  tags,
+} from '~/lib/data.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  kind: 'product' | 'tag';
+}
+
+interface Entry {
+  label: string;
+  count: number;
+  href?: string;
+}
+
+const { lang, kind } = Astro.props;
+const isProduct = kind === 'product';
+const title = t(lang, isProduct ? 'products.title' : 'tags.title');
+const intro = t(lang, isProduct ? 'products.intro' : 'tags.intro');
+const indexPath = isProduct ? paths.products : paths.tags;
+const alternates = { pt: indexPath('pt'), en: indexPath('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: title },
+];
+
+const byCount = (a: Entry, b: Entry): number =>
+  b.count - a.count || a.label.localeCompare(b.label, lang);
+
+const groups: { heading?: string; entries: Entry[] }[] = isProduct
+  ? categories
+      .map((category) => ({
+        heading: localized(category.label, lang),
+        entries: products
+          .filter((product) => product.category === category.id)
+          .map((product) => ({
+            label: localized(product.label, lang),
+            count: brandsWithProduct(product.id).length,
+            href: hasProductPage(product.id) ? paths.product(lang, product.slug[lang]) : undefined,
+          }))
+          // Types that only draft brands make so far stay off the public index.
+          .filter((entry) => entry.count > 0)
+          .sort(byCount),
+      }))
+      .filter((group) => group.entries.length > 0)
+  : [
+      {
+        entries: tags
+          .map((tag) => ({
+            label: localized(tag.label, lang),
+            count: brandsWithTag(tag.id).length,
+            href: hasTagPage(tag.id) ? paths.tag(lang, tag.id) : undefined,
+          }))
+          .filter((entry) => entry.count > 0)
+          .sort(byCount),
+      },
+    ];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(title, lang)}
+  description={intro}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{title}</h1>
+    <p class="lede">{intro}</p>
+    {
+      groups.map((group) => (
+        <section class="group">
+          {group.heading && <h2 class="eyebrow">{group.heading}</h2>}
+          <ul class="pill-list">
+            {group.entries.map((entry) => (
+              <li>
+                {entry.href ? (
+                  <a class="pill" href={entry.href}>
+                    {entry.label} <span class="muted">{entry.count}</span>
+                  </a>
+                ) : (
+                  <span class="pill pill--quiet" title={t(lang, 'products.noPage')}>
+                    {entry.label} <span class="muted">{entry.count}</span>
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .group {
+    margin-top: var(--space-5);
+  }
+
+  .group .eyebrow {
+    margin-bottom: var(--space-2);
+  }
+</style>

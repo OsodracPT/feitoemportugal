@@ -12,6 +12,8 @@ website: https://www.silampos.pt
 category: casa-e-decoracao
 subcategory: cutelaria-e-mesa
 tags: [metal, classico]
+products: [panelas, utensilios-de-cozinha]
+founded: 1951
 production:
   scope: total
 where_to_buy:
@@ -20,5 +22,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

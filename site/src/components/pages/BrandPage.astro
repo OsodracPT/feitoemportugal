@@ -11,10 +11,14 @@ import {
   getCertification,
   getMunicipality,
   getPractice,
+  getProduct,
   getRegion,
   getSubcategory,
   getTag,
   hasLandingPage,
+  hasProductPage,
+  hasRegionPage,
+  hasTagPage,
   relatedBrands,
 } from '~/lib/data.ts';
 import { formatDate, localized, paths, t, type Lang } from '~/lib/i18n.ts';
@@ -61,6 +65,11 @@ const social = socialLinks(brand);
 const practices = brand.sustainability?.practices.map(getPractice).filter(Boolean) ?? [];
 const certifications = brand.sustainability?.certifications ?? [];
 const notes = brand.production.notes ? localized(brand.production.notes, lang) : '';
+const products = brand.products.flatMap((id) => {
+  const product = getProduct(id);
+  return product ? [product] : [];
+});
+const evidenceUrl = `${SITE.repo}/tree/main/docs/leads`;
 
 const correctionUrl = `${SITE.repo}/issues/new?labels=correcao&template=correcao.yml&title=${encodeURIComponent(
   `[correção] ${brand.name}`,
@@ -134,10 +143,48 @@ const locationLabel = [municipality?.name, region ? localized(region.label, lang
           }
 
           {
+            products.length > 0 && (
+              <div>
+                <dt>{t(lang, 'brand.products')}</dt>
+                <dd>
+                  {products.map((product, index) => (
+                    <>
+                      {index > 0 && ', '}
+                      {hasProductPage(product.id) ? (
+                        <a href={paths.product(lang, product.slug[lang])}>{localized(product.label, lang)}</a>
+                      ) : (
+                        localized(product.label, lang)
+                      )}
+                    </>
+                  ))}
+                </dd>
+              </div>
+            )
+          }
+
+          {
             locationLabel && (
               <div>
                 <dt>{t(lang, 'brand.location')}</dt>
-                <dd>{locationLabel}</dd>
+                <dd>
+                  {region && hasRegionPage(region.id) ? (
+                    <>
+                      {municipality && <>{municipality.name}, </>}
+                      <a href={paths.region(lang, region.slug[lang])}>{localized(region.label, lang)}</a>
+                    </>
+                  ) : (
+                    locationLabel
+                  )}
+                </dd>
+              </div>
+            )
+          }
+
+          {
+            brand.founded && (
+              <div>
+                <dt>{t(lang, 'brand.founded')}</dt>
+                <dd>{brand.founded}</dd>
               </div>
             )
           }
@@ -166,7 +213,16 @@ const locationLabel = [municipality?.name, region ? localized(region.label, lang
               <ul class="pill-list">
                 {brand.tags.map((tagId) => {
                   const tag = getTag(tagId);
-                  return tag ? <li class="pill">{localized(tag.label, lang)}</li> : null;
+                  if (!tag) return null;
+                  return (
+                    <li>
+                      {hasTagPage(tag.id) ? (
+                        <a class="pill" href={paths.tag(lang, tag.id)}>{localized(tag.label, lang)}</a>
+                      ) : (
+                        <span class="pill">{localized(tag.label, lang)}</span>
+                      )}
+                    </li>
+                  );
                 })}
               </ul>
             </>
@@ -175,6 +231,21 @@ const locationLabel = [municipality?.name, region ? localized(region.label, lang
       </section>
 
       <aside class="brand__aside stack">
+        <section class="evidence">
+          <h2 class="eyebrow">{t(lang, 'brand.howWeKnow')}</h2>
+          <p>
+            {brand.meta.source === 'maintainer' ? t(lang, 'brand.howMaintainer') : t(lang, 'brand.howImport')}
+          </p>
+          {brand.meta.source !== 'maintainer' && (
+            <p><a href={evidenceUrl} rel="noopener">{t(lang, 'brand.evidenceLink')}</a></p>
+          )}
+          <p class="muted">
+            {brand.verification?.verified && brand.verification.date
+              ? t(lang, 'brand.verifiedOn', { date: formatDate(brand.verification.date, lang) })
+              : t(lang, 'brand.howNotVerified')}
+          </p>
+        </section>
+
         {
           (brand.where_to_buy?.online_store ||
             (brand.where_to_buy?.physical_stores.length ?? 0) > 0 ||

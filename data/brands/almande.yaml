@@ -1,0 +1,29 @@
+slug: almande
+status: draft
+name: Almande
+description:
+  pt: >-
+    Moda de praia, roupa de banho e roupa desportiva para mulher, com a maior parte das
+    peças confecionada em Portugal.
+  en: >-
+    Resort wear, swimwear and activewear for women, with most pieces sewn in Portugal.
+website: https://almande.com
+category: moda-e-vestuario
+subcategory: banho
+products: [roupa-de-banho]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A maior parte das peças é confecionada em Portugal; a marca não indica onde é feito
+      o resto.
+    en: >-
+      Most pieces are made in Portugal; the brand does not say where the rest are made.
+where_to_buy:
+  online_store: https://almande.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

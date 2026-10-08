@@ -67,6 +67,18 @@ describe('brandSchema', () => {
     );
   });
 
+  it('defaults products to an empty list', () => {
+    const result = parse();
+    expect(result.success && result.data.products).toEqual([]);
+  });
+
+  it('keeps founded between the year 1000 and this year', () => {
+    expect(parse({ founded: 1884 }).success).toBe(true);
+    expect(firstPath(parse({ founded: 999 }))).toBe('founded');
+    expect(firstPath(parse({ founded: new Date().getFullYear() + 1 }))).toBe('founded');
+    expect(firstPath(parse({ founded: 1999.5 }))).toBe('founded');
+  });
+
   it('keeps price_range within 1-4', () => {
     expect(firstPath(parse({ price_range: 5 }))).toBe('price_range');
     expect(firstPath(parse({ price_range: 2.5 }))).toBe('price_range');

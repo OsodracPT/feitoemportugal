@@ -1,0 +1,134 @@
+---
+/**
+ * Landing page for one district or autonomous region: the map with the
+ * district marked and a dot per municipality that has brands, then the brands.
+ * Dots sit on the municipality centroid, never on an address.
+ */
+import type { Region } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import DistrictMap, { type MapDot } from '~/components/DistrictMap.astro';
+import { brandsInDistrict, landingRegions, regions } from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { projectPoint } from '~/lib/map.ts';
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  region: Region;
+}
+
+const { lang, region } = Astro.props;
+
+const name = localized(region.label, lang);
+const brands = brandsInDistrict(region.id);
+const intro = localized(region.intro, lang);
+const alternates = {
+  pt: paths.region('pt', region.slug.pt),
+  en: paths.region('en', region.slug.en),
+};
+
+const counts = new Map(regions.map((r) => [r.id, brandsInDistrict(r.id).length]));
+
+const perMunicipality = new Map<string, number>();
+for (const brand of brands) {
+  const id = brand.location?.municipality;
+  if (id) perMunicipality.set(id, (perMunicipality.get(id) ?? 0) + 1);
+}
+const dots: MapDot[] = region.municipalities.flatMap((municipality) => {
+  const count = perMunicipality.get(municipality.id) ?? 0;
+  if (count === 0 || !municipality.centroid) return [];
+  const [x, y] = projectPoint(region.id, municipality.centroid);
+  return [{ x, y, count, label: municipality.name }];
+});
+
+const filters = emptyFilters();
+filters.dist = [region.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'regions.title'), path: paths.regions(lang) },
+  { name },
+];
+
+const others = landingRegions().filter((other) => other.id !== region.id);
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'region.title', { region: name }), lang)}
+  description={truncate(intro || t(lang, 'site.description'), 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <div class="container">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <p class="eyebrow">
+      {t(lang, region.type === 'regiao-autonoma' ? 'region.autonomous' : 'region.district')}
+    </p>
+    <h1>{name}</h1>
+
+    <div class="region">
+      <div class="region__text">
+        {intro && <p class="lede">{intro}</p>}
+        <p>{t(lang, 'region.lede', { count: brands.length })}</p>
+        <p><a href={catalogueLink}>{t(lang, 'region.refine')}</a></p>
+      </div>
+      <div class="region__map">
+        <DistrictMap lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
+      </div>
+    </div>
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      others.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'region.other')}>
+          <h2 class="eyebrow">{t(lang, 'region.other')}</h2>
+          <ul class="pill-list">
+            {others.map((other) => (
+              <li>
+                <a class="pill" href={paths.region(lang, other.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .region {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 52rem) {
+    .region {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: var(--space-7);
+    }
+  }
+
+  .region__map {
+    max-width: 20rem;
+  }
+</style>

@@ -1,0 +1,29 @@
+slug: mariano
+status: draft
+name: Mariano
+description:
+  pt: >-
+    Casa fundada em 1945 que faz sapatos clássicos de homem e de senhora à mão, só
+    depois de cada pedido, na sua oficina de Oliveira de Azeméis.
+  en: >-
+    A house founded in 1945 making classic men’s and women’s shoes by hand, only once
+    each order comes in, at its Oliveira de Azeméis workshop.
+website: https://marianoshoes.com
+category: calcado
+subcategory: sapatos-homem
+tags: [pele, feito-a-mao, producao-por-encomenda, classico]
+products: [sapatos, botas, sapatilhas]
+founded: 1945
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: oliveira-de-azemeis
+where_to_buy:
+  online_store: https://marianoshoes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

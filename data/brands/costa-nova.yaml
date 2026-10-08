@@ -12,13 +12,17 @@ website: https://costanova.pt
 category: ceramica-e-vidro
 subcategory: louca-de-mesa
 tags: [ceramica, contemporaneo]
+products: [loica-de-mesa, loica-de-forno]
 production:
   scope: total
+location:
+  district: aveiro
+  municipality: vagos
 where_to_buy:
   online_store: https://costanova.pt
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

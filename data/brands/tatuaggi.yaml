@@ -1,0 +1,26 @@
+slug: tatuaggi
+status: draft
+name: Tatuaggi
+description:
+  pt: >-
+    Fábrica de calçado em São João da Madeira, fundada em 1998, que exporta quase toda a
+    produção com a marca própria.
+  en: >-
+    Shoe factory in São João da Madeira, founded in 1998, exporting nearly all of its
+    own-brand production.
+website: https://www.tatuaggi.pt
+category: calcado
+tags: [pele]
+products: [sapatos]
+founded: 1998
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,23 @@
+slug: creator
+status: draft
+name: Creator
+description:
+  pt: >-
+    Marca de calçado criada em 2009, desenhada em Santa Maria da Feira e produzida no
+    norte do país, com acabamentos feitos à mão.
+  en: >-
+    Footwear label launched in 2009, with its design studio in Santa Maria da Feira and
+    production in northern Portugal, finished by hand.
+website: https://creatorshoes.com
+category: calcado
+tags: [pele]
+products: [sapatos]
+founded: 2009
+production:
+  scope: total
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

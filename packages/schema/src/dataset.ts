@@ -56,6 +56,12 @@ export function checkBrandReferences(brand: Brand, taxonomy: Taxonomy, file: str
     }
   }
 
+  for (const [index, product] of brand.products.entries()) {
+    if (!taxonomy.products.some((p) => p.id === product)) {
+      issues.push(error(file, `products[${index}]`, `unknown product type "${product}"`));
+    }
+  }
+
   for (const [index, practice] of brand.sustainability?.practices.entries() ?? []) {
     if (!taxonomy.sustainability.practices.some((p) => p.id === practice)) {
       issues.push(
@@ -229,6 +235,29 @@ export function validateTaxonomy(taxonomy: Taxonomy): Issue[] {
     'id',
     taxonomy.tags.map((t) => ({ key: t.id, label: 'tag id' })),
   );
+  checkUnique(
+    'data/taxonomy/products.yaml',
+    'id',
+    taxonomy.products.map((p) => ({ key: p.id, label: 'product id' })),
+  );
+  for (const lang of ['pt', 'en'] as const) {
+    checkUnique(
+      'data/taxonomy/products.yaml',
+      `slug.${lang}`,
+      taxonomy.products.map((p) => ({ key: p.slug[lang], label: `product ${lang} slug` })),
+    );
+  }
+  for (const product of taxonomy.products) {
+    if (!taxonomy.categories.some((c) => c.id === product.category)) {
+      issues.push(
+        error(
+          'data/taxonomy/products.yaml',
+          `${product.id}.category`,
+          `unknown category "${product.category}"`,
+        ),
+      );
+    }
+  }
   checkUnique(
     'data/taxonomy/regions.yaml',
     'id',

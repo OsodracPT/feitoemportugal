@@ -12,13 +12,17 @@ website: https://www.singularleather.com
 category: acessorios
 subcategory: carteiras-e-cintos
 tags: [pele, feito-a-mao, minimalista, personalizavel]
+products: [carteiras]
 production:
   scope: total
+location:
+  district: viseu
+  municipality: tondela
 where_to_buy:
   online_store: https://www.singularleather.com
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

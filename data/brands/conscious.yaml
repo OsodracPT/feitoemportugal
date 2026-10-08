@@ -1,0 +1,25 @@
+slug: conscious
+status: draft
+name: Conscious
+description:
+  pt: >-
+    Ganga, malhas e roupa de banho para mulher, feitas em Portugal com algodão orgânico
+    e fibras recicladas.
+  en: >-
+    Denim, knitwear and swimwear for women, made in Portugal with organic cotton and
+    recycled fibres.
+website: https://consciousthelabel.com
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [algodao]
+products: [jeans, roupa-de-banho, camisolas]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://consciousthelabel.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

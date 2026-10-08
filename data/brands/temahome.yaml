@@ -1,0 +1,28 @@
+slug: temahome
+status: draft
+name: TemaHome
+description:
+  pt: >-
+    Mobiliário contemporâneo desenhado pela equipa da marca e produzido na fábrica de
+    Tomar, com estantes, mesas, secretárias e aparadores.
+  en: >-
+    Contemporary furniture designed in-house and made at the company's factory in Tomar:
+    bookcases, tables, desks and sideboards.
+website: https://www.temahome.com
+category: mobiliario
+subcategory: arrumacao
+tags: [madeira, contemporaneo]
+products: [mesas, estantes]
+production:
+  scope: total
+location:
+  district: santarem
+  municipality: tomar
+where_to_buy:
+  online_store: https://www.temahome.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

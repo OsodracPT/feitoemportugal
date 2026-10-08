@@ -1,0 +1,25 @@
+slug: eject
+status: draft
+name: Eject
+description:
+  pt: >-
+    Marca de calçado de rua relançada em 2026, com sapatilhas e sapatos de pele
+    desenhados e fabricados em Portugal.
+  en: >-
+    Streetwear footwear label relaunched in 2026, with leather sneakers and shoes
+    designed and made in Portugal.
+website: https://ejectshoes.com
+category: calcado
+subcategory: sapatilhas
+tags: [pele]
+products: [sapatilhas, sapatos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://ejectshoes.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

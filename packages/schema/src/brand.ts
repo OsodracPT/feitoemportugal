@@ -16,6 +16,9 @@ export const BRAND_SOURCES = ['github', 'web-form', 'maintainer', 'import', 'out
 
 export const MAX_PHOTOS = 4;
 
+/** Evaluated when the module loads; a build in a new year accepts that year. */
+const CURRENT_YEAR = new Date().getFullYear();
+
 const productionSchema = z
   .object({
     scope: z.enum(PRODUCTION_SCOPES),
@@ -100,6 +103,8 @@ export const brandSchema = z.object({
   category: idSchema,
   subcategory: idSchema.optional(),
   tags: z.array(idSchema).max(20).default([]),
+  products: z.array(idSchema).max(30).default([]),
+  founded: z.int().min(1000).max(CURRENT_YEAR).optional(),
   production: productionSchema,
   location: locationSchema.optional(),
   price_range: z.int().min(1).max(4).optional(),

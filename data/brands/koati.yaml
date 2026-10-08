@@ -12,13 +12,17 @@ website: https://koati.pt
 category: moda-e-vestuario
 subcategory: roupa-homem
 tags: [classico, empresa-familiar]
+products: [polos, camisas, casacos]
 production:
   scope: total
+location:
+  district: porto
+  municipality: santo-tirso
 where_to_buy:
   online_store: https://koati.pt
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

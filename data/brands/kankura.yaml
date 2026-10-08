@@ -1,0 +1,21 @@
+slug: kankura
+status: draft
+name: Kankura Golf
+description:
+  pt: >-
+    Sapatos de golfe sem pitons feitos em Portugal, com solas também produzidas no país.
+  en: >-
+    Spikeless golf shoes made in Portugal, soles included.
+website: https://kankuragolf.com
+category: calcado
+products: [sapatos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://kankuragolf.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

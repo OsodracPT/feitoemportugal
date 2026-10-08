@@ -12,6 +12,7 @@ website: https://www.herdmar.com
 category: casa-e-decoracao
 subcategory: cutelaria-e-mesa
 tags: [metal, classico, contemporaneo]
+products: [talheres]
 production:
   scope: total
 where_to_buy:
@@ -20,5 +21,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: import

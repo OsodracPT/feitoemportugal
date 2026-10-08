@@ -1,0 +1,25 @@
+slug: casta
+status: draft
+name: Casta
+description:
+  pt: >-
+    Calçado de mulher nascido no Porto e feito à mão em pequenas fábricas familiares
+    portuguesas, com peles curtidas sem crómio.
+  en: >-
+    Women’s footwear from Porto, made by hand in small Portuguese family factories with
+    chrome-free leathers.
+website: https://casta.pt
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, feito-a-mao]
+products: [sapatos, botas, sandalias]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://casta.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

@@ -1,0 +1,443 @@
+# Vocabulário controlado de tipos de produto.
+# Cada tipo pertence a uma categoria (que só serve para os agrupar na página
+# de produtos); uma marca pode ter vários tipos, de categorias diferentes.
+# `synonyms` alimenta a pesquisa (MiniSearch) e não é mostrado na interface.
+# Só entra um tipo que pelo menos uma marca (publicada ou em rascunho) produza.
+
+# --- Vestuário ---
+- id: t-shirts
+  category: moda-e-vestuario
+  label: { pt: T-shirts, en: T-shirts }
+  slug: { pt: t-shirts, en: t-shirts }
+  synonyms:
+    pt: [camisetas, tshirts]
+    en: [tee, tees]
+- id: camisolas
+  category: moda-e-vestuario
+  label: { pt: Camisolas e malhas, en: Sweaters and knitwear }
+  slug: { pt: camisolas, en: sweaters }
+  synonyms:
+    pt: [malhas, pullover, sweatshirts, camisola]
+    en: [jumpers, knitwear, pullovers, sweatshirts, sweater]
+- id: camisas
+  category: moda-e-vestuario
+  label: { pt: Camisas, en: Shirts }
+  slug: { pt: camisas, en: shirts }
+  synonyms:
+    pt: [camisa, camisaria]
+    en: [shirt, button-down]
+- id: polos
+  category: moda-e-vestuario
+  label: { pt: Polos, en: Polo shirts }
+  slug: { pt: polos, en: polo-shirts }
+  synonyms:
+    pt: [polo]
+    en: [polo, polos]
+- id: casacos
+  category: moda-e-vestuario
+  label: { pt: Casacos, en: Jackets and coats }
+  slug: { pt: casacos, en: jackets }
+  synonyms:
+    pt: [sobretudos, blusões, parkas, casaco]
+    en: [coats, overcoats, outerwear, jacket]
+- id: vestidos
+  category: moda-e-vestuario
+  label: { pt: Vestidos, en: Dresses }
+  slug: { pt: vestidos, en: dresses }
+  synonyms:
+    pt: [vestido]
+    en: [dress]
+- id: fatos
+  category: moda-e-vestuario
+  label: { pt: Fatos, en: Suits }
+  slug: { pt: fatos, en: suits }
+  synonyms:
+    pt: [alfaiataria, blazers, fato]
+    en: [tailoring, blazers, suit]
+- id: jeans
+  category: moda-e-vestuario
+  label: { pt: Calças de ganga, en: Jeans }
+  slug: { pt: calcas-de-ganga, en: jeans }
+  synonyms:
+    pt: [ganga, jeans, calças]
+    en: [denim, trousers]
+- id: jardineiras
+  category: moda-e-vestuario
+  label: { pt: Jardineiras, en: Dungarees }
+  slug: { pt: jardineiras, en: dungarees }
+  synonyms:
+    pt: [jardineira, macacões]
+    en: [overalls, jumpsuits]
+- id: meias
+  category: moda-e-vestuario
+  label: { pt: Meias, en: Socks }
+  slug: { pt: meias, en: socks }
+  synonyms:
+    pt: [peúgas, meia]
+    en: [sock, hosiery]
+- id: roupa-de-banho
+  category: moda-e-vestuario
+  label: { pt: Fatos de banho, en: Swimwear }
+  slug: { pt: fatos-de-banho, en: swimwear }
+  synonyms:
+    pt: [biquínis, calções de banho, fato de banho]
+    en: [bikinis, swimsuits, swim shorts]
+- id: roupa-de-trabalho
+  category: moda-e-vestuario
+  label: { pt: Roupa de trabalho, en: Workwear }
+  slug: { pt: roupa-de-trabalho, en: workwear }
+  synonyms:
+    pt: [fardas, uniformes, vestuário promocional]
+    en: [uniforms, promotional clothing]
+
+- id: calcas
+  category: moda-e-vestuario
+  label: { pt: Calças, en: Trousers }
+  slug: { pt: calcas, en: trousers }
+  synonyms:
+    pt: [calça, chinos]
+    en: [pants, chinos]
+
+# --- Calçado ---
+- id: sapatos
+  category: calcado
+  label: { pt: Sapatos, en: Shoes }
+  slug: { pt: sapatos, en: shoes }
+  synonyms:
+    pt: [sapato, mocassins, sapato clássico]
+    en: [dress shoes, loafers, oxfords]
+- id: sapatilhas
+  category: calcado
+  label: { pt: Sapatilhas, en: Sneakers }
+  slug: { pt: sapatilhas, en: sneakers }
+  synonyms:
+    pt: [ténis, tenis]
+    en: [trainers, sneaker]
+- id: botas
+  category: calcado
+  label: { pt: Botas, en: Boots }
+  slug: { pt: botas, en: boots }
+  synonyms:
+    pt: [botins, bota]
+    en: [ankle boots, boot]
+- id: sandalias
+  category: calcado
+  label: { pt: Sandálias, en: Sandals }
+  slug: { pt: sandalias, en: sandals }
+  synonyms:
+    pt: [sandália]
+    en: [sandal]
+- id: chinelos
+  category: calcado
+  label: { pt: Chinelos, en: Slides and flip-flops }
+  slug: { pt: chinelos, en: slides }
+  synonyms:
+    pt: [chinelas, havaianas]
+    en: [flip-flops, sliders]
+- id: sabrinas
+  category: calcado
+  label: { pt: Sabrinas, en: Ballet flats }
+  slug: { pt: sabrinas, en: ballet-flats }
+  synonyms:
+    pt: [sabrina, bailarinas]
+    en: [ballerinas, flats]
+- id: alpercatas
+  category: calcado
+  label: { pt: Alpercatas, en: Espadrilles }
+  slug: { pt: alpercatas, en: espadrilles }
+  synonyms:
+    pt: [alpergatas]
+    en: [espadrille]
+
+- id: pantufas
+  category: calcado
+  label: { pt: Pantufas, en: Slippers }
+  slug: { pt: pantufas, en: slippers }
+  synonyms:
+    pt: [chinelos de quarto, pantufa]
+    en: [house shoes, slipper]
+
+# --- Acessórios ---
+- id: malas
+  category: acessorios
+  label: { pt: Malas, en: Bags }
+  slug: { pt: malas, en: bags }
+  synonyms:
+    pt: [bolsas, mala, sacos]
+    en: [handbags, totes, bag]
+- id: mochilas
+  category: acessorios
+  label: { pt: Mochilas, en: Backpacks }
+  slug: { pt: mochilas, en: backpacks }
+  synonyms:
+    pt: [mochila]
+    en: [backpack, rucksack]
+- id: carteiras
+  category: acessorios
+  label: { pt: Carteiras e porta-cartões, en: Wallets and card holders }
+  slug: { pt: carteiras, en: wallets }
+  synonyms:
+    pt: [porta-cartões, carteira]
+    en: [card holders, wallet]
+- id: oculos
+  category: acessorios
+  label: { pt: Óculos, en: Eyewear }
+  slug: { pt: oculos, en: eyewear }
+  synonyms:
+    pt: [óculos de sol]
+    en: [sunglasses, glasses]
+- id: fitas-para-oculos
+  category: acessorios
+  label: { pt: Fitas para óculos, en: Eyewear straps }
+  slug: { pt: fitas-para-oculos, en: eyewear-straps }
+  synonyms:
+    pt: [cordões para óculos, correntes para óculos]
+    en: [glasses chains, eyeglass cords]
+
+# --- Casa ---
+- id: talheres
+  category: casa-e-decoracao
+  label: { pt: Talheres, en: Cutlery }
+  slug: { pt: talheres, en: cutlery }
+  synonyms:
+    pt: [faqueiros, cutelaria de mesa]
+    en: [flatware, silverware]
+- id: facas
+  category: casa-e-decoracao
+  label: { pt: Facas, en: Knives }
+  slug: { pt: facas, en: knives }
+  synonyms:
+    pt: [facas de cozinha, cutelos, faca]
+    en: [kitchen knives, chef knife, knife]
+- id: panelas
+  category: casa-e-decoracao
+  label: { pt: Panelas e tachos, en: Cookware }
+  slug: { pt: panelas, en: cookware }
+  synonyms:
+    pt: [tachos, frigideiras, panelas de pressão, cataplanas]
+    en: [pots, pans, pressure cookers]
+- id: utensilios-de-cozinha
+  category: casa-e-decoracao
+  label: { pt: Utensílios de cozinha, en: Kitchen utensils }
+  slug: { pt: utensilios-de-cozinha, en: kitchen-utensils }
+  synonyms:
+    pt: [artigos de cozinha]
+    en: [kitchenware, kitchen tools]
+- id: velas
+  category: casa-e-decoracao
+  label: { pt: Velas e difusores, en: Candles and diffusers }
+  slug: { pt: velas, en: candles }
+  synonyms:
+    pt: [difusores, aromas, vela]
+    en: [diffusers, home fragrance, candle]
+
+# --- Têxteis-lar ---
+- id: mantas
+  category: texteis-lar
+  label: { pt: Mantas e cobertores, en: Blankets and throws }
+  slug: { pt: mantas, en: blankets }
+  synonyms:
+    pt: [cobertores, plaids, manta]
+    en: [throws, blanket]
+- id: almofadas
+  category: texteis-lar
+  label: { pt: Almofadas, en: Cushions }
+  slug: { pt: almofadas, en: cushions }
+  synonyms:
+    pt: [capas de almofada, almofada]
+    en: [cushion covers, pillows]
+- id: toalhas
+  category: texteis-lar
+  label: { pt: Toalhas, en: Towels }
+  slug: { pt: toalhas, en: towels }
+  synonyms:
+    pt: [turcos, roupa de banho, toalha]
+    en: [bath towels, terry, towel]
+- id: tecido-ao-metro
+  category: texteis-lar
+  label: { pt: Tecido ao metro, en: Fabric by the metre }
+  slug: { pt: tecido-ao-metro, en: fabric }
+  synonyms:
+    pt: [tecidos, burel]
+    en: [fabrics, textiles, yardage]
+
+- id: tapetes
+  category: texteis-lar
+  label: { pt: Tapetes, en: Rugs }
+  slug: { pt: tapetes, en: rugs }
+  synonyms:
+    pt: [carpetes, tapete]
+    en: [carpets, rug]
+
+# --- Mobiliário ---
+- id: cadeiras
+  category: mobiliario
+  label: { pt: Cadeiras e bancos, en: Chairs and stools }
+  slug: { pt: cadeiras, en: chairs }
+  synonyms:
+    pt: [bancos, cadeira]
+    en: [stools, chair]
+- id: mobiliario-de-escritorio
+  category: mobiliario
+  label: { pt: Mobiliário de escritório, en: Office furniture }
+  slug: { pt: mobiliario-de-escritorio, en: office-furniture }
+  synonyms:
+    pt: [cacifos, estantes metálicas, secretárias]
+    en: [lockers, shelving, desks]
+
+- id: mesas
+  category: mobiliario
+  label: { pt: Mesas e secretárias, en: Tables and desks }
+  slug: { pt: mesas, en: tables }
+  synonyms:
+    pt: [secretárias, mesa]
+    en: [desks, table]
+- id: estantes
+  category: mobiliario
+  label: { pt: Estantes e aparadores, en: Shelving and sideboards }
+  slug: { pt: estantes, en: shelving }
+  synonyms:
+    pt: [aparadores, estante, móveis de arrumação]
+    en: [bookcases, sideboards, storage]
+
+# --- Cerâmica ---
+- id: loica-de-mesa
+  category: ceramica-e-vidro
+  label: { pt: Loiça de mesa, en: Tableware }
+  slug: { pt: loica-de-mesa, en: tableware }
+  synonyms:
+    pt: [louça, pratos, serviços de mesa, travessas]
+    en: [dinnerware, plates, dishes]
+- id: loica-de-forno
+  category: ceramica-e-vidro
+  label: { pt: Loiça de forno, en: Ovenware }
+  slug: { pt: loica-de-forno, en: ovenware }
+  synonyms:
+    pt: [tabuleiros, assadeiras]
+    en: [bakeware, baking dishes]
+- id: pecas-decorativas
+  category: ceramica-e-vidro
+  label: { pt: Peças decorativas, en: Decorative pieces }
+  slug: { pt: pecas-decorativas, en: decorative-pieces }
+  synonyms:
+    pt: [decoração, jarras, figuras]
+    en: [decor, vases, ornaments]
+
+# --- Cosmética ---
+- id: sabonetes
+  category: cosmetica-e-higiene
+  label: { pt: Sabonetes e sabões, en: Soaps }
+  slug: { pt: sabonetes, en: soaps }
+  synonyms:
+    pt: [sabões, sabonete, sabão]
+    en: [soap, bar soap]
+- id: cremes
+  category: cosmetica-e-higiene
+  label: { pt: Cremes e cuidados de corpo, en: Creams and body care }
+  slug: { pt: cremes, en: creams }
+  synonyms:
+    pt: [hidratante, creme de rosto, cuidados de corpo, creme]
+    en: [moisturiser, face cream, lotion, body care]
+- id: perfumes
+  category: cosmetica-e-higiene
+  label: { pt: Perfumes e colónias, en: Perfumes and colognes }
+  slug: { pt: perfumes, en: perfumes }
+  synonyms:
+    pt: [colónias, água-de-colónia, fragrâncias]
+    en: [fragrance, cologne, eau de toilette]
+- id: pinceis-de-barba
+  category: cosmetica-e-higiene
+  label: { pt: Pincéis de barba, en: Shaving brushes }
+  slug: { pt: pinceis-de-barba, en: shaving-brushes }
+  synonyms:
+    pt: [pincel de barba]
+    en: [shaving brush]
+- id: maquinas-de-barbear
+  category: cosmetica-e-higiene
+  label: { pt: Máquinas de barbear, en: Safety razors }
+  slug: { pt: maquinas-de-barbear, en: safety-razors }
+  synonyms:
+    pt: [lâminas de barbear, máquina de barbear]
+    en: [razors, double edge razor]
+
+# --- Bebé e criança ---
+- id: roupa-de-crianca
+  category: bebe-e-crianca
+  label: { pt: Roupa de criança, en: "Children's clothing" }
+  slug: { pt: roupa-de-crianca, en: kids-clothing }
+  synonyms:
+    pt: [roupa de bebé, roupa infantil]
+    en: [baby clothes, kidswear]
+
+# --- Desporto ---
+- id: polares
+  category: desporto-e-outdoor
+  label: { pt: Polares, en: Fleeces }
+  slug: { pt: polares, en: fleeces }
+  synonyms:
+    pt: [malhas polares, polar]
+    en: [fleece, fleece jackets]
+
+# --- Papelaria ---
+- id: cadernos
+  category: papelaria-e-livros
+  label: { pt: Cadernos, en: Notebooks }
+  slug: { pt: cadernos, en: notebooks }
+  synonyms:
+    pt: [caderno, blocos]
+    en: [notebook, journals]
+- id: agendas
+  category: papelaria-e-livros
+  label: { pt: Agendas, en: Planners }
+  slug: { pt: agendas, en: planners }
+  synonyms:
+    pt: [agenda, calendários]
+    en: [diaries, planner]
+- id: lapis
+  category: papelaria-e-livros
+  label: { pt: Lápis, en: Pencils }
+  slug: { pt: lapis, en: pencils }
+  synonyms:
+    pt: [grafites, lápis de cor]
+    en: [graphite, colouring pencils]
+- id: materiais-de-desenho
+  category: papelaria-e-livros
+  label: { pt: Materiais de desenho, en: Art supplies }
+  slug: { pt: materiais-de-desenho, en: art-supplies }
+  synonyms:
+    pt: [pastéis, material de desenho]
+    en: [pastels, drawing supplies]
+
+# --- Tecnologia ---
+- id: bicicletas
+  category: tecnologia
+  label: { pt: Bicicletas, en: Bicycles }
+  slug: { pt: bicicletas, en: bicycles }
+  synonyms:
+    pt: [bicicletas elétricas, e-bikes, bicicleta]
+    en: [e-bikes, electric bikes, bikes]
+- id: eletrodomesticos
+  category: tecnologia
+  label: { pt: Eletrodomésticos, en: Home appliances }
+  slug: { pt: eletrodomesticos, en: home-appliances }
+  synonyms:
+    pt: [frigoríficos, máquinas de lavar, fogões]
+    en: [fridges, washing machines, appliances]
+
+# --- Joalharia ---
+- id: joias
+  category: joalharia
+  label: { pt: Joias, en: Jewellery }
+  slug: { pt: joias, en: jewellery }
+  synonyms:
+    pt: [anéis, colares, brincos, pulseiras]
+    en: [rings, necklaces, earrings, bracelets]
+
+# --- Bebidas ---
+- id: cerveja
+  category: bebidas
+  label: { pt: Cerveja, en: Beer }
+  slug: { pt: cerveja, en: beer }
+  synonyms:
+    pt: [cerveja artesanal, IPA, lager]
+    en: [craft beer, ale, lager]

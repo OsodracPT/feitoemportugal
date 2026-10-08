@@ -1,0 +1,25 @@
+slug: lambda
+status: draft
+name: Lambda Golf
+description:
+  pt: >-
+    Sapatos de golfe impermeáveis em pele, produzidos artesanalmente em Portugal desde
+    2009 por uma casa com tradição no calçado.
+  en: >-
+    Waterproof leather golf shoes, handmade in Portugal since 2009 by a company with
+    long shoemaking roots.
+website: https://lambdagolf.com
+category: calcado
+tags: [pele, feito-a-mao]
+products: [sapatos]
+founded: 2009
+production:
+  scope: total
+where_to_buy:
+  online_store: https://lambdagolf.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

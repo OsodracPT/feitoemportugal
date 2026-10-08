@@ -1,0 +1,29 @@
+slug: cavalinho
+status: draft
+name: Cavalinho
+description:
+  pt: >-
+    Malas, carteiras e acessórios de pele desenhados e fabricados na fábrica da marca em
+    São Paio de Oleiros, onde a família a fundou em 1975.
+  en: >-
+    Bags, wallets and leather accessories designed and made at the brand's factory in
+    São Paio de Oleiros, where the family founded it in 1975.
+website: https://www.cavalinho.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [pele, empresa-familiar]
+products: [malas, carteiras]
+founded: 1975
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: santa-maria-da-feira
+where_to_buy:
+  online_store: https://www.cavalinho.com
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

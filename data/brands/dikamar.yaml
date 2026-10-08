@@ -1,0 +1,27 @@
+slug: dikamar
+status: draft
+name: Dikamar
+description:
+  pt: >-
+    Fabricante de Pombal, ativo desde 1995, de calçado e botas de segurança para
+    construção, indústria alimentar e outros trabalhos exigentes.
+  en: >-
+    Pombal manufacturer, active since 1995, of safety footwear and boots for
+    construction, food processing and other demanding work.
+website: https://www.dikamar.com
+category: calcado
+subcategory: botas
+tags: [metal]
+products: [botas, roupa-de-trabalho]
+founded: 1995
+production:
+  scope: total
+location:
+  district: leiria
+  municipality: pombal
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

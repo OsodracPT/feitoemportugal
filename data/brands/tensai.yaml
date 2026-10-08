@@ -12,6 +12,7 @@ website: https://www.tensai.pt
 category: tecnologia
 subcategory: eletronica
 tags: [metal, contemporaneo]
+products: [eletrodomesticos]
 production:
   scope: total
 location:
@@ -23,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-04
+  updated: 2026-10-08
   source: maintainer

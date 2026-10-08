@@ -5,8 +5,8 @@
  * so a consumer can tell which version and which build it is reading, and
  * under what licence.
  */
-import type { Brand, Category, Region, Tag } from '@fep/schema';
-import { brandsInCategory, brandsInDistrict, brands } from './data.ts';
+import type { Brand, Category, Product, Region, Tag } from '@fep/schema';
+import { brandsInCategory, brandsInDistrict, brandsWithProduct, brands } from './data.ts';
 import { SITE } from './config.ts';
 import { absolute } from './seo.ts';
 import { LANGUAGES, paths } from './i18n.ts';
@@ -71,6 +71,11 @@ export const apiCategory = (category: Category) => ({
 export const apiTag = (tag: Tag) => ({
   ...tag,
   brands: brands.filter((brand) => brand.tags.includes(tag.id)).length,
+});
+
+export const apiProduct = (product: Product) => ({
+  ...product,
+  brands: brandsWithProduct(product.id).length,
 });
 
 export const apiRegion = (region: Region) => ({

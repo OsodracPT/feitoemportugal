@@ -1,0 +1,25 @@
+slug: maray
+status: draft
+name: Maray
+description:
+  pt: >-
+    Sapatos rasos de mulher em pele, feitos à mão em Portugal em edições limitadas, com
+    lojas em Lisboa.
+  en: >-
+    Flat leather shoes for women, handmade in Portugal in limited runs, with shops in
+    Lisbon.
+website: https://maray.pt
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, feito-a-mao, pequena-serie]
+products: [sabrinas, botas, sandalias]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://maray.pt
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-08
+  source: import

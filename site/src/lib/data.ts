@@ -5,6 +5,7 @@ import {
   type Brand,
   type Category,
   type Municipality,
+  type Product,
   type Region,
   type Subcategory,
   type Tag,
@@ -38,15 +39,18 @@ export const brandBySlug = new Map(brands.map((brand) => [brand.slug, brand]));
 export const categories = taxonomy.categories;
 export const regions = taxonomy.regions;
 export const tags = taxonomy.tags;
+export const products = taxonomy.products;
 
 const categoryById = new Map(categories.map((category) => [category.id, category]));
 const tagById = new Map(tags.map((tag) => [tag.id, tag]));
+const productById = new Map(products.map((product) => [product.id, product]));
 const regionById = new Map(regions.map((region) => [region.id, region]));
 const practiceById = new Map(taxonomy.sustainability.practices.map((p) => [p.id, p]));
 const certificationById = new Map(taxonomy.sustainability.certifications.map((c) => [c.id, c]));
 
 export const getCategory = (id: string): Category | undefined => categoryById.get(id);
 export const getTag = (id: string): Tag | undefined => tagById.get(id);
+export const getProduct = (id: string): Product | undefined => productById.get(id);
 export const getRegion = (id: string): Region | undefined => regionById.get(id);
 export const getPractice = (id: string) => practiceById.get(id);
 export const getCertification = (id: string) => certificationById.get(id);
@@ -83,6 +87,37 @@ export const brandsInSubcategory = (categoryId: string, subcategoryId: string): 
 
 export const brandsInDistrict = (districtId: string): Brand[] =>
   brands.filter((brand) => brand.location?.district === districtId);
+
+export const brandsWithProduct = (productId: string): Brand[] =>
+  brands.filter((brand) => brand.products.includes(productId));
+
+export const brandsWithTag = (tagId: string): Brand[] =>
+  brands.filter((brand) => brand.tags.includes(tagId));
+
+/** Districts and autonomous regions with enough brands for their own landing page. */
+export const landingRegions = (): Region[] =>
+  regions.filter((region) => brandsInDistrict(region.id).length >= MIN_BRANDS_FOR_LANDING);
+
+export const hasRegionPage = (regionId: string): boolean =>
+  brandsInDistrict(regionId).length >= MIN_BRANDS_FOR_LANDING;
+
+/** Resolves a public, per-language region slug back to its region. */
+export const regionBySlug = (slug: string, lang: Lang): Region | undefined =>
+  regions.find((region) => region.slug[lang] === slug);
+
+/** Product types with enough brands for their own landing page. */
+export const landingProducts = (): Product[] =>
+  products.filter((product) => brandsWithProduct(product.id).length >= MIN_BRANDS_FOR_LANDING);
+
+export const hasProductPage = (productId: string): boolean =>
+  brandsWithProduct(productId).length >= MIN_BRANDS_FOR_LANDING;
+
+/** Tags with enough brands for their own landing page. */
+export const landingTags = (): Tag[] =>
+  tags.filter((tag) => brandsWithTag(tag.id).length >= MIN_BRANDS_FOR_LANDING);
+
+export const hasTagPage = (tagId: string): boolean =>
+  brandsWithTag(tagId).length >= MIN_BRANDS_FOR_LANDING;
 
 /** Categories that have enough brands for their own landing page. */
 export const landingCategories = (): Category[] =>
