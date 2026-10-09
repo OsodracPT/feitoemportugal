@@ -82,7 +82,9 @@
     "howImport": "A própria marca diz, no seu site, que fabrica em Portugal. Lemos essa informação antes de publicar e guardámos a citação no registo de fontes do projeto.",
     "howMaintainer": "Adicionada por um responsável pelo projeto que conhece a produção da marca.",
     "evidenceLink": "Ver o registo de fontes",
-    "howNotVerified": "Ainda não foi verificada de forma independente."
+    "howNotVerified": "Ainda não foi verificada de forma independente.",
+    "photoAlt": "Fotografia de {name} ({n})",
+    "photoCredit": "Fotografias: © {name}"
   },
   "category": {
     "brandsIn": "Marcas de {category} feitas em Portugal",
@@ -281,6 +283,10 @@
       "data": {
         "title": "Dados e licenças",
         "body": "Os dados das marcas estão sob CC BY 4.0: podes usá-los, também para fins comerciais, desde que indiques a fonte. Estão disponíveis na API pública e no repositório. Os limites dos distritos vêm da CAOP 2025 da Direção-Geral do Território."
+      },
+      "images": {
+        "title": "Logótipos e fotografias",
+        "body": "Os logótipos e as fotografias pertencem às marcas e não fazem parte dos dados abertos: não estão sob CC BY 4.0 e a API não os inclui. Usamos apenas o logótipo que a marca mostra no próprio site e fotografias que a marca disponibiliza para a imprensa ou nos envia. Guardamos cada imagem no nosso servidor, por isso abrir uma ficha não envia pedidos ao site da marca. Se és da marca e queres trocar ou retirar uma imagem, diz-nos pelo formulário de correção."
       },
       "privacy": {
         "title": "Privacidade",

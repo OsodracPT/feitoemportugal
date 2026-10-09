@@ -13,7 +13,8 @@
   "dependencies": {
     "@fep/schema": "workspace:*",
     "astro": "^7.3.5",
-    "minisearch": "^7.2.0"
+    "minisearch": "^7.2.0",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",

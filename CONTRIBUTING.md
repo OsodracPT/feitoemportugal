@@ -69,6 +69,12 @@ Os textos da interface estão em `site/src/i18n/pt.json` e `en.json`, sempre nas
 línguas. Português de Portugal. Commits no formato
 [Conventional Commits](https://www.conventionalcommits.org/).
 
+### Licenças
+
+Ao contribuir, aceitas que o teu trabalho fica sob as licenças do projeto: o código
+sob [MIT](LICENSE) e os dados e descrições das marcas sob
+[CC BY 4.0](DATA_LICENSE).
+
 ## English
 
 Feito em Portugal is an open database of brands that make their products in
@@ -137,6 +143,12 @@ pnpm validate && pnpm typecheck && pnpm test && pnpm build
 Interface text lives in `site/src/i18n/pt.json` and `en.json`, always in both
 languages. Portuguese means European Portuguese. Commits follow
 [Conventional Commits](https://www.conventionalcommits.org/).
+
+### Licences
+
+By contributing, you agree that your work is published under the project's
+licences: code under [MIT](LICENSE), data and brand descriptions under
+[CC BY 4.0](DATA_LICENSE).
 
 ## For maintainers
 

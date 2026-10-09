@@ -82,7 +82,9 @@
     "howImport": "The brand says on its own website that it manufactures in Portugal. We read that before publishing and saved the quote in the project's source notes.",
     "howMaintainer": "Added by a maintainer who knows where the brand produces.",
     "evidenceLink": "See the source notes",
-    "howNotVerified": "Not independently verified yet."
+    "howNotVerified": "Not independently verified yet.",
+    "photoAlt": "Photo from {name} ({n})",
+    "photoCredit": "Photos: © {name}"
   },
   "category": {
     "brandsIn": "{category} brands made in Portugal",
@@ -278,6 +280,10 @@
       "data": {
         "title": "Data and licences",
         "body": "The brand data is under CC BY 4.0: you may use it, commercially too, as long as you credit the source. It is available through the public API and in the repository. District boundaries come from CAOP 2025 by the Direção-Geral do Território."
+      },
+      "images": {
+        "title": "Logos and photos",
+        "body": "Logos and photos belong to the brands and are not part of the open data: they are not under CC BY 4.0 and the API leaves them out. We only use the logo a brand shows on its own website and photos it offers to the press or sends us. Every image is stored on our own server, so opening a brand page sends no request to the brand's site. If you work for the brand and want an image changed or removed, tell us through the correction form."
       },
       "privacy": {
         "title": "Privacy",

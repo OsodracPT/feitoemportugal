@@ -6,3 +6,4 @@ export * from './geo.ts';
 export * from './load.ts';
 export * from './json-schema.ts';
 export * from './submission.ts';
+export * from './media.ts';

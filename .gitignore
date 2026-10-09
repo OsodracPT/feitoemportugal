@@ -8,6 +8,8 @@ dist/
 *.tsbuildinfo
 coverage/
 .vite/
+# Logo candidates waiting for review (scripts/fetch-logos.ts)
+.cache/
 
 # --- environment ---
 .env

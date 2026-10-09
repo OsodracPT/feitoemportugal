@@ -36,6 +36,11 @@ describe('payloads', () => {
     expect(payload.name).toBe(brand.name);
   });
 
+  it('leaves brand media out of the CC BY payload', () => {
+    const brand = { ...brands[0]!, media: { logo: 'logo.svg', photos: [] } };
+    expect(apiBrand(brand)).not.toHaveProperty('media');
+  });
+
   it('only exposes published brands', () => {
     expect(brands.every((brand) => brand.status === 'published')).toBe(true);
   });

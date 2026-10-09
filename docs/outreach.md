@@ -13,6 +13,10 @@ Two rules apply to the replies:
   manufacturer), because readers must be able to check it.
 - Ask for the municipality of production, never an address.
 
+For brands that are already listed, a second message below asks for a logo and
+photos. Log what they send with `scripts/apply-media.ts --kind brand-supplied`,
+with the e-mail or issue as `--source`.
+
 ## Português
 
 **Assunto:** Os vossos produtos são feitos em Portugal?
@@ -33,6 +37,24 @@ exemplo na página "Sobre": "Os nossos produtos são feitos em [concelho], Portu
 Assim qualquer pessoa pode confirmar, e nós listamos a marca logo a seguir.
 
 A ficha é gratuita e não há nada a pagar agora nem depois.
+
+Obrigado,
+[nome]
+Feito em Portugal
+
+### Pedido de imagens (marcas já listadas)
+
+**Assunto:** Logótipo e fotografias para a ficha da [marca]
+
+Olá,
+
+A [marca] está listada no Feito em Portugal: [link da ficha]. Gostávamos de mostrar
+o vosso logótipo e algumas fotografias da produção na ficha.
+
+Se concordarem, podem enviar-nos o logótipo (de preferência em SVG) e até quatro
+fotografias, ou indicar-nos a página de imprensa onde estão? As imagens continuam a
+ser vossas: não entram na licença aberta dos dados, servem só para identificar a
+marca, e retiramo-las quando pedirem.
 
 Obrigado,
 [nome]
@@ -59,6 +81,24 @@ example on the About page: "Our products are made in [municipality], Portugal."
 That way anyone can check it, and we will list the brand right after.
 
 The listing is free, now and later.
+
+Thank you,
+[name]
+Feito em Portugal
+
+### Asking for images (brands already listed)
+
+**Subject:** Logo and photos for the [brand] page
+
+Hello,
+
+[brand] is listed on Feito em Portugal: [page link]. We would like to show your
+logo and a few photos of your production on the page.
+
+If you agree, could you send us the logo (SVG if possible) and up to four photos,
+or point us to the press page where they are? The images remain yours: they are
+not part of the data's open licence, they are used only to identify the brand,
+and we remove them whenever you ask.
 
 Thank you,
 [name]

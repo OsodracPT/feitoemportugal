@@ -117,6 +117,21 @@ describe('submissionFromIssue', () => {
     expect(result.submission.notes.join(' ')).toMatch(/Atlântida/);
   });
 
+  it('passes offered images to the maintainer, trusting only the brand itself', () => {
+    const fromBrand = submissionFromIssue(
+      issueBody({ ...valid, relationship: 'Trabalho na marca ou sou dono / I work for or own the brand', images: 'https://x.pt/logo.svg' }),
+      labels,
+      taxonomy,
+      existing,
+      '2026-10-08',
+    );
+    const fromVisitor = submissionFromIssue(issueBody({ ...valid, images: 'https://x.pt/logo.svg' }), labels, taxonomy, existing, '2026-10-08');
+    if (!fromBrand.ok || !fromVisitor.ok) throw new Error('expected both to pass');
+    expect(fromBrand.submission.notes.join(' ')).toMatch(/apply-media/);
+    expect(fromBrand.submission.brand).not.toHaveProperty('media');
+    expect(fromVisitor.submission.notes.join(' ')).toMatch(/without the brand's permission/);
+  });
+
   it('takes the district from a unique municipality, and not from an ambiguous one', () => {
     // GitHub renders an untouched dropdown as "None".
     const located = (municipality: string) => {

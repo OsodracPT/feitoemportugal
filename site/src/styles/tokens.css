@@ -18,6 +18,8 @@
   --accent-text: #0d4f3b;
   --accent-soft: #e4efe9;
   --focus: #11624a;
+  /* Brand logos are drawn for light backgrounds; they sit on this in both themes. */
+  --logo-plate: #ffffff;
 
   /* --- Type --- */
   --font-sans:
@@ -67,6 +69,7 @@
     --bg: #15150f;
     --bg-raised: #1d1d17;
     --bg-sunken: #121210;
+    --logo-plate: #f4f3ee;
     --text: #f4f3ee;
     --text-muted: #a9a59c;
     --text-faint: #837f76;

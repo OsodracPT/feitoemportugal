@@ -41,6 +41,14 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: images
+    attributes:
+      label: Logótipo e fotografias (opcional) / Logo and photos (optional)
+      description: >-
+        Links para o logótipo e até 4 fotografias que autorizas a usar na ficha da marca. Ficam fora da licença CC BY e retiramo-las quando pedires.
+        Links to the logo and up to 4 photos you allow us to use on the brand page. They stay outside the CC BY licence and we remove them on request.
+
   - type: checkboxes
     id: confirm
     attributes:

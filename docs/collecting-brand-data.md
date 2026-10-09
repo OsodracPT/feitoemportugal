@@ -206,12 +206,38 @@ than no handle.
 | `media.logo` | no | File name inside `assets/brands/<slug>/`, e.g. `logo.svg` |
 | `media.photos` | no | Up to 4 file names, same folder |
 
-Only reference a file you actually placed in `assets/brands/<slug>/`. Format
-rules: logo as SVG, or PNG/WebP at 256px or wider; photos under 2 MB each. Use
-images the brand supplied or published for press use, and record where each came
-from in your report. Never hotlink and never take photos whose licence you have
-not checked. Leaving both out is fine; the card falls back to the brand initials
-and `pnpm validate` emits a warning, not an error.
+Images are not part of the CC BY dataset: they belong to the brands, are shown
+only to identify them, and are removed on request. The API leaves them out.
+Every image is downloaded once and served from our own site; never hotlink (the
+production CSP blocks it anyway, and it would tell the brand's server who reads
+our pages).
+
+What may be used:
+
+- **Logo:** the logo the brand shows on its own website.
+- **Photos:** only images the brand published for press use (a press or media-kit
+  page that offers them for download) or sent us with permission, for example
+  through the image field of the issue forms. Never product shots taken from a
+  shop page.
+
+How to add them, always through the scripts, so each file gets a row in
+`docs/leads/media-sources.csv` (slug, file, kind, source URL, date):
+
+```bash
+node scripts/fetch-logos.ts famo vibae     # or no slugs: every published brand without a logo
+# open .cache/media/review.html, pick one candidate per brand
+node scripts/apply-media.ts logo famo=cand-2.svg vibae=cand-1.png
+node scripts/apply-media.ts photo famo https://famo.pt/press/fabrica.jpg \
+  --source https://famo.pt/press --kind press-kit   # or --kind brand-supplied
+```
+
+`apply-media.ts` copies the file to `assets/brands/<slug>/` (`logo.<ext>`,
+`foto-N.<ext>`), writes the `media` block, bumps `meta.updated` and logs the
+source. It refuses SVGs that contain scripts, event handlers or external links,
+and photos over 2 MB. Format rules: logo as SVG, or PNG/WebP at 256px or wider;
+photos under 2 MB each, at most 4. `pnpm validate` fails when `media` names a file
+that is not there. Leaving both out is fine; the card falls back to the brand
+initials and `pnpm validate` emits a warning, not an error.
 
 ### 3.9 Sustainability (optional, and careful with claims)
 

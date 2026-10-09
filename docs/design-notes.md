@@ -44,9 +44,13 @@ still undecided. For running the code, see the [README](../README.md).
   where the claim came from but cannot link the exact page, because evidence stays
   out of the YAML. An optional, link-only `production.source_url` (no quote) would
   let it do so; a maintainer has to agree that this does not break the evidence rule.
-- **Open: photos and logos versus CC BY.** Brand photos are not ours to license.
-  Before `media` is filled, decide whether media is excluded from the dataset
-  licence and collected only with the brand's permission.
+- **Brand media sits outside CC BY.** Logos and photos belong to the brands, so
+  they live in `assets/`, not `data/`, are left out of the API and are removed on
+  request. Logos come from the brand's own site, found by `scripts/fetch-logos.ts`
+  and approved by a maintainer; photos only from a press kit or with permission.
+  Images are self-hosted, never hotlinked: the CSP forbids it and it would leak
+  readers to third parties. Logos sit on a light plate (`--logo-plate`) because
+  most are drawn for white backgrounds.
 - **29 drafts wait for review.** The lead pass of 2026-10-08 (a brand directory, the
   footwear association list, press round-ups, Reddit threads) checked 583 candidates
   and found a production claim for 123. The 93 whose site says in a sentence where or

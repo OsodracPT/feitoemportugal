@@ -66,10 +66,11 @@ SITE_URL=http://localhost:4321 pnpm build
 data/brands/<slug>.yaml     one brand per file, the source of truth
 data/taxonomy/              categories, tags, product types, regions, sustainability practices
 data/geo/                   district outlines for the map (generated, see below)
+assets/brands/<slug>/       brand logos and photos (not under CC BY, see Licence)
 packages/schema/            shared Zod schema, YAML loaders, cross-file checks
 site/                       the Astro site (Portuguese at /, English at /en)
 site/src/pages/api/v1/      the public JSON API, generated at build time
-scripts/                    command-line tools (pnpm validate, the CAOP import)
+scripts/                    command-line tools (pnpm validate, the CAOP import, brand media)
 deploy/                     reference web server config and deploy tooling
 docs/                       contributor guides, design notes, research evidence
 .github/workflows/          CI (validate.yml) and the optional deploy (deploy.yml)
@@ -143,5 +144,17 @@ setup and optional automatic deploys from GitHub Actions.
 The data in `data/` is licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (see
 [`DATA_LICENSE`](DATA_LICENSE)). The administrative boundaries come from CAOP 2025,
-© Direção-Geral do Território, CC BY 4.0. The licence for the code is still being
-decided.
+© Direção-Geral do Território, CC BY 4.0. The code is licensed under
+[MIT](LICENSE). Apart from the CAOP boundaries, data and code are © Feito em
+Portugal contributors.
+
+When you reuse the data, credit it like this:
+
+> Data from Feito em Portugal (https://feitoemportugal.org), CC BY 4.0.
+
+Brand logos and photos in `assets/` are **not** under CC BY 4.0: they belong to
+the brands, are shown only to identify them, and are removed on request. The API
+leaves them out.
+
+Contributions are accepted under the same terms: code under MIT, data and brand
+descriptions under CC BY 4.0.

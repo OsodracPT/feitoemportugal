@@ -184,6 +184,14 @@ export function submissionFromIssue(
   }
 
   const fromBrand = answers.get('relationship')?.startsWith('Trabalho') ?? false;
+  const images = answers.get('images');
+  if (images) {
+    notes.push(
+      fromBrand
+        ? `The brand offers images: ${images.replace(/\s+/g, ' ')}. Add them with scripts/apply-media.ts (--kind brand-supplied, --source this issue).`
+        : 'Images were offered by someone outside the brand; do not use them without the brand\'s permission.',
+    );
+  }
   if (errors.length > 0) return { ok: false, errors };
 
   const input: BrandInput = {

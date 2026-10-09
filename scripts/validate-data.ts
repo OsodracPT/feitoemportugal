@@ -13,11 +13,13 @@ import {
   loadTaxonomy,
   validateDataset,
   validateDistrictShapes,
+  validateMedia,
   type Issue,
 } from '@fep/schema';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDir = join(repoRoot, 'data');
+const assetsDir = join(repoRoot, 'assets');
 
 function report(issues: Issue[]): void {
   for (const issue of issues) {
@@ -33,6 +35,7 @@ try {
   const issues = [
     ...validateDataset(brands, taxonomy),
     ...validateDistrictShapes(loadDistrictShapes(dataDir), taxonomy),
+    ...validateMedia(brands, assetsDir),
   ];
   const errors = issues.filter((i) => i.level === 'error');
   const warnings = issues.filter((i) => i.level === 'warning');

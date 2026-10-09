@@ -57,7 +57,11 @@ const pageUrls = (slug: string): Record<string, string> =>
   Object.fromEntries(LANGUAGES.map((lang) => [lang, absolute(paths.brand(lang, slug))]));
 
 /** The stored brand, plus where it lives on the site. */
-export const apiBrand = (brand: Brand) => ({ ...brand, urls: pageUrls(brand.slug) });
+/**
+ * `media` stays out: logos and photos belong to the brands, not to the CC BY
+ * dataset this envelope licenses.
+ */
+export const apiBrand = ({ media: _media, ...brand }: Brand) => ({ ...brand, urls: pageUrls(brand.slug) });
 
 export const apiCategory = (category: Category) => ({
   ...category,
