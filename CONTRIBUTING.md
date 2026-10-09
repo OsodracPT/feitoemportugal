@@ -170,4 +170,6 @@ description that repeats the brand's own words. The workflow header lists the
 repository settings it needs.
 
 Before merging such a pull request: open the evidence page and find the sentence,
-add subcategory, tags and products, and set `status: published` when it is ready.
+add subcategory, tags, products and a logo, and set `status: published`. A draft
+merges without error but never reaches the site, so the validate workflow puts a
+warning on every brand the pull request adds that is still a draft.

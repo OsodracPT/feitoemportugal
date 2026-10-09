@@ -46,3 +46,21 @@ jobs:
       # Catches anything the checks above cannot see, such as a broken route.
       - name: Build
         run: pnpm build
+
+      # A draft merges without error and then never appears on the site, which is
+      # easy to miss on a suggestion PR. Warn, do not fail: holding a brand back
+      # as a draft is sometimes the point. Only brands this PR adds: the drafts
+      # already on main are known, and a PR that edits them should stay quiet.
+      # Comparing the two trees needs no history, so the shallow checkout is enough.
+      - name: Flag brands that stay drafts
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASE_REF"
+          git diff --name-only --diff-filter=A FETCH_HEAD HEAD -- 'data/brands/*.yaml' | while read -r file; do
+            line=$(grep -n '^status: draft' "$file" | cut -d: -f1)
+            if [ -n "$line" ]; then
+              echo "::warning file=$file,line=$line::$(basename "$file" .yaml) is still a draft: merging keeps it off the site. Set status: published when it is ready."
+            fi
+          done
