@@ -117,6 +117,22 @@ describe('submissionFromIssue', () => {
     expect(result.submission.notes.join(' ')).toMatch(/Atlântida/);
   });
 
+  it('takes the district from a unique municipality, and not from an ambiguous one', () => {
+    // GitHub renders an untouched dropdown as "None".
+    const located = (municipality: string) => {
+      const result = submissionFromIssue(
+        issueBody({ ...valid, district: 'None', municipality }),
+        labels,
+        taxonomy,
+        existing,
+        '2026-10-08',
+      );
+      return result.ok ? result.submission.brand.location : 'failed';
+    };
+    expect(located('Felgueiras')).toEqual({ district: 'porto', municipality: 'felgueiras' });
+    expect(located('Lagoa')).toBeUndefined();
+  });
+
   it('never lets the body choose a path', () => {
     const result = submissionFromIssue(
       issueBody({ ...valid, name: '../../.github/workflows/x' }),

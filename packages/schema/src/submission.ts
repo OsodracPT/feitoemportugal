@@ -148,13 +148,27 @@ export function submissionFromIssue(
   }
 
   const district = optionId(answers.get('district'));
-  const region = district && district !== 'none' ? taxonomy.regions.find((r) => r.id === district) : undefined;
+  let region = district && district !== 'none' ? taxonomy.regions.find((r) => r.id === district) : undefined;
   const municipalityName = prose(answers.get('municipality'));
   let municipality: string | undefined;
   if (municipalityName) {
-    const match = region?.municipalities.find((m) => foldText(m.name) === foldText(municipalityName));
-    if (match) municipality = match.id;
-    else notes.push(`The municipality "${municipalityName}" did not match a municipality of the chosen district, so it was left out.`);
+    const sameName = (m: { name: string }) => foldText(m.name) === foldText(municipalityName);
+    // Submitters often know the town but skip the district. Most names are
+    // unique in the country (Lagoa and Calheta are not), so the district follows.
+    const candidates = region ? [region] : taxonomy.regions.filter((r) => r.municipalities.some(sameName));
+    if (candidates.length === 1) {
+      region = candidates[0]!;
+      municipality = region.municipalities.find(sameName)?.id;
+    }
+    if (!municipality) {
+      notes.push(
+        region
+          ? `The municipality "${municipalityName}" did not match a municipality of the chosen district, so it was left out.`
+          : `The municipality "${municipalityName}" did not match a single municipality, so the location was left out.`,
+      );
+    } else if (!district || district === 'none') {
+      notes.push(`No district was chosen; it was taken from the municipality (${region!.id}).`);
+    }
   }
 
   const instagramAnswer = answers.get('instagram');
