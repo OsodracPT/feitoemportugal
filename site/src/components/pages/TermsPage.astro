@@ -4,7 +4,7 @@
  * counts. Only terms above MIN_BRANDS_FOR_LANDING link to a page of their own.
  */
 import Layout from '~/layouts/Layout.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import {
   brandsWithProduct,
   brandsWithTag,
@@ -89,10 +89,8 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
   alternates={alternates}
   jsonLd={[breadcrumbJsonLd(crumbs)]}
 >
+  <LandingHead lang={lang} crumbs={crumbs} title={title} intro={intro} />
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{title}</h1>
-    <p class="lede">{intro}</p>
 
     <!-- Hidden until the script runs; without it the full list is already here. -->
     <div class="term-filter" data-term-filter hidden>
@@ -141,16 +139,22 @@ const groups: { heading?: string; entries: Entry[] }[] = isProduct
     display: grid;
     gap: var(--space-2);
     max-width: 28rem;
-    margin-top: var(--space-5);
+  }
+
+  .term-filter label {
+    font-size: var(--fep-text-sm);
+    font-weight: 650;
   }
 
   .term-filter input {
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1.5px solid var(--fep-ink);
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
     font: inherit;
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-lg);
-    background: var(--bg-raised);
-    color: var(--text);
+    font-size: var(--fep-text);
   }
 
   .group {

@@ -14,7 +14,7 @@ import {
   regions,
   tags,
 } from './data.ts';
-import { inRegion, paths } from './i18n.ts';
+import { inPlaceParts, inRegion, paths } from './i18n.ts';
 import { mapShade } from './filters.ts';
 import { MAP_HEIGHT, MAP_WIDTH, mapDistricts, projectPoint } from './map.ts';
 import { searchDocs } from './search.ts';
@@ -65,6 +65,13 @@ describe('category x region pages', () => {
     expect(inRegion('pt', 'porto', 'Porto')).toBe('no Porto');
     expect(inRegion('en', 'porto', 'Porto')).toBe('in Porto');
     expect(inRegion('en', 'acores', 'Azores')).toBe('in the Azores');
+    // Municipalities share the exceptions; a name used for both reads the same.
+    expect(inRegion('pt', 'maia', 'Maia')).toBe('na Maia');
+    expect(inRegion('pt', 'caldas-da-rainha', 'Caldas da Rainha')).toBe('nas Caldas da Rainha');
+    expect(inRegion('pt', 'guimaraes', 'Guimarães')).toBe('em Guimarães');
+    expect(inRegion('en', 'maia', 'Maia')).toBe('in Maia');
+    expect(inPlaceParts('pt', 'porto', 'Porto')).toEqual({ prep: 'no', name: 'Porto' });
+    expect(inPlaceParts('en', 'acores', 'Azores')).toEqual({ prep: 'in the', name: 'Azores' });
   });
 });
 

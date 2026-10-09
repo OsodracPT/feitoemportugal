@@ -114,15 +114,29 @@ export function formatDate(date: string, lang: Lang): string {
  * better in lower case ("Marcas de calçado…"). English keeps the capital.
  */
 /**
- * "em Aveiro", "no Porto", "nos Açores": Portuguese contracts the preposition
- * with the article some place names take, so the exceptions are listed in
- * `place.in` by region id. Looked up in the page's own dictionary only, so
- * English never borrows a Portuguese form.
+ * "em Aveiro", "no Porto", "na Maia", "nas Caldas da Rainha": Portuguese
+ * contracts the preposition with the article some place names take, so the
+ * exceptions are listed in `place.in` by id — district, autonomous region or
+ * municipality (a name shared by both, like Porto, takes the same form).
+ * Looked up in the page's own dictionary only, so English never borrows a
+ * Portuguese form.
  */
-export function inRegion(lang: Lang, regionId: string, regionName: string): string {
-  const form = lookup(dictionaries[lang], `place.in.${regionId}`);
+export function inRegion(lang: Lang, placeId: string, placeName: string): string {
+  const form = lookup(dictionaries[lang], `place.in.${placeId}`);
   if (typeof form === 'string') return form;
-  return t(lang, 'place.in.default', { region: regionName });
+  return t(lang, 'place.in.default', { region: placeName });
+}
+
+/**
+ * The same phrase split in two, for markup that sets the name apart
+ * ("no <strong>Porto</strong>"). A form that does not end in the name is
+ * returned whole as the name.
+ */
+export function inPlaceParts(lang: Lang, placeId: string, placeName: string): { prep: string; name: string } {
+  const form = inRegion(lang, placeId, placeName);
+  return form.endsWith(placeName)
+    ? { prep: form.slice(0, -placeName.length).trimEnd(), name: placeName }
+    : { prep: '', name: form };
 }
 
 export function labelInSentence(label: string, lang: Lang): string {

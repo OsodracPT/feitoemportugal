@@ -54,6 +54,10 @@ export function initListing(): void {
   const closeButtons = panel ? Array.from(panel.querySelectorAll<HTMLElement>('[data-filters-close]')) : [];
   const groupEls = panel ? Array.from(panel.querySelectorAll<HTMLElement>('[data-group]')) : [];
   const totalLabel = document.querySelector<HTMLElement>('[data-brand-total]');
+  const noResults = document.querySelector<HTMLElement>('[data-no-results]');
+  const noResultsText = noResults?.querySelector<HTMLElement>('[data-empty-text]') ?? null;
+  const undoButton = noResults?.querySelector<HTMLButtonElement>('[data-undo-last]') ?? null;
+  const startOver = noResults?.querySelector<HTMLButtonElement>('[data-start-over]') ?? null;
   const map = panel?.querySelector<HTMLElement>('[data-district-map]') ?? null;
   const mapDistricts = map ? Array.from(map.querySelectorAll<SVGPathElement>('[data-dist]')) : [];
   const mapStrings = JSON.parse(map?.dataset.strings ?? '{}');
@@ -90,6 +94,8 @@ export function initListing(): void {
   }
   /** Search positions, or null when there is no active query. */
   let rank: Map<string, number> | null = null;
+  /** The filter the reader turned on last: what "no results" offers to undo. */
+  let lastAdded: { key: FilterKey; value: string } | null = null;
 
   root.hidden = false;
   if (panel) panel.hidden = false;
@@ -108,6 +114,8 @@ export function initListing(): void {
       status.textContent = '';
       return;
     }
+    // With no results the sheet below the grid says it; the status stays for screen readers.
+    status.classList.toggle('visually-hidden', count === 0);
     if (count === 0) {
       status.textContent = state.q
         ? `${fill(strings.searchEmpty, { query: state.q })} ${strings.searchEmptyHint}`
@@ -235,6 +243,40 @@ export function initListing(): void {
     }
   }
 
+  /** The filter to offer back first: the last one added, else the last chip. */
+  function lastFilter(): { key: FilterKey; value: string } | null {
+    if (lastAdded && state.filters[lastAdded.key].includes(lastAdded.value)) return lastAdded;
+    for (const key of [...FILTER_KEYS].reverse()) {
+      const value = state.filters[key].at(-1);
+      if (value !== undefined) return { key, value };
+    }
+    return null;
+  }
+
+  function updateEmpty(count: number) {
+    if (!noResults) return;
+    const wasFocused = noResults.contains(document.activeElement);
+    noResults.hidden = count !== 0;
+    if (count !== 0) {
+      // The button that emptied the sheet is gone; keep the reader in the toolbar.
+      if (wasFocused) input.focus();
+      return;
+    }
+    if (noResultsText) {
+      noResultsText.textContent = state.q
+        ? fill(strings.searchEmpty, { query: state.q })
+        : strings.filtersEmpty;
+    }
+    const last = lastFilter();
+    if (undoButton) {
+      const { label = '', labelSearch = '' } = undoButton.dataset;
+      undoButton.hidden = !last && !state.q;
+      undoButton.textContent = last ? fill(label, { label: labelOf(last.key, last.value) }) : labelSearch;
+    }
+    // Starting over only differs from the undo when there is more than one thing to drop.
+    if (startOver) startOver.hidden = activeFilterCount(state.filters) + (state.q ? 1 : 0) < 2;
+  }
+
   function render() {
     const visible = orderedSlugs(facets, state, rank);
     const position = new Map(visible.map((slug, index) => [slug, index + 1]));
@@ -250,6 +292,7 @@ export function initListing(): void {
     updateCounts();
     updateChips();
     updateDone(visible.length);
+    updateEmpty(visible.length);
     updateView();
     syncUrl();
   }
@@ -285,6 +328,8 @@ export function initListing(): void {
     if (on) values.add(value);
     else values.delete(value);
     state.filters[key] = [...values];
+    if (on) lastAdded = { key, value };
+    else if (lastAdded?.key === key && lastAdded.value === value) lastAdded = null;
     // Dropping a category drops the subcategories that belonged to it.
     if (key === 'cat' && !on) {
       state.filters.sub = state.filters.sub.filter((sub) => subParent(sub) !== value);
@@ -384,9 +429,29 @@ export function initListing(): void {
 
   function clearFilters() {
     for (const key of FILTER_KEYS) state.filters[key] = [];
+    lastAdded = null;
     syncBoxes();
     render();
   }
+
+  undoButton?.addEventListener('click', () => {
+    const last = lastFilter();
+    if (last) {
+      setFilter(last.key, last.value, false);
+      render();
+      return;
+    }
+    input.value = '';
+    void runSearch('');
+  });
+
+  startOver?.addEventListener('click', () => {
+    input.value = '';
+    clearSearch.hidden = true;
+    state.q = '';
+    rank = null;
+    clearFilters();
+  });
 
   districtSelect?.addEventListener('change', () => {
     const id = districtSelect.value;

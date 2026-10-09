@@ -7,7 +7,7 @@
 import type { Region } from '@fep/schema';
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import DistrictMap from '~/components/DistrictMap.astro';
 import {
   brandsInDistrict,
@@ -70,27 +70,21 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
   alternates={alternates}
   jsonLd={jsonLd}
 >
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={name}
+    eyebrow={t(lang, region.type === 'regiao-autonoma' ? 'region.autonomous' : 'region.district')}
+    lede={t(lang, 'region.lede', { count: brands.length })}
+    intro={intro}
+    refine={{ href: catalogueLink, label: t(lang, 'region.refine') }}
+  >
+    <DistrictMap slot="map" lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
+  </LandingHead>
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <p class="eyebrow">
-      {t(lang, region.type === 'regiao-autonoma' ? 'region.autonomous' : 'region.district')}
-    </p>
-    <h1>{name}</h1>
-
-    <div class="region">
-      <div class="region__text">
-        {intro && <p class="lede">{intro}</p>}
-        <p>{t(lang, 'region.lede', { count: brands.length })}</p>
-        <p><a href={catalogueLink}>{t(lang, 'region.refine')}</a></p>
-      </div>
-      <div class="region__map">
-        <DistrictMap lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
-      </div>
-    </div>
-
     {
       byCategory.length > 0 && (
-        <nav class="section" aria-label={t(lang, 'region.byCategory')}>
+        <nav class="links" aria-label={t(lang, 'region.byCategory')}>
           <h2 class="eyebrow">{t(lang, 'region.byCategory')}</h2>
           <ul class="pill-list">
             {byCategory.map((category) => (
@@ -133,20 +127,7 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
 </Layout>
 
 <style>
-  .region {
-    display: grid;
-    gap: var(--space-5);
-    align-items: start;
-  }
-
-  @media (min-width: 52rem) {
-    .region {
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: var(--space-7);
-    }
-  }
-
-  .region__map {
-    max-width: 20rem;
+  .links + .section {
+    margin-top: var(--fep-space-6);
   }
 </style>

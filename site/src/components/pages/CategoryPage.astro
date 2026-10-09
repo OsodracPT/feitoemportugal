@@ -2,7 +2,7 @@
 import type { Category, Subcategory } from '@fep/schema';
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import {
   brandsInCategory,
   brandsInDistrictCategory,
@@ -11,6 +11,7 @@ import {
   landingSubcategories,
   landingCategories,
 } from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import {
   breadcrumbJsonLd,
@@ -38,6 +39,14 @@ const brands = subcategory
 const label = localized((subcategory ?? category).label, lang);
 const headline = t(lang, 'category.brandsIn', { category: labelInSentence(label, lang) });
 const intro = localized((subcategory?.intro ?? category.intro), lang);
+// Mid-sentence, English drops the capital too ("23 footwear brands").
+const inSentence = lang === 'en' ? label.toLocaleLowerCase('en-GB') : labelInSentence(label, lang);
+const lede = t(lang, 'category.lede', { count: brands.length, category: inSentence });
+
+const filters = emptyFilters();
+filters.cat = [category.id];
+if (subcategory) filters.sub = [subcategory.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
 
 const alternates = subcategory
   ? {
@@ -84,14 +93,20 @@ if (faqNode) jsonLd.push(faqNode);
   alternates={alternates}
   jsonLd={jsonLd}
 >
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={label}
+    eyebrow={subcategory ? localized(category.label, lang) : t(lang, 'landing.category')}
+    lede={lede}
+    intro={intro}
+    refine={{ href: catalogueLink, label: t(lang, 'category.refine') }}
+    category={category.id}
+  />
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{headline}</h1>
-    {intro && <p class="lede">{intro}</p>}
-
     {
       subcategoryLinks.length > 0 && (
-        <nav class="subcategories" aria-label={t(lang, 'category.subcategories')}>
+        <nav class="links" aria-label={t(lang, 'category.subcategories')}>
           <h2 class="eyebrow">{t(lang, 'category.subcategories')}</h2>
           <ul class="pill-list">
             {subcategoryLinks.map((sub) => (
@@ -108,7 +123,7 @@ if (faqNode) jsonLd.push(faqNode);
 
     {
       regionLinks.length > 0 && (
-        <nav class="subcategories" aria-label={t(lang, 'category.byRegion')}>
+        <nav class="links" aria-label={t(lang, 'category.byRegion')}>
           <h2 class="eyebrow">{t(lang, 'category.byRegion')}</h2>
           <ul class="pill-list">
             {regionLinks.map((region) => (
@@ -167,18 +182,30 @@ if (faqNode) jsonLd.push(faqNode);
 </Layout>
 
 <style>
-  .subcategories {
-    margin-block: var(--space-5);
+  .links {
+    margin-bottom: var(--fep-space-5);
+  }
+
+  .links + .section {
+    margin-top: var(--fep-space-6);
+  }
+
+  .faq {
+    max-width: var(--measure);
+  }
+
+  .faq h2 {
+    font-size: var(--fep-display-3);
   }
 
   .faq dt {
-    font-weight: 600;
-    margin-top: var(--space-4);
+    margin-top: var(--fep-space-4);
+    font-weight: 650;
+    color: var(--fep-heading);
   }
 
   .faq dd {
-    margin: var(--space-2) 0 0;
-    color: var(--text-muted);
-    max-width: var(--measure);
+    margin: var(--fep-space-2) 0 0;
+    color: var(--fep-ink-2);
   }
 </style>

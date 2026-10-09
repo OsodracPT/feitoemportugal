@@ -13,7 +13,7 @@ import {
   regions,
 } from '~/lib/data.ts';
 import { categoryTile, TILES } from '~/lib/card-art.ts';
-import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { inRegion, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { itemListJsonLd, websiteJsonLd } from '~/lib/seo.ts';
 
 interface Props {
@@ -72,7 +72,12 @@ const byName = [...withBrands].sort((a, b) =>
         <label for="home-dist">{t(lang, 'home.madeIn')}</label>
         <select id="home-dist" name="dist">
           <option value="">{t(lang, 'home.anywhere')}</option>
-          {byName.map(({ region }) => <option value={region.id}>{localized(region.label, lang)}</option>)}
+          {
+            // The preposition lives in the option ("no Porto", "nos Açores"): it changes with the place.
+            byName.map(({ region }) => (
+              <option value={region.id}>{inRegion(lang, region.id, localized(region.label, lang))}</option>
+            ))
+          }
         </select>
         <button class="button" type="submit">{t(lang, 'home.find')}</button>
       </form>

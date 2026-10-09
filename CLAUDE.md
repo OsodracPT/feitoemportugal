@@ -143,8 +143,9 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
   (`MIN_BRANDS_FOR_LANDING`). Below that the page is not generated at all, and
   links to it render as a dashed pill instead.
 - **Portuguese place names take contracted prepositions** ("no Porto", "nos Açores").
-  `inRegion()` in `i18n.ts` reads the exceptions from `place.in` in `pt.json`; a new
-  region whose name takes an article needs an entry there.
+  `inRegion()` in `i18n.ts` reads the exceptions from `place.in` in `pt.json`, keyed
+  by district or municipality id ("na Maia", "nas Caldas da Rainha"); a new place
+  whose name takes an article needs an entry there. Never write "em {place}" by hand.
 - **Issue-form labels are an interface.** GitHub renders a submitted form as
   `### <label>` headings, and the parser maps them back to field ids through the
   form file itself. Renaming a label is safe; the category and district options
@@ -202,7 +203,11 @@ and medallion, "Como sabemos" with the trust ladder and proofs built from today'
 data, "Onde é feito", "Onde comprar" rows, "Também em <distrito>") are done. The
 evidence model was left as it is (2026-10-09): proofs are not in the YAML. Step 5
 (home: sentence search as a plain GET form, the six-tile panel, the region map
-with a link per region, the recent brands, the trust explainer) is done. Every brand shows trust
+with a link per region, the recent brands, the trust explainer) is done. Step 6 is done too: every landing
+and index page opens with `LandingHead.astro` (band, plate title, count, intro,
+the map beside it on region pages), and an empty list or a listing with no
+results shows `EmptyState.astro`, which offers to remove the last filter and
+links to the suggestion form. Every brand shows trust
 level 1 or 3 until step 4 records sources for level 2. Settled:
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range

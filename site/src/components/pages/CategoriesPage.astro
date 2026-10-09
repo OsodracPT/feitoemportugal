@@ -1,7 +1,8 @@
 ---
 import Layout from '~/layouts/Layout.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import { categories, brandsInCategory, hasLandingPage } from '~/lib/data.ts';
+import { categoryTile } from '~/lib/card-art.ts';
 import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { breadcrumbJsonLd, pageTitle, truncate, type Crumb } from '~/lib/seo.ts';
 
@@ -29,13 +30,16 @@ const entries = categories.map((category) => ({
   alternates={alternates}
   jsonLd={[breadcrumbJsonLd(crumbs)]}
 >
+  <LandingHead lang={lang} crumbs={crumbs} title={t(lang, 'nav.categories')} />
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{t(lang, 'nav.categories')}</h1>
     <ul class="list">
       {
         entries.map(({ category, count }) => (
-          <li class="card entry">
+          <li
+            class:list={['entry', { 'entry--quiet': !hasLandingPage(category) }]}
+            style={`--tile: var(--fep-tile-${categoryTile(category.id)})`}
+          >
+            <span class="entry__tile" aria-hidden="true" />
             <h2 class="entry__name">
               {hasLandingPage(category) ? (
                 <a href={paths.category(lang, category.slug[lang])}>{localized(category.label, lang)}</a>
@@ -43,8 +47,8 @@ const entries = categories.map((category) => ({
                 localized(category.label, lang)
               )}
             </h2>
-            <p class="entry__intro muted">{truncate(localized(category.intro, lang), 150)}</p>
-            <p class="entry__count muted">
+            <p class="entry__intro">{truncate(localized(category.intro, lang), 150)}</p>
+            <p class="entry__count">
               {count === 0
                 ? t(lang, 'brands.empty')
                 : count === 1
@@ -62,29 +66,79 @@ const entries = categories.map((category) => ({
 <style>
   .list {
     display: grid;
-    gap: var(--space-3);
+    gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
     list-style: none;
-    margin: var(--space-5) 0 0;
+    margin: 0;
     padding: 0;
   }
 
+  /* The tile strip on the left, like a card in list view; the name links the whole card. */
   .entry {
-    padding: var(--space-4);
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    column-gap: var(--fep-space-4);
+    padding: var(--fep-space-4) var(--fep-space-4) var(--fep-space-4) 0;
+    border: 1px solid var(--fep-line);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    overflow: hidden;
+  }
+
+  .entry:has(a):hover {
+    border-color: var(--fep-accent);
+  }
+
+  .entry--quiet {
+    border-style: dashed;
+    background: transparent;
+  }
+
+  .entry__tile {
+    grid-row: 1 / span 3;
+    margin-block: calc(-1 * var(--fep-space-4));
+    background: var(--fep-surface-2) var(--tile) 0 0 / 40px 40px repeat;
+  }
+
+  .entry--quiet .entry__tile {
+    opacity: 0.45;
   }
 
   .entry__name {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-2);
+    margin: 0 0 var(--fep-space-2);
+    font-size: var(--fep-display-card);
+  }
+
+  .entry__name a {
+    color: var(--fep-heading);
+    text-decoration: none;
+  }
+
+  .entry__name a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .entry__name a:focus-visible {
+    outline: none;
+  }
+
+  .entry:has(a:focus-visible) {
+    outline: 3px solid var(--fep-focus);
+    outline-offset: 2px;
   }
 
   .entry__intro,
   .entry__count {
-    font-size: var(--text-sm);
-    margin: 0 0 var(--space-2);
+    margin: 0 0 var(--fep-space-2);
+    font-size: var(--fep-text-xs);
+    color: var(--fep-ink-2);
   }
 
   .entry__count {
     margin-bottom: 0;
+    font-size: var(--fep-text-meta);
   }
 </style>

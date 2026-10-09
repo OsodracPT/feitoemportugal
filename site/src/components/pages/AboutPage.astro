@@ -6,7 +6,7 @@
  */
 import Layout from '~/layouts/Layout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
-import { SITE } from '~/lib/config.ts';
+import { SITE, issueForm } from '~/lib/config.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
 import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
 
@@ -21,7 +21,6 @@ const crumbs: Crumb[] = [
   { name: t(lang, 'about.title') },
 ];
 
-const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${template}`;
 
 const sections: { id: string; links?: { href: string; label: string }[] }[] = [
   { id: 'criteria' },

@@ -1,0 +1,81 @@
+---
+/**
+ * An empty list or a search with no results: a stitched sheet with what
+ * happened, whatever the page offers to undo it, and a way to suggest the
+ * brand that is missing. The listing renders it hidden and fills it in.
+ */
+import { issueForm } from '~/lib/config.ts';
+import { t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  text?: string | undefined;
+  hidden?: boolean;
+  [key: `data-${string}`]: unknown;
+}
+
+const { lang, title, text, hidden = false, ...rest } = Astro.props;
+---
+
+<div class="empty" hidden={hidden} {...rest}>
+  <p class="empty__title">{title}</p>
+  {text !== undefined && <p class="empty__text" data-empty-text>{text}</p>}
+  {Astro.slots.has('default') && <div class="empty__actions"><slot /></div>}
+  <p class="empty__suggest">
+    {t(lang, 'empty.suggestLead')}{' '}
+    <a href={issueForm('nova-marca.yml')} rel="noopener">{t(lang, 'empty.suggest')}</a>
+  </p>
+</div>
+
+<style>
+  .empty {
+    max-width: 40rem;
+    padding: var(--fep-space-5);
+    border: var(--fep-stitch);
+    border-radius: var(--fep-radius-xl);
+    background: var(--fep-surface);
+  }
+
+  .empty__title {
+    margin: 0;
+    font-family: var(--fep-font-display);
+    font-size: var(--fep-display-3);
+    line-height: 1.1;
+    color: var(--fep-heading);
+  }
+
+  .empty__text {
+    margin: var(--fep-space-2) 0 0;
+    color: var(--fep-ink-2);
+  }
+
+  .empty__text:empty {
+    display: none;
+  }
+
+  .empty__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fep-space-2);
+    margin-top: var(--fep-space-4);
+  }
+
+  .empty__suggest {
+    margin: var(--fep-space-4) 0 0;
+    padding-top: var(--fep-space-4);
+    border-top: 1px solid var(--fep-line);
+    font-size: var(--fep-text-sm);
+    color: var(--fep-ink-2);
+  }
+
+  .empty__suggest a {
+    font-weight: 650;
+  }
+
+  @media (min-width: 60rem) {
+    .empty {
+      padding: var(--fep-space-6);
+    }
+  }
+</style>

@@ -1,6 +1,6 @@
 ---
 import Shield from './Shield.astro';
-import { SITE } from '~/lib/config.ts';
+import { SITE, issueForm } from '~/lib/config.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
@@ -8,8 +8,6 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-// Suggestions go through the GitHub issue form until the site has its own form.
-const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${template}`;
 const contributeUrl = `${SITE.repo}/blob/main/CONTRIBUTING.md`;
 ---
 

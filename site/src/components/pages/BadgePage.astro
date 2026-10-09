@@ -7,7 +7,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import { SITE } from '~/lib/config.ts';
+import { SITE, issueForm } from '~/lib/config.ts';
 import { brands } from '~/lib/data.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
@@ -28,7 +28,6 @@ const verified = brands.filter((brand) => brand.verification?.verified);
 const filters = { ...emptyFilters(), verified: ['yes'] };
 const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
 
-const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${template}`;
 
 const sections: { id: string; links?: { href: string; label: string }[] }[] = [
   { id: 'meaning', links: [{ href: paths.about(lang), label: t(lang, 'badge.links.criteria') }] },

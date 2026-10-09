@@ -1,0 +1,173 @@
+---
+/**
+ * The head every landing and index page shares: a band under the header, the
+ * breadcrumbs, a plate title with its count and intro, and an optional map
+ * beside the text (region pages lead with it).
+ */
+import Breadcrumbs from './Breadcrumbs.astro';
+import { categoryTile } from '~/lib/card-art.ts';
+import type { Lang } from '~/lib/i18n.ts';
+import type { Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  crumbs: Crumb[];
+  title: string;
+  eyebrow?: string | undefined;
+  /** The count sentence under the plate ("23 marcas fabricam…"). */
+  lede?: string | undefined;
+  intro?: string | undefined;
+  refine?: { href: string; label: string } | undefined;
+  /** A category id: the band wears its tile instead of the calçada. */
+  category?: string | undefined;
+}
+
+const { lang, crumbs, title, eyebrow, lede, intro, refine, category } = Astro.props;
+const hasMap = Astro.slots.has('map');
+---
+
+{
+  category ? (
+    <div class="band band--tile" style={`--tile: var(--fep-tile-${categoryTile(category)})`} aria-hidden="true" />
+  ) : (
+    <div class="band" aria-hidden="true" />
+  )
+}
+<div class="container">
+  <Breadcrumbs lang={lang} crumbs={crumbs} />
+  <header class:list={['landing', { 'landing--map': hasMap }]}>
+    <div class="landing__title">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="plate">{title}</h1>
+      {lede && <p class="landing__lede">{lede}</p>}
+    </div>
+    <div class="landing__body">
+      {intro && <p class="landing__intro">{intro}</p>}
+      {
+        refine && (
+          <p class="landing__refine">
+            <a class="refine" href={refine.href}>
+              {refine.label}
+              <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        )
+      }
+      <slot />
+    </div>
+    {hasMap && <div class="landing__map"><slot name="map" /></div>}
+  </header>
+</div>
+
+<style>
+  /* Decorative, straight under the header: cancel the top padding of <main>. */
+  .band {
+    height: 22px;
+    margin-top: calc(-1 * var(--space-6));
+    margin-bottom: var(--fep-space-4);
+    background: var(--fep-calcada);
+  }
+
+  .band--tile {
+    height: 56px;
+    background: var(--fep-surface-2) var(--tile) 0 0 / 56px 56px repeat;
+  }
+
+  .landing {
+    display: grid;
+    align-items: start;
+    margin-bottom: var(--fep-space-6);
+  }
+
+  /* Portugal is tall and narrow, so even a phone has room for it beside the title. */
+  .landing--map {
+    grid-template-columns: minmax(0, 1fr) 6.5rem;
+    grid-template-areas: 'title map' 'body body';
+    column-gap: var(--fep-space-4);
+  }
+
+  /* Named areas only with a map: elsewhere they would open implicit columns. */
+  .landing--map .landing__title {
+    grid-area: title;
+  }
+
+  .landing--map .landing__body {
+    grid-area: body;
+  }
+
+  .landing__map {
+    grid-area: map;
+  }
+
+  .landing__body > :first-child {
+    margin-top: var(--fep-space-3);
+  }
+
+  .landing__body:empty {
+    display: none;
+  }
+
+  .landing__lede {
+    margin: var(--fep-space-3) 0 0;
+    font-size: var(--fep-text-sm);
+    font-weight: 600;
+    color: var(--fep-ink);
+  }
+
+  .landing__intro {
+    max-width: var(--measure);
+    margin: var(--fep-space-3) 0 0;
+    font-size: var(--fep-text-lg);
+    color: var(--fep-ink-2);
+  }
+
+  .landing__refine {
+    margin: var(--fep-space-4) 0 0;
+  }
+
+  .refine {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fep-space-2);
+    min-height: var(--fep-touch);
+    padding: 0 var(--fep-space-4);
+    border: 1.5px solid var(--fep-accent);
+    border-radius: var(--fep-radius);
+    color: var(--fep-accent);
+    font-size: var(--fep-text-sm);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .refine:hover {
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+  }
+
+  @media (min-width: 60rem) {
+    .band {
+      height: 24px;
+      margin-bottom: var(--fep-space-5);
+    }
+
+    .band--tile {
+      height: 96px;
+      background-size: 64px 64px;
+    }
+
+    .landing {
+      margin-bottom: var(--fep-space-8);
+    }
+
+    .landing--map {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 17rem);
+      grid-template-areas: 'title map' 'body map';
+      grid-template-rows: auto 1fr;
+      column-gap: var(--fep-space-10);
+    }
+
+    .landing__lede {
+      font-size: var(--fep-text);
+    }
+  }
+</style>

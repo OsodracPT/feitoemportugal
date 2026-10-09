@@ -36,7 +36,7 @@
     "eyebrow": "{count} brands · open directory · no cookies",
     "lookFor": "I'm looking for",
     "lookForPlaceholder": "shoes, tableware, soap…",
-    "madeIn": "made in",
+    "madeIn": "made",
     "anywhere": "anywhere",
     "find": "Find brands",
     "panel": "The panel",
@@ -119,7 +119,7 @@
     "correction": "Found a mistake? Suggest a correction",
     "whatItMakes": "What it makes",
     "whereMade": "Where it is made",
-    "madeIn": "Made in",
+    "madeIn": "Made",
     "moreFrom": "Other brands {place}",
     "alsoFrom": "Also {place}",
     "links": "Links",
@@ -133,7 +133,9 @@
     "faq": "Frequently asked questions",
     "otherCategories": "Other categories",
     "noPage": "This category does not have enough brands yet to get its own page.",
-    "byRegion": "By region"
+    "byRegion": "By region",
+    "lede": "{count} {category} brands made in Portugal.",
+    "refine": "Filter these brands in the catalogue"
   },
   "products": {
     "title": "Products",
@@ -308,7 +310,8 @@
     "allCategory": "Every brand in {category}",
     "allRegion": "All brands {inRegion}",
     "otherCategories": "Other categories {inRegion}",
-    "otherRegions": "The same category in other regions"
+    "otherRegions": "The same category in other regions",
+    "plate": "{category} {inRegion}"
   },
   "about": {
     "title": "About the project",
@@ -399,5 +402,18 @@
     "label": "View",
     "list": "List",
     "panel": "Panel"
+  },
+  "landing": {
+    "category": "Category",
+    "product": "Product type",
+    "tag": "Tag"
+  },
+  "empty": {
+    "title": "No brands found",
+    "removeLast": "Remove “{label}”",
+    "startOver": "Start over",
+    "suggestLead": "Know a brand made in Portugal that should be here?",
+    "suggest": "Suggest a brand",
+    "listTitle": "No brands yet"
   }
 }

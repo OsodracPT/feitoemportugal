@@ -7,7 +7,7 @@
 import type { Product, Tag } from '@fep/schema';
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import { brandsWithProduct, brandsWithTag, landingProducts, landingTags } from '~/lib/data.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
@@ -78,12 +78,16 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
   alternates={alternates}
   jsonLd={jsonLd}
 >
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={label}
+    eyebrow={t(lang, isProduct ? 'landing.product' : 'landing.tag')}
+    lede={lede}
+    refine={{ href: catalogueLink, label: t(lang, isProduct ? 'products.refine' : 'tags.refine') }}
+    category={isProduct ? (term as Product).category : undefined}
+  />
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{headline}</h1>
-    <p class="lede">{lede}</p>
-    <p><a href={catalogueLink}>{t(lang, isProduct ? 'products.refine' : 'tags.refine')}</a></p>
-
     <div class="section">
       <BrandGrid lang={lang} brands={brands} />
     </div>

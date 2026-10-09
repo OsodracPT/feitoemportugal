@@ -7,7 +7,7 @@
 import type { Category, Region } from '@fep/schema';
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import LandingHead from '~/components/LandingHead.astro';
 import DistrictMap from '~/components/DistrictMap.astro';
 import {
   brandsInDistrictCategory,
@@ -80,32 +80,30 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
   alternates={alternates}
   jsonLd={jsonLd}
 >
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={t(lang, 'regionCategory.plate', { category: categoryName, inRegion: place })}
+    eyebrow={t(lang, 'landing.category')}
+    lede={lede}
+    refine={{ href: catalogueLink, label: t(lang, 'regionCategory.refine') }}
+    category={category.id}
+  >
+    <ul class="combo__links">
+      <li>
+        <a href={paths.category(lang, category.slug[lang])}>
+          {t(lang, 'regionCategory.allCategory', { category: labelInSentence(categoryName, lang) })}
+        </a>
+      </li>
+      <li>
+        <a href={paths.region(lang, region.slug[lang])}>
+          {t(lang, 'regionCategory.allRegion', { inRegion: place })}
+        </a>
+      </li>
+    </ul>
+    <DistrictMap slot="map" lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
+  </LandingHead>
   <div class="container">
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{headline}</h1>
-
-    <div class="combo">
-      <div class="combo__text">
-        <p class="lede">{lede}</p>
-        <ul class="combo__links">
-          <li><a href={catalogueLink}>{t(lang, 'regionCategory.refine')}</a></li>
-          <li>
-            <a href={paths.category(lang, category.slug[lang])}>
-              {t(lang, 'regionCategory.allCategory', { category: labelInSentence(categoryName, lang) })}
-            </a>
-          </li>
-          <li>
-            <a href={paths.region(lang, region.slug[lang])}>
-              {t(lang, 'regionCategory.allRegion', { inRegion: place })}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="combo__map">
-        <DistrictMap lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
-      </div>
-    </div>
-
     <div class="section">
       <BrandGrid lang={lang} brands={brands} />
     </div>
@@ -147,28 +145,14 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
 </Layout>
 
 <style>
-  .combo {
-    display: grid;
-    gap: var(--space-5);
-    align-items: start;
-  }
-
-  @media (min-width: 52rem) {
-    .combo {
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: var(--space-7);
-    }
-  }
-
   .combo__links {
-    padding-left: 1.2em;
+    margin: var(--fep-space-4) 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--fep-text-sm);
   }
 
   .combo__links li + li {
-    margin-top: var(--space-2);
-  }
-
-  .combo__map {
-    max-width: 20rem;
+    margin-top: var(--fep-space-2);
   }
 </style>

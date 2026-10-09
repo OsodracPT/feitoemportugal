@@ -13,3 +13,6 @@ export const SITE = {
  * generated above this many published brands, to avoid thin pages.
  */
 export const MIN_BRANDS_FOR_LANDING = 3;
+
+/** A GitHub issue form; suggestions go through these until the site has its own form. */
+export const issueForm = (template: string): string => `${SITE.repo}/issues/new?template=${template}`;
