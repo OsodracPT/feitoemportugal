@@ -1,0 +1,32 @@
+slug: vibae
+status: draft
+name: VIBAe
+description:
+  pt: >-
+    Marca finlandesa de calçado unissexo, desenhado na Finlândia e feito à mão numa
+    fábrica familiar perto do Porto. Faz sapatilhas, mocassins, sandálias e botas em
+    linho, camurça bio e pele curtida com taninos vegetais, sempre com sola de borracha
+    natural.
+  en: >-
+    Finnish brand of unisex shoes, designed in Finland and handmade at a family-run
+    factory near Porto. It makes sneakers, loafers, sandals and boots in linen, bio
+    suede and vegetable-tanned leather, all on natural rubber soles.
+website: https://vibae.com
+category: calcado
+subcategory: sapatilhas
+tags: [unissexo, pele, linho]
+products: [sapatilhas, sapatos, sandalias, chinelos, botas]
+production:
+  scope: total
+location:
+  district: porto
+where_to_buy:
+  online_store: https://vibae.com
+social:
+  instagram: vibaeofficial
+verification:
+  verified: false
+meta:
+  added: 2026-10-09
+  updated: 2026-10-09
+  source: github
