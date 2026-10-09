@@ -1,13 +1,12 @@
 ---
 import type { Brand } from '@fep/schema';
 import { Image } from 'astro:assets';
-import Badges from './Badges.astro';
 import { getCategory, getRegion, getSubcategory } from '~/lib/data.ts';
 import { brandFacets, serializeFacets } from '~/lib/filters.ts';
-import { localized, paths, type Lang } from '~/lib/i18n.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { initials } from '~/lib/brand-initials.ts';
+import { categoryTile, trustLevel } from '~/lib/card-art.ts';
 import { brandLogo } from '~/lib/media.ts';
-import { truncate } from '~/lib/seo.ts';
 
 interface Props {
   lang: Lang;
@@ -20,129 +19,294 @@ const subcategory = brand.subcategory ? getSubcategory(brand.category, brand.sub
 const region = brand.location ? getRegion(brand.location.district) : undefined;
 const label = subcategory ?? category;
 const logo = brandLogo(brand);
-// No logo: the card falls back to the brand's initials.
-const fallback = initials(brand.name);
+const price = brand.price_range;
+const trust = trustLevel(brand);
+const partial = brand.production.scope === 'parcial';
 ---
 
-<!-- `data-facets` lets the listing filter and sort without a second fetch. -->
+<!--
+  `data-facets` lets the listing filter and sort without a second fetch.
+  List or tile is decided by the width of the grid around the card (BrandGrid).
+-->
 <article
-  class="card brand-card"
+  class="brand-card"
   data-slug={brand.slug}
   data-added={brand.meta.added}
   data-facets={serializeFacets(brandFacets(brand))}
 >
-  <a class="brand-card__link" href={paths.brand(lang, brand.slug)}>
+  <div class="brand-card__tile" style={`--tile: var(--fep-tile-${categoryTile(brand.category)})`}>
     {
       logo ? (
-        <span class="brand-card__logo brand-card__logo--image">
+        <span class="brand-card__medallion brand-card__medallion--logo">
           <Image src={logo} alt="" height={80} densities={[1]} loading="lazy" />
         </span>
       ) : (
-        <span class="brand-card__logo" aria-hidden="true">{fallback}</span>
+        <span class="brand-card__medallion" aria-hidden="true">
+          {initials(brand.name)}
+        </span>
       )
     }
-    <h3 class="brand-card__name">{brand.name}</h3>
-  </a>
-  <p class="brand-card__meta">
-    {label && localized(label.label, lang)}
-    {region && <span class="brand-card__region"> · {localized(region.label, lang)}</span>}
-  </p>
-  <p class="brand-card__description">{truncate(localized(brand.description, lang), 110)}</p>
-  <Badges lang={lang} brand={brand} />
+  </div>
+  <div class="brand-card__body">
+    <h3 class="brand-card__name">
+      <a class="brand-card__link" href={paths.brand(lang, brand.slug)}>{brand.name}</a>
+    </h3>
+    <p class="brand-card__meta">
+      {label && localized(label.label, lang)}
+      {region && <> · {localized(region.label, lang)}</>}
+    </p>
+    <p class="brand-card__description">{localized(brand.description, lang)}</p>
+    <p class="brand-card__facts">
+      {
+        price && (
+          <span class="brand-card__price">
+            <span aria-hidden="true">
+              {'€'.repeat(price)}
+              <span class="brand-card__price-off">{'€'.repeat(4 - price)}</span>
+            </span>
+            <span class="visually-hidden">{t(lang, 'card.priceOf', { level: price })}</span>
+          </span>
+        )
+      }
+      <span class="brand-card__trust" style={`--trust: var(--fep-trust-${trust})`}>
+        {t(lang, `card.trust${trust}`)}
+      </span>
+      {partial && <span class="brand-card__partial">{t(lang, 'card.partial')}</span>}
+    </p>
+  </div>
 </article>
 
 <style>
+  /* --- List: the default, and what a phone sees --- */
   .brand-card {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    padding: var(--space-4);
+    gap: var(--fep-space-3);
+    padding: 10px;
+    background: var(--fep-surface);
+    border: 1px solid var(--fep-line);
+    border-radius: 10px;
   }
 
   .brand-card:hover {
-    border-color: var(--line-strong);
+    border-color: var(--fep-ink-dim);
   }
 
-  .brand-card__link {
+  /* The ring goes round the whole card, which is what the stretched link covers. */
+  .brand-card:has(.brand-card__link:focus-visible) {
+    outline: 3px solid var(--fep-focus);
+    outline-offset: 2px;
+  }
+
+  .brand-card__link:focus-visible {
+    outline: none;
+  }
+
+  .brand-card__tile {
     display: flex;
-    align-items: center;
-    gap: var(--space-3);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  /* The whole card is clickable, while the link text stays the accessible name. */
-  .brand-card__link::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius-lg);
-  }
-
-  .brand-card {
-    position: relative;
-  }
-
-  .brand-card__logo {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
     flex: none;
-    border-radius: var(--radius);
-    background: var(--bg-sunken);
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    letter-spacing: 0.02em;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border-radius: var(--fep-radius-sm);
+    background: var(--fep-surface-2) var(--tile) 0 0 / 38px 38px repeat;
   }
 
-  /*
-   * Most logos are wordmarks: keep the height, let the width follow. Flex, not
-   * grid: a grid item centred with place-items ignores a percentage height, and
-   * tall or square logos then spill out at their natural size.
-   */
-  .brand-card__logo--image {
+  /* Text never sits on the pattern: initials and logos stand on a solid medallion. */
+  .brand-card__medallion {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    max-width: 7rem;
-    padding: 0.3rem 0.45rem;
-    overflow: hidden;
-    background: var(--logo-plate);
-    border: 1px solid var(--line);
+    min-width: 40px;
+    height: 40px;
+    background: var(--fep-surface);
+    border: 2px solid var(--fep-accent);
+    border-radius: var(--fep-radius-sm);
+    color: var(--fep-heading);
+    font-family: var(--fep-font-display);
+    font-size: 1.0625rem;
+    line-height: 1;
   }
 
-  .brand-card__logo--image img {
+  /*
+   * Logos are drawn for light grounds, so they keep the plate in both themes.
+   * Most are wordmarks: hold the height, let the width follow up to the tile.
+   */
+  .brand-card__medallion--logo {
+    max-width: 68px;
+    height: 44px;
+    padding: 3px 4px;
+    overflow: hidden;
+    background: var(--fep-logo-plate);
+  }
+
+  .brand-card__medallion--logo img {
     display: block;
     width: auto;
     max-width: 100%;
     height: 100%;
-    max-height: 100%;
     object-fit: contain;
+  }
+
+  .brand-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
   }
 
   .brand-card__name {
     margin: 0;
-    font-size: var(--text-lg);
+    font-size: 1.1875rem;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
   }
 
-  .brand-card__link:hover .brand-card__name {
+  .brand-card__link {
+    color: var(--fep-heading);
+    text-decoration: none;
+  }
+
+  /* The whole card is clickable, while the brand name stays the accessible name. */
+  .brand-card__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .brand-card:hover .brand-card__link {
     text-decoration: underline;
-    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
   }
 
   .brand-card__meta {
     margin: 0;
-    font-size: var(--text-sm);
-    color: var(--text-muted);
+    font-size: var(--fep-text-meta);
+    color: var(--fep-ink-2);
   }
 
   .brand-card__description {
+    display: -webkit-box;
     margin: 0;
-    flex: 1;
-    font-size: var(--text-sm);
-    color: var(--text-muted);
+    overflow: hidden;
+    font-size: var(--fep-text-xs);
+    line-height: 1.4;
+    color: var(--fep-ink);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .brand-card__facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--fep-space-1) 10px;
+    margin: 0;
+    padding-top: 3px;
+    font-size: var(--fep-text-meta);
+  }
+
+  .brand-card__price {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-card__price-off {
+    color: var(--fep-ink-dim);
+  }
+
+  .brand-card__trust {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fep-space-1);
+    color: var(--fep-ink-2);
+  }
+
+  .brand-card__trust::before {
+    content: '';
+    width: 14px;
+    height: 16px;
+    background: var(--trust) center / contain no-repeat;
+  }
+
+  .brand-card__partial {
+    padding: 1px var(--fep-space-2);
+    border: 1.5px dashed var(--fep-ink);
+    border-radius: var(--fep-radius-pill);
+    font-size: var(--fep-label);
+    font-weight: 600;
+  }
+
+  @media (forced-colors: active) {
+    .brand-card__trust::before {
+      display: none;
+    }
+  }
+
+  /* --- Tile: once the grid is wide enough for columns --- */
+  @container brands (min-width: 36rem) {
+    .brand-card {
+      flex-direction: column;
+      gap: 0;
+      height: 100%;
+      padding: 0;
+      overflow: hidden;
+      border-radius: var(--fep-radius-lg);
+    }
+
+    .brand-card__tile {
+      width: auto;
+      height: 130px;
+      border-radius: 0;
+      background-size: 44px 44px;
+    }
+
+    .brand-card__medallion {
+      min-width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      font-size: 1.625rem;
+    }
+
+    .brand-card__medallion--logo {
+      max-width: 75%;
+      height: 72px;
+      padding: 6px 10px;
+    }
+
+    .brand-card__body {
+      gap: 5px;
+      padding: 14px var(--fep-space-4) var(--fep-space-4);
+    }
+
+    .brand-card__name {
+      font-size: 1.375rem;
+    }
+
+    .brand-card__meta {
+      font-size: var(--fep-text-xs);
+    }
+
+    .brand-card__description {
+      flex: 1;
+      font-size: var(--fep-text-sm);
+      line-height: 1.45;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+    }
+
+    .brand-card__facts {
+      padding-top: 6px;
+    }
+
+    .brand-card__trust::before {
+      width: 16px;
+      height: 19px;
+    }
   }
 </style>

@@ -408,12 +408,15 @@ const locationLabel = [municipality?.name, region ? localized(region.label, lang
     border-radius: var(--radius);
   }
 
+  /*
+   * A definite height, not `auto`: many SVG logos carry only a viewBox, so they
+   * have no natural size, and an auto-sized <img> collapses to nothing.
+   */
   .brand__logo img {
     display: block;
     width: auto;
     max-width: min(16rem, 70vw);
-    height: auto;
-    max-height: 4rem;
+    height: 4rem;
     object-fit: contain;
   }
 

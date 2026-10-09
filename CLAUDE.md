@@ -188,7 +188,11 @@ Next: the `/imprensa` page, the bilingual blog, then the
 submission API (and Umami), then verification and polish.
 
 The "Azulejo" redesign (`design/README.md`) is under way, one build step per PR:
-step 1 (tokens, Gloock, favicon and shield, header and footer) is done. Settled:
+step 1 (tokens, Gloock, favicon and shield, header and footer) and step 2 (the
+brand card: list row in a narrow grid, tile once the grid passes 36rem, by
+container query; category tiles and trust shields are theme tokens, mapped in
+`lib/card-art.ts`) are done. Every brand shows trust level 1 or 3 until step 4
+records sources for level 2. Settled:
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range
 is made in Portugal; brand images stay outside CC BY (logos from the brand's site,

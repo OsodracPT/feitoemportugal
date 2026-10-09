@@ -241,7 +241,6 @@
     "label": "{name}: {count} marcas",
     "labelOne": "{name}: 1 marca",
     "labelNone": "{name}: sem marcas",
-    "legend": "Cor mais intensa, mais marcas.",
     "source": "Limites: CAOP 2025, DGT (CC BY 4.0)."
   },
   "terms": {
@@ -344,5 +343,12 @@
   },
   "theme": {
     "dark": "Tema escuro"
+  },
+  "card": {
+    "trust1": "Declarado",
+    "trust2": "Com fontes",
+    "trust3": "Verificada",
+    "priceOf": "Preço {level} de 4",
+    "partial": "Produção parcial"
   }
 }

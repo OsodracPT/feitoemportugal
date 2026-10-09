@@ -121,8 +121,14 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
     }
   </svg>
   <figcaption class="dmap__caption muted">
-    {mode === 'filter' ? `${t(lang, 'map.hint')} ` : ''}{t(lang, 'map.legend')}
-    <br />
+    {
+      mode === 'filter' && (
+        <>
+          {t(lang, 'map.hint')}
+          <br />
+        </>
+      )
+    }
     <a href="https://dados.gov.pt/datasets/carta-administrativa-oficial-de-portugal-caop2025-continente" rel="noopener">{t(lang, 'map.source')}</a>
   </figcaption>
 </figure>

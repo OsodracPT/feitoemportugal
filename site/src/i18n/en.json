@@ -241,7 +241,6 @@
     "label": "{name}: {count} brands",
     "labelOne": "{name}: 1 brand",
     "labelNone": "{name}: no brands",
-    "legend": "Stronger colour, more brands.",
     "source": "Boundaries: CAOP 2025, DGT (CC BY 4.0)."
   },
   "terms": {
@@ -341,5 +340,12 @@
   },
   "theme": {
     "dark": "Dark theme"
+  },
+  "card": {
+    "trust1": "Declared",
+    "trust2": "Sourced",
+    "trust3": "Verified",
+    "priceOf": "Price {level} of 4",
+    "partial": "Partial production"
   }
 }

@@ -15,10 +15,32 @@ const { lang, brands } = Astro.props;
   brands.length === 0 ? (
     <p class="muted">{t(lang, 'brands.empty')}</p>
   ) : (
-    <div class="grid" data-brand-grid>
-      {brands.map((brand) => (
-        <BrandCard lang={lang} brand={brand} />
-      ))}
+    // The wrapper is the query container: a card is a list row in a narrow
+    // column and a tile once there is room for a grid, wherever it is placed.
+    <div class="brands">
+      <div class="brands__grid" data-brand-grid>
+        {brands.map((brand) => (
+          <BrandCard lang={lang} brand={brand} />
+        ))}
+      </div>
     </div>
   )
 }
+
+<style>
+  .brands {
+    container: brands / inline-size;
+  }
+
+  .brands__grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  @container brands (min-width: 36rem) {
+    .brands__grid {
+      gap: var(--fep-space-4);
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    }
+  }
+</style>

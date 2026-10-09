@@ -27,6 +27,18 @@
   /* Calçada band, tile 168 × 60. An accent for bands only, never under text. */
   --fep-calcada: #8f8b82 url('/assets/calcada/calcada-light.svg') 0 0 / 168px 60px repeat;
 
+  /* Category tiles (48 × 48, drawn at 38–50px) and trust shields, per theme.
+     Multi-colour, so they swap by token rather than through a CSS mask. */
+  --fep-tile-alimentacao: url('/assets/tiles/tile-alimentacao-light.svg');
+  --fep-tile-calcado: url('/assets/tiles/tile-calcado-light.svg');
+  --fep-tile-casa: url('/assets/tiles/tile-casa-light.svg');
+  --fep-tile-ceramica: url('/assets/tiles/tile-ceramica-light.svg');
+  --fep-tile-cosmetica: url('/assets/tiles/tile-cosmetica-light.svg');
+  --fep-tile-vestuario: url('/assets/tiles/tile-vestuario-light.svg');
+  --fep-trust-1: url('/assets/trust/trust-1-light.svg');
+  --fep-trust-2: url('/assets/trust/trust-2-light.svg');
+  --fep-trust-3: url('/assets/trust/trust-3-light.svg');
+
   /* --- Type --- */
   --fep-font-display: 'Gloock', Georgia, 'Times New Roman', serif; /* one weight, self-hosted, subset */
   --fep-font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -154,6 +166,15 @@
     --fep-focus: #8eb0ea;
     --fep-logo-plate: #f4f3ee;
     --fep-calcada: #05070b url('/assets/calcada/calcada-dark.svg') 0 0 / 168px 60px repeat;
+    --fep-tile-alimentacao: url('/assets/tiles/tile-alimentacao-dark.svg');
+    --fep-tile-calcado: url('/assets/tiles/tile-calcado-dark.svg');
+    --fep-tile-casa: url('/assets/tiles/tile-casa-dark.svg');
+    --fep-tile-ceramica: url('/assets/tiles/tile-ceramica-dark.svg');
+    --fep-tile-cosmetica: url('/assets/tiles/tile-cosmetica-dark.svg');
+    --fep-tile-vestuario: url('/assets/tiles/tile-vestuario-dark.svg');
+    --fep-trust-1: url('/assets/trust/trust-1-dark.svg');
+    --fep-trust-2: url('/assets/trust/trust-2-dark.svg');
+    --fep-trust-3: url('/assets/trust/trust-3-dark.svg');
   }
 }
 
@@ -173,6 +194,15 @@
   --fep-focus: #8eb0ea;
   --fep-logo-plate: #f4f3ee;
   --fep-calcada: #05070b url('/assets/calcada/calcada-dark.svg') 0 0 / 168px 60px repeat;
+  --fep-tile-alimentacao: url('/assets/tiles/tile-alimentacao-dark.svg');
+  --fep-tile-calcado: url('/assets/tiles/tile-calcado-dark.svg');
+  --fep-tile-casa: url('/assets/tiles/tile-casa-dark.svg');
+  --fep-tile-ceramica: url('/assets/tiles/tile-ceramica-dark.svg');
+  --fep-tile-cosmetica: url('/assets/tiles/tile-cosmetica-dark.svg');
+  --fep-tile-vestuario: url('/assets/tiles/tile-vestuario-dark.svg');
+  --fep-trust-1: url('/assets/trust/trust-1-dark.svg');
+  --fep-trust-2: url('/assets/trust/trust-2-dark.svg');
+  --fep-trust-3: url('/assets/trust/trust-3-dark.svg');
   color-scheme: dark;
 }
 
