@@ -21,6 +21,7 @@ import {
   MEDIA_EXTENSIONS,
   loadBrands,
   setBrandMedia,
+  brokenSvg,
   unsafeSvg,
   validateMedia,
 } from '@fep/schema';
@@ -53,6 +54,8 @@ function checkFile(bytes: Uint8Array, name: string, kind: 'logo' | 'photo'): voi
   if (ext === '.svg') {
     const reason = unsafeSvg(new TextDecoder().decode(bytes));
     if (reason) fail(`${name}: unsafe SVG (${reason}); redraw or export a clean copy first`);
+    const broken = brokenSvg(new TextDecoder().decode(bytes));
+    if (broken) fail(`${name}: broken SVG (${broken}); pick another candidate or fetch the brand again`);
   }
   if (kind === 'photo' && bytes.length > MAX_PHOTO_BYTES) fail(`${name}: larger than 2 MB, resize it first`);
 }

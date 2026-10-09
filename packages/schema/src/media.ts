@@ -78,6 +78,23 @@ export function unsafeSvg(text: string): string | undefined {
   return undefined;
 }
 
+/**
+ * An SVG Astro cannot size, or one that draws nothing, breaks the build. Most
+ * often it is an inline header logo saved as `<use href="#logo">`, whose
+ * drawing stays behind on the brand's page. Returns the reason, or undefined.
+ */
+export function brokenSvg(text: string): string | undefined {
+  const open = /<svg\b[^>]*>/i.exec(text)?.[0];
+  if (!open) return 'no <svg> element';
+  const sized = /\sviewBox\s*=/i.test(open) || (/\swidth\s*=\s*["']?\d/i.test(open) && /\sheight\s*=\s*["']?\d/i.test(open));
+  if (!sized) return 'no viewBox or width and height';
+  const ids = new Set([...text.matchAll(/\sid\s*=\s*["']([^"']+)["']/g)].map((m) => m[1]));
+  const dangling = [...text.matchAll(/<use\b[^>]*href\s*=\s*["']#([^"']+)["']/gi)].map((m) => m[1]).find((id) => !ids.has(id));
+  if (dangling) return `<use> points to #${dangling}, which is not in the file`;
+  if (!/<(path|rect|circle|ellipse|polygon|polyline|line|text|image|use)\b/i.test(text)) return 'draws nothing';
+  return undefined;
+}
+
 const issue = (level: Issue['level'], file: string, path: string, message: string): Issue => ({
   level,
   file,
@@ -118,8 +135,11 @@ export function validateMedia(brands: LoadedBrand[], assetsDir: string): Issue[]
         continue;
       }
       if (extension === '.svg') {
-        const reason = unsafeSvg(readFileSync(path, 'utf8'));
-        if (reason) issues.push(issue('error', file, media.path, `unsafe SVG: ${reason}`));
+        const text = readFileSync(path, 'utf8');
+        const unsafe = unsafeSvg(text);
+        if (unsafe) issues.push(issue('error', file, media.path, `unsafe SVG: ${unsafe}`));
+        const broken = brokenSvg(text);
+        if (broken) issues.push(issue('error', file, media.path, `broken SVG: ${broken}`));
       }
       if (media.kind === 'photo' && statSync(path).size > MAX_PHOTO_BYTES) {
         issues.push(issue('warning', file, media.path, 'photo is larger than 2 MB'));

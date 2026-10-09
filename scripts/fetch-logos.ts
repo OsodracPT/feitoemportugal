@@ -20,7 +20,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { imageSize, loadBrands, unsafeSvg, type Brand } from '@fep/schema';
+import { brokenSvg, imageSize, loadBrands, unsafeSvg, type Brand } from '@fep/schema';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cacheDir = join(repoRoot, '.cache/media');
@@ -284,6 +284,30 @@ function extension(type: string, url: string): string | undefined {
   return undefined;
 }
 
+/**
+ * Header logos are often `<svg><use href="#logo"/></svg>`, with the drawing in a
+ * `<symbol>` elsewhere on the page. Saved alone, that file is empty, so pull the
+ * symbol in and give the result its viewBox.
+ */
+function resolveUse(svg: string, html: string): string {
+  const id = /<use\b[^>]*href\s*=\s*["']#([^"']+)["']/i.exec(svg)?.[1];
+  if (!id) return svg;
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  if (new RegExp(`\\sid\\s*=\\s*["']${escaped}["']`).test(svg)) return svg;
+  const symbol = new RegExp(`<symbol\\b[^>]*\\sid\\s*=\\s*["']${escaped}["'][^>]*>([\\s\\S]*?)</symbol>`, 'i').exec(html);
+  if (!symbol) return svg;
+  const viewBox = attr(symbol[0].slice(0, symbol[0].indexOf('>') + 1), 'viewBox');
+  return `<svg xmlns="http://www.w3.org/2000/svg"${viewBox ? ` viewBox="${viewBox}"` : ''}>${symbol[1]}</svg>`;
+}
+
+/** Why a downloaded SVG cannot be used, if it cannot: unsafe first, then broken. */
+function svgNote(text: string): string | undefined {
+  const unsafe = unsafeSvg(text);
+  if (unsafe) return `unsafe: ${unsafe}`;
+  const broken = brokenSvg(text);
+  return broken ? `unsafe: broken SVG, ${broken}` : undefined;
+}
+
 // --- one brand -------------------------------------------------------------
 
 async function collect(brand: Brand): Promise<BrandResult> {
@@ -312,18 +336,19 @@ async function collect(brand: Brand): Promise<BrandResult> {
         const key = found.svg.slice(0, 500);
         if (seen.has(key)) continue;
         seen.add(key);
-        const svg = found.svg.includes('xmlns=')
-          ? found.svg
-          : found.svg.replace(/<svg\b/i, '<svg xmlns="http://www.w3.org/2000/svg"');
+        const inline = resolveUse(found.svg, html);
+        const svg = inline.includes('xmlns=')
+          ? inline
+          : inline.replace(/<svg\b/i, '<svg xmlns="http://www.w3.org/2000/svg"');
         const file = `cand-${index}.svg`;
         writeFileSync(join(folder, file), svg);
-        const note = unsafeSvg(svg);
+        const note = svgNote(svg);
         result.candidates.push({
           file,
           source: `${base.href} (inline SVG in header)`,
           kind: found.kind,
           bytes: svg.length,
-          ...(note ? { note: `unsafe: ${note}` } : {}),
+          ...(note ? { note } : {}),
         });
         continue;
       }
@@ -340,7 +365,7 @@ async function collect(brand: Brand): Promise<BrandResult> {
       const size = ext === 'svg' ? undefined : imageSize(image.body);
       const note =
         ext === 'svg'
-          ? unsafeSvg(new TextDecoder().decode(image.body))
+          ? svgNote(new TextDecoder().decode(image.body))
           : found.kind === 'touch-icon'
             ? 'app icon, often square and low resolution'
             : undefined;
@@ -350,7 +375,7 @@ async function collect(brand: Brand): Promise<BrandResult> {
         kind: found.kind,
         bytes: image.body.length,
         ...(size ?? {}),
-        ...(note ? { note: ext === 'svg' ? `unsafe: ${note}` : note } : {}),
+        ...(note ? { note } : {}),
       });
     } catch (error) {
       // One broken image does not sink the brand; the others may be fine.

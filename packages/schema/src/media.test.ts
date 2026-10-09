@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { brandSchema } from './brand.ts';
-import { imageSize, MAX_PHOTO_BYTES, setBrandMedia, unsafeSvg, validateMedia } from './media.ts';
+import { brokenSvg, imageSize, MAX_PHOTO_BYTES, setBrandMedia, unsafeSvg, validateMedia } from './media.ts';
 
 const png = (width: number, height: number) => {
   const buffer = new Uint8Array(24);
@@ -38,6 +38,16 @@ describe('unsafeSvg', () => {
     expect(unsafeSvg('<svg><script>alert(1)</script></svg>')).toMatch('script');
     expect(unsafeSvg('<svg onload="x()"></svg>')).toMatch('event handler');
     expect(unsafeSvg('<svg><image href="https://example.org/a.png"/></svg>')).toMatch('external');
+  });
+});
+
+describe('brokenSvg', () => {
+  it('passes a sized drawing and catches what Astro cannot size or render', () => {
+    expect(brokenSvg('<svg viewBox="0 0 10 10"><path d="M0 0h1v1z"/></svg>')).toBeUndefined();
+    expect(brokenSvg('<svg width="10" height="10"><symbol id="a"><path d="M0 0"/></symbol><use href="#a"/></svg>')).toBeUndefined();
+    expect(brokenSvg('<svg class="logo"><use xlink:href="#logo"></use></svg>')).toMatch('viewBox');
+    expect(brokenSvg('<svg viewBox="0 0 1 1"><use xlink:href="#logo"></use></svg>')).toMatch('#logo');
+    expect(brokenSvg('<svg viewBox="0 0 1 1"><g/></svg>')).toMatch('draws nothing');
   });
 });
 
