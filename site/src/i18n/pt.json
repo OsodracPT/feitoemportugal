@@ -27,18 +27,29 @@
     "short_en": "EN"
   },
   "home": {
-    "title": "Marcas que produzem em Portugal",
+    "title": "Marcas que fabricam em Portugal.",
     "intro": "Uma base de dados aberta e comunitária de marcas que fabricam em Portugal. Qualquer pessoa pode pesquisar, corrigir e sugerir marcas.",
     "searchPlaceholder": "Pesquisar marcas, categorias ou etiquetas",
-    "browseCategories": "Navegar por categoria",
     "recentBrands": "Marcas recentes",
     "allBrands": "Ver todas as marcas",
-    "stats": {
-      "brands": "marcas",
-      "categories": "categorias",
-      "regions": "regiões"
-    },
-    "searchButton": "Pesquisar"
+    "searchButton": "Pesquisar",
+    "eyebrow": "{count} marcas · diretório aberto · sem cookies",
+    "lookFor": "Procuro",
+    "lookForPlaceholder": "sapatos, loiça, sabão…",
+    "madeIn": "feito em",
+    "anywhere": "qualquer sítio",
+    "find": "Procurar marcas",
+    "panel": "O painel",
+    "allCategories": "Todas as categorias",
+    "byRegion": "Por região",
+    "byRegionHint": "Cada distrito leva às marcas que lá fabricam. O mesmo mapa é o filtro de região na página de marcas.",
+    "allRegions": "Todas as regiões",
+    "trustTitle": "Como sabemos",
+    "trustIntro": "Cada marca tem um escudo. Quanto mais provas reunimos, mais pontos ficam cosidos.",
+    "trust1": "A marca diz, no seu site, que fabrica cá. Ainda sem fonte independente.",
+    "trust2": "Há provas públicas: morada da fábrica, certificação, reportagem.",
+    "trust3": "Confirmado por um responsável do projeto, com documento ou visita.",
+    "trustLink": "Como funciona a verificação"
   },
   "brands": {
     "title": "Marcas",
@@ -88,7 +99,33 @@
     "evidenceLink": "Ver o registo de fontes",
     "howNotVerified": "Ainda não foi verificada de forma independente.",
     "photoAlt": "Fotografia de {name} ({n})",
-    "photoCredit": "Fotografias: © {name}"
+    "photoCredit": "Fotografias: © {name}",
+    "trustStep": "{label} · {level} de 3",
+    "originCard": "Ficha de origem",
+    "howWeKnowShort": "Como sabemos",
+    "ladder": "Nível de prova",
+    "madeHere": "Feito cá",
+    "madeAbroad": "Feito fora",
+    "madeHereTotal": "Toda a produção, segundo a marca.",
+    "madeAbroadPartial": "O resto da produção. Por isso: produção parcial.",
+    "proofs": "Provas",
+    "proofBrand": "Declaração da marca",
+    "proofBrandLink": "Ver no site da marca",
+    "proofMaintainer": "Responsável do projeto",
+    "proofVerified": "Verificação",
+    "proofMissing": "Em falta para verificar",
+    "proofMissingText": "Uma prova independente do site da marca: visita, certificado, registo oficial ou fotografias da produção.",
+    "proofMissingLink": "Tens uma prova? Envia-nos",
+    "correction": "Encontraste um erro? Sugerir correção",
+    "whatItMakes": "O que faz",
+    "whereMade": "Onde é feito",
+    "madeIn": "Produção em",
+    "moreFrom": "Outras marcas {place}",
+    "alsoFrom": "Também {place}",
+    "links": "Ligações",
+    "jsonData": "Dados em JSON",
+    "websiteRow": "Site da marca",
+    "since": "desde {year}"
   },
   "category": {
     "brandsIn": "Marcas de {category} feitas em Portugal",
@@ -196,7 +233,17 @@
     "empty": "Nenhuma marca corresponde aos filtros escolhidos.",
     "emptyHint": "Tenta remover um filtro.",
     "optionCount": "{count} marcas",
-    "optionCountOne": "1 marca"
+    "optionCountOne": "1 marca",
+    "close": "Fechar filtros",
+    "reset": "Limpar",
+    "clearAll": "Limpar tudo",
+    "show": "Ver {count} marcas",
+    "showOne": "Ver 1 marca",
+    "showNone": "Nenhuma marca",
+    "more": "Mais {count}",
+    "less": "Mostrar menos",
+    "distPick": "Ou escolhe da lista",
+    "distPlaceholder": "Escolher região…"
   },
   "sort": {
     "label": "Ordenar",
@@ -350,5 +397,10 @@
     "trust3": "Verificada",
     "priceOf": "Preço {level} de 4",
     "partial": "Produção parcial"
+  },
+  "view": {
+    "label": "Vista",
+    "list": "Lista",
+    "panel": "Painel"
   }
 }

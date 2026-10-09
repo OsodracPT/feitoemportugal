@@ -171,10 +171,11 @@ describe('URL state', () => {
         prod: ['botas'],
         price: ['2', '3'],
       }),
+      view: 'panel' as const,
     };
     const query = serializeListingState(state);
     expect(query).toBe(
-      '?q=sapatos+pele&cat=calcado&dist=porto%2Cbraga&prod=botas&price=2%2C3&sort=recent',
+      '?q=sapatos+pele&cat=calcado&dist=porto%2Cbraga&prod=botas&price=2%2C3&sort=recent&view=panel',
     );
     expect(parseListingState(query)).toEqual(state);
   });
@@ -193,8 +194,9 @@ describe('URL state', () => {
   });
 
   it('ignores an unknown sort and unknown keys', () => {
-    const state = parseListingState('?sort=cheapest&colour=red&q=+naz+');
+    const state = parseListingState('?sort=cheapest&colour=red&q=+naz+&view=grid');
     expect(state.sort).toBe('relevance');
+    expect(state.view).toBeUndefined();
     expect(state.q).toBe('naz');
     expect(activeFilterCount(state.filters)).toBe(0);
   });

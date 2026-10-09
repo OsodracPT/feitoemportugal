@@ -1,6 +1,6 @@
 ---
 import type { Category } from '@fep/schema';
-import { localized, type Lang } from '~/lib/i18n.ts';
+import { localized, t, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
   lang: Lang;
@@ -11,23 +11,31 @@ interface Props {
 const { lang, value, category } = Astro.props;
 const level = category?.price_levels.find((entry) => entry.level === value);
 const label = level ? localized(level.label, lang) : undefined;
-const symbols = '€'.repeat(value);
 ---
 
+<!-- Filled euros plus dim ones out of four; the symbols are read as "Preço 2 de 4". -->
 <span class="price">
-  <span class="price__symbols">{symbols}</span>
-  {label && <span class="price__label">{label}</span>}
+  <span class="price__symbols" aria-hidden="true">
+    {'€'.repeat(value)}<span class="price__off">{'€'.repeat(4 - value)}</span>
+  </span>
+  <span class="visually-hidden">{t(lang, 'card.priceOf', { level: value })}</span>
+  {label && <span class="price__label">({label})</span>}
 </span>
 
 <style>
   .price {
     display: inline-flex;
     align-items: baseline;
-    gap: var(--space-2);
-    font-size: var(--text-sm);
+    gap: var(--fep-space-1);
   }
 
-  .price__label {
-    color: var(--text-muted);
+  .price__symbols {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--fep-ink);
+  }
+
+  .price__off {
+    color: var(--fep-ink-dim);
   }
 </style>

@@ -26,7 +26,8 @@ const partial = brand.production.scope === 'parcial';
 
 <!--
   `data-facets` lets the listing filter and sort without a second fetch.
-  List or tile is decided by the width of the grid around the card (BrandGrid).
+  List or tile is decided by the grid around the card (BrandGrid): its width,
+  or the view the reader picked.
 -->
 <article
   class="brand-card"
@@ -248,9 +249,15 @@ const partial = brand.production.scope === 'parcial';
     }
   }
 
-  /* --- Tile: once the grid is wide enough for columns --- */
+  /*
+   * --- Tile: once the grid is wide enough for columns (unless the reader
+   * picked "Lista"), or whenever they picked "Painel". The two blocks must
+   * stay identical: a container query cannot join a selector list. The view
+   * is an attribute on BrandGrid's wrapper rather than a container rename,
+   * because Firefox does not re-run a query when a container's name changes.
+   */
   @container brands (min-width: 36rem) {
-    .brand-card {
+    :global(.brands:not([data-view='list'])) .brand-card {
       flex-direction: column;
       gap: 0;
       height: 100%;
@@ -259,40 +266,40 @@ const partial = brand.production.scope === 'parcial';
       border-radius: var(--fep-radius-lg);
     }
 
-    .brand-card__tile {
+    :global(.brands:not([data-view='list'])) .brand-card__tile {
       width: auto;
       height: 130px;
       border-radius: 0;
       background-size: 44px 44px;
     }
 
-    .brand-card__medallion {
+    :global(.brands:not([data-view='list'])) .brand-card__medallion {
       min-width: 64px;
       height: 64px;
       border-radius: 10px;
       font-size: 1.625rem;
     }
 
-    .brand-card__medallion--logo {
+    :global(.brands:not([data-view='list'])) .brand-card__medallion--logo {
       max-width: 75%;
       height: 72px;
       padding: 6px 10px;
     }
 
-    .brand-card__body {
+    :global(.brands:not([data-view='list'])) .brand-card__body {
       gap: 5px;
       padding: 14px var(--fep-space-4) var(--fep-space-4);
     }
 
-    .brand-card__name {
+    :global(.brands:not([data-view='list'])) .brand-card__name {
       font-size: 1.375rem;
     }
 
-    .brand-card__meta {
+    :global(.brands:not([data-view='list'])) .brand-card__meta {
       font-size: var(--fep-text-xs);
     }
 
-    .brand-card__description {
+    :global(.brands:not([data-view='list'])) .brand-card__description {
       flex: 1;
       font-size: var(--fep-text-sm);
       line-height: 1.45;
@@ -300,13 +307,72 @@ const partial = brand.production.scope === 'parcial';
       line-clamp: 3;
     }
 
-    .brand-card__facts {
+    :global(.brands:not([data-view='list'])) .brand-card__facts {
       padding-top: 6px;
     }
 
-    .brand-card__trust::before {
+    :global(.brands:not([data-view='list'])) .brand-card__trust::before {
       width: 16px;
       height: 19px;
     }
+  }
+
+  :global(.brands[data-view='panel']) .brand-card {
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--fep-radius-lg);
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__tile {
+    width: auto;
+    height: 130px;
+    border-radius: 0;
+    background-size: 44px 44px;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__medallion {
+    min-width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    font-size: 1.625rem;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__medallion--logo {
+    max-width: 75%;
+    height: 72px;
+    padding: 6px 10px;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__body {
+    gap: 5px;
+    padding: 14px var(--fep-space-4) var(--fep-space-4);
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__name {
+    font-size: 1.375rem;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__meta {
+    font-size: var(--fep-text-xs);
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__description {
+    flex: 1;
+    font-size: var(--fep-text-sm);
+    line-height: 1.45;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__facts {
+    padding-top: 6px;
+  }
+
+  :global(.brands[data-view='panel']) .brand-card__trust::before {
+    width: 16px;
+    height: 19px;
   }
 </style>

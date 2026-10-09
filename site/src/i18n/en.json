@@ -27,18 +27,29 @@
     "short_en": "EN"
   },
   "home": {
-    "title": "Brands that manufacture in Portugal",
+    "title": "Brands that make their products in Portugal.",
     "intro": "An open, community-run database of brands that make their products in Portugal. Anyone can search it, correct it and suggest brands.",
     "searchPlaceholder": "Search brands, categories or tags",
-    "browseCategories": "Browse by category",
     "recentBrands": "Recently added",
     "allBrands": "See all brands",
-    "stats": {
-      "brands": "brands",
-      "categories": "categories",
-      "regions": "regions"
-    },
-    "searchButton": "Search"
+    "searchButton": "Search",
+    "eyebrow": "{count} brands · open directory · no cookies",
+    "lookFor": "I'm looking for",
+    "lookForPlaceholder": "shoes, tableware, soap…",
+    "madeIn": "made in",
+    "anywhere": "anywhere",
+    "find": "Find brands",
+    "panel": "The panel",
+    "allCategories": "All categories",
+    "byRegion": "By region",
+    "byRegionHint": "Each district leads to the brands that make things there. The same map is the region filter on the brands page.",
+    "allRegions": "All regions",
+    "trustTitle": "How we know",
+    "trustIntro": "Every brand has a shield. The more proof we gather, the more of it is stitched.",
+    "trust1": "The brand says on its own website that it makes things here. No independent source yet.",
+    "trust2": "There is public proof: the factory's address, a certification, a press report.",
+    "trust3": "Confirmed by a project maintainer, with a document or a visit.",
+    "trustLink": "How verification works"
   },
   "brands": {
     "title": "Brands",
@@ -88,7 +99,33 @@
     "evidenceLink": "See the source notes",
     "howNotVerified": "Not independently verified yet.",
     "photoAlt": "Photo from {name} ({n})",
-    "photoCredit": "Photos: © {name}"
+    "photoCredit": "Photos: © {name}",
+    "trustStep": "{label} · {level} of 3",
+    "originCard": "Origin record",
+    "howWeKnowShort": "How we know",
+    "ladder": "Level of proof",
+    "madeHere": "Made here",
+    "madeAbroad": "Made abroad",
+    "madeHereTotal": "All of it, according to the brand.",
+    "madeAbroadPartial": "The rest of production. Hence: partial production.",
+    "proofs": "Proof",
+    "proofBrand": "The brand's statement",
+    "proofBrandLink": "See the brand's website",
+    "proofMaintainer": "Project maintainer",
+    "proofVerified": "Verification",
+    "proofMissing": "Missing for verification",
+    "proofMissingText": "Proof independent of the brand's website: a visit, a certificate, an official record or photos of production.",
+    "proofMissingLink": "Have proof? Send it to us",
+    "correction": "Found a mistake? Suggest a correction",
+    "whatItMakes": "What it makes",
+    "whereMade": "Where it is made",
+    "madeIn": "Made in",
+    "moreFrom": "Other brands {place}",
+    "alsoFrom": "Also {place}",
+    "links": "Links",
+    "jsonData": "Data as JSON",
+    "websiteRow": "Brand website",
+    "since": "since {year}"
   },
   "category": {
     "brandsIn": "{category} brands made in Portugal",
@@ -196,7 +233,17 @@
     "empty": "No brand matches the chosen filters.",
     "emptyHint": "Try removing one filter.",
     "optionCount": "{count} brands",
-    "optionCountOne": "1 brand"
+    "optionCountOne": "1 brand",
+    "close": "Close filters",
+    "reset": "Clear",
+    "clearAll": "Clear all",
+    "show": "Show {count} brands",
+    "showOne": "Show 1 brand",
+    "showNone": "No brands",
+    "more": "{count} more",
+    "less": "Show fewer",
+    "distPick": "Or pick from the list",
+    "distPlaceholder": "Choose a region…"
   },
   "sort": {
     "label": "Sort",
@@ -347,5 +394,10 @@
     "trust3": "Verified",
     "priceOf": "Price {level} of 4",
     "partial": "Partial production"
+  },
+  "view": {
+    "label": "View",
+    "list": "List",
+    "panel": "Panel"
   }
 }

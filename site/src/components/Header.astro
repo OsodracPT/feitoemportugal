@@ -104,7 +104,9 @@ const isCurrent = (href: string) => current === href || current.startsWith(`${hr
   .header__inner {
     display: flex;
     align-items: center;
-    gap: var(--fep-space-2);
+    /* Tight on a phone: the controls carry their own 44px hit areas, and the
+       row has to fit 360px even beside a desktop-style scrollbar. */
+    gap: var(--fep-space-1);
     min-height: 3.5rem;
     /* The menu and language buttons carry their own 44px hit area. */
     padding-inline-end: var(--fep-space-1);

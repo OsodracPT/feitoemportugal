@@ -70,7 +70,8 @@ still undecided. For running the code, see the [README](../README.md).
   for category, subcategory, region, tag, product type, price, production scope, sustainability
   practice, verification and where to buy, and with a sort order; the whole state lives
   in the URL (`/marcas?q=sapatos&dist=braga&sort=recent`), so any view is shareable.
-  The home box shows the top matches as a dropdown.
+  The home page asks in a sentence ("Procuro … feito em …"): a plain GET form to
+  `/marcas?q=&dist=`, so it works without JavaScript and has no dropdown.
 - **Filters need no second download.** Each card carries its own facets in
   `data-facets`, so filtering, the option counts and the sort are instant and work
   before (and without) the search index. The counts next to each option are faceted:

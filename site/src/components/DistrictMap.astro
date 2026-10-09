@@ -6,6 +6,8 @@
  *   listing-controller.ts wires the clicks and re-shades it after every change.
  * - `link`: each district with a landing page links to it; one can be marked
  *   as the current page, and municipality dots can be added.
+ * - `spot`: a small picture with only `current` filled, beside text that names
+ *   the place (the brand page's "Onde é feito"); hidden from assistive tech.
  *
  * Shades come from the brand count (`mapShade`), so the map reads correctly
  * before, and without, any JavaScript.
@@ -19,7 +21,7 @@ export type { MapDot };
 
 interface Props {
   lang: Lang;
-  mode: 'filter' | 'link';
+  mode: 'filter' | 'link' | 'spot';
   /** Brands per district id. */
   counts: Map<string, number>;
   /** District drawn as the current one (link mode). */
@@ -63,14 +65,15 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
 ---
 
 <figure
-  class="dmap"
+  class:list={['dmap', { 'dmap--spot': mode === 'spot' }]}
+  aria-hidden={mode === 'spot' ? 'true' : undefined}
   data-district-map={mode === 'filter' ? '' : undefined}
   data-strings={mode === 'filter' ? JSON.stringify(strings) : undefined}
 >
   <svg
     viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-    role={mode === 'filter' ? 'group' : 'img'}
-    aria-label={t(lang, 'map.title')}
+    role={mode === 'filter' ? 'group' : mode === 'link' ? 'img' : undefined}
+    aria-label={mode === 'spot' ? undefined : t(lang, 'map.title')}
   >
     {mapInsets.map((inset) => (
       <rect class="dmap__inset" x={inset.x} y={inset.y} width={inset.width} height={inset.height} rx="4" />
@@ -107,7 +110,7 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
             d={district.d}
             data-current={district.id === current ? '' : undefined}
           >
-            <title>{district.label}</title>
+            {mode !== 'spot' && <title>{district.label}</title>}
           </path>
         ),
       )
@@ -120,6 +123,7 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
       ))
     }
   </svg>
+  {mode !== 'spot' && (
   <figcaption class="dmap__caption muted">
     {
       mode === 'filter' && (
@@ -131,6 +135,7 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
     }
     <a href="https://dados.gov.pt/datasets/carta-administrativa-oficial-de-portugal-caop2025-continente" rel="noopener">{t(lang, 'map.source')}</a>
   </figcaption>
+  )}
 </figure>
 
 <style>
@@ -164,6 +169,40 @@ const radius = (count: number): number => Math.round((2 + Math.sqrt(count) * 1.6
   .s2 { fill: color-mix(in srgb, var(--accent) 42%, var(--bg-raised)); }
   .s3 { fill: color-mix(in srgb, var(--accent) 64%, var(--bg-raised)); }
   .s4 { fill: color-mix(in srgb, var(--accent) 88%, var(--bg-raised)); }
+
+  /*
+   * As a filter (design/README.md §5.4) the map shows the selection, not the
+   * counts: shades would compete with the cobalt of a chosen district. The
+   * counts stay in each district's label and in the select beside the map.
+   */
+  [data-district-map] .dmap__district {
+    fill: var(--fep-map-fill);
+    stroke: var(--fep-bg);
+  }
+
+  [data-district-map] .dmap__district[aria-disabled='true'] {
+    fill: color-mix(in srgb, var(--fep-map-fill) 35%, var(--fep-bg));
+  }
+
+  [data-district-map] .dmap__district:not([aria-disabled='true'], [aria-pressed='true']):hover {
+    fill: color-mix(in srgb, var(--fep-accent) 35%, var(--fep-map-fill));
+  }
+
+  [data-district-map] .dmap__district[aria-pressed='true'] {
+    fill: var(--fep-accent);
+  }
+
+  /* It sits on a --fep-surface-2 panel, where --fep-map-fill nearly vanishes. */
+  .dmap--spot .dmap__district {
+    fill: color-mix(in srgb, var(--fep-ink-dim) 35%, var(--fep-surface-2));
+    stroke: var(--fep-surface-2);
+  }
+
+  .dmap--spot .dmap__district[data-current] {
+    fill: var(--fep-accent);
+    stroke: var(--fep-surface-2);
+    stroke-width: 0.8;
+  }
 
   [data-district-map] .dmap__district:not([aria-disabled='true']),
   a .dmap__district {

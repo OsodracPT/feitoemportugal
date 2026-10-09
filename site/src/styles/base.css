@@ -185,6 +185,34 @@ main {
 }
 
 /* --- Shared pieces --- */
+/*
+ * Enamel street plate: the title of listing and landing pages. White Gloock
+ * on cobalt with an inset white rule; the plate keeps its colour in dark mode.
+ */
+.plate {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 18px 10px;
+  border-radius: var(--fep-radius);
+  outline: 1.5px solid #fff;
+  outline-offset: -5px;
+  background: var(--fep-plate);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 60rem) {
+  .plate {
+    padding: 10px 24px 12px;
+    border-radius: 10px;
+    outline-width: 2px;
+    outline-offset: -6px;
+    font-size: 2.5rem;
+    line-height: 1.05;
+  }
+}
+
 .card {
   background: var(--bg-raised);
   border: 1px solid var(--line);
@@ -258,4 +286,9 @@ a.pill:hover {
   display: grid;
   gap: var(--space-4);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+/* The page behind an open bottom sheet does not scroll (listing-controller.ts). */
+.is-locked {
+  overflow: hidden;
 }

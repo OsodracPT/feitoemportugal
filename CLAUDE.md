@@ -94,7 +94,7 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
 - **Filters need no fetch.** Every card carries its facets in `data-facets`, so
   filtering, the option counts and the sort work before the search index arrives.
 - **The whole listing state is in the URL**: `?q=&cat=&sub=&dist=&tag=&prod=&price=
-  &scope=&sust=&verified=&shop=&sort=`. `parseListingState` / `serializeListingState`
+  &scope=&sust=&verified=&shop=&sort=&view=`. `parseListingState` / `serializeListingState`
   in `filters.ts` own that format; keep them inverse.
 - **Translated URL segments live in one place**: `SEGMENTS` in `site/src/lib/i18n.ts`.
   Add a route there, not by hand in two languages.
@@ -129,6 +129,10 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
   `prefers-color-scheme`, so the dark tokens exist twice in `tokens.css` and must
   stay identical. Never theme with a bare `prefers-color-scheme` query (or a
   `<picture>` media source) in a component: it ignores the toggle.
+- **Never switch layouts by renaming a container.** Firefox does not re-run a
+  container query when `container-name` changes after the first layout. The card's
+  list/tile view is a `data-view` attribute on BrandGrid's wrapper, matched by
+  plain selectors next to the width query.
 - **The map is SVG drawn at build time** (`site/src/lib/map.ts`, server-only, with
   d3-geo). No map library or tiles reach the browser; the client only re-shades
   paths. `districts.geojson` is RFC 7946 (counter-clockwise rings), which d3 reads
@@ -191,8 +195,15 @@ The "Azulejo" redesign (`design/README.md`) is under way, one build step per PR:
 step 1 (tokens, Gloock, favicon and shield, header and footer) and step 2 (the
 brand card: list row in a narrow grid, tile once the grid passes 36rem, by
 container query; category tiles and trust shields are theme tokens, mapped in
-`lib/card-art.ts`) are done. Every brand shows trust level 1 or 3 until step 4
-records sources for level 2. Settled:
+`lib/card-art.ts`) and step 3 (the listing: plate title, toolbar with the
+Lista/Painel switch, filter pills in fieldsets, a sidebar from 60rem and a bottom
+sheet below, the map plus a region select) and step 4 (the brand page: tile band
+and medallion, "Como sabemos" with the trust ladder and proofs built from today's
+data, "Onde é feito", "Onde comprar" rows, "Também em <distrito>") are done. The
+evidence model was left as it is (2026-10-09): proofs are not in the YAML. Step 5
+(home: sentence search as a plain GET form, the six-tile panel, the region map
+with a link per region, the recent brands, the trust explainer) is done. Every brand shows trust
+level 1 or 3 until step 4 records sources for level 2. Settled:
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range
 is made in Portugal; brand images stay outside CC BY (logos from the brand's site,

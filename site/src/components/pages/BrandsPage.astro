@@ -34,20 +34,28 @@ const filtersId = 'brand-filters';
   alternates={alternates}
   jsonLd={[itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)]}
 >
+  <!-- On desktop the calçada divider runs under the header; on a phone, under the toolbar. -->
+  <div class="band band--wide" aria-hidden="true"></div>
   <div class="container">
     <Breadcrumbs lang={lang} crumbs={crumbs} />
-    <h1>{t(lang, 'brands.title')}</h1>
-    <p class="lede">{t(lang, 'brands.intro')}</p>
-
-    <BrandBrowser lang={lang} filtersId={filtersId} />
 
     <div class="listing">
       <BrandFilters lang={lang} id={filtersId} />
 
       <div class="listing__main">
-        <p class="count muted" data-brand-total>
-          {brands.length === 1 ? t(lang, 'brands.countOne') : t(lang, 'brands.count', { count: brands.length })}
-        </p>
+        <div class="listing__head">
+          <h1 class="plate">{t(lang, 'brands.title')}</h1>
+          <p class="listing__count">
+            <span data-brand-total>
+              {brands.length === 1 ? t(lang, 'brands.countOne') : t(lang, 'brands.count', { count: brands.length })}
+            </span>
+            <span role="status" aria-live="polite" data-status></span>
+          </p>
+        </div>
+
+        <BrandBrowser lang={lang} filtersId={filtersId} />
+        <div class="band band--narrow" aria-hidden="true"></div>
+
         <BrandGrid lang={lang} brands={brands} />
 
         <!-- Degraded, no-JavaScript browsing by category. -->
@@ -79,40 +87,72 @@ const filtersId = 'brand-filters';
 </Layout>
 
 <style>
-  .listing {
-    display: grid;
-    gap: var(--space-5);
-    align-items: start;
+  /* Decorative: nothing sits on the pattern. */
+  .band {
+    height: 22px;
+    background: var(--fep-calcada);
   }
 
-  @media (min-width: 900px) {
-    .listing {
-      grid-template-columns: 16rem minmax(0, 1fr);
-      gap: var(--space-6);
-    }
-
-    /* The panel follows the page while the grid scrolls past it. */
-    .listing > :global([data-filters-panel]) {
-      position: sticky;
-      top: var(--space-4);
-      max-height: calc(100vh - var(--space-7));
-      overflow-y: auto;
-    }
+  .band--wide {
+    display: none;
   }
 
-  .count {
-    font-size: var(--text-sm);
-    margin: 0 0 var(--space-4);
+  /* Full bleed inside the gutter. */
+  .band--narrow {
+    margin-inline: calc(-1 * var(--fep-gutter));
+    margin-bottom: var(--fep-space-3);
+  }
+
+  .listing__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--fep-space-2) var(--fep-space-3);
+  }
+
+  .listing__count {
+    margin: 0;
+    font-size: var(--fep-text-xs);
+    color: var(--fep-ink-2);
+  }
+
+  .listing__count [data-brand-total][hidden] {
+    display: none;
   }
 
   .by-category {
-    margin-block: var(--space-7) 0;
-    padding-top: var(--space-5);
-    border-top: 1px solid var(--line);
+    margin-block: var(--fep-space-12) 0;
+    padding-top: var(--fep-space-6);
+    border-top: 1px solid var(--fep-line);
   }
 
   .by-category__title {
-    font-size: var(--text-base);
-    margin: 0 0 var(--space-3);
+    font-size: var(--fep-display-3);
+    margin: 0 0 var(--fep-space-3);
+  }
+
+  @media (min-width: 60rem) {
+    /* Straight under the header: cancel the top padding of <main>. */
+    .band--wide {
+      display: block;
+      height: 24px;
+      margin: calc(-1 * var(--space-6)) 0 var(--fep-space-5);
+    }
+
+    .band--narrow {
+      display: none;
+    }
+
+    /* Two columns only once the controller has shown the panel. */
+    .listing:has(> [data-filters-panel]:not([hidden])) {
+      display: grid;
+      grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+      gap: var(--fep-space-10);
+      align-items: start;
+    }
+
+    .listing__count {
+      font-size: var(--fep-text);
+    }
   }
 </style>

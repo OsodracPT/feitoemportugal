@@ -1,8 +1,18 @@
 ---
 import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import BrandSearch from '~/components/BrandSearch.astro';
-import { brands, categories, brandsInCategory, hasLandingPage, recentBrands, stats } from '~/lib/data.ts';
+import DistrictMap from '~/components/DistrictMap.astro';
+import {
+  brands,
+  brandsInCategory,
+  brandsInDistrict,
+  categories,
+  hasLandingPage,
+  hasRegionPage,
+  recentBrands,
+  regions,
+} from '~/lib/data.ts';
+import { categoryTile, TILES } from '~/lib/card-art.ts';
 import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { itemListJsonLd, websiteJsonLd } from '~/lib/seo.ts';
 
@@ -12,11 +22,25 @@ interface Props {
 
 const { lang } = Astro.props;
 const alternates = { pt: paths.home('pt'), en: paths.home('en') };
-const recent = recentBrands(6);
-const categoryCards = categories
+const recent = recentBrands(8);
+
+// The panel: one category per azulejo tile, the largest that wears it, so the
+// six tiles all differ. Only categories with their own page can be a link.
+const counted = categories
   .map((category) => ({ category, count: brandsInCategory(category.id).length }))
-  .filter((entry) => entry.count > 0)
-  .sort((a, b) => b.count - a.count || a.category.label.pt.localeCompare(b.category.label.pt, 'pt'));
+  .filter(({ category }) => hasLandingPage(category))
+  .sort((a, b) => b.count - a.count);
+const panel = TILES.flatMap((tile) => counted.find(({ category }) => categoryTile(category.id) === tile) ?? []).sort(
+  (a, b) => b.count - a.count,
+);
+
+const withBrands = regions
+  .map((region) => ({ region, count: brandsInDistrict(region.id).length }))
+  .filter(({ count }) => count > 0);
+const districtCounts = new Map(withBrands.map(({ region, count }) => [region.id, count]));
+const byName = [...withBrands].sort((a, b) =>
+  localized(a.region.label, lang).localeCompare(localized(b.region.label, lang), lang),
+);
 ---
 
 <Layout
@@ -27,133 +51,518 @@ const categoryCards = categories
   alternates={alternates}
   jsonLd={[websiteJsonLd(lang), itemListJsonLd(recent, lang)]}
 >
-  <div class="container">
-    <section class="hero">
+  <div class="container hero">
+    <div class="hero__text">
+      <p class="eyebrow">{t(lang, 'home.eyebrow', { count: brands.length })}</p>
       <h1>{t(lang, 'home.title')}</h1>
-      <p class="lede">{t(lang, 'home.intro')}</p>
+      <p class="hero__intro">{t(lang, 'home.intro')}</p>
 
-      <div class="hero__search">
-        <BrandSearch lang={lang} />
+      <!-- The sentence search: the words are the labels. A plain GET form, so it
+           works without JavaScript; the listing reads ?q= and ?dist=. -->
+      <form class="sentence" role="search" method="get" action={paths.brands(lang)}>
+        <label for="home-q">{t(lang, 'home.lookFor')}</label>
+        <input
+          id="home-q"
+          name="q"
+          type="search"
+          enterkeyhint="search"
+          autocomplete="off"
+          placeholder={t(lang, 'home.lookForPlaceholder')}
+        />
+        <label for="home-dist">{t(lang, 'home.madeIn')}</label>
+        <select id="home-dist" name="dist">
+          <option value="">{t(lang, 'home.anywhere')}</option>
+          {byName.map(({ region }) => <option value={region.id}>{localized(region.label, lang)}</option>)}
+        </select>
+        <button class="button" type="submit">{t(lang, 'home.find')}</button>
+      </form>
+    </div>
+
+    <nav class="tiles" aria-labelledby="panel-title">
+      <div class="tiles__head">
+        <h2 id="panel-title">{t(lang, 'home.panel')}</h2>
+        <a href={paths.categories(lang)}>{t(lang, 'home.allCategories')}</a>
       </div>
-
-      <dl class="stats">
-        <div><dt>{t(lang, 'home.stats.brands')}</dt><dd>{stats.brands}</dd></div>
-        <div><dt>{t(lang, 'home.stats.categories')}</dt><dd>{stats.categories}</dd></div>
-        <div><dt>{t(lang, 'home.stats.regions')}</dt><dd>{stats.regions}</dd></div>
-      </dl>
-    </section>
-
-    <section class="section">
-      <h2>{t(lang, 'home.browseCategories')}</h2>
-      <ul class="categories">
+      <ul class="tiles__grid">
         {
-          categoryCards.map(({ category, count }) => (
+          panel.map(({ category }) => (
             <li>
-              {hasLandingPage(category) ? (
-                <a class="card category" href={paths.category(lang, category.slug[lang])}>
-                  <span class="category__name">{localized(category.label, lang)}</span>
-                  <span class="category__count muted">
-                    {count === 1 ? t(lang, 'common.brandCount') : t(lang, 'common.brandsCount', { count })}
-                  </span>
+              <a
+                class="tile"
+                href={paths.category(lang, category.slug[lang])}
+                style={`--tile: var(--fep-tile-${categoryTile(category.id)})`}
+              >
+                <span class="tile__plate">{localized(category.label, lang)}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="band" aria-hidden="true"></div>
+
+  <section class="container regions" aria-labelledby="regions-title">
+    <div class="regions__text">
+      <h2 id="regions-title">{t(lang, 'home.byRegion')}</h2>
+      <p>{t(lang, 'home.byRegionHint')}</p>
+      <!-- Small districts cannot meet 44px on the map, so every region is also a link here. -->
+      <ul class="regions__list">
+        {
+          byName.map(({ region, count }) => (
+            <li>
+              {hasRegionPage(region.id) ? (
+                <a class="region-link" href={paths.region(lang, region.slug[lang])}>
+                  {localized(region.label, lang)} <span>{count}</span>
                 </a>
               ) : (
-                <span class="card category category--quiet">
-                  <span class="category__name">{localized(category.label, lang)}</span>
-                  <span class="category__count muted">
-                    {count === 1 ? t(lang, 'common.brandCount') : t(lang, 'common.brandsCount', { count })}
-                  </span>
+                <span class="region-link region-link--quiet">
+                  {localized(region.label, lang)} <span>{count}</span>
                 </span>
               )}
             </li>
           ))
         }
       </ul>
-      <p><a href={paths.categories(lang)}>{t(lang, 'nav.categories')}</a></p>
-    </section>
+      <p><a href={paths.regions(lang)}>{t(lang, 'home.allRegions')}</a></p>
+    </div>
+    <div class="regions__map">
+      <DistrictMap lang={lang} mode="link" counts={districtCounts} />
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>{t(lang, 'home.recentBrands')}</h2>
-      <BrandGrid lang={lang} brands={recent} />
-      <p class="more">
+  <section class="recent" aria-labelledby="recent-title">
+    <div class="container">
+      <div class="recent__head">
+        <h2 id="recent-title">{t(lang, 'home.recentBrands')}</h2>
         <a href={paths.brands(lang)}>{t(lang, 'home.allBrands')} ({brands.length})</a>
-      </p>
-    </section>
-  </div>
+      </div>
+      <BrandGrid lang={lang} brands={recent} />
+    </div>
+  </section>
+
+  <section class="container trust" aria-labelledby="trust-title">
+    <div class="trust__box">
+      <div class="trust__intro">
+        <h2 id="trust-title">{t(lang, 'home.trustTitle')}</h2>
+        <p>{t(lang, 'home.trustIntro')}</p>
+      </div>
+      <ol class="trust__steps">
+        {
+          ([1, 2, 3] as const).map((level) => (
+            <li style={`--trust: var(--fep-trust-${level})`}>
+              <span class="trust__shield" aria-hidden="true"></span>
+              <span class="trust__text">
+                <strong>{t(lang, `card.trust${level}`)}</strong>
+                <span>{t(lang, `home.trust${level}`)}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="trust__more"><a href={paths.badge(lang)}>{t(lang, 'home.trustLink')}</a></p>
+    </div>
+  </section>
 </Layout>
 
 <style>
+  /* --- Hero: headline and sentence search, then the panel --- */
+  /* minmax(0, …): a select or a long word must not widen the column past the phone. */
   .hero {
-    padding-block: var(--space-7) var(--space-6);
-    max-width: var(--container-narrow);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--fep-space-8);
+    padding-block: var(--fep-space-2) var(--fep-space-8);
+  }
+
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hero .eyebrow {
+    margin: 0;
   }
 
   .hero h1 {
-    font-size: var(--text-4xl);
-  }
-
-  .hero__search {
-    margin-top: var(--space-5);
-    max-width: 34rem;
-  }
-
-  .stats {
-    display: flex;
-    gap: var(--space-6);
-    margin: var(--space-6) 0 0;
-  }
-
-  .stats div {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .stats dt {
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-  }
-
-  .stats dd {
     margin: 0;
-    font-size: var(--text-2xl);
-    font-weight: 620;
-    letter-spacing: var(--tracking-tight);
+    font-size: var(--fep-display-1);
   }
 
-  .categories {
-    display: grid;
-    gap: var(--space-3);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
-    list-style: none;
-    margin: 0 0 var(--space-4);
-    padding: 0;
+  .hero__intro {
+    margin: 0;
+    max-width: 32.5rem;
+    font-size: var(--fep-text);
+    line-height: 1.5;
+    color: var(--fep-ink-2);
   }
 
-  .category {
+  /* The sentence reads in Gloock; the fields are underlined blanks in it. */
+  .sentence {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
-    padding: var(--space-4);
+    gap: 6px;
+    margin-top: var(--fep-space-2);
+    padding: var(--fep-space-4);
+    border: 1px solid var(--fep-line);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    color: var(--fep-heading);
+    font-family: var(--fep-font-display);
+    font-size: 1.5rem;
+  }
+
+  .sentence input,
+  .sentence select {
+    min-width: 0;
+    min-height: 46px;
+    padding: 0 2px;
+    border: 0;
+    border-bottom: 2px solid var(--fep-accent);
+    border-radius: 0;
+    background: transparent;
+    color: var(--fep-ink);
+    font: inherit;
+    font-size: 1.375rem;
+  }
+
+  .sentence input::placeholder {
+    color: var(--fep-ink-2);
+  }
+
+  .sentence input:focus-visible,
+  .sentence select:focus-visible {
+    outline-offset: 2px;
+  }
+
+  .sentence select option {
+    font-family: var(--fep-font-body);
+    font-size: var(--fep-text);
+  }
+
+  .sentence label:nth-of-type(2) {
+    padding-top: 6px;
+  }
+
+  .sentence .button {
+    margin-top: var(--fep-space-3);
+    min-height: 52px;
+    font-family: var(--fep-font-body);
+    font-size: var(--fep-text);
+    font-weight: 700;
+  }
+
+  /* --- The panel: tiles with grout, each labelled by an enamel plate --- */
+  .tiles__head,
+  .recent__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--fep-space-2) var(--fep-space-4);
+    margin-bottom: 14px;
+  }
+
+  .tiles__head h2,
+  .recent__head h2 {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+
+  .tiles__head a,
+  .recent__head a {
+    display: flex;
+    align-items: center;
+    min-height: var(--fep-touch);
+    font-size: var(--fep-text-sm);
+    font-weight: 600;
+  }
+
+  .tiles__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    margin: 0;
+    padding: 3px;
+    border-radius: 10px;
+    background: var(--fep-line);
+    list-style: none;
+    overflow: hidden;
+  }
+
+  .tile {
+    display: flex;
+    align-items: flex-end;
+    height: 150px;
+    padding: 10px;
+    background: var(--fep-surface-2) var(--tile) 0 0 / 50px 50px repeat;
     text-decoration: none;
-    color: inherit;
   }
 
-  a.category:hover {
-    border-color: var(--accent);
+  .tile__plate {
+    padding: 7px 11px;
+    border-radius: var(--fep-radius-sm);
+    outline: 1.5px solid #fff;
+    outline-offset: -4px;
+    background: var(--fep-plate);
+    color: #fff;
+    font-family: var(--fep-font-display);
+    font-size: 1.125rem;
+    line-height: 1.1;
   }
 
-  .category--quiet {
-    opacity: 0.65;
+  .tile:hover .tile__plate {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
   }
 
-  .category__name {
-    font-weight: 560;
+  .tile:focus-visible {
+    outline-offset: -3px;
   }
 
-  .category__count {
-    font-size: var(--text-sm);
+  /* --- Calçada band (44px phone, 64px desktop) --- */
+  .band {
+    height: 44px;
+    background: var(--fep-calcada);
   }
 
-  .more {
-    margin-top: var(--space-5);
+  /* --- By region --- */
+  .regions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--fep-space-6);
+    padding-block: var(--fep-space-8);
+  }
+
+  .regions h2 {
+    margin: 0 0 10px;
+    font-size: 1.75rem;
+  }
+
+  .regions__text p {
+    color: var(--fep-ink-2);
+  }
+
+  .regions__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0 0 var(--fep-space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .region-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px dashed var(--fep-accent);
+    border-radius: var(--fep-radius-sm);
+    color: var(--fep-heading);
+    font-size: var(--fep-text-xs);
+    text-decoration: none;
+  }
+
+  .region-link span {
+    color: var(--fep-ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+
+  a.region-link:hover {
+    border-style: solid;
+    background: var(--fep-surface-2);
+  }
+
+  .region-link--quiet {
+    border-color: var(--fep-line);
+    color: var(--fep-ink-2);
+  }
+
+  .regions__map {
+    display: flex;
+    justify-content: center;
+  }
+
+  .regions__map :global(.dmap) {
+    width: min(18rem, 100%);
+  }
+
+  /* --- Just arrived, on the azulejo tint --- */
+  .recent {
+    padding-block: var(--fep-space-8);
+    background: var(--fep-surface-2);
+  }
+
+  /* --- How we know: stitched, like every block about trust --- */
+  .trust {
+    padding-block: var(--fep-space-8) var(--fep-space-4);
+  }
+
+  .trust__box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fep-space-4);
+    padding: var(--fep-space-5) 18px;
+    border: var(--fep-stitch);
+    border-radius: 14px;
+  }
+
+  .trust h2 {
+    margin: 0 0 10px;
+    font-size: 1.75rem;
+  }
+
+  .trust__intro p {
+    margin: 0;
+    color: var(--fep-ink-2);
+  }
+
+  .trust__steps {
+    display: grid;
+    gap: var(--fep-space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .trust__steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .trust__shield {
+    flex: none;
+    width: 44px;
+    height: 51px;
+    background: var(--trust) center / contain no-repeat;
+  }
+
+  .trust__text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: var(--fep-text-xs);
+    line-height: 1.45;
+    color: var(--fep-ink-2);
+  }
+
+  .trust__text strong {
+    color: var(--fep-ink);
+    font-size: var(--fep-text);
+  }
+
+  .trust__more {
+    margin: 0;
+  }
+
+  .trust__more a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--fep-touch);
+    font-weight: 600;
+  }
+
+  /* --- Desktop --- */
+  @media (min-width: 60rem) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--fep-space-12);
+      align-items: center;
+      padding-block: var(--fep-space-12) var(--fep-space-12);
+    }
+
+    .hero__intro {
+      font-size: var(--fep-text-lg);
+      line-height: 1.55;
+    }
+
+    /* On a wide screen the sentence runs as one line of prose. */
+    .sentence {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 12px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font-size: 1.875rem;
+    }
+
+    .sentence input {
+      flex: 1 1 12rem;
+    }
+
+    .sentence label:nth-of-type(2) {
+      padding-top: 0;
+    }
+
+    .sentence .button {
+      margin-top: var(--fep-space-2);
+      padding-inline: var(--fep-space-8);
+    }
+
+    .tiles__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 4px;
+      padding: 4px;
+      border-radius: var(--fep-radius-lg);
+    }
+
+    .tile {
+      height: 170px;
+    }
+
+    .band {
+      height: 64px;
+    }
+
+    .regions {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--fep-space-12);
+      align-items: start;
+      padding-block: var(--fep-space-16);
+    }
+
+    .regions h2,
+    .trust h2 {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .regions__text p {
+      font-size: var(--fep-text-md);
+    }
+
+    .regions__map :global(.dmap) {
+      width: min(22rem, 100%);
+    }
+
+    .recent {
+      padding-block: var(--fep-space-12);
+    }
+
+    .recent__head h2 {
+      font-size: 2.5rem;
+    }
+
+    .trust {
+      padding-block: var(--fep-space-16) var(--fep-space-8);
+    }
+
+    .trust__box {
+      padding: var(--fep-space-10);
+      border-radius: var(--fep-radius-xl);
+    }
+
+    .trust__steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
   }
 </style>

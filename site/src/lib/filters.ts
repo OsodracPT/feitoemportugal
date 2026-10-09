@@ -29,10 +29,15 @@ export const SORTS = ['relevance', 'name', 'recent'] as const;
 export type Sort = (typeof SORTS)[number];
 export const DEFAULT_SORT: Sort = 'relevance';
 
+/** Cards as list rows or as tiles. Unset, the width of the column decides. */
+export const VIEWS = ['list', 'panel'] as const;
+export type View = (typeof VIEWS)[number];
+
 export interface ListingState {
   q: string;
   sort: Sort;
   filters: Filters;
+  view?: View | undefined;
 }
 
 /** What one brand card carries, so filtering needs no second fetch. */
@@ -180,6 +185,9 @@ export function orderedSlugs(
 const isSort = (value: string | null): value is Sort =>
   value !== null && (SORTS as readonly string[]).includes(value);
 
+const isView = (value: string | null): value is View =>
+  value !== null && (VIEWS as readonly string[]).includes(value);
+
 export function parseListingState(search: string): ListingState {
   const params = new URLSearchParams(search);
   const filters = emptyFilters();
@@ -192,10 +200,12 @@ export function parseListingState(search: string): ListingState {
       .filter(Boolean);
   }
   const sort = params.get('sort');
+  const view = params.get('view');
   return {
     q: (params.get('q') ?? '').trim(),
     sort: isSort(sort) ? sort : DEFAULT_SORT,
     filters,
+    view: isView(view) ? view : undefined,
   };
 }
 
@@ -207,6 +217,7 @@ export function serializeListingState(state: ListingState): string {
     if (state.filters[key].length > 0) params.set(key, state.filters[key].join(','));
   }
   if (state.sort !== DEFAULT_SORT) params.set('sort', state.sort);
+  if (state.view) params.set('view', state.view);
   const query = params.toString();
   return query ? `?${query}` : '';
 }
