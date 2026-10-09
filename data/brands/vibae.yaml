@@ -1,0 +1,19 @@
+slug: vibae
+status: draft
+name: vibae
+description:
+  pt: >-
+    Produzido perto do porto na zona de felgueiras pela familia ismael.
+website: https://vibae.com/en-be
+category: moda-e-vestuario
+production:
+  scope: total
+location:
+  district: porto
+  municipality: felgueiras
+verification:
+  verified: false
+meta:
+  added: 2026-10-09
+  updated: 2026-10-09
+  source: github
