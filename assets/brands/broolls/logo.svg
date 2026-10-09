@@ -1,0 +1,31 @@
+<svg viewBox="0 0 514.61 125.48" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" data-sanitized-data-name="Camada 2" data-name="Camada 2" id="Camada_2">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #000305;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect height="125.48" width="514.61" class="cls-2"></rect>
+    </clipPath>
+  </defs>
+  <g data-sanitized-data-name="Camada 1" data-name="Camada 1" id="Camada_1-2">
+    <g class="cls-3">
+      <path d="M224.15,0H66.51v.02C27.91.25,0,28.79,0,62.87v.44C0,97.53,27.79,125.48,66.41,125.48c0,0-.02,0,0,0l150.18-.07c2.5.05,4.7,0,7.19,0,39.42,0,66.89-28.33,66.89-62.54v-.44C290.66,28.22,262.76,0,224.15,0M249.37,63.32c0,14.44-9.82,26.66-25.22,26.66H66.51v-.02c-14.71-.25-25.22-12.57-25.22-27.08v-.44c0-14.45,9.82-26.66,25.22-26.66h157.64v.02c14.71.26,25.22,12.57,25.22,27.08v.44Z" class="cls-1"></path>
+    </g>
+    <rect height="29.17" width="205.08" y="92.84" x="309.53" class="cls-1"></rect>
+    <rect height="35.49" width="33.47" y="3.75" x="309.55" class="cls-1"></rect>
+  </g>
+</svg>

@@ -21,9 +21,11 @@ location:
   municipality: pombal
 social:
   instagram: dikamareurope
+media:
+  logo: logo.svg
 verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

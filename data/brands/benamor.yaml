@@ -24,9 +24,11 @@ where_to_buy:
   online_store: https://benamor1925.com
 social:
   instagram: benamor1925
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: maintainer

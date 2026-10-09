@@ -1,6 +1,6 @@
 ---
 import type { Brand } from '@fep/schema';
-import { Image, Picture } from 'astro:assets';
+import { getImage, Image, Picture } from 'astro:assets';
 import Layout from '~/layouts/Layout.astro';
 import Badges from '~/components/Badges.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
@@ -27,6 +27,7 @@ import { brandLogo, brandPhotos } from '~/lib/media.ts';
 import {
   brandDescription,
   brandJsonLd,
+  brandOgImagePath,
   brandTitle,
   breadcrumbJsonLd,
   socialLinks,
@@ -41,6 +42,11 @@ interface Props {
 const { lang, brand } = Astro.props;
 const logo = brandLogo(brand);
 const photos = brandPhotos(brand);
+// Structured data wants a stable, crawlable file: SVG logos pass through as they
+// are (Astro does not rasterise SVG by default), rasters get a PNG copy.
+const logoFile = logo
+  ? await getImage(logo.format === 'svg' ? { src: logo, format: 'svg' } : { src: logo, format: 'png', height: 256 })
+  : undefined;
 
 const category = getCategory(brand.category);
 const subcategory = brand.subcategory ? getSubcategory(brand.category, brand.subcategory) : undefined;
@@ -90,11 +96,13 @@ const locationLabel = [municipality?.name, region ? localized(region.label, lang
   description={brandDescription(brand, lang)}
   canonical={alternates[lang]}
   alternates={alternates}
+  ogImage={brandOgImagePath(lang, brand.slug)}
   jsonLd={[
     brandJsonLd(brand, lang, {
       category,
       subcategory,
       districtLabel: region ? localized(region.label, lang) : undefined,
+      logoPath: logoFile?.src,
     }),
     breadcrumbJsonLd(crumbs),
   ]}

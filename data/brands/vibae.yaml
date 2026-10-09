@@ -24,6 +24,8 @@ where_to_buy:
   online_store: https://vibae.com
 social:
   instagram: vibaeofficial
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:

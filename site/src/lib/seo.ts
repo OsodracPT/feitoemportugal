@@ -123,10 +123,19 @@ export function socialLinks(brand: Brand): { network: string; handle: string; ur
     }));
 }
 
+/** The brand's share image, drawn at build time by `pages/og/[lang]/[slug].png.ts`. */
+export const brandOgImagePath = (lang: Lang, slug: string): string => `/og/${lang}/${slug}.png`;
+
 export function brandJsonLd(
   brand: Brand,
   lang: Lang,
-  context: { category?: Category; subcategory?: Subcategory; districtLabel?: string },
+  context: {
+    category?: Category;
+    subcategory?: Subcategory;
+    districtLabel?: string;
+    /** Site path of the logo file, for Google's logo in search results. */
+    logoPath?: string;
+  },
 ): JsonLdNode {
   const sameAs = socialLinks(brand).map((link) => link.url);
   return {
@@ -135,6 +144,8 @@ export function brandJsonLd(
     name: brand.name,
     url: brand.website,
     description: brandDescription(brand, lang),
+    ...(context.logoPath ? { logo: absolute(context.logoPath) } : {}),
+    image: absolute(brandOgImagePath(lang, brand.slug)),
     ...(sameAs.length > 0 ? { sameAs } : {}),
     ...(context.districtLabel
       ? {

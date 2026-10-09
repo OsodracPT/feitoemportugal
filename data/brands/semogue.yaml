@@ -19,9 +19,11 @@ production:
 location:
   district: porto
   municipality: vila-nova-de-gaia
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: maintainer

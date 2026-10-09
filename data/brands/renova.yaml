@@ -26,9 +26,11 @@ where_to_buy:
   online_store: https://www.myrenova.com
 social:
   instagram: myrenova
+media:
+  logo: logo.svg
 verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

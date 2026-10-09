@@ -21,6 +21,8 @@ location:
 price_range: 4
 where_to_buy:
   online_store: https://www.santosshoes.com/pt
+media:
+  logo: logo.svg
 verification:
   verified: false
 meta:

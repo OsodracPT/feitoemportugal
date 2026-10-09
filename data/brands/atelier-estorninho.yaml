@@ -20,9 +20,11 @@ where_to_buy:
   online_store: https://atelierestorninho.com
 social:
   instagram: atelierestorninho
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

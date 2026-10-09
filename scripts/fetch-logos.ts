@@ -12,17 +12,20 @@
  * Then open .cache/media/review.html. Runs accumulate in candidates.json, so a
  * second run only adds the brands asked for.
  *
- * Polite by design: robots.txt is honoured, one request per second per site, a
+ * Polite by design: robots.txt is honoured, one request per second overall, a
  * named User-Agent, and only the home page plus the images it points at.
  */
+import { execFile } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import { imageSize, loadBrands, unsafeSvg, type Brand } from '@fep/schema';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cacheDir = join(repoRoot, '.cache/media');
 const candidatesFile = join(cacheDir, 'candidates.json');
+const execFileAsync = promisify(execFile);
 
 const USER_AGENT = 'FeitoEmPortugalBot/1.0 (+https://github.com/OsodracPT/feitoemportugal; logo finder)';
 const TIMEOUT_MS = 15_000;
@@ -72,26 +75,62 @@ const brands = loadBrands(join(repoRoot, 'data'))
 
 // --- fetching --------------------------------------------------------------
 
-/** Node's fetch says only "fetch failed"; the reason is in `cause`. */
-const reason = (error: unknown): string => {
-  const { message, cause } = error as Error & { cause?: { code?: string; message?: string } };
-  return cause ? `${message} (${cause.code ?? cause.message})` : message;
-};
+const reason = (error: unknown): string => (error as Error).message;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/**
+ * Requests go through curl rather than Node's fetch. Cloudflare in front of
+ * many shops (Shopify above all) answers Node's HTTP client with 429 even at one
+ * request per second, while curl with the same honest User-Agent gets the page.
+ * The pause is still global, since one platform hosts many brands, and a real
+ * 429 is retried after a growing wait.
+ */
+let lastRequest = 0;
+const RETRY_WAITS_MS = [15_000, 45_000, 90_000];
+const bodyFile = join(cacheDir, '.download');
+
+async function curl(url: string, maxBytes: number): Promise<{ status: number; type: string; url: string }> {
+  // The trailer is written after the body, which goes to a file, so binary
+  // images never pass through stdout.
+  const { stdout } = await execFileAsync('curl', [
+    '--silent', '--show-error', '--location', '--max-redirs', '5',
+    '--max-time', String(TIMEOUT_MS / 1000),
+    '--max-filesize', String(maxBytes),
+    '--user-agent', USER_AGENT,
+    '--header', 'accept: */*',
+    '--proto', '=http,https',
+    '--output', bodyFile,
+    '--write-out', '%{http_code}\\t%{content_type}\\t%{url_effective}',
+    url,
+  ]);
+  const [status, type, effective] = stdout.split('\t');
+  return { status: Number(status), type: type ?? '', url: effective || url };
+}
+
 async function get(url: string, maxBytes: number): Promise<{ body: Uint8Array; type: string; url: string }> {
-  const response = await fetch(url, {
-    headers: { 'user-agent': USER_AGENT, accept: '*/*' },
-    redirect: 'follow',
-    signal: AbortSignal.timeout(TIMEOUT_MS),
-  });
-  if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
-  const length = Number(response.headers.get('content-length') ?? 0);
-  if (length > maxBytes) throw new Error(`${url} is larger than ${maxBytes} bytes`);
-  const body = new Uint8Array(await response.arrayBuffer());
+  let response: { status: number; type: string; url: string };
+  for (let attempt = 0; ; attempt++) {
+    const wait = lastRequest + PAUSE_MS - Date.now();
+    if (wait > 0) await sleep(wait);
+    lastRequest = Date.now();
+    try {
+      response = await curl(url, maxBytes);
+    } catch (error) {
+      // curl exits 63 when --max-filesize trips, 6 when the host does not resolve.
+      const { code, stderr } = error as { code?: number; stderr?: string };
+      if (code === 63) throw new Error(`${url} is larger than ${maxBytes} bytes`);
+      throw new Error(`curl failed for ${url}: ${(stderr ?? '').trim() || `exit ${code}`}`);
+    }
+    if (response.status !== 429 || attempt >= RETRY_WAITS_MS.length) break;
+    const pause = RETRY_WAITS_MS[attempt]!;
+    console.log(`  429 from ${new URL(url).host}, waiting ${Math.round(pause / 1000)}s`);
+    await sleep(pause);
+  }
+  if (response.status < 200 || response.status >= 300) throw new Error(`HTTP ${response.status} for ${url}`);
+  const body = new Uint8Array(readFileSync(bodyFile));
   if (body.length > maxBytes) throw new Error(`${url} is larger than ${maxBytes} bytes`);
-  return { body, type: response.headers.get('content-type') ?? '', url: response.url };
+  return { body, type: response.type, url: response.url };
 }
 
 /** Disallow rules for `User-agent: *`, per origin. Good enough for a single page. */
@@ -107,7 +146,6 @@ async function allowed(url: URL): Promise<boolean> {
       // No robots.txt, or it failed: nothing is disallowed.
     }
     robotsCache.set(url.origin, rules);
-    await sleep(PAUSE_MS);
   }
   const path = url.pathname + url.search;
   return !robotsCache.get(url.origin)!.some((rule) => rule.test(path));
@@ -294,7 +332,6 @@ async function collect(brand: Brand): Promise<BrandResult> {
       if (!['http:', 'https:'].includes(url.protocol) || seen.has(url.href)) continue;
       seen.add(url.href);
       if (!(await allowed(url))) continue;
-      await sleep(PAUSE_MS);
       const image = await get(url.href, MAX_IMAGE_BYTES);
       const ext = extension(image.type, image.url);
       if (!ext) continue;

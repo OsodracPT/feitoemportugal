@@ -74,6 +74,11 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
   inside its district) need the whole set at once. The blog will use collections.
 - **`site/src/lib/data.ts` is server-only** and reads `import.meta.env.DATA_DIR`,
   an absolute path injected by `astro.config.mjs` so it survives bundling.
+- **Share images are drawn at build time.** `site/src/lib/og.ts` (Satori, then
+  sharp) renders `/og/<lang>/<slug>.png` for every published brand; Satori reads
+  woff, not woff2, so its Inter comes from `@fontsource/inter`, not `public/fonts`.
+  SVG logos reach the JSON-LD as they are: Astro will not rasterise SVG unless
+  `dangerouslyProcessSVG` is on, and it stays off.
 - **`site/src/lib/media.ts` is server-only too.** Its eager glob pulls every image
   in `assets/brands/` into the build so Astro (with `sharp`) can optimise them.
 - **The client/server boundary is real.** `filters.ts`, `search-config.ts`,

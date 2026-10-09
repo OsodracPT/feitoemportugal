@@ -5,6 +5,7 @@ import Badges from './Badges.astro';
 import { getCategory, getRegion, getSubcategory } from '~/lib/data.ts';
 import { brandFacets, serializeFacets } from '~/lib/filters.ts';
 import { localized, paths, type Lang } from '~/lib/i18n.ts';
+import { initials } from '~/lib/brand-initials.ts';
 import { brandLogo } from '~/lib/media.ts';
 import { truncate } from '~/lib/seo.ts';
 
@@ -20,12 +21,7 @@ const region = brand.location ? getRegion(brand.location.district) : undefined;
 const label = subcategory ?? category;
 const logo = brandLogo(brand);
 // No logo: the card falls back to the brand's initials.
-const initials = brand.name
-  .split(/\s+/)
-  .slice(0, 2)
-  .map((word) => word[0])
-  .join('')
-  .toUpperCase();
+const fallback = initials(brand.name);
 ---
 
 <!-- `data-facets` lets the listing filter and sort without a second fetch. -->
@@ -42,7 +38,7 @@ const initials = brand.name
           <Image src={logo} alt="" height={80} densities={[1]} loading="lazy" />
         </span>
       ) : (
-        <span class="brand-card__logo" aria-hidden="true">{initials}</span>
+        <span class="brand-card__logo" aria-hidden="true">{fallback}</span>
       )
     }
     <h3 class="brand-card__name">{brand.name}</h3>

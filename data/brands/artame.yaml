@@ -20,9 +20,11 @@ location:
   municipality: gondomar
 where_to_buy:
   online_store: https://artame.pt
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

@@ -26,9 +26,11 @@ where_to_buy:
   online_store: https://thclothes.com
 social:
   instagram: thclothes.brand
+media:
+  logo: logo.jpg
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

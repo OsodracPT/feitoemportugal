@@ -21,9 +21,11 @@ location:
   municipality: felgueiras
 social:
   instagram: moshion.footwear
+media:
+  logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import
