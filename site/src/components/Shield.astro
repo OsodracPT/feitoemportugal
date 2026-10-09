@@ -1,0 +1,34 @@
+---
+/**
+ * The hand-stitched shield (design/assets/logo). The SVG is a one-colour mask
+ * filled with --fep-accent, so it follows the theme, including the manual
+ * toggle, which a <picture> media query could not. Decorative: it always sits
+ * next to the wordmark.
+ */
+interface Props {
+  /** Rendered height in px; the shield is 6:7. Without it, the parent sets --shield-h. */
+  size?: number;
+  class?: string;
+}
+
+const { size, class: className } = Astro.props;
+---
+
+<span class:list={['shield', className]} style={size ? `--shield-h: ${size}px` : undefined} aria-hidden="true"></span>
+
+<style>
+  .shield {
+    display: inline-block;
+    flex: none;
+    height: var(--shield-h, 28px);
+    aspect-ratio: 120 / 140;
+    background: var(--fep-accent);
+    mask: url('/brand/shield.svg') center / contain no-repeat;
+  }
+
+  @media (forced-colors: active) {
+    .shield {
+      background: CanvasText;
+    }
+  }
+</style>

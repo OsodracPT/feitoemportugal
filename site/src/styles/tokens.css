@@ -1,83 +1,182 @@
 /*
  * Design tokens — the single place where colour, type and spacing live.
- * Direction: minimal and neutral, so the brands and their photos carry the
- * page. One discreet accent, used only for links, focus and the "verified"
- * badge.
+ * Direction: "Azulejo" — cobalt on limestone, basalt text (design/README.md).
+ * The --fep-* tokens mirror design/tokens.css and are the source of truth.
+ * The older names below them are aliases kept so components keep working while
+ * they move to --fep-* one build step at a time; delete them once unused.
  */
 :root {
   /* --- Colour (light) --- */
-  --bg: #fafaf7;
-  --bg-raised: #ffffff;
-  --bg-sunken: #f2f1ec;
-  --text: #1a1a1a;
-  --text-muted: #6b6861;
-  --text-faint: #908c84;
-  --line: #e2e0d9;
-  --line-strong: #cdcac1;
-  --accent: #11624a;
-  --accent-text: #0d4f3b;
-  --accent-soft: #e4efe9;
-  --focus: #11624a;
+  --fep-bg: #f6f4ee; /* calcário: page ground */
+  --fep-surface: #ffffff; /* cards, inputs, sheets */
+  --fep-surface-2: #e9eef7; /* azulejo tint: footer, chips, info panels */
+  --fep-ink: #14161c; /* body text (basalto) */
+  --fep-ink-2: #3e4456; /* secondary text, meta, legends */
+  --fep-ink-dim: #727786; /* unfilled price euros; also the 3:1 control border */
+  --fep-line: #dcd8cd; /* borders, dividers, tile grout */
+  --fep-accent: #1a4c9c; /* cobalto: buttons, links, selected, stitches */
+  --fep-on-accent: #ffffff;
+  --fep-heading: #0e2f66; /* display headings, brand names */
+  --fep-plate: #1a4c9c; /* enamel street plate: white text + inset white rule */
+  --fep-map-fill: #d6e0f1; /* unselected district */
+  --fep-focus: #1a4c9c;
+  --fep-scrim: rgba(5, 7, 12, 0.55);
   /* Brand logos are drawn for light backgrounds; they sit on this in both themes. */
-  --logo-plate: #ffffff;
+  --fep-logo-plate: #ffffff;
+
+  /* Calçada band, tile 168 × 60. An accent for bands only, never under text. */
+  --fep-calcada: #8f8b82 url('/assets/calcada/calcada-light.svg') 0 0 / 168px 60px repeat;
 
   /* --- Type --- */
-  --font-sans:
-    'Inter var', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  --fep-font-display: 'Gloock', Georgia, 'Times New Roman', serif; /* one weight, self-hosted, subset */
+  --fep-font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fep-font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
 
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.375rem;
-  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
-  --text-3xl: clamp(1.875rem, 1.5rem + 1.8vw, 2.5rem);
-  --text-4xl: clamp(2.25rem, 1.7rem + 2.6vw, 3.25rem);
+  --fep-display-1: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); /* 40 → 72 hero h1 */
+  --fep-display-2: clamp(1.75rem, 1.3rem + 1.6vw, 3rem); /* 28 → 48 page h1 / section h2 */
+  --fep-display-3: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem); /* 22 → 26 sub-sections */
+  --fep-display-card: 1.25rem; /* 20 brand name on card */
+  --fep-display-lh: 1.02;
 
-  --leading-tight: 1.15;
+  --fep-text-lg: 1.1875rem; /* 19 lead paragraph */
+  --fep-text-md: 1.0625rem; /* 17 long-form body */
+  --fep-text: 1rem; /* 16 default; never below this on inputs (iOS zoom) */
+  --fep-text-sm: 0.9375rem; /* 15 UI, buttons */
+  --fep-text-xs: 0.875rem; /* 14 card description, chips */
+  --fep-text-meta: 0.8125rem; /* 13 meta line */
+  --fep-label: 0.75rem; /* 12 caps labels: 700, .12em, uppercase */
+  --fep-body-lh: 1.5;
+  --fep-label-tracking: 0.12em;
+
+  /* --- Space (4-based) --- */
+  --fep-space-1: 4px;
+  --fep-space-2: 8px;
+  --fep-space-3: 12px;
+  --fep-space-4: 16px;
+  --fep-space-5: 20px;
+  --fep-space-6: 24px;
+  --fep-space-8: 32px;
+  --fep-space-10: 40px;
+  --fep-space-12: 48px;
+  --fep-space-16: 64px;
+  --fep-space-18: 72px;
+  --fep-gutter: 16px; /* mobile side gutter */
+  --fep-container: 1200px; /* 1320px on the listing page */
+  --fep-touch: 44px; /* minimum target */
+
+  /* --- Radius --- */
+  --fep-radius-xs: 4px; /* tiny tiles */
+  --fep-radius-sm: 6px; /* plates, map cells, medallions */
+  --fep-radius: 8px; /* buttons, inputs, segmented controls */
+  --fep-radius-lg: 12px; /* cards, search card */
+  --fep-radius-xl: 18px; /* "Como sabemos" sheet, bottom-sheet top corners */
+  --fep-radius-pill: 999px;
+
+  /* --- Stitch: dashed borders that echo the logo, for trust content --- */
+  --fep-stitch: 2px dashed var(--fep-accent);
+
+  /* --- Aliases (older names; migrate to --fep-* and remove) --- */
+  --bg: var(--fep-bg);
+  --bg-raised: var(--fep-surface);
+  --bg-sunken: var(--fep-surface-2);
+  --text: var(--fep-ink);
+  --text-muted: var(--fep-ink-2);
+  /* Used for text (breadcrumbs, counts); --fep-ink-dim is 4.06:1 on --fep-bg, under AA. */
+  --text-faint: var(--fep-ink-2);
+  --line: var(--fep-line);
+  /* Input, chip and button outlines need 3:1 (WCAG 1.4.11); --fep-line does not reach it. */
+  --line-strong: var(--fep-ink-dim);
+  --accent: var(--fep-accent);
+  --accent-text: var(--fep-accent);
+  --accent-soft: var(--fep-surface-2);
+  --focus: var(--fep-focus);
+  --logo-plate: var(--fep-logo-plate);
+
+  --font-sans: var(--fep-font-body);
+  --font-display: var(--fep-font-display);
+  --font-mono: var(--fep-font-mono);
+
+  --text-xs: var(--fep-label);
+  --text-sm: var(--fep-text-xs);
+  --text-base: var(--fep-text);
+  --text-lg: var(--fep-text-lg);
+  --text-xl: var(--fep-display-card);
+  --text-2xl: var(--fep-display-3);
+  --text-3xl: var(--fep-display-2);
+  --text-4xl: var(--fep-display-1);
+
+  --leading-tight: var(--fep-display-lh);
   --leading-snug: 1.3;
-  --leading-normal: 1.6;
-  --tracking-tight: -0.015em;
-  --tracking-wide: 0.08em;
+  --leading-normal: var(--fep-body-lh);
+  --tracking-tight: 0;
+  --tracking-wide: var(--fep-label-tracking);
 
-  /* --- Space (4px base) --- */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
+  /* The old scale is not linear; these keep its pixel values. */
+  --space-1: var(--fep-space-1);
+  --space-2: var(--fep-space-2);
+  --space-3: var(--fep-space-3);
+  --space-4: var(--fep-space-4);
+  --space-5: var(--fep-space-6);
+  --space-6: var(--fep-space-8);
+  --space-7: var(--fep-space-12);
+  --space-8: var(--fep-space-16);
   --space-9: 6rem;
 
-  /* --- Shape --- */
-  --radius-sm: 4px;
-  --radius: 8px;
-  --radius-lg: 14px;
-  --radius-pill: 999px;
+  --radius-sm: var(--fep-radius-xs);
+  --radius: var(--fep-radius);
+  --radius-lg: var(--fep-radius-lg);
+  --radius-pill: var(--fep-radius-pill);
 
-  /* --- Layout --- */
   --measure: 68ch;
-  --container: 72rem;
+  --container: var(--fep-container);
   --container-narrow: 46rem;
 }
 
+/*
+ * Dark: follows the system unless the header toggle chose a theme
+ * (data-theme on <html>, set before paint by public/theme-init.js).
+ * The two blocks must stay identical.
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #15150f;
-    --bg-raised: #1d1d17;
-    --bg-sunken: #121210;
-    --logo-plate: #f4f3ee;
-    --text: #f4f3ee;
-    --text-muted: #a9a59c;
-    --text-faint: #837f76;
-    --line: #2e2e26;
-    --line-strong: #434138;
-    --accent: #6fd3ae;
-    --accent-text: #8adcbd;
-    --accent-soft: #19332a;
-    --focus: #6fd3ae;
+  :root:not([data-theme='light']) {
+    --fep-bg: #0e1320;
+    --fep-surface: #161d2e;
+    --fep-surface-2: #1e2a47;
+    --fep-ink: #eceff5;
+    --fep-ink-2: #a9b3c8;
+    --fep-ink-dim: #7f8aa8;
+    --fep-line: #2a3550;
+    --fep-accent: #8eb0ea;
+    --fep-on-accent: #0e1320;
+    --fep-heading: #dce6f8;
+    --fep-plate: #2456ae; /* plates stay deep cobalt with white text */
+    --fep-map-fill: #24324f;
+    --fep-focus: #8eb0ea;
+    --fep-logo-plate: #f4f3ee;
+    --fep-calcada: #05070b url('/assets/calcada/calcada-dark.svg') 0 0 / 168px 60px repeat;
   }
+}
+
+:root[data-theme='dark'] {
+  --fep-bg: #0e1320;
+  --fep-surface: #161d2e;
+  --fep-surface-2: #1e2a47;
+  --fep-ink: #eceff5;
+  --fep-ink-2: #a9b3c8;
+  --fep-ink-dim: #7f8aa8;
+  --fep-line: #2a3550;
+  --fep-accent: #8eb0ea;
+  --fep-on-accent: #0e1320;
+  --fep-heading: #dce6f8;
+  --fep-plate: #2456ae; /* plates stay deep cobalt with white text */
+  --fep-map-fill: #24324f;
+  --fep-focus: #8eb0ea;
+  --fep-logo-plate: #f4f3ee;
+  --fep-calcada: #05070b url('/assets/calcada/calcada-dark.svg') 0 0 / 168px 60px repeat;
+  color-scheme: dark;
+}
+
+/* Form controls and scrollbars follow the chosen theme, not only the colours. */
+:root[data-theme='light'] {
+  color-scheme: light;
 }

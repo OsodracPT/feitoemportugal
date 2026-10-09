@@ -1,5 +1,6 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
+import Shield from './Shield.astro';
 import { paths, t, type Alternates, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
@@ -10,31 +11,30 @@ interface Props {
 const { lang, alternates } = Astro.props;
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';
 
-// Only pages that exist in this phase are linked, so the site has no dead ends.
+// Open data is reached from the footer; categories from the home panel and the filters.
 const links = [
   { href: paths.brands(lang), label: t(lang, 'nav.brands') },
-  { href: paths.categories(lang), label: t(lang, 'nav.categories') },
   { href: paths.products(lang), label: t(lang, 'nav.products') },
   { href: paths.regions(lang), label: t(lang, 'nav.regions') },
+  { href: paths.about(lang), label: t(lang, 'nav.howWeKnow') },
 ];
+const isCurrent = (href: string) => current === href || current.startsWith(`${href}/`);
 ---
 
 <a class="skip" href="#main">{t(lang, 'nav.skipToContent')}</a>
 <header class="header">
   <div class="container header__inner">
     <a class="brand" href={paths.home(lang)}>
-      <span class="brand__mark" aria-hidden="true"></span>
+      <Shield class="brand__mark" />
       <span class="brand__name">{t(lang, 'site.name')}</span>
     </a>
-    <nav aria-label={t(lang, 'nav.menu')}>
-      <ul class="nav">
+
+    <nav class="nav nav--wide" aria-label={t(lang, 'nav.primary')}>
+      <ul>
         {
           links.map((link) => (
             <li>
-              <a
-                href={link.href}
-                aria-current={current === link.href || current.startsWith(`${link.href}/`) ? 'page' : undefined}
-              >
+              <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
                 {link.label}
               </a>
             </li>
@@ -42,7 +42,41 @@ const links = [
         }
       </ul>
     </nav>
+
     <LanguagePicker lang={lang} alternates={alternates} />
+
+    <!-- Hidden until theme.ts runs: without JavaScript the theme follows the system and there is nothing to toggle. -->
+    <button type="button" class="theme" data-theme-toggle aria-pressed="false" aria-label={t(lang, 'theme.dark')} hidden>
+      <svg class="theme__moon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <path d="M16.5 12.3A7 7 0 0 1 7.7 3.5a7 7 0 1 0 8.8 8.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+      </svg>
+      <svg class="theme__sun" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="10" cy="10" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M10 1.5v2.2M10 16.3v2.2M1.5 10h2.2M16.3 10h2.2M4 4l1.5 1.5M14.5 14.5 16 16M4 16l1.5-1.5M14.5 5.5 16 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </svg>
+    </button>
+
+    <!-- A <details> opens the menu without JavaScript (and without an inline script under the CSP). -->
+    <details class="menu">
+      <summary aria-label={t(lang, 'nav.menu')}>
+        <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </summary>
+      <nav class="nav nav--sheet" aria-label={t(lang, 'nav.primary')}>
+        <ul>
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
   </div>
 </header>
 
@@ -51,68 +85,180 @@ const links = [
     position: absolute;
     left: -9999px;
     top: 0;
-    background: var(--bg-raised);
-    padding: var(--space-3) var(--space-4);
+    background: var(--fep-surface);
+    padding: var(--fep-space-3) var(--fep-space-4);
     z-index: 10;
   }
 
   .skip:focus {
-    left: var(--space-4);
-    top: var(--space-2);
+    left: var(--fep-space-4);
+    top: var(--fep-space-2);
   }
 
   .header {
-    border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    position: relative;
+    border-bottom: 1px solid var(--fep-line);
+    background: var(--fep-bg);
   }
 
   .header__inner {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
-    min-height: 4rem;
-    flex-wrap: wrap;
+    gap: var(--fep-space-2);
+    min-height: 3.5rem;
+    /* The menu and language buttons carry their own 44px hit area. */
+    padding-inline-end: var(--fep-space-1);
   }
 
   .brand {
+    --shield-h: 28px;
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 640;
-    letter-spacing: var(--tracking-tight);
+    gap: var(--fep-space-2);
+    min-height: var(--fep-touch);
     margin-right: auto;
+    color: var(--fep-heading);
+    text-decoration: none;
+    font-family: var(--fep-font-display);
+    font-size: 1.1875rem;
+    line-height: 1;
+    text-transform: lowercase;
+    white-space: nowrap;
   }
 
-  .brand__mark {
-    width: 0.7rem;
-    height: 0.7rem;
-    border-radius: 3px;
-    background: var(--accent);
-  }
-
-  .nav {
+  .theme {
     display: flex;
-    gap: var(--space-4);
+    align-items: center;
+    justify-content: center;
+    min-width: var(--fep-touch);
+    min-height: var(--fep-touch);
+    padding: 0;
+    border: 0;
+    border-radius: var(--fep-radius);
+    background: transparent;
+    color: var(--fep-ink);
+    cursor: pointer;
+  }
+
+  .theme[hidden] {
+    display: none;
+  }
+
+  .theme:hover {
+    color: var(--fep-accent);
+    background: var(--fep-surface-2);
+  }
+
+  /* Pressed means dark: offer the sun to go back. */
+  .theme[aria-pressed='true'] .theme__moon,
+  .theme[aria-pressed='false'] .theme__sun {
+    display: none;
+  }
+
+  .nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .nav a {
-    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    min-height: var(--fep-touch);
+    color: var(--fep-ink);
+    font-size: var(--fep-text-sm);
     text-decoration: none;
-    font-size: var(--text-sm);
   }
 
   .nav a:hover,
   .nav a[aria-current='page'] {
-    color: var(--text);
+    color: var(--fep-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
   }
 
-  .nav a[aria-current='page'] {
-    text-decoration: underline;
-    text-underline-offset: 0.3em;
+  .nav--wide {
+    display: none;
+  }
+
+  .menu summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--fep-touch);
+    min-height: var(--fep-touch);
+    border-radius: var(--fep-radius);
+    color: var(--fep-ink);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu[open] summary {
+    background: var(--fep-surface-2);
+    color: var(--fep-accent);
+  }
+
+  .nav--sheet {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    z-index: 20;
+    padding: var(--fep-space-2) var(--fep-gutter) var(--fep-space-4);
+    background: var(--fep-surface);
+    border-bottom: 1px solid var(--fep-line);
+    box-shadow: 0 12px 24px -16px var(--fep-scrim);
+  }
+
+  .nav--sheet li + li {
+    border-top: 1px solid var(--fep-line);
+  }
+
+  .nav--sheet a {
+    min-height: 3rem;
+    font-size: var(--fep-text);
+  }
+
+  @media (min-width: 60rem) {
+    .header__inner {
+      min-height: 4.25rem;
+      gap: var(--fep-space-3);
+      padding-inline-end: var(--fep-space-8);
+    }
+
+    .brand {
+      gap: var(--fep-space-3);
+      font-size: 1.5rem;
+    }
+
+    .brand {
+      --shield-h: 35px;
+    }
+
+    .nav--wide {
+      display: block;
+    }
+
+    .nav--wide ul {
+      display: flex;
+      gap: var(--fep-space-1);
+    }
+
+    .nav--wide a {
+      padding-inline: var(--fep-space-3);
+    }
+
+    .menu {
+      display: none;
+    }
   }
 </style>
+
+<script>
+  import { initThemeToggle } from '~/lib/theme.ts';
+  initThemeToggle();
+</script>

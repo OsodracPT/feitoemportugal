@@ -57,10 +57,11 @@ still undecided. For running the code, see the [README](../README.md).
   how they make things were published, plus `apple-of-eden`; the 29 left rest on a bare "Made in Portugal"
   label, a partial claim or an open point. Each quote is in
   `docs/leads/evidence-sources-2026-10.md`, with the split at the end.
-- **Logo is provisional.** Three variants in `site/public/brand/`. Once one is
-  chosen, outline the text to paths so it no longer depends on a font.
-- **Accent colour** (`--accent`, a deep green) and the **code licence** (MIT or AGPL)
-  are still open decisions. No `LICENSE` file ships until the second one is settled.
+- **The "Azulejo" redesign settles the logo and the accent** (2026-10-09). Cobalt
+  (`--fep-accent`) on limestone, the hand-stitched shield (solid below 32px, as the
+  favicon), Gloock for display type and the system font for text. The source of
+  truth is `design/README.md`; it is built one step at a time, and the older token
+  names in `tokens.css` are aliases until every component has moved to `--fep-*`.
 - **Search and filters are live.** MiniSearch runs in the browser over
   an index built at `/search-index.json`; the chunk is fetched on first focus, so
   nothing loads for visitors who never search. It is accent- and case-insensitive,

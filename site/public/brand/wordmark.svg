@@ -1,6 +1,0 @@
-<!-- Variant A — single-line wordmark. Provisional: outline the text to paths once the final logo is chosen. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 48" role="img" aria-label="Feito em Portugal" width="440" height="48">
-  <text x="0" y="34" font-family="Inter var, Inter, ui-sans-serif, system-ui, sans-serif"
-        font-size="32" font-weight="620" letter-spacing="-0.6" fill="currentColor">Feito em Portugal</text>
-  <rect x="396" y="24" width="9" height="9" rx="2" fill="#11624A"/>
-</svg>

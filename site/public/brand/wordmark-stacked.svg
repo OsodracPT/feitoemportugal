@@ -1,8 +1,0 @@
-<!-- Variant B — stacked wordmark, lowercase, for narrow spaces. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 88" role="img" aria-label="Feito em Portugal" width="220" height="88">
-  <text x="0" y="34" font-family="Inter var, Inter, ui-sans-serif, system-ui, sans-serif"
-        font-size="30" font-weight="620" letter-spacing="-0.8" fill="currentColor">feito em</text>
-  <text x="0" y="70" font-family="Inter var, Inter, ui-sans-serif, system-ui, sans-serif"
-        font-size="30" font-weight="620" letter-spacing="-0.8" fill="currentColor">portugal</text>
-  <rect x="150" y="60" width="9" height="9" rx="2" fill="#11624A"/>
-</svg>

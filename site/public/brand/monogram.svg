@@ -1,7 +1,0 @@
-<!-- Variant C — compact monogram, for favicon and social avatars. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Feito em Portugal" width="64" height="64">
-  <rect width="64" height="64" rx="14" fill="#11624A"/>
-  <text x="32" y="42" text-anchor="middle"
-        font-family="Inter var, Inter, ui-sans-serif, system-ui, sans-serif"
-        font-size="26" font-weight="650" letter-spacing="-1" fill="#FAFAF7">FeP</text>
-</svg>

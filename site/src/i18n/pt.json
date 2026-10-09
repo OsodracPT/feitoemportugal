@@ -14,13 +14,17 @@
     "menu": "Menu",
     "products": "Produtos",
     "tags": "Etiquetas",
-    "regions": "Regiões"
+    "regions": "Regiões",
+    "howWeKnow": "Como sabemos",
+    "primary": "Principal"
   },
   "lang": {
     "switchTo": "English",
     "label": "Língua",
     "pt": "Português",
-    "en": "English"
+    "en": "English",
+    "short_pt": "PT",
+    "short_en": "EN"
   },
   "home": {
     "title": "Marcas que produzem em Portugal",
@@ -138,8 +142,11 @@
     "dataLicense": "Dados sob CC BY 4.0",
     "codeLicense": "Código sob MIT",
     "builtBy": "Projeto comunitário e de código aberto.",
-    "noTracking": "Sem cookies. Não seguimos quem nos visita.",
-    "badge": "O selo de verificação"
+    "noTracking": "Sem contas, sem cookies, sem rastreio.",
+    "badge": "O selo de verificação",
+    "openData": "Dados abertos · CC BY 4.0",
+    "apiJson": "API JSON",
+    "correct": "Corrigir dados"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -334,5 +341,8 @@
       "correct": "Corrigir uma marca",
       "filter": "Ver as marcas com selo no catálogo"
     }
+  },
+  "theme": {
+    "dark": "Tema escuro"
   }
 }

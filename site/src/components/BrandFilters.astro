@@ -92,12 +92,15 @@ const districtCounts = new Map(districtGroup?.options.map((option) => [option.va
     padding-block: var(--space-1) var(--space-2);
   }
 
+  /* A caps label, not a display heading (design/README.md §4). */
   .facets__title {
     margin: 0;
-    font-size: var(--text-sm);
+    font-family: var(--fep-font-body);
+    font-size: var(--fep-label);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
+    letter-spacing: var(--fep-label-tracking);
+    color: var(--fep-ink-2);
   }
 
   .facets__clear {

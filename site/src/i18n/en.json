@@ -14,13 +14,17 @@
     "menu": "Menu",
     "products": "Products",
     "tags": "Tags",
-    "regions": "Regions"
+    "regions": "Regions",
+    "howWeKnow": "How we know",
+    "primary": "Main"
   },
   "lang": {
     "switchTo": "Português",
     "label": "Language",
     "pt": "Português",
-    "en": "English"
+    "en": "English",
+    "short_pt": "PT",
+    "short_en": "EN"
   },
   "home": {
     "title": "Brands that manufacture in Portugal",
@@ -138,8 +142,11 @@
     "dataLicense": "Data under CC BY 4.0",
     "codeLicense": "Code under MIT",
     "builtBy": "An open source community project.",
-    "noTracking": "No cookies, no tracking.",
-    "badge": "The verified badge"
+    "noTracking": "No accounts, no cookies, no tracking.",
+    "badge": "The verified badge",
+    "openData": "Open data · CC BY 4.0",
+    "apiJson": "JSON API",
+    "correct": "Correct data"
   },
   "notFound": {
     "title": "Page not found",
@@ -331,5 +338,8 @@
       "correct": "Correct a brand",
       "filter": "See verified brands in the catalogue"
     }
+  },
+  "theme": {
+    "dark": "Dark theme"
   }
 }

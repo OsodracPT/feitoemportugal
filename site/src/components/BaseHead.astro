@@ -57,11 +57,14 @@ const alternateLinks = hreflangLinks(alternates);
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 
+<!-- Blocking on purpose: applies a saved light/dark choice before the first paint. -->
+<script is:inline src="/theme-init.js"></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="/brand/monogram.svg" />
-<link rel="preload" href="/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
-<meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#15150F" media="(prefers-color-scheme: dark)" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preload" href="/fonts/Gloock-Latin.woff2" as="font" type="font/woff2" crossorigin />
+<!-- --fep-bg in each theme (styles/tokens.css). -->
+<meta name="theme-color" content="#F6F4EE" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0E1320" media="(prefers-color-scheme: dark)" />
 
 {
   jsonLd.map((node) => (

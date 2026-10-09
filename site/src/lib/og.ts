@@ -27,17 +27,20 @@ const fonts = [
   { name: 'Inter', data: fontFile(600), weight: 600 as const, style: 'normal' as const },
 ];
 
-// The site's light palette (site/src/styles/tokens.css); a shared image has no dark mode.
+// The site's light palette (--fep-* in site/src/styles/tokens.css); a shared image has no dark mode.
 const COLOR = {
-  bg: '#fafaf7',
+  bg: '#f6f4ee',
   plate: '#ffffff',
-  text: '#1a1a1a',
-  muted: '#6b6861',
-  line: '#e2e0d9',
-  accent: '#11624a',
-  accentSoft: '#e4efe9',
-  sunken: '#f2f1ec',
+  text: '#0e2f66',
+  muted: '#3e4456',
+  line: '#dcd8cd',
+  accent: '#1a4c9c',
+  accentSoft: '#e9eef7',
+  sunken: '#e9eef7',
 };
+
+// The solid shield (site/public/favicon.svg), the logo's form at small sizes.
+const SHIELD = `data:image/svg+xml;base64,${readFileSync(join(repoRoot, 'site/public/favicon.svg')).toString('base64')}`;
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
@@ -130,7 +133,7 @@ export async function brandOgImage(brand: Brand, lang: Lang): Promise<Buffer> {
       ]),
       el('div', { display: 'flex', alignItems: 'center', justifyContent: 'space-between' }, [
         el('div', { display: 'flex', alignItems: 'center', gap: 16, fontSize: 30, fontWeight: 600 }, [
-          el('div', { width: 30, height: 30, borderRadius: 7, background: COLOR.accent }),
+          el('img', { width: 36, height: 36 }, undefined, { src: SHIELD, width: 36, height: 36 }),
           t(lang, 'site.name'),
         ]),
         el(

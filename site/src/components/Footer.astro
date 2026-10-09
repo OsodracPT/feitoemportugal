@@ -1,4 +1,5 @@
 ---
+import Shield from './Shield.astro';
 import { SITE } from '~/lib/config.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
 
@@ -8,63 +9,107 @@ interface Props {
 
 const { lang } = Astro.props;
 // Suggestions go through the GitHub issue form until the site has its own form.
-const suggestUrl = `${SITE.repo}/issues/new?template=nova-marca.yml`;
+const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${template}`;
 const contributeUrl = `${SITE.repo}/blob/main/CONTRIBUTING.md`;
 ---
 
 <footer class="footer">
-  <div class="container footer__inner">
-    <p class="footer__note">
-      {t(lang, 'footer.builtBy')}<br />
-      <span class="muted">{t(lang, 'footer.noTracking')}</span>
-    </p>
-    <ul class="footer__links">
-      <li><a href={paths.about(lang)}>{t(lang, 'footer.about')}</a></li>
-      <li><a href={paths.badge(lang)}>{t(lang, 'footer.badge')}</a></li>
-      <li><a href={suggestUrl} rel="noopener">{t(lang, 'nav.submit')}</a></li>
-      <li><a href={contributeUrl} rel="noopener">{t(lang, 'footer.contribute')}</a></li>
-      <li><a href={paths.api(lang)}>{t(lang, 'footer.api')}</a></li>
-      <li><a href={SITE.repo} rel="noopener">{t(lang, 'footer.github')}</a></li>
-      <li><a href={SITE.dataLicense.url} rel="license noopener">{t(lang, 'footer.dataLicense')}</a></li>
-      <li><a href={SITE.codeLicense.url} rel="license noopener">{t(lang, 'footer.codeLicense')}</a></li>
-    </ul>
+  <div class="calcada" aria-hidden="true"></div>
+  <div class="footer__body">
+    <div class="container footer__inner">
+      <div class="footer__intro">
+        <p class="footer__brand">
+          <Shield size={26} />
+          <span>{t(lang, 'site.name')}</span>
+        </p>
+        <p class="footer__note">{t(lang, 'footer.noTracking')}</p>
+        <p class="footer__note">{t(lang, 'footer.builtBy')}</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href={SITE.dataLicense.url} rel="license noopener">{t(lang, 'footer.openData')}</a></li>
+        <li><a href={paths.api(lang)}>{t(lang, 'footer.apiJson')}</a></li>
+        <li><a href={SITE.repo} rel="noopener">{t(lang, 'footer.github')}</a></li>
+        <li><a href={SITE.codeLicense.url} rel="license noopener">{t(lang, 'footer.codeLicense')}</a></li>
+      </ul>
+      <ul class="footer__links">
+        <li><a href={issueForm('nova-marca.yml')} rel="noopener">{t(lang, 'nav.submit')}</a></li>
+        <li><a href={issueForm('correcao.yml')} rel="noopener">{t(lang, 'footer.correct')}</a></li>
+        <li><a href={contributeUrl} rel="noopener">{t(lang, 'footer.contribute')}</a></li>
+      </ul>
+      <ul class="footer__links">
+        <li><a href={paths.about(lang)}>{t(lang, 'footer.about')}</a></li>
+        <li><a href={paths.badge(lang)}>{t(lang, 'footer.badge')}</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    border-top: 1px solid var(--line);
-    padding-block: var(--space-6);
-    font-size: var(--text-sm);
+  /* Decorative band: nothing ever sits on the pattern itself. */
+  .calcada {
+    height: 72px;
+    background: var(--fep-calcada);
+  }
+
+  .footer__body {
+    background: var(--fep-surface-2);
+    padding-block: var(--fep-space-5) var(--fep-space-8);
+    font-size: var(--fep-text-sm);
   }
 
   .footer__inner {
+    display: grid;
+    gap: var(--fep-space-4) var(--fep-space-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(13.75rem, 100%), 1fr));
+  }
+
+  .footer__intro {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4) var(--space-6);
-    justify-content: space-between;
-    align-items: start;
+    flex-direction: column;
+    gap: var(--fep-space-2);
+  }
+
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--fep-space-2);
+    margin: 0 0 var(--fep-space-1);
+    font-family: var(--fep-font-display);
+    font-size: 1.125rem;
+    color: var(--fep-heading);
+    text-transform: lowercase;
   }
 
   .footer__note {
     margin: 0;
-    color: var(--text-muted);
+    font-size: var(--fep-text-meta);
+    color: var(--fep-ink-2);
   }
 
   .footer__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   .footer__links a {
-    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    min-height: var(--fep-touch);
+    color: var(--fep-accent);
   }
 
-  .footer__links a:hover {
-    color: var(--text);
+  @media (min-width: 60rem) {
+    .calcada {
+      height: 110px;
+    }
+
+    .footer__body {
+      padding-block: var(--fep-space-10);
+    }
+
+    .footer__links a {
+      min-height: 2.5rem;
+    }
   }
 </style>

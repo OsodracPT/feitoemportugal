@@ -38,6 +38,11 @@ export default defineConfig({
     optimizeDeps: {
       include: ['minisearch'],
     },
+    // Astro inlines any script under this size, and production's CSP has no
+    // inline allowance (deploy/security-headers.conf): always emit a file.
+    build: {
+      assetsInlineLimit: 0,
+    },
   },
   devToolbar: { enabled: false },
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },

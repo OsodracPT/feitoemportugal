@@ -36,3 +36,8 @@ SPEC.md
 # out of the repository; what was extracted from them lives in docs/leads/.
 /*.html
 /portuguesebrands/
+
+# --- design handoff ---
+# The exported board PDF is 16 MB; the boards' sources (mockups/*.dc.html) and
+# the rest of design/ are tracked.
+design/**/*.pdf

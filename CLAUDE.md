@@ -4,6 +4,8 @@ Open, community-run database of brands that manufacture in Portugal. Static Astr
 site, bilingual (PT at `/`, EN at `/en`), no database: the data is YAML files in
 `data/`, validated by a shared Zod schema.
 
+Design source of truth: design/README.md. Read it before any UI work.
+
 ## Rules that are not negotiable
 
 These come from what the project is, not from taste. Breaking one is a bug even
@@ -120,7 +122,13 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
   `docker-compose.override.yml` on the server.
 - **Production sends a CSP the dev server does not.** `deploy/security-headers.conf`
   has `script-src 'self'` with no inline allowance, so client code that needs an
-  inline script works in `pnpm dev` and is blocked in production.
+  inline script works in `pnpm dev` and is blocked in production. Astro inlines
+  small scripts unless `assetsInlineLimit` is 0 in `astro.config.mjs`; keep it 0.
+- **Theme is system-first with a manual override.** `data-theme` on `<html>` (set
+  before paint by `public/theme-init.js`, toggled by `lib/theme.ts`) wins over
+  `prefers-color-scheme`, so the dark tokens exist twice in `tokens.css` and must
+  stay identical. Never theme with a bare `prefers-color-scheme` query (or a
+  `<picture>` media source) in a component: it ignores the toggle.
 - **The map is SVG drawn at build time** (`site/src/lib/map.ts`, server-only, with
   d3-geo). No map library or tiles reach the browser; the client only re-shades
   paths. `districts.geojson` is RFC 7946 (counter-clockwise rings), which d3 reads
@@ -179,7 +187,8 @@ it (none yet); the verified pill on a brand page links there.
 Next: the `/imprensa` page, the bilingual blog, then the
 submission API (and Umami), then verification and polish.
 
-Open decisions a maintainer still owns: the final accent colour and logo. Settled:
+The "Azulejo" redesign (`design/README.md`) is under way, one build step per PR:
+step 1 (tokens, Gloock, favicon and shield, header and footer) is done. Settled:
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range
 is made in Portugal; brand images stay outside CC BY (logos from the brand's site,
