@@ -160,10 +160,14 @@ The static site is deployed: every push to `main` goes live at feitoemportugal.o
 through `deploy.yml`. The README is written for people running the code;
 `deploy/README.md` covers hosting.
 
-Next: the `/selo` and `/imprensa` pages, the bilingual blog, then the
+`/selo` (`/en/badge`) explains the verified badge and lists the brands that have
+it (none yet); the verified pill on a brand page links there.
+
+Next: the `/imprensa` page, the bilingual blog, then the
 submission API (and Umami), then verification and polish.
 
 Open decisions a maintainer still owns: the code licence (MIT or AGPL — there is no
 `LICENSE` file until it is settled, though the footer already says MIT), the final
-accent colour and logo, and who verifies a brand for the badge. Settled: a foreign
-brand qualifies when most of its range is made in Portugal.
+accent colour and logo. Settled: a foreign brand qualifies when most of its range
+is made in Portugal; maintainers approve badge requests by hand (no automation) and
+fill the brand's `verification` block.

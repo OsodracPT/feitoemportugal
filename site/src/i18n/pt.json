@@ -136,7 +136,8 @@
     "dataLicense": "Dados sob CC BY 4.0",
     "codeLicense": "Código sob MIT",
     "builtBy": "Projeto comunitário e de código aberto.",
-    "noTracking": "Sem cookies. Não seguimos quem nos visita."
+    "noTracking": "Sem cookies. Não seguimos quem nos visita.",
+    "badge": "O selo de verificação"
   },
   "notFound": {
     "title": "Página não encontrada",
@@ -293,7 +294,39 @@
       "guide": "Guia de contribuição",
       "evidence": "Registo de fontes",
       "api": "API pública",
-      "repo": "Repositório no GitHub"
+      "repo": "Repositório no GitHub",
+      "badge": "Como funciona o selo"
+    }
+  },
+  "badge": {
+    "title": "O selo de verificação",
+    "intro": "Todas as marcas da lista dizem, no próprio site, que fabricam em Portugal. O selo vai um passo além: quer dizer que alguém do projeto confirmou essa produção por outro meio.",
+    "sections": {
+      "meaning": {
+        "title": "O que o selo quer dizer",
+        "body": "Uma marca entra na lista com base no que o site dela afirma. Uma marca com selo foi confirmada de forma independente por um responsável pelo projeto. O selo não avalia a qualidade, o preço nem as práticas da marca: diz apenas que a produção em Portugal foi confirmada."
+      },
+      "evidence": {
+        "title": "Que provas aceitamos",
+        "body": "Uma visita à fábrica ou à oficina, um certificado ou registo oficial, fotografias da produção ou o contacto direto com o fabricante. Na ficha da marca fica a data da confirmação. Os documentos com dados pessoais nunca são publicados."
+      },
+      "process": {
+        "title": "Como pedir o selo",
+        "body": "A marca preenche o formulário de pedido no GitHub e indica como podemos confirmar a produção. Um responsável pelo projeto analisa o pedido, combina os passos que faltarem e, se a confirmação for feita, atribui o selo. O selo não se paga e não se compra."
+      },
+      "revoke": {
+        "title": "Quando o selo sai",
+        "body": "Se a produção mudar de país ou as provas deixarem de valer, o selo é retirado. Qualquer pessoa pode avisar-nos através do formulário de correção."
+      }
+    },
+    "listTitle": "Marcas com selo",
+    "empty": "Ainda nenhuma marca tem o selo.",
+    "links": {
+      "criteria": "Que marcas entram na lista",
+      "request": "Pedir o selo",
+      "guide": "Guia de contribuição",
+      "correct": "Corrigir uma marca",
+      "filter": "Ver as marcas com selo no catálogo"
     }
   }
 }

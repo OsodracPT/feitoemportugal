@@ -43,7 +43,10 @@ fonte sempre que puderes, de preferência do site da marca.
 O selo quer dizer que alguém do projeto confirmou a produção por um meio
 independente do site da marca: uma visita, um certificado, o contacto com o
 fabricante. Não se paga. As marcas podem pedi-lo com o formulário
-[Pedir verificação](../../issues/new?template=pedido-verificacao.yml).
+[Pedir verificação](../../issues/new?template=pedido-verificacao.yml). Um
+responsável pelo projeto analisa cada pedido e, se confirmar a produção, preenche
+o bloco `verification` da marca. A página
+[/selo](https://feitoemportugal.org/selo) explica o processo.
 
 ### Editar os ficheiros diretamente
 
@@ -109,7 +112,10 @@ source when you can, ideally on the brand's own site.
 The badge means someone on the project confirmed production independently of the
 brand's website: a visit, a certificate, contact with the manufacturer. It is
 free. Brands can ask for it with the
-[Request verification](../../issues/new?template=pedido-verificacao.yml) form.
+[Request verification](../../issues/new?template=pedido-verificacao.yml) form. A
+project maintainer reviews each request and, once production is confirmed, fills
+in the brand's `verification` block. The
+[/en/badge](https://feitoemportugal.org/en/badge) page explains the process.
 
 ### Edit the files directly
 

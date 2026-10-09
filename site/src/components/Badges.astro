@@ -1,6 +1,6 @@
 ---
 import type { Brand } from '@fep/schema';
-import { formatDate, t, type Lang } from '~/lib/i18n.ts';
+import { formatDate, paths, t, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
   lang: Lang;
@@ -13,21 +13,26 @@ const { lang, brand, withDate = false } = Astro.props;
 const verified = brand.verification?.verified === true;
 const verifiedDate = brand.verification?.date ?? null;
 const partial = brand.production.scope === 'parcial';
+// On the brand page the seal links to its explanation; on cards the whole card
+// is already a link, and links cannot nest.
+const VerifiedLabel = withDate ? 'a' : 'span';
 ---
 
 <ul class="badges">
   {
     verified && (
       <li class="badge badge--verified" title={t(lang, 'brand.verifiedHelp')}>
-        <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
-          <path
-            fill="currentColor"
-            d="M8 .8 9.9 2.4l2.5-.2.6 2.4 2.2 1.2-1 2.3 1 2.3-2.2 1.2-.6 2.4-2.5-.2L8 15.2l-1.9-1.6-2.5.2-.6-2.4L.8 10.2l1-2.3-1-2.3 2.2-1.2.6-2.4 2.5.2L8 .8Zm-.8 9.9 4-4-1.1-1.1-2.9 2.9-1.3-1.3-1.1 1.1 2.4 2.4Z"
-          />
-        </svg>
-        {withDate && verifiedDate
-          ? t(lang, 'brand.verifiedOn', { date: formatDate(verifiedDate, lang) })
-          : t(lang, 'brand.verified')}
+        <VerifiedLabel class="badge__label" href={withDate ? paths.badge(lang) : undefined}>
+          <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M8 .8 9.9 2.4l2.5-.2.6 2.4 2.2 1.2-1 2.3 1 2.3-2.2 1.2-.6 2.4-2.5-.2L8 15.2l-1.9-1.6-2.5.2-.6-2.4L.8 10.2l1-2.3-1-2.3 2.2-1.2.6-2.4 2.5.2L8 .8Zm-.8 9.9 4-4-1.1-1.1-2.9 2.9-1.3-1.3-1.1 1.1 2.4 2.4Z"
+            />
+          </svg>
+          {withDate && verifiedDate
+            ? t(lang, 'brand.verifiedOn', { date: formatDate(verifiedDate, lang) })
+            : t(lang, 'brand.verified')}
+        </VerifiedLabel>
       </li>
     )
   }
@@ -62,5 +67,12 @@ const partial = brand.production.scope === 'parcial';
     border-color: var(--accent);
     background: var(--accent-soft);
     font-weight: 560;
+  }
+
+  .badge__label {
+    display: inline-flex;
+    align-items: center;
+    gap: inherit;
+    color: inherit;
   }
 </style>

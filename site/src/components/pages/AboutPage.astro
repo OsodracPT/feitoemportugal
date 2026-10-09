@@ -26,7 +26,13 @@ const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${temp
 const sections: { id: string; links?: { href: string; label: string }[] }[] = [
   { id: 'criteria' },
   { id: 'check', links: [{ href: `${SITE.repo}/tree/main/docs/leads`, label: t(lang, 'about.links.evidence') }] },
-  { id: 'badge', links: [{ href: issueForm('pedido-verificacao.yml'), label: t(lang, 'about.links.verify') }] },
+  {
+    id: 'badge',
+    links: [
+      { href: paths.badge(lang), label: t(lang, 'about.links.badge') },
+      { href: issueForm('pedido-verificacao.yml'), label: t(lang, 'about.links.verify') },
+    ],
+  },
   {
     id: 'contribute',
     links: [

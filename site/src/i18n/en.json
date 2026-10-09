@@ -136,7 +136,8 @@
     "dataLicense": "Data under CC BY 4.0",
     "codeLicense": "Code under MIT",
     "builtBy": "An open source community project.",
-    "noTracking": "No cookies, no tracking."
+    "noTracking": "No cookies, no tracking.",
+    "badge": "The verified badge"
   },
   "notFound": {
     "title": "Page not found",
@@ -290,7 +291,39 @@
       "guide": "Contributing guide",
       "evidence": "Source notes",
       "api": "Public API",
-      "repo": "Repository on GitHub"
+      "repo": "Repository on GitHub",
+      "badge": "How the badge works"
+    }
+  },
+  "badge": {
+    "title": "The verified badge",
+    "intro": "Every brand on the list says on its own website that it makes its products in Portugal. The badge goes one step further: it means someone on the project confirmed that production by other means.",
+    "sections": {
+      "meaning": {
+        "title": "What the badge means",
+        "body": "A brand is listed on the strength of what its website says. A brand with the badge has been confirmed independently by a project maintainer. The badge says nothing about quality, price or a brand's practices: only that production in Portugal was confirmed."
+      },
+      "evidence": {
+        "title": "What evidence we accept",
+        "body": "A visit to the factory or workshop, a certificate or official registration, photos of production, or direct contact with the manufacturer. The brand page shows the date of the check. Documents with personal data are never published."
+      },
+      "process": {
+        "title": "How to ask for it",
+        "body": "The brand fills in the request form on GitHub and says how we can confirm production. A project maintainer reviews the request, arranges whatever else is needed and, once production is confirmed, awards the badge. It is free and cannot be bought."
+      },
+      "revoke": {
+        "title": "When the badge is removed",
+        "body": "If production moves abroad or the evidence no longer holds, the badge is removed. Anyone can tell us through the correction form."
+      }
+    },
+    "listTitle": "Brands with the badge",
+    "empty": "No brand has the badge yet.",
+    "links": {
+      "criteria": "Which brands are listed",
+      "request": "Request the badge",
+      "guide": "Contributing guide",
+      "correct": "Correct a brand",
+      "filter": "See verified brands in the catalogue"
     }
   }
 }
