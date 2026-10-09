@@ -3,8 +3,10 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import { brandSchema } from './brand.ts';
 import { loadBrands, loadTaxonomy } from './load.ts';
 import {
+  brandToYaml,
   formLabels,
   formOptionIds,
   instagramHandle,
@@ -65,6 +67,14 @@ describe('submissionFromIssue', () => {
     expect(notes).toEqual([]);
     // The quote never reaches the brand file.
     expect(JSON.stringify(brand)).not.toContain('nossa oficina');
+  });
+
+  it('writes a file that reads back as the same brand', () => {
+    const result = submissionFromIssue(issueBody(valid), labels, taxonomy, existing, '2026-10-08');
+    if (!result.ok) throw new Error(result.errors.join('; '));
+    const text = brandToYaml(result.submission.brand);
+    expect(text).toContain('  pt: >-\n');
+    expect(brandSchema.parse(parse(text))).toEqual(brandSchema.parse(result.submission.brand));
   });
 
   it('refuses a brand that is already listed, by slug or by website', () => {

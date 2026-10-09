@@ -53,8 +53,11 @@ site/src/lib/             data layer, i18n, SEO, search, filters, API helpers
 site/src/pages/api/v1/    the public JSON API, generated at build time
 docs/collecting-brand-data.md   brief for researching and filling one brand
 docs/leads/               leads and the evidence behind every import
+docs/outreach.md          PT/EN messages for brands whose site gives no production claim
 deploy/                   reference nginx config, compose file, CI deploy gate — see deploy/README.md
 docs/design-notes.md      design rationale and open decisions
+.github/ISSUE_TEMPLATE/   issue forms; nova-marca.yml labels are read by scripts/issue-to-pr.ts
+CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
 ```
 
 ## Architecture, and why
@@ -117,6 +120,10 @@ docs/design-notes.md      design rationale and open decisions
 - **Portuguese place names take contracted prepositions** ("no Porto", "nos Açores").
   `inRegion()` in `i18n.ts` reads the exceptions from `place.in` in `pt.json`; a new
   region whose name takes an article needs an entry there.
+- **Issue-form labels are an interface.** GitHub renders a submitted form as
+  `### <label>` headings, and the parser maps them back to field ids through the
+  form file itself. Renaming a label is safe; the category and district options
+  must keep their `(id)` suffix, and a test checks them against the taxonomy.
 - **A headless screenshot fires at `load`**, before the async index resolves. A
   screenshot is not proof the search works — read the browser console instead.
 
@@ -141,13 +148,20 @@ settled), so 184 brands are live, and 29 drafts with only a label, a partial cla
 or an open point still await a maintainer. Only 74 of the 184 have a
 known production location, so the map covers about 40 % of the catalogue.
 
+Contributions: bilingual issue forms (suggest, correct, request verification),
+`CONTRIBUTING.md`, a PR template, and `issue-to-pr.yml`. The `aprovado` label on a
+`nova-marca` issue runs `scripts/issue-to-pr.ts`, which uses `submissionFromIssue()`
+in `packages/schema/src/submission.ts` to write a draft brand and a row in
+`docs/leads/evidence-community.md`, then opens a PR. `/sobre` (`/en/about`) explains
+the entry rule, the checks and the badge to readers; `docs/outreach.md` has the
+messages for brands whose site gives no production claim.
+
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
 through `deploy.yml`. The README is written for people running the code;
 `deploy/README.md` covers hosting.
 
-Next: the bilingual blog, then
-contributions (issue forms, `CONTRIBUTING.md`, issue-to-PR), then the submission
-API (and Umami), then verification and polish.
+Next: the `/selo` and `/imprensa` pages, the bilingual blog, then the
+submission API (and Umami), then verification and polish.
 
 Open decisions a maintainer still owns: the code licence (MIT or AGPL — there is no
 `LICENSE` file until it is settled, though the footer already says MIT), the final

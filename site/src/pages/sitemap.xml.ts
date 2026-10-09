@@ -36,6 +36,7 @@ function entries(): SitemapEntry[] {
     { urls: { pt: paths.tags('pt'), en: paths.tags('en') }, lastmod: lastDataUpdate },
     { urls: { pt: paths.regions('pt'), en: paths.regions('en') }, lastmod: lastDataUpdate },
     { urls: { pt: paths.api('pt'), en: paths.api('en') }, lastmod: lastDataUpdate },
+    { urls: { pt: paths.about('pt'), en: paths.about('en') }, lastmod: lastDataUpdate },
   ];
 
   for (const category of landingCategories()) {

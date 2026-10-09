@@ -253,5 +253,44 @@
     "allRegion": "All brands {inRegion}",
     "otherCategories": "Other categories {inRegion}",
     "otherRegions": "The same category in other regions"
+  },
+  "about": {
+    "title": "About the project",
+    "intro": "Feito em Portugal is an open list of brands that make their products in Portugal. It is run by volunteers, carries no advertising, and anyone may use the data.",
+    "sections": {
+      "criteria": {
+        "title": "Which brands are listed",
+        "body": "A brand is listed when its own website says its products are made in Portugal. Being a Portuguese brand is not enough, and neither is having products designed here. A foreign brand qualifies when most of what it sells is made in Portugal. When only part is made here, the brand page says which part."
+      },
+      "check": {
+        "title": "How we check",
+        "body": "Before a brand goes live, we find the sentence on its website where it says it makes its products in Portugal, and keep that sentence, with the link, in the project's source notes. The production location appears only when the brand gives it, and never more precisely than the municipality."
+      },
+      "badge": {
+        "title": "The verified badge",
+        "body": "The badge means someone on the project confirmed production by some means other than the brand's website: a visit, a certificate or contact with the manufacturer. No brand has it yet. It is free and cannot be bought."
+      },
+      "contribute": {
+        "title": "How to help",
+        "body": "You can suggest a brand, fix a brand page or ask for your own brand to be verified. It all goes through forms on GitHub, where the work stays in public view."
+      },
+      "data": {
+        "title": "Data and licences",
+        "body": "The brand data is under CC BY 4.0: you may use it, commercially too, as long as you credit the source. It is available through the public API and in the repository. District boundaries come from CAOP 2025 by the Direção-Geral do Território."
+      },
+      "privacy": {
+        "title": "Privacy",
+        "body": "The site uses no cookies and does not track visitors. We publish no personal data: many makers work from home, so location always stops at the municipality."
+      }
+    },
+    "links": {
+      "suggest": "Suggest a brand",
+      "correct": "Correct a brand",
+      "verify": "Request verification",
+      "guide": "Contributing guide",
+      "evidence": "Source notes",
+      "api": "Public API",
+      "repo": "Repository on GitHub"
+    }
   }
 }

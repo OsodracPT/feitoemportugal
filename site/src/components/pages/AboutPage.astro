@@ -1,0 +1,96 @@
+---
+/**
+ * What the project is, the entry rule, how brands are checked, and where to
+ * help. The contribution links go to the GitHub issue forms until the site has
+ * a form of its own.
+ */
+import Layout from '~/layouts/Layout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { SITE } from '~/lib/config.ts';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: paths.about('pt'), en: paths.about('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'about.title') },
+];
+
+const issueForm = (template: string) => `${SITE.repo}/issues/new?template=${template}`;
+
+const sections: { id: string; links?: { href: string; label: string }[] }[] = [
+  { id: 'criteria' },
+  { id: 'check', links: [{ href: `${SITE.repo}/tree/main/docs/leads`, label: t(lang, 'about.links.evidence') }] },
+  { id: 'badge', links: [{ href: issueForm('pedido-verificacao.yml'), label: t(lang, 'about.links.verify') }] },
+  {
+    id: 'contribute',
+    links: [
+      { href: issueForm('nova-marca.yml'), label: t(lang, 'about.links.suggest') },
+      { href: issueForm('correcao.yml'), label: t(lang, 'about.links.correct') },
+      { href: `${SITE.repo}/blob/main/CONTRIBUTING.md`, label: t(lang, 'about.links.guide') },
+    ],
+  },
+  {
+    id: 'data',
+    links: [
+      { href: paths.api(lang), label: t(lang, 'about.links.api') },
+      { href: SITE.repo, label: t(lang, 'about.links.repo') },
+    ],
+  },
+  { id: 'privacy' },
+];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'about.title'), lang)}
+  description={t(lang, 'about.intro')}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container narrow">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{t(lang, 'about.title')}</h1>
+    <p class="lede">{t(lang, 'about.intro')}</p>
+
+    {
+      sections.map((section) => (
+        <section class="section" id={section.id}>
+          <h2>{t(lang, `about.sections.${section.id}.title`)}</h2>
+          <p>{t(lang, `about.sections.${section.id}.body`)}</p>
+          {section.links && (
+            <ul class="about__links">
+              {section.links.map((link) => (
+                <li>
+                  <a href={link.href} rel={link.href.startsWith('http') ? 'noopener' : undefined}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .narrow {
+    max-width: var(--container-narrow);
+  }
+
+  .about__links {
+    padding-left: 1.2em;
+  }
+
+  .about__links li + li {
+    margin-top: var(--space-2);
+  }
+</style>

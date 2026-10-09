@@ -19,6 +19,7 @@ const contributeUrl = `${SITE.repo}/blob/main/CONTRIBUTING.md`;
       <span class="muted">{t(lang, 'footer.noTracking')}</span>
     </p>
     <ul class="footer__links">
+      <li><a href={paths.about(lang)}>{t(lang, 'footer.about')}</a></li>
       <li><a href={suggestUrl} rel="noopener">{t(lang, 'nav.submit')}</a></li>
       <li><a href={contributeUrl} rel="noopener">{t(lang, 'footer.contribute')}</a></li>
       <li><a href={paths.api(lang)}>{t(lang, 'footer.api')}</a></li>

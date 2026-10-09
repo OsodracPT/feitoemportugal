@@ -256,5 +256,44 @@
     "allRegion": "Todas as marcas {inRegion}",
     "otherCategories": "Outras categorias {inRegion}",
     "otherRegions": "A mesma categoria noutras regiões"
+  },
+  "about": {
+    "title": "Sobre o projeto",
+    "intro": "O Feito em Portugal é uma lista aberta de marcas que fabricam em Portugal. É feita por voluntários, não tem publicidade e qualquer pessoa pode usar os dados.",
+    "sections": {
+      "criteria": {
+        "title": "Que marcas entram",
+        "body": "Uma marca entra quando o próprio site diz que os produtos são feitos em Portugal. Ser uma marca portuguesa não chega, nem ter os produtos desenhados cá. Uma marca estrangeira entra quando a maior parte do que vende é feita em Portugal. Quando só uma parte é feita cá, a ficha diz qual."
+      },
+      "check": {
+        "title": "Como verificamos",
+        "body": "Antes de publicar uma marca, lemos no site dela a frase em que diz que fabrica em Portugal e guardamos essa frase, com o link, no registo de fontes do projeto. O local de produção só aparece quando a marca o indica, e nunca mais preciso do que o concelho."
+      },
+      "badge": {
+        "title": "O selo de verificação",
+        "body": "O selo quer dizer que alguém do projeto confirmou a produção por outro meio além do site da marca: uma visita, um certificado ou o contacto com o fabricante. Ainda nenhuma marca o tem. O selo não se paga e não se compra."
+      },
+      "contribute": {
+        "title": "Como ajudar",
+        "body": "Podes sugerir uma marca, corrigir uma ficha ou pedir a verificação da tua marca. Tudo passa por formulários no GitHub, onde o trabalho fica à vista de todos."
+      },
+      "data": {
+        "title": "Dados e licenças",
+        "body": "Os dados das marcas estão sob CC BY 4.0: podes usá-los, também para fins comerciais, desde que indiques a fonte. Estão disponíveis na API pública e no repositório. Os limites dos distritos vêm da CAOP 2025 da Direção-Geral do Território."
+      },
+      "privacy": {
+        "title": "Privacidade",
+        "body": "O site não usa cookies nem segue quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso a localização fica sempre pelo concelho."
+      }
+    },
+    "links": {
+      "suggest": "Sugerir uma marca",
+      "correct": "Corrigir uma marca",
+      "verify": "Pedir verificação",
+      "guide": "Guia de contribuição",
+      "evidence": "Registo de fontes",
+      "api": "API pública",
+      "repo": "Repositório no GitHub"
+    }
   }
 }
