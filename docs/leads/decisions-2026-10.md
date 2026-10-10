@@ -6,10 +6,11 @@ was left as it was. The proposals and their sources are in `research-2026-10-09.
 and `research-2026-10-10.md`; each of those now ends with an "Applied" section.
 
 Outcome in short:
-- Unpublished (`status: draft`): thclothes, great-i-am, tema-creations, watc-studio.
-- `parcial` with a note: fly-london, atelier-estorninho. wetheknot back to `total`.
+- Unpublished (`status: draft`): great-i-am, tema-creations, watc-studio.
+- `parcial` with a note: fly-london, atelier-estorninho, thclothes (kept published —
+  only its "Coleção Portuguesa" capsule is made in Portugal). wetheknot back to `total`.
 - 39 locations (20 stated, 19 inferred or district only); map coverage 85 → 124 of
-  205 published brands.
+  206 published brands.
 - 15 `founded` years, 16 `products` fixes, 5 URL changes, 2 renames
   (coup-the-label → Coup D'État, travelling-socks → Travel Socks), 7 descriptions.
 - Price levels for 69 brands via `price-suggest --apply` (not sharish-gin, trinca-bio;
@@ -21,7 +22,8 @@ Outcome in short:
 `[x]` applied, `[ ]` declined. Ids match the decision page.
 
 ### Status and scope
-- [x] thclothes-draft · [ ] thclothes-keep
+- [ ] thclothes-draft · [ ] thclothes-keep — kept published as `parcial` instead
+  (2026-10-10, after confirming the "Coleção Portuguesa" capsule is made in Portugal)
 - [ ] great-i-am-keep · [x] great-i-am-draft
 - [ ] tema-creations-parcial · [x] tema-creations-draft
 - [ ] watc-studio-keep · [x] watc-studio-draft

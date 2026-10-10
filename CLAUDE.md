@@ -175,9 +175,10 @@ published on 2026-10-08 (plus `apple-of-eden` once the foreign-brand rule was
 settled). On 2026-10-09 the maintainer published 25 more after a second research
 pass (`.claude/agents/brand-researcher.md`). On 2026-10-10 the decisions on the
 research passes were applied (`docs/leads/decisions-2026-10.md`): four brands went
-back to draft (`thclothes`, `great-i-am`, `tema-creations`, `watc-studio`) and one
-was deleted, so 205 are live. 8 drafts: those four, `rutz`, `vaddia` and `nyos`
-(only a label) and `campobello` (sells only to retailers). 124 of the 205 have a known production
+back to draft (`great-i-am`, `tema-creations`, `watc-studio`; `thclothes` stayed
+published as `parcial` — only its "Coleção Portuguesa" capsule is made in Portugal)
+and one was deleted, so 206 are live. 7 drafts: those three, `rutz`, `vaddia` and
+`nyos` (only a label) and `campobello` (sells only to retailers). 124 of the 206 have a known production
 location, so the map covers about 60 % of the catalogue.
 
 Contributions: bilingual issue forms (suggest, correct, request verification),
