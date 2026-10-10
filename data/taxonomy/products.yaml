@@ -3,12 +3,19 @@
 # de produtos); uma marca pode ter vários tipos, de categorias diferentes.
 # `synonyms` alimenta a pesquisa (MiniSearch) e não é mostrado na interface.
 # Só entra um tipo que pelo menos uma marca (publicada ou em rascunho) produza.
+# `price_bands`: quanto custa um artigo de referência (`item`) em cada nível de
+# preço; `max` são os limites superiores dos níveis 1, 2 e 3 em euros, e o nível 4
+# fica acima. Seguem o mercado em geral, não este catálogo: €€ é um preço de
+# loja de rua, €€€€ um preço de luxo. Revêem-se uma vez por ano.
 
 # --- Vestuário ---
 - id: t-shirts
   category: moda-e-vestuario
   label: { pt: T-shirts, en: T-shirts }
   slug: { pt: t-shirts, en: t-shirts }
+  price_bands:
+    item: { pt: "uma t-shirt", en: "a T-shirt" }
+    max: [20, 45, 90]
   synonyms:
     pt: [camisetas, tshirts]
     en: [tee, tees]
@@ -16,6 +23,9 @@
   category: moda-e-vestuario
   label: { pt: Camisolas e malhas, en: Sweaters and knitwear }
   slug: { pt: camisolas, en: sweaters }
+  price_bands:
+    item: { pt: "uma camisola de malha", en: "a knit sweater" }
+    max: [40, 90, 180]
   synonyms:
     pt: [malhas, pullover, sweatshirts, camisola]
     en: [jumpers, knitwear, pullovers, sweatshirts, sweater]
@@ -23,6 +33,9 @@
   category: moda-e-vestuario
   label: { pt: Camisas, en: Shirts }
   slug: { pt: camisas, en: shirts }
+  price_bands:
+    item: { pt: "uma camisa", en: "a shirt" }
+    max: [35, 80, 150]
   synonyms:
     pt: [camisa, camisaria]
     en: [shirt, button-down]
@@ -30,6 +43,9 @@
   category: moda-e-vestuario
   label: { pt: Polos, en: Polo shirts }
   slug: { pt: polos, en: polo-shirts }
+  price_bands:
+    item: { pt: "um polo", en: "a polo shirt" }
+    max: [30, 60, 110]
   synonyms:
     pt: [polo]
     en: [polo, polos]
@@ -37,6 +53,9 @@
   category: moda-e-vestuario
   label: { pt: Casacos, en: Jackets and coats }
   slug: { pt: casacos, en: jackets }
+  price_bands:
+    item: { pt: "um casaco", en: "a jacket or coat" }
+    max: [80, 180, 400]
   synonyms:
     pt: [sobretudos, blusões, parkas, casaco]
     en: [coats, overcoats, outerwear, jacket]
@@ -44,6 +63,9 @@
   category: moda-e-vestuario
   label: { pt: Vestidos, en: Dresses }
   slug: { pt: vestidos, en: dresses }
+  price_bands:
+    item: { pt: "um vestido", en: "a dress" }
+    max: [40, 100, 220]
   synonyms:
     pt: [vestido]
     en: [dress]
@@ -51,6 +73,9 @@
   category: moda-e-vestuario
   label: { pt: Fatos, en: Suits }
   slug: { pt: fatos, en: suits }
+  price_bands:
+    item: { pt: "um fato completo", en: "a full suit" }
+    max: [200, 400, 800]
   synonyms:
     pt: [alfaiataria, blazers, fato]
     en: [tailoring, blazers, suit]
@@ -58,6 +83,9 @@
   category: moda-e-vestuario
   label: { pt: Calças de ganga, en: Jeans }
   slug: { pt: calcas-de-ganga, en: jeans }
+  price_bands:
+    item: { pt: "umas calças de ganga", en: "a pair of jeans" }
+    max: [50, 100, 180]
   synonyms:
     pt: [ganga, jeans, calças]
     en: [denim, trousers]
@@ -65,6 +93,9 @@
   category: moda-e-vestuario
   label: { pt: Jardineiras, en: Dungarees }
   slug: { pt: jardineiras, en: dungarees }
+  price_bands:
+    item: { pt: "umas jardineiras", en: "a pair of dungarees" }
+    max: [40, 90, 160]
   synonyms:
     pt: [jardineira, macacões]
     en: [overalls, jumpsuits]
@@ -72,6 +103,9 @@
   category: moda-e-vestuario
   label: { pt: Meias, en: Socks }
   slug: { pt: meias, en: socks }
+  price_bands:
+    item: { pt: "um par de meias", en: "a pair of socks" }
+    max: [6, 15, 30]
   synonyms:
     pt: [peúgas, meia]
     en: [sock, hosiery]
@@ -79,6 +113,9 @@
   category: moda-e-vestuario
   label: { pt: Fatos de banho, en: Swimwear }
   slug: { pt: fatos-de-banho, en: swimwear }
+  price_bands:
+    item: { pt: "um fato de banho ou biquíni", en: "a swimsuit or bikini" }
+    max: [35, 80, 150]
   synonyms:
     pt: [biquínis, calções de banho, fato de banho]
     en: [bikinis, swimsuits, swim shorts]
@@ -86,6 +123,9 @@
   category: moda-e-vestuario
   label: { pt: Roupa de trabalho, en: Workwear }
   slug: { pt: roupa-de-trabalho, en: workwear }
+  price_bands:
+    item: { pt: "uma peça de roupa de trabalho", en: "a workwear garment" }
+    max: [30, 70, 150]
   synonyms:
     pt: [fardas, uniformes, vestuário promocional]
     en: [uniforms, promotional clothing]
@@ -94,6 +134,9 @@
   category: moda-e-vestuario
   label: { pt: Calças, en: Trousers }
   slug: { pt: calcas, en: trousers }
+  price_bands:
+    item: { pt: "umas calças", en: "a pair of trousers" }
+    max: [40, 90, 170]
   synonyms:
     pt: [calça, chinos]
     en: [pants, chinos]
@@ -102,6 +145,9 @@
   category: moda-e-vestuario
   label: { pt: Gravatas e laços, en: Ties and bow ties }
   slug: { pt: gravatas, en: ties }
+  price_bands:
+    item: { pt: "uma gravata", en: "a tie" }
+    max: [25, 60, 120]
   synonyms:
     pt: [laços, lenços de bolso]
     en: [bow ties, pocket squares]
@@ -111,6 +157,9 @@
   category: calcado
   label: { pt: Sapatos, en: Shoes }
   slug: { pt: sapatos, en: shoes }
+  price_bands:
+    item: { pt: "um par de sapatos de pele", en: "a pair of leather shoes" }
+    max: [60, 130, 250]
   synonyms:
     pt: [sapato, mocassins, sapato clássico]
     en: [dress shoes, loafers, oxfords]
@@ -118,6 +167,9 @@
   category: calcado
   label: { pt: Sapatilhas, en: Sneakers }
   slug: { pt: sapatilhas, en: sneakers }
+  price_bands:
+    item: { pt: "um par de sapatilhas", en: "a pair of sneakers" }
+    max: [60, 120, 200]
   synonyms:
     pt: [ténis, tenis]
     en: [trainers, sneaker]
@@ -125,6 +177,9 @@
   category: calcado
   label: { pt: Botas, en: Boots }
   slug: { pt: botas, en: boots }
+  price_bands:
+    item: { pt: "um par de botas", en: "a pair of boots" }
+    max: [80, 160, 300]
   synonyms:
     pt: [botins, bota]
     en: [ankle boots, boot]
@@ -132,6 +187,9 @@
   category: calcado
   label: { pt: Sandálias, en: Sandals }
   slug: { pt: sandalias, en: sandals }
+  price_bands:
+    item: { pt: "um par de sandálias", en: "a pair of sandals" }
+    max: [40, 90, 180]
   synonyms:
     pt: [sandália]
     en: [sandal]
@@ -139,6 +197,9 @@
   category: calcado
   label: { pt: Chinelos, en: Slides and flip-flops }
   slug: { pt: chinelos, en: slides }
+  price_bands:
+    item: { pt: "um par de chinelos", en: "a pair of flip-flops or sliders" }
+    max: [20, 45, 90]
   synonyms:
     pt: [chinelas, havaianas]
     en: [flip-flops, sliders]
@@ -146,6 +207,9 @@
   category: calcado
   label: { pt: Sabrinas, en: Ballet flats }
   slug: { pt: sabrinas, en: ballet-flats }
+  price_bands:
+    item: { pt: "um par de sabrinas", en: "a pair of ballet flats" }
+    max: [40, 90, 170]
   synonyms:
     pt: [sabrina, bailarinas]
     en: [ballerinas, flats]
@@ -153,6 +217,9 @@
   category: calcado
   label: { pt: Alpercatas, en: Espadrilles }
   slug: { pt: alpercatas, en: espadrilles }
+  price_bands:
+    item: { pt: "um par de alpercatas", en: "a pair of espadrilles" }
+    max: [25, 50, 100]
   synonyms:
     pt: [alpergatas]
     en: [espadrille]
@@ -161,6 +228,9 @@
   category: calcado
   label: { pt: Pantufas, en: Slippers }
   slug: { pt: pantufas, en: slippers }
+  price_bands:
+    item: { pt: "um par de pantufas", en: "a pair of slippers" }
+    max: [20, 45, 90]
   synonyms:
     pt: [chinelos de quarto, pantufa]
     en: [house shoes, slipper]
@@ -170,6 +240,9 @@
   category: acessorios
   label: { pt: Malas, en: Bags }
   slug: { pt: malas, en: bags }
+  price_bands:
+    item: { pt: "uma mala", en: "a handbag" }
+    max: [60, 150, 350]
   synonyms:
     pt: [bolsas, mala, sacos]
     en: [handbags, totes, bag]
@@ -177,6 +250,9 @@
   category: acessorios
   label: { pt: Mochilas, en: Backpacks }
   slug: { pt: mochilas, en: backpacks }
+  price_bands:
+    item: { pt: "uma mochila", en: "a backpack" }
+    max: [40, 90, 180]
   synonyms:
     pt: [mochila]
     en: [backpack, rucksack]
@@ -184,6 +260,9 @@
   category: acessorios
   label: { pt: Carteiras e porta-cartões, en: Wallets and card holders }
   slug: { pt: carteiras, en: wallets }
+  price_bands:
+    item: { pt: "uma carteira", en: "a wallet" }
+    max: [25, 60, 130]
   synonyms:
     pt: [porta-cartões, carteira]
     en: [card holders, wallet]
@@ -191,6 +270,9 @@
   category: acessorios
   label: { pt: Óculos, en: Eyewear }
   slug: { pt: oculos, en: eyewear }
+  price_bands:
+    item: { pt: "uns óculos", en: "a pair of glasses or sunglasses" }
+    max: [60, 130, 250]
   synonyms:
     pt: [óculos de sol]
     en: [sunglasses, glasses]
@@ -198,6 +280,9 @@
   category: acessorios
   label: { pt: Fitas para óculos, en: Eyewear straps }
   slug: { pt: fitas-para-oculos, en: eyewear-straps }
+  price_bands:
+    item: { pt: "uma fita para óculos", en: "a glasses strap" }
+    max: [10, 25, 50]
   synonyms:
     pt: [cordões para óculos, correntes para óculos]
     en: [glasses chains, eyeglass cords]
@@ -207,6 +292,9 @@
   category: casa-e-decoracao
   label: { pt: Talheres, en: Cutlery }
   slug: { pt: talheres, en: cutlery }
+  price_bands:
+    item: { pt: "um faqueiro de 24 peças", en: "a 24-piece cutlery set" }
+    max: [60, 150, 400]
   synonyms:
     pt: [faqueiros, cutelaria de mesa]
     en: [flatware, silverware]
@@ -214,6 +302,9 @@
   category: casa-e-decoracao
   label: { pt: Facas, en: Knives }
   slug: { pt: facas, en: knives }
+  price_bands:
+    item: { pt: "uma faca de cozinha", en: "a kitchen knife" }
+    max: [25, 60, 150]
   synonyms:
     pt: [facas de cozinha, cutelos, faca]
     en: [kitchen knives, chef knife, knife]
@@ -221,6 +312,9 @@
   category: casa-e-decoracao
   label: { pt: Panelas e tachos, en: Cookware }
   slug: { pt: panelas, en: cookware }
+  price_bands:
+    item: { pt: "uma panela ou tacho", en: "a pot or pan" }
+    max: [35, 80, 180]
   synonyms:
     pt: [tachos, frigideiras, panelas de pressão, cataplanas]
     en: [pots, pans, pressure cookers]
@@ -228,6 +322,9 @@
   category: casa-e-decoracao
   label: { pt: Utensílios de cozinha, en: Kitchen utensils }
   slug: { pt: utensilios-de-cozinha, en: kitchen-utensils }
+  price_bands:
+    item: { pt: "um utensílio de cozinha", en: "a kitchen utensil" }
+    max: [10, 25, 60]
   synonyms:
     pt: [artigos de cozinha]
     en: [kitchenware, kitchen tools]
@@ -235,6 +332,9 @@
   category: casa-e-decoracao
   label: { pt: Velas e difusores, en: Candles and diffusers }
   slug: { pt: velas, en: candles }
+  price_bands:
+    item: { pt: "uma vela", en: "a candle" }
+    max: [10, 25, 50]
   synonyms:
     pt: [difusores, aromas, vela]
     en: [diffusers, home fragrance, candle]
@@ -243,6 +343,9 @@
   category: casa-e-decoracao
   label: { pt: Candeeiros, en: Lamps }
   slug: { pt: candeeiros, en: lamps }
+  price_bands:
+    item: { pt: "um candeeiro", en: "a lamp" }
+    max: [50, 130, 300]
   synonyms:
     pt: [iluminação, candeeiro]
     en: [lighting, lamp]
@@ -252,6 +355,9 @@
   category: texteis-lar
   label: { pt: Mantas e cobertores, en: Blankets and throws }
   slug: { pt: mantas, en: blankets }
+  price_bands:
+    item: { pt: "uma manta", en: "a blanket or throw" }
+    max: [40, 90, 180]
   synonyms:
     pt: [cobertores, plaids, manta]
     en: [throws, blanket]
@@ -259,6 +365,9 @@
   category: texteis-lar
   label: { pt: Almofadas, en: Cushions }
   slug: { pt: almofadas, en: cushions }
+  price_bands:
+    item: { pt: "uma capa de almofada", en: "a cushion cover" }
+    max: [20, 45, 90]
   synonyms:
     pt: [capas de almofada, almofada]
     en: [cushion covers, pillows]
@@ -266,6 +375,9 @@
   category: texteis-lar
   label: { pt: Toalhas, en: Towels }
   slug: { pt: toalhas, en: towels }
+  price_bands:
+    item: { pt: "uma toalha de banho", en: "a bath towel" }
+    max: [15, 35, 70]
   synonyms:
     pt: [turcos, roupa de banho, toalha]
     en: [bath towels, terry, towel]
@@ -273,6 +385,9 @@
   category: texteis-lar
   label: { pt: Tecido ao metro, en: Fabric by the metre }
   slug: { pt: tecido-ao-metro, en: fabric }
+  price_bands:
+    item: { pt: "um metro de tecido", en: "a metre of fabric" }
+    max: [10, 25, 50]
   synonyms:
     pt: [tecidos, burel]
     en: [fabrics, textiles, yardage]
@@ -281,6 +396,9 @@
   category: texteis-lar
   label: { pt: Tapetes, en: Rugs }
   slug: { pt: tapetes, en: rugs }
+  price_bands:
+    item: { pt: "um tapete médio", en: "a medium rug" }
+    max: [80, 250, 600]
   synonyms:
     pt: [carpetes, tapete]
     en: [carpets, rug]
@@ -290,6 +408,9 @@
   category: mobiliario
   label: { pt: Cadeiras e bancos, en: Chairs and stools }
   slug: { pt: cadeiras, en: chairs }
+  price_bands:
+    item: { pt: "uma cadeira", en: "a chair" }
+    max: [80, 200, 500]
   synonyms:
     pt: [bancos, cadeira]
     en: [stools, chair]
@@ -297,6 +418,9 @@
   category: mobiliario
   label: { pt: Mobiliário de escritório, en: Office furniture }
   slug: { pt: mobiliario-de-escritorio, en: office-furniture }
+  price_bands:
+    item: { pt: "uma secretária", en: "a desk" }
+    max: [200, 500, 1200]
   synonyms:
     pt: [cacifos, estantes metálicas, secretárias]
     en: [lockers, shelving, desks]
@@ -305,6 +429,9 @@
   category: mobiliario
   label: { pt: Mesas e secretárias, en: Tables and desks }
   slug: { pt: mesas, en: tables }
+  price_bands:
+    item: { pt: "uma mesa de jantar", en: "a dining table" }
+    max: [200, 600, 1500]
   synonyms:
     pt: [secretárias, mesa]
     en: [desks, table]
@@ -312,6 +439,9 @@
   category: mobiliario
   label: { pt: Estantes e aparadores, en: Shelving and sideboards }
   slug: { pt: estantes, en: shelving }
+  price_bands:
+    item: { pt: "uma estante", en: "a bookcase" }
+    max: [150, 400, 1000]
   synonyms:
     pt: [aparadores, estante, móveis de arrumação]
     en: [bookcases, sideboards, storage]
@@ -321,6 +451,9 @@
   category: ceramica-e-vidro
   label: { pt: Loiça de mesa, en: Tableware }
   slug: { pt: loica-de-mesa, en: tableware }
+  price_bands:
+    item: { pt: "um prato", en: "a dinner plate" }
+    max: [8, 20, 45]
   synonyms:
     pt: [louça, pratos, serviços de mesa, travessas]
     en: [dinnerware, plates, dishes]
@@ -328,6 +461,9 @@
   category: ceramica-e-vidro
   label: { pt: Loiça de forno, en: Ovenware }
   slug: { pt: loica-de-forno, en: ovenware }
+  price_bands:
+    item: { pt: "um tabuleiro de forno", en: "an oven dish" }
+    max: [20, 45, 90]
   synonyms:
     pt: [tabuleiros, assadeiras]
     en: [bakeware, baking dishes]
@@ -335,6 +471,9 @@
   category: ceramica-e-vidro
   label: { pt: Peças decorativas, en: Decorative pieces }
   slug: { pt: pecas-decorativas, en: decorative-pieces }
+  price_bands:
+    item: { pt: "uma peça decorativa", en: "a decorative piece" }
+    max: [20, 60, 150]
   synonyms:
     pt: [decoração, jarras, figuras]
     en: [decor, vases, ornaments]
@@ -344,6 +483,9 @@
   category: cosmetica-e-higiene
   label: { pt: Sabonetes e sabões, en: Soaps }
   slug: { pt: sabonetes, en: soaps }
+  price_bands:
+    item: { pt: "um sabonete", en: "a bar of soap" }
+    max: [4, 8, 15]
   synonyms:
     pt: [sabões, sabonete, sabão]
     en: [soap, bar soap]
@@ -351,6 +493,9 @@
   category: cosmetica-e-higiene
   label: { pt: Cremes e cuidados de corpo, en: Creams and body care }
   slug: { pt: cremes, en: creams }
+  price_bands:
+    item: { pt: "um creme de rosto ou corpo", en: "a face or body cream" }
+    max: [15, 35, 70]
   synonyms:
     pt: [hidratante, creme de rosto, cuidados de corpo, creme]
     en: [moisturiser, face cream, lotion, body care]
@@ -358,6 +503,9 @@
   category: cosmetica-e-higiene
   label: { pt: Perfumes e colónias, en: Perfumes and colognes }
   slug: { pt: perfumes, en: perfumes }
+  price_bands:
+    item: { pt: "um perfume de 50 ml", en: "a 50 ml perfume" }
+    max: [30, 70, 140]
   synonyms:
     pt: [colónias, água-de-colónia, fragrâncias]
     en: [fragrance, cologne, eau de toilette]
@@ -365,6 +513,9 @@
   category: cosmetica-e-higiene
   label: { pt: Pincéis de barba, en: Shaving brushes }
   slug: { pt: pinceis-de-barba, en: shaving-brushes }
+  price_bands:
+    item: { pt: "um pincel de barba", en: "a shaving brush" }
+    max: [20, 50, 120]
   synonyms:
     pt: [pincel de barba]
     en: [shaving brush]
@@ -372,6 +523,9 @@
   category: cosmetica-e-higiene
   label: { pt: Máquinas de barbear, en: Safety razors }
   slug: { pt: maquinas-de-barbear, en: safety-razors }
+  price_bands:
+    item: { pt: "uma máquina de barbear", en: "a safety razor" }
+    max: [25, 60, 150]
   synonyms:
     pt: [lâminas de barbear, máquina de barbear]
     en: [razors, double edge razor]
@@ -381,6 +535,9 @@
   category: bebe-e-crianca
   label: { pt: Roupa de criança, en: "Children's clothing" }
   slug: { pt: roupa-de-crianca, en: kids-clothing }
+  price_bands:
+    item: { pt: "uma peça de roupa de criança", en: "a children's garment" }
+    max: [15, 35, 70]
   synonyms:
     pt: [roupa de bebé, roupa infantil]
     en: [baby clothes, kidswear]
@@ -389,6 +546,9 @@
   category: bebe-e-crianca
   label: { pt: Brinquedos, en: Toys }
   slug: { pt: brinquedos, en: toys }
+  price_bands:
+    item: { pt: "um brinquedo", en: "a toy" }
+    max: [15, 40, 90]
   synonyms:
     pt: [brinquedo, jogos]
     en: [toy, games]
@@ -398,6 +558,9 @@
   category: desporto-e-outdoor
   label: { pt: Polares, en: Fleeces }
   slug: { pt: polares, en: fleeces }
+  price_bands:
+    item: { pt: "um casaco polar", en: "a fleece jacket" }
+    max: [40, 90, 180]
   synonyms:
     pt: [malhas polares, polar]
     en: [fleece, fleece jackets]
@@ -406,6 +569,9 @@
   category: desporto-e-outdoor
   label: { pt: Pranchas de surf, en: Surfboards }
   slug: { pt: pranchas-de-surf, en: surfboards }
+  price_bands:
+    item: { pt: "uma prancha de surf", en: "a surfboard" }
+    max: [300, 550, 850]
   synonyms:
     pt: [prancha]
     en: [surfboard]
@@ -415,6 +581,9 @@
   category: papelaria-e-livros
   label: { pt: Cadernos, en: Notebooks }
   slug: { pt: cadernos, en: notebooks }
+  price_bands:
+    item: { pt: "um caderno", en: "a notebook" }
+    max: [8, 18, 35]
   synonyms:
     pt: [caderno, blocos]
     en: [notebook, journals]
@@ -422,6 +591,9 @@
   category: papelaria-e-livros
   label: { pt: Agendas, en: Planners }
   slug: { pt: agendas, en: planners }
+  price_bands:
+    item: { pt: "uma agenda", en: "a planner" }
+    max: [12, 25, 45]
   synonyms:
     pt: [agenda, calendários]
     en: [diaries, planner]
@@ -429,6 +601,9 @@
   category: papelaria-e-livros
   label: { pt: Lápis, en: Pencils }
   slug: { pt: lapis, en: pencils }
+  price_bands:
+    item: { pt: "uma caixa de 12 lápis", en: "a box of 12 pencils" }
+    max: [5, 12, 25]
   synonyms:
     pt: [grafites, lápis de cor]
     en: [graphite, colouring pencils]
@@ -436,6 +611,9 @@
   category: papelaria-e-livros
   label: { pt: Materiais de desenho, en: Art supplies }
   slug: { pt: materiais-de-desenho, en: art-supplies }
+  price_bands:
+    item: { pt: "um material de desenho", en: "an art supply" }
+    max: [8, 20, 50]
   synonyms:
     pt: [pastéis, material de desenho]
     en: [pastels, drawing supplies]
@@ -445,6 +623,9 @@
   category: tecnologia
   label: { pt: Bicicletas, en: Bicycles }
   slug: { pt: bicicletas, en: bicycles }
+  price_bands:
+    item: { pt: "uma bicicleta", en: "a bicycle" }
+    max: [400, 1000, 2500]
   synonyms:
     pt: [bicicletas elétricas, e-bikes, bicicleta]
     en: [e-bikes, electric bikes, bikes]
@@ -452,6 +633,9 @@
   category: tecnologia
   label: { pt: Eletrodomésticos, en: Home appliances }
   slug: { pt: eletrodomesticos, en: home-appliances }
+  price_bands:
+    item: { pt: "um pequeno eletrodoméstico", en: "a small appliance" }
+    max: [50, 150, 400]
   synonyms:
     pt: [frigoríficos, máquinas de lavar, fogões]
     en: [fridges, washing machines, appliances]
@@ -461,6 +645,9 @@
   category: joalharia
   label: { pt: Joias, en: Jewellery }
   slug: { pt: joias, en: jewellery }
+  price_bands:
+    item: { pt: "uma joia", en: "a piece of jewellery" }
+    max: [30, 80, 250]
   synonyms:
     pt: [anéis, colares, brincos, pulseiras]
     en: [rings, necklaces, earrings, bracelets]
@@ -470,6 +657,9 @@
   category: bebidas
   label: { pt: Cerveja, en: Beer }
   slug: { pt: cerveja, en: beer }
+  price_bands:
+    item: { pt: "uma garrafa de cerveja de 33 cl", en: "a 33 cl bottle of beer" }
+    max: [2, 3.5, 6]
   synonyms:
     pt: [cerveja artesanal, IPA, lager]
     en: [craft beer, ale, lager]
@@ -477,6 +667,9 @@
   category: bebidas
   label: { pt: Licores e destilados, en: Liqueurs and spirits }
   slug: { pt: licores, en: spirits }
+  price_bands:
+    item: { pt: "uma garrafa de licor ou destilado de 70 cl", en: "a 70 cl bottle of liqueur or spirit" }
+    max: [15, 25, 45]
   synonyms:
     pt: [gin, licor, limoncello, aguardente]
     en: [gin, liqueur, limoncello]
@@ -484,6 +677,9 @@
   category: bebidas
   label: { pt: Sumos e néctares, en: Juices }
   slug: { pt: sumos, en: juices }
+  price_bands:
+    item: { pt: "um litro de sumo", en: "a litre of juice" }
+    max: [1.5, 3, 5]
   synonyms:
     pt: [néctares, sumo]
     en: [nectar, juice]
@@ -493,6 +689,9 @@
   category: alimentacao
   label: { pt: Chocolate, en: Chocolate }
   slug: { pt: chocolate, en: chocolate }
+  price_bands:
+    item: { pt: "uma tablete de chocolate de 100 g", en: "a 100 g chocolate bar" }
+    max: [2, 4, 7]
   synonyms:
     pt: [bombons, tabletes]
     en: [bonbons, chocolate bars]
@@ -500,6 +699,9 @@
   category: alimentacao
   label: { pt: Mel, en: Honey }
   slug: { pt: mel, en: honey }
+  price_bands:
+    item: { pt: "um frasco de mel de 500 g", en: "a 500 g jar of honey" }
+    max: [6, 10, 16]
   synonyms:
     pt: [mel biológico]
     en: [raw honey]
@@ -507,6 +709,9 @@
   category: alimentacao
   label: { pt: Azeite, en: Olive oil }
   slug: { pt: azeite, en: olive-oil }
+  price_bands:
+    item: { pt: "uma garrafa de azeite de 750 ml", en: "a 750 ml bottle of olive oil" }
+    max: [8, 15, 30]
   synonyms:
     pt: [azeite virgem extra]
     en: [extra virgin olive oil]
@@ -514,6 +719,9 @@
   category: alimentacao
   label: { pt: Snacks e granola, en: Snacks and granola }
   slug: { pt: snacks, en: snacks }
+  price_bands:
+    item: { pt: "um pacote de snacks", en: "a pack of snacks" }
+    max: [2, 4, 7]
   synonyms:
     pt: [granola, barras, chips, frutos secos]
     en: [granola, bars, chips, nuts]

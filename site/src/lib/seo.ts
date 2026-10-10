@@ -126,6 +126,19 @@ export function socialLinks(brand: Brand): { network: string; handle: string; ur
 /** The brand's share image, drawn at build time by `pages/og/[lang]/[slug].png.ts`. */
 export const brandOgImagePath = (lang: Lang, slug: string): string => `/og/${lang}/${slug}.png`;
 
+type PhysicalStore = NonNullable<Brand['where_to_buy']>['physical_stores'][number];
+
+/**
+ * A map search for a public shop, built from its address rather than stored: saved
+ * place links break and carry tracking parameters. Only shops with an address get
+ * one; a name and a city alone often point at the wrong place.
+ */
+export function storeMapUrl(store: PhysicalStore): string | undefined {
+  if (!store.address) return undefined;
+  const query = [store.name, store.address, store.city, 'Portugal'].join(', ');
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
 export function brandJsonLd(
   brand: Brand,
   lang: Lang,
@@ -138,6 +151,19 @@ export function brandJsonLd(
   },
 ): JsonLdNode {
   const sameAs = socialLinks(brand).map((link) => link.url);
+  const stores = (brand.where_to_buy?.physical_stores ?? [])
+    .filter((store) => store.address)
+    .map((store) => ({
+      '@type': 'Store',
+      name: store.name,
+      ...(store.url ? { url: store.url } : {}),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: store.address,
+        addressLocality: store.city,
+        addressCountry: 'PT',
+      },
+    }));
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -156,6 +182,7 @@ export function brandJsonLd(
           },
         }
       : {}),
+    ...(stores.length > 0 ? { location: stores } : {}),
     ...(context.category
       ? { knowsAbout: localized(context.subcategory?.label ?? context.category.label, lang) }
       : {}),

@@ -100,6 +100,15 @@ export function localized(
 
 const DATE_LOCALE: Record<Lang, string> = { pt: 'pt-PT', en: 'en-GB' };
 
+/** "35 €" / "€35", whole euros unless the price has cents. */
+export function formatPrice(eur: number, lang: Lang): string {
+  return new Intl.NumberFormat(DATE_LOCALE[lang], {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: Number.isInteger(eur) ? 0 : 2,
+  }).format(eur);
+}
+
 export function formatDate(date: string, lang: Lang): string {
   return new Intl.DateTimeFormat(DATE_LOCALE[lang], {
     year: 'numeric',

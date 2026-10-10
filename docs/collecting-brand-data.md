@@ -177,16 +177,37 @@ people working from home are not pinpointed.
 
 | Field | Required | Rules |
 |---|---|---|
-| `price_range` | no | Integer 1–4, read off `price_levels` **for that category** |
+| `price_range` | no | Integer 1–4, from the brand's typical price against its main product's `price_bands` |
+| `typical_price` | no | `product`, `eur`, `checked`: median regular price of the main product, written by `scripts/price-suggest.ts` |
 | `where_to_buy.online_store` | no | HTTPS URL of the brand's own shop |
 | `where_to_buy.marketplaces` | no | Other sites that sell it officially |
-| `where_to_buy.physical_stores` | no | `name`, `city`, optional `url`: the brand's own stores or named stockists |
+| `where_to_buy.physical_stores` | no | `name`, `city`, optional `address` and `url`: the brand's own stores or named stockists |
 
-Price is relative to the category, not absolute: €120 is level 2 in footwear and
-level 4 in cosmetics. Look up the thresholds in the category's `price_levels`
-and base the level on the brand's **typical** product, not its cheapest keyring
-or its most expensive limited edition. If the range is wide or prices are not
-public, leave the field out.
+Price is relative to the product, not absolute: €60 is cheap for a coat and dear
+for a T-shirt. Every product type in `data/taxonomy/products.yaml` has
+`price_bands`: what a reference item (a T-shirt, a pair of leather shoes, a 750 ml
+bottle of olive oil) costs at each level, set against the wider market rather than
+this catalogue, so €€ is a high-street price and €€€€ a luxury one.
+
+1. Sample three to five **regular** prices of the brand's main product type (the
+   first entry in `products`) on its own shop — no sale prices, no gift sets, not
+   the cheapest keyring or the limited edition. Add them to
+   `docs/leads/prices.csv` (`slug,product,eur,item,url,checked`).
+2. `pnpm price-suggest` takes the median of the latest check and reads the level
+   off the bands.
+3. A maintainer approves: `node scripts/price-suggest.ts --apply <slug> …` writes
+   `price_range` and `typical_price`, and the brand page shows "€€ · a T-shirt
+   costs around €35".
+
+If prices are not public, leave both fields out. The category's `price_levels`
+remain only as the label for brands rated before the bands existed.
+
+`address` (street and number, postcode if shown) turns into a "view on map" link and
+a `Store` in the page's structured data. Fill it only for a **shop open to the
+public that the brand itself lists** — a store, a showroom with opening hours, a
+named stockist. Never a workshop, a factory or a registered office: many producers
+work from home, and the location rule in §3.5 stops at the municipality for them.
+Store the address, not a Google Maps link; the site builds the link.
 
 ### 3.7 Social handles
 

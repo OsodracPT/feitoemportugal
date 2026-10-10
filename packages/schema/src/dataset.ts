@@ -1,5 +1,5 @@
 import type { Brand } from './brand.ts';
-import type { Taxonomy } from './taxonomy.ts';
+import { priceLevel, type Taxonomy } from './taxonomy.ts';
 
 export type IssueLevel = 'error' | 'warning';
 
@@ -107,6 +107,22 @@ export function checkBrandReferences(brand: Brand, taxonomy: Taxonomy, file: str
     if (!level) {
       issues.push(
         error(file, 'price_range', `category "${category.id}" has no price level ${brand.price_range}`),
+      );
+    }
+  }
+
+  if (brand.typical_price) {
+    const { product: id, eur } = brand.typical_price;
+    const product = taxonomy.products.find((p) => p.id === id);
+    if (!brand.products.includes(id)) {
+      issues.push(error(file, 'typical_price.product', `"${id}" is not one of the brand's products`));
+    } else if (product?.price_bands && brand.price_range && priceLevel(product.price_bands, eur) !== brand.price_range) {
+      issues.push(
+        warning(
+          file,
+          'price_range',
+          `${eur} € puts "${id}" at level ${priceLevel(product.price_bands, eur)}, not ${brand.price_range}`,
+        ),
       );
     }
   }

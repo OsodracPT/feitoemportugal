@@ -13,7 +13,9 @@
     "preview": "pnpm --filter site preview",
     "validate": "node scripts/validate-data.ts",
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "research-due": "node scripts/research-due.ts",
+    "price-suggest": "node scripts/price-suggest.ts"
   },
   "devDependencies": {
     "@fep/schema": "workspace:*"

@@ -24,7 +24,9 @@ when everything builds.
 - **Only maintainers set `verification`.** An agent or a contributor never flips
   `verified: true`. No brand is verified yet.
 - **No personal data, no exact coordinates.** Location stops at the municipality;
-  maps use the municipality centroid. Many producers work from home.
+  maps use the municipality centroid. Many producers work from home. A street
+  address is allowed only on a `physical_stores` entry for a shop open to the public
+  that the brand itself lists; the site turns it into a map link.
 - **Images are the brands', self-hosted and sourced.** A logo comes from the
   brand's own site; a photo only from a press kit or with the brand's permission —
   never a product shot lifted from a shop page. Add them only through
@@ -170,9 +172,11 @@ district outlines, the district map as a listing filter, region pages
 second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
 `evidence-sources-2026-10.md`) added 123 drafts; 93 with a production sentence were
 published on 2026-10-08 (plus `apple-of-eden` once the foreign-brand rule was
-settled), so 184 brands are live, and 29 drafts with only a label, a partial claim
-or an open point still await a maintainer. Only 74 of the 184 have a
-known production location, so the map covers about 40 % of the catalogue.
+settled). On 2026-10-09 the maintainer published 25 more after a second research
+pass (`.claude/agents/brand-researcher.md`), so 210 brands are live. 4 drafts remain:
+`rutz`, `vaddia` and `nyos` (only a label) and `campobello` (sells only to
+retailers). Only 85 of the 210 have a known production location, so the map covers
+about 40 % of the catalogue.
 
 Contributions: bilingual issue forms (suggest, correct, request verification),
 `CONTRIBUTING.md`, a PR template, and `issue-to-pr.yml`. The `aprovado` label on a
@@ -185,6 +189,12 @@ messages for brands whose site gives no production claim.
 The static site is deployed: every push to `main` goes live at feitoemportugal.org
 through `deploy.yml`. The README is written for people running the code;
 `deploy/README.md` covers hosting.
+
+Research and prices: `.claude/agents/brand-researcher.md` researches brands (read-only;
+the main session writes its findings), `pnpm research-due` lists who is due for a
+full or quick pass from `docs/leads/research-log.csv`, and `pnpm price-suggest` turns
+the prices sampled in `docs/leads/prices.csv` into a suggested € level against each
+product type's `price_bands`. A level is applied only when a maintainer approves.
 
 `/selo` (`/en/badge`) explains the verified badge and lists the brands that have
 it (none yet); the verified pill on a brand page links there.

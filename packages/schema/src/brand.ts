@@ -34,9 +34,12 @@ const locationSchema = z.object({
   municipality: idSchema.optional(),
 });
 
+// `address` is for a shop open to the public that the brand lists itself — never a
+// workshop or production address, which may be someone's home.
 const physicalStoreSchema = z.object({
   name: z.string().min(1).max(120),
   city: z.string().min(1).max(120),
+  address: z.string().min(1).max(200).optional(),
   url: optionalHttpsUrlSchema,
 });
 
@@ -88,6 +91,18 @@ const verificationSchema = z
     path: ['method'],
   });
 
+/**
+ * The median regular price of the brand's main product type, from its own shop,
+ * on the date it was checked. It is what `price_range` is judged on, and the
+ * brand page shows it next to the € symbols. The prices behind it are logged in
+ * docs/leads/prices.csv by scripts/price-suggest.ts.
+ */
+const typicalPriceSchema = z.object({
+  product: idSchema,
+  eur: z.number().positive().max(100_000),
+  checked: isoDateSchema,
+});
+
 const metaSchema = z.object({
   added: isoDateSchema,
   updated: isoDateSchema,
@@ -108,6 +123,7 @@ export const brandSchema = z.object({
   production: productionSchema,
   location: locationSchema.optional(),
   price_range: z.int().min(1).max(4).optional(),
+  typical_price: typicalPriceSchema.optional(),
   where_to_buy: whereToBuySchema.optional(),
   social: socialSchema.optional(),
   media: mediaSchema.optional(),

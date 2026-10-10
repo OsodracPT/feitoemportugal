@@ -34,6 +34,7 @@ import {
   brandTitle,
   breadcrumbJsonLd,
   socialLinks,
+  storeMapUrl,
   type Crumb,
 } from '~/lib/seo.ts';
 
@@ -97,7 +98,12 @@ const shopRows = [
     ? [{ href: stores.online_store, title: t(lang, 'brand.onlineStore'), detail: host(stores.online_store) }]
     : []),
   ...(stores?.marketplaces ?? []).map((url) => ({ href: url, title: host(url), detail: t(lang, 'brand.marketplaces') })),
-  ...(stores?.physical_stores ?? []).map((store) => ({ href: store.url, title: store.name, detail: store.city })),
+  ...(stores?.physical_stores ?? []).map((store) => ({
+    href: store.url,
+    title: store.name,
+    detail: store.address ? `${store.address}, ${store.city}` : store.city,
+    map: storeMapUrl(store),
+  })),
 ];
 const jsonUrl = `/api/v1/brands/${brand.slug}.json`;
 const pageUrl = new URL(paths.brand(lang, brand.slug), SITE.origin).href;
@@ -174,7 +180,7 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
               brand.price_range && (
                 <>
                   {' · '}
-                  <PriceRange lang={lang} value={brand.price_range} category={category} />
+                  <PriceRange lang={lang} value={brand.price_range} category={category} typical={brand.typical_price} />
                 </>
               )
             }
@@ -409,6 +415,11 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
                           <span class="row__detail">{row.detail}</span>
                         </span>
                       </span>
+                    )}
+                    {'map' in row && row.map && (
+                      <a class="row__map" href={row.map} rel="nofollow noopener">
+                        {t(lang, 'brand.viewOnMap')} <span aria-hidden="true">↗</span>
+                      </a>
                     )}
                   </li>
                 ))}
@@ -952,6 +963,13 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
   .row__arrow {
     color: var(--fep-accent);
     font-size: 1.125rem;
+  }
+
+  /* A sibling of the row, not inside it: the row is already a link. */
+  .row__map {
+    display: inline-block;
+    margin: 2px 0 0 14px;
+    font-size: var(--fep-text-meta);
   }
 
   .plain {

@@ -49,12 +49,30 @@ export const tagSchema = z.object({
 
 export const tagsFileSchema = z.array(tagSchema).min(1);
 
+/**
+ * What a reference item of this type costs at each price level, so a brand's
+ * € rating compares like with like (a pan with pans, not with blankets). `max`
+ * holds the upper bounds of levels 1, 2 and 3 in euros; level 4 is above the
+ * last. The bands follow the wider market, not this catalogue, which leans
+ * premium: €€ is a high-street price, €€€€ a luxury one.
+ */
+const priceBandsSchema = z
+  .object({
+    item: localizedSchema,
+    max: z.tuple([z.number().positive(), z.number().positive(), z.number().positive()]),
+  })
+  .refine(({ max: [a, b, c] }) => a < b && b < c, {
+    message: 'price_bands.max must increase',
+    path: ['max'],
+  });
+
 /** A kind of product (azeite, meias, talheres), grouped under one category. */
 export const productSchema = z.object({
   id: idSchema,
   category: idSchema,
   label: localizedSchema,
   slug: localizedSchema,
+  price_bands: priceBandsSchema.optional(),
   synonyms: z
     .object({
       pt: z.array(z.string().min(1)).default([]),
@@ -119,4 +137,12 @@ export interface Taxonomy {
   products: Product[];
   regions: Region[];
   sustainability: SustainabilityFile;
+}
+
+export type PriceBands = z.infer<typeof priceBandsSchema>;
+
+/** The € level (1-4) of a price against a product type's bands. */
+export function priceLevel(bands: PriceBands, eur: number): 1 | 2 | 3 | 4 {
+  const index = bands.max.findIndex((max) => eur <= max);
+  return (index === -1 ? 4 : index + 1) as 1 | 2 | 3 | 4;
 }
