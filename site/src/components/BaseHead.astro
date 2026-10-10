@@ -59,8 +59,14 @@ const alternateLinks = hreflangLinks(alternates);
 
 <!-- Blocking on purpose: applies a saved light/dark choice before the first paint. -->
 <script is:inline src="/theme-init.js"></script>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<!--
+  Browsers keep favicons in their own store, keyed by URL, and ignore Cache-Control:
+  bump ?v= whenever an icon changes or returning visitors keep the old one. The .ico
+  serves Safari (no SVG favicons) and the implicit /favicon.ico request.
+-->
+<link rel="icon" href="/favicon.ico?v=2" sizes="32x32" />
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
 <link rel="preload" href="/fonts/Gloock-Latin.woff2" as="font" type="font/woff2" crossorigin />
 <!-- --fep-bg in each theme (styles/tokens.css). -->
 <meta name="theme-color" content="#F6F4EE" media="(prefers-color-scheme: light)" />
