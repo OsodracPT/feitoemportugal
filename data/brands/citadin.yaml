@@ -24,7 +24,6 @@ where_to_buy:
     - name: Citadin
       city: Lisboa
       address: Rua Duques de Bragança 5 B
-      url: https://citadinshoes.com/pages/contact-us
 social:
   instagram: citadinshoes
 media:
