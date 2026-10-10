@@ -1,13 +1,13 @@
 slug: victoria-handmade
-status: draft
+status: published
 name: Victoria Handmade
 description:
   pt: >-
-    Cestos e malas em vime e palha tecidos à mão em Portugal com técnicas passadas de
-    geração em geração na família.
+    Cestos e malas de junco tecidos à mão, com pegas de vime e pele, num atelier familiar
+    em Porto de Mós que trabalha com as mesmas técnicas há gerações.
   en: >-
-    Wicker baskets and straw bags woven by hand in Portugal, with techniques passed down
-    through the family.
+    Reed baskets and bags woven by hand, with wicker and leather handles, in a family
+    atelier in Porto de Mós that has kept the same techniques for generations.
 website: https://www.victoria-handmade.com
 category: acessorios
 subcategory: malas-e-mochilas
@@ -15,6 +15,9 @@ tags: [fibras-vegetais, feito-a-mao, empresa-familiar]
 products: [malas]
 production:
   scope: total
+location:
+  district: leiria
+  municipality: porto-de-mos
 where_to_buy:
   online_store: https://www.victoria-handmade.com
 social:

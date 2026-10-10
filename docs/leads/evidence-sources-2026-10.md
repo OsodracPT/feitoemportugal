@@ -268,3 +268,81 @@ B2B-only shop for `campobello`). `apple-of-eden` was published later the same da
 the foreign-brand question was settled; the other 29 remain:
 
 `almande`, `baby-gi`, `bamandboo`, `bat-eye`, `campobello`, `cavemen`, `dam`, `dr-kid`, `hands-on-earth`, `helena-mar`, `jj-heitor`, `lachoix`, `limontejo`, `marita-moreno`, `musa-natural-cosmetics`, `naturapura`, `nyos`, `pinknounou`, `piupiuchick`, `portdance`, `renova`, `rodilha`, `rutz`, `shoevenir`, `sugo-cork-rugs`, `vaddia`, `victoria-handmade`, `wetheknot`, `zas-tras`.
+
+## Publishing, 2026-10-09
+
+The maintainer reviewed the 29 and published 13, still `verified: false`:
+
+- `parcial`, published as such: `almande`, `piupiuchick`, `renova`, and `wetheknot`,
+  moved from `total` to `parcial` because its about page says "mainly produced in
+  Portugal" while the home page says "exclusively".
+- A sentence that the products are produced or made in Portugal, without a place:
+  `baby-gi`, `cavemen`, `hands-on-earth`, `jj-heitor`, `limontejo`, `naturapura`,
+  `rodilha`, `shoevenir`, `zas-tras`.
+
+Held: `campobello`, because its only shop sells to retailers and the catalogue lists
+brands a reader can buy from. Left for later: the 15 whose evidence is a bare label or
+slogan — `bamandboo`, `bat-eye`, `dam`, `dr-kid`, `helena-mar`, `lachoix`,
+`marita-moreno`, `musa-natural-cosmetics`, `nyos`, `pinknounou`, `portdance`, `rutz`,
+`sugo-cork-rugs`, `vaddia`, `victoria-handmade`.
+
+### Maintainer notes, 2026-10-09
+
+What the maintainer added after publishing, and what it changed:
+
+- **`rodilha`**: produced in Leiria (maintainer). Location set to Leiria / `leiria`.
+- **`shoevenir`**: produced in Póvoa de Varzim (maintainer). Location set to Porto /
+  `povoa-de-varzim`.
+- **`cavemen`**: NiT, "Cavemen: o homem contemporâneo e elegante é a imagem da nova
+  loja no Porto" — the brand aims to be "100 por cento feita em Portugal"; "a produção
+  concentra-se no norte do País". No municipality named, so no location; a small share
+  of the sewing is imported, which stays within `total` for now.
+  https://www.nit.pt/compras/lojas-e-marcas/cavemen-o-homem-contemporaneo-e-elegante-e-imagem-da-nova-loja-porto
+- **`hands-on-earth`**: the site says "100% Biológico" and that its products are
+  certified by an independent body; the EU organic logo is on the product images.
+  Already in the description; the taxonomy has no food-organic certification to set.
+- **`limontejo`**: made in the Alentejo, from the family's orchard ("Monte"), but no
+  municipality or district is public, and the Alentejo spans three districts. No
+  location until one is.
+- **`zas-tras`**: registered office in Oeiras (maintainer). That is the office, not the
+  workshop, so it is not recorded as the production location.
+
+### Second look at the label-only drafts, 2026-10-09
+
+The 15 drafts with a bare label were researched again (`.claude/agents/brand-researcher.md`:
+the brand's about, FAQ and legal pages, Portuguese press, registries only to tell an office
+from a workshop). The maintainer published 12; quotes are copied as found.
+
+| Slug | Evidence | Source | Location |
+|---|---|---|---|
+| `sugo-cork-rugs` | "Factory, Office & Showroom Parque Industrial Lusopark … Santa Maria da Feira"; "Os teares mecânicos utilizados no nosso processo produtivo" | https://sugocorkrugs.com/contactos.php, https://sugocorkrugs.com/sugocork.php | santa-maria-da-feira (brand's factory) |
+| `victoria-handmade` | "we have our atelier and showroom where you can get a close-up view of the production of our bags"; atelier in Corredoura, Porto de Mós | https://www.victoria-handmade.com/faq | porto-de-mos (brand's atelier) |
+| `pinknounou` | "alguns são peças únicas feitas no meu estúdio em Lisboa" | https://www.pinknounou.com/perguntas-frequentes/ | lisboa (brand's studio) |
+| `portdance` | "We design and manufacture high-quality ballroom dance shoes … all proudly made in Portugal" | https://portdance.pt/about-us/ | — (Gaia address is the company's, not a workshop) |
+| `lachoix` | "All production takes place locally"; "We produce in the north of Portugal." | https://www.lachoix.com/pages/responsibility, https://www.lachoix.com/pages/faqs | — |
+| `marita-moreno` | "the use of national raw materials, production in Portugal"; "with a small family factory" | https://maritamoreno.com/pages/about-us | — (Lourosa is the registered office) |
+| `dam` | "The production, assembly and packing of our products are carried out in Portugal" | https://damportugal.com/sustainability/ | — (São João da Madeira is office and showroom) |
+| `bat-eye` | "Criando tudo internamente, orgulhamo-nos de trabalhar com artesãos portugueses" | https://www.bateye.com/pt/production | — (registry lead: Bat Eye Production, Lda, Vila Nova de Gaia) |
+| `dr-kid` | "Integralmente desenhada e produzida em Portugal" | https://www.dr-kid.com/pt/marca | marco-de-canaveses, **inferred**: owned by INARBEL, knitwear producer at Vila Boa de Quires (https://www.inarbel.pt) |
+| `helena-mar` | "Our shoes are made in Portugal"; "born within the PC Footwear factory" (World Footwear) | https://helenamar.com/pages/about-us | oliveira-de-azemeis, **inferred**: the brand's address is PC Footwear's factory address |
+| `musa-natural-cosmetics` | "Os nossos produtos são produzidos por nós no interior do país"; made "num espaço de fabrico adequado mediante licenciamento industrial" | https://musanaturalcosmetics.com/sobre-nos/ | fundao, **inferred**: after-sales address labelled "LAB" in Fundão (terms page) |
+| `bamandboo` | FAQ, "Are your products made in the Azores?": formulation in the Azores, "we also work with a few other local portuguese producers" → `parcial` | https://thebamandboo.com/pages/frequently-asked-questions | — (formulation lab on São Miguel) |
+
+The three inferred locations were accepted by the maintainer; correct them if the brand
+says otherwise. Corrections made on the way: `sugo-cork-rugs` is woven on looms, not by
+hand; `victoria-handmade` works mainly in reed (junco); `helena-mar` lost `malas`, since
+no source gives the bags an origin; `bamandboo` lost "algas", which are not among its
+Azorean ingredients.
+
+Still drafts: `rutz` (the only production claim is a 2012 APICCAPS article, "entirely
+produced around São João da Madeira", and rutz.pt now also sells other brands),
+`vaddia` ("handcrafted in Portugal … small family ateliers", nothing more), `nyos`
+("crafted in Portugal", no workshop; the site has not changed since 2023), and
+`campobello`.
+
+**`bamandboo`, later the same day:** the maintainer states the products are made in
+Lagoa, São Miguel (Açores). Scope back to `total` and location `acores/lagoa-acores`,
+on the maintainer's knowledge; the brand's pages do not name the town. Its FAQ's "other
+local portuguese producers" are in Portugal too, so they do not make it `parcial`. The
+about page also claims "Somos neutros em carbono" (https://thebamandboo.com/pt/pages/about-us);
+the sustainability taxonomy has no entry for that, so nothing was set.

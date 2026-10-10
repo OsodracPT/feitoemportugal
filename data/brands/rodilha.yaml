@@ -1,5 +1,5 @@
 slug: rodilha
-status: draft
+status: published
 name: Rodilha
 description:
   pt: >-
@@ -13,6 +13,9 @@ subcategory: chapeus
 products: [meias]
 production:
   scope: total
+location:
+  district: leiria
+  municipality: leiria
 where_to_buy:
   online_store: https://rodilha.com
 media:

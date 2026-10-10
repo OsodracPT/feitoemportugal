@@ -1,5 +1,5 @@
 slug: shoevenir
-status: draft
+status: published
 name: Shoevenir
 description:
   pt: >-
@@ -15,6 +15,9 @@ tags: [vegano]
 products: [sandalias, t-shirts]
 production:
   scope: total
+location:
+  district: porto
+  municipality: povoa-de-varzim
 where_to_buy:
   online_store: https://www.shoevenirworld.com
 social:

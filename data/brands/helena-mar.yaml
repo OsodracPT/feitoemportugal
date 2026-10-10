@@ -1,18 +1,21 @@
 slug: helena-mar
-status: draft
+status: published
 name: Helena Mar
 description:
   pt: >-
-    Calçado e malas de mulher de linhas discretas, feitos à mão em Portugal.
+    Calçado de mulher de linhas discretas, feito à mão em Portugal.
   en: >-
-    Understated women's shoes and bags, handmade in Portugal.
+    Understated women's shoes, handmade in Portugal.
 website: https://helenamar.com
 category: calcado
 subcategory: sapatos-mulher
 tags: [pele]
-products: [sapatos, malas]
+products: [sapatos]
 production:
   scope: total
+location:
+  district: aveiro
+  municipality: oliveira-de-azemeis
 where_to_buy:
   online_store: https://helenamar.com
 social:
@@ -21,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

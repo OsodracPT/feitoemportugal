@@ -1,19 +1,26 @@
 slug: wetheknot
-status: draft
+status: published
 name: wetheknot
 description:
   pt: >-
-    Marca de Lisboa de roupa e acessórios unissexo, feitos em Portugal com algodão
-    orgânico e tecidos reciclados.
+    Marca de Lisboa de roupa e acessórios unissexo, feitos sobretudo em Portugal com
+    algodão orgânico e tecidos reciclados.
   en: >-
-    Lisbon label for unisex clothing and accessories, made in Portugal from organic
-    cotton and recycled fabrics.
+    Lisbon label for unisex clothing and accessories, made mostly in Portugal from
+    organic cotton and recycled fabrics.
 website: https://www.wetheknot.com
 category: moda-e-vestuario
 tags: [unissexo, algodao]
 products: [t-shirts, camisolas, camisas, casacos, calcas]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A página inicial diz que as coleções são feitas exclusivamente em Portugal, a página
+      sobre a marca diz que são produzidas sobretudo cá; fica a versão mais prudente.
+    en: >-
+      The home page says the collections are made exclusively in Portugal, the about page
+      that they are mainly produced here; the more cautious reading stands.
 where_to_buy:
   online_store: https://www.wetheknot.com
 social:
@@ -22,5 +29,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-08
+  updated: 2026-10-09
   source: import

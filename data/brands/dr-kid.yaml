@@ -1,5 +1,5 @@
 slug: dr-kid
-status: draft
+status: published
 name: Dr. Kid
 description:
   pt: >-
@@ -12,6 +12,9 @@ subcategory: roupa-crianca
 products: [roupa-de-crianca]
 production:
   scope: total
+location:
+  district: porto
+  municipality: marco-de-canaveses
 where_to_buy:
   online_store: https://www.dr-kid.com
 social:

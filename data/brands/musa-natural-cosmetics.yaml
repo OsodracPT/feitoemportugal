@@ -1,5 +1,5 @@
 slug: musa-natural-cosmetics
-status: draft
+status: published
 name: Musa Natural Cosmetics
 description:
   pt: >-
@@ -14,6 +14,9 @@ subcategory: cabelo
 products: [sabonetes, cremes]
 production:
   scope: total
+location:
+  district: castelo-branco
+  municipality: fundao
 where_to_buy:
   online_store: https://musanaturalcosmetics.com
 social:

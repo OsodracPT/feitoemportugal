@@ -1,5 +1,5 @@
 slug: pinknounou
-status: draft
+status: published
 name: PinkNounou
 description:
   pt: >-
@@ -15,6 +15,9 @@ tags: [feito-a-mao]
 products: [brinquedos, almofadas]
 production:
   scope: total
+location:
+  district: lisboa
+  municipality: lisboa
 where_to_buy:
   online_store: https://www.pinknounou.com
 social:
