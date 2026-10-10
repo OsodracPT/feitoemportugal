@@ -17,6 +17,10 @@ production:
   scope: total
 where_to_buy:
   online_store: https://wewood.eu
+  physical_stores:
+    - name: Wewood Lisboa
+      city: Lisboa
+      address: Rua Rosa Araújo 31, 1250-194 Lisboa
 social:
   instagram: wewoodportuguesejoinery
 media:
@@ -25,5 +29,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

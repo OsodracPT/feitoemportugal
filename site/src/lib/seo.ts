@@ -129,13 +129,23 @@ export const brandOgImagePath = (lang: Lang, slug: string): string => `/og/${lan
 type PhysicalStore = NonNullable<Brand['where_to_buy']>['physical_stores'][number];
 
 /**
+ * The shop's address with its city, written once: brands often give the address with
+ * postcode and town ("…, 1200-205 Lisboa"), and `city` would repeat it.
+ */
+export function storeAddress(store: PhysicalStore): string | undefined {
+  if (!store.address) return undefined;
+  return store.address.includes(store.city) ? store.address : `${store.address}, ${store.city}`;
+}
+
+/**
  * A map search for a public shop, built from its address rather than stored: saved
  * place links break and carry tracking parameters. Only shops with an address get
  * one; a name and a city alone often point at the wrong place.
  */
 export function storeMapUrl(store: PhysicalStore): string | undefined {
-  if (!store.address) return undefined;
-  const query = [store.name, store.address, store.city, 'Portugal'].join(', ');
+  const address = storeAddress(store);
+  if (!address) return undefined;
+  const query = [store.name, address, 'Portugal'].join(', ');
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 

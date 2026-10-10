@@ -34,6 +34,7 @@ import {
   brandTitle,
   breadcrumbJsonLd,
   socialLinks,
+  storeAddress,
   storeMapUrl,
   type Crumb,
 } from '~/lib/seo.ts';
@@ -105,7 +106,7 @@ const shopRows = [
     return {
       href: map ?? store.url,
       title: store.name,
-      detail: map ? `${store.address}, ${store.city} · ${t(lang, 'brand.viewOnMap')}` : store.city,
+      detail: map ? `${storeAddress(store)} · ${t(lang, 'brand.viewOnMap')}` : store.city,
     };
   }),
 ];

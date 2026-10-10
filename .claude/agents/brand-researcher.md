@@ -37,9 +37,16 @@ the main session appends it from your report, since you do not write files.
    report it, labelled as such, but never propose it as `location`. If only a region
    is public ("Alentejo", "norte"), propose nothing and say what is known. Never
    propose a street address or coordinates; many producers work from home.
-4. **Public shops.** Stores the brand itself lists as open to the public (own shops,
-   showrooms with opening hours, named stockists): name, city, street address. Never a
-   workshop, factory or registered office — see `docs/collecting-brand-data.md` §3.6.
+4. **Public shops.** Look for a stores / "lojas" / contact page on every pass. Report
+   the shops the brand itself lists as open to the public, each with name, city, the
+   street address exactly as the brand writes it, and the URL of the page that lists
+   it. Sort them into two groups, because the first is applied without a maintainer:
+   - **apply** — the brand's own shop, or a showroom with opening hours, in Portugal,
+     with a street address on the brand's own site;
+   - **ask** — named stockists, a shop at the factory or workshop address, a showroom
+     by appointment, a shop with no street address, anything abroad.
+   Never a workshop, factory or registered office — see `docs/collecting-brand-data.md`
+   §3.6. Never a map link: the site builds it from the address.
 5. **Prices.** Three to five current prices of the brand's main product type (the
    first entry in `products`), from its own shop, with the product name and URL. Skip
    sale prices and gift sets. Do not propose `price_range`; the maintainer sets it.
@@ -67,7 +74,8 @@ and its district is the enclosing `- id:` block.
 ## Rules
 
 - **Read-only.** Do not edit any file. The main session writes the evidence log and
-  the YAML after the maintainer agrees.
+  the YAML: shops in your "apply" group straight away, everything else after the
+  maintainer agrees.
 - Never propose `status` or `verification` changes. You may say the evidence now
   looks strong enough for a maintainer to publish.
 - Every claim you report needs a URL and a short quote, in the original language,
@@ -92,7 +100,11 @@ Location: <district>/<municipality-id> — "<quote>" — <url>
 Prices: (rows for docs/leads/prices.csv: slug,product-id,eur,"item name",url,checked)
   <slug>,<product id>,<eur>,"<item>",<url>,<today>
   … (or: none public)
-Shops: <name — street address, city — url of the brand page that lists it> (or: none)
+Shops: apply:
+         - { name: <name>, city: <city>, address: "<street and number, postcode>" } — <url that lists it>
+       ask:
+         - <name — address, city — why it needs a decision — url>
+       (or: none)
 Other: <contradictions, office vs workshop, anything the maintainer should check>
 Proposed YAML: <the exact fields to change, or "none">
 ```

@@ -18,6 +18,22 @@ production:
 price_range: 2
 where_to_buy:
   online_store: https://castelbel.com
+  physical_stores:
+    - name: Castelbel Centro Cultural de Belém
+      city: Lisboa
+      address: Rua Bartolomeu Dias 7, 1449-003 Lisboa
+    - name: Castelbel Palácio das Artes
+      city: Porto
+      address: Rua de Ferreira Borges, 4050-018 Porto
+    - name: Castelbel Santa Catarina
+      city: Porto
+      address: Rua de Santa Catarina 28, 4000-441 Porto
+    - name: Castelbel Centro Colombo
+      city: Lisboa
+      address: Centro Colombo, Av. Lusíada, Piso 0, 1500-392 Lisboa
+    - name: Castelbel NorteShopping
+      city: Matosinhos
+      address: NorteShopping, Rua Sara Afonso, Piso 0, 4460-841 Senhora da Hora
 social:
   instagram: castelbelporto
 media:
@@ -26,5 +42,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

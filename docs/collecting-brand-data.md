@@ -207,7 +207,14 @@ a `Store` in the page's structured data. Fill it only for a **shop open to the
 public that the brand itself lists** — a store, a showroom with opening hours, a
 named stockist. Never a workshop, a factory or a registered office: many producers
 work from home, and the location rule in §3.5 stops at the municipality for them.
-Store the address, not a Google Maps link; the site builds the link.
+Store the address, not a Google Maps link; the site builds the link, and a shop
+row with an address opens the map.
+
+The research agent looks for shops on every pass. The brand's own shops and
+showrooms with opening hours, in Portugal and with a street address on its own site,
+are added to `physical_stores` without waiting for a maintainer, and the source URL
+goes in that day's `docs/leads/research-<date>.md`. Stockists, a shop at the factory,
+showrooms by appointment and shops abroad wait for a maintainer's call.
 
 ### 3.7 Social handles
 

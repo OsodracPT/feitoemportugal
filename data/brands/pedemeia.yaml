@@ -18,6 +18,70 @@ production:
   scope: total
 where_to_buy:
   online_store: https://pedemeia.pt
+  physical_stores:
+    - name: Pedemeia Amadora
+      city: Amadora
+      address: Rua Elias Garcia 370, 2700-633 Amadora
+    - name: Pedemeia Aveiro
+      city: Aveiro
+      address: Av. Dr. Lourenço Peixinho 14, 3800-108 Aveiro
+    - name: Pedemeia Braga – Rua de Souto
+      city: Braga
+      address: Rua de Souto 57, 4700-314 Braga
+    - name: Pedemeia Braga – Rua do Chãos
+      city: Braga
+      address: Rua do Chãos 38, 4710-230 Braga
+    - name: Pedemeia Caldas da Rainha
+      city: Caldas da Rainha
+      address: Rua Almirante Cândido dos Reis 98, 2500-073 Caldas da Rainha
+    - name: Pedemeia Cascais
+      city: Cascais
+      address: Rua Frederico Arouca 351, 2750-642 Cascais
+    - name: Pedemeia Coimbra
+      city: Coimbra
+      address: Rua Ferreira Borges 13-17, 3000-180 Coimbra
+    - name: Pedemeia Évora
+      city: Évora
+      address: Rua da República 1, 7000-854 Évora
+    - name: Pedemeia Faro
+      city: Faro
+      address: Rua de Santo António 63-65, 8000-329 Faro
+    - name: Pedemeia Guimarães
+      city: Guimarães
+      address: Rua de Santo António 56, 4800-151 Guimarães
+    - name: Pedemeia Leiria
+      city: Leiria
+      address: Av. Heróis de Angola 15, 2400-153 Leiria
+    - name: Pedemeia Lisboa – Av. Guerra Junqueiro
+      city: Lisboa
+      address: Av. Guerra Junqueiro 13, 1000-180 Lisboa
+    - name: Pedemeia Lisboa – Av. da Igreja
+      city: Lisboa
+      address: Av. da Igreja 27, 1700-005 Lisboa
+    - name: Pedemeia Lisboa – Rua Abranches Ferrão
+      city: Lisboa
+      address: Rua Abranches Ferrão 8, 1600-001 Lisboa
+    - name: Pedemeia Lisboa – Rua Augusta
+      city: Lisboa
+      address: Rua Augusta 245-247, 1100-422 Lisboa
+    - name: Pedemeia Lisboa – Rua Morais Soares
+      city: Lisboa
+      address: Rua Morais Soares 105, 1170-088 Lisboa
+    - name: Pedemeia Funchal
+      city: Funchal
+      address: Rua Dr. Fernão de Ornelas 5, 9000-053 Funchal
+    - name: Pedemeia Porto – Av. do Brasil
+      city: Porto
+      address: Av. do Brasil 768, 4150-151 Porto
+    - name: Pedemeia Porto – Bolhão
+      city: Porto
+      address: Rua Alexandre Braga 65, 4000-050 Porto
+    - name: Pedemeia Porto – C.C. Brasília
+      city: Porto
+      address: Centro Comercial Brasília, Loja 44, 4100-359 Porto
+    - name: Pedemeia Porto – Cedofeita
+      city: Porto
+      address: Rua de Cedofeita 27, 4050-177 Porto
 social:
   instagram: pedemeia_socks
 media:
@@ -26,5 +90,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

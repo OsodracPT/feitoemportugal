@@ -17,6 +17,13 @@ production:
   scope: total
 where_to_buy:
   online_store: https://maray.pt
+  physical_stores:
+    - name: Maray Alvalade
+      city: Lisboa
+      address: Rua José d'Esaguy 2C
+    - name: Maray Campo de Ourique
+      city: Lisboa
+      address: Rua Saraiva de Carvalho 179A, 1300-350 Lisboa
 social:
   instagram: maray_shoes
 media:
@@ -25,5 +32,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

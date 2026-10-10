@@ -16,6 +16,19 @@ production:
   scope: total
 where_to_buy:
   online_store: https://lapaz.pt
+  physical_stores:
+    - name: La Paz Porto Ribeira
+      city: Porto
+      address: Rua da Reboleira 23, 4050-492 Porto
+    - name: La Paz Porto Foz
+      city: Porto
+      address: Travessa Senhora da Luz 59, 4150-121 Porto
+    - name: La Paz Lisboa
+      city: Lisboa
+      address: Rua das Flores 16, 1200-195 Lisboa
+    - name: La Paz Azores Micro Store
+      city: Horta
+      address: Rua Conselheiro Medeiros 21, 9900-041 Horta
 social:
   instagram: lapaz_diary
 media:
@@ -24,5 +37,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

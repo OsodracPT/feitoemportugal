@@ -12,6 +12,11 @@ describe('storeMapUrl', () => {
     expect(url.searchParams.get('query')).toBe('Loja Porto, Rua de Júlio Dinis 807, Porto, Portugal');
   });
 
+  it('does not repeat a city the address already names', () => {
+    const url = new URL(storeMapUrl({ ...shop, address: 'Rua Garrett 112, 1200-205 Lisboa', city: 'Lisboa' })!);
+    expect(url.searchParams.get('query')).toBe('Loja Porto, Rua Garrett 112, 1200-205 Lisboa, Portugal');
+  });
+
   it('gives no link without an address', () => {
     expect(storeMapUrl({ name: 'Loja Porto', city: 'Porto' })).toBeUndefined();
   });

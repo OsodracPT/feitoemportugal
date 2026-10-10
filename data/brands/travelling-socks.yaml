@@ -17,11 +17,15 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.travellingsocks.com
+  physical_stores:
+    - name: Travel Socks LX Factory
+      city: Lisboa
+      address: Rua Rodrigues de Faria 103, Edifício I, Loja 1.10, 1300-501 Lisboa
 media:
   logo: logo.svg
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

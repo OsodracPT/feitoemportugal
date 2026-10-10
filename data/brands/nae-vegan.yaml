@@ -16,6 +16,10 @@ production:
   scope: total
 where_to_buy:
   online_store: https://nae-vegan.com
+  physical_stores:
+    - name: NAE Vegan Shoes Chiado
+      city: Lisboa
+      address: Largo Trindade Coelho 17, 1200-339 Lisboa
 social:
   instagram: naeveganshoes
 media:
@@ -26,5 +30,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

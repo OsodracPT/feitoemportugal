@@ -191,7 +191,8 @@ through `deploy.yml`. The README is written for people running the code;
 `deploy/README.md` covers hosting.
 
 Research and prices: `.claude/agents/brand-researcher.md` researches brands (read-only;
-the main session writes its findings), `pnpm research-due` lists who is due for a
+the main session writes its findings; the brand's own public shops in Portugal go
+straight into `physical_stores`, everything else waits for a maintainer), `pnpm research-due` lists who is due for a
 full or quick pass from `docs/leads/research-log.csv`, and `pnpm price-suggest` turns
 the prices sampled in `docs/leads/prices.csv` into a suggested € level against each
 product type's `price_bands`. A level is applied only when a maintainer approves.

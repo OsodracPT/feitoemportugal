@@ -17,6 +17,49 @@ production:
 price_range: 3
 where_to_buy:
   online_store: https://anasousa.com
+  physical_stores:
+    - name: Ana Sousa Barcelos
+      city: Barcelos
+      address: Rua D. António Barroso 40-46, 4750-258 Barcelos
+    - name: Ana Sousa Bragança
+      city: Bragança
+      address: Rua Alexandre Herculano 79, 5300-075 Bragança
+    - name: Ana Sousa Chaves
+      city: Chaves
+      address: Rua 1º de Dezembro 19, 5400-013 Chaves
+    - name: Ana Sousa Espinho
+      city: Espinho
+      address: Rua 16, 671, 4500-241 Espinho
+    - name: Ana Sousa Felgueiras
+      city: Felgueiras
+      address: Av. Dr. Ribeiro de Magalhães 1387, 4610-108 Felgueiras
+    - name: Ana Sousa Guimarães
+      city: Guimarães
+      address: Rua de Santo António 153, 4800-162 Guimarães
+    - name: Ana Sousa Maia
+      city: Maia
+      address: Rua Dr. Augusto Martins 112, 4470-157 Maia
+    - name: Ana Sousa Viana do Castelo
+      city: Viana do Castelo
+      address: Largo João Tomás da Costa 54, 4900-509 Viana do Castelo
+    - name: Ana Sousa Vila do Conde
+      city: Vila do Conde
+      address: Praça Luís de Camões 73, 4480-719 Vila do Conde
+    - name: Ana Sousa Famalicão
+      city: Vila Nova de Famalicão
+      address: Rua Júlio Araújo 177, 4760-151 Vila Nova de Famalicão
+    - name: Ana Sousa Vila Real
+      city: Vila Real
+      address: Rua Combatentes da Grande Guerra 10, 5000-635 Vila Real
+    - name: Ana Sousa Setúbal
+      city: Setúbal
+      address: Rua Velha da Alfândega 36, 2900-228 Setúbal
+    - name: Ana Sousa Designer Outlet Algarve
+      city: Loulé
+      address: Avenida Algarve, Loja 20, 8135-182 Almancil
+    - name: Ana Sousa Portimão
+      city: Portimão
+      address: Rua do Comércio 63, 8500-633 Portimão
 social:
   instagram: anasousa_oficial
 media:
@@ -25,5 +68,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

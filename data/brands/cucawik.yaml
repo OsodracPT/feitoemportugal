@@ -16,6 +16,10 @@ production:
   scope: total
 where_to_buy:
   online_store: https://cucawik.com
+  physical_stores:
+    - name: Cucawik
+      city: Lisboa
+      address: Rua Castilho 39, Edifício Castil, Loja 7, 1250-068 Lisboa
 social:
   instagram: cucawik
 media:
@@ -24,5 +28,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

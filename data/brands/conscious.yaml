@@ -17,11 +17,15 @@ production:
   scope: total
 where_to_buy:
   online_store: https://consciousthelabel.com
+  physical_stores:
+    - name: Conscious
+      city: Lisboa
+      address: Rua Garrett 19
 media:
   logo: logo.svg
 verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import
