@@ -17,6 +17,16 @@ production:
   scope: total
 where_to_buy:
   online_store: https://cavemenstore.com
+  physical_stores:
+    - name: Cavemen Guimarães
+      city: Guimarães
+      address: Alameda de São Dâmaso 16, 4810-286 Guimarães
+    - name: Cavemen Braga
+      city: Braga
+      address: Praça do Município 73 A/B, 4700-435 Braga
+    - name: Cavemen Porto
+      city: Porto
+      address: Rua de Júlio Dinis 807, 4050-322 Porto
 social:
   instagram: cavemen.brand
 media:
@@ -25,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

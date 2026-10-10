@@ -17,6 +17,16 @@ production:
   scope: total
 where_to_buy:
   online_store: https://armazemdasmalhas.com
+  physical_stores:
+    - name: Armazém das Malhas Anjos
+      city: Lisboa
+      address: Rua do Forno do Tijolo 50A, 1100-132 Lisboa
+    - name: Armazém das Malhas Baixa-Chiado
+      city: Lisboa
+      address: Rua dos Fanqueiros 164, 1100-031 Lisboa
+    - name: Armazém das Malhas Saldanha
+      city: Lisboa
+      address: Av. João Crisóstomo 5G, 1000-176 Lisboa
 social:
   instagram: armazemdasmalhas
 media:
@@ -25,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

@@ -17,6 +17,16 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.rutz.pt
+  physical_stores:
+    - name: RUTZ LX Factory
+      city: Lisboa
+      address: Rua Rodrigues Faria 103, Ed. I, 1300-501 Lisboa
+    - name: RUTZ Príncipe Real
+      city: Lisboa
+      address: Rua da Escola Politécnica 24-26, 1250-102 Lisboa
+    - name: RUTZ Bacalhoeiros
+      city: Lisboa
+      address: Rua dos Bacalhoeiros 14D, 1100-070 Lisboa
 social:
   instagram: rutzwalkincork
 media:
@@ -25,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import
