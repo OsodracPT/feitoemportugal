@@ -15,6 +15,11 @@ tags: [pele, contemporaneo]
 products: [sabrinas, sapatos, botas, sandalias, malas]
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: sabrinas
+  eur: 129.9
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://zilian.com
   physical_stores:

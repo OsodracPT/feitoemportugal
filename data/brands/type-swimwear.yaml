@@ -15,6 +15,11 @@ products: [roupa-de-banho]
 founded: 2012
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: roupa-de-banho
+  eur: 104
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.type.pt
   physical_stores:

@@ -15,6 +15,14 @@ tags: [pele, feito-a-mao, pequena-serie]
 products: [sabrinas, botas, sandalias]
 production:
   scope: total
+location:
+  district: aveiro
+  municipality: sao-joao-da-madeira
+price_range: 4
+typical_price:
+  product: sabrinas
+  eur: 179
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://maray.pt
   physical_stores:

@@ -15,6 +15,14 @@ products: [mesas, cadeiras, estantes]
 founded: 1964
 production:
   scope: total
+location:
+  district: porto
+  municipality: paredes
+price_range: 4
+typical_price:
+  product: mesas
+  eur: 4840
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://wewood.eu
   physical_stores:

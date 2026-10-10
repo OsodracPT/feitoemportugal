@@ -165,7 +165,6 @@ factory or workshop), never from the directory's district or from a registered o
 | `trinca-bio` | "produzido em Portugal na nossa micro empresa" | — |
 | `bean-baby-clothes` | "Production locale. Fièrement Made in Portugal"; "fabriqués à 100 % au Portugal" | — |
 | `amavela` | "Velas vertidas e acabadas à mão, em pequenas séries, no nosso atelier do Porto" | porto |
-| `biobarra` | "Nascemos em Portugal e é aqui que produzimos os nossos produtos" | — |
 | `a-risca` | "Handmade in Portugal"; collection "nasceu na roda de oleiro, de uma olaria centenária" | — |
 | `triipi` | "beach & home pillows made in Portugal since 2014"; "Feito à mão em Portugal" | — |
 | `miristica` | "Os nossos cosméticos são produzidos em Portugal" | — |
@@ -185,7 +184,7 @@ factory or workshop), never from the directory's district or from a registered o
 | `biovo` | "Cosmética produzida artesanalmente em Alcanena" | alcanena |
 | `pinknounou` | "Feito à mão em Portugal"; "handmade in Portugal with love" | — |
 | `ambar` | "Inovamos e produzimos"; "Fábrica: Rua Manuel Pinto de Azevedo … Porto" | porto |
-| `type-swimwear` | "Os nossos fatos de banho são desenhados e fabricados em Portugal" | — |
+| `type-swimwear` | "Criado e fabricado em Portugal" ([product page](https://www.type.pt/products/bikini-harmonia-in-dive); the earlier sentence was gone on 2026-10-10) | — |
 | `util` | "Metal storage furniture, made in Portugal"; "Everything is produced in Portugal" | — |
 | `cavemen` | "qualidade na produção … e fabrico em Portugal"; "Produção nacional" | — |
 | `carolina-curado` | "Peças únicas … feitas à mão no nosso atelier na Avenida de Madrid" | lisboa |

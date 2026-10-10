@@ -13,8 +13,12 @@ category: casa-e-decoracao
 subcategory: cutelaria-e-mesa
 tags: [metal, classico, contemporaneo]
 products: [talheres]
+founded: 1911
 production:
   scope: total
+location:
+  district: braga
+  municipality: guimaraes
 where_to_buy:
   online_store: https://www.herdmar.com
 social:
@@ -25,5 +29,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

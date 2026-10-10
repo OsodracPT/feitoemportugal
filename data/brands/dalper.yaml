@@ -3,11 +3,13 @@ status: published
 name: Dalper
 description:
   pt: >-
-    Cutelaria de mesa feita em Portugal há mais de sessenta anos, com faqueiros e peças
-    avulsas para uso doméstico e profissional.
+    Cutelaria de mesa portuguesa, com faqueiros e peças avulsas para casa e para
+    restauração, produzidos pela própria empresa desde que passou do comércio ao
+    fabrico, em 2023.
   en: >-
-    Table cutlery made in Portugal for more than sixty years, with canteens and individual
-    pieces for home and professional use.
+    Portuguese table cutlery, with canteens and individual pieces for homes and
+    restaurants, made in-house since the company moved from trading to manufacturing in
+    2023.
 website: https://www.dalper.pt
 category: casa-e-decoracao
 subcategory: cutelaria-e-mesa
@@ -25,5 +27,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

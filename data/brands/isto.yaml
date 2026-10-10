@@ -11,9 +11,14 @@ description:
 website: https://isto.pt
 category: moda-e-vestuario
 tags: [algodao, minimalista, contemporaneo]
+products: [t-shirts]
 production:
   scope: total
 price_range: 3
+typical_price:
+  product: t-shirts
+  eur: 55
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://isto.pt
   physical_stores:

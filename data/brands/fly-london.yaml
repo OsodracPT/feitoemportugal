@@ -14,7 +14,22 @@ category: calcado
 tags: [pele, contemporaneo]
 products: [sapatos, botas, malas, oculos]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      O calçado é feito nas fábricas da marca em Guimarães e Paredes de Coura, mas parte
+      das gáspeas usadas em Guimarães vem de fora do país.
+    en: >-
+      Shoes are made in the brand's factories in Guimarães and Paredes de Coura, though
+      part of the uppers used in Guimarães comes from abroad.
+location:
+  district: braga
+  municipality: guimaraes
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 150
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://shop-eu.flylondon.com
 social:
@@ -25,5 +40,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

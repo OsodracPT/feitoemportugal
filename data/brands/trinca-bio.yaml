@@ -15,6 +15,8 @@ products: [snacks]
 founded: 2012
 production:
   scope: total
+location:
+  district: santarem
 where_to_buy:
   online_store: https://www.trincabio.com
 social:
@@ -25,5 +27,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

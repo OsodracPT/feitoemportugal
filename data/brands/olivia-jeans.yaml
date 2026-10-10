@@ -3,17 +3,23 @@ status: published
 name: Olivia Jeans
 description:
   pt: >-
-    Marca de Lisboa dedicada a ganga, com cada peça produzida em Portugal em pequenas
-    quantidades.
+    Marca de vestuário feminino com cada peça produzida em Portugal em pequenas
+    quantidades, sobretudo jardineiras, macacões e casacos.
   en: >-
-    Lisbon denim label, with every piece produced in Portugal in small quantities.
+    Women's clothing label with every piece produced in Portugal in small runs, mostly
+    dungarees, jumpsuits and jackets.
 website: https://oliviajeanslisbon.com
 category: moda-e-vestuario
-subcategory: denim
-tags: [denim, pequena-serie, contemporaneo]
-products: [jeans]
+subcategory: roupa-mulher
+tags: [pequena-serie, contemporaneo]
+products: [jardineiras]
 production:
   scope: total
+price_range: 2
+typical_price:
+  product: jardineiras
+  eur: 89
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://oliviajeanslisbon.com
 social:
@@ -24,5 +30,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

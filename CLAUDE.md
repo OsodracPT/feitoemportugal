@@ -173,10 +173,12 @@ second lead pass (`docs/leads/sources-2026-10.csv`, evidence in
 `evidence-sources-2026-10.md`) added 123 drafts; 93 with a production sentence were
 published on 2026-10-08 (plus `apple-of-eden` once the foreign-brand rule was
 settled). On 2026-10-09 the maintainer published 25 more after a second research
-pass (`.claude/agents/brand-researcher.md`), so 210 brands are live. 4 drafts remain:
-`rutz`, `vaddia` and `nyos` (only a label) and `campobello` (sells only to
-retailers). Only 85 of the 210 have a known production location, so the map covers
-about 40 % of the catalogue.
+pass (`.claude/agents/brand-researcher.md`). On 2026-10-10 the decisions on the
+research passes were applied (`docs/leads/decisions-2026-10.md`): four brands went
+back to draft (`thclothes`, `great-i-am`, `tema-creations`, `watc-studio`) and one
+was deleted, so 205 are live. 8 drafts: those four, `rutz`, `vaddia` and `nyos`
+(only a label) and `campobello` (sells only to retailers). 124 of the 205 have a known production
+location, so the map covers about 60 % of the catalogue.
 
 Contributions: bilingual issue forms (suggest, correct, request verification),
 `CONTRIBUTING.md`, a PR template, and `issue-to-pr.yml`. The `aprovado` label on a

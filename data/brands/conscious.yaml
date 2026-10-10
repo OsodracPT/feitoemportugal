@@ -15,6 +15,14 @@ tags: [algodao]
 products: [jeans, roupa-de-banho, camisolas]
 production:
   scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+price_range: 3
+typical_price:
+  product: jeans
+  eur: 130
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://consciousthelabel.com
   physical_stores:

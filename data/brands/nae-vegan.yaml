@@ -3,17 +3,23 @@ status: published
 name: NAE Vegan
 description:
   pt: >-
-    Calçado e acessórios veganos feitos em Portugal desde 2008, com alternativas à pele
-    produzidas a partir de materiais de origem vegetal e reciclada.
+    Calçado vegano feito em Portugal desde 2008, com alternativas à pele de origem
+    vegetal e reciclada.
   en: >-
-    Vegan footwear and accessories made in Portugal since 2008, using leather
-    alternatives made from plant-based and recycled materials.
+    Vegan footwear made in Portugal since 2008, using plant-based and recycled
+    alternatives to leather.
 website: https://nae-vegan.com
 category: calcado
 tags: [vegano, contemporaneo]
+products: [sapatos]
 founded: 2008
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 138
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://nae-vegan.com
   physical_stores:

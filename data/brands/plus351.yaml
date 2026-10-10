@@ -11,8 +11,16 @@ description:
 website: https://plus351.pt
 category: moda-e-vestuario
 tags: [algodao, minimalista, pequena-serie]
+products: [t-shirts]
 production:
   scope: total
+location:
+  district: braga
+price_range: 3
+typical_price:
+  product: t-shirts
+  eur: 75
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://plus351.pt
   physical_stores:

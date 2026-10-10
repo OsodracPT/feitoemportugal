@@ -15,6 +15,11 @@ tags: [tradicional, presente, contemporaneo]
 products: [meias]
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: meias
+  eur: 21
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://sirtile.com
   physical_stores:

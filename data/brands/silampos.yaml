@@ -16,13 +16,21 @@ products: [panelas, utensilios-de-cozinha]
 founded: 1951
 production:
   scope: total
+location:
+  district: aveiro
+  municipality: oliveira-de-azemeis
+price_range: 2
+typical_price:
+  product: panelas
+  eur: 41
+  checked: 2026-10-10
 where_to_buy:
-  online_store: https://www.silampos.pt
+  online_store: https://www.silampos2.pt
 media:
   logo: logo.png
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

@@ -13,14 +13,7 @@ category: moda-e-vestuario
 tags: [unissexo, algodao]
 products: [t-shirts, camisolas, camisas, casacos, calcas]
 production:
-  scope: parcial
-  notes:
-    pt: >-
-      A página inicial diz que as coleções são feitas exclusivamente em Portugal, a página
-      sobre a marca diz que são produzidas sobretudo cá; fica a versão mais prudente.
-    en: >-
-      The home page says the collections are made exclusively in Portugal, the about page
-      that they are mainly produced here; the more cautious reading stands.
+  scope: total
 where_to_buy:
   online_store: https://www.wetheknot.com
 social:
@@ -29,5 +22,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

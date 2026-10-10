@@ -12,8 +12,14 @@ website: https://lapaz.pt
 category: moda-e-vestuario
 subcategory: roupa-homem
 products: [t-shirts, camisas, polos, camisolas, casacos, calcas]
+founded: 2011
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: t-shirts
+  eur: 79
+  checked: 2026-10-09
 where_to_buy:
   online_store: https://lapaz.pt
   physical_stores:

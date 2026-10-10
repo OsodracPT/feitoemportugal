@@ -16,6 +16,14 @@ products: [meias]
 founded: 1966
 production:
   scope: total
+location:
+  district: braga
+  municipality: braga
+price_range: 2
+typical_price:
+  product: meias
+  eur: 9.8
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://pedemeia.pt
   physical_stores:

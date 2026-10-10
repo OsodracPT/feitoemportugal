@@ -13,8 +13,14 @@ category: texteis-lar
 subcategory: mantas-e-plaids
 tags: [la, pequena-serie, tradicional]
 products: [mantas, almofadas]
+founded: 2014
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: mantas
+  eur: 109.9
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://pt.by-stro.com
   physical_stores:

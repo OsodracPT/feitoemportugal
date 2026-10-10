@@ -16,6 +16,14 @@ products: [facas]
 founded: 1954
 production:
   scope: total
+location:
+  district: leiria
+  municipality: caldas-da-rainha
+price_range: 2
+typical_price:
+  product: facas
+  eur: 39.9
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.ivocutelarias.com
 social:
@@ -26,5 +34,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

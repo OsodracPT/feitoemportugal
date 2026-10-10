@@ -4,16 +4,22 @@ name: Zás Trás
 description:
   pt: >-
     Pantufas e calçado de bebé em matérias-primas biológicas, confecionados à mão em
-    Portugal desde 2016.
+    Portugal.
   en: >-
-    Baby booties and shoes in organic materials, sewn by hand in Portugal since 2016.
+    Baby booties and shoes in organic materials, sewn by hand in Portugal.
 website: https://www.zastrasforbabies.com
 category: calcado
 subcategory: calcado-crianca
 tags: [feito-a-mao]
-founded: 2016
+products: [pantufas]
+founded: 2020
 production:
   scope: total
+price_range: 2
+typical_price:
+  product: pantufas
+  eur: 29.1
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.zastrasforbabies.com
 social:
@@ -24,5 +30,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

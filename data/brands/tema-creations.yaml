@@ -1,13 +1,13 @@
 slug: tema-creations
-status: published
+status: draft
 name: Tema Creations
 description:
   pt: >-
-    Marca de Lisboa que desenha e produz em Portugal coleções de vestuário para o dia a
-    dia e para ocasiões especiais.
+    Marca de Lisboa com coleções de vestuário para o dia a dia e ocasiões especiais,
+    parte delas produzida em Portugal.
   en: >-
-    Lisbon label that designs and produces its clothing collections in Portugal, for
-    everyday wear and special occasions.
+    Lisbon label with clothing for everyday wear and special occasions, part of it
+    produced in Portugal.
 website: https://temacreations.pt
 category: moda-e-vestuario
 subcategory: roupa-mulher
@@ -24,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

@@ -16,6 +16,13 @@ products: [joias]
 founded: 1955
 production:
   scope: total
+location:
+  district: porto
+price_range: 3
+typical_price:
+  product: joias
+  eur: 89
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.portugaljewels.com
   physical_stores:

@@ -16,6 +16,11 @@ products: [estantes]
 founded: 2017
 production:
   scope: total
+price_range: 4
+typical_price:
+  product: estantes
+  eur: 1745
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://thisisutil.com
 social:
@@ -26,5 +31,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

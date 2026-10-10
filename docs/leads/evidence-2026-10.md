@@ -37,7 +37,7 @@ YAML (see [collecting-brand-data.md](../collecting-brand-data.md)), so it lives 
 | `isto` | "Fabricado de forma transparente em Portugal"; publishes its factory list and per-component costs |
 | `its-okay` | "DESIGNED IN LISBON, MADE IN PORTUGAL" |
 | `koati` | "Tudo começou em 1983, quando a Costafil, Lda, uma fábrica de vestuário localizada em Portugal, iniciou a sua atividade" |
-| `lobo-apparel` | "Made in Portugal, they showcase the very best of Portuguese craftsmanship" |
+| `lobo-apparel` | "Yes, our production is 100% Made in Portugal." ([FAQ](https://loboapparel.pt/pages/customer-help-faqs); replaced a customer testimonial, 2026-10-10) |
 | `mukishoes` | "sustainable barefoot shoes made in Portugal"; "HANDCRAFTED IN PORTUGAL"; "We produce our shoes with small local manufacturers" |
 | `nae-vegan` | "MADE IN PORTUGAL · 100% VEGAN DESDE 2008" |
 | `naz` | "Proudly Made in Portugal"; "Everything is made in Portugal by trustworthy companies" |

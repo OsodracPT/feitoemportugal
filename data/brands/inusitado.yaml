@@ -14,6 +14,11 @@ tags: [feito-a-mao, pequena-serie]
 products: [cadernos]
 production:
   scope: total
+price_range: 2
+typical_price:
+  product: cadernos
+  eur: 14
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.inusitado.pt
 social:
@@ -24,5 +29,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

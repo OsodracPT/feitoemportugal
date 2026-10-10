@@ -12,9 +12,15 @@ website: https://anasousa.com
 category: moda-e-vestuario
 subcategory: roupa-mulher
 tags: [classico, contemporaneo]
+products: [vestidos]
+founded: 1992
 production:
   scope: total
 price_range: 3
+typical_price:
+  product: vestidos
+  eur: 179.9
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://anasousa.com
   physical_stores:

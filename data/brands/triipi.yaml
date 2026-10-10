@@ -15,6 +15,14 @@ products: [almofadas]
 founded: 2014
 production:
   scope: total
+location:
+  district: lisboa
+  municipality: lisboa
+price_range: 3
+typical_price:
+  product: almofadas
+  eur: 54
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.triipi.com
   physical_stores:

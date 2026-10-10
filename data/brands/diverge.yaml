@@ -8,15 +8,20 @@ description:
   en: >-
     Sneakers handmade to order in Portugal and customisable by the buyer, using leathers
     audited by the Leather Working Group and OEKO-TEX certified materials.
-website: https://divergesneakers.com
+website: https://www.diverge-sneakers.com
 category: calcado
 subcategory: sapatilhas
 tags: [pele, feito-a-mao, personalizavel, producao-por-encomenda]
 products: [sapatilhas]
 production:
   scope: total
+price_range: 4
+typical_price:
+  product: sapatilhas
+  eur: 205
+  checked: 2026-10-10
 where_to_buy:
-  online_store: https://divergesneakers.com
+  online_store: https://www.diverge-sneakers.com
 social:
   instagram: diverge.sneakers
 media:
@@ -27,5 +32,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import

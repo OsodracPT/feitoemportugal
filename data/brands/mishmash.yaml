@@ -13,6 +13,7 @@ category: papelaria-e-livros
 subcategory: cadernos-e-agendas
 tags: [feito-a-mao, tradicional, minimalista]
 products: [cadernos, agendas]
+founded: 2015
 production:
   scope: total
 where_to_buy:
@@ -25,5 +26,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-10
   source: import
