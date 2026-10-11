@@ -6,7 +6,7 @@
  */
 import Layout from '~/layouts/Layout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
-import { SITE, issueForm } from '~/lib/config.ts';
+import { SITE } from '~/lib/config.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
 import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
 
@@ -29,14 +29,14 @@ const sections: { id: string; links?: { href: string; label: string }[] }[] = [
     id: 'badge',
     links: [
       { href: paths.badge(lang), label: t(lang, 'about.links.badge') },
-      { href: issueForm('pedido-verificacao.yml'), label: t(lang, 'about.links.verify') },
+      { href: `${paths.submit(lang)}#verification`, label: t(lang, 'about.links.verify') },
     ],
   },
   {
     id: 'contribute',
     links: [
-      { href: issueForm('nova-marca.yml'), label: t(lang, 'about.links.suggest') },
-      { href: issueForm('correcao.yml'), label: t(lang, 'about.links.correct') },
+      { href: `${paths.submit(lang)}#brand`, label: t(lang, 'about.links.suggest') },
+      { href: `${paths.submit(lang)}#correction`, label: t(lang, 'about.links.correct') },
       { href: `${SITE.repo}/blob/main/CONTRIBUTING.md`, label: t(lang, 'about.links.guide') },
     ],
   },
@@ -47,7 +47,7 @@ const sections: { id: string; links?: { href: string; label: string }[] }[] = [
       { href: SITE.repo, label: t(lang, 'about.links.repo') },
     ],
   },
-  { id: 'images', links: [{ href: issueForm('correcao.yml'), label: t(lang, 'about.links.correct') }] },
+  { id: 'images', links: [{ href: `${paths.submit(lang)}#correction`, label: t(lang, 'about.links.correct') }] },
   { id: 'privacy' },
 ];
 ---

@@ -4,8 +4,7 @@
  * happened, whatever the page offers to undo it, and a way to suggest the
  * brand that is missing. The listing renders it hidden and fills it in.
  */
-import { issueForm } from '~/lib/config.ts';
-import { t, type Lang } from '~/lib/i18n.ts';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
   lang: Lang;
@@ -24,7 +23,7 @@ const { lang, title, text, hidden = false, ...rest } = Astro.props;
   {Astro.slots.has('default') && <div class="empty__actions"><slot /></div>}
   <p class="empty__suggest">
     {t(lang, 'empty.suggestLead')}{' '}
-    <a href={issueForm('nova-marca.yml')} rel="noopener">{t(lang, 'empty.suggest')}</a>
+    <a href={`${paths.submit(lang)}#brand`}>{t(lang, 'empty.suggest')}</a>
   </p>
 </div>
 

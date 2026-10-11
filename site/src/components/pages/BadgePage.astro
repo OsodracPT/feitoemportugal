@@ -7,7 +7,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
-import { SITE, issueForm } from '~/lib/config.ts';
+import { SITE } from '~/lib/config.ts';
 import { brands } from '~/lib/data.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
@@ -35,11 +35,11 @@ const sections: { id: string; links?: { href: string; label: string }[] }[] = [
   {
     id: 'process',
     links: [
-      { href: issueForm('pedido-verificacao.yml'), label: t(lang, 'badge.links.request') },
+      { href: `${paths.submit(lang)}#verification`, label: t(lang, 'badge.links.request') },
       { href: `${SITE.repo}/blob/main/CONTRIBUTING.md`, label: t(lang, 'badge.links.guide') },
     ],
   },
-  { id: 'revoke', links: [{ href: issueForm('correcao.yml'), label: t(lang, 'badge.links.correct') }] },
+  { id: 'revoke', links: [{ href: `${paths.submit(lang)}#correction`, label: t(lang, 'badge.links.correct') }] },
 ];
 ---
 

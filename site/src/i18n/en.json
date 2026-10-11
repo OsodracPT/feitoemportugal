@@ -417,5 +417,86 @@
     "suggestLead": "Know a brand made in Portugal that should be here?",
     "suggest": "Suggest a brand",
     "listTitle": "No brands yet"
+  },
+  "submitForm": {
+    "title": "Contribute",
+    "intro": "Fill in the form right here — no GitHub account needed. Your submission reaches the project maintainer by email, who reviews it before publishing.",
+    "chooser": {
+      "brand": "Suggest a brand",
+      "correction": "Correct a brand",
+      "verification": "Request the badge",
+      "contact": "Get in touch"
+    },
+    "github": {
+      "lead": "Prefer GitHub?",
+      "brand": "Suggest a brand via a GitHub issue",
+      "correction": "Correct via a GitHub issue",
+      "verification": "Request verification via a GitHub issue"
+    },
+    "common": {
+      "optional": "optional",
+      "send": "Send",
+      "sending": "Sending…",
+      "email": "Your email (optional)",
+      "emailHelp": "Only so we can reply. Stored, never published.",
+      "success": "Thank you! Your submission arrived. We will review it before publishing.",
+      "error": "Could not send. Please try again in a moment.",
+      "required": "Please fill in the required fields."
+    },
+    "brand": {
+      "title": "Suggest a brand",
+      "intro": "A brand is listed only when its own website says it makes its products in Portugal. \"Portuguese brand\" or \"designed in Portugal\" is not enough. A foreign brand qualifies when most of what it sells is made here.",
+      "name": "Brand name",
+      "website": "Official website",
+      "evidenceUrl": "Page where the brand says it makes its products in Portugal",
+      "evidenceUrlHelp": "On the brand's own site, not a shop or an article.",
+      "evidenceQuote": "Sentence from that page",
+      "evidenceQuoteHelp": "Copy the sentence as it is. It goes into the source notes, not the brand page.",
+      "scope": "Production",
+      "scopeTotal": "Everything is made in Portugal",
+      "scopePartial": "Part of it is made elsewhere",
+      "scopeNotes": "If partial, what is made in Portugal?",
+      "category": "Category",
+      "district": "District where it makes its products",
+      "districtNone": "Don't know",
+      "districtHelp": "Only if the brand says so. An office or a shop does not count.",
+      "municipality": "Municipality where it makes its products",
+      "descriptionPt": "Description in Portuguese",
+      "descriptionPtHelp": "Two or three sentences of your own. Do not copy the brand's text; the data ships under CC BY 4.0.",
+      "descriptionEn": "Description in English",
+      "instagram": "Instagram",
+      "relationship": "I work for or own the brand",
+      "confirmDescription": "The description is my own text and may be published under CC BY 4.0.",
+      "confirmNoPersonal": "I included no personal data (home addresses, personal phones or emails)."
+    },
+    "correction": {
+      "title": "Correct a brand",
+      "intro": "Something wrong or out of date on a brand page? Tell us what.",
+      "brand": "Brand",
+      "brandHelp": "The page address or the id (for example vista-alegre).",
+      "details": "What should change",
+      "source": "Source",
+      "sourceHelp": "A link that confirms it, preferably on the brand's own site."
+    },
+    "verification": {
+      "title": "Request the verified badge",
+      "intro": "The badge says someone on the project confirmed, independently of the brand's website, that production is in Portugal. It is free and cannot be bought.",
+      "brand": "Brand",
+      "brandHelp": "The page address, if the brand is already listed.",
+      "details": "How can we confirm it?",
+      "detailsHelp": "Do not post documents with personal data here; tell us you have them and we will arrange another way.",
+      "confirm": "I work for or own the brand."
+    },
+    "contact": {
+      "title": "Get in touch",
+      "intro": "A question, an idea or anything else.",
+      "message": "Message"
+    }
+  },
+  "thanks": {
+    "title": "Thank you!",
+    "body": "Your submission arrived. The project maintainer will review it before publishing.",
+    "backHome": "Back to home",
+    "another": "Make another submission"
   }
 }

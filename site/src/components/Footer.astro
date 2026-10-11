@@ -1,6 +1,6 @@
 ---
 import Shield from './Shield.astro';
-import { SITE, issueForm } from '~/lib/config.ts';
+import { SITE } from '~/lib/config.ts';
 import { paths, t, type Lang } from '~/lib/i18n.ts';
 
 interface Props {
@@ -30,8 +30,8 @@ const contributeUrl = `${SITE.repo}/blob/main/CONTRIBUTING.md`;
         <li><a href={SITE.codeLicense.url} rel="license noopener">{t(lang, 'footer.codeLicense')}</a></li>
       </ul>
       <ul class="footer__links">
-        <li><a href={issueForm('nova-marca.yml')} rel="noopener">{t(lang, 'nav.submit')}</a></li>
-        <li><a href={issueForm('correcao.yml')} rel="noopener">{t(lang, 'footer.correct')}</a></li>
+        <li><a href={paths.submit(lang)}>{t(lang, 'nav.submit')}</a></li>
+        <li><a href={`${paths.submit(lang)}#correction`}>{t(lang, 'footer.correct')}</a></li>
         <li><a href={contributeUrl} rel="noopener">{t(lang, 'footer.contribute')}</a></li>
       </ul>
       <ul class="footer__links">

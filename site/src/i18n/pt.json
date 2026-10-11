@@ -476,5 +476,86 @@
     "suggestLead": "Conheces uma marca feita em Portugal que devia estar aqui?",
     "suggest": "Sugerir uma marca",
     "listTitle": "Ainda sem marcas"
+  },
+  "submitForm": {
+    "title": "Contribuir",
+    "intro": "Preenche o formulário aqui mesmo — não é preciso conta no GitHub. A tua submissão chega por email a quem mantém o projeto, que a revê antes de a publicar.",
+    "chooser": {
+      "brand": "Sugerir uma marca",
+      "correction": "Corrigir uma marca",
+      "verification": "Pedir o selo",
+      "contact": "Contactar"
+    },
+    "github": {
+      "lead": "Preferes o GitHub?",
+      "brand": "Sugerir marca por issue no GitHub",
+      "correction": "Corrigir por issue no GitHub",
+      "verification": "Pedir verificação por issue no GitHub"
+    },
+    "common": {
+      "optional": "opcional",
+      "send": "Enviar",
+      "sending": "A enviar…",
+      "email": "O teu email (opcional)",
+      "emailHelp": "Só para te respondermos. Fica guardado, nunca é publicado.",
+      "success": "Obrigado! A submissão chegou. Vamos revê-la antes de publicar.",
+      "error": "Não foi possível enviar. Tenta de novo dentro de momentos.",
+      "required": "Preenche os campos obrigatórios."
+    },
+    "brand": {
+      "title": "Sugerir uma marca",
+      "intro": "Só entram marcas cujo próprio site diga que fabricam em Portugal. «Marca portuguesa» ou «desenhado em Portugal» não chega. Uma marca estrangeira entra quando a maior parte do que vende é feita cá.",
+      "name": "Nome da marca",
+      "website": "Site oficial",
+      "evidenceUrl": "Página onde a marca diz que fabrica em Portugal",
+      "evidenceUrlHelp": "Do site da própria marca, não de uma loja ou artigo.",
+      "evidenceQuote": "Frase dessa página",
+      "evidenceQuoteHelp": "Copia a frase tal como está. Fica no registo de fontes, não na ficha.",
+      "scope": "Produção",
+      "scopeTotal": "Tudo é feito em Portugal",
+      "scopePartial": "Uma parte é feita fora",
+      "scopeNotes": "Se é parcial, o que é feito em Portugal?",
+      "category": "Categoria",
+      "district": "Distrito onde fabrica",
+      "districtNone": "Não sei",
+      "districtHelp": "Só se a marca o disser. Escritório e loja não contam.",
+      "municipality": "Concelho onde fabrica",
+      "descriptionPt": "Descrição em português",
+      "descriptionPtHelp": "Duas ou três frases tuas. Não copies o texto da marca; os dados saem sob CC BY 4.0.",
+      "descriptionEn": "Descrição em inglês",
+      "instagram": "Instagram",
+      "relationship": "Trabalho na marca ou sou dono",
+      "confirmDescription": "A descrição é texto meu e pode ser publicada sob CC BY 4.0.",
+      "confirmNoPersonal": "Não incluí dados pessoais (moradas, telefones ou emails pessoais)."
+    },
+    "correction": {
+      "title": "Corrigir uma marca",
+      "intro": "Algo errado ou desatualizado numa ficha? Diz-nos o quê.",
+      "brand": "Marca",
+      "brandHelp": "O endereço da ficha ou o identificador (por exemplo vista-alegre).",
+      "details": "O que deve mudar",
+      "source": "Fonte",
+      "sourceHelp": "Um link que o confirme, de preferência do site da marca."
+    },
+    "verification": {
+      "title": "Pedir o selo de verificação",
+      "intro": "O selo diz que alguém do projeto confirmou, por um meio independente do site da marca, que a produção é em Portugal. Não se paga e não se compra.",
+      "brand": "Marca",
+      "brandHelp": "O endereço da ficha, se a marca já estiver listada.",
+      "details": "Como podemos confirmar?",
+      "detailsHelp": "Não publiques aqui documentos com dados pessoais; diz-nos que os tens e combinamos outra via.",
+      "confirm": "Trabalho na marca ou sou dono."
+    },
+    "contact": {
+      "title": "Contactar",
+      "intro": "Uma dúvida, uma ideia ou outra coisa qualquer.",
+      "message": "Mensagem"
+    }
+  },
+  "thanks": {
+    "title": "Obrigado!",
+    "body": "A tua submissão chegou. Quem mantém o projeto vai revê-la antes de a publicar.",
+    "backHome": "Voltar ao início",
+    "another": "Fazer outra submissão"
   }
 }

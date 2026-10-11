@@ -1,0 +1,50 @@
+---
+/**
+ * The static thank-you page. It is where the submission service redirects a
+ * plain form POST (JavaScript off); with JS on, the form shows its success
+ * message in place and never navigates here. Kept out of the sitemap-worthy
+ * flow — it carries no unique content to index.
+ */
+import Layout from '~/layouts/Layout.astro';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { pageTitle } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: '/obrigado', en: '/en/thanks' };
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'thanks.title'), lang)}
+  description={t(lang, 'thanks.body')}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  noindex
+>
+  <div class="container narrow thanks">
+    <h1>{t(lang, 'thanks.title')}</h1>
+    <p class="lede">{t(lang, 'thanks.body')}</p>
+    <p class="thanks__links">
+      <a class="button" href={paths.submit(lang)}>{t(lang, 'thanks.another')}</a>
+      <a href={paths.home(lang)}>{t(lang, 'thanks.backHome')}</a>
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .narrow {
+    max-width: var(--container-narrow);
+  }
+
+  .thanks__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fep-space-3);
+    align-items: center;
+    margin-top: var(--fep-space-5);
+  }
+</style>

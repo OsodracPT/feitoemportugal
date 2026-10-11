@@ -126,9 +126,7 @@ const products = brand.products.flatMap((id) => {
 });
 const evidenceUrl = `${SITE.repo}/tree/main/docs/leads`;
 
-const correctionUrl = `${SITE.repo}/issues/new?labels=correcao&template=correcao.yml&title=${encodeURIComponent(
-  `[correção] ${brand.name}`,
-)}&brand=${encodeURIComponent(brand.slug)}`;
+const correctionUrl = `${paths.submit(lang)}?brand=${encodeURIComponent(brand.slug)}#correction`;
 
 // A municipality that shares its district's name (Porto, Lisboa) names it once.
 const sameAsDistrict = municipality?.id === region?.id;
