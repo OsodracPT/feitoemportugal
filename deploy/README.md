@@ -24,6 +24,7 @@ web server does what the next section lists.
 | CORS | `Access-Control-Allow-Origin: *` on `/api/v1/*` | The JSON API is open data; without it, browsers on other sites cannot read it |
 | Caching | `/_assets/*` cached for a year, `immutable`; HTML and `/search-index.json` revalidated (`no-cache`) | Asset names are content-hashed; pages must update as soon as you deploy |
 | Security headers | The headers in [`security-headers.conf`](security-headers.conf), notably the CSP | The CSP allows no inline script: the build emits none, and the policy keeps it that way |
+| Rate limiting | `limit_req` on `/api/v1/` (generous) and `/api/submit/` (tight), returning 429 | Caps a scraper on the static API, and stops a flood reaching the submit service before the app's own per-IP limit |
 | HTTPS | TLS, with a permanent (301/308) redirect from `http://` | HSTS is sent, and the canonicals are `https://` |
 | `www` | Optional: redirect `www.<domain>` to `<domain>` | One canonical host |
 
@@ -48,10 +49,45 @@ whatever directory is at `/srv/www/current`.
 docker run --rm -p 8080:80 \
   -v "$PWD/deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro" \
   -v "$PWD/deploy/security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro" \
+  -v "$PWD/deploy/real-ip.conf:/etc/nginx/snippets/real-ip.conf:ro" \
   -v "$PWD/site/dist:/srv/www/current:ro" \
   nginx:1.30-alpine
 # http://localhost:8080/marcas
 ```
+
+### Rate limits, and the client IP behind a proxy
+
+`nginx.conf` rate-limits both APIs (`limit_req`), keyed on the client address, and
+returns `429` when a client goes over. The static `/api/v1/` limit is generous; the
+`/api/submit/` one is tighter, so a flood is dropped at nginx before it reaches the
+runtime service (whose own per-IP limit then handles sustained abuse).
+
+That keying has one catch behind a reverse proxy (a CDN, a load balancer,
+Pangolin…): the connection address nginx sees is the **proxy's**, identical for
+every visitor, so all of them would share one bucket and a single burst would lock
+everyone out. The fix is to trust the proxy and read the real client from
+`X-Forwarded-For` — but the proxy's address is site-specific and must not go in the
+repository. So it lives in [`real-ip.conf`](real-ip.conf): the tracked copy is a
+safe no-op (direct-facing deploy, trust nobody), and a deploy behind a proxy
+overrides the mount with its own untracked file. In `docker-compose.override.yml`:
+
+```yaml
+services:
+  web:
+    volumes:
+      - ./real-ip.local.conf:/etc/nginx/snippets/real-ip.conf:ro
+```
+
+with `real-ip.local.conf` (gitignored) holding, for your proxy's address or subnet:
+
+```nginx
+set_real_ip_from  <proxy address or subnet>;
+real_ip_header    X-Forwarded-For;
+real_ip_recursive on;
+```
+
+Trust only your proxy: if nginx is also reachable directly, never trust
+`0.0.0.0/0`, or a client could forge the header to dodge the limit.
 
 **On a server**, use [`docker-compose.yml`](docker-compose.yml). Copy this
 directory to the server, put the build (or the release layout from option 3) in
@@ -92,18 +128,18 @@ After changing the config: `docker compose exec web nginx -t`, then
 
 ## The submission service (optional)
 
-The site is static, but the contribution forms (`/submeter`, `/en/submit`) post
-to a small runtime service — `submit-api/` — that stores each submission, emails
-the maintainer, and, for a clean new-brand suggestion, opens a draft PR. It is
+The site is static, but the contribution forms (`/submeter`, `/en/submit`) post to
+a small runtime service, `submit-api/`. It stores each submission, emails the
+maintainer, and, for a clean new-brand suggestion, opens a draft PR. It is
 **optional**: without it the forms fall back to the GitHub issue links, and the
 rest of the site is unaffected.
 
 It runs behind the same nginx, under `/api/submit/` on the **site's own origin**.
 That is deliberate: the forms post and `fetch` same-origin, so the production CSP
 (`script-src 'self'`, `connect-src 'self'`, `form-action 'self'`) needs **no
-change**. The anti-spam is [Altcha](https://altcha.org) proof-of-work solved in
-the browser and verified in the service with `node:crypto` — no third-party
-script, which is the whole reason the CSP stays untouched.
+change**. The anti-spam is [Altcha](https://altcha.org) proof-of-work, solved in
+the browser and verified in the service with `node:crypto`. No third-party script,
+which is the whole reason the CSP stays untouched.
 
 The service is off by default (a Compose profile). Unlike the static site, which
 is just the build in `FEP_WWW_DIR`, the service is **built from the repository**,
@@ -121,7 +157,7 @@ What to set in `.env` (see [`.env.example`](../.env.example) for the full list):
 |---|---|
 | `SECRET_KEY` | **Required.** Signs Altcha challenges and hashes stored IPs. `openssl rand -hex 32` |
 | `SITE_ORIGIN` | The public origin, for the thank-you redirect and reading `/api/v1/brands.json` |
-| `SMTP_*`, `MAIL_TO` | The maintainer mailbox (nodemailer). Unset ⇒ mail is only logged. Zoho needs a paid tier for SMTP |
+| `SMTP_*`, `MAIL_TO` | The maintainer mailbox (nodemailer). Unset ⇒ mail is only logged. See the email section below |
 | `GITHUB_TOKEN`, `GITHUB_REPO` | A token (repo contents + PR) to auto-open draft-brand PRs. Unset ⇒ email only |
 | `RATE_MAX`, `RETENTION_DAYS` | Per-IP hourly limit (5) and how long a row is kept (90 days) |
 
@@ -130,48 +166,41 @@ older than `RETENTION_DAYS` on boot and once a day; nothing else to schedule. Th
 submitter's email is stored only when given and never published; the IP is kept
 only as a salted hash, for the rate limit.
 
-Secrets live only in `deploy/.env` on the server — never in the repository
+Secrets live only in `deploy/.env` on the server, never in the repository
 ([the repo stays host-agnostic](../CLAUDE.md)). `GITHUB_BASE` defaults to `main`.
 
-### Email: free sending via Brevo
+### Email: the `geral@` mailbox (Namecheap Private Email)
 
-The maintainer notification is sent over SMTP. A normal mailbox (Zoho's free
-plan, for one) lets you *receive* mail but not send through it, so point the
-service at a free transactional sender instead and let the mail land in that same
-inbox. Any SMTP provider works; [Brevo](https://www.brevo.com) gives 300 mails a
-day free, which is far more than this needs. One-time setup, all on your side:
+`geral@feitoemportugal.org` is a Namecheap **Private Email** mailbox. It both
+receives and sends, so the service authenticates to it over SMTP directly and the
+notification lands in the same inbox you read. One provider, no forwarding, one SPF
+record. One-time setup, all on your side.
 
-1. **Create a free Brevo account** and confirm the address.
-2. **Verify your domain** so mail can come *from* `geral@feitoemportugal.org`:
-   Brevo → **Senders, Domains & Dedicated IPs → Domains → Add a domain**
-   (`feitoemportugal.org`). Brevo shows a few DNS records — a DKIM record
-   (`brevo._domainkey`), a Brevo verification code, and an SPF/DMARC suggestion.
-3. **Add those records at your DNS host** (Namecheap → Advanced DNS). One catch:
-   there can be only **one SPF record**. If the domain already has an `spf1`
-   record, don't add a second — edit the existing one to include Brevo, e.g.
-   `v=spf1 include:spf.brevo.com ~all` (keep any other `include:` you already
-   have). Back in Brevo, click **Verify**; DNS can take up to a few hours.
-4. **Get the SMTP credentials:** Brevo → **SMTP & API → SMTP**. Copy the **Login**
-   (that is `SMTP_USER`) and **Generate a new SMTP key** (that is `SMTP_PASS` —
-   not your Brevo account password).
-5. **Fill `deploy/.env`** (see [`.env.example`](../.env.example)):
+1. **Create the mailbox:** in your Namecheap account, open **Private Email** for
+   `feitoemportugal.org` and create the `geral@` mailbox with a password.
+2. **Point DNS at it:** Namecheap offers an **Auto-configure** button for Private
+   Email that adds the MX records, the SPF record
+   (`v=spf1 include:spf.privateemail.com ~all`) and DKIM. Use it. There can be only
+   **one SPF record**, so if another provider's MX/SPF is still on the domain (e.g.
+   an old Zoho setup), remove it first; only one provider can own MX. DNS can take
+   up to a few hours.
+3. **Fill `deploy/.env`** (see [`.env.example`](../.env.example)):
 
    ```ini
-   SMTP_HOST=smtp-relay.brevo.com
-   SMTP_PORT=587
-   SMTP_SECURE=false            # 587 upgrades to TLS via STARTTLS
-   SMTP_USER=<the Brevo SMTP login>
-   SMTP_PASS=<the Brevo SMTP key>
-   MAIL_FROM=geral@feitoemportugal.org   # must be the verified domain
-   MAIL_TO=geral@feitoemportugal.org     # your Zoho inbox
+   SMTP_HOST=mail.privateemail.com
+   SMTP_PORT=587                         # 587 STARTTLS, or 465 with SMTP_SECURE=true
+   SMTP_SECURE=false
+   SMTP_USER=geral@feitoemportugal.org   # the full address is the login
+   SMTP_PASS=<the mailbox password>
+   MAIL_FROM=geral@feitoemportugal.org
+   MAIL_TO=geral@feitoemportugal.org     # same mailbox
    ```
 
-6. **Restart the service** (`docker compose --profile submit up -d`) and submit a
-   test form. The mail should arrive in your Zoho `geral@` inbox within seconds;
-   if not, check `docker compose logs submit` and that the domain shows *verified*
-   in Brevo.
+4. **Restart the service** (`docker compose --profile submit up -d`) and submit a
+   test form. The mail should arrive in the `geral@` inbox within seconds; if not,
+   check `docker compose logs submit` and confirm the mailbox SMTP password is
+   right.
 
-Your Zoho MX records (receiving) are untouched by any of this — Brevo only sends.
 Until SMTP is set the service just logs the mail, and a new-brand submission still
 opens its PR, so nothing is lost in the meantime.
 

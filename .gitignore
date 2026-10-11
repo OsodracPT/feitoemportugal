@@ -16,6 +16,12 @@ coverage/
 .env.*
 !.env.example
 
+# --- deploy, site-specific (host-agnostic repo) ---
+# Compose overrides and the real client-IP settings for a deploy behind a proxy
+# (see deploy/real-ip.conf). The tracked real-ip.conf is a safe no-op.
+deploy/docker-compose.override.yml
+deploy/real-ip.local.conf
+
 # --- editors and operating systems ---
 .vscode/
 .idea/

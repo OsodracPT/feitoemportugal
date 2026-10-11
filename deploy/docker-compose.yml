@@ -33,6 +33,10 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro
+      # Client-IP trust for the rate limits. The tracked file is a no-op; a
+      # deploy behind a proxy overrides this mount in docker-compose.override.yml
+      # with its own untracked copy. See real-ip.conf and README.md.
+      - ./real-ip.conf:/etc/nginx/snippets/real-ip.conf:ro
       - ${FEP_WWW_DIR:-./www}:/srv/www:ro
 
   submit:

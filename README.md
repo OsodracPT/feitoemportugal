@@ -20,29 +20,29 @@
 
 **Feito em Portugal** is a bilingual website and a public JSON API that answer one
 question: *which brands actually make their products in Portugal?* Not "designed
-here", not "Portuguese-owned" — made here, with evidence. Everyone can use it,
-anyone can add to it, and the whole dataset is open.
+here", not "Portuguese-owned". Made here, with evidence. Anyone can use it, anyone
+can add to it, and the whole dataset is open.
 
-👉 **Visit [feitoemportugal.org](https://feitoemportugal.org)** — or
+👉 **Visit [feitoemportugal.org](https://feitoemportugal.org)**, or
 [feitoemportugal.org/en](https://feitoemportugal.org/en) in English.
 
 ## 🔎 What you'll find
 
-- **Brands you can trust.** Each one is listed only because its own website says it
-  manufactures in Portugal — and we keep the quote on file.
-- **Search and filters that just work.** Search shrugs off accents and typos;
-  eleven filters (category, region, product, price, tags…) combine, and the whole
+- **Brands you can trust.** A brand is listed only because its own website says it
+  manufactures in Portugal, and we keep the quote on file.
+- **Search and filters that just work.** Search shrugs off accents and typos.
+  Eleven filters (category, region, product, price, tags…) combine, and the whole
   state lives in the URL, so any view is a link you can share.
 - **A map of the country.** See where things are made, district by district.
-- **Open data.** The dataset is published under CC BY 4.0 and served as JSON at
-  `/api/v1/` — take it and build something.
+- **Open data.** The whole dataset is CC BY 4.0, served as JSON at `/api/v1/`. Take
+  it and build something.
 
 No accounts, no tracking, no ads.
 
-## 🙌 Help out — no account needed
+## 🙌 Help out (no account needed)
 
 The list stays good because people add to it. The easiest way is right on the site,
-with a plain web form (no GitHub, no login):
+a plain web form, no GitHub and no login:
 
 - **Know a brand that should be here?** →
   [Suggest it](https://feitoemportugal.org/submeter)
@@ -56,7 +56,7 @@ and you can always open a pull request.
 **The one rule for a new brand:** its *own* site has to say it makes its products in
 Portugal, and you paste the sentence that proves it. "Portuguese brand" or "designed
 in Portugal" is not enough; a foreign brand qualifies when most of its range is made
-here. That is what keeps the list honest — and the data ours to license.
+here. That rule is what keeps the list honest, and the data ours to license.
 
 ## 💻 Run it locally
 
