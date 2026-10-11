@@ -24,6 +24,8 @@ where_to_buy:
   online_store: https://eliteshoes.pt
 social:
   instagram: eliteshoes.pt
+media:
+  logo: logo.png
 sustainability:
   practices: [reparacao]
 verification:
