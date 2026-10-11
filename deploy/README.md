@@ -90,6 +90,53 @@ Without Docker, include `nginx.conf` in your nginx's `http {}` block and adjust
 After changing the config: `docker compose exec web nginx -t`, then
 `docker compose exec web nginx -s reload`.
 
+## The submission service (optional)
+
+The site is static, but the contribution forms (`/submeter`, `/en/submit`) post
+to a small runtime service — `submit-api/` — that stores each submission, emails
+the maintainer, and, for a clean new-brand suggestion, opens a draft PR. It is
+**optional**: without it the forms fall back to the GitHub issue links, and the
+rest of the site is unaffected.
+
+It runs behind the same nginx, under `/api/submit/` on the **site's own origin**.
+That is deliberate: the forms post and `fetch` same-origin, so the production CSP
+(`script-src 'self'`, `connect-src 'self'`, `form-action 'self'`) needs **no
+change**. The anti-spam is [Altcha](https://altcha.org) proof-of-work solved in
+the browser and verified in the service with `node:crypto` — no third-party
+script, which is the whole reason the CSP stays untouched.
+
+The service is off by default (a Compose profile). Unlike the static site, which
+is just the build in `FEP_WWW_DIR`, the service is **built from the repository**,
+so this deploy needs a checkout. From a clone on the server:
+
+```bash
+cp .env.example deploy/.env      # then fill in the submit-* values
+cd deploy
+docker compose --profile submit up -d --build
+```
+
+What to set in `.env` (see [`.env.example`](../.env.example) for the full list):
+
+| Variable | |
+|---|---|
+| `SECRET_KEY` | **Required.** Signs Altcha challenges and hashes stored IPs. `openssl rand -hex 32` |
+| `SITE_ORIGIN` | The public origin, for the thank-you redirect and reading `/api/v1/brands.json` |
+| `SMTP_*`, `MAIL_TO` | The maintainer mailbox (nodemailer). Unset ⇒ mail is only logged. Zoho needs a paid tier for SMTP |
+| `GITHUB_TOKEN`, `GITHUB_REPO` | A token (repo contents + PR) to auto-open draft-brand PRs. Unset ⇒ email only |
+| `RATE_MAX`, `RETENTION_DAYS` | Per-IP hourly limit (5) and how long a row is kept (90 days) |
+
+Storage is one SQLite file on the `submit-data` volume. The service sweeps rows
+older than `RETENTION_DAYS` on boot and once a day; nothing else to schedule. The
+submitter's email is stored only when given and never published; the IP is kept
+only as a salted hash, for the rate limit.
+
+Secrets live only in `deploy/.env` on the server — never in the repository
+([the repo stays host-agnostic](../CLAUDE.md)). `GITHUB_BASE` defaults to `main`.
+
+The `security-headers.conf` CSP is **unchanged** by this service. If you add the
+service after the fact, only `nginx.conf` gains the `/api/submit/` proxy; reload
+nginx (`docker compose exec web nginx -s reload`) and the forms light up.
+
 ## Option 3: automatic deploys from GitHub Actions
 
 [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) runs on every push to

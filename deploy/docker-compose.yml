@@ -10,6 +10,14 @@
 # Settings go in a .env file next to this one. Site-specific changes (networks,
 # no published port) belong in docker-compose.override.yml, which Compose merges
 # automatically and which should stay out of the repository.
+#
+# The `submit` service (the contribution forms' backend) is optional and off by
+# default, so a static-only deploy is unchanged. Turn it on with its profile:
+#
+#   docker compose --profile submit up -d
+#
+# It is built from the repository, so that deploy needs a checkout here (unlike
+# the static site, which is just the build in FEP_WWW_DIR). See README.md.
 name: feitoemportugal
 
 services:
@@ -26,3 +34,28 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro
       - ${FEP_WWW_DIR:-./www}:/srv/www:ro
+
+  submit:
+    profiles: [submit]
+    build:
+      # The repository root: the image needs @fep/schema and data/ too.
+      context: ..
+      dockerfile: submit-api/Dockerfile
+    restart: unless-stopped
+    # Secrets (SMTP, GITHUB_TOKEN, SECRET_KEY) live only in this .env, never in
+    # the repository. See .env.example at the repository root.
+    env_file: .env
+    volumes:
+      - submit-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8787/api/submit/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    # No published port: only the web container reaches it, over the Compose
+    # network, and nginx exposes it under /api/submit/ on the site's own origin.
+    expose:
+      - "8787"
+
+volumes:
+  submit-data:
