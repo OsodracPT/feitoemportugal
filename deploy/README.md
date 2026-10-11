@@ -62,8 +62,8 @@ returns `429` when a client goes over. The static `/api/v1/` limit is generous; 
 `/api/submit/` one is tighter, so a flood is dropped at nginx before it reaches the
 runtime service (whose own per-IP limit then handles sustained abuse).
 
-That keying has one catch behind a reverse proxy (a CDN, a load balancer,
-Pangolin…): the connection address nginx sees is the **proxy's**, identical for
+That keying has one catch behind a reverse proxy (a CDN, a load balancer, a
+tunnel…): the connection address nginx sees is the **proxy's**, identical for
 every visitor, so all of them would share one bucket and a single burst would lock
 everyone out. The fix is to trust the proxy and read the real client from
 `X-Forwarded-For` — but the proxy's address is site-specific and must not go in the
@@ -169,37 +169,35 @@ only as a salted hash, for the rate limit.
 Secrets live only in `deploy/.env` on the server, never in the repository
 ([the repo stays host-agnostic](../CLAUDE.md)). `GITHUB_BASE` defaults to `main`.
 
-### Email: the `geral@` mailbox (Namecheap Private Email)
+### Email: the notification mailbox
 
-`geral@feitoemportugal.org` is a Namecheap **Private Email** mailbox. It both
-receives and sends, so the service authenticates to it over SMTP directly and the
-notification lands in the same inbox you read. One provider, no forwarding, one SPF
-record. One-time setup, all on your side.
+The service sends the maintainer notification over plain SMTP, so any mailbox that
+offers SMTP works — a mailbox from your domain's email provider, or a transactional
+sender. The simplest setup is one real mailbox that both sends and receives: the
+service authenticates to it and the notification lands in the same inbox you read.
 
-1. **Create the mailbox:** in your Namecheap account, open **Private Email** for
-   `feitoemportugal.org` and create the `geral@` mailbox with a password.
-2. **Point DNS at it:** Namecheap offers an **Auto-configure** button for Private
-   Email that adds the MX records, the SPF record
-   (`v=spf1 include:spf.privateemail.com ~all`) and DKIM. Use it. There can be only
-   **one SPF record**, so if another provider's MX/SPF is still on the domain (e.g.
-   an old Zoho setup), remove it first; only one provider can own MX. DNS can take
-   up to a few hours.
+1. **Create (or pick) a mailbox** with a password, and get its SMTP details from the
+   provider: host, port (usually `587` for STARTTLS or `465` for SSL), and whether
+   the login is the full address.
+2. **Make sure the domain can send as it:** the provider's MX/SPF (and ideally DKIM)
+   records must be in DNS. A domain can carry only **one SPF record**, so if an old
+   provider's records are still there, remove them first. DNS changes can take a few
+   hours.
 3. **Fill `deploy/.env`** (see [`.env.example`](../.env.example)):
 
    ```ini
-   SMTP_HOST=mail.privateemail.com
+   SMTP_HOST=smtp.your-provider.example
    SMTP_PORT=587                         # 587 STARTTLS, or 465 with SMTP_SECURE=true
    SMTP_SECURE=false
-   SMTP_USER=geral@feitoemportugal.org   # the full address is the login
+   SMTP_USER=you@your-domain.example     # often the full address is the login
    SMTP_PASS=<the mailbox password>
-   MAIL_FROM=geral@feitoemportugal.org
-   MAIL_TO=geral@feitoemportugal.org     # same mailbox
+   MAIL_FROM=you@your-domain.example
+   MAIL_TO=you@your-domain.example       # where submissions land
    ```
 
 4. **Restart the service** (`docker compose --profile submit up -d`) and submit a
-   test form. The mail should arrive in the `geral@` inbox within seconds; if not,
-   check `docker compose logs submit` and confirm the mailbox SMTP password is
-   right.
+   test form. The mail should arrive within seconds; if not, check
+   `docker compose logs submit` and confirm the SMTP host, port and password.
 
 Until SMTP is set the service just logs the mail, and a new-brand submission still
 opens its PR, so nothing is lost in the meantime.
