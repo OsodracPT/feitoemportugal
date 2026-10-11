@@ -45,9 +45,16 @@ export function parseIssueForm(body: string, labels: Map<string, string>): Map<s
   return answers;
 }
 
-/** "Calçado / Footwear (calcado)" → "calcado". */
-const optionId = (value: string | undefined): string | undefined =>
-  value?.match(/\(([a-z0-9-]+)\)\s*$/)?.[1];
+/**
+ * The id of a chosen option. Issue forms send the whole label and the id is in
+ * parentheses ("Calçado / Footwear (calcado)" → "calcado"); the web form sends
+ * the bare id ("calcado"), so a plain kebab-case value is taken as the id.
+ */
+const optionId = (value: string | undefined): string | undefined => {
+  const trimmed = value?.trim();
+  if (!trimmed) return undefined;
+  return trimmed.match(/\(([a-z0-9-]+)\)\s*$/)?.[1] ?? (/^[a-z0-9-]+$/.test(trimmed) ? trimmed : undefined);
+};
 
 export const foldText = (value: string): string =>
   value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -113,7 +120,31 @@ export function submissionFromIssue(
   existing: ExistingBrand[],
   today: string,
 ): SubmissionResult {
-  const answers = parseIssueForm(body, labels);
+  return submissionFromFields(parseIssueForm(body, labels), taxonomy, existing, today, 'github');
+}
+
+/** The same conversion from a web form's field-id → value map (no issue body). */
+export function submissionFromForm(
+  fields: Map<string, string>,
+  taxonomy: Taxonomy,
+  existing: ExistingBrand[],
+  today: string,
+): SubmissionResult {
+  return submissionFromFields(fields, taxonomy, existing, today, 'web-form');
+}
+
+/**
+ * The shared core. The GitHub issue adapter and the web form each build a
+ * field-id → value map and feed it here, so both produce the same brand file;
+ * `source` records which path it came from in `meta.source`.
+ */
+export function submissionFromFields(
+  answers: Map<string, string>,
+  taxonomy: Taxonomy,
+  existing: ExistingBrand[],
+  today: string,
+  source: BrandInput['meta']['source'],
+): SubmissionResult {
   const errors: string[] = [];
   const notes: string[] = [];
 
@@ -208,7 +239,7 @@ export function submissionFromIssue(
     ...(region ? { location: { district: region.id, ...(municipality ? { municipality } : {}) } } : {}),
     ...(instagram ? { social: { instagram } } : {}),
     verification: { verified: false },
-    meta: { added: today, updated: today, source: 'github' },
+    meta: { added: today, updated: today, source },
   };
 
   const parsed = brandSchema.safeParse(input);

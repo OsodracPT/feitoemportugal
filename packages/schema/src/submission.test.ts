@@ -12,6 +12,7 @@ import {
   instagramHandle,
   sharedRun,
   slugify,
+  submissionFromForm,
   submissionFromIssue,
 } from './submission.ts';
 
@@ -157,6 +158,53 @@ describe('submissionFromIssue', () => {
       '2026-10-08',
     );
     expect(result.ok && result.submission.brand.slug).toBe('github-workflows-x');
+  });
+});
+
+describe('submissionFromForm', () => {
+  // The web form posts bare ids (no "(id)" label suffix) in a field-id map.
+  const formFields = (over: Record<string, string> = {}): Map<string, string> =>
+    new Map(
+      Object.entries({
+        name: valid.name,
+        website: valid.website,
+        evidence_url: valid.evidence_url,
+        evidence_quote: valid.evidence_quote,
+        scope: 'total',
+        category: 'calcado',
+        district: 'porto',
+        municipality: 'felgueiras',
+        description_pt: valid.description_pt,
+        description_en: valid.description_en,
+        instagram: valid.instagram,
+        relationship: 'none',
+        ...over,
+      }),
+    );
+
+  it('builds the same draft brand as the issue path, tagged web-form', () => {
+    const result = submissionFromForm(formFields(), taxonomy, existing, '2026-10-08');
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const { brand } = result.submission;
+    expect(brand.slug).toBe('sapataria-teste-e-filhos');
+    expect(brand.category).toBe('calcado');
+    expect(brand.location).toEqual({ district: 'porto', municipality: 'felgueiras' });
+    expect(brand.meta.source).toBe('web-form');
+  });
+
+  it('refuses partial production without notes, and a brand already listed', () => {
+    expect(submissionFromForm(formFields({ scope: 'parcial' }), taxonomy, existing, '2026-10-08').ok).toBe(false);
+    const [first] = existing;
+    expect(submissionFromForm(formFields({ name: first!.slug }), taxonomy, existing, '2026-10-08').ok).toBe(false);
+    expect(
+      submissionFromForm(
+        formFields({ website: `${first!.website.replace(/\/$/, '')}/loja` }),
+        taxonomy,
+        existing,
+        '2026-10-08',
+      ).ok,
+    ).toBe(false);
   });
 });
 
