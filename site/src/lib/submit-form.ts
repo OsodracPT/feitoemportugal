@@ -53,7 +53,29 @@ function setStatus(form: HTMLFormElement, message: string, kind: 'error' | 'succ
   status.hidden = false;
 }
 
-function enhance(form: HTMLFormElement): void {
+/**
+ * The shared success dialog (one per page). Returns a function that pops it,
+ * or null when the browser has no modal <dialog> — then the inline success box
+ * is the only confirmation. Esc and the close button dismiss it; so does a click
+ * on the backdrop (a click whose target is the dialog element itself).
+ */
+function setupSuccessDialog(): (() => void) | null {
+  const dialog = document.querySelector<HTMLDialogElement>('[data-submit-dialog]');
+  if (!dialog || typeof dialog.showModal !== 'function') return null;
+
+  dialog.querySelector('[data-submit-dialog-close]')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+
+  return () => {
+    dialog.showModal();
+    // Focus the close button rather than leaving it on the triggering form.
+    dialog.querySelector<HTMLButtonElement>('[data-submit-dialog-close]')?.focus();
+  };
+}
+
+function enhance(form: HTMLFormElement, showSuccessDialog: (() => void) | null): void {
   const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   const sendLabel = button?.textContent ?? '';
   const sending = form.dataset.sending ?? sendLabel;
@@ -85,8 +107,11 @@ function enhance(form: HTMLFormElement): void {
         form.reset();
         form.hidden = true;
         setStatus(form, form.dataset.success ?? '', 'success');
+        // Persistent in-page confirmation (and the only one without a modal dialog).
         const success = form.parentElement?.querySelector<HTMLElement>('[data-submit-success]');
         if (success) success.hidden = false;
+        // The animated celebration on top of it, when the browser supports it.
+        showSuccessDialog?.();
         return;
       }
       setStatus(form, body.errors?.join(' ') ?? form.dataset.error ?? '', 'error');
@@ -102,5 +127,8 @@ function enhance(form: HTMLFormElement): void {
 }
 
 export function initSubmitForms(): void {
-  document.querySelectorAll<HTMLFormElement>('form[data-submit-form]').forEach(enhance);
+  const showSuccessDialog = setupSuccessDialog();
+  document
+    .querySelectorAll<HTMLFormElement>('form[data-submit-form]')
+    .forEach((form) => enhance(form, showSuccessDialog));
 }

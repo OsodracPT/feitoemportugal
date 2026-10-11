@@ -503,6 +503,8 @@
       "email": "O teu email (opcional)",
       "emailHelp": "Só para te respondermos. Fica guardado, nunca é publicado.",
       "success": "Obrigado! A submissão chegou. Vamos revê-la antes de publicar.",
+      "successTitle": "Submetido!",
+      "close": "Fechar",
       "error": "Não foi possível enviar. Tenta de novo dentro de momentos.",
       "required": "Preenche os campos obrigatórios."
     },

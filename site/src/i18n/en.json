@@ -444,6 +444,8 @@
       "email": "Your email (optional)",
       "emailHelp": "Only so we can reply. Stored, never published.",
       "success": "Thank you! Your submission arrived. We will review it before publishing.",
+      "successTitle": "Submitted!",
+      "close": "Close",
       "error": "Could not send. Please try again in a moment.",
       "required": "Please fill in the required fields."
     },

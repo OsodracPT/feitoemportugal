@@ -295,6 +295,22 @@ const categoryOptions = categories.map((category) => ({ id: category.id, label: 
         <button class="button" type="submit">{t(lang, 'submitForm.common.send')}</button>
       </form>
     </section>
+
+    {/* One shared success dialog, popped by submit-form.ts after any form succeeds.
+        Authored here (not built in JS) so the scoped styles below reach it. */}
+    <dialog class="submit__done" data-submit-dialog aria-labelledby="submit-done-title">
+      <div class="submit__done-card">
+        <svg class="submit__check" viewBox="0 0 52 52" width="64" height="64" aria-hidden="true">
+          <circle class="submit__check-ring" cx="26" cy="26" r="24" fill="none" />
+          <path class="submit__check-mark" fill="none" d="M14.5 27l7.5 7.5L37.5 19" />
+        </svg>
+        <h2 id="submit-done-title">{t(lang, 'submitForm.common.successTitle')}</h2>
+        <p>{t(lang, 'submitForm.common.success')}</p>
+        <button class="button" type="button" data-submit-dialog-close>
+          {t(lang, 'submitForm.common.close')}
+        </button>
+      </div>
+    </dialog>
   </div>
 </Layout>
 
@@ -422,5 +438,105 @@ const categoryOptions = categories.map((category) => ({ id: category.id, label: 
     justify-self: start;
     font-size: var(--fep-text-sm);
     color: var(--fep-ink-2);
+  }
+
+  /* ---------- Success dialog ---------- */
+  .submit__done {
+    width: min(26rem, calc(100vw - 2 * var(--fep-space-4)));
+    padding: 0;
+    border: var(--fep-stitch);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    box-shadow: 0 20px 48px rgb(14 22 28 / 0.28);
+  }
+
+  .submit__done::backdrop {
+    background: rgb(14 22 28 / 0.5);
+  }
+
+  .submit__done-card {
+    display: grid;
+    justify-items: center;
+    gap: var(--fep-space-3);
+    padding: var(--fep-space-6) var(--fep-space-5);
+    text-align: center;
+  }
+
+  .submit__done-card h2 {
+    margin: 0;
+    color: var(--fep-heading);
+  }
+
+  .submit__done-card p {
+    margin: 0;
+    color: var(--fep-ink-2);
+  }
+
+  .submit__done-card .button {
+    margin-top: var(--fep-space-2);
+  }
+
+  /* Cobalt checkmark: the ring and the tick are drawn on open. */
+  .submit__check {
+    color: var(--fep-accent);
+  }
+
+  .submit__check-ring,
+  .submit__check-mark {
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .submit__check-ring {
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+  }
+
+  .submit__check-mark {
+    stroke-dasharray: 36;
+    stroke-dashoffset: 36;
+  }
+
+  /* Play only while the dialog is open, so re-opening replays it. base.css
+     already disables all animation under prefers-reduced-motion. */
+  .submit__done[open] .submit__done-card {
+    animation: submit-pop 220ms ease-out both;
+  }
+
+  .submit__done[open] .submit__check-ring {
+    animation: submit-draw 420ms ease-out forwards;
+  }
+
+  .submit__done[open] .submit__check-mark {
+    animation: submit-draw 260ms 320ms ease-out forwards;
+  }
+
+  @keyframes submit-pop {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes submit-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* base.css disables animation here, so draw the check statically instead of
+     leaving it stuck mid-stroke (invisible). */
+  @media (prefers-reduced-motion: reduce) {
+    .submit__check-ring,
+    .submit__check-mark {
+      stroke-dashoffset: 0;
+    }
   }
 </style>
