@@ -18,3 +18,4 @@ against the page before merging. Quotes live here, never in the brand file.
   so it qualifies under the foreign-brand rule. District `porto` from that page;
   the submitter named Felgueiras, but the brand's site does not, so the
   municipality is left out. Orders ship from Finland.
+| `benedita-portugal` | web form | https://eliteshoes.pt/pages/a-marca | "A marca Elite foi criada em França em 1990. Em 1991 começou a ser fabricada em Portugal e, no ano 2000, houve uma reestruturação na administração e a empresa que ficou com a marca foi aquela que inicialmente a começou a produzir, quando foi criada." | a member of the public |
