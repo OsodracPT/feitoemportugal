@@ -74,6 +74,15 @@ const sustainabilitySchema = z.object({
   notes: localizedOptionalSchema.optional(),
 });
 
+// A reference to one independent proof of production — press or an official
+// record, never the brand's own site. Holds the pointer, not copied article
+// text, so the dataset stays ours to license (CLAUDE.md).
+const sourceSchema = z.object({
+  url: httpsUrlSchema,
+  publisher: z.string().min(1).max(120),
+  date: isoDateSchema.nullish(),
+});
+
 /** Maintainer-only block (enforced by CODEOWNERS + a CI warning). */
 const verificationSchema = z
   .object({
@@ -81,6 +90,9 @@ const verificationSchema = z
     date: isoDateSchema.nullish(),
     method: optionalTextSchema.nullable(),
     evidence_notes: optionalTextSchema.nullable(),
+    // Independent sources that corroborate production. Two of them lift a brand
+    // to trust level 2 "Com fontes" (site/src/lib/card-art.ts). Maintainer-set.
+    sources: z.array(sourceSchema).max(20).default([]),
   })
   .refine((v) => !v.verified || Boolean(v.date), {
     message: 'verification.date is required when verified is true',

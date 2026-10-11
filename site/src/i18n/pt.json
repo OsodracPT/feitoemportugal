@@ -115,6 +115,8 @@
     "proofBrandLink": "Ver no site da marca",
     "proofMaintainer": "Responsável do projeto",
     "proofVerified": "Verificação",
+    "proofSources": "Fontes independentes",
+    "proofSourcesText": "Imprensa ou registos independentes da marca que confirmam a produção.",
     "proofMissing": "Em falta para verificar",
     "proofMissingText": "Uma prova independente do site da marca: visita, certificado, registo oficial ou fotografias da produção.",
     "proofMissingLink": "Tens uma prova? Envia-nos",

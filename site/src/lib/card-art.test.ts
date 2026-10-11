@@ -1,8 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { CATEGORY_TILES, TILES, categoryTile, trustLevel } from './card-art.ts';
+import type { Brand } from '@fep/schema';
+import { CATEGORY_TILES, MIN_SOURCES_FOR_LEVEL2, TILES, categoryTile, trustLevel } from './card-art.ts';
 import { brands, categories } from './data.ts';
+
+/** Only `verification` drives the trust level, so the rest can be a stub. */
+const withVerification = (verification: Brand['verification']): Brand => ({ verification }) as Brand;
+
+const source = { url: 'https://example.com', publisher: 'Example' };
 
 const publicDir = fileURLToPath(new URL('../../public/', import.meta.url));
 
@@ -26,5 +32,20 @@ describe('card art', () => {
     for (const brand of brands) {
       expect(trustLevel(brand) === 3).toBe(brand.verification?.verified === true);
     }
+  });
+
+  it('lifts a brand to level 2 once it has two independent sources', () => {
+    expect(trustLevel(withVerification(undefined))).toBe(1);
+    expect(trustLevel(withVerification({ verified: false, sources: [] }))).toBe(1);
+    expect(trustLevel(withVerification({ verified: false, sources: [source] }))).toBe(1);
+    expect(trustLevel(withVerification({ verified: false, sources: [source, source] }))).toBe(2);
+    expect(MIN_SOURCES_FOR_LEVEL2).toBe(2);
+  });
+
+  it('keeps a verified brand at level 3 regardless of sources', () => {
+    expect(trustLevel(withVerification({ verified: true, date: '2026-10-11', method: 'visit', sources: [] }))).toBe(3);
+    expect(
+      trustLevel(withVerification({ verified: true, date: '2026-10-11', method: 'visit', sources: [source, source] })),
+    ).toBe(3);
   });
 });

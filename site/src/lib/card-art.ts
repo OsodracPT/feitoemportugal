@@ -36,9 +36,18 @@ export const categoryTile = (category: string): Tile => CATEGORY_TILES[category]
 /** 1 Declarado, 2 Com fontes, 3 Verificada (design/README.md §5.6). */
 export type TrustLevel = 1 | 2 | 3;
 
+/** Two independent sources on the brand lift it from level 1 to level 2. */
+export const MIN_SOURCES_FOR_LEVEL2 = 2;
+
 /**
  * Every published brand states on its own site that it makes in Portugal, so
- * level 1 is the floor. Level 2 needs independent sources on the brand, which
- * the schema does not record yet (build step 4); level 3 is a maintainer's.
+ * level 1 is the floor. Two independent sources recorded on the brand
+ * (`verification.sources`, maintainer-set) lift it to level 2 "Com fontes";
+ * a maintainer's confirmation (`verified`) makes it level 3 "Verificada".
  */
-export const trustLevel = (brand: Brand): TrustLevel => (brand.verification?.verified ? 3 : 1);
+export const trustLevel = (brand: Brand): TrustLevel =>
+  brand.verification?.verified
+    ? 3
+    : (brand.verification?.sources?.length ?? 0) >= MIN_SOURCES_FOR_LEVEL2
+      ? 2
+      : 1;

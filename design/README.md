@@ -62,7 +62,7 @@ Screens: `M-Home` / `D-Home`, `M-Listing` (list, filters sheet light + dark) / `
    - Trust icon + label, and a "Produção parcial" pill with a dashed border.
    - "Verificada" is trust level 3, not a separate badge.
    - The whole card is one link.
-6. **Trust level:** 1 Declarado / 2 Com fontes / 3 Verificada, using `assets/trust/trust-N-{light,dark}.svg`. Swap light/dark with `<picture><source media="(prefers-color-scheme: dark)">`.
+6. **Trust level:** 1 Declarado / 2 Com fontes / 3 Verificada, using `assets/trust/trust-N-{light,dark}.svg`. Swap light/dark with `<picture><source media="(prefers-color-scheme: dark)">`. Level 2 is computed from `verification.sources` (two independent sources); level 3 from `verification.verified` — see `site/src/lib/card-art.ts`.
 7. **Listing toolbar:** a plate h1 + result count, search, "Filtros · N" button, a sort `<select>`, the view switch Lista / Painel / Mapa (segmented, `aria-pressed`), and removable chips for active filters.
 8. **Filters:**
    - Mobile: a bottom sheet (`role="dialog"`) with a sticky "Limpar / Ver N marcas" footer.

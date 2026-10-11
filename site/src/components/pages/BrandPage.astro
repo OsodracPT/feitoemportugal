@@ -325,6 +325,20 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
                 </span>
               </li>
               {
+                (brand.verification?.sources?.length ?? 0) > 0 && (
+                  <li class="proof">
+                    <span class="proof__mark" aria-hidden="true">✓</span>
+                    <span class="proof__body">
+                      <span class="proof__kind">{t(lang, 'brand.proofSources')}</span>
+                      <span>{t(lang, 'brand.proofSourcesText')}</span>
+                      {brand.verification!.sources.map((source) => (
+                        <a href={source.url} rel="nofollow noopener">{source.publisher}</a>
+                      ))}
+                    </span>
+                  </li>
+                )
+              }
+              {
                 brand.verification?.verified && brand.verification.date ? (
                   <li class="proof">
                     <span class="proof__mark" aria-hidden="true">✓</span>

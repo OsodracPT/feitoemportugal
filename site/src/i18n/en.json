@@ -115,6 +115,8 @@
     "proofBrandLink": "See the brand's website",
     "proofMaintainer": "Project maintainer",
     "proofVerified": "Verification",
+    "proofSources": "Independent sources",
+    "proofSourcesText": "Press or records independent of the brand that confirm production.",
     "proofMissing": "Missing for verification",
     "proofMissingText": "Proof independent of the brand's website: a visit, a certificate, an official record or photos of production.",
     "proofMissingLink": "Have proof? Send it to us",

@@ -30,7 +30,12 @@ when everything builds.
   registry) backs it. When the signs of a faked origin stack up, the brand stays a
   lead. See `.claude/agents/brand-researcher.md` for the red flags.
 - **Only maintainers set `verification`.** An agent or a contributor never flips
-  `verified: true`. No brand is verified yet.
+  `verified: true`, nor adds `verification.sources`. The `verification` block is
+  the one sanctioned place a proof *reference* lives in the YAML: `sources` holds
+  independent press or records (url + publisher, never copied article text), and
+  two of them lift a brand to trust level 2 "Com fontes" (`site/src/lib/card-art.ts`);
+  `verified: true` makes it level 3. Record the same sources in `docs/leads/` too.
+  `citadin` is the first verified brand (level 3, in-person shop visit, 2026-10-11).
 - **No personal data, no exact coordinates.** Location stops at the municipality;
   maps use the municipality centroid. Many producers work from home. A street
   address is allowed only on a `physical_stores` entry for a shop open to the public
@@ -229,8 +234,10 @@ with a link per region, the recent brands, the trust explainer) is done. Step 6 
 and index page opens with `LandingHead.astro` (band, plate title, count, intro,
 the map beside it on region pages), and an empty list or a listing with no
 results shows `EmptyState.astro`, which offers to remove the last filter and
-links to the suggestion form. Every brand shows trust
-level 1 or 3 until step 4 records sources for level 2. Settled:
+links to the suggestion form. Trust level is computed in
+`site/src/lib/card-art.ts`: level 1 by default, level 2 once a brand has two
+independent `verification.sources`, level 3 once a maintainer sets
+`verified: true`. `citadin` is the first level-3 brand (in-person shop visit). Settled:
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range
 is made in Portugal; brand images stay outside CC BY (logos from the brand's site,
