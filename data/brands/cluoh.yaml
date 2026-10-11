@@ -17,13 +17,24 @@ production:
   scope: total
 where_to_buy:
   online_store: https://www.cluoh.com
+  physical_stores:
+    - name: Cluoh Porto - Foz
+      city: Porto
+      address: Rua de Gondarém 549, 4150-153 Porto
 social:
   instagram: cluoh
 media:
   logo: logo.svg
 verification:
   verified: false
+  sources:
+    - url: https://observador.pt/2018/11/13/cluoh-carteiras-com-a-ilustracao-a-flor-da-pele/
+      publisher: Observador
+      date: 2018-11-13
+    - url: https://visao.pt/visaose7e/comprar/2018-10-31-cluoh-estas-clutches-sao-portuguesas/
+      publisher: Visão
+      date: 2018-10-31
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-11
   source: import

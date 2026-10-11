@@ -15,7 +15,10 @@ tags: [feito-a-mao]
 products: [oculos]
 founded: 2014
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: A maioria dos modelos é feita numa fábrica no norte do país; alguns são feitos fora de Portugal.
+    en: Most frames are made in a factory in northern Portugal; some are made abroad.
 where_to_buy:
   online_store: https://fora.pt
   physical_stores:
@@ -35,6 +38,13 @@ social:
   instagram: fora_sunglasses
 verification:
   verified: false
+  sources:
+    - url: https://www.nit.pt/compras/lojas-e-marcas/os-oculos-de-sol-intemporais-da-fora-sunglasses-chegaram-campo-de-ourique
+      publisher: NiT
+      date: 2024-05-15
+    - url: https://observador.pt/2015/05/15/fora-seja-bem-vindo-a-marca-de-oculos-de-sol-feitos-em-portugal/
+      publisher: Observador
+      date: 2015-05-15
 meta:
   added: 2026-10-10
   updated: 2026-10-11

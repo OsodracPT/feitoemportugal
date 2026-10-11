@@ -25,7 +25,14 @@ media:
   logo: logo.png
 verification:
   verified: false
+  sources:
+    - url: https://echoboomer.pt/trinca-loja-torres-novas-snacks-biologicos/
+      publisher: Echo Boomer
+      date: 2020-02-17
+    - url: https://marketeer.sapo.pt/?p=105250
+      publisher: Marketeer
+      date: 2017-05-26
 meta:
   added: 2026-10-08
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

@@ -22,6 +22,13 @@ production:
       Most pieces are made in Portugal; the brand does not say where the rest are made.
 where_to_buy:
   online_store: https://www.piupiuchick.com
+  physical_stores:
+    - name: PiuPiuChick Foz
+      city: Porto
+      address: Rua Marechal Saldanha 56, 4150 Porto
+    - name: PiuPiuChick Campo de Ourique
+      city: Lisboa
+      address: Rua Almeida e Sousa 57A, 1350-010 Lisboa
 social:
   instagram: piupiuchick
 media:
@@ -30,5 +37,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-11
   source: import

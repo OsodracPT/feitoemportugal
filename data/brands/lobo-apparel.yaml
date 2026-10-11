@@ -27,7 +27,14 @@ media:
   logo: logo.png
 verification:
   verified: false
+  sources:
+    - url: https://www.nit.pt/compras/lojas-e-marcas/lobo-apparel-nova-marca-portuguesa
+      publisher: NiT
+      date: 2019-01-22
+    - url: https://visao.pt/visaose7e/comprar/2019-11-26-na-lobo-apparel-o-calcado-e-os-acessorios-sao-feitos-para-durar/
+      publisher: Visão
+      date: 2019-11-26
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

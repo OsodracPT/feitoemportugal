@@ -31,7 +31,14 @@ media:
   logo: logo.png
 verification:
   verified: false
+  sources:
+    - url: https://www.nit.pt/compras/lojas-e-marcas/as-jardineiras-sao-uma-das-paixoes-de-rita-rugeroni-e-lancou-uma-marca-para-os-miudos
+      publisher: NiT
+      date: 2022-09-13
+    - url: https://observador.pt/2025/09/23/jardineiras-portuguesas-com-certeza-favorite-people-lanca-nova-colecao-e-peca-exclusiva-com-a-vida-portuguesa/
+      publisher: Observador
+      date: 2025-09-23
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

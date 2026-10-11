@@ -27,7 +27,14 @@ sustainability:
     - id: gots
 verification:
   verified: false
+  sources:
+    - url: https://www.forbespt.com/?p=176982
+      publisher: Forbes Portugal
+      date: 2025-12-18
+    - url: https://echoboomer.pt/chule-levas-meias-sustentaveis-porto/
+      publisher: Echo Boomer
+      date: 2025-12-03
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-11
   source: import

@@ -15,6 +15,9 @@ tags: [algodao, contemporaneo, presente]
 products: [meias]
 production:
   scope: total
+location:
+  district: coimbra
+  municipality: lousa
 price_range: 2
 typical_price:
   product: meias
@@ -28,7 +31,14 @@ media:
   logo: logo.png
 verification:
   verified: false
+  sources:
+    - url: https://dinheirovivo.dn.pt/heel-tread-carros-iconicos-servem-de-inspiracao-a-meias-coloridas-12788980.html
+      publisher: Dinheiro Vivo
+      date: 2018-05-05
+    - url: https://www.publico.pt/2018/03/16/impar/noticia/heel-tread-1806911
+      publisher: Público
+      date: 2018-03-16
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

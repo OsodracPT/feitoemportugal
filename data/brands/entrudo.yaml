@@ -16,6 +16,9 @@ products: [malas]
 founded: 2017
 production:
   scope: total
+location:
+  district: porto
+  municipality: felgueiras
 price_range: 3
 typical_price:
   product: malas
@@ -29,7 +32,14 @@ media:
   logo: logo.jpg
 verification:
   verified: false
+  sources:
+    - url: https://www.nit.pt/compras/moda/entrudo-sapatos-em-pele-caretos
+      publisher: NiT
+      date: 2017-06-22
+    - url: https://visao.pt/visaose7e/comprar/2021-02-16-o-carnaval-sao-tres-dias-mas-com-a-entrudo-dura-o-ano-inteiro/
+      publisher: Visão
+      date: 2021-02-16
 meta:
   added: 2026-10-08
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

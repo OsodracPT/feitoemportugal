@@ -15,6 +15,9 @@ tags: [pele, feito-a-mao, personalizavel, producao-por-encomenda]
 products: [sapatilhas]
 production:
   scope: total
+location:
+  district: porto
+  municipality: felgueiras
 price_range: 4
 typical_price:
   product: sapatilhas
@@ -30,7 +33,14 @@ sustainability:
   practices: [producao-por-encomenda]
 verification:
   verified: false
+  sources:
+    - url: https://observador.pt/2019/10/08/diverge-estes-tenis-portugueses-sao-uma-tela-em-branco/
+      publisher: Observador
+      date: 2019-10-08
+    - url: https://visao.pt/visaose7e/comprar/2022-03-31-sapatilhas-quatro-marcas-orgulhosamente-portuguesas/
+      publisher: Visão
+      date: 2022-03-31
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

@@ -38,7 +38,14 @@ media:
   logo: logo.svg
 verification:
   verified: false
+  sources:
+    - url: https://observador.pt/2026/05/25/chita-de-alcobaca-alta-joalharia-e-muita-roupa-de-banho-16-novas-lojas-em-lisboa-porto-e-comporta/
+      publisher: Observador
+      date: 2026-05-25
+    - url: https://www.timeout.pt/lisboa/pt/noticias/joias-portuguesas-brilham-na-antiga-barbearia-campos-053025
+      publisher: Time Out Lisboa
+      date: 2025-05-30
 meta:
   added: 2026-10-08
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

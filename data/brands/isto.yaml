@@ -43,7 +43,14 @@ media:
   logo: logo.svg
 verification:
   verified: false
+  sources:
+    - url: https://observador.pt/2017/06/29/isto-e-a-marca-de-moda-mais-honesta-do-momento/
+      publisher: Observador
+      date: 2017-06-29
+    - url: https://www.publico.pt/2020/09/26/impar/noticia/marca-roupa-portuguesa-the-n55-tambem-ambas-sao-intemporais-sustentaveis-1932856
+      publisher: Público
+      date: 2020-09-26
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import

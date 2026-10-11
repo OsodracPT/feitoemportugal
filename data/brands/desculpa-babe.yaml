@@ -28,7 +28,14 @@ media:
   logo: logo.png
 verification:
   verified: false
+  sources:
+    - url: https://observador.pt/2018/08/20/desculpa-babe-as-desculpas-que-nao-se-pedem-vestem-se/
+      publisher: Observador
+      date: 2018-08-20
+    - url: https://www.nit.pt/compras/lojas-e-marcas/gostava-de-pedir-desculpa-a-alguem-ofereca-lhe-esta-t-shirt
+      publisher: NiT
+      date: 2018-08-29
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: import
