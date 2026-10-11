@@ -31,8 +31,14 @@ media:
 sustainability:
   practices: [circuito-curto]
 verification:
-  verified: false
+  verified: true
+  date: 2026-10-11
+  method: >-
+    Visita presencial à loja própria da marca em Lisboa (Rua Duques de Bragança),
+    confirmando a gama produzida em São João da Madeira.
+  evidence_notes: >-
+    Loja aberta ao público listada pela própria marca; confirmação direta no local.
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-11
   source: maintainer
