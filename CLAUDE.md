@@ -21,6 +21,14 @@ when everything builds.
   production cannot be established, the brand is not listed — a lead, not an entry.
   Record the quote in `docs/leads/`, never in the YAML. A foreign brand qualifies
   when most of its range is made in Portugal; origin alone decides nothing.
+- **A claim on the site is not proof, and a founding year is a claim.** The project
+  exists to counter dropshippers who advertise imported goods as "made in Portugal"
+  — AI makes a convincing fake site cheap, and they routinely invent how long
+  they have existed to look established. So a site mention is a starting point, not
+  a verdict: corroborate production, and treat a `founded` year as unverified until
+  a second, independent source (domain age, first press mention, Wayback, a
+  registry) backs it. When the signs of a faked origin stack up, the brand stays a
+  lead. See `.claude/agents/brand-researcher.md` for the red flags.
 - **Only maintainers set `verification`.** An agent or a contributor never flips
   `verified: true`. No brand is verified yet.
 - **No personal data, no exact coordinates.** Location stops at the municipality;

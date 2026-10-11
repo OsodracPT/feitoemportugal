@@ -52,6 +52,16 @@ the main session appends it from your report, since you do not write files.
    sale prices and gift sets. Do not propose `price_range`; the maintainer sets it.
 6. **Anything that contradicts the current YAML** (scope, category, website, a brand
    that stopped trading, production moved abroad).
+7. **Signs of a dropshipper faking "made in Portugal".** Some sites advertise on
+   social media as Portuguese-made while reselling imported goods; AI makes a
+   convincing site cheap. Treat these as red flags and report them: no company name
+   or NIPC in the legal notice; catalogue photos also found on AliExpress or other
+   stores; only paid-ad traffic and no real history; "ships from Portugal" paired
+   with weeks-long lead times. A **founding year is a claim, not a fact**: a "desde
+   <ano>" / "founded in <year>" that the domain age, the first press mention or the
+   Wayback history contradicts is a strong red flag. Trust a founding year only when
+   a second, independent source backs it. When the signs stack up, say so plainly —
+   the brand stays a lead, not an entry.
 
 ## Where to look, in order
 

@@ -319,6 +319,10 @@
     "title": "About the project",
     "intro": "Feito em Portugal is an open list of brands that make their products in Portugal. It is run by volunteers, carries no advertising, and anyone may use the data.",
     "sections": {
+      "why": {
+        "title": "Why this exists",
+        "body": "In the last few years, dropshipping shops that advertise on social media as \"made in Portugal\" — without being — have multiplied: they resell imported goods and, with AI tools, stand up a convincing site in minutes. Many also invent how long they have been around, to look like a house with history. That is why a sentence on a website is not enough — we confirm the origin, keep the proof, and treat founding dates we cannot verify with suspicion. This list exists so the \"made in Portugal\" label means what it says."
+      },
       "criteria": {
         "title": "Which brands are listed",
         "body": "A brand is listed when its own website says its products are made in Portugal. Being a Portuguese brand is not enough, and neither is having products designed here. A foreign brand qualifies when most of what it sells is made in Portugal. When only part is made here, the brand page says which part."
@@ -333,7 +337,7 @@
       },
       "contribute": {
         "title": "How to help",
-        "body": "You can suggest a brand, fix a brand page or ask for your own brand to be verified. It all goes through forms on GitHub, where the work stays in public view."
+        "body": "You can suggest a brand, fix a brand page or ask for your own brand to be verified — with a form here on the site, no account needed. If you prefer GitHub, the issue templates are still there, where the work stays in public view."
       },
       "data": {
         "title": "Data and licences",

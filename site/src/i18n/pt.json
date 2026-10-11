@@ -378,6 +378,10 @@
     "title": "Sobre o projeto",
     "intro": "O Feito em Portugal é uma lista aberta de marcas que fabricam em Portugal. É feita por voluntários, não tem publicidade e qualquer pessoa pode usar os dados.",
     "sections": {
+      "why": {
+        "title": "Porque existe",
+        "body": "Nos últimos anos multiplicaram-se as lojas de dropshipping que se anunciam nas redes sociais como «feito em Portugal» sem o serem: revendem produtos importados e, com ferramentas de IA, montam um site convincente em minutos. Muitas inventam também há quantos anos existem, para parecerem uma casa com história. Por isso uma frase no site não chega — confirmamos a origem, guardamos a prova e desconfiamos de datas de fundação que não se conseguem verificar. Esta lista existe para que a etiqueta «feito em Portugal» queira mesmo dizer isso."
+      },
       "criteria": {
         "title": "Que marcas entram",
         "body": "Uma marca entra quando o próprio site diz que os produtos são feitos em Portugal. Ser uma marca portuguesa não chega, nem ter os produtos desenhados cá. Uma marca estrangeira entra quando a maior parte do que vende é feita em Portugal. Quando só uma parte é feita cá, a ficha diz qual."
@@ -392,7 +396,7 @@
       },
       "contribute": {
         "title": "Como ajudar",
-        "body": "Podes sugerir uma marca, corrigir uma ficha ou pedir a verificação da tua marca. Tudo passa por formulários no GitHub, onde o trabalho fica à vista de todos."
+        "body": "Podes sugerir uma marca, corrigir uma ficha ou pedir a verificação da tua marca — por um formulário aqui no site, sem precisares de conta. Quem prefere o GitHub continua a poder usar os modelos de issue, onde o trabalho fica à vista de todos."
       },
       "data": {
         "title": "Dados e licenças",
