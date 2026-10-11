@@ -1,0 +1,41 @@
+slug: fora
+status: published
+name: FORA
+description:
+  pt: >-
+    Óculos de sol e armações graduadas montados à mão em Portugal, a partir de acetato
+    italiano e lentes Zeiss, por uma marca de Lisboa fundada em 2014.
+  en: >-
+    Sunglasses and optical frames hand-assembled in Portugal from Italian acetate and
+    Zeiss lenses, by a Lisbon label founded in 2014.
+website: https://fora.pt
+category: acessorios
+subcategory: oculos
+tags: [feito-a-mao]
+products: [oculos]
+founded: 2014
+production:
+  scope: total
+where_to_buy:
+  online_store: https://fora.pt
+  physical_stores:
+    - name: Chiado Store
+      city: Lisboa
+      address: Rua da Misericórdia 90, 1200-273 Lisboa
+    - name: Campo de Ourique Store
+      city: Lisboa
+      address: Rua Coelho da Rocha 102B, 1350-079 Lisboa
+    - name: Prata Store
+      city: Lisboa
+      address: Rua da Prata 169, 1100-416 Lisboa
+    - name: Mouzinho Store
+      city: Porto
+      address: Rua de Mouzinho da Silveira 280, 4050-418 Porto
+social:
+  instagram: fora_sunglasses
+verification:
+  verified: false
+meta:
+  added: 2026-10-10
+  updated: 2026-10-11
+  source: import

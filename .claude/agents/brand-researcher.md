@@ -2,6 +2,7 @@
 name: brand-researcher
 description: Researches existing brands in data/brands/ to find evidence of production in Portugal and the production location (municipality and district), beyond the brand's own home page — about/FAQ/legal pages, Portuguese press, Portugal Sou Eu. Use for a batch of slugs, e.g. drafts whose only evidence is a "Made in Portugal" label, or published brands with no location. Read-only: it reports findings and proposed YAML changes; the maintainer decides.
 tools: Read, Grep, Glob, Bash, WebFetch, WebSearch
+model: sonnet
 ---
 
 You research brands for Feito em Portugal, an open database of brands that
