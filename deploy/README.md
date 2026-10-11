@@ -133,6 +133,50 @@ only as a salted hash, for the rate limit.
 Secrets live only in `deploy/.env` on the server — never in the repository
 ([the repo stays host-agnostic](../CLAUDE.md)). `GITHUB_BASE` defaults to `main`.
 
+### Email: free sending via Brevo
+
+The maintainer notification is sent over SMTP. A normal mailbox (Zoho's free
+plan, for one) lets you *receive* mail but not send through it, so point the
+service at a free transactional sender instead and let the mail land in that same
+inbox. Any SMTP provider works; [Brevo](https://www.brevo.com) gives 300 mails a
+day free, which is far more than this needs. One-time setup, all on your side:
+
+1. **Create a free Brevo account** and confirm the address.
+2. **Verify your domain** so mail can come *from* `geral@feitoemportugal.org`:
+   Brevo → **Senders, Domains & Dedicated IPs → Domains → Add a domain**
+   (`feitoemportugal.org`). Brevo shows a few DNS records — a DKIM record
+   (`brevo._domainkey`), a Brevo verification code, and an SPF/DMARC suggestion.
+3. **Add those records at your DNS host** (Namecheap → Advanced DNS). One catch:
+   there can be only **one SPF record**. If the domain already has an `spf1`
+   record, don't add a second — edit the existing one to include Brevo, e.g.
+   `v=spf1 include:spf.brevo.com ~all` (keep any other `include:` you already
+   have). Back in Brevo, click **Verify**; DNS can take up to a few hours.
+4. **Get the SMTP credentials:** Brevo → **SMTP & API → SMTP**. Copy the **Login**
+   (that is `SMTP_USER`) and **Generate a new SMTP key** (that is `SMTP_PASS` —
+   not your Brevo account password).
+5. **Fill `deploy/.env`** (see [`.env.example`](../.env.example)):
+
+   ```ini
+   SMTP_HOST=smtp-relay.brevo.com
+   SMTP_PORT=587
+   SMTP_SECURE=false            # 587 upgrades to TLS via STARTTLS
+   SMTP_USER=<the Brevo SMTP login>
+   SMTP_PASS=<the Brevo SMTP key>
+   MAIL_FROM=geral@feitoemportugal.org   # must be the verified domain
+   MAIL_TO=geral@feitoemportugal.org     # your Zoho inbox
+   ```
+
+6. **Restart the service** (`docker compose --profile submit up -d`) and submit a
+   test form. The mail should arrive in your Zoho `geral@` inbox within seconds;
+   if not, check `docker compose logs submit` and that the domain shows *verified*
+   in Brevo.
+
+Your Zoho MX records (receiving) are untouched by any of this — Brevo only sends.
+Until SMTP is set the service just logs the mail, and a new-brand submission still
+opens its PR, so nothing is lost in the meantime.
+
+### CSP
+
 The `security-headers.conf` CSP is **unchanged** by this service. If you add the
 service after the fact, only `nginx.conf` gains the `/api/submit/` proxy; reload
 nginx (`docker compose exec web nginx -s reload`) and the forms light up.

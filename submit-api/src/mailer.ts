@@ -1,5 +1,5 @@
 /**
- * Sends the maintainer a plain-text email per submission (Zoho SMTP). When no
+ * Sends the maintainer a plain-text email per submission over SMTP. When no
  * SMTP config is present (local dev) it logs instead, so the service runs with
  * no secrets. nodemailer is imported lazily so a build without it still loads
  * the pure-logic modules (tests, typecheck).
