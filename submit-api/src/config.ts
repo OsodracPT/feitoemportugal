@@ -4,6 +4,7 @@
  * server (see deploy/README.md). Everything here has a safe default so the
  * service also runs locally with no secrets: mail is logged, GitHub is skipped.
  */
+import { fileURLToPath } from 'node:url';
 
 export interface MailConfig {
   host: string;
@@ -26,6 +27,8 @@ export interface GithubConfig {
 export interface Config {
   port: number;
   dbPath: string;
+  /** Repo data directory, read for the taxonomy the brand converter validates against. */
+  dataDir: string;
   /** Signs Altcha challenges and hashes stored IPs. Required in production. */
   secretKey: string;
   /** Where the static site lives; used for the thank-you redirect and API reads. */
@@ -70,6 +73,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
   return {
     port: num(env.PORT, 8787),
     dbPath: env.DB_PATH ?? './data/submissions.db',
+    dataDir: env.DATA_DIR ?? fileURLToPath(new URL('../../data', import.meta.url)),
     secretKey: env.SECRET_KEY ?? 'dev-insecure-key',
     siteOrigin: (env.SITE_ORIGIN ?? 'http://localhost:4321').replace(/\/$/, ''),
     trustProxy: bool(env.TRUST_PROXY, true),

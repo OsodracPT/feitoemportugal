@@ -17,6 +17,7 @@ import { openStore, type Store } from './db.ts';
 import { makeMailer, type Mailer } from './mailer.ts';
 import { clientIpHash, parseBody, readBody, sendJson, sendRedirect, wantsJson } from './http.ts';
 import { validateContact, validateCorrection, validateVerification, type Validation } from './validate.ts';
+import { processBrand } from './brand-handler.ts';
 
 interface App {
   handler: (req: IncomingMessage, res: ServerResponse) => void;
@@ -52,59 +53,75 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
     return store.purgeOlderThan(cutoff);
   };
 
-  async function handleForm(
-    type: string,
-    validate: (fields: Record<string, string>) => Validation,
+  /** Shared pre-checks: parse, honeypot, Altcha, rate limit. Null means a response was already sent. */
+  async function intake(
     req: IncomingMessage,
     res: ServerResponse,
-  ): Promise<void> {
+  ): Promise<{ fields: Record<string, string>; lang: string; json: boolean; ipHash: string } | null> {
     const contentType = req.headers['content-type'] ?? '';
     const json = wantsJson(contentType);
     let fields: Record<string, string>;
     try {
       fields = parseBody(contentType, await readBody(req));
     } catch {
-      return finish(res, json, 400, config, 'pt', { ok: false, errors: ['Pedido inválido. / Invalid request.'] });
+      finish(res, json, 400, config, 'pt', { ok: false, errors: ['Pedido inválido. / Invalid request.'] });
+      return null;
     }
     const lang = fields.lang === 'en' ? 'en' : 'pt';
 
     // Honeypot: a hidden field real people leave empty. If filled, accept silently.
-    if (fields.company) return finish(res, json, 200, config, lang, { ok: true });
-
+    if (fields.company) {
+      finish(res, json, 200, config, lang, { ok: true });
+      return null;
+    }
     if (config.altchaRequired && !verifySolution(fields.altcha, config.secretKey)) {
-      return finish(res, json, 400, config, lang, {
-        ok: false,
-        errors: ['A verificação anti-robôs falhou. / The anti-bot check failed.'],
-      });
+      finish(res, json, 400, config, lang, { ok: false, errors: ['A verificação anti-robôs falhou. / The anti-bot check failed.'] });
+      return null;
     }
 
     const ipHash = clientIpHash(req, config.trustProxy, config.secretKey);
     const since = new Date(Date.now() - config.rateLimit.windowSeconds * 1000).toISOString();
     if (store.recentCount(ipHash, since) >= config.rateLimit.max) {
-      return finish(res, json, 429, config, lang, {
-        ok: false,
-        errors: ['Demasiadas submissões. Tenta mais tarde. / Too many submissions. Try again later.'],
-      });
+      finish(res, json, 429, config, lang, { ok: false, errors: ['Demasiadas submissões. Tenta mais tarde. / Too many submissions. Try again later.'] });
+      return null;
     }
+    return { fields, lang, json, ipHash };
+  }
 
-    const result = validate(fields);
-    if (!result.ok) return finish(res, json, 400, config, lang, { ok: false, errors: result.errors });
+  /** The contact / correction / verification flows: validate, store, email. */
+  async function handleSimple(
+    type: string,
+    validate: (fields: Record<string, string>) => Validation,
+    req: IncomingMessage,
+    res: ServerResponse,
+  ): Promise<void> {
+    const got = await intake(req, res);
+    if (!got) return;
+    const result = validate(got.fields);
+    if (!result.ok) return finish(res, got.json, 400, config, got.lang, { ok: false, errors: result.errors });
 
     store.record({
       id: randomUUID(),
       type,
       createdAt: new Date().toISOString(),
-      ipHash,
+      ipHash: got.ipHash,
       email: result.email,
       payload: JSON.stringify(result.data),
     });
-    const mail = formatMail(type, result.data);
     try {
-      await mailer.send({ ...mail, ...(result.email ? { replyTo: result.email } : {}) });
+      await mailer.send({ ...formatMail(type, result.data), ...(result.email ? { replyTo: result.email } : {}) });
     } catch (error) {
       console.error('mail send failed', error);
     }
-    return finish(res, json, 200, config, lang, { ok: true });
+    return finish(res, got.json, 200, config, got.lang, { ok: true });
+  }
+
+  /** The new-brand flow: validate through the shared converter, store, email, open the PR. */
+  async function handleBrand(req: IncomingMessage, res: ServerResponse): Promise<void> {
+    const got = await intake(req, res);
+    if (!got) return;
+    const outcome = await processBrand(got.fields, { config, store, mailer, ipHash: got.ipHash });
+    return finish(res, got.json, outcome.status, config, got.lang, { ok: outcome.ok, ...(outcome.errors ? { errors: outcome.errors } : {}) });
   }
 
   const handler = (req: IncomingMessage, res: ServerResponse): void => {
@@ -117,12 +134,10 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
     }
 
     if (req.method === 'POST') {
-      if (path === '/api/submit/contact') return void handleForm('contact', validateContact, req, res);
-      if (path === '/api/submit/correction') return void handleForm('correction', validateCorrection, req, res);
-      if (path === '/api/submit/verification') return void handleForm('verification', validateVerification, req, res);
-      if (path === '/api/submit/brand') {
-        return sendJson(res, 503, { ok: false, errors: ['A submissão de marcas ainda não está disponível. / Brand submission is not available yet.'] });
-      }
+      if (path === '/api/submit/contact') return void handleSimple('contact', validateContact, req, res);
+      if (path === '/api/submit/correction') return void handleSimple('correction', validateCorrection, req, res);
+      if (path === '/api/submit/verification') return void handleSimple('verification', validateVerification, req, res);
+      if (path === '/api/submit/brand') return void handleBrand(req, res);
     }
     sendJson(res, 404, { ok: false, errors: ['Não encontrado. / Not found.'] });
   };

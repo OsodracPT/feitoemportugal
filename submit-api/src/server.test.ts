@@ -13,10 +13,29 @@ const mailer: Mailer = {
 };
 
 let server: Server;
+let fakeApi: Server;
 let base: string;
-const config: Config = { ...loadConfig({}), rateLimit: { windowSeconds: 3600, max: 3 }, siteOrigin: 'https://example.test' };
+let config: Config;
+
+/** A stand-in for the static site's public API, serving an empty brand list. */
+function startFakeApi(): Promise<string> {
+  fakeApi = createServer((req, res) => {
+    if (req.url === '/api/v1/brands.json') {
+      res.writeHead(200, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ data: [] }));
+      return;
+    }
+    res.writeHead(404).end();
+  });
+  return new Promise((resolve) => fakeApi.listen(0, '127.0.0.1', () => {
+    const address = fakeApi.address();
+    resolve(typeof address === 'object' && address ? `http://127.0.0.1:${address.port}` : '');
+  }));
+}
 
 beforeAll(async () => {
+  const siteOrigin = await startFakeApi();
+  config = { ...loadConfig({}), rateLimit: { windowSeconds: 3600, max: 50 }, siteOrigin, github: null };
   const app = await createApp(config, { store: openStore(':memory:'), mailer });
   server = createServer(app.handler);
   await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
@@ -24,7 +43,10 @@ beforeAll(async () => {
   base = typeof address === 'object' && address ? `http://127.0.0.1:${address.port}` : '';
 });
 
-afterAll(() => server.close());
+afterAll(() => {
+  server.close();
+  fakeApi.close();
+});
 
 const postJson = (path: string, body: unknown) =>
   fetch(`${base}${path}`, {
@@ -71,23 +93,51 @@ describe('submit-api server', () => {
       redirect: 'manual',
     });
     expect(res.status).toBe(303);
-    expect(res.headers.get('location')).toBe('https://example.test/en/thanks');
+    expect(res.headers.get('location')).toBe(`${config.siteOrigin}/en/thanks`);
+  });
+
+  it('accepts a valid new-brand submission and emails the YAML (no GitHub token)', async () => {
+    const before = sent.length;
+    const res = await postJson('/api/submit/brand', {
+      name: 'Marca Teste Única',
+      website: 'https://marca-teste-unica.example.pt',
+      evidence_url: 'https://marca-teste-unica.example.pt/sobre',
+      evidence_quote: 'Fabricamos tudo na nossa oficina em Guimarães.',
+      scope: 'total',
+      category: 'calcado',
+      description_pt: 'Pequena marca de calçado cosido à mão.',
+      lang: 'pt',
+    });
+    expect(res.status).toBe(200);
+    expect((await res.json()).ok).toBe(true);
+    expect(sent.length).toBe(before + 1);
+    const mail = sent.at(-1);
+    expect(mail?.subject).toContain('marca-teste-unica');
+    expect(mail?.text).toContain('status: draft');
+    expect(mail?.text).toMatch(/No PR opened/);
+  });
+
+  it('rejects a new-brand submission with no evidence', async () => {
+    const res = await postJson('/api/submit/brand', { name: 'Sem Prova', website: 'https://sem-prova.example.pt' });
+    expect(res.status).toBe(400);
+    expect((await res.json()).ok).toBe(false);
   });
 
   it('rate-limits after the window maximum', async () => {
-    // A fresh IP via X-Forwarded-For so earlier tests don't count.
+    // Its own instance with a tiny limit, so the shared-IP functional tests above don't count.
+    const limited = await createApp({ ...config, rateLimit: { windowSeconds: 3600, max: 2 } }, {
+      store: openStore(':memory:'),
+      mailer,
+    });
+    const srv = createServer(limited.handler);
+    await new Promise<void>((resolve) => srv.listen(0, '127.0.0.1', resolve));
+    const address = srv.address();
+    const url = typeof address === 'object' && address ? `http://127.0.0.1:${address.port}/api/submit/contact` : '';
     const post = () =>
-      fetch(`${base}/api/submit/contact`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json', 'x-forwarded-for': '203.0.113.9' },
-        body: JSON.stringify({ message: 'mensagem de teste válida' }),
-      });
-    for (let i = 0; i < config.rateLimit.max; i++) expect((await post()).status).toBe(200);
+      fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ message: 'mensagem de teste válida' }) });
+    expect((await post()).status).toBe(200);
+    expect((await post()).status).toBe(200);
     expect((await post()).status).toBe(429);
-  });
-
-  it('reports brand submission as not yet available', async () => {
-    const res = await postJson('/api/submit/brand', { name: 'x' });
-    expect(res.status).toBe(503);
+    srv.close();
   });
 });
