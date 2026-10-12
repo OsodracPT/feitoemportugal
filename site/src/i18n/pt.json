@@ -406,7 +406,7 @@
       },
       "images": {
         "title": "Logótipos e fotografias",
-        "body": "Os logótipos e as fotografias pertencem às marcas e não fazem parte dos dados abertos: não estão sob CC BY 4.0 e a API não os inclui. Usamos apenas o logótipo que a marca mostra no próprio site e fotografias que a marca disponibiliza para a imprensa ou nos envia. Guardamos cada imagem no nosso servidor, por isso abrir uma ficha não envia pedidos ao site da marca. Se és da marca e queres trocar ou retirar uma imagem, diz-nos pelo formulário de correção."
+        "body": "Os logótipos e as fotografias pertencem às marcas e não fazem parte dos dados abertos: não estão sob CC BY 4.0 e a API não os inclui. Usamos o logótipo que a marca mostra no próprio site e, de preferência, fotografias que a marca disponibiliza para a imprensa ou nos envia. Quando não as há, mostramos até três fotografias de produtos da loja online da própria marca, com o crédito à marca, para que vejas o que faz antes de saíres para o site dela; as fotografias da marca substituem-nas assim que chegam. Guardamos cada imagem no nosso servidor, por isso abrir uma ficha não envia pedidos ao site da marca. Se és da marca e queres trocar ou retirar uma imagem, diz-nos pelo formulário de correção."
       },
       "privacy": {
         "title": "Privacidade",

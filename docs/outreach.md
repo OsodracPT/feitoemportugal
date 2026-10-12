@@ -49,10 +49,11 @@ Feito em Portugal
 Olá,
 
 A [marca] está listada no Feito em Portugal: [link da ficha]. Gostávamos de mostrar
-o vosso logótipo e algumas fotografias da produção na ficha.
+o vosso logótipo e algumas fotografias dos produtos ou da produção na ficha.
 
 Se concordarem, podem enviar-nos o logótipo (de preferência em SVG) e até quatro
-fotografias, ou indicar-nos a página de imprensa onde estão? As imagens continuam a
+fotografias, ou indicar-nos a página de imprensa onde estão? Se a ficha já mostrar
+fotografias que tirámos da vossa loja online, as vossas substituem-nas. As imagens continuam a
 ser vossas: não entram na licença aberta dos dados, servem só para identificar a
 marca, e retiramo-las quando pedirem.
 
@@ -93,12 +94,13 @@ Feito em Portugal
 Hello,
 
 [brand] is listed on Feito em Portugal: [page link]. We would like to show your
-logo and a few photos of your production on the page.
+logo and a few photos of your products or production on the page.
 
 If you agree, could you send us the logo (SVG if possible) and up to four photos,
-or point us to the press page where they are? The images remain yours: they are
-not part of the data's open licence, they are used only to identify the brand,
-and we remove them whenever you ask.
+or point us to the press page where they are? If the page already shows photos
+we took from your shop, yours will replace them. The images remain yours: they
+are not part of the data's open licence, they are used only to identify the
+brand, and we remove them whenever you ask.
 
 Thank you,
 [name]

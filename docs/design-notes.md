@@ -47,7 +47,11 @@ still undecided. For running the code, see the [README](../README.md).
 - **Brand media sits outside CC BY.** Logos and photos belong to the brands, so
   they live in `assets/`, not `data/`, are left out of the API and are removed on
   request. Logos come from the brand's own site, found by `scripts/fetch-logos.ts`
-  and approved by a maintainer; photos only from a press kit or with permission.
+  and approved by a maintainer; photos from a press kit or with permission, else
+  (since 2026-10-12) up to three product shots from the brand's own site, picked
+  by a maintainer, credited, and removed on request. That last source has no
+  licence behind it, only credit and takedown, which is why it is capped and
+  replaced as soon as the brand sends its own.
   Images are self-hosted, never hotlinked: the CSP forbids it and it would leak
   readers to third parties. Logos sit on a light plate (`--logo-plate`) because
   most are drawn for white backgrounds.

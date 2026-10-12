@@ -347,7 +347,7 @@
       },
       "images": {
         "title": "Logos and photos",
-        "body": "Logos and photos belong to the brands and are not part of the open data: they are not under CC BY 4.0 and the API leaves them out. We only use the logo a brand shows on its own website and photos it offers to the press or sends us. Every image is stored on our own server, so opening a brand page sends no request to the brand's site. If you work for the brand and want an image changed or removed, tell us through the correction form."
+        "body": "Logos and photos belong to the brands and are not part of the open data: they are not under CC BY 4.0 and the API leaves them out. We use the logo a brand shows on its own website and, preferably, photos it offers to the press or sends us. When there are none, we show up to three product photos from the brand's own shop, credited to the brand, so you can see what it makes before you leave for its site; the brand's own photos replace them as soon as they arrive. Every image is stored on our own server, so opening a brand page sends no request to the brand's site. If you work for the brand and want an image changed or removed, tell us through the correction form."
       },
       "privacy": {
         "title": "Privacy",

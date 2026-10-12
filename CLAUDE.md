@@ -41,10 +41,13 @@ when everything builds.
   address is allowed only on a `physical_stores` entry for a shop open to the public
   that the brand itself lists; the site turns it into a map link.
 - **Images are the brands', self-hosted and sourced.** A logo comes from the
-  brand's own site; a photo only from a press kit or with the brand's permission —
-  never a product shot lifted from a shop page. Add them only through
-  `scripts/apply-media.ts`, which logs the source in `docs/leads/media-sources.csv`.
-  Never hotlink. A logo candidate is approved by a maintainer, not by an agent.
+  brand's own site. Photos come from a press kit or with the brand's permission
+  first; failing that, up to three product shots from the brand's **own** site or
+  shop (never a marketplace, Instagram, a reseller or the press), credited and
+  removed on request (decided 2026-10-12, see `docs/collecting-brand-data.md`
+  §3.8 for which shots qualify). Add them only through `scripts/apply-media.ts`,
+  which logs the source in `docs/leads/media-sources.csv`. Never hotlink. Logo and
+  photo candidates are approved by a maintainer, not by an agent.
 - **`status` defaults to `draft`.** Publishing is a deliberate act.
 - **UI strings live in `site/src/i18n/{pt,en}.json`**, never inline in a component.
   Both languages, always.
@@ -241,6 +244,7 @@ independent `verification.sources`, level 3 once a maintainer sets
 code is MIT and data CC BY 4.0, both © Feito em Portugal contributors
 (`LICENSE`, `DATA_LICENSE`); a foreign brand qualifies when most of its range
 is made in Portugal; brand images stay outside CC BY (logos from the brand's site,
-photos only from a press kit or with permission, each logged in
+photos from a press kit or with permission, else up to three product shots from
+the brand's own site, each logged in
 `docs/leads/media-sources.csv`); maintainers approve badge requests by hand (no automation) and
 fill the brand's `verification` block.

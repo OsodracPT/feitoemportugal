@@ -243,10 +243,36 @@ our pages).
 What may be used:
 
 - **Logo:** the logo the brand shows on its own website.
-- **Photos:** only images the brand published for press use (a press or media-kit
-  page that offers them for download) or sent us with permission, for example
-  through the image field of the issue forms. Never product shots taken from a
-  shop page.
+- **Photos**, best first:
+  1. images the brand published for press use (a press or media-kit page that
+     offers them for download) or sent us with permission, for example through
+     the image field of the issue forms;
+  2. failing that, up to three product shots from the brand's **own** website or
+     shop (kind `brand-site`). Never from a marketplace, a reseller, Instagram or
+     a press article. Press-kit or brand-supplied photos replace them as soon as
+     they arrive.
+
+The second option was settled on 2026-10-12 so that readers can see what a brand
+makes before they leave for its site. It rests on credit and prompt removal, not
+on a licence: Portuguese and EU copyright have no general fair-use exception. So
+keep to the rules below, credit the brand under the photos, and remove any image
+the day a brand asks.
+
+Choosing the three shop photos (a maintainer approves each pick):
+
+1. **Spread the range.** One photo per main product type in `products`: for a
+   shoe brand a sneaker, a boot and a sandal, not three colours of one model.
+2. **Packshot first.** The product alone on a plain background. A lifestyle shot
+   only when there is no packshot, and **never one with an identifiable face**:
+   models have image rights, and a face is personal data.
+3. **The core range**, not a limited edition: what the reader will find when
+   they click through.
+4. No text or promo overlays, watermarks or collages; at least 800 px on the
+   short side.
+5. `--source` is the product page the image is on, on the brand's own domain.
+6. If the same images turn up on AliExpress or another marketplace, stop: that
+   is a dropshipping red flag (see `.claude/agents/brand-researcher.md`). Note it
+   in `docs/leads/` and raise it with a maintainer instead of adding the photos.
 
 How to add them, always through the scripts, so each file gets a row in
 `docs/leads/media-sources.csv` (slug, file, kind, source URL, date):
