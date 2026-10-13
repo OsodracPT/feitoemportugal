@@ -8,9 +8,12 @@
  *       a candidate from .cache/media/ (scripts/fetch-logos.ts)
  *
  *   node scripts/apply-media.ts photo famo <file-or-url> --source <page-url> --kind press-kit
- *       a photo the brand published for press use (--kind press-kit) or sent
- *       us with permission (--kind brand-supplied). --source is the press page
- *       or the issue/e-mail reference, never a guess.
+ *       a photo the brand published for press use (--kind press-kit), sent us
+ *       with permission (--kind brand-supplied), or — failing those — a product
+ *       shot from the brand's own site (--kind brand-site), capped at three and
+ *       replaced as soon as the brand's own photos arrive (docs §3.8). --source
+ *       is the press page, the issue/e-mail reference, or (for brand-site) the
+ *       product page on the brand's own domain, never a guess.
  */
 import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join } from 'node:path';
@@ -19,6 +22,7 @@ import {
   MAX_PHOTO_BYTES,
   MAX_PHOTOS,
   MEDIA_EXTENSIONS,
+  imageSize,
   loadBrands,
   setBrandMedia,
   brokenSvg,
@@ -33,11 +37,67 @@ const cacheDir = join(repoRoot, '.cache/media');
 const sourcesFile = join(repoRoot, 'docs/leads/media-sources.csv');
 const today = new Date().toISOString().slice(0, 10);
 
-const PHOTO_KINDS = ['press-kit', 'brand-supplied'];
+const PHOTO_KINDS = ['press-kit', 'brand-supplied', 'brand-site'];
+// A `brand-site` shot rests on credit and takedown, not a licence, so docs §3.8
+// caps it at three per brand; press-kit and brand-supplied photos are not capped
+// beyond MAX_PHOTOS and replace brand-site shots when they arrive.
+const MAX_BRAND_SITE_PHOTOS = 3;
+// Docs §3.8 rule 4: at least 800 px on the short side, or the shot reads as a
+// thumbnail in the gallery grid.
+const MIN_PHOTO_EDGE = 800;
+// Marketplaces, resellers and socials a photo may never be taken from (docs
+// §3.8): a brand-site shot comes from the brand's own domain, and the same image
+// turning up on one of these is a dropshipping red flag worth stopping for.
+const FORBIDDEN_PHOTO_HOSTS = [
+  'aliexpress',
+  'alicdn',
+  'amazon',
+  'mercadolibre',
+  'mercadolivre',
+  'etsy',
+  'ebay',
+  'wish.com',
+  'shein',
+  'temu',
+  'instagram',
+  'cdninstagram',
+  'facebook',
+  'fbcdn',
+  'pinterest',
+  'tiktok',
+];
 
 function fail(message: string): never {
   console.error(`ERROR  ${message}`);
   process.exit(1);
+}
+
+/** Hostname without a leading `www.`, lower-cased; '' when not a URL. */
+function host(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '').toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+/** True when `candidate` is the same site as `site` or a subdomain of it. */
+function sameSite(candidate: string, site: string): boolean {
+  const a = host(candidate);
+  const b = host(site);
+  return a !== '' && b !== '' && (a === b || a.endsWith(`.${b}`) || b.endsWith(`.${a}`));
+}
+
+/** How many `brand-site` photos a brand already has, from the sources log. */
+function brandSiteCount(slug: string): number {
+  if (!existsSync(sourcesFile)) return 0;
+  return readFileSync(sourcesFile, 'utf8')
+    .split('\n')
+    .slice(1)
+    .filter((line) => {
+      const [rowSlug, , rowKind] = line.split(',');
+      return rowSlug === slug && rowKind === 'brand-site';
+    }).length;
 }
 
 const csvCell = (value: string) => (/[",\n]/.test(value) ? `"${value.replace(/"/g, '""')}"` : value);
@@ -57,7 +117,13 @@ function checkFile(bytes: Uint8Array, name: string, kind: 'logo' | 'photo'): voi
     const broken = brokenSvg(new TextDecoder().decode(bytes));
     if (broken) fail(`${name}: broken SVG (${broken}); pick another candidate or fetch the brand again`);
   }
-  if (kind === 'photo' && bytes.length > MAX_PHOTO_BYTES) fail(`${name}: larger than 2 MB, resize it first`);
+  if (kind === 'photo') {
+    if (bytes.length > MAX_PHOTO_BYTES) fail(`${name}: larger than 2 MB, resize it first`);
+    const size = imageSize(bytes);
+    if (size && Math.min(size.width, size.height) < MIN_PHOTO_EDGE) {
+      fail(`${name}: ${size.width}×${size.height}, under ${MIN_PHOTO_EDGE} px on the short side — find a larger shot`);
+    }
+  }
 }
 
 function brandFile(slug: string) {
@@ -107,6 +173,23 @@ async function applyPhoto(slug: string, input: string, source: string, kind: str
   const photos = brand.media?.photos ?? [];
   if (photos.length >= MAX_PHOTOS) fail(`${slug} already has ${MAX_PHOTOS} photos`);
 
+  // A product shot lifted from a marketplace, reseller or social is never an
+  // allowed source; the same image on one is a dropshipping red flag (docs §3.8).
+  for (const url of [input, source]) {
+    const forbidden = FORBIDDEN_PHOTO_HOSTS.find((bad) => host(url).includes(bad));
+    if (forbidden) fail(`${url}: ${forbidden} is not an allowed source — brand's own site only, and a marketplace match is a red flag to raise with a maintainer`);
+  }
+
+  if (kind === 'brand-site') {
+    if (!sameSite(source, brand.website)) {
+      fail(`brand-site --source must be on ${host(brand.website)} (the brand's own domain), got ${host(source) || source}`);
+    }
+    const existing = brandSiteCount(slug);
+    if (existing >= MAX_BRAND_SITE_PHOTOS) {
+      fail(`${slug} already has ${existing} brand-site photos (max ${MAX_BRAND_SITE_PHOTOS}); a press-kit or brand-supplied photo would replace one`);
+    }
+  }
+
   let bytes: Uint8Array;
   let name = basename(new URL(input, 'file:///').pathname);
   if (/^https?:\/\//.test(input)) {
@@ -143,7 +226,7 @@ if (mode === 'logo' && rest.length > 0) {
 } else if (mode === 'photo' && rest.length >= 2) {
   await applyPhoto(rest[0]!, rest[1]!, option('--source'), option('--kind'));
 } else {
-  fail('usage: apply-media.ts logo <slug>=<candidate> … | photo <slug> <file-or-url> --source <url> --kind press-kit|brand-supplied');
+  fail('usage: apply-media.ts logo <slug>=<candidate> … | photo <slug> <file-or-url> --source <url> --kind press-kit|brand-supplied|brand-site');
 }
 
 // Same checks as `pnpm validate`, on the brands just touched.
