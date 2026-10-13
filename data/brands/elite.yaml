@@ -26,6 +26,7 @@ social:
   instagram: eliteshoes.pt
 media:
   logo: logo.png
+  photos: [foto-1.png, foto-2.jpg, foto-3.png]
 sustainability:
   practices: [reparacao]
 verification:
@@ -38,5 +39,5 @@ verification:
       publisher: Racius
 meta:
   added: 2026-10-11
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: web-form

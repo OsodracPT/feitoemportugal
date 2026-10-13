@@ -25,6 +25,7 @@ social:
   instagram: cluoh
 media:
   logo: logo.svg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
 verification:
   verified: false
   sources:
@@ -36,5 +37,5 @@ verification:
       date: 2018-10-31
 meta:
   added: 2026-10-08
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import

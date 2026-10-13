@@ -29,6 +29,7 @@ social:
   instagram: heeltread
 media:
   logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
 verification:
   verified: false
   sources:
@@ -40,5 +41,5 @@ verification:
       date: 2018-03-16
 meta:
   added: 2026-10-04
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import

@@ -31,9 +31,10 @@ social:
   instagram: armazemdasmalhas
 media:
   logo: logo.svg
+  photos: [foto-1.png, foto-2.png, foto-3.png]
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-13
   source: import

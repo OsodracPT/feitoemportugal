@@ -29,6 +29,7 @@ social:
   instagram: diverge.sneakers
 media:
   logo: logo.png
+  photos: [foto-1.jpg, foto-2.png, foto-3.png]
 sustainability:
   practices: [producao-por-encomenda]
 verification:
@@ -42,5 +43,5 @@ verification:
       date: 2022-03-31
 meta:
   added: 2026-10-04
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import

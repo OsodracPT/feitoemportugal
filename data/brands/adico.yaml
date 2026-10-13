@@ -25,9 +25,10 @@ social:
   instagram: adico1920
 media:
   logo: logo.png
+  photos: [foto-1.jpg, foto-2.webp, foto-3.jpg]
 verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-09
+  updated: 2026-10-13
   source: import

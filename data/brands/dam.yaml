@@ -19,6 +19,7 @@ social:
   instagram: damfurniturept
 media:
   logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
 verification:
   verified: false
   sources:
@@ -30,5 +31,5 @@ verification:
       date: 2014-06-20
 meta:
   added: 2026-10-08
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import

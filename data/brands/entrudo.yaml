@@ -30,6 +30,7 @@ social:
   instagram: entrudopt
 media:
   logo: logo.jpg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
 verification:
   verified: false
   sources:
@@ -41,5 +42,5 @@ verification:
       date: 2021-02-16
 meta:
   added: 2026-10-08
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import

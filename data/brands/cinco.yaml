@@ -21,9 +21,10 @@ social:
   instagram: cincostore
 media:
   logo: logo.png
+  photos: [foto-1.png, foto-2.png, foto-3.png]
 verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-13
   source: import

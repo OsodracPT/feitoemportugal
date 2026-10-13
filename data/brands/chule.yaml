@@ -21,6 +21,7 @@ social:
   instagram: chule_socks
 media:
   logo: logo.svg
+  photos: [foto-1.jpg, foto-2.webp, foto-3.webp]
 sustainability:
   practices: [fibras-naturais]
   certifications:
@@ -36,5 +37,5 @@ verification:
       date: 2025-12-03
 meta:
   added: 2026-10-04
-  updated: 2026-10-11
+  updated: 2026-10-13
   source: import
