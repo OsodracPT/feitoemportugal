@@ -47,6 +47,11 @@ interface Props {
 const { lang, brand } = Astro.props;
 const logo = brandLogo(brand);
 const photos = brandPhotos(brand);
+// The lightbox reuses the 800 px webp the grid's <Picture> already emits, so it
+// opens a crisp copy without adding a new file to the build.
+const photoFull = await Promise.all(
+  photos.map((photo) => getImage({ src: photo, width: 800, format: 'webp' })),
+);
 // Structured data wants a stable, crawlable file: SVG logos pass through as they
 // are (Astro does not rasterise SVG by default), rasters get a PNG copy.
 const logoFile = logo
@@ -248,18 +253,32 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
 
         {
           photos.length > 0 && (
-            <figure class="brand__photos">
+            <figure
+              class="brand__photos"
+              data-lightbox
+              data-label-close={t(lang, 'brand.lightboxClose')}
+              data-label-prev={t(lang, 'brand.lightboxPrev')}
+              data-label-next={t(lang, 'brand.lightboxNext')}
+              data-label-counter={t(lang, 'brand.lightboxCounter')}
+            >
               <ul>
                 {photos.map((photo, index) => (
                   <li>
-                    <Picture
-                      src={photo}
-                      alt={t(lang, 'brand.photoAlt', { name: brand.name, n: String(index + 1) })}
-                      formats={['avif', 'webp']}
-                      widths={[400, 800]}
-                      sizes="(min-width: 52rem) 25vw, 50vw"
-                      loading="lazy"
-                    />
+                    <button
+                      type="button"
+                      class="brand__photo-zoom"
+                      data-full={photoFull[index]?.src}
+                      aria-label={t(lang, 'brand.photoZoom', { n: String(index + 1) })}
+                    >
+                      <Picture
+                        src={photo}
+                        alt={t(lang, 'brand.photoAlt', { name: brand.name, n: String(index + 1) })}
+                        formats={['avif', 'webp']}
+                        widths={[400, 800]}
+                        sizes="(min-width: 52rem) 25vw, 50vw"
+                        loading="lazy"
+                      />
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -495,6 +514,13 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
   </div>
 </Layout>
 
+<script>
+  // Bundled to its own file (assetsInlineLimit: 0), so the production CSP's
+  // script-src 'self' allows it where an inline script would be blocked.
+  import { initLightbox } from '~/lib/lightbox.ts';
+  initLightbox();
+</script>
+
 <style>
   /* --- Tile band and medallion --- */
   .hero {
@@ -709,20 +735,131 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
     list-style: none;
   }
 
+  /* Each thumbnail is a button that opens the lightbox and clips the hover zoom. */
+  .brand__photo-zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface-2);
+    cursor: zoom-in;
+  }
+
   .brand__photos :global(img) {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: var(--fep-radius);
     background: var(--fep-surface-2);
+    transition: transform 150ms ease;
+  }
+
+  .brand__photo-zoom:hover :global(img),
+  .brand__photo-zoom:focus-visible :global(img) {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand__photos :global(img) {
+      transition: none;
+    }
+
+    .brand__photo-zoom:hover :global(img),
+    .brand__photo-zoom:focus-visible :global(img) {
+      transform: none;
+    }
   }
 
   .brand__photos figcaption {
     margin-top: var(--fep-space-2);
     font-size: var(--fep-label);
     color: var(--fep-ink-2);
+  }
+
+  /* The lightbox overlay is built in the browser (lib/lightbox.ts), so its
+     nodes carry no scoped attribute — style them globally. */
+  :global(.lightbox) {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--fep-space-6);
+    background: var(--fep-scrim);
+  }
+
+  :global(.lightbox.is-open) {
+    display: flex;
+  }
+
+  :global(.lightbox__img) {
+    max-width: min(92vw, 1100px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+  }
+
+  :global(.lightbox__close),
+  :global(.lightbox__nav) {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    cursor: pointer;
+  }
+
+  :global(.lightbox__close) {
+    top: var(--fep-space-4);
+    right: var(--fep-space-4);
+  }
+
+  :global(.lightbox__nav--prev) {
+    left: var(--fep-space-4);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :global(.lightbox__nav--next) {
+    right: var(--fep-space-4);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :global(.lightbox__close svg),
+  :global(.lightbox__nav svg) {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(.lightbox__counter) {
+    position: absolute;
+    bottom: var(--fep-space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: var(--fep-space-1) var(--fep-space-3);
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink-2);
+    font-size: var(--fep-label);
   }
 
   /* --- Como sabemos: stitched, on a solid surface --- */
