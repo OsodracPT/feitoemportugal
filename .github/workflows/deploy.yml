@@ -14,6 +14,7 @@
 #            DEPLOY_PORT         optional, default 22
 #            SITE_URL            public origin, used for canonicals and the
 #                                smoke test (default https://feitoemportugal.org)
+#            UMAMI_WEBSITE_ID    optional; adds the Umami tracker to every page
 name: deploy
 
 on:
@@ -35,6 +36,7 @@ jobs:
     environment: production
     env:
       SITE_URL: ${{ vars.SITE_URL || 'https://feitoemportugal.org' }}
+      UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
     steps:
       # An unset secret or variable arrives as an empty string. None set means
       # "no deploy here"; some set means a broken setup, so name what is missing.

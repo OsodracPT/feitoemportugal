@@ -11,6 +11,12 @@ const dataDir = fileURLToPath(new URL('../data', import.meta.url));
  */
 const site = process.env.SITE_URL || 'https://feitoemportugal.org';
 
+/**
+ * Umami website id. Unset (forks, local builds) means no analytics script at
+ * all; the tracker itself is proxied on the site's own origin (deploy/nginx.conf).
+ */
+const umamiWebsiteId = process.env.UMAMI_WEBSITE_ID || '';
+
 export default defineConfig({
   site,
   output: 'static',
@@ -32,6 +38,7 @@ export default defineConfig({
   vite: {
     define: {
       'import.meta.env.DATA_DIR': JSON.stringify(dataDir),
+      'import.meta.env.UMAMI_WEBSITE_ID': JSON.stringify(umamiWebsiteId),
     },
     // MiniSearch is only reached through a lazy import inside a client script, so
     // Vite would discover it late, re-optimise, and 504 the already-issued URL.

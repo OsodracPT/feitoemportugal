@@ -190,7 +190,7 @@
     "dataLicense": "Data under CC BY 4.0",
     "codeLicense": "Code under MIT",
     "builtBy": "An open source community project.",
-    "noTracking": "No accounts, no cookies, no tracking.",
+    "noTracking": "No accounts, no cookies, no ads.",
     "badge": "The verified badge",
     "openData": "Open data · CC BY 4.0",
     "apiJson": "JSON API",
@@ -356,7 +356,7 @@
       },
       "privacy": {
         "title": "Privacy",
-        "body": "The site uses no cookies and does not track visitors. We publish no personal data: many makers work from home, so location always stops at the municipality."
+        "body": "The site uses no cookies and builds no profile of its visitors. We publish no personal data: many makers work from home, so location always stops at the municipality."
       }
     },
     "links": {

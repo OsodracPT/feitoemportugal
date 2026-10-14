@@ -37,7 +37,7 @@ can add to it, and the whole dataset is open.
 - **Open data.** The whole dataset is CC BY 4.0, served as JSON at `/api/v1/`. Take
   it and build something.
 
-No accounts, no tracking, no ads.
+No accounts, no cookies, no ads.
 
 ## 🙌 Help out (no account needed)
 
@@ -187,7 +187,7 @@ GitHub Actions.
 
 - [`docs/design-notes.md`](docs/design-notes.md): why things are built this way,
   and the decisions still open
-- [`CLAUDE.md`](CLAUDE.md): working notes for AI coding assistants, with useful
+- [`AGENTS.md`](AGENTS.md): working notes for AI coding assistants, with useful
   architecture traps for humans too
 
 ## 📄 Licence

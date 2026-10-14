@@ -167,7 +167,7 @@ submitter's email is stored only when given and never published; the IP is kept
 only as a salted hash, for the rate limit.
 
 Secrets live only in `deploy/.env` on the server, never in the repository
-([the repo stays host-agnostic](../CLAUDE.md)). `GITHUB_BASE` defaults to `main`.
+([the repo stays host-agnostic](../AGENTS.md)). `GITHUB_BASE` defaults to `main`.
 
 ### Email: the notification mailbox
 
@@ -207,6 +207,39 @@ opens its PR, so nothing is lost in the meantime.
 The `security-headers.conf` CSP is **unchanged** by this service. If you add the
 service after the fact, only `nginx.conf` gains the `/api/submit/` proxy; reload
 nginx (`docker compose exec web nginx -s reload`) and the forms light up.
+
+## Visit counts with Umami (optional)
+
+The site counts visits with a self-hosted [Umami](https://umami.is): no cookies,
+no profile of the visitor, and the IP address is only used, never stored. It is
+off unless two things are set: the `stats` Compose profile on the server, and
+`UMAMI_WEBSITE_ID` at build time.
+
+How it fits the CSP: nginx proxies only `/stats/script.js` (the tracker) and
+`/stats/api/send` (where it posts) to the `umami` container, so the browser only
+talks to the site's own origin and `security-headers.conf` stays unchanged. The
+pages carry `data-do-not-track="true"` and `data-domains` set to the `site`
+hostname, so a local or preview build counts nothing.
+
+1. In `deploy/.env`, set `UMAMI_DB_PASSWORD` and `UMAMI_APP_SECRET` (each
+   `openssl rand -hex 32`). See `.env.example` at the repository root.
+2. Start it: `docker compose --profile stats up -d`. With the `submit` service
+   too, name both profiles: `--profile submit --profile stats`.
+3. Reach the dashboard. It listens on `UMAMI_BIND:UMAMI_PORT` (default
+   `127.0.0.1:3000`): put it behind your reverse proxy on a hostname of its own,
+   ideally behind your proxy's login, or use an SSH tunnel. Never route it
+   through the public site.
+4. Log in with Umami's default `admin` / `umami` and **change that password
+   at once**. Add a website with your domain and copy its website id.
+5. Set the id as `UMAMI_WEBSITE_ID`: the `production` variable for automatic
+   deploys (below), or an environment variable for a manual `pnpm build`. The
+   next build adds the tracker to every page.
+6. Reload nginx if it predates the `/stats/` locations
+   (`docker compose exec web nginx -s reload`, or `up -d --force-recreate web`
+   when `nginx.conf` is a bind-mounted file you replaced).
+
+Check: `curl -sI https://your-domain.example/stats/script.js` answers 200, and a
+page view shows up in the dashboard's realtime view within seconds.
 
 ## Option 3: automatic deploys from GitHub Actions
 
@@ -282,6 +315,7 @@ In the repository: **Settings → Environments → New environment** `production
 | `DEPLOY_USER` | variable | Optional, default `fep-deploy` |
 | `DEPLOY_PORT` | variable | Optional, default `22` |
 | `SITE_URL` | variable | Your public origin, e.g. `https://your-domain.example` |
+| `UMAMI_WEBSITE_ID` | variable | Optional. The website id from your Umami dashboard; leave unset for no analytics |
 
 Then delete the private key from your machine. GitHub never shows a secret's value
 again; to rotate, make a new pair and replace the line in `authorized_keys`.

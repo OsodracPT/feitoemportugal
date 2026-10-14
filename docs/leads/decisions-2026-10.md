@@ -85,3 +85,26 @@ great-i-am, fluyt, travelling-socks, portuguese-flannel, camport, labrador,
 jewellery-bymz, tema-creations, marqqa (where the rugs are made), herdmar (prices),
 companhia-atlantica (do "todas as peças" cover the non-ceramic lines?), kukka (is the
 Setúbal address the workshop?).
+
+## 2026-10-14: seven brands back to draft
+
+The 2026-10-13 pass set these brands to `parcial`, but for most of them the note
+described an unconfirmed claim, not a partly imported range. `parcial` means only
+part of the range is made in Portugal; a claim nothing independent backs is a lead.
+The maintainer moved all seven back to `status: draft`. They go live again once
+production is corroborated: a named factory, Portuguese press or a registry.
+
+- eject: claims everything is made in Portugal; names no factory (office in
+  Felgueiras, `research-2026-10-10.md`). Scope `total`.
+- creator: shoes "hand-finished by Portuguese craftspeople", no factory named; the
+  owner company began as a footwear trading firm. Scope `total`.
+- casta: "small family factories", unnamed; the owner develops and subcontracts
+  footwear. Scope `total`.
+- cubanas: "small Portuguese factories", unnamed; the online shop is run by a Spanish
+  company. Scope `total`.
+- favorite-people: "Made in Portugal" on the labels, no place of making given.
+  Scope `total`.
+- famo: industrial site in Lordelo (Paredes) since 1947, but the site does not say
+  which current lines are made there. Scope `total`.
+- cavemen: general claim, no factory named, and part of the range (knitwear,
+  jewellery, perfume) has no stated origin. Keeps `parcial` and its note.

@@ -76,7 +76,7 @@ const sustainabilitySchema = z.object({
 
 // A reference to one independent proof of production — press or an official
 // record, never the brand's own site. Holds the pointer, not copied article
-// text, so the dataset stays ours to license (CLAUDE.md).
+// text, so the dataset stays ours to license (AGENTS.md).
 const sourceSchema = z.object({
   url: httpsUrlSchema,
   publisher: z.string().min(1).max(120),

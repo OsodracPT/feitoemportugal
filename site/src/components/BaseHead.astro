@@ -29,6 +29,8 @@ const {
 } = Astro.props;
 
 const alternateLinks = hreflangLinks(alternates);
+const umamiWebsiteId = import.meta.env.UMAMI_WEBSITE_ID;
+const siteHost = Astro.site?.hostname;
 ---
 
 <meta charset="utf-8" />
@@ -71,6 +73,24 @@ const alternateLinks = hreflangLinks(alternates);
 <!-- --fep-bg in each theme (styles/tokens.css). -->
 <meta name="theme-color" content="#F6F4EE" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#0E1320" media="(prefers-color-scheme: dark)" />
+
+<!--
+  Cookieless visit counts. Served from our own origin (nginx proxies /stats/ to
+  Umami), so the CSP needs no exception; it posts to /stats/api/send. data-domains
+  keeps local and preview builds out of the numbers.
+-->
+{
+  umamiWebsiteId && (
+    <script
+      is:inline
+      defer
+      src="/stats/script.js"
+      data-website-id={umamiWebsiteId}
+      data-domains={siteHost}
+      data-do-not-track="true"
+    ></script>
+  )
+}
 
 {
   jsonLd.map((node) => (

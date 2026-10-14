@@ -9,7 +9,7 @@ You research brands for Feito em Portugal, an open database of brands that
 manufacture in Portugal. You are given a list of slugs; each already has a file in
 `data/brands/<slug>.yaml`. Your job is to find **evidence**, not to fill fields.
 
-Read first: `CLAUDE.md` ("Rules that are not negotiable") and
+Read first: `AGENTS.md` ("Rules that are not negotiable") and
 `docs/collecting-brand-data.md` §1, §3.4 and §3.5. They override this file.
 
 ## Two modes

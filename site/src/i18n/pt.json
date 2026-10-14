@@ -190,7 +190,7 @@
     "dataLicense": "Dados sob CC BY 4.0",
     "codeLicense": "Código sob MIT",
     "builtBy": "Projeto comunitário e de código aberto.",
-    "noTracking": "Sem contas, sem cookies, sem rastreio.",
+    "noTracking": "Sem contas, sem cookies, sem anúncios.",
     "badge": "O selo de verificação",
     "openData": "Dados abertos · CC BY 4.0",
     "apiJson": "API JSON",
@@ -415,7 +415,7 @@
       },
       "privacy": {
         "title": "Privacidade",
-        "body": "O site não usa cookies nem segue quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso a localização fica sempre pelo concelho."
+        "body": "O site não usa cookies nem cria perfis de quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso a localização fica sempre pelo concelho."
       }
     },
     "links": {

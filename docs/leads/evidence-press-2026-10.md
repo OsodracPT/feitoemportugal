@@ -3,7 +3,7 @@
 The brands below were lifted to trust level 2 because two or more editorially
 independent Portuguese outlets cover them and attest production in Portugal. The
 `verification.sources` block in each brand file carries the url + publisher +
-date; the verbatim quotes live here, never in the YAML (CLAUDE.md). A wire story
+date; the verbatim quotes live here, never in the YAML (AGENTS.md). A wire story
 reprinted by several outlets counts as one source; trade portals, directories,
 listicles, foreign press and the brand's own channels do not count.
 

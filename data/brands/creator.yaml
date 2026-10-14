@@ -1,5 +1,5 @@
 slug: creator
-status: published
+status: draft
 name: Creator
 description:
   pt: >-
@@ -14,14 +14,7 @@ tags: [pele]
 products: [sapatos]
 founded: 2009
 production:
-  scope: parcial
-  notes:
-    pt: >-
-      A marca diz que os sapatos são acabados à mão por artesãos portugueses, mas não
-      indica a fábrica; a empresa dona da marca começou como intermediária de calçado.
-    en: >-
-      The brand says its shoes are hand-finished by Portuguese craftspeople but names no
-      factory; the company behind it started out as a footwear trading firm.
+  scope: total
 social:
   instagram: creatorshoes
 media:
@@ -30,5 +23,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-14
   source: import

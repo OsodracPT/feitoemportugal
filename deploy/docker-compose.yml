@@ -18,6 +18,13 @@
 #
 # It is built from the repository, so that deploy needs a checkout here (unlike
 # the static site, which is just the build in FEP_WWW_DIR). See README.md.
+#
+# The `stats` profile adds Umami (cookieless visit counts) and its Postgres:
+#
+#   docker compose --profile stats up -d
+#
+# nginx exposes only the tracker and the collect endpoint under /stats/; the
+# dashboard listens on UMAMI_BIND:UMAMI_PORT for a reverse proxy you control.
 name: feitoemportugal
 
 services:
@@ -61,5 +68,49 @@ services:
     expose:
       - "8787"
 
+  umami:
+    profiles: [stats]
+    image: ghcr.io/umami-software/umami:3.4.0
+    restart: unless-stopped
+    init: true
+    # Only what Umami needs, not the whole .env: that file also holds the
+    # submit service's SMTP and GitHub secrets.
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:-}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:-}
+      # nginx sets this header from the trusted client address (nginx.conf).
+      CLIENT_IP_HEADER: x-real-ip
+      DISABLE_TELEMETRY: "1"
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    # The dashboard (login, reports). Local only by default: put it behind a
+    # reverse proxy with its own hostname, never under the public site.
+    ports:
+      - "${UMAMI_BIND:-127.0.0.1}:${UMAMI_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://127.0.0.1:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  umami-db:
+    profiles: [stats]
+    image: docker.io/postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      # Empty means Postgres refuses to start: set it in .env.
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:-}
+    volumes:
+      - umami-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
   submit-data:
+  umami-db:
