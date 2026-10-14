@@ -15,6 +15,11 @@ tags: [feito-a-mao]
 products: [malas]
 production:
   scope: total
+price_range: 1
+typical_price:
+  product: malas
+  eur: 50
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.cluoh.com
   physical_stores:

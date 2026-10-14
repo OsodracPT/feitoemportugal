@@ -17,8 +17,8 @@ production:
 price_range: 3
 typical_price:
   product: t-shirts
-  eur: 63
-  checked: 2026-10-10
+  eur: 60
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://coupthelabel.com
   physical_stores:

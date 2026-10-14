@@ -19,9 +19,23 @@ production:
 location:
   district: porto
   municipality: vila-do-conde
-price_range: 2
+price_range: 4
+typical_price:
+  product: sabonetes
+  eur: 18
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://clausporto.com
+  physical_stores:
+    - name: Claus Porto Porto
+      city: Porto
+      address: Rua das Flores 22, 4050-262 Porto
+    - name: Claus Porto Misericórdia
+      city: Lisboa
+      address: Rua da Misericórdia 135, 1200-272 Lisboa
+    - name: Claus Porto Carmo
+      city: Lisboa
+      address: Rua do Carmo 82, 1200-094 Lisboa
 media:
   logo: logo.png
   photos: [foto-1.webp, foto-2.jpg, foto-3.webp]

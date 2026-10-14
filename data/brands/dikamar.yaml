@@ -15,10 +15,21 @@ tags: [metal]
 products: [botas, roupa-de-trabalho]
 founded: 1995
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      As botas são produzidas em Pombal; a origem do vestuário de trabalho não é
+      indicada.
+    en: >-
+      The boots are made in Pombal; the origin of the workwear is not stated.
 location:
   district: leiria
   municipality: pombal
+price_range: 1
+typical_price:
+  product: botas
+  eur: 69.99
+  checked: 2026-10-13
 social:
   instagram: dikamareurope
 media:

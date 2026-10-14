@@ -15,15 +15,22 @@ tags: [classico, presente]
 products: [sabonetes, cremes, velas]
 founded: 1999
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      Os sabonetes são produzidos na fábrica da Maia; a origem das velas, difusores e
+      cremes não é indicada.
+    en: >-
+      The soaps are made at the Maia factory; the origin of the candles, diffusers and
+      creams is not stated.
 location:
   district: porto
   municipality: maia
 price_range: 3
 typical_price:
   product: sabonetes
-  eur: 9.9
-  checked: 2026-10-10
+  eur: 8.45
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://castelbel.com
   physical_stores:

@@ -19,11 +19,11 @@ production:
 location:
   district: porto
   municipality: felgueiras
-price_range: 3
+price_range: 4
 typical_price:
   product: malas
-  eur: 259
-  checked: 2026-10-10
+  eur: 400
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.entrudo.com
 social:

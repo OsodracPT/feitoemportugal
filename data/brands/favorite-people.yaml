@@ -13,18 +13,34 @@ category: moda-e-vestuario
 tags: [contemporaneo, pequena-serie]
 products: [jardineiras]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      As peças trazem a indicação "Made in Portugal", mas a marca não identifica onde
+      são confecionadas.
+    en: >-
+      The pieces carry a "Made in Portugal" label, but the brand does not say where they
+      are sewn.
 price_range: 3
 typical_price:
   product: jardineiras
   eur: 102
-  checked: 2026-10-10
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.favoritepeoplestore.com
   physical_stores:
     - name: Favorite People Monte Estoril
       city: Cascais
       address: Largo Ostende 14B, 2765-431 Estoril
+    - name: Favorite People CascaiShopping
+      city: Cascais
+      address: Estrada Nacional 9, Piso 1, 2645-543 Alcabideche
+    - name: Favorite People Amoreiras
+      city: Lisboa
+      address: Avenida Engenheiro Duarte Pacheco, Piso 1, 1070-103 Lisboa
+    - name: Favorite People NorteShopping
+      city: Matosinhos
+      address: Rua Sara Afonso, 4460-841 Senhora da Hora
 social:
   instagram: favoritepeoplestore
 media:

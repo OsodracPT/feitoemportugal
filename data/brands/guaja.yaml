@@ -16,6 +16,10 @@ products: [camisolas]
 production:
   scope: total
 price_range: 3
+typical_price:
+  product: camisolas
+  eur: 95
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://guajastudio.com
 social:

@@ -37,10 +37,10 @@ casta,sapatos,129,Vanda (loafer),https://casta.pt/products/vanda,2026-10-09
 casta,sapatos,129,Fava,https://casta.pt/products/fava,2026-10-09
 casta,sapatos,129,Maddie,https://casta.pt/products/maddie,2026-10-09
 cavemen,fatos,299,Fato Slim Fit Castanho (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-castanho-pick-stitch.html,2026-10-09
-cavemen,fatos,299,Fato Slim Fit Bege (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-bege.html,2026-10-09
+cavemen,fatos,299,Fato Slim Fit Bege (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-bege.html,2026-10-13
 cavemen,fatos,299,Fato Slim Fit Verde Escuro (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-verde-escuro-pick-stitch.html,2026-10-09
-cavemen,fatos,299,Fato Slim Fit Bordeaux (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-bordeaux-pick-stitch.html,2026-10-09
-centenario-1941,sapatos,210,Oxford 40940/00,https://centenario1941.com/product/oxford-40940-00/,2026-10-09
+cavemen,fatos,299,Fato Slim Fit Bordeaux (Pick Stitch),https://www.cavemenstore.com/pt/fato-slim-fit-bordeaux-pick-stitch.html,2026-10-13
+centenario-1941,sapatos,210,Oxford 40940/00,https://centenario1941.com/product/oxford-40940-00/,2026-10-13
 centenario-1941,sapatos,245,Oxford 40930/00,https://centenario1941.com/product/oxford-40930-00/,2026-10-09
 centenario-1941,sapatos,220,Derby 40968/00,https://centenario1941.com/product/derby-40968-00/,2026-10-09
 centenario-1941,sapatos,260,Monk 40972/00,https://centenario1941.com/product/monk-40972-00/,2026-10-09
@@ -65,9 +65,9 @@ wetheknot,t-shirts,55,Essential graphic t-shirt (charcoal),https://www.wetheknot
 wetheknot,t-shirts,55,Everyday t-shirt (warm grey),https://www.wetheknot.com/product/everyday-t-shirt-warm-grey,2026-10-09
 wetheknot,t-shirts,55,Stripes t-shirt (bottle green),https://www.wetheknot.com/product/stripes-t-shirt-bottle-green,2026-10-09
 wetheknot,t-shirts,65,Relaxed graphic t-shirt (black),https://www.wetheknot.com/product/relaxed-graphic-t-shirt-black,2026-10-09
-gandaia,camisas,130,Brown Linen Shirt,https://www.gandaia.store/products/brown-linen-shirt,2026-10-09
+gandaia,camisas,130,Brown Linen Shirt,https://www.gandaia.store/products/brown-linen-shirt,2026-10-13
 gandaia,camisas,145,Cravo Shirt,https://www.gandaia.store/products/cravo-shirt,2026-10-09
-gandaia,camisas,160,Alentejo Shirt,https://www.gandaia.store/products/alentejo-shirt,2026-10-09
+gandaia,camisas,160,Alentejo Shirt,https://www.gandaia.store/products/alentejo-shirt,2026-10-13
 naturapura,roupa-de-crianca,16.90,Sleeveless Envelope Neck Bodysuit,https://naturapura.com/product/basic-body/,2026-10-09
 naturapura,roupa-de-crianca,23.90,Wrap-over Long-Sleeve Bodysuit,https://naturapura.com/product/basic-bodysuit-long-sleeved/,2026-10-09
 naturapura,roupa-de-crianca,27.90,Long-Sleeved Envelope Neck Bodysuit,https://naturapura.com/product/envelope-neck-bodysuit/,2026-10-09
@@ -157,28 +157,28 @@ collady,meias,8.50,Peúga Breeze,https://collady.com/products/peuga-breeze,2026-
 collady,meias,8.50,Peúga Candy,https://collady.com/products/peuga-candy,2026-10-10
 collady,meias,12.00,Meia Liga Skin Mate C/Renda Diva,https://collady.com/products/meia-liga-skin-c-renda-diva,2026-10-10
 collady,meias,11.50,Collants Inspire Me,https://collady.com/products/collants-confident-woman-copia,2026-10-10
-companhia-atlantica,loica-de-mesa,22.50,Prato Jantar Verde BREEZY,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-jantar-verde-breezy,2026-10-10
-companhia-atlantica,loica-de-mesa,18.00,Prato Jantar Ø27 DUNA,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-jantar-o27-duna,2026-10-10
-companhia-atlantica,loica-de-mesa,22.95,Prato de Jantar GIRO,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-de-jantar-giro,2026-10-10
+companhia-atlantica,loica-de-mesa,22.5,Prato Jantar Verde BREEZY,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-jantar-verde-breezy,2026-10-13
+companhia-atlantica,loica-de-mesa,18,Prato Jantar Ø27 DUNA,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-jantar-o27-duna,2026-10-13
+companhia-atlantica,loica-de-mesa,22.95,Prato de Jantar GIRO,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-de-jantar-giro,2026-10-13
 companhia-atlantica,loica-de-mesa,18.00,Prato Pasta MELIDES,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-pasta-melides,2026-10-10
-conscious,jeans,135.00,sustainable light blue washed denim jeans,https://consciousthelabel.com/products/sustainable-light-blue-washed-denim-jeans,2026-10-10
-conscious,jeans,130.00,sustainable white washed denim jeans,https://consciousthelabel.com/products/sustainable-white-washed-denim-jeans,2026-10-10
+conscious,jeans,155,sustainable light blue washed denim jeans,https://consciousthelabel.com/products/sustainable-light-blue-washed-denim-jeans,2026-10-13
+conscious,jeans,155,sustainable white washed denim jeans,https://consciousthelabel.com/products/sustainable-white-washed-denim-jeans,2026-10-13
 conscious,jeans,130.00,sustainable blue washed denim jeans,https://consciousthelabel.com/products/denim-trousers-blue-washed-jeans,2026-10-10
-conscious,jeans,130.00,sustainable black washed denim jeans,https://consciousthelabel.com/products/sustainable-black-washed-denim-jeans,2026-10-10
-conscious,jeans,130.00,sustainable brown washed denim jeans,https://consciousthelabel.com/products/sustainable-brown-washed-denim-jeans,2026-10-10
+conscious,jeans,145,sustainable black washed denim jeans,https://consciousthelabel.com/products/sustainable-black-washed-denim-jeans,2026-10-13
+conscious,jeans,145,sustainable brown washed denim jeans,https://consciousthelabel.com/products/sustainable-brown-washed-denim-jeans,2026-10-13
 cubanas,sapatos,119.80,Loafer em Camurça Beige,https://cubanas-shoes.com/products/loafer-em-camurca-beige,2026-10-10
 cubanas,sapatos,119.80,Loafer em Camurça Camel,https://cubanas-shoes.com/products/loafer-em-camurca-camel,2026-10-10
 cubanas,sapatos,99.80,Sabrina em Camurça Beige e Laço,https://cubanas-shoes.com/products/sabrina-em-camurca-beige-e-laco,2026-10-10
 cubanas,sapatos,139.80,Mule Texana em Camurça Castanha,https://cubanas-shoes.com/products/soca-clog-cubanas-amager111brown-brown,2026-10-10
 cubanas,sapatos,149.80,Bota em Pele Castanha,https://cubanas-shoes.com/products/bota-cubanas-vanity120brown-brown,2026-10-10
-cucawik,malas,43.90,Mala Stella com Pegas de Bambu Riscas Coloridas Laranja,https://cucawik.com/products/mala-stella-com-pegas-de-bambu-riscas-coloridas-laranja,2026-10-10
+cucawik,malas,43.9,Mala Stella com Pegas de Bambu Riscas Coloridas Laranja,https://cucawik.com/products/mala-stella-com-pegas-de-bambu-riscas-coloridas-laranja,2026-10-13
 cucawik,malas,43.90,Mala Stella com Pegas de Bambu Ikat Castanho Verde Bege,https://cucawik.com/products/mala-stella-com-pegas-de-bambu-ikat-castanho-verde-bege,2026-10-10
 cucawik,malas,43.90,Mala Stella com Pegas de Bambu Geométrico Chevron Azul Cinzento Branco,https://cucawik.com/products/mala-stella-com-pegas-de-bambu-geometrico-chevron-azul-cinzento-branco,2026-10-10
 desculpa-babe,t-shirts,28.00,T-shirt Clássica desculpa babe Preta,https://desculpababe.pt/produto/t-shirt-classica-desculpa-babe-preta/,2026-10-10
 desculpa-babe,t-shirts,28.00,"T-shirt ""É o que é"" Branco",https://desculpababe.pt/produto/t-shirt-e-o-que-e-branco/,2026-10-10
 desculpa-babe,t-shirts,28.00,"T-shirt ""Não és tu, sou eu"" Branco",https://desculpababe.pt/produto/t-shirt-nao-es-tu-sou-eu-branco/,2026-10-10
 desculpa-babe,t-shirts,32.00,"T-shirt Burn, Baby, Burn – Tamara Alves – Preto",https://desculpababe.pt/produto/t-shirt-burn-baby-burn-tamara-alves-preto/,2026-10-10
-desculpa-babe,t-shirts,32.00,"T-shirt ""Menos é mais"" – SEM",https://desculpababe.pt/produto/t-shirt-menos-e-mais-sem/,2026-10-10
+desculpa-babe,t-shirts,32,"T-shirt ""Menos é mais"" – SEM",https://desculpababe.pt/produto/t-shirt-menos-e-mais-sem/,2026-10-13
 lazuli,sapatilhas,130.00,myBarefoot Trainer Bege,https://shoelutions.store/products/mybarefoot-trainer-bege,2026-10-10
 lazuli,sapatilhas,129.90,myTENNIS Lignify,https://shoelutions.store/products/mytennis-lignify,2026-10-10
 lazuli,sapatilhas,129.90,mySNEAKER UNITED Jungle,https://shoelutions.store/products/mysneaker-united-jungle,2026-10-10
@@ -216,7 +216,7 @@ diverge,sapatilhas,195,Slip On V37 Red with Grey,https://www.diverge-sneakers.co
 diverge,sapatilhas,205,Now V48 Brown,https://www.diverge-sneakers.com/products/v48-brown,2026-10-10
 diverge,sapatilhas,210,Minimal High V0 White,https://www.diverge-sneakers.com/products/v0-white-1,2026-10-10
 diverge,sapatilhas,220,Meteor 88 V0 White,https://www.diverge-sneakers.com/products/v0-white-3,2026-10-10
-eject,sapatilhas,180,DASS 2 AEGIR,https://ejectshoes.com/products/dass2-aegir,2026-10-10
+eject,sapatilhas,180,DASS 2 AEGIR,https://ejectshoes.com/products/dass2-aegir,2026-10-13
 eject,sapatilhas,190,CLOUD FULLA,https://ejectshoes.com/products/cloud-fulla,2026-10-10
 eject,sapatilhas,200,FLIGHT TYR,https://ejectshoes.com/products/flight-tyr,2026-10-10
 eject,sapatilhas,200,STREET DIA,https://ejectshoes.com/products/street-dia,2026-10-10
@@ -226,30 +226,30 @@ entrudo,malas,259,Arcas - hand-painted leather bag,https://www.entrudo.com/produ
 entrudo,malas,259,Larinho - jute bag with raffia hand embroidery,https://www.entrudo.com/products/larinho-jute-bag-with-raffia-hand-embroidery,2026-10-10
 entrudo,malas,239,Cimbres - dégradé dyed raffia bag,https://www.entrudo.com/products/cimbres-degrade-dyed-raffia-bag,2026-10-10
 entrudo,malas,229,Covelinhas - bag in leather and crochet in bronze and white faux fur,https://www.entrudo.com/products/covelinhas-bag-in-leather-and-crochet-in-bronze-and-white-faux-fur,2026-10-10
-favorite-people,jardineiras,102,Cinema Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-cinema_overalls_woman,2026-10-10
+favorite-people,jardineiras,102,Cinema Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-cinema_overalls_woman,2026-10-13
 favorite-people,jardineiras,102,Traveler Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-traveler_overalls_woman,2026-10-10
 favorite-people,jardineiras,102,Band Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-band_overalls_woman,2026-10-10
 favorite-people,jardineiras,102,Old Bike Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-oldbike_overalls_woman,2026-10-10
 favorite-people,jardineiras,105,Mainstreet Overalls Woman,https://www.favoritepeoplestore.com/products/aw26-mainstreet_overalls_woman,2026-10-10
-fluyt,camisas,75,Camisa Sandstripe,https://www.fluyt.pt/products/camisa-sandstripe,2026-10-10
-fluyt,camisas,75,Camisa Stone,https://www.fluyt.pt/products/camisa-stone,2026-10-10
+fluyt,camisas,75,Camisa Sandstripe,https://www.fluyt.pt/products/camisa-sandstripe,2026-10-13
+fluyt,camisas,75,Camisa Stone,https://www.fluyt.pt/products/camisa-stone,2026-10-13
 fluyt,camisas,75,Camisa Alma,https://www.fluyt.pt/products/camisa-alma,2026-10-10
-fluyt,camisas,69,Camisa Huron,https://www.fluyt.pt/products/camisa-huron,2026-10-10
+fluyt,camisas,69,Camisa Huron,https://www.fluyt.pt/products/camisa-huron,2026-10-13
 fluyt,camisas,69,Camisa Bled,https://www.fluyt.pt/products/camisa-bled,2026-10-10
-fly-london,sapatos,165,Slip-on Shoes POLF558FLY CAMEL/BROWN,https://shop-eu.flylondon.com/products/camel-brown-slip-on-shoes-polf558fly-fly-london,2026-10-10
-fly-london,sapatos,140,Buckle Shoes ARFE535FLY GREEN FOREST,https://shop-eu.flylondon.com/products/green-forest-buckle-shoes-arfe535fly-fly-london,2026-10-10
-fly-london,sapatos,200,Lace-up Shoes EVAR562FLY BLACK,https://shop-eu.flylondon.com/products/black-lace-up-shoes-evar562fly-fly-london,2026-10-10
-fly-london,sapatos,150,Buckle Shoes RUFE491FLY WINE,https://shop-eu.flylondon.com/products/wine-buckle-shoes-rufe491fly-fly-london,2026-10-10
+fly-london,sapatos,165,Slip-on Shoes POLF558FLY CAMEL/BROWN,https://shop-eu.flylondon.com/products/camel-brown-slip-on-shoes-polf558fly-fly-london,2026-10-13
+fly-london,sapatos,140,Buckle Shoes ARFE535FLY GREEN FOREST,https://shop-eu.flylondon.com/products/green-forest-buckle-shoes-arfe535fly-fly-london,2026-10-13
+fly-london,sapatos,200,Lace-up Shoes EVAR562FLY BLACK,https://shop-eu.flylondon.com/products/black-lace-up-shoes-evar562fly-fly-london,2026-10-13
+fly-london,sapatos,150,Buckle Shoes RUFE491FLY WINE,https://shop-eu.flylondon.com/products/wine-buckle-shoes-rufe491fly-fly-london,2026-10-13
 fly-london,sapatos,100,Slip-on Shoes OPAN480FLY BLACK,https://shop-eu.flylondon.com/products/black-slip-on-shoes-opan480fly-fly-london,2026-10-10
 galula,candeeiros,118,Glint Desk Lamp #1 - black base,https://galulastudio.com/products/glint-desk-lamp-1-black-base,2026-10-10
 galula,candeeiros,126,Glint Desk Lamp #3 - black base,https://galulastudio.com/products/glint-desk-lamp-3-black-base,2026-10-10
-galula,candeeiros,126,Glint Desk Lamp #3 - white base,https://galulastudio.com/products/glint-desk-lamp-3-white-base,2026-10-10
+galula,candeeiros,126,Glint Desk Lamp #3 - white base,https://galulastudio.com/products/glint-desk-lamp-3-white-base,2026-10-13
 galula,candeeiros,135,Retro Cork Pendant Lamp,https://galulastudio.com/products/retro-cork-pendant-lamp,2026-10-10
-get-the-balance,sapatilhas,170,Alvarenga (White version),https://gtbalance.com/product/modelo-alvarenga-white-version/,2026-10-10
-get-the-balance,sapatilhas,170,Alvarenga (Green version),https://gtbalance.com/product/modelo-alvarenga-green-version/,2026-10-10
-get-the-balance,sapatilhas,170,Alvarenga (Blue version),https://gtbalance.com/product/modelo-alvarenga-blue-version/,2026-10-10
-get-the-balance,sapatilhas,165,Porto,https://gtbalance.com/product/modelo-porto/,2026-10-10
-ghome,mesas,755,Mesa Pinho,https://www.ghome.pt/product/mesa-pinho/,2026-10-10
+get-the-balance,sapatilhas,170,Alvarenga (White version),https://gtbalance.com/product/modelo-alvarenga-white-version/,2026-10-13
+get-the-balance,sapatilhas,170,Alvarenga (Green version),https://gtbalance.com/product/modelo-alvarenga-green-version/,2026-10-13
+get-the-balance,sapatilhas,170,Alvarenga (Blue version),https://gtbalance.com/product/modelo-alvarenga-blue-version/,2026-10-13
+get-the-balance,sapatilhas,165,Porto,https://gtbalance.com/product/modelo-porto/,2026-10-13
+ghome,mesas,755,Mesa Pinho,https://www.ghome.pt/product/mesa-pinho/,2026-10-13
 ghome,mesas,535,Mesa Bistro Rectângulo,https://www.ghome.pt/product/bistrorectangulo/,2026-10-10
 ghome,mesas,565,Mesa Bistro Círculo,https://www.ghome.pt/product/bistrocirculo/,2026-10-10
 ghome,mesas,375,Mesa Bistro Quadrado,https://www.ghome.pt/product/bistroquadrado/,2026-10-10
@@ -258,17 +258,17 @@ great-i-am,t-shirts,42,Regular T-Shirt Brand Identity,https://greatiamwear.com/p
 great-i-am,t-shirts,48,T-Shirt Performance,https://greatiamwear.com/produto/t-shirt-performance-black/,2026-10-10
 great-i-am,t-shirts,36,T-Shirt Active,https://greatiamwear.com/produto/t-shirt-active-beige/,2026-10-10
 great-i-am,t-shirts,40,Oversized T-Shirt Way of Life,https://greatiamwear.com/produto/oversized-t-shirt-way-of-life-grey/,2026-10-10
-heeltread,meias,12.5,Tomcatters Socks,https://heeltread.com/products/tomcatters-socks,2026-10-10
+heeltread,meias,12.5,Tomcatters Socks,https://heeltread.com/products/tomcatters-socks,2026-10-13
 heeltread,meias,12.5,Black Aces Socks,https://heeltread.com/products/black-aces-socks,2026-10-10
 heeltread,meias,12.5,NASA Saturn V Socks,https://heeltread.com/products/saturn-v-socks,2026-10-10
-heeltread,meias,14,Le Mans 1959 Socks,https://heeltread.com/products/le-mans-1959-socks,2026-10-10
+heeltread,meias,14,Le Mans 1959 Socks,https://heeltread.com/products/le-mans-1959-socks,2026-10-13
 heeltread,meias,14,Martini White Socks,https://heeltread.com/products/martini-sparco-white-2025-socks,2026-10-10
-imma,camisas,146,GABRIELLE Shirt White,https://immathebrand.com/products/gabrielle-shirt,2026-10-10
-inusitado,cadernos,14,dois pontos,https://inusitado.pt/products/dois-pontos-dotted-notebook,2026-10-10
+imma,camisas,146,GABRIELLE Shirt White,https://immathebrand.com/products/gabrielle-shirt,2026-10-13
+inusitado,cadernos,14,dois pontos,https://inusitado.pt/products/dois-pontos-dotted-notebook,2026-10-13
 inusitado,cadernos,14,grafema,https://inusitado.pt/products/grafema-blank-notebook,2026-10-10
-inusitado,cadernos,14,teorema,https://inusitado.pt/products/teorema-lined-notebook,2026-10-10
+inusitado,cadernos,14,teorema,https://inusitado.pt/products/teorema-lined-notebook,2026-10-13
 inusitado,cadernos,14,sistema,https://inusitado.pt/products/sistema-grid-notebook,2026-10-10
-inusitado,cadernos,35,inner journal,https://inusitado.pt/products/inner-journal-dotted-notebook-hardcover,2026-10-10
+inusitado,cadernos,35,inner journal,https://inusitado.pt/products/inner-journal-dotted-notebook-hardcover,2026-10-13
 ivo-cutelarias,facas,21.7,Faca de Cozinheiro ChefCut,https://www.ivocutelarias.com/cozinha/cozinha-faca-de-cozinheiro/faca-de-cozinheiro-chefcut,2026-10-10
 ivo-cutelarias,facas,19.9,Faca de Cozinheiro SOLO Natura,https://www.ivocutelarias.com/cozinha/cozinha-faca-de-cozinheiro/faca-de-cozinheiro-solonatura,2026-10-10
 ivo-cutelarias,facas,58.1,Faca de Cozinheiro Supreme 1961,https://www.ivocutelarias.com/cozinha/cozinha-faca-de-cozinheiro/faca-de-cozinheiro-supreme,2026-10-10
@@ -443,17 +443,17 @@ atelier-estorninho,t-shirts,65.00,Steadfast Tee,https://atelierestorninho.com/pr
 atelier-estorninho,t-shirts,67.00,Premium Tee,https://atelierestorninho.com/products/premium-tee,2026-10-10
 atelier-estorninho,t-shirts,38.00,Standard Issue Heather T-Shirt (origin not stated),https://atelierestorninho.com/products/granulado-heather-short-sleeve-t-shirt,2026-10-10
 castelbel,sabonetes,8.50,Sabonete Lavanda 150g,https://castelbel.com/products/sabonete-lavanda-150g,2026-10-10
-castelbel,sabonetes,9.90,Sabonete Butterflies 150g (Portus Cale),https://castelbel.com/products/sabonete-butterflies-150g,2026-10-10
+castelbel,sabonetes,9.9,Sabonete Butterflies 150g (Portus Cale),https://castelbel.com/products/sabonete-butterflies-150g,2026-10-13
 castelbel,sabonetes,9.90,Sabonete Ruby Red 150g (Portus Cale),https://castelbel.com/products/sabonete-ruby-red-150g,2026-10-10
 castelbel,sabonetes,11.00,Sabonete Green Sencha 200g (Tiles),https://castelbel.com/products/sabonete-green-sencha-200g,2026-10-10
 castelbel,sabonetes,12.00,Sabonete Sal Marinho e Toranja 150g,https://castelbel.com/products/sabonete-sal-marinho-e-toranja-150g,2026-10-10
 coup-the-label,t-shirts,63,Classic T-Shirt,https://coupthelabel.com/products/classic-t-shirt-white,2026-10-10
 coup-the-label,t-shirts,63,Pocket T-Shirt,https://coupthelabel.com/products/pocket-washed-t-shirt-black,2026-10-10
 coup-the-label,t-shirts,51,Logo Tee,https://coupthelabel.com/products/logo-tee-black,2026-10-10
-coup-the-label,t-shirts,75,Sunkissed T-Shirt,https://coupthelabel.com/products/sunkissed-white-t-shirt,2026-10-10
+coup-the-label,t-shirts,65,Sunkissed T-Shirt,https://coupthelabel.com/products/sunkissed-white-t-shirt,2026-10-13
 coup-the-label,t-shirts,60,Fruit Market T-Shirt,https://coupthelabel.com/products/fruit-market-regular-t-shirt,2026-10-10
 guaja,camisolas,95,Emma Classic Crewneck Knit Sweater - Anthracite,https://guajastudio.com/products/emma-classic-crew-neck-knit-sweater-anthracite,2026-10-10
-guaja,camisolas,95,Stone Relaxed Sweater - Off-White,https://guajastudio.com/products/stone-relaxed-sweater-off-white,2026-10-10
+guaja,camisolas,95,Stone Relaxed Sweater - Off-White,https://guajastudio.com/products/stone-relaxed-sweater-off-white,2026-10-13
 guaja,camisolas,90,Legacy Polo Sweater - Navy,https://guajastudio.com/products/legacy-polo-sweater-navy,2026-10-10
 guaja,camisolas,90,2nd Skin Knitted Mid-Neck Sweater - Black,https://guajastudio.com/products/2nd-skin-knitted-mid-neck-sweater-black,2026-10-10
 guaja,camisolas,155,Emily Merino Wool Cardigan - Grey,https://guajastudio.com/products/emily-merino-wool-cardigan-grey,2026-10-10
@@ -497,13 +497,188 @@ vaddia,sapatilhas,149,Aust,https://vaddia.com/products/aust,2026-10-10
 vaddia,sapatilhas,149,Azir,https://vaddia.com/products/azir,2026-10-10
 nyos,roupa-de-banho,89,Bed of Roses,https://nyosswimwear.com/collections/all/products/bed-of-roses,2026-10-10
 nyos,roupa-de-banho,89,Louise,https://nyosswimwear.com/collections/all/products/louise,2026-10-10
-fora,oculos,148,"Creator",https://fora.pt/products/creator-sunglasses,2026-10-11
-fora,oculos,158,"Dealer",https://fora.pt/products/sunglasses-dealer,2026-10-11
-fora,oculos,168,"Rider",https://fora.pt/products/rider-sunglasses,2026-10-11
-fora,oculos,148,"Player",https://fora.pt/products/player-sunglasses,2026-10-11
-fora,oculos,138,"Jacker",https://fora.pt/products/jacker-sunglasses,2026-10-11
-poente,oculos,248,"Cool Kid",https://www.poente.pt/products/cool-kid,2026-10-11
-poente,oculos,258,"Cool Kid Large",https://www.poente.pt/products/cool-kid-large,2026-10-11
-poente,oculos,248,"Bob",https://www.poente.pt/products/bob-1,2026-10-11
-poente,oculos,248,"Fader",https://www.poente.pt/products/fader,2026-10-11
-poente,oculos,258,"Gambino",https://www.poente.pt/products/gambino,2026-10-11
+fora,oculos,148,Creator,https://fora.pt/products/creator-sunglasses,2026-10-11
+fora,oculos,158,Dealer,https://fora.pt/products/sunglasses-dealer,2026-10-11
+fora,oculos,168,Rider,https://fora.pt/products/rider-sunglasses,2026-10-11
+fora,oculos,148,Player,https://fora.pt/products/player-sunglasses,2026-10-11
+fora,oculos,138,Jacker,https://fora.pt/products/jacker-sunglasses,2026-10-11
+poente,oculos,248,Cool Kid,https://www.poente.pt/products/cool-kid,2026-10-11
+poente,oculos,258,Cool Kid Large,https://www.poente.pt/products/cool-kid-large,2026-10-11
+poente,oculos,248,Bob,https://www.poente.pt/products/bob-1,2026-10-11
+poente,oculos,248,Fader,https://www.poente.pt/products/fader,2026-10-11
+poente,oculos,258,Gambino,https://www.poente.pt/products/gambino,2026-10-11
+casta,sapatos,99,Hymn,https://casta.pt/products/hymn-silver,2026-10-13
+casta,sapatos,129,Uno,https://casta.pt/products/uno,2026-10-13
+casta,sapatos,149,Terra,https://casta.pt/products/terra,2026-10-13
+casta,sapatos,179,Julia,https://casta.pt/products/julia-black-chocolate,2026-10-13
+casta,sapatos,189,Roma,https://casta.pt/products/roma,2026-10-13
+castelbel,sabonetes,3.9,Sabonete Green Sencha 40g,https://castelbel.com/products/sabonete-green-sencha-40g,2026-10-13
+castelbel,sabonetes,7,Sabonete Frescura de Verão 150g,https://castelbel.com/products/sabonete-frescura-de-verao-150g,2026-10-13
+castelbel,sabonetes,31,Conjunto de Sabonetes Rosé Blush 3x150g,https://castelbel.com/products/conjunto-de-sabonetes-rose-blush-3x150g,2026-10-13
+cavalinho,malas,99.9,Mala de Tiracolo Signature CV,https://www.cavalinho.com/pt/bolsas/mala-de-tiracolo-signature-cv-by-cavalinho_p10637.html,2026-10-13
+cavalinho,malas,179.9,Mala de Mão Signature CV,https://www.cavalinho.com/pt/bolsas/mala-de-mao-signature-cv-by-cavalinho_p9880.html,2026-10-13
+cavalinho,malas,194.9,Mala de Mão Signature CV,https://www.cavalinho.com/pt/bolsas/mala-de-mao-signature-cv-by-cavalinho_p10242.html,2026-10-13
+cavemen,sapatos,99.9,Mocassim em pele castanho,https://www.cavemenstore.com/pt/mocassin-em-pele-castanho.html,2026-10-13
+cavemen,sapatos,129.9,Sapato com fivela dupla em pele castanho,https://www.cavemenstore.com/pt/sapato-com-fivela-dupla-em-pele-castanho.html,2026-10-13
+centenario-1941,sapatos,185,Monk F1978/00,https://centenario1941.com/product/monk-f1978-00/,2026-10-13
+centenario-1941,sapatos,190,Derby F1993/01,https://centenario1941.com/product/derby-f1993-01/,2026-10-13
+centenario-1941,sapatos,195,Loafer F1982/00,https://centenario1941.com/product/loafer-f1982-00/,2026-10-13
+centenario-1941,sapatos,215,Sport 40979/00,https://centenario1941.com/product/sport-40979-00/,2026-10-13
+chule,meias,11,Chulézinho Girafas,https://chule.pt/products/chulezinho-meias-girafas,2026-10-13
+chule,meias,12,Jamón,https://chule.pt/products/chule-jamon,2026-10-13
+chule,meias,12,Ponte 25 de Abril,https://chule.pt/products/chule-meias-ponte-25abril,2026-10-13
+chule,meias,12,Praia,https://chule.pt/products/chule-meias-praia,2026-10-13
+cinco,joias,95,Sabina Huggies,https://cinco-store.com/products/sabina-huggies,2026-10-13
+cinco,joias,99,Pernille Bracelet,https://cinco-store.com/products/pernille-bracelet,2026-10-13
+cinco,joias,150,Mini Vera,https://cinco-store.com/products/mini-vera,2026-10-13
+cinco,joias,195,Zara Two-Tone Ring,https://cinco-store.com/products/zara-sculptural-two-tone-ring,2026-10-13
+cinco,joias,225,Delia Drop Pendant Necklace,https://cinco-store.com/products/delia-necklace,2026-10-13
+claus-porto,sabonetes,16,Agua Colonia Vetyver Soap,https://clausporto.com/products/agua-colonia-vetyver-150gr,2026-10-13
+claus-porto,sabonetes,18,1887 Body Soap,https://clausporto.com/products/1887-body-soap,2026-10-13
+claus-porto,sabonetes,26,Puro Sangue Soap on a Rope,https://clausporto.com/products/soap-on-a-rope-puro-sangue,2026-10-13
+claus-porto,perfumes,95,Le Parfum,https://clausporto.com/products/le-parfum,2026-10-13
+cluoh,malas,42,Laura Velvet,https://cluoh.com/products/laura-velvet-dark-green,2026-10-13
+cluoh,malas,46,Pasta computador Gabi Lime,https://cluoh.com/products/pasta-computador-bombazine-gabi-lime,2026-10-13
+cluoh,malas,54,Carteira bucket Helen Vanilla,https://cluoh.com/products/carteira-bucket-bombazine-helen-vanilla,2026-10-13
+cluoh,malas,230,Mala pele Botero Maquillaje,https://cluoh.com/products/mala-pele-botero-maquillaje,2026-10-13
+collady,meias,3.5,Mini Meias Dots,https://collady.com/products/mini-meias-lycra-biq-inv-2-pares-copia,2026-10-13
+collady,meias,8.5,Peúga Cherry Blossom,https://collady.com/products/peuga-cherry-blossom,2026-10-13
+collady,meias,3.5,Peúga Lisa Algodão,https://collady.com/products/peuga-lisa,2026-10-13
+collady,meias,4.5,Mini Meias Lycra Skin Mate,https://collady.com/products/mini-meias-lycra-skin,2026-10-13
+companhia-atlantica,loica-de-mesa,24.9,Prato Aperitivo Azulejo,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/prato-aperitivo-o22-5-azulejo,2026-10-13
+companhia-atlantica,loica-de-mesa,9.9,Prato de Pão Giro,https://www.companhiaatlantica.pt/produto/ceramica-portuguesa/pratos-de-ceramica/prato-de-pao-giro,2026-10-13
+confianca,sabonetes,1.79,Sabonete Chipre Imperial 125g,https://confianca1894.com/products/sabonete-chipre-imperial-125g,2026-10-13
+confianca,sabonetes,1.89,Sabonete Alfazema do Monte 125g,https://confianca1894.com/products/sabonete-alfazema-do-monte-125g,2026-10-13
+confianca,sabonetes,2.49,Sabonete de Glicerina Rubi 125g,https://confianca1894.com/products/sabonete-de-glicerina-rubi,2026-10-13
+confianca,sabonetes,2.69,Sabonete Líquido Leite de Burra 450ml,https://confianca1894.com/products/sabonete-liquido-leite-de-burra-450ml,2026-10-13
+costa-nova,loica-de-mesa,64,Set 5 Peças de Mesa Brisa,https://costanova.com/products/set-5-pecas-de-mesa-brisa-3,2026-10-13
+costa-nova,loica-de-mesa,45.5,Set 5 Peças Scotia,https://costanova.com/products/set-5-pecas-de-mesa-scotia-1,2026-10-13
+costa-nova,loica-de-mesa,14,Prato Marcador Nova,https://costanova.com/products/prato-marcador-travessa-nova-2,2026-10-13
+costa-nova,loica-de-mesa,8.75,Prato Salada Scotia,https://costanova.com/products/prato-salada-sobremesa-scotia-casafina-by-costa-nova-4,2026-10-13
+costa-nova,loica-de-mesa,9.25,Taça Sopa Scotia,https://costanova.com/products/taca-sopa-pasta-scotia-casafina-by-costa-nova-4,2026-10-13
+costa-nova,loica-de-mesa,12,Taça Sopa Beja,https://costanova.com/products/taca-sopa-cereais-beja-3,2026-10-13
+coup-the-label,t-shirts,48,From Chaves To Faro T-Shirt,https://coupthelabel.com/products/regular-fit-t-shirt-navy-blue,2026-10-13
+coup-the-label,t-shirts,55,Follow The Sun Tee Blue,https://coupthelabel.com/products/travelling-with-follow-the-sun-tee-blue,2026-10-13
+coup-the-label,t-shirts,60,No Fixed Adress Tee,https://coupthelabel.com/products/no-fixed-adress-tee,2026-10-13
+coup-the-label,t-shirts,68,Follow The Sun Rope Tee Green,https://coupthelabel.com/products/follow-the-sun-rope-tee-green,2026-10-13
+cubanas,alpercatas,49.8,Alpergata em tecido verde,https://cubanas-shoes.com/products/alpergata-em-tecido-verde,2026-10-13
+cubanas,sandalias,69.8,Sandália Julia,https://cubanas-shoes.com/products/sandalia-julia-em-pele-dourada,2026-10-13
+cubanas,sandalias,99.8,Sandália Maria,https://cubanas-shoes.com/products/sandalia-maria-em-pele-laranja,2026-10-13
+cubanas,botas,129.8,Bota em camurça cinza,https://cubanas-shoes.com/products/bota-em-camurca-cinza-1,2026-10-13
+cubanas,botas,159.8,Bota Nut grey,https://cubanas-shoes.com/products/bota-cubanas-nut105grey-grey,2026-10-13
+cutipol,talheres,322.5,Goa 24 pcs,https://www.cutipol.pt/en/shop/goa-24-pcs-set.html,2026-10-13
+cutipol,talheres,357.6,Piccadilly 24 pcs,https://www.cutipol.pt/en/shop/piccadilly-24-pcs-set.html,2026-10-13
+cutipol,talheres,363.3,Ebony 24 pcs,https://www.cutipol.pt/en/shop/ebony-24-pcs-set-1.html,2026-10-13
+cutipol,talheres,379.8,Kube 24 pcs,https://www.cutipol.pt/en/shop/kube-24-pcs-set-2.html,2026-10-13
+cutipol,talheres,507,Sui Gold 24 pcs,https://www.cutipol.pt/en/shop/sui-gold-24-pcs-set.html,2026-10-13
+dam,cadeiras,1379,GAGO rocking armchair,https://shop.damportugal.com/product/gago-rocking-armchair-by-dam/,2026-10-13
+dam,mesas,482,Varina low table,https://shop.damportugal.com/product/varina-low-cork-side-table-by-dam/,2026-10-13
+dam,mesas,449,MAGMA small low,https://shop.damportugal.com/product/magma-small-low/,2026-10-13
+dam,candeeiros,592,Cortina Small lamp,https://shop.damportugal.com/product/cortina-small-eco-friendly-pendant-lamp-by-dam/,2026-10-13
+dancers-by-georgia,t-shirts,60,Georgia tshirt,https://www.dancersbygeorgia.com/produto/georgia-tshirt-pt/,2026-10-13
+dancers-by-georgia,casacos,95,Crop jacket,https://www.dancersbygeorgia.com/produto/crop-jacket-pt/,2026-10-13
+desculpa-babe,t-shirts,28,T-shirt Colorful Babe,https://desculpababe.pt/produto/t-shirt-colorful-babe-azul/,2026-10-13
+desculpa-babe,camisolas,40,Sweatshirt clássica preta,https://desculpababe.pt/produto/sweatshirt-classica-preta/,2026-10-13
+dicci,joias,29,Partridge Eye chain necklace,https://www.dicci.eu/products/partridge-eye-chain-necklace-6mm,2026-10-13
+dicci,joias,35,Square Ring,https://www.dicci.eu/products/square-ring,2026-10-13
+dicci,joias,45,Hammered Sun Necklace,https://www.dicci.eu/products/hammered-sun-necklace,2026-10-13
+dicci,joias,50,Miraculous Medal Cross Necklace,https://www.dicci.eu/products/miraculous-medal-cross-necklace,2026-10-13
+dicci,joias,70,Sacred Heart Scapular,https://www.dicci.eu/products/sacred-heart-scapular,2026-10-13
+dikamar,botas,60.99,Eaglegrip Pink,https://www.shop.dikamar.com/store/safety-boots/eaglegrip-pink-1,2026-10-13
+dikamar,botas,61.99,Alpha Safety S5,https://www.shop.dikamar.com/store/safety-boots/alpha-safety-s5,2026-10-13
+dikamar,botas,69.99,Eaglegrip Plus S4,https://www.shop.dikamar.com/store/safety-boots/eaglegrip-plus-s4-1,2026-10-13
+dikamar,botas,80.99,Alpha Trace S5,https://www.shop.dikamar.com/store/safety-boots/alpha-trace-high-visibility-s5-1,2026-10-13
+dikamar,botas,93.99,Alpha Icepack S5,https://www.shop.dikamar.com/store/safety-boots/alpha-icepack-s5,2026-10-13
+diverge,sapatilhas,180,My Twist Low,https://www.diverge-sneakers.com/products/my-eu44-uk9-us10-m-12w-zfj8zwtj,2026-10-13
+diverge,sapatilhas,195,My Minimal Low,https://www.diverge-sneakers.com/products/my-eu44-uk9-us10-m-12w-pnuicuki,2026-10-13
+diverge,sapatilhas,205,N0033 by Tiago,https://www.diverge-sneakers.com/products/n0033-by-tiago,2026-10-13
+diverge,sapatilhas,210,My Minimal High,https://www.diverge-sneakers.com/products/my-eu36-uk3-us3-m-5w-un7elxep,2026-10-13
+diverge,sapatilhas,225,My Landscape Canvas,https://www.diverge-sneakers.com/products/my-eu38-uk5-us5-m-7w-sz852uwc,2026-10-13
+dois-corvos,cerveja,6.5,Cream of the Crop oat cream IPA,https://shop.doiscorvos.pt/products/cream-of-the-crop-oat-cream-ipa,2026-10-13
+dois-corvos,cerveja,5.5,Doin' It Right radler,https://shop.doiscorvos.pt/products/doin-it-right-pink-grapefruit-hibiscus-radler,2026-10-13
+dois-corvos,cerveja,7.1,Onze Upon a Time double NEIPA,https://shop.doiscorvos.pt/products/onze-upon-a-time-double-neipa,2026-10-13
+dois-corvos,cerveja,4.5,Raphael saison,https://shop.doiscorvos.pt/products/raphael-saison-bordallo-collab,2026-10-13
+dois-corvos,cerveja,5.5,Cardinal Points northern IPA,https://shop.doiscorvos.pt/products/cardinal-points-northern-ipa,2026-10-13
+dr-kid,roupa-de-crianca,52.99,Vestido Bebé,https://dr-kid.com/pt/produtos/vestido-bebe-9b18dk388253157,2026-10-13
+dr-kid,roupa-de-crianca,53.5,Camisola Rapaz,https://dr-kid.com/pt/produtos/camisola-rapaz_9r01dk603250056,2026-10-13
+dr-kid,roupa-de-crianca,64.5,Calça Rapaz,https://dr-kid.com/pt/produtos/calca-rapaz_9r05dk663250027,2026-10-13
+dr-kid,roupa-de-crianca,74.5,Vestido Menina,https://dr-kid.com/pt/produtos/vestido-menina_9m18dk483254547,2026-10-13
+dr-kid,roupa-de-crianca,60.5,Casaco Menina,https://dr-kid.com/pt/produtos/casaco-menina,2026-10-13
+ecola,mantas,95,Manta Minimal Clara,https://www.ecolaportugal.com/products/manta-minimal-clara,2026-10-13
+ecola,mantas,95,Manta Filete Surrobeco,https://www.ecolaportugal.com/products/manta-filete-surrobeco,2026-10-13
+ecola,mantas,95,Manta dupla face de viagem,https://www.ecolaportugal.com/products/manta-dupla-face-de-viagem,2026-10-13
+ecola,tecido-ao-metro,51.5,Burel Listas (por metro),https://www.ecolaportugal.com/products/burel-listas,2026-10-13
+eject,sapatilhas,190,Cloud Eir,https://ejectshoes.com/products/cloud-eir,2026-10-13
+eject,sapatilhas,200,Feeling Lua,https://ejectshoes.com/products/feeling-lua,2026-10-13
+eject,sapatilhas,230,Berlim Fenrir,https://ejectshoes.com/products/berlim-fenrir,2026-10-13
+eject,sapatilhas,290,Farol Njord,https://ejectshoes.com/products/farol-njord,2026-10-13
+elite,botas,149,Pitchley preto,https://eliteshoes.pt/products/pitchley-preto,2026-10-13
+elite,botas,147,Carpo black,https://eliteshoes.pt/products/carpo-black,2026-10-13
+elite,botas,159,Chukka oxford blue,https://eliteshoes.pt/products/chukka-oxford-blue,2026-10-13
+elite,sapatos,93,Cadiz sand bicolor,https://eliteshoes.pt/products/cadiz-sand-bicolor,2026-10-13
+elite,sapatos,107,S. Torpes sand,https://eliteshoes.pt/products/s-torpes-sand,2026-10-13
+entrudo,malas,450,Bornes handknitted basket,https://entrudo.com/products/bornes-handknitted-basket-in-dark-brown,2026-10-13
+entrudo,malas,400,Navais embroidered basket,https://entrudo.com/products/navais-embroidered-basket-in-cream,2026-10-13
+entrudo,malas,350,Navais mini embroidered basket,https://entrudo.com/products/navais-mini-embroidered-basket,2026-10-13
+entrudo,malas,440,Viana embroidered basket,https://entrudo.com/products/viana-embroidered-basket-in-cream,2026-10-13
+entrudo,malas,400,Minho embroidered basket,https://entrudo.com/products/minho-embroidered-basket-in-brown,2026-10-13
+favorite-people,jardineiras,102,Bus Stop overalls woman,https://www.favoritepeoplestore.com/products/aw26-busstop_overalls_woman,2026-10-13
+favorite-people,jardineiras,102,Girl Next Door overalls woman,https://www.favoritepeoplestore.com/products/aw26-girlnextdoor_overalls_woman,2026-10-13
+favorite-people,jardineiras,110,Blue jacquard overalls (FP x Salsa),https://www.favoritepeoplestore.com/products/aw26-blue_jacquard_overalls_fpsalsa,2026-10-13
+feitoria-do-cacao,chocolate,7.9,Chocolate Negro Índia Idukki 72%,https://feitoriadocacao.com/pt/loja/chocolate-negro-india-idukki-72/,2026-10-13
+feitoria-do-cacao,chocolate,7.9,Chocolate de Leite 57% + Pastel de Nata,https://feitoriadocacao.com/pt/loja/chocolate-de-leite-57-pastel-de-nata/,2026-10-13
+feitoria-do-cacao,chocolate,7.9,Chocolate de Leite Colômbia 58% + Café,https://feitoriadocacao.com/pt/loja/colombia-58-cafe/,2026-10-13
+feitoria-do-cacao,chocolate,7.9,Chocolate Negro México 72%,https://feitoriadocacao.com/pt/loja/chocolate-negro-mexico-almendra-blanca-72/,2026-10-13
+fluyt,camisas,69,Flanela Baikal,https://www.fluyt.pt/products/flanela-baikal,2026-10-13
+fluyt,t-shirts,45,T-shirt preta com bolso,https://www.fluyt.pt/products/t-shirt-preta-com-bolso,2026-10-13
+fly-london,sapatos,120,Slip-on TREL301,https://shop-eu.flylondon.com/products/ground-green-slip-on-shoes-trel301fly-fly-london,2026-10-13
+fora,oculos,148,Seeker sunglasses,https://fora.pt/products/seeker-sunglasses,2026-10-13
+fora,oculos,248,Titan Hexaround sunglasses,https://fora.pt/products/titan-hexaround-sunglasses,2026-10-13
+fora,oculos,298,RAW Hero sunglasses,https://fora.pt/products/raw-hero-sunglasses,2026-10-13
+fora,oculos,158,Rookie optical,https://fora.pt/products/rookie-optical,2026-10-13
+fora,oculos,168,Charmer optical,https://fora.pt/products/charmer-optical,2026-10-13
+galula,candeeiros,82,Sino Pendant Lamp Light Cork,https://galulastudio.com/products/sino-pendant-lamp-light-cork,2026-10-13
+galula,candeeiros,76,Sininho Pendant Lamp,https://galulastudio.com/products/sininho-pendant-lamp-light-cork,2026-10-13
+galula,candeeiros,84,Sino Pose,https://galulastudio.com/products/sino-pose,2026-10-13
+gandaia,camisas,115,Tartan Shirt,https://www.gandaia.store/products/tartan-shirt,2026-10-13
+gandaia,camisas,90,Mauve Striped Shirt,https://www.gandaia.store/products/purple-stripes-shirt,2026-10-13
+gandaia,t-shirts,80,Long-sleeve t-shirt mint,https://www.gandaia.store/products/longsleeve-t-shirt-mint,2026-10-13
+get-the-balance,sapatilhas,170,Alvarenga Clear,https://gtbalance.com/product/modelo-alvarenga-clear-version/,2026-10-13
+ghome,mesas,180,Aço Table Baixa,https://www.ghome.pt/product/aco-table-baixa/,2026-10-13
+ghome,mesas,278,Mesa Central,https://www.ghome.pt/product/mesacentral/,2026-10-13
+ghome,estantes,270,Prateleira L,https://www.ghome.pt/product/prateleira-l/,2026-10-13
+guaja,camisolas,120,Zoe oversized v-neck sweater,https://guajastudio.com/products/zoe-oversized-v-neck-sweater-taupe,2026-10-13
+guaja,camisolas,95,Emma classic crew sweater,https://guajastudio.com/products/emma-classic-crew-neck-knit-sweater-baby-blue,2026-10-13
+guaja,polos,80,Aurora long-sleeve polo,https://guajastudio.com/products/aurora-long-sleeve-polo-black,2026-10-13
+hali-studio,camisas,70,Aso Egbin Shirt,https://hali-studio.pt/product/aso-egbin-shirt/,2026-10-13
+hali-studio,camisolas,85,Stalna Sweat,https://hali-studio.pt/product/stalna-sweat/,2026-10-13
+hali-studio,casacos,300,Uraqi Blazer,https://hali-studio.pt/product/uraqi-blazer/,2026-10-13
+heeltread,meias,16,Le Mans 1965 Sport socks,https://heeltread.com/products/le-mans-1965-sport-socks,2026-10-13
+heeltread,meias,11,Le Mans kids socks,https://heeltread.com/products/le-mans-demarrez-vos-moteurs-kids-socks,2026-10-13
+helena-mar,sapatos,230,Azure,https://helenamar.com/products/azure-1,2026-10-13
+helena-mar,sapatos,245,Lily,https://helenamar.com/products/lily,2026-10-13
+helena-mar,sapatos,250,Zinnia,https://helenamar.com/products/zinnia-1,2026-10-13
+helena-mar,sapatos,255,Cedar,https://helenamar.com/products/cedar,2026-10-13
+helena-mar,sapatos,265,Fleur,https://helenamar.com/products/fleur,2026-10-13
+hirundo,sapatilhas,139,Mule Gum,https://hirundo.pt/products/mule-gum,2026-10-13
+hirundo,sapatilhas,159,Pluma Almond,https://hirundo.pt/products/pluma-almond,2026-10-13
+hirundo,sapatilhas,159,Gum,https://hirundo.pt/products/gum,2026-10-13
+hirundo,sapatilhas,180,Modelo 4 Almond,https://hirundo.pt/products/modelo-4-almond,2026-10-13
+hirundo,sapatilhas,180,Chukkah Electric,https://hirundo.pt/products/chukkah-electric,2026-10-13
+icel,facas,8.5,Artesã faca de cozinha,https://www.icel.pt/pt/produtos/cozinha/artesa/faca-de-cozinha--591,2026-10-13
+icel,facas,15.89,Clássica faca de cozinha,https://www.icel.pt/pt/produtos/cozinha/classica/faca-de-cozinha--215,2026-10-13
+icel,facas,30.27,Cutelo 300 gr,https://www.icel.pt/pt/produtos/cozinha/cutelos/cutelo-300-gr-608,2026-10-13
+icel,facas,31.17,Nature faca de chefe,https://www.icel.pt/pt/produtos/cozinha/nature/faca-de-chefe-2021,2026-10-13
+icel,facas,49.02,Universal faca de chefe,https://www.icel.pt/pt/produtos/cozinha/universal/faca-de-chefe-1631,2026-10-13
+imma,camisas,31,Jane Breton Shirt,https://immathebrand.com/products/jane-breton-shirt-chocolate,2026-10-13
+imma,camisas,62,Jane Shirt,https://immathebrand.com/products/jane-shirt,2026-10-13
+imma,t-shirts,34.8,Jackie T-Shirt,https://immathebrand.com/products/jackie-t-shirt-beige,2026-10-13
+imma,calcas,49,Columbine Trousers,https://immathebrand.com/products/columbine-trousers-black,2026-10-13
+imma,polos,64.4,Margaux Polo,https://immathebrand.com/products/margaux-polo-blue,2026-10-13
+imma,casacos,96,Cala Jacket,https://immathebrand.com/products/cala-jacket-pink,2026-10-13
+inedit,vestidos,95,Vestido de malha agenda,https://www.ineditdesign.com/product-page/vestido-de-malha-agenda,2026-10-13
+inedit,vestidos,95,Vestido de malha chat,https://www.ineditdesign.com/product-page/vestido-de-malha-chat,2026-10-13
+inedit,vestidos,95,Vestido de malha calma,https://www.ineditdesign.com/product-page/vestido-de-malha-calma-v1,2026-10-13
+inedit,vestidos,95,Vestido de malha rotina,https://www.ineditdesign.com/product-page/vestido-de-malha-rotina-v1,2026-10-13
+inusitado,cadernos,15,Tempo 3/3 notebook,https://inusitado.pt/products/tempo-3-3-notebook,2026-10-13
+inusitado,cadernos,26,O peso das pequenas coisas,https://inusitado.pt/products/o-peso-das-pequenas-coisas-hardcover-blank-notebook,2026-10-13

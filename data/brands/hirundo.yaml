@@ -18,8 +18,29 @@ production:
 location:
   district: porto
   municipality: porto
+price_range: 3
+typical_price:
+  product: sapatilhas
+  eur: 159
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://hirundo.pt
+  physical_stores:
+    - name: Hirundo Embaixada
+      city: Lisboa
+      address: Praça do Príncipe Real 26, 1250-184 Lisboa
+    - name: Hirundo Porto
+      city: Porto
+      address: Largo dos Lóios 73, 4050-338 Porto
+    - name: Hirundo Boavista
+      city: Lisboa
+      address: Rua da Boavista 166, 1200-177 Lisboa
+    - name: Hirundo Príncipe Real
+      city: Lisboa
+      address: Rua Dom Pedro V 69, 1250-096 Lisboa
+    - name: Hirundo LX Factory
+      city: Lisboa
+      address: Rua Rodrigues de Faria 103, Piso 3, Loja 1.22, 1300-501 Lisboa
 social:
   instagram: hirundo
 media:

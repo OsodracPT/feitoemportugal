@@ -14,7 +14,14 @@ tags: [contemporaneo]
 products: [sapatos, malas]
 founded: 2005
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A marca diz produzir em pequenas fábricas portuguesas, sem as nomear; a loja
+      online pertence a uma empresa espanhola.
+    en: >-
+      The brand says it produces in small Portuguese factories without naming them; the
+      online shop is run by a Spanish company.
 price_range: 2
 typical_price:
   product: sapatos

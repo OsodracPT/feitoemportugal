@@ -12,7 +12,14 @@ website: https://www.handsonearth.com.pt
 category: alimentacao
 subcategory: mercearia
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      As ervas, compotas e frutos secos da quinta são preparados em Braga; os suplementos,
+      azeites de outros produtores e frutos importados que a loja vende não são da marca.
+    en: >-
+      The farm's herbs, jams and dried fruit are prepared in Braga; the supplements, other
+      producers' olive oils and imported fruit sold in the shop are not the brand's own.
 location:
   district: braga
   municipality: braga

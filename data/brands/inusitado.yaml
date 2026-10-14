@@ -17,8 +17,8 @@ production:
 price_range: 2
 typical_price:
   product: cadernos
-  eur: 14
-  checked: 2026-10-10
+  eur: 15
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.inusitado.pt
 social:

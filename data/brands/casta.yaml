@@ -14,7 +14,19 @@ subcategory: sapatos-mulher
 tags: [pele, feito-a-mao]
 products: [sapatos, botas, sandalias]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A marca diz que os sapatos são feitos à mão em pequenas fábricas familiares, sem
+      as nomear; pertence a uma empresa que desenvolve e subcontrata calçado.
+    en: >-
+      The brand says its shoes are handmade in small family factories without naming
+      them; it belongs to a company that develops and subcontracts footwear.
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 149
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://casta.pt
 social:

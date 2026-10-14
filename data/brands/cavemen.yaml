@@ -14,7 +14,15 @@ subcategory: roupa-homem
 tags: [classico]
 products: [fatos, sapatos]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A marca declara fabrico em Portugal de forma genérica, sem identificar fábricas;
+      parte da gama (malhas, joias, perfumes) não tem origem indicada.
+    en: >-
+      The brand states Portuguese manufacturing in general terms without naming
+      factories; part of the range (knitwear, jewellery, perfume) carries no stated
+      origin.
 where_to_buy:
   online_store: https://cavemenstore.com
   physical_stores:

@@ -16,6 +16,11 @@ production:
 location:
   district: aveiro
   municipality: oliveira-de-azemeis
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 250
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://helenamar.com
 social:

@@ -18,6 +18,11 @@ production:
 location:
   district: lisboa
   municipality: lisboa
+price_range: 3
+typical_price:
+  product: cerveja
+  eur: 5.5
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://doiscorvos.pt
 social:

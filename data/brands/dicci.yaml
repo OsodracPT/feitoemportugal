@@ -15,10 +15,22 @@ tags: [unissexo, feito-a-mao]
 products: [joias]
 founded: 2017
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A maior parte das peças é feita à mão no atelier do Porto; as peças em aço, os
+      cintos e os relógios não têm origem indicada.
+    en: >-
+      Most pieces are handmade in the Porto workshop; the steel pieces, belts and
+      watches carry no stated origin.
 location:
   district: porto
   municipality: porto
+price_range: 2
+typical_price:
+  product: joias
+  eur: 45
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.dicci.eu
 social:

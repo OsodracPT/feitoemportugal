@@ -15,10 +15,17 @@ tags: [metal, contemporaneo]
 products: [mobiliario-de-escritorio]
 founded: 1947
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A empresa fabrica mobiliário metálico desde 1947 e tem instalações industriais em
+      Lordelo; o site não diz que linhas atuais são aí produzidas.
+    en: >-
+      The company has made metal furniture since 1947 and runs an industrial site in
+      Lordelo; the site does not say which current lines are produced there.
 location:
   district: porto
-  municipality: lousada
+  municipality: paredes
 where_to_buy:
   online_store: https://famo.pt
 social:

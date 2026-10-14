@@ -14,7 +14,14 @@ subcategory: sapatilhas
 tags: [pele]
 products: [sapatilhas, sapatos]
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A marca declara que os produtos são fabricados em Portugal, mas não nomeia a
+      fábrica e não há ainda confirmação independente.
+    en: >-
+      The brand states its products are made in Portugal but names no factory, and there
+      is no independent confirmation yet.
 location:
   district: porto
   municipality: felgueiras
@@ -22,7 +29,7 @@ price_range: 3
 typical_price:
   product: sapatilhas
   eur: 200
-  checked: 2026-10-10
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://ejectshoes.com
 social:

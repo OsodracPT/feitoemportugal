@@ -19,8 +19,19 @@ location:
   district: braga
   municipality: guimaraes
 price_range: 3
+typical_price:
+  product: talheres
+  eur: 363.3
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.cutipol.pt
+  physical_stores:
+    - name: Cutipol Lisboa
+      city: Lisboa
+      address: Rua do Alecrim 105, Lisboa
+    - name: Cutipol Porto
+      city: Porto
+      address: Rua José Gomes Ferreira 271, Porto
 social:
   instagram: cutipol
 media:

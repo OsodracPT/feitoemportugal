@@ -15,8 +15,17 @@ production:
 location:
   district: porto
   municipality: marco-de-canaveses
+price_range: 3
+typical_price:
+  product: roupa-de-crianca
+  eur: 60.5
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.dr-kid.com
+  physical_stores:
+    - name: Dr. Kid Cascais
+      city: Cascais
+      address: Alameda dos Combatentes da Grande Guerra 116, 2750-326 Cascais
 social:
   instagram: dr.kid_
 media:

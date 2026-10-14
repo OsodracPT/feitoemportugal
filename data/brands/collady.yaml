@@ -15,11 +15,11 @@ tags: [algodao, contemporaneo]
 products: [meias]
 production:
   scope: total
-price_range: 2
+price_range: 1
 typical_price:
   product: meias
-  eur: 8.5
-  checked: 2026-10-10
+  eur: 4
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://collady.com
 social:
@@ -30,5 +30,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-10
+  updated: 2026-10-13
   source: import

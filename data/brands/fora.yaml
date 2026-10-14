@@ -19,6 +19,11 @@ production:
   notes:
     pt: A maioria dos modelos é feita numa fábrica no norte do país; alguns são feitos fora de Portugal.
     en: Most frames are made in a factory in northern Portugal; some are made abroad.
+price_range: 3
+typical_price:
+  product: oculos
+  eur: 168
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://fora.pt
   physical_stores:

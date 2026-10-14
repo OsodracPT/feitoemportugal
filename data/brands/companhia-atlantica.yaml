@@ -15,12 +15,19 @@ tags: [ceramica]
 products: [loica-de-mesa, pecas-decorativas]
 founded: 2017
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      A cerâmica é declarada como produzida em Portugal por artesãos; a origem dos
+      restantes artigos, como cosmética e papelaria, não é indicada.
+    en: >-
+      The ceramics are stated to be made in Portugal by artisans; the origin of the
+      other items, such as body care and stationery, is not given.
 price_range: 3
 typical_price:
   product: loica-de-mesa
-  eur: 20.25
-  checked: 2026-10-10
+  eur: 22.5
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.companhiaatlantica.pt
 social:

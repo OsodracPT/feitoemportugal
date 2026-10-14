@@ -15,12 +15,28 @@ tags: [pele, empresa-familiar]
 products: [malas, carteiras]
 founded: 1975
 production:
-  scope: total
+  scope: parcial
+  notes:
+    pt: >-
+      Malas e carteiras são feitas na fábrica de São Paio de Oleiros; os óculos de sol e
+      outras linhas não têm origem indicada.
+    en: >-
+      Bags and wallets are made at the São Paio de Oleiros factory; the sunglasses and
+      some other lines carry no stated origin.
 location:
   district: aveiro
   municipality: santa-maria-da-feira
+price_range: 3
+typical_price:
+  product: malas
+  eur: 179.9
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://www.cavalinho.com
+  physical_stores:
+    - name: Cavalinho Santa Maria da Feira
+      city: Santa Maria da Feira
+      address: Rua Comendador Sá Couto 112, 4520-285 Santa Maria da Feira
 social:
   instagram: cavalinho_oficial
 media:

@@ -19,6 +19,11 @@ production:
 location:
   district: aveiro
   municipality: oliveira-de-azemeis
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 195
+  checked: 2026-10-13
 where_to_buy:
   online_store: https://centenario1941.com
 media:
