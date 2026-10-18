@@ -115,7 +115,6 @@ const shopRows = [
     };
   }),
 ];
-const jsonUrl = `/api/v1/brands/${brand.slug}.json`;
 const pageUrl = new URL(paths.brand(lang, brand.slug), SITE.origin).href;
 const proofUrl = `${SITE.repo}/issues/new?labels=verificacao&template=pedido-verificacao.yml&brand=${encodeURIComponent(pageUrl)}`;
 function host(url: string): string {
@@ -394,16 +393,19 @@ const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized
             {t(lang, 'brand.visitWebsite')} <span aria-hidden="true">↗</span>
             <span class="visually-hidden"> ({t(lang, 'common.externalLink')})</span>
           </a>
-          <p class="brand__links">
-            {t(lang, 'brand.links')}:{' '}
-            {social.map((link) => (
-              <>
-                <a href={link.url} rel="nofollow noopener">{link.network}</a>
-                {' · '}
-              </>
-            ))}
-            <a href={jsonUrl}>{t(lang, 'brand.jsonData')}</a>
-          </p>
+          {
+            social.length > 0 && (
+              <p class="brand__links">
+                {t(lang, 'brand.links')}:{' '}
+                {social.map((link, index) => (
+                  <>
+                    {index > 0 && ' · '}
+                    <a href={link.url} rel="nofollow noopener">{link.network}</a>
+                  </>
+                ))}
+              </p>
+            )
+          }
         </div>
 
         {

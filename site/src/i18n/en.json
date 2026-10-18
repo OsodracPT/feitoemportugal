@@ -132,7 +132,6 @@
     "moreFrom": "Other brands {place}",
     "alsoFrom": "Also {place}",
     "links": "Links",
-    "jsonData": "Data as JSON",
     "websiteRow": "Brand website",
     "since": "since {year}"
   },
