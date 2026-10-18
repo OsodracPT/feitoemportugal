@@ -1,0 +1,116 @@
+# Serves the static build with the reference nginx config. TLS is left to
+# whatever sits in front (see README.md in this directory).
+#
+#   FEP_WWW_DIR   directory holding `current/` — the build itself, or a symlink
+#                 to one release (default ./www)
+#   FEP_BIND      address to publish on (default 127.0.0.1: only a local reverse
+#                 proxy can reach it; use 0.0.0.0 to expose it directly)
+#   FEP_PORT      port to publish on (default 8080)
+#
+# Settings go in a .env file next to this one. Site-specific changes (networks,
+# no published port) belong in docker-compose.override.yml, which Compose merges
+# automatically and which should stay out of the repository.
+#
+# The `submit` service (the contribution forms' backend) is optional and off by
+# default, so a static-only deploy is unchanged. Turn it on with its profile:
+#
+#   docker compose --profile submit up -d
+#
+# It is built from the repository, so that deploy needs a checkout here (unlike
+# the static site, which is just the build in FEP_WWW_DIR). See README.md.
+#
+# The `stats` profile adds Umami (cookieless visit counts) and its Postgres:
+#
+#   docker compose --profile stats up -d
+#
+# nginx exposes only the tracker and the collect endpoint under /stats/; the
+# dashboard listens on UMAMI_BIND:UMAMI_PORT for a reverse proxy you control.
+name: feitoemportugal
+
+services:
+  web:
+    image: docker.io/nginx:1.30-alpine
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    ports:
+      - "${FEP_BIND:-127.0.0.1}:${FEP_PORT:-8080}:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./security-headers.conf:/etc/nginx/snippets/security-headers.conf:ro
+      # Client-IP trust for the rate limits. The tracked file is a no-op; a
+      # deploy behind a proxy overrides this mount in docker-compose.override.yml
+      # with its own untracked copy. See real-ip.conf and README.md.
+      - ./real-ip.conf:/etc/nginx/snippets/real-ip.conf:ro
+      - ${FEP_WWW_DIR:-./www}:/srv/www:ro
+
+  submit:
+    profiles: [submit]
+    build:
+      # The repository root: the image needs @fep/schema and data/ too.
+      context: ..
+      dockerfile: submit-api/Dockerfile
+    restart: unless-stopped
+    # Secrets (SMTP, GITHUB_TOKEN, SECRET_KEY) live only in this .env, never in
+    # the repository. See .env.example at the repository root.
+    env_file: .env
+    volumes:
+      - submit-data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8787/api/submit/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    # No published port: only the web container reaches it, over the Compose
+    # network, and nginx exposes it under /api/submit/ on the site's own origin.
+    expose:
+      - "8787"
+
+  umami:
+    profiles: [stats]
+    image: ghcr.io/umami-software/umami:3.4.0
+    restart: unless-stopped
+    init: true
+    # Only what Umami needs, not the whole .env: that file also holds the
+    # submit service's SMTP and GitHub secrets.
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:-}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:-}
+      # nginx sets this header from the trusted client address (nginx.conf).
+      CLIENT_IP_HEADER: x-real-ip
+      DISABLE_TELEMETRY: "1"
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    # The dashboard (login, reports). Local only by default: put it behind a
+    # reverse proxy with its own hostname, never under the public site.
+    ports:
+      - "${UMAMI_BIND:-127.0.0.1}:${UMAMI_PORT:-3000}:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fs http://127.0.0.1:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  umami-db:
+    profiles: [stats]
+    image: docker.io/postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      # Empty means Postgres refuses to start: set it in .env.
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:-}
+    volumes:
+      - umami-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  submit-data:
+  umami-db:

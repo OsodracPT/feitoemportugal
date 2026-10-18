@@ -1,0 +1,30 @@
+slug: artame
+status: published
+name: Artame
+description:
+  pt: >-
+    Empresa portuguesa com mais de 45 anos dedicada ao fabrico de artigos de cozinha em
+    aço inoxidável, para uso doméstico e profissional.
+  en: >-
+    Portuguese company with more than 45 years making stainless steel kitchen articles for
+    home and professional use.
+website: https://artame.pt
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, classico]
+products: [utensilios-de-cozinha]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: gondomar
+where_to_buy:
+  online_store: https://artame.pt
+media:
+  logo: logo.png
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-09
+  source: import

@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from 'astro';
+import RegionCategoryPage from '~/components/pages/RegionCategoryPage.astro';
+import { landingRegionCategories } from '~/lib/data.ts';
+
+export const getStaticPaths = (() =>
+  landingRegionCategories().map(({ region, category }) => ({
+    params: { region: region.slug.pt, category: category.slug.pt },
+    props: { region, category },
+  }))) satisfies GetStaticPaths;
+
+const { region, category } = Astro.props;
+---
+
+<RegionCategoryPage lang="pt" region={region} category={category} />

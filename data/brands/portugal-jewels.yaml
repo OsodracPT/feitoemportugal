@@ -1,0 +1,52 @@
+slug: portugal-jewels
+status: published
+name: Portugal Jewels
+description:
+  pt: >-
+    Joias em ouro português e prata, produzidas em Portugal por uma família de ourives
+    de Gondomar com origem em 1955.
+  en: >-
+    Portuguese gold and silver jewellery, made in Portugal by a Gondomar goldsmith
+    family dating back to 1955.
+website: https://www.portugaljewels.com
+category: joalharia
+subcategory: ouro
+tags: [empresa-familiar, tradicional]
+products: [joias]
+founded: 1955
+production:
+  scope: total
+location:
+  district: porto
+price_range: 3
+typical_price:
+  product: joias
+  eur: 89
+  checked: 2026-10-10
+where_to_buy:
+  online_store: https://www.portugaljewels.com
+  physical_stores:
+    - name: Portugal Jewels Chiado
+      city: Lisboa
+      address: Largo do Chiado 4, 1200-108 Lisboa
+    - name: Portugal Jewels Baixa
+      city: Lisboa
+      address: Rua Áurea 157, 1100-062 Lisboa
+social:
+  instagram: portugaljewels
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://observador.pt/2026/05/25/chita-de-alcobaca-alta-joalharia-e-muita-roupa-de-banho-16-novas-lojas-em-lisboa-porto-e-comporta/
+      publisher: Observador
+      date: 2026-05-25
+    - url: https://www.timeout.pt/lisboa/pt/noticias/joias-portuguesas-brilham-na-antiga-barbearia-campos-053025
+      publisher: Time Out Lisboa
+      date: 2025-05-30
+meta:
+  added: 2026-10-08
+  updated: 2026-10-18
+  source: import

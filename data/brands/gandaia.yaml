@@ -1,0 +1,42 @@
+slug: gandaia
+status: published
+name: Gandaia
+description:
+  pt: >-
+    Marca de Lisboa lançada em 2025 pela equipa da Mustique, com coleções produzidas
+    numa pequena rede de fábricas portuguesas.
+  en: >-
+    Lisbon label that took over from Mustique in 2025 under the same founders, with
+    collections made by a small network of Portuguese factories.
+website: https://www.gandaia.store
+category: moda-e-vestuario
+tags: [unissexo]
+products: [camisas, t-shirts, polos, casacos, vestidos]
+founded: 2025
+production:
+  scope: total
+price_range: 3
+typical_price:
+  product: camisas
+  eur: 122.5
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.gandaia.store
+  physical_stores:
+    - name: Gandaia São Bento
+      city: Lisboa
+      address: Rua Poiais de São Bento 90, 1200-377 Lisboa
+    - name: Gandaia Santos
+      city: Lisboa
+      address: Rua Santos-o-Velho 106, 1200-859 Lisboa
+social:
+  instagram: gandaiaaa
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-18
+  source: import

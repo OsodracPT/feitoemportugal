@@ -1,0 +1,46 @@
+slug: cluoh
+status: published
+name: Cluoh
+description:
+  pt: >-
+    Malas, lenços e acessórios estampados, feitos à mão por artesãos em Portugal, com
+    loja no Porto.
+  en: >-
+    Printed bags, scarves and accessories, made by hand by artisans in Portugal, with a
+    shop in Porto.
+website: https://www.cluoh.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [feito-a-mao]
+products: [malas]
+production:
+  scope: total
+price_range: 1
+typical_price:
+  product: malas
+  eur: 50
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.cluoh.com
+  physical_stores:
+    - name: Cluoh Porto - Foz
+      city: Porto
+      address: Rua de Gondarém 549, 4150-153 Porto
+social:
+  instagram: cluoh
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://observador.pt/2018/11/13/cluoh-carteiras-com-a-ilustracao-a-flor-da-pele/
+      publisher: Observador
+      date: 2018-11-13
+    - url: https://visao.pt/visaose7e/comprar/2018-10-31-cluoh-estas-clutches-sao-portuguesas/
+      publisher: Visão
+      date: 2018-10-31
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

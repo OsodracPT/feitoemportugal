@@ -1,0 +1,33 @@
+slug: fluyt
+status: published
+name: Fluyt
+description:
+  pt: >-
+    Roupa de homem produzida em Portugal: camisas, casacos e t-shirts em cores sóbrias,
+    feitas para usar durante anos.
+  en: >-
+    Menswear produced in Portugal: shirts, jackets and tees in muted colours, made to be
+    worn for years.
+website: https://www.fluyt.pt
+category: moda-e-vestuario
+subcategory: roupa-homem
+tags: [minimalista, contemporaneo]
+products: [camisas, casacos, t-shirts]
+production:
+  scope: total
+price_range: 2
+typical_price:
+  product: camisas
+  eur: 72
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.fluyt.pt
+media:
+  logo: logo.jpg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

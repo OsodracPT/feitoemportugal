@@ -1,0 +1,47 @@
+slug: diverge
+status: published
+name: Diverge
+description:
+  pt: >-
+    Sapatilhas feitas à mão por encomenda em Portugal, personalizáveis pelo cliente, com
+    peles auditadas pelo Leather Working Group e materiais certificados OEKO-TEX.
+  en: >-
+    Sneakers handmade to order in Portugal and customisable by the buyer, using leathers
+    audited by the Leather Working Group and OEKO-TEX certified materials.
+website: https://www.diverge-sneakers.com
+category: calcado
+subcategory: sapatilhas
+tags: [pele, feito-a-mao, personalizavel, producao-por-encomenda]
+products: [sapatilhas]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: felgueiras
+price_range: 4
+typical_price:
+  product: sapatilhas
+  eur: 205
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.diverge-sneakers.com
+social:
+  instagram: diverge.sneakers
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.webp]
+sustainability:
+  practices: [producao-por-encomenda]
+verification:
+  verified: false
+  sources:
+    - url: https://observador.pt/2019/10/08/diverge-estes-tenis-portugueses-sao-uma-tela-em-branco/
+      publisher: Observador
+      date: 2019-10-08
+    - url: https://visao.pt/visaose7e/comprar/2022-03-31-sapatilhas-quatro-marcas-orgulhosamente-portuguesas/
+      publisher: Visão
+      date: 2022-03-31
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

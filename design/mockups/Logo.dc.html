@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<title>Logótipo, padrões e cartões</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+.calc-l{background:#8F8B82 url(../assets/calcada/calcada-light.svg) 0 0/168px 60px repeat}
+.calc-d{background:#05070B url(../assets/calcada/calcada-dark.svg) 0 0/168px 60px repeat}
+.t-calcado-l{background-image:url(../assets/tiles/tile-calcado-light.svg)}
+.t-calcado-d{background-image:url(../assets/tiles/tile-calcado-dark.svg)}
+.t-vestuario-l{background-image:url(../assets/tiles/tile-vestuario-light.svg)}
+.t-vestuario-d{background-image:url(../assets/tiles/tile-vestuario-dark.svg)}
+.t-ceramica-l{background-image:url(../assets/tiles/tile-ceramica-light.svg)}
+.t-ceramica-d{background-image:url(../assets/tiles/tile-ceramica-dark.svg)}
+.t-casa-l{background-image:url(../assets/tiles/tile-casa-light.svg)}
+.t-casa-d{background-image:url(../assets/tiles/tile-casa-dark.svg)}
+.t-alimentacao-l{background-image:url(../assets/tiles/tile-alimentacao-light.svg)}
+.t-alimentacao-d{background-image:url(../assets/tiles/tile-alimentacao-dark.svg)}
+.t-cosmetica-l{background-image:url(../assets/tiles/tile-cosmetica-light.svg)}
+.t-cosmetica-d{background-image:url(../assets/tiles/tile-cosmetica-dark.svg)}
+</style>
+</helmet>
+<div style="width: 1400px; height: 1420px; box-sizing: border-box; padding: 48px; background: #E6E3DB; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: #14161C; display: flex; flex-direction: column; gap: 36px">
+
+<section aria-label="Logótipo" style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3E4456">Logo · hand-stitched shield (uneven stitches, fewer than the original)</span>
+<div style="display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 12px">
+<div style="height: 420px; background: #F6F4EE; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px">
+<img src="../assets/logo/shield-cobalt.svg" alt="Escudo cosido" width="190" height="222">
+<span style="font-family: Gloock, Georgia, serif; font-size: 40px; line-height: .95; color: #0E2F66; text-align: center">feito<br>em portugal</span>
+</div>
+<div style="height: 420px; background: #0E1320; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px">
+<img src="../assets/logo/shield-light.svg" alt="Escudo cosido, tema escuro" width="150" height="175">
+<span style="font-family: Gloock, Georgia, serif; font-size: 32px; line-height: .95; color: #DCE6F8; text-align: center">feito<br>em portugal</span>
+</div>
+<div style="height: 420px; background: #1A4C9C; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px">
+<img src="../assets/logo/shield-white.svg" alt="Escudo cosido a branco" width="150" height="175">
+<span style="font-family: Gloock, Georgia, serif; font-size: 32px; line-height: .95; color: #FFFFFF; text-align: center">feito<br>em portugal</span>
+</div>
+</div>
+<div style="display: flex; gap: 12px; align-items: stretch">
+<div style="flex: 1; min-height: 110px; background: #F6F4EE; border-radius: 8px; display: flex; align-items: center; gap: 14px; padding: 0 28px">
+<img src="../assets/logo/shield-cobalt.svg" alt="" width="48" height="56">
+<span style="font-family: Gloock, Georgia, serif; font-size: 34px; color: #0E2F66">feito em portugal</span>
+</div>
+<div style="min-height: 110px; background: #F6F4EE; border-radius: 8px; display: flex; align-items: center; gap: 22px; padding: 0 28px">
+<img src="../assets/logo/shield-cobalt.svg" alt="" width="64" height="75">
+<img src="../assets/logo/shield-cobalt.svg" alt="" width="32" height="37">
+<img src="../assets/logo/favicon.svg" alt="Favicon" width="32" height="32">
+<img src="../assets/logo/favicon.svg" alt="Favicon pequeno" width="16" height="16">
+<span style="font-size: 13px; color: #3E4456; max-width: 160px">Below 32px the stitches become noise: solid favicon.</span>
+</div>
+</div>
+</section>
+
+<section aria-label="Calçada" style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3E4456">Calçada · mar largo: near-square stones laid in rows along each wave edge, filler stones in the middle · one 168×60 SVG tile, ≈6.6 KB (≈3 KB gzipped) per theme</span>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div class="calc-l" style="height: 150px; border-radius: 8px"></div>
+<div class="calc-d" style="height: 150px; border-radius: 8px"></div>
+</div>
+</section>
+
+<section aria-label="Azulejos por categoria" style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3E4456">Placeholder tiles · one azulejo per category, about 0.5 KB each · they join at the corners into a larger pattern</span>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-radius: 8px; overflow: hidden">
+<div class="{{c.l}}" style="height: 96px; background-size: 48px 48px"></div>
+<div class="{{c.d}}" style="height: 96px; background-size: 48px 48px"></div>
+</div>
+<span style="font-size: 14px; font-weight: 700">{{c.n}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1400,"height":1420}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const cats = [['calcado', 'Calçado · estrela'], ['vestuario', 'Vestuário · trama'], ['ceramica', 'Cerâmica · quadrifólio'], ['casa', 'Casa · losango'], ['alimentacao', 'Alimentação · folhas'], ['cosmetica', 'Cosmética · escamas']];
+    return { cats: cats.map(([k, n]) => ({ n, l: 't-' + k + '-l', d: 't-' + k + '-d' })) };
+  }
+}
+</script>
+</body>
+</html>

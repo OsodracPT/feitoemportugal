@@ -1,0 +1,46 @@
+slug: dicci
+status: published
+name: Dicci
+description:
+  pt: >-
+    Joias unissexo em prata 925, aço e pedras naturais, feitas à mão e por medida no
+    atelier do Porto desde 2017.
+  en: >-
+    Unisex jewellery in 925 silver, steel and natural stone, handmade and made to
+    measure in a Porto atelier since 2017.
+website: https://www.dicci.eu
+category: joalharia
+subcategory: prata
+tags: [unissexo, feito-a-mao]
+products: [joias]
+founded: 2017
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A maior parte das peças é feita à mão no atelier do Porto; as peças em aço, os
+      cintos e os relógios não têm origem indicada.
+    en: >-
+      Most pieces are handmade in the Porto workshop; the steel pieces, belts and
+      watches carry no stated origin.
+location:
+  district: porto
+  municipality: porto
+price_range: 2
+typical_price:
+  product: joias
+  eur: 45
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.dicci.eu
+social:
+  instagram: dicci.eu
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

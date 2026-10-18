@@ -1,0 +1,35 @@
+slug: dam
+status: published
+name: DAM
+description:
+  pt: >-
+    Mobiliário, iluminação e acessórios de design, feitos à mão e por encomenda em
+    Portugal.
+  en: >-
+    Design furniture, lighting and accessories, handmade to order in Portugal.
+website: https://damportugal.com
+category: mobiliario
+tags: [madeira, producao-por-encomenda]
+products: [cadeiras, mesas, candeeiros]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://damportugal.com
+social:
+  instagram: damfurniturept
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://observador.pt/2018/07/17/dam-estes-moveis-contam-mesmo-uma-historia/
+      publisher: Observador
+      date: 2018-07-17
+    - url: https://www.publico.pt/2014/06/20/p3/noticia/dam-este-design-portugues-procura-financiamento-1820385
+      publisher: Público
+      date: 2014-06-20
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

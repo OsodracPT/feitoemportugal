@@ -1,0 +1,33 @@
+slug: tema-creations
+status: published
+name: Tema Creations
+description:
+  pt: >-
+    Marca de Lisboa com coleções de vestuário para o dia a dia e ocasiões especiais,
+    desenhadas e produzidas em Portugal.
+  en: >-
+    Lisbon label with clothing for everyday wear and special occasions, designed and
+    produced in Portugal.
+website: https://temacreations.pt
+category: moda-e-vestuario
+subcategory: roupa-mulher
+tags: [contemporaneo, pequena-serie]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://temacreations.pt
+  physical_stores:
+    - name: NOSSA
+      city: Lisboa
+      address: Rua da Misericórdia 68, 1200-273 Lisboa
+social:
+  instagram: tema_creations
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-18
+  source: import

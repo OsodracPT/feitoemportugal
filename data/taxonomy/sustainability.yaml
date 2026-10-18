@@ -1,0 +1,112 @@
+# Práticas e certificações reconhecidas.
+# Uma prática é uma declaração da marca; uma certificação exige `proof_url`
+# na ficha da marca e é verificada pelos maintainers.
+
+practices:
+  - id: materiais-reciclados
+    label: { pt: Materiais reciclados, en: Recycled materials }
+    description:
+      pt: Usa materiais reciclados ou sobras de produção numa parte significativa dos produtos.
+      en: Uses recycled materials or production leftovers in a significant share of its products.
+  - id: producao-por-encomenda
+    label: { pt: Produção por encomenda, en: Made to order }
+    description:
+      pt: Produz apenas depois da encomenda, evitando stock que não é vendido.
+      en: Produces only after an order is placed, avoiding unsold stock.
+  - id: embalagem-sem-plastico
+    label: { pt: Embalagem sem plástico, en: Plastic-free packaging }
+    description:
+      pt: Embalagem e envio sem plástico virgem.
+      en: Packaging and shipping without virgin plastic.
+  - id: energia-renovavel
+    label: { pt: Energia renovável, en: Renewable energy }
+    description:
+      pt: A produção usa eletricidade de origem renovável, própria ou contratada.
+      en: Manufacturing runs on renewable electricity, self-generated or contracted.
+  - id: reparacao
+    label: { pt: Reparação, en: Repairs }
+    description:
+      pt: Oferece reparação dos produtos depois da compra.
+      en: Offers repair of its products after purchase.
+  - id: circuito-curto
+    label: { pt: Circuito curto, en: Short supply chain }
+    description:
+      pt: Matérias-primas e fornecedores sobretudo nacionais.
+      en: Raw materials and suppliers mostly from within Portugal.
+  - id: fibras-naturais
+    label: { pt: Fibras naturais, en: Natural fibres }
+    description:
+      pt: Usa predominantemente fibras naturais, sem mistura sintética.
+      en: Uses predominantly natural fibres, without synthetic blends.
+  - id: tingimento-reduzido
+    label: { pt: Tingimento reduzido, en: Reduced dyeing }
+    description:
+      pt: Reduz ou elimina o tingimento, usando a cor natural da matéria-prima.
+      en: Reduces or eliminates dyeing by keeping the raw material's natural colour.
+  - id: transparencia-fornecedores
+    label: { pt: Transparência na cadeia, en: Supply chain transparency }
+    description:
+      pt: Publica quem são as fábricas e oficinas que produzem os seus produtos.
+      en: Publishes the factories and workshops that make its products.
+
+certifications:
+  - id: gots
+    label: { pt: GOTS, en: GOTS }
+    url: https://global-standard.org
+    description:
+      pt: Global Organic Textile Standard, para têxteis de fibras biológicas.
+      en: Global Organic Textile Standard, for textiles made of organic fibres.
+  - id: oeko-tex
+    label: { pt: OEKO-TEX, en: OEKO-TEX }
+    url: https://www.oeko-tex.com
+    description:
+      pt: Certifica a ausência de substâncias nocivas em têxteis.
+      en: Certifies textiles as free of harmful substances.
+  - id: grs
+    label: { pt: GRS, en: GRS }
+    url: https://textileexchange.org
+    description:
+      pt: Global Recycled Standard, para conteúdo reciclado verificado.
+      en: Global Recycled Standard, for verified recycled content.
+  - id: fsc
+    label: { pt: FSC, en: FSC }
+    url: https://fsc.org
+    description:
+      pt: Madeira e papel de florestas com gestão responsável.
+      en: Wood and paper from responsibly managed forests.
+  - id: pefc
+    label: { pt: PEFC, en: PEFC }
+    url: https://www.pefc.org
+    description:
+      pt: Certificação de gestão florestal sustentável.
+      en: Sustainable forest management certification.
+  - id: leather-working-group
+    label: { pt: Leather Working Group, en: Leather Working Group }
+    url: https://www.leatherworkinggroup.com
+    description:
+      pt: Auditoria ambiental de curtumes.
+      en: Environmental audit of tanneries.
+  - id: b-corp
+    label: { pt: B Corp, en: B Corp }
+    url: https://www.bcorporation.net
+    description:
+      pt: Certificação de desempenho social e ambiental da empresa.
+      en: Certification of a company's social and environmental performance.
+  - id: eu-ecolabel
+    label: { pt: Rótulo Ecológico da UE, en: EU Ecolabel }
+    url: https://environment.ec.europa.eu
+    description:
+      pt: Rótulo ambiental oficial da União Europeia.
+      en: The European Union's official environmental label.
+  - id: cosmos-organic
+    label: { pt: COSMOS Organic, en: COSMOS Organic }
+    url: https://cosmos-standard.org
+    description:
+      pt: Norma europeia para cosmética biológica.
+      en: European standard for organic cosmetics.
+  - id: portugal-sou-eu
+    label: { pt: Portugal Sou Eu, en: Portugal Sou Eu }
+    url: https://www.portugalsoueu.pt
+    description:
+      pt: Distingue produtos com incorporação nacional relevante.
+      en: Marks products with a relevant share of Portuguese value added.

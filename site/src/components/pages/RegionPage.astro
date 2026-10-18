@@ -1,0 +1,133 @@
+---
+/**
+ * Landing page for one district or autonomous region: the map with the
+ * district marked and a dot per municipality that has brands, then the brands.
+ * Dots sit on the municipality centroid, never on an address.
+ */
+import type { Region } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import LandingHead from '~/components/LandingHead.astro';
+import DistrictMap from '~/components/DistrictMap.astro';
+import {
+  brandsInDistrict,
+  brandsInDistrictCategory,
+  landingRegions,
+  regionLandingCategories,
+  regions,
+} from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
+import { inRegion, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { municipalityDots } from '~/lib/map.ts';
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  region: Region;
+}
+
+const { lang, region } = Astro.props;
+
+const name = localized(region.label, lang);
+const brands = brandsInDistrict(region.id);
+const intro = localized(region.intro, lang);
+const alternates = {
+  pt: paths.region('pt', region.slug.pt),
+  en: paths.region('en', region.slug.en),
+};
+
+const counts = new Map(regions.map((r) => [r.id, brandsInDistrict(r.id).length]));
+
+const dots = municipalityDots(region, brands);
+const byCategory = regionLandingCategories(region);
+
+const filters = emptyFilters();
+filters.dist = [region.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'regions.title'), path: paths.regions(lang) },
+  { name },
+];
+
+const others = landingRegions().filter((other) => other.id !== region.id);
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'region.title', { inRegion: inRegion(lang, region.id, name) }), lang)}
+  description={truncate(intro || t(lang, 'site.description'), 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={name}
+    eyebrow={t(lang, region.type === 'regiao-autonoma' ? 'region.autonomous' : 'region.district')}
+    lede={t(lang, 'region.lede', { count: brands.length })}
+    intro={intro}
+    refine={{ href: catalogueLink, label: t(lang, 'region.refine') }}
+  >
+    <DistrictMap slot="map" lang={lang} mode="link" counts={counts} current={region.id} dots={dots} />
+  </LandingHead>
+  <div class="container">
+    {
+      byCategory.length > 0 && (
+        <nav class="links" aria-label={t(lang, 'region.byCategory')}>
+          <h2 class="eyebrow">{t(lang, 'region.byCategory')}</h2>
+          <ul class="pill-list">
+            {byCategory.map((category) => (
+              <li>
+                <a
+                  class="pill"
+                  href={paths.regionCategory(lang, region.slug[lang], category.slug[lang])}
+                >
+                  {localized(category.label, lang)}{' '}
+                  <span class="muted">{brandsInDistrictCategory(region.id, category.id).length}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      others.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'region.other')}>
+          <h2 class="eyebrow">{t(lang, 'region.other')}</h2>
+          <ul class="pill-list">
+            {others.map((other) => (
+              <li>
+                <a class="pill" href={paths.region(lang, other.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .links + .section {
+    margin-top: var(--fep-space-6);
+  }
+</style>

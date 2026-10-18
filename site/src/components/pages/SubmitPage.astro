@@ -1,0 +1,542 @@
+---
+/**
+ * The contribution page: four web forms (suggest a brand, correct a brand,
+ * request the badge, get in touch) that post to the submission service at
+ * `/api/submit/*` on this same origin. Every form is a real `<form method=post>`
+ * so it works with JavaScript off (a plain POST the service answers with a 303
+ * to the thank-you page); `submit-form.ts` enhances it with Altcha and a fetch
+ * submit when JS is on.
+ *
+ * The GitHub issue forms still exist, for people who prefer them, but they are
+ * demoted here to a small link under each form — the point of the page is that
+ * a visitor needs no GitHub account to contribute.
+ */
+import Layout from '~/layouts/Layout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import { categories, regions } from '~/lib/data.ts';
+import { issueForm } from '~/lib/config.ts';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: paths.submit('pt'), en: paths.submit('en') };
+const brandPrefill = Astro.url.searchParams.get('brand') ?? '';
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'submitForm.title') },
+];
+
+const intents = ['brand', 'correction', 'verification', 'contact'] as const;
+const ghTemplate = {
+  brand: 'nova-marca.yml',
+  correction: 'correcao.yml',
+  verification: 'pedido-verificacao.yml',
+} as const;
+
+const districtOptions = regions.map((region) => ({ id: region.id, label: region.label[lang] }));
+const categoryOptions = categories.map((category) => ({ id: category.id, label: category.label[lang] }));
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'submitForm.title'), lang)}
+  description={t(lang, 'submitForm.intro')}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <div class="container narrow submit">
+    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <h1>{t(lang, 'submitForm.title')}</h1>
+    <p class="lede">{t(lang, 'submitForm.intro')}</p>
+
+    <nav class="submit__chooser" aria-label={t(lang, 'submitForm.title')}>
+      {intents.map((intent) => (
+        <a href={`#${intent}`}>{t(lang, `submitForm.chooser.${intent}`)}</a>
+      ))}
+    </nav>
+
+    {/* ---------- Suggest a brand ---------- */}
+    <section class="submit__section" id="brand">
+      <h2>{t(lang, 'submitForm.brand.title')}</h2>
+      <p class="submit__intro">{t(lang, 'submitForm.brand.intro')}</p>
+      <p class="submit__success" data-submit-success hidden>{t(lang, 'submitForm.common.success')}</p>
+
+      <form
+        class="submit__form"
+        method="post"
+        action="/api/submit/brand"
+        data-submit-form
+        data-success={t(lang, 'submitForm.common.success')}
+        data-error={t(lang, 'submitForm.common.error')}
+        data-sending={t(lang, 'submitForm.common.sending')}
+      >
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="altcha" />
+        <p class="submit__hp" aria-hidden="true">
+          <label>Company<input name="company" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.name')}</span>
+          <input name="name" required maxlength="120" />
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.website')}</span>
+          <input name="website" type="url" required placeholder="https://" />
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.evidenceUrl')}</span>
+          <input name="evidence_url" type="url" required placeholder="https://" />
+          <small>{t(lang, 'submitForm.brand.evidenceUrlHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.evidenceQuote')}</span>
+          <textarea name="evidence_quote" required rows="2"></textarea>
+          <small>{t(lang, 'submitForm.brand.evidenceQuoteHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.scope')}</span>
+          <select name="scope" required>
+            <option value="total">{t(lang, 'submitForm.brand.scopeTotal')}</option>
+            <option value="parcial">{t(lang, 'submitForm.brand.scopePartial')}</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.scopeNotes')} <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <textarea name="scope_notes" rows="2"></textarea>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.category')}</span>
+          <select name="category" required>
+            {categoryOptions.map((option) => <option value={option.id}>{option.label}</option>)}
+          </select>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.district')} <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <select name="district">
+            <option value="">{t(lang, 'submitForm.brand.districtNone')}</option>
+            {districtOptions.map((option) => <option value={option.id}>{option.label}</option>)}
+          </select>
+          <small>{t(lang, 'submitForm.brand.districtHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.municipality')} <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <input name="municipality" maxlength="120" />
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.descriptionPt')}</span>
+          <textarea name="description_pt" required rows="3"></textarea>
+          <small>{t(lang, 'submitForm.brand.descriptionPtHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.brand.descriptionEn')} <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <textarea name="description_en" rows="3"></textarea>
+        </label>
+        <label class="field">
+          <span>Instagram <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <input name="instagram" placeholder="nomedamarca" />
+        </label>
+        <label class="check">
+          <input type="checkbox" name="relationship" value="owner" />
+          <span>{t(lang, 'submitForm.brand.relationship')}</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" required />
+          <span>{t(lang, 'submitForm.brand.confirmDescription')}</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" required />
+          <span>{t(lang, 'submitForm.brand.confirmNoPersonal')}</span>
+        </label>
+
+        <p class="submit__status" data-submit-status hidden></p>
+        <button class="button" type="submit">{t(lang, 'submitForm.common.send')}</button>
+        <a class="submit__gh" href={issueForm(ghTemplate.brand)} rel="noopener">
+          {t(lang, 'submitForm.github.lead')} {t(lang, 'submitForm.github.brand')}
+        </a>
+      </form>
+    </section>
+
+    {/* ---------- Correct a brand ---------- */}
+    <section class="submit__section" id="correction">
+      <h2>{t(lang, 'submitForm.correction.title')}</h2>
+      <p class="submit__intro">{t(lang, 'submitForm.correction.intro')}</p>
+      <p class="submit__success" data-submit-success hidden>{t(lang, 'submitForm.common.success')}</p>
+
+      <form
+        class="submit__form"
+        method="post"
+        action="/api/submit/correction"
+        data-submit-form
+        data-success={t(lang, 'submitForm.common.success')}
+        data-error={t(lang, 'submitForm.common.error')}
+        data-sending={t(lang, 'submitForm.common.sending')}
+      >
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="altcha" />
+        <p class="submit__hp" aria-hidden="true">
+          <label>Company<input name="company" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <label class="field">
+          <span>{t(lang, 'submitForm.correction.brand')}</span>
+          <input name="brand" required value={brandPrefill} />
+          <small>{t(lang, 'submitForm.correction.brandHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.correction.details')}</span>
+          <textarea name="details" required rows="4"></textarea>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.correction.source')} <em>({t(lang, 'submitForm.common.optional')})</em></span>
+          <input name="source" type="url" placeholder="https://" />
+          <small>{t(lang, 'submitForm.correction.sourceHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.common.email')}</span>
+          <input name="email" type="email" />
+          <small>{t(lang, 'submitForm.common.emailHelp')}</small>
+        </label>
+
+        <p class="submit__status" data-submit-status hidden></p>
+        <button class="button" type="submit">{t(lang, 'submitForm.common.send')}</button>
+        <a class="submit__gh" href={issueForm(ghTemplate.correction)} rel="noopener">
+          {t(lang, 'submitForm.github.lead')} {t(lang, 'submitForm.github.correction')}
+        </a>
+      </form>
+    </section>
+
+    {/* ---------- Request the badge ---------- */}
+    <section class="submit__section" id="verification">
+      <h2>{t(lang, 'submitForm.verification.title')}</h2>
+      <p class="submit__intro">{t(lang, 'submitForm.verification.intro')}</p>
+      <p class="submit__success" data-submit-success hidden>{t(lang, 'submitForm.common.success')}</p>
+
+      <form
+        class="submit__form"
+        method="post"
+        action="/api/submit/verification"
+        data-submit-form
+        data-success={t(lang, 'submitForm.common.success')}
+        data-error={t(lang, 'submitForm.common.error')}
+        data-sending={t(lang, 'submitForm.common.sending')}
+      >
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="altcha" />
+        <p class="submit__hp" aria-hidden="true">
+          <label>Company<input name="company" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <label class="field">
+          <span>{t(lang, 'submitForm.verification.brand')}</span>
+          <input name="brand" required value={brandPrefill} />
+          <small>{t(lang, 'submitForm.verification.brandHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.verification.details')}</span>
+          <textarea name="details" required rows="4"></textarea>
+          <small>{t(lang, 'submitForm.verification.detailsHelp')}</small>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.common.email')}</span>
+          <input name="email" type="email" />
+          <small>{t(lang, 'submitForm.common.emailHelp')}</small>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="confirm" value="sim" required />
+          <span>{t(lang, 'submitForm.verification.confirm')}</span>
+        </label>
+
+        <p class="submit__status" data-submit-status hidden></p>
+        <button class="button" type="submit">{t(lang, 'submitForm.common.send')}</button>
+        <a class="submit__gh" href={issueForm(ghTemplate.verification)} rel="noopener">
+          {t(lang, 'submitForm.github.lead')} {t(lang, 'submitForm.github.verification')}
+        </a>
+      </form>
+    </section>
+
+    {/* ---------- Get in touch ---------- */}
+    <section class="submit__section" id="contact">
+      <h2>{t(lang, 'submitForm.contact.title')}</h2>
+      <p class="submit__intro">{t(lang, 'submitForm.contact.intro')}</p>
+      <p class="submit__success" data-submit-success hidden>{t(lang, 'submitForm.common.success')}</p>
+
+      <form
+        class="submit__form"
+        method="post"
+        action="/api/submit/contact"
+        data-submit-form
+        data-success={t(lang, 'submitForm.common.success')}
+        data-error={t(lang, 'submitForm.common.error')}
+        data-sending={t(lang, 'submitForm.common.sending')}
+      >
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="altcha" />
+        <p class="submit__hp" aria-hidden="true">
+          <label>Company<input name="company" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <label class="field">
+          <span>{t(lang, 'submitForm.contact.message')}</span>
+          <textarea name="message" required rows="4"></textarea>
+        </label>
+        <label class="field">
+          <span>{t(lang, 'submitForm.common.email')}</span>
+          <input name="email" type="email" />
+          <small>{t(lang, 'submitForm.common.emailHelp')}</small>
+        </label>
+
+        <p class="submit__status" data-submit-status hidden></p>
+        <button class="button" type="submit">{t(lang, 'submitForm.common.send')}</button>
+      </form>
+    </section>
+
+    {/* One shared success dialog, popped by submit-form.ts after any form succeeds.
+        Authored here (not built in JS) so the scoped styles below reach it. */}
+    <dialog class="submit__done" data-submit-dialog aria-labelledby="submit-done-title">
+      <div class="submit__done-card">
+        <svg class="submit__check" viewBox="0 0 52 52" width="64" height="64" aria-hidden="true">
+          <circle class="submit__check-ring" cx="26" cy="26" r="24" fill="none" />
+          <path class="submit__check-mark" fill="none" d="M14.5 27l7.5 7.5L37.5 19" />
+        </svg>
+        <h2 id="submit-done-title">{t(lang, 'submitForm.common.successTitle')}</h2>
+        <p>{t(lang, 'submitForm.common.success')}</p>
+        <button class="button" type="button" data-submit-dialog-close>
+          {t(lang, 'submitForm.common.close')}
+        </button>
+      </div>
+    </dialog>
+  </div>
+</Layout>
+
+<script>
+  import { initSubmitForms } from '~/lib/submit-form.ts';
+  initSubmitForms();
+</script>
+
+<style>
+  .narrow {
+    max-width: var(--container-narrow);
+  }
+
+  .submit__chooser {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fep-space-2);
+    margin-block: var(--fep-space-4) var(--fep-space-6);
+  }
+
+  .submit__chooser a {
+    padding: var(--fep-space-2) var(--fep-space-3);
+    border: var(--fep-stitch);
+    border-radius: var(--fep-radius-lg);
+    font-size: var(--fep-text-sm);
+    font-weight: 650;
+    text-decoration: none;
+    color: var(--fep-heading);
+    background: var(--fep-surface);
+  }
+
+  .submit__section {
+    padding-top: var(--fep-space-6);
+    margin-top: var(--fep-space-6);
+    border-top: 1px solid var(--fep-line);
+    scroll-margin-top: var(--fep-space-6);
+  }
+
+  .submit__intro {
+    color: var(--fep-ink-2);
+  }
+
+  .submit__form {
+    display: grid;
+    gap: var(--fep-space-4);
+    margin-top: var(--fep-space-4);
+  }
+
+  .field {
+    display: grid;
+    gap: var(--fep-space-1);
+  }
+
+  .field > span {
+    font-weight: 650;
+    color: var(--fep-heading);
+  }
+
+  .field em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--fep-ink-2);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: var(--fep-space-2) var(--fep-space-3);
+    border: 1px solid var(--fep-line);
+    border-radius: var(--fep-radius-md);
+    background: var(--fep-bg);
+    color: var(--fep-ink);
+    font: inherit;
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+
+  .field small {
+    color: var(--fep-ink-2);
+    font-size: var(--fep-text-sm);
+  }
+
+  .check {
+    display: flex;
+    gap: var(--fep-space-2);
+    align-items: start;
+    color: var(--fep-ink);
+  }
+
+  .check input {
+    margin-top: 0.2em;
+  }
+
+  /* The honeypot: present in the DOM for bots, invisible and unreachable for people. */
+  .submit__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .submit__status {
+    margin: 0;
+    font-weight: 650;
+  }
+
+  .submit__status[data-kind='error'] {
+    color: var(--fep-danger, #b3261e);
+  }
+
+  .submit__success {
+    padding: var(--fep-space-3) var(--fep-space-4);
+    border: var(--fep-stitch);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    font-weight: 650;
+    color: var(--fep-heading);
+  }
+
+  .submit__gh {
+    justify-self: start;
+    font-size: var(--fep-text-sm);
+    color: var(--fep-ink-2);
+  }
+
+  /* ---------- Success dialog ---------- */
+  .submit__done {
+    width: min(26rem, calc(100vw - 2 * var(--fep-space-4)));
+    padding: 0;
+    border: var(--fep-stitch);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    box-shadow: 0 20px 48px rgb(14 22 28 / 0.28);
+  }
+
+  .submit__done::backdrop {
+    background: rgb(14 22 28 / 0.5);
+  }
+
+  .submit__done-card {
+    display: grid;
+    justify-items: center;
+    gap: var(--fep-space-3);
+    padding: var(--fep-space-6) var(--fep-space-5);
+    text-align: center;
+  }
+
+  .submit__done-card h2 {
+    margin: 0;
+    color: var(--fep-heading);
+  }
+
+  .submit__done-card p {
+    margin: 0;
+    color: var(--fep-ink-2);
+  }
+
+  .submit__done-card .button {
+    margin-top: var(--fep-space-2);
+  }
+
+  /* Cobalt checkmark: the ring and the tick are drawn on open. */
+  .submit__check {
+    color: var(--fep-accent);
+  }
+
+  .submit__check-ring,
+  .submit__check-mark {
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .submit__check-ring {
+    stroke-dasharray: 151;
+    stroke-dashoffset: 151;
+  }
+
+  .submit__check-mark {
+    stroke-dasharray: 36;
+    stroke-dashoffset: 36;
+  }
+
+  /* Play only while the dialog is open, so re-opening replays it. base.css
+     already disables all animation under prefers-reduced-motion. */
+  .submit__done[open] .submit__done-card {
+    animation: submit-pop 220ms ease-out both;
+  }
+
+  .submit__done[open] .submit__check-ring {
+    animation: submit-draw 420ms ease-out forwards;
+  }
+
+  .submit__done[open] .submit__check-mark {
+    animation: submit-draw 260ms 320ms ease-out forwards;
+  }
+
+  @keyframes submit-pop {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes submit-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* base.css disables animation here, so draw the check statically instead of
+     leaving it stuck mid-stroke (invisible). */
+  @media (prefers-reduced-motion: reduce) {
+    .submit__check-ring,
+    .submit__check-mark {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

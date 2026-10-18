@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths } from 'astro';
+import RegionPage from '~/components/pages/RegionPage.astro';
+import { landingRegions } from '~/lib/data.ts';
+
+export const getStaticPaths = (() =>
+  landingRegions().map((region) => ({
+    params: { region: region.slug.en },
+    props: { region },
+  }))) satisfies GetStaticPaths;
+
+const { region } = Astro.props;
+---
+
+<RegionPage lang="en" region={region} />

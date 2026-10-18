@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="145.944px" height="26.936px" viewBox="0 0 145.944 26.936" enable-background="new 0 0 145.944 26.936"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="145.944" height="26.936"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<polygon clip-path="url(#SVGID_2_)" fill="#2A2A2A" points="20.747,23.639 3.927,23.675 20.747,3.336 20.747,0.52 0,0.52 0,3.336 
+		16.935,3.333 0,23.675 0,26.454 20.747,26.454 	"/>
+	<path clip-path="url(#SVGID_2_)" fill="#2A2A2A" d="M47.007,0c-7.595,0-13.448,5.409-13.448,13.45
+		c0,8.076,5.853,13.486,13.448,13.486c7.558,0,13.447-5.41,13.447-13.486C60.454,5.409,54.565,0,47.007,0 M47.007,24.046
+		c-5.854,0-10.41-4.002-10.41-10.596c0-6.558,4.556-10.595,10.41-10.595c5.816,0,10.41,4,10.41,10.595
+		C57.417,20.044,52.823,24.046,47.007,24.046"/>
+	<path clip-path="url(#SVGID_2_)" fill="#2A2A2A" d="M92.208,15.636c0,5.632-2.335,8.41-7.373,8.41c-5.001,0-7.299-2.778-7.299-8.41
+		V0.52h-3.074v15.116c0,7.336,3.631,11.3,10.373,11.3c6.706,0,10.374-3.964,10.374-11.3V0.52h-3.001V15.636z"/>
+	<path clip-path="url(#SVGID_2_)" fill="#2A2A2A" d="M128.122,8.595c0-5.074-3.594-8.076-9.67-8.076h-7.929v25.935h3.001V16.303
+		h3.187c0.557,0,1.814,0,2.371-0.038l5.891,10.189h3.63l-6.409-10.745C125.861,14.932,128.122,12.597,128.122,8.595 M118.748,13.782
+		h-5.224V3.299h5.04c4.037,0,6.483,1.741,6.483,5.409C125.048,12.449,122.528,13.782,118.748,13.782"/>
+	<rect x="142.943" y="0.52" clip-path="url(#SVGID_2_)" fill="#2A2A2A" width="3.001" height="25.935"/>
+</g>
+</svg>

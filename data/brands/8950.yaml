@@ -1,0 +1,36 @@
+slug: '8950'
+status: published
+name: '8950'
+description:
+  pt: >-
+    Linha de higiene pessoal de Castro Marim, pensada sobretudo para hotéis: sabão
+    líquido, champô, amaciador e creme de corpo com aromas de plantas do Algarve, em
+    frascos recarregáveis de vidro e cerâmica.
+  en: >-
+    A personal care line from Castro Marim, made mainly for hotels: liquid soap,
+    shampoo, conditioner and body cream scented with Algarve plants, in refillable
+    glass and ceramic bottles.
+website: https://8950cosmetica.pt
+category: cosmetica-e-higiene
+subcategory: sabonetes-e-banho
+tags: []
+products: [sabonetes, cremes]
+founded: 2019
+production:
+  scope: total
+location:
+  district: faro
+  municipality: castro-marim
+where_to_buy:
+  marketplaces:
+    - https://www.avidaportuguesa.com/en/store/liquid-soap-8950
+social:
+  instagram: 8950.pt
+media:
+  logo: logo.png
+verification:
+  verified: false
+meta:
+  added: 2026-10-15
+  updated: 2026-10-18
+  source: maintainer

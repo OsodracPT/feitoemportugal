@@ -1,0 +1,38 @@
+slug: luis-onofre
+status: published
+name: Luís Onofre
+description:
+  pt: >-
+    Calçado de senhora desenhado e produzido em Oliveira de Azeméis por uma família de
+    sapateiros com três gerações, com construções em pele e acabamentos à mão.
+  en: >-
+    Women's footwear designed and made in Oliveira de Azeméis by a third-generation
+    shoemaking family, built in leather and finished by hand.
+website: https://luisonofre.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, feito-a-mao, empresa-familiar, contemporaneo]
+products: [sapatos]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: oliveira-de-azemeis
+price_range: 4
+where_to_buy:
+  online_store: https://luisonofre.com
+  physical_stores:
+    - name: Luís Onofre Lisboa
+      city: Lisboa
+      address: Av. da Liberdade 247, 1250-143 Lisboa
+social:
+  instagram: luisonofreofficial
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-18
+  source: maintainer

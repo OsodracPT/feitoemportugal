@@ -1,0 +1,515 @@
+{
+  "site": {
+    "name": "Feito em Portugal",
+    "tagline": "An open database of brands that manufacture in Portugal",
+    "description": "Search brands that manufacture in Portugal by category, region and tag. A community project with open code and open data."
+  },
+  "nav": {
+    "brands": "Brands",
+    "categories": "Categories",
+    "blog": "Blog",
+    "submit": "Suggest a brand",
+    "about": "About",
+    "skipToContent": "Skip to content",
+    "menu": "Menu",
+    "products": "Products",
+    "tags": "Tags",
+    "regions": "Regions",
+    "howWeKnow": "How we know",
+    "primary": "Main"
+  },
+  "lang": {
+    "switchTo": "Português",
+    "label": "Language",
+    "pt": "Português",
+    "en": "English",
+    "short_pt": "PT",
+    "short_en": "EN"
+  },
+  "home": {
+    "title": "Brands that make their products in Portugal.",
+    "intro": "An open, community-run database of brands that make their products in Portugal. Anyone can search it, correct it and suggest brands.",
+    "searchPlaceholder": "Search brands, categories or tags",
+    "recentBrands": "Recently added",
+    "allBrands": "See all brands",
+    "searchButton": "Search",
+    "eyebrow": "{count} brands · open directory · no cookies",
+    "lookFor": "I'm looking for",
+    "lookForPlaceholder": "shoes, tableware, soap…",
+    "madeIn": "made",
+    "anywhere": "anywhere",
+    "find": "Find brands",
+    "panel": "The panel",
+    "allCategories": "All categories",
+    "byRegion": "By region",
+    "byRegionHint": "Each district leads to the brands that make things there. The same map is the region filter on the brands page.",
+    "allRegions": "All regions",
+    "trustTitle": "How we know",
+    "trustIntro": "Every brand has a shield. The more proof we gather, the more of it is stitched.",
+    "trust1": "The brand says on its own website that it makes things here. No independent source yet.",
+    "trust2": "There is public proof: the factory's address, a certification, a press report.",
+    "trust3": "Confirmed by a project maintainer, with a document or a visit.",
+    "trustLink": "How verification works"
+  },
+  "brands": {
+    "title": "Brands",
+    "intro": "Every published brand. Search, filter and sort as you like.",
+    "count": "{count} brands",
+    "countOne": "1 brand",
+    "empty": "No brands in this list yet.",
+    "byCategory": "By category",
+    "filtered": "{count} of {total} brands",
+    "filteredOne": "1 of {total} brands"
+  },
+  "brand": {
+    "verified": "Verified",
+    "verifiedOn": "Verified on {date}",
+    "notVerified": "Not verified yet",
+    "verifiedHelp": "A maintainer confirmed that this brand manufactures in Portugal.",
+    "production": "Production",
+    "productionTotal": "Fully made in Portugal",
+    "productionPartial": "Partly made in Portugal",
+    "productionNotes": "What is made in Portugal",
+    "website": "Official website",
+    "visitWebsite": "Visit website",
+    "category": "Category",
+    "tags": "Tags",
+    "location": "Where it is made",
+    "priceRange": "Price",
+    "typicalPrice": "{item} costs around {price}",
+    "whereToBuy": "Where to buy",
+    "onlineStore": "Online store",
+    "viewOnMap": "View on map",
+    "marketplaces": "Other shops",
+    "physicalStores": "Physical stores",
+    "social": "Social media",
+    "sustainability": "Sustainability",
+    "practices": "Practices",
+    "certifications": "Certifications",
+    "proof": "proof",
+    "related": "Related brands",
+    "suggestCorrection": "Suggest a correction",
+    "addedOn": "Added on {date}",
+    "updatedOn": "Updated on {date}",
+    "logoOf": "{name} logo",
+    "details": "Details",
+    "founded": "Founded",
+    "products": "Products",
+    "howWeKnow": "How we know it is made in Portugal",
+    "howImport": "The brand says on its own website that it manufactures in Portugal. We read that before publishing and saved the quote in the project's source notes.",
+    "howMaintainer": "Added by a maintainer who knows where the brand produces.",
+    "evidenceLink": "See the source notes",
+    "howNotVerified": "Not independently verified yet.",
+    "photoAlt": "Photo from {name} ({n})",
+    "photoCredit": "Photos: © {name}",
+    "photoZoom": "Enlarge photo {n}",
+    "lightboxClose": "Close",
+    "lightboxPrev": "Previous photo",
+    "lightboxNext": "Next photo",
+    "lightboxCounter": "{n} of {total}",
+    "trustStep": "{label} · {level} of 3",
+    "originCard": "Origin record",
+    "howWeKnowShort": "How we know",
+    "ladder": "Level of proof",
+    "madeHere": "Made here",
+    "madeAbroad": "Made abroad",
+    "madeHereTotal": "All of it, according to the brand.",
+    "madeAbroadPartial": "The rest of production. Hence: partial production.",
+    "proofs": "Proof",
+    "proofBrand": "The brand's statement",
+    "proofBrandLink": "See the brand's website",
+    "proofMaintainer": "Project maintainer",
+    "proofVerified": "Verification",
+    "proofSources": "Independent sources",
+    "proofSourcesText": "Press or records independent of the brand that confirm production.",
+    "proofMissing": "Missing for verification",
+    "proofMissingText": "Proof independent of the brand's website: a visit, a certificate, an official record or photos of production.",
+    "proofMissingLink": "Have proof? Send it to us",
+    "correction": "Found a mistake? Suggest a correction",
+    "whatItMakes": "What it makes",
+    "whereMade": "Where it is made",
+    "madeIn": "Made",
+    "moreFrom": "Other brands {place}",
+    "alsoFrom": "Also {place}",
+    "links": "Links",
+    "jsonData": "Data as JSON",
+    "websiteRow": "Brand website",
+    "since": "since {year}"
+  },
+  "category": {
+    "brandsIn": "{category} brands made in Portugal",
+    "subcategories": "Subcategories",
+    "faq": "Frequently asked questions",
+    "otherCategories": "Other categories",
+    "noPage": "This category does not have enough brands yet to get its own page.",
+    "byRegion": "By region",
+    "lede": "{count} {category} brands made in Portugal.",
+    "refine": "Filter these brands in the catalogue"
+  },
+  "products": {
+    "title": "Products",
+    "intro": "Kinds of product made in Portugal, with the brands that make them.",
+    "brandsOf": "{product} brands made in Portugal",
+    "lede": "{count} brands make {product} in Portugal.",
+    "other": "Other product types",
+    "refine": "Filter these brands in the catalogue",
+    "noPage": "Not enough brands for a page of its own yet."
+  },
+  "tags": {
+    "title": "Tags",
+    "intro": "Materials, crafts and other traits, whatever the category.",
+    "brandsWith": "Brands tagged \"{tag}\"",
+    "lede": "{count} brands made in Portugal with this tag.",
+    "other": "Other tags",
+    "refine": "Filter these brands in the catalogue"
+  },
+  "regions": {
+    "title": "Regions",
+    "intro": "Where the brands make their products, by district and autonomous region. A brand only appears on the map once its production site is known.",
+    "located": "{count} of {total} brands have a known production site."
+  },
+  "region": {
+    "district": "District",
+    "autonomous": "Autonomous region",
+    "title": "Brands made {inRegion}",
+    "lede": "{count} brands make their products here.",
+    "other": "Other regions",
+    "refine": "Filter these brands in the catalogue",
+    "noPage": "Not enough brands for a page of its own yet.",
+    "byCategory": "By category"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "label": "Breadcrumb"
+  },
+  "footer": {
+    "about": "About the project",
+    "contribute": "Contribute",
+    "github": "GitHub",
+    "api": "API",
+    "dataLicense": "Data under CC BY 4.0",
+    "codeLicense": "Code under MIT",
+    "builtBy": "An open source community project.",
+    "noTracking": "No accounts, no cookies, no ads.",
+    "badge": "The verified badge",
+    "openData": "Open data · CC BY 4.0",
+    "apiJson": "JSON API",
+    "correct": "Correct data"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "intro": "The address you are looking for does not exist or has moved.",
+    "backHome": "Back to the homepage",
+    "browseBrands": "See all brands"
+  },
+  "common": {
+    "brandsCount": "{count} brands",
+    "brandCount": "1 brand",
+    "seeAll": "See all",
+    "externalLink": "opens on another site"
+  },
+  "search": {
+    "label": "Search brands",
+    "placeholder": "Search brands, categories or tags",
+    "clear": "Clear search",
+    "results": "{count} brands found",
+    "resultsOne": "1 brand found",
+    "empty": "No brand matches \"{query}\".",
+    "emptyHint": "Try another word, or browse by category.",
+    "loading": "Loading search…",
+    "error": "Search could not be loaded. Reload the page, or browse by category."
+  },
+  "filters": {
+    "title": "Filters",
+    "toggle": "Filters",
+    "groups": {
+      "cat": "Category",
+      "sub": "Subcategory",
+      "dist": "Region",
+      "tag": "Tag",
+      "prod": "Product",
+      "price": "Price",
+      "scope": "Production",
+      "sust": "Sustainability",
+      "verified": "Verification",
+      "shop": "Where to buy"
+    },
+    "scopeTotal": "Fully in Portugal",
+    "scopePartial": "Partly in Portugal",
+    "priceLevel": "Price level {level} of 4",
+    "clear": "Clear filters",
+    "clearOne": "Remove {label} filter",
+    "active": "{count} active filters",
+    "activeOne": "1 active filter",
+    "empty": "No brand matches the chosen filters.",
+    "emptyHint": "Try removing one filter.",
+    "optionCount": "{count} brands",
+    "optionCountOne": "1 brand",
+    "close": "Close filters",
+    "reset": "Clear",
+    "clearAll": "Clear all",
+    "show": "Show {count} brands",
+    "showOne": "Show 1 brand",
+    "showNone": "No brands",
+    "more": "{count} more",
+    "less": "Show fewer",
+    "distPick": "Or pick from the list",
+    "distPlaceholder": "Choose a region…"
+  },
+  "sort": {
+    "label": "Sort",
+    "relevance": "Relevance",
+    "name": "Name (A–Z)",
+    "recent": "Newest"
+  },
+  "api": {
+    "title": "Public API",
+    "intro": "Every published brand is available as JSON under the CC BY 4.0 licence. No keys, no sign-up.",
+    "endpoints": "Endpoints",
+    "endpoint": "Address",
+    "returns": "Returns",
+    "envelope": "Response shape",
+    "envelopeIntro": "Every response is an object with the metadata and the payload in `data`:",
+    "versioning": "Versioning",
+    "versioningBody": "The API is at {version}. Removing a field or changing its meaning means a new version; adding fields does not.",
+    "attribution": "Attribution",
+    "attributionBody": "The data is CC BY 4.0: use it, including commercially, as long as you credit the source with a link to {site}.",
+    "schema": "Schema",
+    "schemaBody": "A brand's JSON Schema is generated from the project's Zod schema, so it always follows the data. Cross-field rules that JSON Schema cannot express are still checked by the project validator.",
+    "notes": "Notes",
+    "notesSearch": "`/search-index.json` is not part of the API: it is an internal detail of the search and may change without notice.",
+    "notesDrafts": "Only published brands reach the API. Drafts stay in the repository.",
+    "notesPrivacy": "No personal data and no exact coordinates: location is the municipality and, on maps, the municipality centroid.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "rows": {
+      "brands": "Every published brand.",
+      "brand": "A single brand, by slug.",
+      "categories": "Categories and subcategories, with brand counts.",
+      "tags": "Tags and synonyms, with brand counts.",
+      "products": "Product types and synonyms, with brand counts.",
+      "regions": "Districts and autonomous regions, municipalities and centroids.",
+      "sustainability": "Recognised practices and certifications.",
+      "schema": "A brand's JSON Schema (no envelope)."
+    }
+  },
+  "map": {
+    "title": "Map",
+    "hint": "Tap a district to filter.",
+    "label": "{name}: {count} brands",
+    "labelOne": "{name}: 1 brand",
+    "labelNone": "{name}: no brands",
+    "source": "Boundaries: CAOP 2025, DGT (CC BY 4.0)."
+  },
+  "terms": {
+    "filterLabel": "Filter",
+    "filterPlaceholder": "Filter by name, for example socks or olive oil",
+    "filterEmpty": "Nothing matches that filter."
+  },
+  "place": {
+    "in": {
+      "default": "in {region}",
+      "acores": "in the Azores"
+    }
+  },
+  "regionCategory": {
+    "title": "{category} brands {inRegion}",
+    "lede": "{count} brands in this category make their products {inRegion}.",
+    "refine": "Filter these brands in the catalogue",
+    "allCategory": "Every brand in {category}",
+    "allRegion": "All brands {inRegion}",
+    "otherCategories": "Other categories {inRegion}",
+    "otherRegions": "The same category in other regions",
+    "plate": "{category} {inRegion}"
+  },
+  "about": {
+    "title": "About the project",
+    "intro": "Feito em Portugal is an open list of brands that make their products in Portugal. It is run by volunteers, carries no advertising, and anyone may use the data.",
+    "sections": {
+      "why": {
+        "title": "Why this exists",
+        "body": "There are more and more dropshipping shops that advertise on social media as \"made in Portugal\" but are not. They resell imported goods and, with AI tools, put together a convincing site in little time. So a sentence on the brand's own website is not enough. We confirm the origin from other sources and keep the proof. This list exists so the \"made in Portugal\" label means what it says."
+      },
+      "criteria": {
+        "title": "Which brands are listed",
+        "body": "A brand is listed when its own website says its products are made in Portugal. Being a Portuguese brand is not enough, and neither is having products designed here. A foreign brand qualifies when most of what it sells is made in Portugal. When only part is made here, the brand page says which part."
+      },
+      "check": {
+        "title": "How we check",
+        "body": "Before a brand goes live, we find the sentence on its website where it says it makes its products in Portugal, and keep that sentence, with the link, in the project's source notes. The production location appears only when the brand gives it, and never more precisely than the municipality."
+      },
+      "badge": {
+        "title": "The verified badge",
+        "body": "The badge means someone on the project confirmed production by some means other than the brand's website: a visit, a certificate or contact with the manufacturer. No brand has it yet. It is free and cannot be bought."
+      },
+      "contribute": {
+        "title": "How to help",
+        "body": "You can suggest a brand, fix a brand page or ask for your own brand to be verified — with a form here on the site, no account needed. If you prefer GitHub, the issue templates are still there, where the work stays in public view."
+      },
+      "data": {
+        "title": "Data and licences",
+        "body": "The brand data is under CC BY 4.0: you may use it, commercially too, as long as you credit the source. It is available through the public API and in the repository. District boundaries come from CAOP 2025 by the Direção-Geral do Território."
+      },
+      "images": {
+        "title": "Logos and photos",
+        "body": "Logos and photos belong to the brands and are not part of the open data: they are not under CC BY 4.0 and the API leaves them out. We use the logo a brand shows on its own website and, preferably, photos it offers to the press or sends us. When there are none, we show up to three product photos from the brand's own shop, credited to the brand, so you can see what it makes before you leave for its site; the brand's own photos replace them as soon as they arrive. Every image is stored on our own server, so opening a brand page sends no request to the brand's site. If you work for the brand and want an image changed or removed, tell us through the correction form."
+      },
+      "privacy": {
+        "title": "Privacy",
+        "body": "The site uses no cookies and builds no profile of its visitors. We publish no personal data: many makers work from home, so location always stops at the municipality."
+      }
+    },
+    "links": {
+      "suggest": "Suggest a brand",
+      "correct": "Correct a brand",
+      "verify": "Request verification",
+      "guide": "Contributing guide",
+      "evidence": "Source notes",
+      "api": "Public API",
+      "repo": "Repository on GitHub",
+      "badge": "How the badge works"
+    }
+  },
+  "badge": {
+    "title": "The verified badge",
+    "intro": "Every brand on the list says on its own website that it makes its products in Portugal. The badge goes one step further: it means someone on the project confirmed that production by other means.",
+    "sections": {
+      "meaning": {
+        "title": "What the badge means",
+        "body": "A brand is listed on the strength of what its website says. A brand with the badge has been confirmed independently by a project maintainer. The badge says nothing about quality, price or a brand's practices: only that production in Portugal was confirmed."
+      },
+      "evidence": {
+        "title": "What evidence we accept",
+        "body": "A visit to the factory or workshop, a certificate or official registration, photos of production, or direct contact with the manufacturer. The brand page shows the date of the check. Documents with personal data are never published."
+      },
+      "process": {
+        "title": "How to ask for it",
+        "body": "The brand fills in the request form on GitHub and says how we can confirm production. A project maintainer reviews the request, arranges whatever else is needed and, once production is confirmed, awards the badge. It is free and cannot be bought."
+      },
+      "revoke": {
+        "title": "When the badge is removed",
+        "body": "If production moves abroad or the evidence no longer holds, the badge is removed. Anyone can tell us through the correction form."
+      }
+    },
+    "listTitle": "Brands with the badge",
+    "empty": "No brand has the badge yet.",
+    "links": {
+      "criteria": "Which brands are listed",
+      "request": "Request the badge",
+      "guide": "Contributing guide",
+      "correct": "Correct a brand",
+      "filter": "See verified brands in the catalogue"
+    }
+  },
+  "theme": {
+    "dark": "Dark theme"
+  },
+  "card": {
+    "trust1": "Declared",
+    "trust2": "Sourced",
+    "trust3": "Verified",
+    "priceOf": "Price {level} of 4",
+    "partial": "Partial production"
+  },
+  "view": {
+    "label": "View",
+    "list": "List",
+    "panel": "Panel"
+  },
+  "landing": {
+    "category": "Category",
+    "product": "Product type",
+    "tag": "Tag"
+  },
+  "empty": {
+    "title": "No brands found",
+    "removeLast": "Remove “{label}”",
+    "startOver": "Start over",
+    "suggestLead": "Know a brand made in Portugal that should be here?",
+    "suggest": "Suggest a brand",
+    "listTitle": "No brands yet"
+  },
+  "submitForm": {
+    "title": "Contribute",
+    "intro": "Fill in the form right here — no GitHub account needed. Your submission reaches the project maintainer by email, who reviews it before publishing.",
+    "chooser": {
+      "brand": "Suggest a brand",
+      "correction": "Correct a brand",
+      "verification": "Request the badge",
+      "contact": "Get in touch"
+    },
+    "github": {
+      "lead": "Prefer GitHub?",
+      "brand": "Suggest a brand via a GitHub issue",
+      "correction": "Correct via a GitHub issue",
+      "verification": "Request verification via a GitHub issue"
+    },
+    "common": {
+      "optional": "optional",
+      "send": "Send",
+      "sending": "Sending…",
+      "email": "Your email (optional)",
+      "emailHelp": "Only so we can reply. Stored, never published.",
+      "success": "Thank you! Your submission arrived. We will review it before publishing.",
+      "successTitle": "Submitted!",
+      "close": "Close",
+      "error": "Could not send. Please try again in a moment.",
+      "required": "Please fill in the required fields."
+    },
+    "brand": {
+      "title": "Suggest a brand",
+      "intro": "A brand is listed only when its own website says it makes its products in Portugal. \"Portuguese brand\" or \"designed in Portugal\" is not enough. A foreign brand qualifies when most of what it sells is made here.",
+      "name": "Brand name",
+      "website": "Official website",
+      "evidenceUrl": "Page where the brand says it makes its products in Portugal",
+      "evidenceUrlHelp": "On the brand's own site, not a shop or an article.",
+      "evidenceQuote": "Sentence from that page",
+      "evidenceQuoteHelp": "Copy the sentence as it is. It goes into the source notes, not the brand page.",
+      "scope": "Production",
+      "scopeTotal": "Everything is made in Portugal",
+      "scopePartial": "Part of it is made elsewhere",
+      "scopeNotes": "If partial, what is made in Portugal?",
+      "category": "Category",
+      "district": "District where it makes its products",
+      "districtNone": "Don't know",
+      "districtHelp": "Only if the brand says so. An office or a shop does not count.",
+      "municipality": "Municipality where it makes its products",
+      "descriptionPt": "Description in Portuguese",
+      "descriptionPtHelp": "Two or three sentences of your own. Do not copy the brand's text; the data ships under CC BY 4.0.",
+      "descriptionEn": "Description in English",
+      "instagram": "Instagram",
+      "relationship": "I work for or own the brand",
+      "confirmDescription": "The description is my own text and may be published under CC BY 4.0.",
+      "confirmNoPersonal": "I included no personal data (home addresses, personal phones or emails)."
+    },
+    "correction": {
+      "title": "Correct a brand",
+      "intro": "Something wrong or out of date on a brand page? Tell us what.",
+      "brand": "Brand",
+      "brandHelp": "The page address or the id (for example vista-alegre).",
+      "details": "What should change",
+      "source": "Source",
+      "sourceHelp": "A link that confirms it, preferably on the brand's own site."
+    },
+    "verification": {
+      "title": "Request the verified badge",
+      "intro": "The badge says someone on the project confirmed, independently of the brand's website, that production is in Portugal. It is free and cannot be bought.",
+      "brand": "Brand",
+      "brandHelp": "The page address, if the brand is already listed.",
+      "details": "How can we confirm it?",
+      "detailsHelp": "Do not post documents with personal data here; tell us you have them and we will arrange another way.",
+      "confirm": "I work for or own the brand."
+    },
+    "contact": {
+      "title": "Get in touch",
+      "intro": "A question, an idea or anything else.",
+      "message": "Message"
+    }
+  },
+  "thanks": {
+    "title": "Thank you!",
+    "body": "Your submission arrived. The project maintainer will review it before publishing.",
+    "backHome": "Back to home",
+    "another": "Make another submission"
+  }
+}

@@ -1,0 +1,481 @@
+---
+import DistrictMap from '~/components/DistrictMap.astro';
+import { brands } from '~/lib/data.ts';
+import { filterGroups, type FilterGroup } from '~/lib/filter-groups.ts';
+import type { FilterKey } from '~/lib/filters.ts';
+import { t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  id: string;
+}
+
+const { lang, id } = Astro.props;
+const groups = filterGroups(lang);
+const byKey = new Map(groups.map((group) => [group.key, group]));
+const districtGroup = byKey.get('dist');
+const districtCounts = new Map(districtGroup?.options.map((option) => [option.value, option.count]));
+
+// The order of design/README.md §5.8; the district block is drawn separately.
+const ORDER: FilterKey[] = ['cat', 'sub', 'dist', 'prod', 'price', 'scope', 'verified', 'sust', 'shop', 'tag'];
+const ordered = ORDER.flatMap((key) => byKey.get(key) ?? []);
+
+/** Long groups show this many options and a "more" button for the rest. */
+const VISIBLE = 8;
+const extraCount = (group: FilterGroup): number =>
+  group.key === 'sub' || group.key === 'price' ? 0 : Math.max(0, group.options.length - VISIBLE);
+const titleId = `${id}-title`;
+---
+
+<!--
+  Hidden until listing-controller.ts runs: the filtering is client-side on a
+  static page, and without JavaScript the category links below the list remain.
+  From 60rem it is a sidebar; below, a bottom sheet the toolbar button opens,
+  made a modal dialog by the controller while it is open.
+  Groups with no brand behind them are not rendered at all, so "verified" only
+  appears once a brand is verified.
+-->
+<aside class="facets" id={id} aria-labelledby={titleId} data-filters-panel data-open="false" hidden>
+  <div class="facets__scrim" data-filters-close></div>
+  <div class="facets__sheet">
+    <div class="facets__head">
+      <h2 class="facets__title" id={titleId}>{t(lang, 'filters.title')}</h2>
+      <button class="facets__clear" type="button" data-filters-clear hidden>
+        {t(lang, 'filters.clearAll')}
+      </button>
+      <button class="facets__close" type="button" data-filters-close aria-label={t(lang, 'filters.close')}>
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="facets__body">
+      {
+        ordered.map((group) =>
+          group.key === 'dist' ? (
+            <fieldset class="facet facet--dist" data-district-group>
+              <legend class="facet__legend">{group.label}</legend>
+              <DistrictMap lang={lang} mode="filter" counts={districtCounts} />
+              <label class="facet__pick">
+                {t(lang, 'filters.distPick')}
+                <select data-district-select>
+                  <option value="">{t(lang, 'filters.distPlaceholder')}</option>
+                  {[...group.options]
+                    .sort((a, b) => a.label.localeCompare(b.label, 'pt'))
+                    .map((option) => (
+                      <option value={option.value} data-name={option.label}>
+                        {option.label} ({option.count})
+                      </option>
+                    ))}
+                </select>
+              </label>
+            </fieldset>
+          ) : (
+            <fieldset
+              class:list={['facet', `facet--${group.key}`]}
+              data-group={group.key}
+              data-depends-on={group.dependsOn}
+            >
+              <legend class="facet__legend">{group.label}</legend>
+              <ul class="facet__options">
+                {group.options.map((option, index) => (
+                  <li
+                    class="facet__option"
+                    data-value={option.value}
+                    data-parent={option.parent}
+                    data-extra={extraCount(group) > 0 && index >= VISIBLE ? '' : undefined}
+                  >
+                    <label>
+                      <input class="visually-hidden" type="checkbox" name={group.key} value={option.value} />
+                      {option.hint ? (
+                        <>
+                          <span class="facet__label" aria-hidden="true">
+                            {option.label}
+                          </span>
+                          <span class="visually-hidden">{option.hint}</span>
+                        </>
+                      ) : (
+                        <span class="facet__label">{option.label}</span>
+                      )}
+                      <span class="facet__count" data-option-count>
+                        {option.count}
+                      </span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              {extraCount(group) > 0 && (
+                <button
+                  class="facet__more"
+                  type="button"
+                  data-more
+                  aria-expanded="false"
+                  data-more-label={t(lang, 'filters.more', { count: extraCount(group) })}
+                  data-less-label={t(lang, 'filters.less')}
+                >
+                  {t(lang, 'filters.more', { count: extraCount(group) })}
+                </button>
+              )}
+            </fieldset>
+          ),
+        )
+      }
+    </div>
+
+    <div class="facets__foot">
+      <button class="facets__reset" type="button" data-filters-reset>{t(lang, 'filters.reset')}</button>
+      <button
+        class="facets__done"
+        type="button"
+        data-filters-done
+        data-label={t(lang, 'filters.show')}
+        data-label-one={t(lang, 'filters.showOne')}
+        data-label-none={t(lang, 'filters.showNone')}
+      >
+        {t(lang, 'filters.show', { count: brands.length })}
+      </button>
+    </div>
+  </div>
+</aside>
+
+<style>
+  /* --- Sidebar (60rem and up) --- */
+  /* The sidebar and the sheet body scroll; keep their bars quiet in both themes. */
+  .facets,
+  .facets__body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fep-line) transparent;
+  }
+
+  .facets__scrim,
+  .facets__close,
+  .facets__foot {
+    display: none;
+  }
+
+  .facets__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--fep-space-3);
+    padding-bottom: var(--fep-space-1);
+  }
+
+  .facets__title {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+
+  .facets__clear {
+    min-height: var(--fep-touch);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--fep-accent);
+    font: inherit;
+    font-size: var(--fep-text-sm);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .facets__clear:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .facet {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 14px 0;
+    border: 0;
+    border-top: 1px solid var(--fep-line);
+  }
+
+  .facet[hidden] {
+    display: none;
+  }
+
+  /* Floated, so the legend lays out like any other child of the flex column. */
+  .facet__legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    font-size: var(--fep-label);
+    font-weight: 700;
+    letter-spacing: var(--fep-label-tracking);
+    text-transform: uppercase;
+    color: var(--fep-ink-2);
+  }
+
+  .facet__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .facet__option[hidden],
+  .facet:not([data-expanded]) .facet__option[data-extra]:not(:has(input:checked)) {
+    display: none;
+  }
+
+  /* An option is a pill; the checkbox inside stays the control. */
+  .facet__option label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1.5px solid var(--fep-line);
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    font-size: var(--fep-text-xs);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .facet__option label:hover {
+    border-color: var(--fep-accent);
+  }
+
+  .facet__option label:has(input:checked) {
+    border-color: var(--fep-accent);
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+  }
+
+  .facet__option label:has(input:focus-visible) {
+    outline: 3px solid var(--fep-focus);
+    outline-offset: 2px;
+  }
+
+  .facet__count {
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--fep-ink-2);
+  }
+
+  .facet__option label:has(input:checked) .facet__count {
+    color: inherit;
+  }
+
+  /* No brand left behind this option under the current filters. */
+  .facet__option[data-empty] label {
+    border-style: dashed;
+    color: var(--fep-ink-2);
+    cursor: default;
+  }
+
+  /* Price is a segmented control: four joined cells. */
+  .facet--price .facet__options {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    border: 1.5px solid var(--fep-accent);
+    border-radius: var(--fep-radius);
+    overflow: hidden;
+  }
+
+  .facet--price .facet__option + .facet__option label {
+    border-left: 1px solid var(--fep-accent);
+  }
+
+  .facet--price .facet__option label {
+    justify-content: center;
+    width: 100%;
+    min-height: var(--fep-touch);
+    border: 0;
+    border-radius: 0;
+    color: var(--fep-accent);
+    font-size: var(--fep-text-sm);
+    font-weight: 700;
+  }
+
+  .facet--price .facet__option label:has(input:focus-visible) {
+    outline-offset: -4px;
+  }
+
+  .facet--price .facet__count {
+    display: none;
+  }
+
+  .facet__more {
+    align-self: flex-start;
+    min-height: 36px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--fep-accent);
+    font: inherit;
+    font-size: var(--fep-text-xs);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .facet__more:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .facet--dist :global(.dmap svg) {
+    width: min(230px, 100%);
+    max-height: none;
+    margin-inline: auto;
+  }
+
+  .facet__pick {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fep-space-1);
+    font-size: var(--fep-text-meta);
+    color: var(--fep-ink-2);
+  }
+
+  .facet__pick select {
+    min-height: var(--fep-touch);
+    padding: 0 10px;
+    border: 1.5px solid var(--fep-ink-dim);
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    font: inherit;
+    font-size: var(--fep-text-sm);
+  }
+
+  @media (min-width: 60rem) {
+    /* The panel follows the page while the grid scrolls past it. */
+    .facets {
+      position: sticky;
+      top: var(--fep-space-4);
+      max-height: calc(100vh - var(--fep-space-8));
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      /* Room for the focus rings of the pills at the edge. */
+      padding-inline: 4px;
+    }
+  }
+
+  /* --- Bottom sheet (below 60rem) --- */
+  @media (max-width: 59.99rem) {
+    .facets[data-open='false'] {
+      display: none;
+    }
+
+    .facets {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+    }
+
+    .facets__scrim {
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: var(--fep-scrim);
+    }
+
+    .facets__sheet {
+      position: absolute;
+      inset: var(--fep-space-12) 0 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: var(--fep-radius-xl) var(--fep-radius-xl) 0 0;
+      background: var(--fep-bg);
+    }
+
+    /* A grab bar, as on the mockup; drawn, not interactive. */
+    .facets__sheet::before {
+      content: '';
+      align-self: center;
+      width: 40px;
+      height: 4px;
+      margin-top: var(--fep-space-2);
+      border-radius: 2px;
+      background: var(--fep-line);
+    }
+
+    .facets__head {
+      padding: 6px 6px 8px var(--fep-gutter);
+      border-bottom: 1px solid var(--fep-line);
+    }
+
+    .facets__title {
+      font-size: 1.625rem;
+    }
+
+    .facets__clear {
+      display: none;
+    }
+
+    .facets__close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--fep-touch);
+      min-height: var(--fep-touch);
+      padding: 0;
+      border: 0;
+      border-radius: var(--fep-radius);
+      background: transparent;
+      color: var(--fep-ink);
+      cursor: pointer;
+    }
+
+    .facets__body {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 4px var(--fep-gutter) var(--fep-space-4);
+    }
+
+    .facets__body > .facet:first-child {
+      border-top: 0;
+    }
+
+    .facet__option label {
+      min-height: 40px;
+      padding: 0 13px;
+    }
+
+    .facets__foot {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--fep-space-2);
+      padding: var(--fep-space-3) var(--fep-gutter) var(--fep-space-4);
+      border-top: 1px solid var(--fep-line);
+      background: var(--fep-surface);
+    }
+
+    .facets__reset,
+    .facets__done {
+      min-height: 50px;
+      border-radius: var(--fep-radius);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .facets__reset {
+      border: 1.5px solid var(--fep-ink);
+      background: transparent;
+      color: var(--fep-ink);
+      font-size: var(--fep-text-sm);
+      font-weight: 600;
+    }
+
+    .facets__done {
+      border: 0;
+      background: var(--fep-accent);
+      color: var(--fep-on-accent);
+      font-size: var(--fep-text);
+      font-weight: 700;
+    }
+  }
+</style>

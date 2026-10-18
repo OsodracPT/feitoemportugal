@@ -1,0 +1,23 @@
+# Data license
+
+The contents of `data/` (brands and taxonomy) are published under the
+Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+You are free to share and adapt the data, including commercially, as long as
+you credit "Feito em Portugal" and link back to the project.
+
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Attribution example:
+  Data from Feito em Portugal (https://feitoemportugal.org), CC BY 4.0.
+
+Copyright (c) 2026 Feito em Portugal contributors.
+
+The district boundaries in `data/geo/` are derived from CAOP 2025,
+(c) Direção-Geral do Território, CC BY 4.0.
+
+Brand logos and photos in `assets/` are NOT covered by this licence. They
+belong to the brands (or their photographers), are shown only to identify each
+brand, and are removed on request. The public API does not include them.
+
+The code is licensed separately, under the MIT licence (see LICENSE).

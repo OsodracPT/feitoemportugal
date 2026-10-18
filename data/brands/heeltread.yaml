@@ -1,0 +1,45 @@
+slug: heeltread
+status: published
+name: Heel Tread
+description:
+  pt: >-
+    Meias de algodão feitas em Portugal, com padrões inspirados em carros de corrida,
+    motores e cultura automóvel.
+  en: >-
+    Cotton socks made in Portugal, with patterns drawn from racing cars, engines and
+    motoring culture.
+website: https://heeltread.com
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+tags: [algodao, contemporaneo, presente]
+products: [meias]
+production:
+  scope: total
+location:
+  district: coimbra
+  municipality: lousa
+price_range: 2
+typical_price:
+  product: meias
+  eur: 13.25
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://heeltread.com
+social:
+  instagram: heeltread
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://dinheirovivo.dn.pt/heel-tread-carros-iconicos-servem-de-inspiracao-a-meias-coloridas-12788980.html
+      publisher: Dinheiro Vivo
+      date: 2018-05-05
+    - url: https://www.publico.pt/2018/03/16/impar/noticia/heel-tread-1806911
+      publisher: Público
+      date: 2018-03-16
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

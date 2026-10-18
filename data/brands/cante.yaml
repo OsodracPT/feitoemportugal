@@ -1,0 +1,37 @@
+slug: cante
+status: published
+name: Cantê
+description:
+  pt: >-
+    Biquínis, trikinis e fatos de banho para mulher, homem e criança, confecionados em
+    fábricas portuguesas desde 2011.
+  en: >-
+    Bikinis, trikinis and swimsuits for women, men and children, sewn in Portuguese
+    factories since 2011.
+website: https://www.cantelisboa.com
+category: moda-e-vestuario
+subcategory: banho
+products: [roupa-de-banho]
+founded: 2011
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.cantelisboa.com
+  physical_stores:
+    - name: Cantê Amoreiras
+      city: Lisboa
+      address: Av. Duarte Pacheco, Amoreiras Shopping Center, 1070-103 Lisboa
+    - name: Cantê Porto
+      city: Porto
+      address: Rua de Diu 62, 4150-271 Porto
+social:
+  instagram: cantelisboa
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

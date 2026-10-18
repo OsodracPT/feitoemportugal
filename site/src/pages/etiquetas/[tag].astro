@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import TermPage from '~/components/pages/TermPage.astro';
+import { landingTags } from '~/lib/data.ts';
+
+// Tags have no translated slug, so both languages use the id.
+export const getStaticPaths = (() =>
+  landingTags().map((tag) => ({
+    params: { tag: tag.id },
+    props: { tag },
+  }))) satisfies GetStaticPaths;
+
+const { tag } = Astro.props;
+---
+
+<TermPage lang="pt" kind="tag" term={tag} />

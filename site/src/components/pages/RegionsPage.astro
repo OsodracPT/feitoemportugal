@@ -1,0 +1,76 @@
+---
+/**
+ * Every district and autonomous region with its brand count, around a map
+ * that links to the ones with a page of their own.
+ */
+import Layout from '~/layouts/Layout.astro';
+import LandingHead from '~/components/LandingHead.astro';
+import DistrictMap from '~/components/DistrictMap.astro';
+import { brands, brandsInDistrict, hasRegionPage, regions } from '~/lib/data.ts';
+import { localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { breadcrumbJsonLd, pageTitle, type Crumb } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const title = t(lang, 'regions.title');
+const alternates = { pt: paths.regions('pt'), en: paths.regions('en') };
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: title },
+];
+
+const counts = new Map(regions.map((region) => [region.id, brandsInDistrict(region.id).length]));
+const located = brands.filter((brand) => brand.location).length;
+const entries = regions
+  .map((region) => ({ region, count: counts.get(region.id) ?? 0 }))
+  .sort(
+    (a, b) =>
+      b.count - a.count ||
+      localized(a.region.label, lang).localeCompare(localized(b.region.label, lang), lang),
+  );
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(title, lang)}
+  description={t(lang, 'regions.intro')}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={[breadcrumbJsonLd(crumbs)]}
+>
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={title}
+    lede={t(lang, 'regions.located', { count: located, total: brands.length })}
+    intro={t(lang, 'regions.intro')}
+  >
+    <ul class="pill-list regions__list">
+      {
+        entries.map(({ region, count }) => (
+          <li>
+            {hasRegionPage(region.id) ? (
+              <a class="pill" href={paths.region(lang, region.slug[lang])}>
+                {localized(region.label, lang)} <span class="muted">{count}</span>
+              </a>
+            ) : (
+              <span class="pill pill--quiet" title={t(lang, 'region.noPage')}>
+                {localized(region.label, lang)} <span class="muted">{count}</span>
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+    <DistrictMap slot="map" lang={lang} mode="link" counts={counts} />
+  </LandingHead>
+</Layout>
+
+<style>
+  .regions__list {
+    margin-top: var(--fep-space-5);
+  }
+</style>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<title>Início · telemóvel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid #1A4C9C;outline-offset:2px}
+.dk :focus-visible{outline-color:#8EB0EA}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.calc-l{background:#8F8B82 url(../assets/calcada/calcada-light.svg) 0 0/168px 60px repeat}
+.calc-d{background:#05070B url(../assets/calcada/calcada-dark.svg) 0 0/168px 60px repeat}
+.t-calcado-l{background-image:url(../assets/tiles/tile-calcado-light.svg)}
+.t-calcado-d{background-image:url(../assets/tiles/tile-calcado-dark.svg)}
+.t-vestuario-l{background-image:url(../assets/tiles/tile-vestuario-light.svg)}
+.t-vestuario-d{background-image:url(../assets/tiles/tile-vestuario-dark.svg)}
+.t-ceramica-l{background-image:url(../assets/tiles/tile-ceramica-light.svg)}
+.t-ceramica-d{background-image:url(../assets/tiles/tile-ceramica-dark.svg)}
+.t-casa-l{background-image:url(../assets/tiles/tile-casa-light.svg)}
+.t-casa-d{background-image:url(../assets/tiles/tile-casa-dark.svg)}
+.t-alimentacao-l{background-image:url(../assets/tiles/tile-alimentacao-light.svg)}
+.t-alimentacao-d{background-image:url(../assets/tiles/tile-alimentacao-dark.svg)}
+.t-cosmetica-l{background-image:url(../assets/tiles/tile-cosmetica-light.svg)}
+.t-cosmetica-d{background-image:url(../assets/tiles/tile-cosmetica-dark.svg)}
+</style>
+</helmet>
+<div style="width: 880px; height: 2600px; box-sizing: border-box; padding: 48px; background: #E6E3DB; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; display: flex; gap: 64px; align-items: flex-start">
+<sc-for list="{{themes}}" as="t" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #3E4456">Início · 360 · {{t.label}}</span>
+<div class="{{t.cls}}" style="width: 360px; background: {{t.bg}}; color: {{t.ink}}; border: 1px solid #A9A498; border-radius: 24px; overflow: hidden">
+
+<header style="display: flex; align-items: center; justify-content: space-between; padding: 6px 4px 6px 14px; border-bottom: 1px solid {{t.line}}">
+<a href="#" style="display: flex; align-items: center; gap: 8px; text-decoration: none; min-height: 44px">
+<img src="{{t.shield}}" alt="" width="24" height="28">
+<span style="font-family: Gloock, Georgia, serif; font-size: 19px; color: {{t.head}}">feito em portugal</span>
+</a>
+<div style="display: flex">
+<a href="#" lang="en" style="min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: {{t.blue}}; text-decoration: none">EN</a>
+<button type="button" aria-label="Menu" style="min-width: 44px; min-height: 44px; border: 0; background: transparent; color: {{t.ink}}; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6H19M3 11H19M3 16H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
+</div>
+</header>
+
+<section style="padding: 28px 18px 26px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: {{t.ink2}}">Diretório aberto · sem cookies</span>
+<h1 style="margin: 0; font-family: Gloock, Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.02; color: {{t.head}}">Marcas que fabricam em Portugal.</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: {{t.ink2}}">Não basta o desenho ser português: só entram marcas com produção cá. E dizemos como sabemos.</p>
+<form style="margin-top: 8px; padding: 16px; background: {{t.surface}}; border: 1px solid {{t.line}}; border-radius: 12px; display: flex; flex-direction: column; gap: 6px; font-family: Gloock, Georgia, serif; font-size: 24px; color: {{t.head}}">
+<label for="hq-{{t.k}}">Procuro</label>
+<input id="hq-{{t.k}}" type="search" placeholder="sapatos, loiça, sabão…" style="min-height: 46px; box-sizing: border-box; border: 0; border-bottom: 2px solid {{t.blue}}; background: transparent; padding: 0 2px; font: inherit; font-size: 22px; color: {{t.ink}}">
+<label for="hd-{{t.k}}" style="padding-top: 6px">feito em</label>
+<select id="hd-{{t.k}}" style="min-height: 46px; border: 0; border-bottom: 2px solid {{t.blue}}; background: transparent; padding: 0; font: inherit; font-size: 22px; color: {{t.ink}}"><option>qualquer sítio</option><option>Braga</option><option>Porto</option></select>
+<button type="submit" style="margin-top: 12px; min-height: 52px; border: 0; border-radius: 8px; background: {{t.blue}}; color: {{t.onBlue}}; font-family: system-ui, sans-serif; font-size: 16px; font-weight: 700">Procurar marcas</button>
+</form>
+</section>
+
+<div class="calc-{{t.k}}" style="height: 44px" aria-hidden="true"></div>
+
+<section aria-labelledby="hc-{{t.k}}" style="padding: 26px 18px 8px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; justify-content: space-between">
+<h2 id="hc-{{t.k}}" style="margin: 0; font-family: Gloock, Georgia, serif; font-weight: 400; font-size: 28px; color: {{t.head}}">O painel</h2>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 600; color: {{t.blue}}">Todas as categorias</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; padding: 3px; background: {{t.line}}; border-radius: 10px; overflow: hidden">
+<sc-for list="{{t.cats}}" as="c" hint-placeholder-count="6">
+<a href="#" class="{{c.tile}}" style="position: relative; height: 150px; background-size: 50px 50px; text-decoration: none; display: flex; align-items: flex-end; padding: 10px">
+<span style="display: inline-flex; flex-direction: column; padding: 7px 11px; background: {{t.plate}}; color: #FFFFFF; border-radius: 6px; outline: 1.5px solid #FFFFFF; outline-offset: -4px">
+<span style="font-family: Gloock, Georgia, serif; font-size: 18px; line-height: 1.1">{{c.name}}</span>
+</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="hr-{{t.k}}" style="padding: 26px 18px 8px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="hr-{{t.k}}" style="margin: 0; font-family: Gloock, Georgia, serif; font-weight: 400; font-size: 28px; color: {{t.head}}">Por região</h2>
+<p style="margin: 0; font-size: 15px; color: {{t.ink2}}">Toque num distrito para ver as marcas que lá fabricam.</p>
+<div style="display: flex; justify-content: center; padding: 6px 0"><svg viewBox="-3 -3 106 209.6" style="width: 250px; height: auto; display: block" role="group" aria-label="Mapa de distritos"><a href="#" aria-label="Aveiro"><path d="M21.6 64.0 22.4 61.1 22.7 58.3 25.4 48.0 25.8 44.6 29.8 44.6 31.8 43.1 33.7 45.1 33.3 43.2 34.7 43.7 36.4 42.1 37.3 42.7 38.2 43.0 38.2 44.8 41.0 46.1 42.6 44.9 41.3 47.2 41.5 49.2 42.2 50.5 40.3 50.5 39.6 51.3 37.6 50.9 38.2 52.0 37.2 54.4 35.3 55.4 36.6 58.2 36.4 59.4 37.9 60.3 36.0 61.1 36.7 63.3 37.8 64.4 35.2 65.4 35.7 67.1 34.6 68.4 34.6 70.0 31.8 72.0 31.6 73.5 29.4 72.9 30.7 72.1 30.7 69.2 30.1 67.9 28.0 68.7 27.7 65.7 26.7 65.4 26.2 67.7 25.3 67.6Z" fill="{{t.m.AV.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Beja"><path d="M21.4 169.9 23.4 170.3 24.7 172.5 25.4 171.9 27.6 172.4 27.7 170.7 28.7 170.0 28.7 168.8 32.2 167.9 35.3 168.8 36.4 163.1 35.7 161.8 34.8 162.1 33.4 160.7 33.6 158.3 34.3 158.8 35.2 156.7 36.5 157.4 36.7 155.5 41.4 154.0 41.4 152.4 40.4 150.3 44.0 150.0 44.7 151.0 45.9 150.4 50.8 153.2 52.6 153.2 55.3 155.0 56.3 154.6 60.5 155.4 63.9 151.0 66.8 149.9 68.4 152.7 69.8 153.2 69.5 154.1 70.7 156.6 72.3 155.5 74.8 155.6 75.2 154.9 77.5 154.9 76.4 156.5 75.5 161.9 74.2 162.3 72.5 161.1 70.3 163.1 69.4 162.7 67.6 163.7 67.8 165.8 65.8 169.9 62.9 172.9 62.1 176.0 59.9 179.7 60.0 181.4 57.5 181.9 56.8 182.8 54.0 182.3 48.1 185.9 45.3 186.4 45.4 187.6 43.3 189.5 39.6 188.6 37.5 186.8 36.7 185.1 32.7 185.6 32.3 187.0 29.8 187.2 28.0 185.9 26.0 187.3 25.3 186.3 23.2 186.5 22.6 185.1 21.2 184.6 21.6 181.0 20.6 178.6 21.5 173.9 20.8 172.9Z" fill="{{t.m.BE.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Braga"><path d="M20.8 21.3 23.2 20.9 25.9 19.6 27.1 20.4 29.0 20.5 29.8 17.0 32.3 15.7 36.0 15.4 40.3 13.2 42.5 13.6 43.8 13.1 43.5 15.4 41.7 18.2 44.1 17.8 45.9 18.7 45.4 21.6 49.0 22.2 49.8 21.1 51.0 22.6 49.5 25.2 48.4 25.2 47.2 26.5 47.1 28.4 46.1 30.5 44.2 32.7 40.9 31.1 39.7 29.2 38.6 29.2 36.1 31.8 35.5 30.5 33.4 31.1 30.2 30.8 29.7 31.7 26.9 31.9 26.5 30.2 27.0 29.1 25.7 28.8 21.9 26.7Z" fill="{{t.m.BR.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Castelo Branco"><path d="M41.7 87.0 43.6 85.6 44.3 86.0 46.7 84.3 48.3 84.3 47.9 83.2 49.7 82.1 51.1 83.0 51.3 81.0 52.1 81.9 53.3 79.6 51.1 77.3 51.9 75.4 53.4 75.2 55.5 73.8 57.0 71.8 59.3 72.0 60.8 69.0 65.1 69.4 65.8 68.2 67.3 68.4 67.3 70.8 65.9 73.4 68.3 74.3 69.1 73.2 70.4 73.9 72.4 71.9 73.0 73.5 75.1 73.1 77.0 74.3 75.1 75.6 74.6 77.2 75.1 79.5 77.3 80.1 78.7 82.0 79.3 84.1 79.0 86.8 78.3 87.6 78.4 89.5 75.9 91.9 76.2 93.4 75.0 97.4 70.9 98.0 67.9 97.5 65.5 98.5 61.8 97.7 59.2 97.6 56.3 99.2 55.2 98.2 53.9 99.1 53.7 100.4 50.6 102.6 50.7 100.5 47.9 97.4 46.6 97.7 46.6 94.6 44.1 94.5 42.9 97.9 43.7 99.4 41.3 99.7 38.2 98.3 38.5 96.0 37.9 93.1 36.7 92.4 37.0 90.6 38.9 90.3 40.8 88.9Z" fill="{{t.m.CB.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Coimbra"><path d="M21.6 64.0 25.3 67.6 26.2 67.7 26.7 65.4 27.7 65.7 28.0 68.7 30.1 67.9 30.7 69.2 30.7 72.1 29.4 72.9 31.6 73.5 31.8 72.0 34.6 70.0 36.3 70.4 37.7 71.8 40.2 70.9 41.3 71.4 44.0 69.3 47.4 67.6 49.4 65.4 50.5 64.9 51.4 66.5 49.9 67.7 51.4 68.6 51.2 70.7 52.6 71.3 51.3 72.3 50.6 74.0 51.9 75.4 51.1 77.3 53.3 79.6 52.1 81.9 51.3 81.0 51.1 83.0 49.7 82.1 47.9 83.2 48.3 84.3 46.7 84.3 44.3 86.0 43.6 85.6 41.7 87.0 42.1 85.9 40.6 83.4 41.0 81.6 39.9 80.9 39.0 82.4 37.2 82.4 36.3 84.1 36.8 85.9 35.7 85.6 34.1 87.4 32.4 83.4 28.7 85.9 28.6 83.5 27.5 83.3 26.7 84.8 25.0 83.3 21.7 83.0 21.1 83.9 19.1 83.5 18.3 82.7 19.3 78.9 17.9 77.3 19.9 71.2Z" fill="{{t.m.CO.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Guarda"><path d="M50.5 64.9 57.7 61.5 59.4 57.4 57.5 55.9 58.3 55.1 56.5 53.8 58.6 50.2 60.0 50.4 61.9 52.6 63.4 50.0 64.1 49.7 65.7 46.3 64.1 44.7 65.5 44.3 65.1 43.4 66.3 39.8 68.0 39.6 70.6 40.3 72.1 38.3 71.8 40.0 72.9 40.1 72.5 42.1 75.7 44.2 77.6 44.1 79.7 47.2 80.1 49.1 81.3 49.8 80.6 54.9 81.7 58.5 80.2 62.3 81.5 62.9 81.7 64.4 80.1 66.7 80.4 68.2 82.1 70.2 81.8 71.3 79.6 72.8 79.5 74.1 77.0 74.3 75.1 73.1 73.0 73.5 72.4 71.9 70.4 73.9 69.1 73.2 68.3 74.3 65.9 73.4 67.3 70.8 67.3 68.4 65.8 68.2 65.1 69.4 60.8 69.0 59.3 72.0 57.0 71.8 55.5 73.8 53.4 75.2 51.9 75.4 50.6 74.0 51.3 72.3 52.6 71.3 51.2 70.7 51.4 68.6 49.9 67.7 51.4 66.5ZM63.1 48.3 64.1 49.1 62.7 49.7Z" fill="{{t.m.GU.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Leiria"><path d="M18.3 82.7 19.1 83.5 21.1 83.9 21.7 83.0 25.0 83.3 26.7 84.8 27.5 83.3 28.6 83.5 28.7 85.9 32.4 83.4 34.1 87.4 35.7 85.6 36.8 85.9 36.3 84.1 37.2 82.4 39.0 82.4 39.9 80.9 41.0 81.6 40.6 83.4 42.1 85.9 41.7 87.0 40.8 88.9 38.9 90.3 37.0 90.6 36.7 92.4 35.2 92.1 35.5 93.6 32.5 94.1 31.6 95.0 30.9 90.8 29.7 91.2 27.4 93.2 26.1 92.7 24.9 93.3 25.0 95.8 26.2 96.4 25.7 97.7 24.1 98.5 25.0 101.6 23.7 103.2 22.8 102.9 23.3 104.8 21.1 104.7 18.0 105.4 16.8 108.3 15.1 109.7 15.3 112.0 13.1 111.5 11.4 113.1 11.3 114.0 9.7 115.3 9.0 113.9 9.0 111.8 6.8 111.6 6.1 112.5 4.8 112.2 3.9 109.8 8.2 106.5 9.9 104.0 10.8 103.6 12.8 100.6 12.5 99.5 13.6 95.5 15.8 89.7Z" fill="{{t.m.LE.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Lisboa"><path d="M4.8 112.2 6.1 112.5 6.8 111.6 9.0 111.8 9.0 113.9 9.7 115.3 11.3 114.0 11.4 113.1 13.1 111.5 15.3 112.0 15.6 113.7 17.0 114.2 18.9 113.8 20.1 114.8 20.4 116.3 17.8 117.0 18.9 118.4 20.4 119.1 21.7 121.3 19.9 122.9 18.4 125.8 17.8 128.0 16.1 130.4 15.2 131.7 14.2 129.2 12.4 132.0 11.3 135.0 8.6 135.7 6.1 135.8 5.5 136.4 2.9 135.2 2.2 135.8 0.4 135.1 0.9 133.4 0.0 132.2 2.4 126.3 2.4 120.7 4.3 116.8 4.8 114.8Z" fill="{{t.m.LI.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Portalegre"><path d="M50.6 102.6 53.7 100.4 53.9 99.1 55.2 98.2 56.3 99.2 59.2 97.6 60.4 100.5 62.6 102.8 63.7 102.9 64.0 104.3 66.6 105.7 65.8 108.8 66.1 110.3 68.5 112.7 68.2 115.5 71.5 117.2 71.2 119.4 72.3 119.7 74.7 119.1 76.1 120.2 77.0 122.7 73.9 127.3 74.5 128.4 72.6 130.8 71.7 130.9 69.4 133.4 68.5 132.0 69.1 131.2 68.1 129.6 66.6 129.9 65.0 131.5 63.7 131.4 62.6 128.4 62.7 127.4 61.4 126.5 61.8 125.1 59.4 123.3 59.1 124.9 57.3 125.4 55.8 126.9 54.4 127.1 53.4 126.0 51.7 127.7 49.1 127.2 47.6 124.6 44.6 125.9 44.9 124.4 42.9 123.1 42.2 124.8 42.2 122.7 40.0 122.8 39.0 124.2 38.4 124.1 37.5 123.1 36.5 120.5 34.9 119.7 36.3 117.2 38.3 116.5 40.7 113.8 41.3 112.4 42.9 112.7 44.5 110.2 44.4 109.4 46.3 108.6 47.1 107.6 45.0 105.1 46.7 101.5 49.8 103.6Z" fill="{{t.m.PL.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Porto"><path d="M21.9 26.7 25.7 28.8 27.0 29.1 26.5 30.2 26.9 31.9 29.7 31.7 30.2 30.8 33.4 31.1 35.5 30.5 36.1 31.8 38.6 29.2 39.7 29.2 40.9 31.1 44.2 32.7 46.1 30.5 46.4 32.2 48.1 33.4 47.7 33.9 49.1 35.8 48.0 40.5 46.8 40.4 43.7 41.7 42.5 41.3 40.9 41.9 39.0 41.6 37.3 42.7 36.4 42.1 34.7 43.7 33.3 43.2 33.7 45.1 31.8 43.1 29.8 44.6 25.8 44.6 25.1 39.7 24.0 37.7 22.3 30.5 21.5 29.1Z" fill="{{t.m.PO.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Viana do Castelo"><path d="M20.8 21.3 23.2 20.9 25.9 19.6 27.1 20.4 29.0 20.5 29.8 17.0 32.3 15.7 36.0 15.4 40.3 13.2 40.1 10.8 39.3 11.0 38.8 9.5 40.4 6.7 42.7 5.4 42.4 3.2 39.8 3.5 39.4 0.1 37.7 0.7 35.3 2.8 32.3 3.2 29.4 3.0 28.8 3.9 26.1 4.2 25.3 5.9 22.8 7.4 22.7 8.3 20.6 9.5 19.0 11.4 18.7 15.7Z" fill="{{t.m.VC.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Vila Real"><path d="M43.8 13.1 44.9 12.7 45.7 11.2 47.7 10.7 48.7 8.9 48.6 11.5 49.2 12.1 50.0 10.7 53.4 10.3 54.2 9.7 55.8 10.7 57.9 10.9 57.0 12.7 59.2 12.5 60.0 11.5 61.8 11.3 62.6 13.6 64.5 11.8 66.0 12.2 69.5 10.8 69.2 12.6 70.3 16.1 69.2 17.3 68.2 20.1 67.7 23.2 68.6 24.8 66.9 25.0 66.2 27.2 64.5 28.0 64.6 30.9 66.0 31.9 64.7 32.3 63.7 34.0 63.7 35.7 62.5 37.0 58.9 37.9 57.7 39.1 55.4 38.9 54.5 39.7 49.0 39.1 48.0 40.5 49.1 35.8 47.7 33.9 48.1 33.4 46.4 32.2 46.1 30.5 47.1 28.4 47.2 26.5 48.4 25.2 49.5 25.2 51.0 22.6 49.8 21.1 49.0 22.2 45.4 21.6 45.9 18.7 44.1 17.8 41.7 18.2 43.5 15.4Z" fill="{{t.m.VR.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Viseu"><path d="M37.3 42.7 39.0 41.6 40.9 41.9 42.5 41.3 43.7 41.7 46.8 40.4 48.0 40.5 49.0 39.1 54.5 39.7 55.4 38.9 57.7 39.1 58.9 37.9 62.5 37.0 63.7 37.6 64.2 39.0 66.3 39.8 65.1 43.4 65.5 44.3 64.1 44.7 65.7 46.3 64.1 49.7 63.4 50.0 61.9 52.6 60.0 50.4 58.6 50.2 56.5 53.8 58.3 55.1 57.5 55.9 59.4 57.4 57.7 61.5 50.5 64.9 49.4 65.4 47.4 67.6 44.0 69.3 41.3 71.4 40.2 70.9 37.7 71.8 36.3 70.4 34.6 70.0 34.6 68.4 35.7 67.1 35.2 65.4 37.8 64.4 36.7 63.3 36.0 61.1 37.9 60.3 36.4 59.4 36.6 58.2 35.3 55.4 37.2 54.4 38.2 52.0 37.6 50.9 39.6 51.3 40.3 50.5 42.2 50.5 41.5 49.2 41.3 47.2 42.6 44.9 41.0 46.1 38.2 44.8 38.2 43.0Z" fill="{{t.m.VS.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Bragança"><path d="M62.5 37.0 63.7 35.7 63.7 34.0 64.7 32.3 66.0 31.9 64.6 30.9 64.5 28.0 66.2 27.2 66.9 25.0 68.6 24.8 67.7 23.2 68.2 20.1 69.2 17.3 70.3 16.1 69.2 12.6 69.5 10.8 70.1 9.1 70.1 6.9 71.2 6.4 73.2 7.9 75.3 8.0 76.0 7.1 77.2 8.2 80.9 8.2 81.2 6.3 82.5 6.7 83.0 8.3 84.6 8.7 87.6 8.1 87.9 7.3 89.2 8.8 88.5 10.6 90.1 10.9 89.0 15.5 89.2 18.4 90.2 19.3 92.1 18.6 95.0 18.7 98.0 20.4 100.0 22.7 96.5 27.6 95.6 29.3 96.2 30.0 93.9 30.2 92.1 33.5 89.1 35.6 86.1 35.5 84.6 38.0 82.5 40.0 82.9 41.2 81.3 43.8 77.6 44.1 75.7 44.2 72.5 42.1 72.9 40.1 71.8 40.0 72.1 38.3 70.6 40.3 68.0 39.6 66.3 39.8 64.2 39.0 63.7 37.6Z" fill="{{t.m.BG.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Évora"><path d="M28.8 132.9 30.2 131.2 31.1 131.7 33.9 129.3 35.1 129.9 36.2 128.8 37.8 130.8 38.6 130.3 39.5 131.7 41.0 132.5 41.6 131.3 40.5 131.0 39.7 129.5 40.5 128.9 37.1 127.3 38.4 124.1 39.0 124.2 40.0 122.8 42.2 122.7 42.2 124.8 42.9 123.1 44.9 124.4 44.6 125.9 47.6 124.6 49.1 127.2 51.7 127.7 53.4 126.0 54.4 127.1 55.8 126.9 57.3 125.4 59.1 124.9 59.4 123.3 61.8 125.1 61.4 126.5 62.7 127.4 62.6 128.4 63.7 131.4 65.0 131.5 66.6 129.9 68.1 129.6 69.1 131.2 68.5 132.0 69.4 133.4 67.7 134.5 67.3 137.8 68.2 138.4 66.4 141.5 65.9 145.6 66.9 146.2 68.0 148.3 71.0 152.0 72.3 155.5 70.7 156.6 69.5 154.1 69.8 153.2 68.4 152.7 66.8 149.9 63.9 151.0 60.5 155.4 56.3 154.6 55.3 155.0 52.6 153.2 50.8 153.2 45.9 150.4 44.7 151.0 44.0 150.0 40.4 150.3 39.3 149.4 35.6 148.2 36.7 146.7 34.2 141.4 32.9 142.2 30.0 142.5 26.0 141.3 25.4 139.2 26.8 137.6 30.2 134.8 30.5 133.0Z" fill="{{t.m.EV.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Santarém"><path d="M36.7 92.4 37.9 93.1 38.5 96.0 38.2 98.3 41.3 99.7 43.7 99.4 42.9 97.9 44.1 94.5 46.6 94.6 46.6 97.7 47.9 97.4 50.7 100.5 50.6 102.6 49.8 103.6 46.7 101.5 45.0 105.1 47.1 107.6 46.3 108.6 44.4 109.4 44.5 110.2 42.9 112.7 41.3 112.4 40.7 113.8 38.3 116.5 36.3 117.2 34.9 119.7 36.5 120.5 37.5 123.1 38.4 124.1 37.1 127.3 40.5 128.9 39.7 129.5 40.5 131.0 41.6 131.3 41.0 132.5 39.5 131.7 38.6 130.3 37.8 130.8 36.2 128.8 35.1 129.9 33.9 129.3 31.1 131.7 30.2 131.2 28.8 132.9 27.0 132.4 27.3 129.8 26.0 131.1 24.0 129.8 22.6 133.7 20.8 133.8 20.1 133.0 18.4 133.8 17.4 133.4 16.1 130.4 16.1 130.4 17.8 128.0 18.4 125.8 19.9 122.9 21.7 121.3 20.4 119.1 18.9 118.4 17.8 117.0 20.4 116.3 20.1 114.8 18.9 113.8 17.0 114.2 15.6 113.7 15.3 112.0 15.1 109.7 16.8 108.3 18.0 105.4 21.1 104.7 23.3 104.8 22.8 102.9 23.7 103.2 25.0 101.6 24.1 98.5 25.7 97.7 26.2 96.4 25.0 95.8 24.9 93.3 26.1 92.7 27.4 93.2 29.7 91.2 30.9 90.8 31.6 95.0 32.5 94.1 35.5 93.6 35.2 92.1Z" fill="{{t.m.SA.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Setúbal"><path d="M16.1 130.4 17.4 133.4 18.4 133.8 20.1 133.0 20.8 133.8 22.6 133.7 24.0 129.8 26.0 131.1 27.3 129.8 27.0 132.4 28.8 132.9 30.5 133.0 30.2 134.8 26.8 137.6 25.4 139.2 26.0 141.3 30.0 142.5 32.9 142.2 34.2 141.4 36.7 146.7 35.6 148.2 39.3 149.4 40.4 150.3 41.4 152.4 41.4 154.0 36.7 155.5 36.5 157.4 35.2 156.7 34.3 158.8 33.6 158.3 33.4 160.7 34.8 162.1 35.7 161.8 36.4 163.1 35.3 168.8 32.2 167.9 28.7 168.8 28.7 170.0 27.7 170.7 27.6 172.4 25.4 171.9 24.7 172.5 23.4 170.3 21.4 169.9 20.9 165.6 18.5 164.5 19.5 163.1 21.3 158.0 21.9 153.9 21.7 150.3 20.1 146.0 17.8 143.6 20.2 145.3 21.2 147.5 21.3 146.2 25.4 146.7 23.6 145.6 23.1 141.4 21.4 141.8 21.9 142.9 21.1 144.3 18.5 142.4 17.1 143.7 13.2 145.8 12.0 145.5 8.4 146.6 9.5 144.1 9.6 142.1 8.6 138.8 7.3 136.7 10.7 135.8 12.1 137.4 13.8 136.0 13.7 134.9Z" fill="{{t.m.SE.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><a href="#" aria-label="Faro"><path d="M60.0 181.4 57.5 181.9 56.8 182.8 54.0 182.3 48.1 185.9 45.3 186.4 45.4 187.6 43.3 189.5 39.6 188.6 37.5 186.8 36.7 185.1 32.7 185.6 32.3 187.0 29.8 187.2 28.0 185.9 26.0 187.3 25.3 186.3 23.2 186.5 22.6 185.1 21.2 184.6 19.0 189.4 19.3 191.4 17.9 194.6 18.0 195.3 15.2 201.1 17.2 202.0 18.3 200.4 23.3 198.6 25.1 198.9 25.7 197.5 29.0 197.4 32.2 198.7 34.1 198.0 36.2 199.2 39.7 198.5 42.9 199.8 47.4 203.2 48.6 203.6 55.9 198.4 57.8 196.7 60.3 195.4 63.6 195.5 62.5 192.4 62.2 186.7 61.6 186.0 61.4 182.8Z" fill="{{t.m.FA.f}}" stroke="{{t.bg}}" stroke-width="0.8" stroke-linejoin="round"></path></a><path d="M1.7 137.5 6.0 138.1 6.9 139.5 7.8 142.3 6.6 146.4 7.2 148.0 13.6 147.5 17.2 145.6 18.6 147.0 19.9 150.6 19.5 157.5 16.7 164.4 17.3 165.8 19.2 166.8 19.0 173.1 19.6 174.3 18.8 178.5 19.7 181.3 19.5 184.1 17.3 188.8 17.5 191.2 16.1 195.1 13.5 200.7 13.9 202.4 17.5 203.7 19.4 201.9 23.5 200.5 25.5 200.7 26.9 199.3 28.7 199.2 36.0 201.0 39.5 200.3 46.5 204.7 48.7 205.4 58.8 198.2 60.7 197.2 64.9 196.8 65.4 195.4 64.2 192.0 64.0 186.3 63.1 182.2 61.8 180.1 64.5 173.8 67.4 170.7 69.5 166.4 69.5 164.7 71.0 164.7 72.7 163.4 74.3 164.1 76.9 163.0 79.3 155.1 77.9 153.2 73.5 153.7 72.5 151.0 67.8 144.7 68.1 142.1 69.9 138.8 69.4 135.5 73.8 132.2 75.9 129.5 76.0 127.4 78.8 122.6 77.3 118.9 75.3 117.4 73.3 117.6 72.8 115.9 70.1 114.4 70.2 112.1 67.6 108.8 68.2 104.8 62.0 99.6 65.5 100.3 68.1 99.4 71.0 99.8 75.5 99.1 76.6 98.2 77.9 92.5 80.1 90.1 81.1 84.2 80.2 81.0 76.5 77.3 77.6 76.1 80.8 75.3 81.3 73.8 83.4 72.2 83.9 70.3 82.0 67.1 83.5 64.6 82.5 61.4 83.5 58.7 82.4 54.8 83.0 49.7 80.9 45.6 82.7 44.9 84.6 41.8 84.6 40.5 87.1 37.4 89.9 37.2 93.4 34.8 95.1 31.9 97.5 31.2 98.0 28.5 101.7 23.1 101.6 21.8 99.3 19.1 95.9 17.2 90.9 17.1 91.9 10.7 90.8 7.9 88.9 5.8 87.5 5.6 84.6 6.8 83.4 5.1 81.1 4.5 79.9 5.1 79.4 6.4 77.9 6.4 76.2 5.3 73.8 6.1 70.9 4.6 68.5 6.0 68.1 9.4 63.4 10.4 62.1 9.6 59.3 9.8 54.4 7.9 50.5 8.8 49.8 7.5 48.4 7.1 42.3 11.7 41.0 9.2 44.3 6.2 44.1 2.8 43.2 1.6 41.4 1.5 40.9 -0.8 39.3 -1.7 36.7 -0.9 34.5 1.1 29.2 1.2 25.2 2.6 23.9 4.7 17.5 10.3 16.9 16.0 19.1 21.8 20.0 26.8 19.7 29.4 23.4 40.3 24.0 44.6 20.7 60.7 16.1 77.0 17.3 79.4 11.8 95.0 10.8 100.3 6.9 105.3 2.2 109.4 3.0 114.6 0.6 120.2 0.6 125.9 -1.8 132.3 -0.8 136.4Z" fill="none" stroke="{{t.blue}}" stroke-width="0.75" stroke-dasharray="2.6 1.5 3.4 1.2 1.9 1.6 3 1.3" stroke-linecap="round" pointer-events="none"></path><text x="29.5" y="56.8" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.AV.l}}" pointer-events="none">AV</text><text x="47.4" y="169.4" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.BE.l}}" pointer-events="none">BE</text><text x="35.8" y="23.9" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.BR.l}}" pointer-events="none">BR</text><text x="62.5" y="85.0" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.CB.l}}" pointer-events="none">CB</text><text x="34.9" y="76.4" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.CO.l}}" pointer-events="none">CO</text><text x="69.8" y="56.6" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.GU.l}}" pointer-events="none">GU</text><text x="18.9" y="98.1" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.LE.l}}" pointer-events="none">LE</text><text x="10.8" y="124.4" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.LI.l}}" pointer-events="none">LI</text><text x="54.0" y="116.0" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.PL.l}}" pointer-events="none">PL</text><text x="36.3" y="36.7" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.PO.l}}" pointer-events="none">PO</text><text x="29.5" y="10.2" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.VC.l}}" pointer-events="none">VC</text><text x="59.2" y="24.0" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.VR.l}}" pointer-events="none">VR</text><text x="47.1" y="54.7" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.VS.l}}" pointer-events="none">VS</text><text x="82.1" y="26.1" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.BG.l}}" pointer-events="none">BG</text><text x="46.4" y="140.3" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.EV.l}}" pointer-events="none">EV</text><text x="29.3" y="112.2" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.SA.l}}" pointer-events="none">SA</text><text x="31.3" y="151.3" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.SE.l}}" pointer-events="none">SE</text><text x="40.6" y="193.5" text-anchor="middle" dominant-baseline="central" font-family="Gloock, Georgia, serif" font-size="4.6" fill="{{t.m.FA.l}}" pointer-events="none">FA</text></svg></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px">
+<a href="#" style="min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: 1px dashed {{t.blue}}; color: {{t.head}}; font-size: 15px; text-decoration: none">Açores</a>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 6px; border: 1px dashed {{t.blue}}; color: {{t.head}}; font-size: 15px; text-decoration: none">Madeira</a>
+</div>
+</section>
+
+<section aria-labelledby="hn-{{t.k}}" style="padding: 26px 0 8px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="hn-{{t.k}}" style="margin: 0 18px; font-family: Gloock, Georgia, serif; font-weight: 400; font-size: 28px; color: {{t.head}}">Chegaram agora</h2>
+<div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 18px 8px">
+<sc-for list="{{t.brands}}" as="b" hint-placeholder-count="3">
+<a href="#" style="flex: 0 0 230px; display: flex; flex-direction: column; background: {{t.surface}}; border: 1px solid {{t.line}}; border-radius: 10px; overflow: hidden; text-decoration: none; color: {{t.ink}}">
+<span class="{{b.tile}}" style="height: 96px; background-size: 48px 48px; display: flex; align-items: center; justify-content: center">
+<span style="width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; background: {{t.surface}}; border: 2px solid {{t.blue}}; border-radius: 8px; font-family: Gloock, Georgia, serif; font-size: 22px; color: {{t.head}}">{{b.ini}}</span>
+</span>
+<span style="padding: 12px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: Gloock, Georgia, serif; font-size: 20px; color: {{t.head}}">{{b.name}}</span>
+<span style="font-size: 13px; color: {{t.ink2}}">{{b.catName}} · {{b.dist}}</span>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: {{t.ink2}}; padding-top: 4px"><img src="{{b.trustImg}}" alt="" width="16" height="19">{{b.trustLabel}}</span>
+</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="ht-{{t.k}}" style="margin: 22px 18px 30px; padding: 20px 18px; border: 2px dashed {{t.blue}}; border-radius: 14px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="ht-{{t.k}}" style="margin: 0; font-family: Gloock, Georgia, serif; font-weight: 400; font-size: 28px; color: {{t.head}}">Como sabemos</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: {{t.ink2}}">Cada marca tem um escudo. Quanto mais provas, mais ponto cosido.</p>
+<sc-for list="{{t.ladder}}" as="s" hint-placeholder-count="3">
+<div style="display: flex; gap: 14px; align-items: flex-start">
+<img src="{{s.img}}" alt="" width="44" height="51" style="flex-shrink: 0">
+<div style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-weight: 700; font-size: 16px">{{s.t}}</span>
+<span style="font-size: 14px; line-height: 1.45; color: {{t.ink2}}">{{s.d}}</span>
+</div>
+</div>
+</sc-for>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 600; color: {{t.blue}}">Como funciona a verificação</a>
+</section>
+
+<footer>
+<div class="calc-{{t.k}}" style="height: 72px" aria-hidden="true"></div>
+<div style="padding: 22px 18px 28px; background: {{t.surface2}}; display: flex; flex-direction: column; gap: 4px">
+<span style="display: flex; align-items: center; gap: 8px; padding-bottom: 8px"><img src="{{t.shield}}" alt="" width="22" height="26"><span style="font-family: Gloock, Georgia, serif; font-size: 18px; color: {{t.head}}">feito em portugal</span></span>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px">Dados abertos · CC BY 4.0</a>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px">API JSON</a>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px">Sugerir uma marca</a>
+<a href="#" style="min-height: 44px; display: flex; align-items: center; font-size: 15px">Sobre o projeto</a>
+<span style="padding-top: 8px; font-size: 13px; color: {{t.ink2}}">Sem contas, sem cookies, sem rastreio.</span>
+</div>
+</footer>
+
+</div>
+</div>
+</sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":880,"height":2600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const IDS = ['VC','BR','VR','BG','PO','VS','GU','AV','CO','CB','LE','SA','PL','LI','SE','EV','BE','FA'];
+    const mk = (t, sel) => { const m = {}; IDS.forEach((id) => { const on = !!sel[id]; m[id] = { f: on ? t.blue : (t.k === 'd' ? '#24324F' : '#D6E0F1'), l: on ? t.onBlue : t.head, p: on ? 'true' : 'false' }; }); return m; };
+    const L = { k: 'l', cls: '', label: 'claro', bg: '#F6F4EE', surface: '#FFFFFF', surface2: '#E9EEF7', ink: '#14161C', ink2: '#3E4456', line: '#DCD8CD', blue: '#1A4C9C', head: '#0E2F66', onBlue: '#FFFFFF', plate: '#1A4C9C', shield: '../assets/logo/shield-cobalt.svg', tr: ['../assets/trust/trust-1-light.svg', '../assets/trust/trust-2-light.svg', '../assets/trust/trust-3-light.svg'] };
+    const D = { k: 'd', cls: 'dk', label: 'escuro', bg: '#0E1320', surface: '#161D2E', surface2: '#1E2A47', ink: '#ECEFF5', ink2: '#A9B3C8', line: '#2A3550', blue: '#8EB0EA', head: '#DCE6F8', onBlue: '#0E1320', plate: '#2456AE', shield: '../assets/logo/shield-light.svg', tr: ['../assets/trust/trust-1-dark.svg', '../assets/trust/trust-2-dark.svg', '../assets/trust/trust-3-dark.svg'] };
+    const cats = [['calcado', 'Calçado'], ['vestuario', 'Vestuário'], ['ceramica', 'Cerâmica'], ['casa', 'Casa'], ['alimentacao', 'Alimentação'], ['cosmetica', 'Cosmética']];
+    const map = [['VC', 'Viana do Castelo', '1', 1], ['BR', 'Braga', '2', 1], ['VR', 'Vila Real', '3', 1], ['BG', 'Bragança', '4', 1], ['PO', 'Porto', '1 / span 2', 2], ['VS', 'Viseu', '3', 2], ['GU', 'Guarda', '4', 2], ['AV', 'Aveiro', '1', 3], ['CO', 'Coimbra', '2', 3], ['CB', 'Castelo Branco', '3 / span 2', 3], ['LE', 'Leiria', '1', 4], ['SA', 'Santarém', '2', 4], ['PL', 'Portalegre', '3 / span 2', 4], ['LI', 'Lisboa', '1', 5], ['SE', 'Setúbal', '2', 5], ['EV', 'Évora', '3 / span 2', 5], ['BE', 'Beja', '2 / span 3', 6], ['FA', 'Faro', '2 / span 3', 7]].map(([a, n, gc, r]) => ({ a, n, gc, r }));
+    const brands = [
+      { ini: 'TN', name: 'Tear Norte', cat: 'vestuario', catName: 'Vestuário', dist: 'Braga', trust: 2 },
+      { ini: 'LV', name: 'Louça do Vale', cat: 'ceramica', catName: 'Cerâmica', dist: 'Leiria', trust: 2 },
+      { ini: 'SM', name: 'Sabão Maré', cat: 'cosmetica', catName: 'Cosmética', dist: 'Porto', trust: 1 }
+    ];
+    const tl = ['Declarado', 'Com fontes', 'Verificada'];
+    const ld = ['A marca diz que fabrica cá. Ainda sem fonte independente.', 'Há provas públicas: morada da fábrica, certificação, reportagem.', 'Confirmado pela comunidade com documento ou visita à fábrica.'];
+    const build = (t) => Object.assign({}, t, {
+      cats: cats.map(([c, name]) => ({ name, tile: 't-' + c + '-' + t.k })),
+      m: mk(t, {}),
+      brands: brands.map((b) => Object.assign({}, b, { tile: 't-' + b.cat + '-' + t.k, trustImg: t.tr[b.trust - 1], trustLabel: tl[b.trust - 1] })),
+      ladder: [0, 1, 2].map((i) => ({ img: t.tr[i], t: (i + 1) + ' · ' + tl[i], d: ld[i] }))
+    });
+    return { themes: [build(L), build(D)] };
+  }
+}
+</script>
+</body>
+</html>

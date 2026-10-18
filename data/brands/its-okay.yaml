@@ -1,0 +1,32 @@
+slug: its-okay
+status: published
+name: It's Okay
+description:
+  pt: >-
+    Marca de Lisboa com produção em Portugal, centrada em camisolas e t-shirts de
+    desenho sóbrio.
+  en: >-
+    Lisbon label manufacturing in Portugal, focused on sweatshirts and tees with
+    understated graphics.
+website: https://www.itsokaystore.com
+category: moda-e-vestuario
+tags: [contemporaneo, minimalista]
+products: [camisolas, t-shirts]
+production:
+  scope: total
+location:
+  district: braga
+price_range: 2
+where_to_buy:
+  online_store: https://www.itsokaystore.com
+social:
+  instagram: itsokay________
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-18
+  source: import

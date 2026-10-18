@@ -1,0 +1,324 @@
+---
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { SORTS, VIEWS } from '~/lib/filters.ts';
+
+interface Props {
+  lang: Lang;
+  /** id of the <BrandFilters> panel this toolbar controls. */
+  filtersId: string;
+}
+
+const { lang, filtersId } = Astro.props;
+
+const config = {
+  strings: {
+    results: t(lang, 'search.results'),
+    resultsOne: t(lang, 'search.resultsOne'),
+    searchEmpty: t(lang, 'search.empty'),
+    searchEmptyHint: t(lang, 'search.emptyHint'),
+    loading: t(lang, 'search.loading'),
+    error: t(lang, 'search.error'),
+    filtered: t(lang, 'brands.filtered'),
+    filteredOne: t(lang, 'brands.filteredOne'),
+    filtersEmpty: t(lang, 'filters.empty'),
+    filtersEmptyHint: t(lang, 'filters.emptyHint'),
+    clearOne: t(lang, 'filters.clearOne'),
+  },
+};
+---
+
+<!-- Hidden until the script runs: without JavaScript the full list is already
+     on the page and the category links below it still work. -->
+<div class="browser" data-browser data-config={JSON.stringify(config)} hidden>
+  <form class="search" role="search" method="get" action={paths.brands(lang)}>
+    <label class="visually-hidden" for="q-listing">{t(lang, 'search.label')}</label>
+    <svg class="search__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        d="M8.6 15.2a6.6 6.6 0 1 0 0-13.2 6.6 6.6 0 0 0 0 13.2Zm4.8-1.8 4.2 4.2"
+      />
+    </svg>
+    <input
+      id="q-listing"
+      name="q"
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      enterkeyhint="search"
+      placeholder={t(lang, 'search.placeholder')}
+      data-search-input
+    />
+    <button class="search__clear" type="button" data-search-clear hidden>
+      <span class="visually-hidden">{t(lang, 'search.clear')}</span>
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" width="14" height="14">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m4 4 8 8M12 4l-8 8" />
+      </svg>
+    </button>
+  </form>
+
+  <button
+    class="browser__toggle"
+    type="button"
+    data-filters-toggle
+    aria-expanded="false"
+    aria-controls={filtersId}
+  >
+    {t(lang, 'filters.toggle')}<span class="browser__badge" data-filters-total hidden></span>
+  </button>
+
+  <label class="browser__sort">
+    <span class="visually-hidden">{t(lang, 'sort.label')}</span>
+    <select data-sort>
+      {SORTS.map((sort) => <option value={sort}>{t(lang, `sort.${sort}`)}</option>)}
+    </select>
+  </label>
+
+  <div class="views" role="group" aria-label={t(lang, 'view.label')} data-view-switch>
+    {
+      VIEWS.map((view) => (
+        <button type="button" data-view={view} aria-pressed="false">
+          {t(lang, `view.${view}`)}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="browser__chips" data-chips hidden></div>
+</div>
+
+<script>
+  // The controller lives in a module so it can be read (and later tested)
+  // outside the component.
+  import { initListing } from '~/lib/listing-controller.ts';
+
+  initListing();
+</script>
+
+<style>
+  /* Mobile: search, then filters + sort side by side, then the view switch. */
+  .browser {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--fep-space-2);
+    margin-block: var(--fep-space-3) var(--fep-space-4);
+  }
+
+  .search,
+  .views,
+  .browser__chips {
+    grid-column: 1 / -1;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: var(--fep-space-2);
+    min-height: 48px;
+    margin-bottom: var(--fep-space-1);
+    padding: 0 var(--fep-space-2) 0 14px;
+    border: 1.5px solid var(--fep-ink);
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+  }
+
+  .search:focus-within {
+    outline: 3px solid var(--fep-focus);
+    outline-offset: 2px;
+  }
+
+  .search__icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: none;
+    color: var(--fep-ink-2);
+  }
+
+  .search input {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: var(--fep-text);
+  }
+
+  .search input:focus {
+    outline: none;
+  }
+
+  .search input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .search__clear {
+    display: grid;
+    place-items: center;
+    width: var(--fep-touch);
+    height: var(--fep-touch);
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: var(--fep-radius);
+    background: none;
+    color: var(--fep-ink-2);
+    cursor: pointer;
+  }
+
+  .search__clear:hover {
+    color: var(--fep-ink);
+    background: var(--fep-surface-2);
+  }
+
+  .browser__toggle {
+    min-height: var(--fep-touch);
+    padding: 0 var(--fep-space-3);
+    border: 0;
+    border-radius: var(--fep-radius);
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+    font: inherit;
+    font-size: var(--fep-text-sm);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .browser__badge::before {
+    content: ' · ';
+  }
+
+  .browser__badge[hidden] {
+    display: none;
+  }
+
+  .browser__sort select {
+    width: 100%;
+    min-height: var(--fep-touch);
+    padding: 0 10px;
+    border: 1.5px solid var(--fep-ink);
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    font: inherit;
+    font-size: var(--fep-text-sm);
+  }
+
+  /* Segmented control; the pressed state is a fill and aria-pressed, not colour alone. */
+  .views {
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    border: 1.5px solid var(--fep-accent);
+    border-radius: var(--fep-radius);
+    overflow: hidden;
+  }
+
+  .views button {
+    min-height: 40px;
+    padding: 0 var(--fep-space-4);
+    border: 0;
+    background: transparent;
+    color: var(--fep-accent);
+    font: inherit;
+    font-size: var(--fep-text-xs);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .views button + button {
+    border-left: 1.5px solid var(--fep-accent);
+  }
+
+  .views button[aria-pressed='true'] {
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+    font-weight: 700;
+  }
+
+  .views button:focus-visible {
+    outline-offset: -5px;
+  }
+
+  /* Chips scroll sideways on a phone instead of pushing the list down. */
+  .browser__chips {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 4px 2px;
+    margin-inline: -4px;
+    /* Swiped on touch; a scrollbar would only add a strip under the chips. */
+    scrollbar-width: none;
+  }
+
+  .browser__chips[hidden] {
+    display: none;
+  }
+
+  /* Chips are created by the script, so their rules have to be global. */
+  .browser__chips :global(.chip) {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--fep-accent);
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface-2);
+    color: var(--fep-heading);
+    font: inherit;
+    font-size: var(--fep-text-xs);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .browser__chips :global(.chip:hover) {
+    background: var(--fep-surface);
+  }
+
+  .browser__chips :global(.chip__x) {
+    font-size: 1.05em;
+    line-height: 1;
+  }
+
+  /* Desktop: one row, the filters are already in the sidebar. */
+  @media (min-width: 60rem) {
+    .browser {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 10px;
+      align-items: center;
+      margin-block: var(--fep-space-4) var(--fep-space-5);
+    }
+
+    .search {
+      grid-column: auto;
+      margin: 0;
+    }
+
+    .views {
+      grid-column: auto;
+    }
+
+    .browser__toggle {
+      display: none;
+    }
+
+    .browser__sort select {
+      min-height: 48px;
+    }
+
+    .views button {
+      min-height: 45px;
+    }
+
+    .browser__chips {
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+slug: castelbel
+status: published
+name: Castelbel
+description:
+  pt: >-
+    Sabonetes perfumados, cuidados de corpo, velas e difusores feitos em Portugal, com
+    coleções reconhecíveis pelas embalagens ilustradas.
+  en: >-
+    Scented soaps, body care, candles and diffusers made in Portugal, with collections
+    recognisable by their illustrated packaging.
+website: https://castelbel.com
+category: cosmetica-e-higiene
+subcategory: sabonetes-e-banho
+tags: [classico, presente]
+products: [sabonetes, cremes, velas]
+founded: 1999
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      Os sabonetes são produzidos na fábrica da Maia; a origem das velas, difusores e
+      cremes não é indicada.
+    en: >-
+      The soaps are made at the Maia factory; the origin of the candles, diffusers and
+      creams is not stated.
+location:
+  district: porto
+  municipality: maia
+price_range: 3
+typical_price:
+  product: sabonetes
+  eur: 8.45
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://castelbel.com
+  physical_stores:
+    - name: Castelbel Centro Cultural de Belém
+      city: Lisboa
+      address: Rua Bartolomeu Dias 7, 1449-003 Lisboa
+    - name: Castelbel Palácio das Artes
+      city: Porto
+      address: Rua de Ferreira Borges, 4050-018 Porto
+    - name: Castelbel Santa Catarina
+      city: Porto
+      address: Rua de Santa Catarina 28, 4000-441 Porto
+    - name: Castelbel Centro Colombo
+      city: Lisboa
+      address: Centro Colombo, Av. Lusíada, Piso 0, 1500-392 Lisboa
+    - name: Castelbel NorteShopping
+      city: Matosinhos
+      address: NorteShopping, Rua Sara Afonso, Piso 0, 4460-841 Senhora da Hora
+social:
+  instagram: castelbelporto
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

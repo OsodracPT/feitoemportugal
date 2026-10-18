@@ -1,0 +1,29 @@
+slug: lachoix
+status: published
+name: Lachoix
+description:
+  pt: >-
+    Sapatos de mulher feitos à mão em Portugal em quantidades limitadas, por uma marca
+    fundada em 2018.
+  en: >-
+    Women's shoes handmade in Portugal in limited quantities, from a brand founded in
+    2018.
+website: https://www.lachoix.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, feito-a-mao, pequena-serie]
+products: [sapatos]
+founded: 2018
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.lachoix.com
+media:
+  logo: logo.png
+  photos: [foto-1.webp, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-18
+  source: import

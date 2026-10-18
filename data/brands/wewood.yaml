@@ -1,0 +1,41 @@
+slug: wewood
+status: published
+name: Wewood
+description:
+  pt: >-
+    Mobiliário em madeira maciça de designers internacionais, feito por encomenda numa
+    carpintaria do norte de Portugal ativa desde 1964.
+  en: >-
+    Solid wood furniture by international designers, made to order in a northern
+    Portuguese joinery working since 1964.
+website: https://wewood.eu
+category: mobiliario
+tags: [madeira, fabrica-centenaria]
+products: [mesas, cadeiras, estantes]
+founded: 1964
+production:
+  scope: total
+location:
+  district: porto
+  municipality: paredes
+price_range: 4
+typical_price:
+  product: mesas
+  eur: 4840
+  checked: 2026-10-10
+where_to_buy:
+  online_store: https://wewood.eu
+  physical_stores:
+    - name: Wewood Lisboa
+      city: Lisboa
+      address: Rua Rosa Araújo 31, 1250-194 Lisboa
+social:
+  instagram: wewoodportuguesejoinery
+media:
+  logo: logo.webp
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-10
+  source: import

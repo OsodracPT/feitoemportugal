@@ -1,0 +1,574 @@
+{
+  "site": {
+    "name": "Feito em Portugal",
+    "tagline": "Base de dados aberta de marcas que produzem em Portugal",
+    "description": "Pesquisa marcas que produzem em Portugal por categoria, região e etiqueta. Projeto comunitário, de código e dados abertos."
+  },
+  "nav": {
+    "brands": "Marcas",
+    "categories": "Categorias",
+    "blog": "Blog",
+    "submit": "Sugerir marca",
+    "about": "Sobre",
+    "skipToContent": "Ir para o conteúdo",
+    "menu": "Menu",
+    "products": "Produtos",
+    "tags": "Etiquetas",
+    "regions": "Regiões",
+    "howWeKnow": "Como sabemos",
+    "primary": "Principal"
+  },
+  "lang": {
+    "switchTo": "English",
+    "label": "Língua",
+    "pt": "Português",
+    "en": "English",
+    "short_pt": "PT",
+    "short_en": "EN"
+  },
+  "home": {
+    "title": "Marcas que fabricam em Portugal.",
+    "intro": "Uma base de dados aberta e comunitária de marcas que fabricam em Portugal. Qualquer pessoa pode pesquisar, corrigir e sugerir marcas.",
+    "searchPlaceholder": "Pesquisar marcas, categorias ou etiquetas",
+    "recentBrands": "Marcas recentes",
+    "allBrands": "Ver todas as marcas",
+    "searchButton": "Pesquisar",
+    "eyebrow": "{count} marcas · diretório aberto · sem cookies",
+    "lookFor": "Procuro",
+    "lookForPlaceholder": "sapatos, loiça, sabão…",
+    "madeIn": "feito",
+    "anywhere": "em qualquer sítio",
+    "find": "Procurar marcas",
+    "panel": "O painel",
+    "allCategories": "Todas as categorias",
+    "byRegion": "Por região",
+    "byRegionHint": "Cada distrito leva às marcas que lá fabricam. O mesmo mapa é o filtro de região na página de marcas.",
+    "allRegions": "Todas as regiões",
+    "trustTitle": "Como sabemos",
+    "trustIntro": "Cada marca tem um escudo. Quanto mais provas reunimos, mais pontos ficam cosidos.",
+    "trust1": "A marca diz, no seu site, que fabrica cá. Ainda sem fonte independente.",
+    "trust2": "Há provas públicas: morada da fábrica, certificação, reportagem.",
+    "trust3": "Confirmado por um responsável do projeto, com documento ou visita.",
+    "trustLink": "Como funciona a verificação"
+  },
+  "brands": {
+    "title": "Marcas",
+    "intro": "Todas as marcas publicadas. Pesquisa, filtra e ordena como quiseres.",
+    "count": "{count} marcas",
+    "countOne": "1 marca",
+    "empty": "Ainda não há marcas nesta lista.",
+    "byCategory": "Por categoria",
+    "filtered": "{count} de {total} marcas",
+    "filteredOne": "1 de {total} marcas"
+  },
+  "brand": {
+    "verified": "Verificado",
+    "verifiedOn": "Verificado em {date}",
+    "notVerified": "Ainda não verificado",
+    "verifiedHelp": "Um responsável pelo projeto confirmou que a marca produz em Portugal.",
+    "production": "Produção",
+    "productionTotal": "Produção total em Portugal",
+    "productionPartial": "Produção parcial em Portugal",
+    "productionNotes": "O que é feito em Portugal",
+    "website": "Site oficial",
+    "visitWebsite": "Visitar site",
+    "category": "Categoria",
+    "tags": "Etiquetas",
+    "location": "Onde produz",
+    "priceRange": "Preço",
+    "typicalPrice": "{item} custa cerca de {price}",
+    "whereToBuy": "Onde comprar",
+    "onlineStore": "Loja online",
+    "viewOnMap": "Ver no mapa",
+    "marketplaces": "Outros sites",
+    "physicalStores": "Lojas físicas",
+    "social": "Redes sociais",
+    "sustainability": "Sustentabilidade",
+    "practices": "Práticas",
+    "certifications": "Certificações",
+    "proof": "comprovativo",
+    "related": "Marcas relacionadas",
+    "suggestCorrection": "Sugerir correção",
+    "addedOn": "Adicionada em {date}",
+    "updatedOn": "Atualizada em {date}",
+    "logoOf": "Logótipo de {name}",
+    "details": "Ficha",
+    "founded": "Fundada em",
+    "products": "Produtos",
+    "howWeKnow": "Como sabemos que é feito em Portugal",
+    "howImport": "A própria marca diz, no seu site, que fabrica em Portugal. Lemos essa informação antes de publicar e guardámos a citação no registo de fontes do projeto.",
+    "howMaintainer": "Adicionada por um responsável pelo projeto que conhece a produção da marca.",
+    "evidenceLink": "Ver o registo de fontes",
+    "howNotVerified": "Ainda não foi verificada de forma independente.",
+    "photoAlt": "Fotografia de {name} ({n})",
+    "photoCredit": "Fotografias: © {name}",
+    "photoZoom": "Ampliar fotografia {n}",
+    "lightboxClose": "Fechar",
+    "lightboxPrev": "Fotografia anterior",
+    "lightboxNext": "Fotografia seguinte",
+    "lightboxCounter": "{n} de {total}",
+    "trustStep": "{label} · {level} de 3",
+    "originCard": "Ficha de origem",
+    "howWeKnowShort": "Como sabemos",
+    "ladder": "Nível de prova",
+    "madeHere": "Feito cá",
+    "madeAbroad": "Feito fora",
+    "madeHereTotal": "Toda a produção, segundo a marca.",
+    "madeAbroadPartial": "O resto da produção. Por isso: produção parcial.",
+    "proofs": "Provas",
+    "proofBrand": "Declaração da marca",
+    "proofBrandLink": "Ver no site da marca",
+    "proofMaintainer": "Responsável do projeto",
+    "proofVerified": "Verificação",
+    "proofSources": "Fontes independentes",
+    "proofSourcesText": "Imprensa ou registos independentes da marca que confirmam a produção.",
+    "proofMissing": "Em falta para verificar",
+    "proofMissingText": "Uma prova independente do site da marca: visita, certificado, registo oficial ou fotografias da produção.",
+    "proofMissingLink": "Tens uma prova? Envia-nos",
+    "correction": "Encontraste um erro? Sugerir correção",
+    "whatItMakes": "O que faz",
+    "whereMade": "Onde é feito",
+    "madeIn": "Produção",
+    "moreFrom": "Outras marcas {place}",
+    "alsoFrom": "Também {place}",
+    "links": "Ligações",
+    "jsonData": "Dados em JSON",
+    "websiteRow": "Site da marca",
+    "since": "desde {year}"
+  },
+  "category": {
+    "brandsIn": "Marcas de {category} feitas em Portugal",
+    "subcategories": "Subcategorias",
+    "faq": "Perguntas frequentes",
+    "otherCategories": "Outras categorias",
+    "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria.",
+    "byRegion": "Por região",
+    "lede": "{count} marcas de {category} feitas em Portugal.",
+    "refine": "Filtrar estas marcas no catálogo"
+  },
+  "products": {
+    "title": "Produtos",
+    "intro": "Tipos de produto feitos em Portugal, com as marcas que os fabricam.",
+    "brandsOf": "Marcas de {product} feitas em Portugal",
+    "lede": "{count} marcas fabricam {product} em Portugal.",
+    "other": "Outros tipos de produto",
+    "refine": "Filtrar estas marcas no catálogo",
+    "noPage": "Ainda sem marcas suficientes para ter página própria."
+  },
+  "tags": {
+    "title": "Etiquetas",
+    "intro": "Materiais, ofícios e outras características, seja qual for a categoria.",
+    "brandsWith": "Marcas com a etiqueta «{tag}»",
+    "lede": "{count} marcas feitas em Portugal com esta etiqueta.",
+    "other": "Outras etiquetas",
+    "refine": "Filtrar estas marcas no catálogo"
+  },
+  "regions": {
+    "title": "Regiões",
+    "intro": "Onde as marcas fabricam, por distrito e região autónoma. Uma marca só entra no mapa quando o local de produção é conhecido.",
+    "located": "{count} de {total} marcas têm local de produção conhecido."
+  },
+  "region": {
+    "district": "Distrito",
+    "autonomous": "Região autónoma",
+    "title": "Marcas feitas {inRegion}",
+    "lede": "{count} marcas produzem aqui.",
+    "other": "Outras regiões",
+    "refine": "Filtrar estas marcas no catálogo",
+    "noPage": "Ainda sem marcas suficientes para ter página própria.",
+    "byCategory": "Por categoria"
+  },
+  "breadcrumbs": {
+    "home": "Início",
+    "label": "Caminho"
+  },
+  "footer": {
+    "about": "Sobre o projeto",
+    "contribute": "Contribuir",
+    "github": "GitHub",
+    "api": "API",
+    "dataLicense": "Dados sob CC BY 4.0",
+    "codeLicense": "Código sob MIT",
+    "builtBy": "Projeto comunitário e de código aberto.",
+    "noTracking": "Sem contas, sem cookies, sem anúncios.",
+    "badge": "O selo de verificação",
+    "openData": "Dados abertos · CC BY 4.0",
+    "apiJson": "API JSON",
+    "correct": "Corrigir dados"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "intro": "O endereço que procuras não existe ou mudou.",
+    "backHome": "Voltar ao início",
+    "browseBrands": "Ver todas as marcas"
+  },
+  "common": {
+    "brandsCount": "{count} marcas",
+    "brandCount": "1 marca",
+    "seeAll": "Ver tudo",
+    "externalLink": "abre noutro site"
+  },
+  "search": {
+    "label": "Pesquisar marcas",
+    "placeholder": "Pesquisar marcas, categorias ou etiquetas",
+    "clear": "Limpar pesquisa",
+    "results": "{count} marcas encontradas",
+    "resultsOne": "1 marca encontrada",
+    "empty": "Nenhuma marca corresponde a «{query}».",
+    "emptyHint": "Tenta outra palavra ou navega por categoria.",
+    "loading": "A carregar a pesquisa…",
+    "error": "Não foi possível carregar a pesquisa. Atualiza a página ou navega por categoria."
+  },
+  "filters": {
+    "title": "Filtros",
+    "toggle": "Filtros",
+    "groups": {
+      "cat": "Categoria",
+      "sub": "Subcategoria",
+      "dist": "Região",
+      "tag": "Etiqueta",
+      "prod": "Produto",
+      "price": "Preço",
+      "scope": "Produção",
+      "sust": "Sustentabilidade",
+      "verified": "Verificação",
+      "shop": "Onde comprar"
+    },
+    "scopeTotal": "Total em Portugal",
+    "scopePartial": "Parcial em Portugal",
+    "priceLevel": "Nível de preço {level} de 4",
+    "clear": "Limpar filtros",
+    "clearOne": "Remover filtro {label}",
+    "active": "{count} filtros ativos",
+    "activeOne": "1 filtro ativo",
+    "empty": "Nenhuma marca corresponde aos filtros escolhidos.",
+    "emptyHint": "Tenta remover um filtro.",
+    "optionCount": "{count} marcas",
+    "optionCountOne": "1 marca",
+    "close": "Fechar filtros",
+    "reset": "Limpar",
+    "clearAll": "Limpar tudo",
+    "show": "Ver {count} marcas",
+    "showOne": "Ver 1 marca",
+    "showNone": "Nenhuma marca",
+    "more": "Mais {count}",
+    "less": "Mostrar menos",
+    "distPick": "Ou escolhe da lista",
+    "distPlaceholder": "Escolher região…"
+  },
+  "sort": {
+    "label": "Ordenar",
+    "relevance": "Relevância",
+    "name": "Nome (A–Z)",
+    "recent": "Mais recentes"
+  },
+  "api": {
+    "title": "API pública",
+    "intro": "Todos os dados das marcas publicadas estão disponíveis em JSON, sob a licença CC BY 4.0. Sem chaves e sem registo.",
+    "endpoints": "Endpoints",
+    "endpoint": "Endereço",
+    "returns": "Devolve",
+    "envelope": "Formato da resposta",
+    "envelopeIntro": "Todas as respostas são um objeto com os metadados e os dados em `data`:",
+    "versioning": "Versões",
+    "versioningBody": "A API está na {version}. Remover um campo ou mudar o seu significado obriga a uma versão nova; acrescentar campos não.",
+    "attribution": "Atribuição",
+    "attributionBody": "Os dados estão sob CC BY 4.0: podes usá-los, também para fins comerciais, desde que indiques a fonte com uma ligação para {site}.",
+    "schema": "Schema",
+    "schemaBody": "O JSON Schema de uma marca é gerado a partir do schema Zod do projeto, por isso acompanha sempre os dados. As regras entre campos que o JSON Schema não consegue expressar continuam a ser validadas pelo validador do projeto.",
+    "notes": "Notas",
+    "notesSearch": "`/search-index.json` não faz parte da API: é um detalhe interno da pesquisa e pode mudar sem aviso.",
+    "notesDrafts": "Só marcas publicadas entram na API. Rascunhos ficam no repositório.",
+    "notesPrivacy": "Não há dados pessoais nem coordenadas exatas: a localização é o concelho e, nos mapas, o centroide do concelho.",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "rows": {
+      "brands": "Todas as marcas publicadas.",
+      "brand": "Uma marca, pelo seu slug.",
+      "categories": "Categorias e subcategorias, com o número de marcas.",
+      "tags": "Etiquetas e sinónimos, com o número de marcas.",
+      "products": "Tipos de produto e sinónimos, com o número de marcas.",
+      "regions": "Distritos e regiões autónomas, concelhos e centroides.",
+      "sustainability": "Práticas e certificações reconhecidas.",
+      "schema": "JSON Schema de uma marca (sem envelope)."
+    }
+  },
+  "map": {
+    "title": "Mapa",
+    "hint": "Toca num distrito para filtrar.",
+    "label": "{name}: {count} marcas",
+    "labelOne": "{name}: 1 marca",
+    "labelNone": "{name}: sem marcas",
+    "source": "Limites: CAOP 2025, DGT (CC BY 4.0)."
+  },
+  "terms": {
+    "filterLabel": "Filtrar",
+    "filterPlaceholder": "Filtrar por nome, por exemplo meias ou azeite",
+    "filterEmpty": "Nenhum resultado para esse filtro."
+  },
+  "place": {
+    "in": {
+      "default": "em {region}",
+      "acores": "nos Açores",
+      "alandroal": "no Alandroal",
+      "amadora": "na Amadora",
+      "arcos-de-valdevez": "nos Arcos de Valdevez",
+      "azambuja": "na Azambuja",
+      "barreiro": "no Barreiro",
+      "batalha": "na Batalha",
+      "bombarral": "no Bombarral",
+      "cadaval": "no Cadaval",
+      "caldas-da-rainha": "nas Caldas da Rainha",
+      "calheta-madeira": "na Calheta",
+      "calheta-sao-jorge": "na Calheta",
+      "cartaxo": "no Cartaxo",
+      "chamusca": "na Chamusca",
+      "corvo": "no Corvo",
+      "covilha": "na Covilhã",
+      "crato": "no Crato",
+      "entroncamento": "no Entroncamento",
+      "figueira-da-foz": "na Figueira da Foz",
+      "funchal": "no Funchal",
+      "fundao": "no Fundão",
+      "gaviao": "no Gavião",
+      "golega": "na Golegã",
+      "guarda": "na Guarda",
+      "horta": "na Horta",
+      "lajes-das-flores": "nas Lajes das Flores",
+      "lajes-do-pico": "nas Lajes do Pico",
+      "lourinha": "na Lourinhã",
+      "lousa": "na Lousã",
+      "madalena": "na Madalena",
+      "madeira": "na Madeira",
+      "maia": "na Maia",
+      "marco-de-canaveses": "no Marco de Canaveses",
+      "marinha-grande": "na Marinha Grande",
+      "mealhada": "na Mealhada",
+      "meda": "na Meda",
+      "moita": "na Moita",
+      "montijo": "no Montijo",
+      "murtosa": "na Murtosa",
+      "nazare": "na Nazaré",
+      "nordeste": "no Nordeste",
+      "pampilhosa-da-serra": "na Pampilhosa da Serra",
+      "ponta-do-sol": "na Ponta do Sol",
+      "porto": "no Porto",
+      "porto-moniz": "no Porto Moniz",
+      "porto-santo": "no Porto Santo",
+      "povoa-de-lanhoso": "na Póvoa de Lanhoso",
+      "povoa-de-varzim": "na Póvoa de Varzim",
+      "povoacao": "na Povoação",
+      "praia-da-vitoria": "na Praia da Vitória",
+      "redondo": "no Redondo",
+      "ribeira-brava": "na Ribeira Brava",
+      "ribeira-grande": "na Ribeira Grande",
+      "sabugal": "no Sabugal",
+      "sardoal": "no Sardoal",
+      "seixal": "no Seixal",
+      "serta": "na Sertã",
+      "trofa": "na Trofa",
+      "velas": "nas Velas",
+      "vidigueira": "na Vidigueira"
+    }
+  },
+  "regionCategory": {
+    "title": "Marcas de {category} {inRegion}",
+    "lede": "{count} marcas desta categoria produzem {inRegion}.",
+    "refine": "Filtrar estas marcas no catálogo",
+    "allCategory": "Todas as marcas de {category}",
+    "allRegion": "Todas as marcas {inRegion}",
+    "otherCategories": "Outras categorias {inRegion}",
+    "otherRegions": "A mesma categoria noutras regiões",
+    "plate": "{category} {inRegion}"
+  },
+  "about": {
+    "title": "Sobre o projeto",
+    "intro": "O Feito em Portugal é uma lista aberta de marcas que fabricam em Portugal. É feita por voluntários, não tem publicidade e qualquer pessoa pode usar os dados.",
+    "sections": {
+      "why": {
+        "title": "Porque existe",
+        "body": "Há cada vez mais lojas de dropshipping que se anunciam nas redes sociais como «feito em Portugal» mas não são. Revendem produtos importados e, com ferramentas de IA, montam um site convincente em pouco tempo. Por isso uma frase no site da marca não basta. Confirmamos a origem noutras fontes e guardamos a prova. Esta lista existe para que a etiqueta «feito em Portugal» queira mesmo dizer isso."
+      },
+      "criteria": {
+        "title": "Que marcas entram",
+        "body": "Uma marca entra quando o próprio site diz que os produtos são feitos em Portugal. Ser uma marca portuguesa não chega, nem ter os produtos desenhados cá. Uma marca estrangeira entra quando a maior parte do que vende é feita em Portugal. Quando só uma parte é feita cá, a ficha diz qual."
+      },
+      "check": {
+        "title": "Como verificamos",
+        "body": "Antes de publicar uma marca, lemos no site dela a frase em que diz que fabrica em Portugal e guardamos essa frase, com o link, no registo de fontes do projeto. O local de produção só aparece quando a marca o indica, e nunca mais preciso do que o concelho."
+      },
+      "badge": {
+        "title": "O selo de verificação",
+        "body": "O selo quer dizer que alguém do projeto confirmou a produção por outro meio além do site da marca: uma visita, um certificado ou o contacto com o fabricante. Ainda nenhuma marca o tem. O selo não se paga e não se compra."
+      },
+      "contribute": {
+        "title": "Como ajudar",
+        "body": "Podes sugerir uma marca, corrigir uma ficha ou pedir a verificação da tua marca — por um formulário aqui no site, sem precisares de conta. Quem prefere o GitHub continua a poder usar os modelos de issue, onde o trabalho fica à vista de todos."
+      },
+      "data": {
+        "title": "Dados e licenças",
+        "body": "Os dados das marcas estão sob CC BY 4.0: podes usá-los, também para fins comerciais, desde que indiques a fonte. Estão disponíveis na API pública e no repositório. Os limites dos distritos vêm da CAOP 2025 da Direção-Geral do Território."
+      },
+      "images": {
+        "title": "Logótipos e fotografias",
+        "body": "Os logótipos e as fotografias pertencem às marcas e não fazem parte dos dados abertos: não estão sob CC BY 4.0 e a API não os inclui. Usamos o logótipo que a marca mostra no próprio site e, de preferência, fotografias que a marca disponibiliza para a imprensa ou nos envia. Quando não as há, mostramos até três fotografias de produtos da loja online da própria marca, com o crédito à marca, para que vejas o que faz antes de saíres para o site dela; as fotografias da marca substituem-nas assim que chegam. Guardamos cada imagem no nosso servidor, por isso abrir uma ficha não envia pedidos ao site da marca. Se és da marca e queres trocar ou retirar uma imagem, diz-nos pelo formulário de correção."
+      },
+      "privacy": {
+        "title": "Privacidade",
+        "body": "O site não usa cookies nem cria perfis de quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso a localização fica sempre pelo concelho."
+      }
+    },
+    "links": {
+      "suggest": "Sugerir uma marca",
+      "correct": "Corrigir uma marca",
+      "verify": "Pedir verificação",
+      "guide": "Guia de contribuição",
+      "evidence": "Registo de fontes",
+      "api": "API pública",
+      "repo": "Repositório no GitHub",
+      "badge": "Como funciona o selo"
+    }
+  },
+  "badge": {
+    "title": "O selo de verificação",
+    "intro": "Todas as marcas da lista dizem, no próprio site, que fabricam em Portugal. O selo vai um passo além: quer dizer que alguém do projeto confirmou essa produção por outro meio.",
+    "sections": {
+      "meaning": {
+        "title": "O que o selo quer dizer",
+        "body": "Uma marca entra na lista com base no que o site dela afirma. Uma marca com selo foi confirmada de forma independente por um responsável pelo projeto. O selo não avalia a qualidade, o preço nem as práticas da marca: diz apenas que a produção em Portugal foi confirmada."
+      },
+      "evidence": {
+        "title": "Que provas aceitamos",
+        "body": "Uma visita à fábrica ou à oficina, um certificado ou registo oficial, fotografias da produção ou o contacto direto com o fabricante. Na ficha da marca fica a data da confirmação. Os documentos com dados pessoais nunca são publicados."
+      },
+      "process": {
+        "title": "Como pedir o selo",
+        "body": "A marca preenche o formulário de pedido no GitHub e indica como podemos confirmar a produção. Um responsável pelo projeto analisa o pedido, combina os passos que faltarem e, se a confirmação for feita, atribui o selo. O selo não se paga e não se compra."
+      },
+      "revoke": {
+        "title": "Quando o selo sai",
+        "body": "Se a produção mudar de país ou as provas deixarem de valer, o selo é retirado. Qualquer pessoa pode avisar-nos através do formulário de correção."
+      }
+    },
+    "listTitle": "Marcas com selo",
+    "empty": "Ainda nenhuma marca tem o selo.",
+    "links": {
+      "criteria": "Que marcas entram na lista",
+      "request": "Pedir o selo",
+      "guide": "Guia de contribuição",
+      "correct": "Corrigir uma marca",
+      "filter": "Ver as marcas com selo no catálogo"
+    }
+  },
+  "theme": {
+    "dark": "Tema escuro"
+  },
+  "card": {
+    "trust1": "Declarado",
+    "trust2": "Com fontes",
+    "trust3": "Verificada",
+    "priceOf": "Preço {level} de 4",
+    "partial": "Produção parcial"
+  },
+  "view": {
+    "label": "Vista",
+    "list": "Lista",
+    "panel": "Painel"
+  },
+  "landing": {
+    "category": "Categoria",
+    "product": "Tipo de produto",
+    "tag": "Etiqueta"
+  },
+  "empty": {
+    "title": "Nenhuma marca encontrada",
+    "removeLast": "Remover «{label}»",
+    "startOver": "Começar de novo",
+    "suggestLead": "Conheces uma marca feita em Portugal que devia estar aqui?",
+    "suggest": "Sugerir uma marca",
+    "listTitle": "Ainda sem marcas"
+  },
+  "submitForm": {
+    "title": "Contribuir",
+    "intro": "Preenche o formulário aqui mesmo — não é preciso conta no GitHub. A tua submissão chega por email a quem mantém o projeto, que a revê antes de a publicar.",
+    "chooser": {
+      "brand": "Sugerir uma marca",
+      "correction": "Corrigir uma marca",
+      "verification": "Pedir o selo",
+      "contact": "Contactar"
+    },
+    "github": {
+      "lead": "Preferes o GitHub?",
+      "brand": "Sugerir marca por issue no GitHub",
+      "correction": "Corrigir por issue no GitHub",
+      "verification": "Pedir verificação por issue no GitHub"
+    },
+    "common": {
+      "optional": "opcional",
+      "send": "Enviar",
+      "sending": "A enviar…",
+      "email": "O teu email (opcional)",
+      "emailHelp": "Só para te respondermos. Fica guardado, nunca é publicado.",
+      "success": "Obrigado! A submissão chegou. Vamos revê-la antes de publicar.",
+      "successTitle": "Submetido!",
+      "close": "Fechar",
+      "error": "Não foi possível enviar. Tenta de novo dentro de momentos.",
+      "required": "Preenche os campos obrigatórios."
+    },
+    "brand": {
+      "title": "Sugerir uma marca",
+      "intro": "Só entram marcas cujo próprio site diga que fabricam em Portugal. «Marca portuguesa» ou «desenhado em Portugal» não chega. Uma marca estrangeira entra quando a maior parte do que vende é feita cá.",
+      "name": "Nome da marca",
+      "website": "Site oficial",
+      "evidenceUrl": "Página onde a marca diz que fabrica em Portugal",
+      "evidenceUrlHelp": "Do site da própria marca, não de uma loja ou artigo.",
+      "evidenceQuote": "Frase dessa página",
+      "evidenceQuoteHelp": "Copia a frase tal como está. Fica no registo de fontes, não na ficha.",
+      "scope": "Produção",
+      "scopeTotal": "Tudo é feito em Portugal",
+      "scopePartial": "Uma parte é feita fora",
+      "scopeNotes": "Se é parcial, o que é feito em Portugal?",
+      "category": "Categoria",
+      "district": "Distrito onde fabrica",
+      "districtNone": "Não sei",
+      "districtHelp": "Só se a marca o disser. Escritório e loja não contam.",
+      "municipality": "Concelho onde fabrica",
+      "descriptionPt": "Descrição em português",
+      "descriptionPtHelp": "Duas ou três frases tuas. Não copies o texto da marca; os dados saem sob CC BY 4.0.",
+      "descriptionEn": "Descrição em inglês",
+      "instagram": "Instagram",
+      "relationship": "Trabalho na marca ou sou dono",
+      "confirmDescription": "A descrição é texto meu e pode ser publicada sob CC BY 4.0.",
+      "confirmNoPersonal": "Não incluí dados pessoais (moradas, telefones ou emails pessoais)."
+    },
+    "correction": {
+      "title": "Corrigir uma marca",
+      "intro": "Algo errado ou desatualizado numa ficha? Diz-nos o quê.",
+      "brand": "Marca",
+      "brandHelp": "O endereço da ficha ou o identificador (por exemplo vista-alegre).",
+      "details": "O que deve mudar",
+      "source": "Fonte",
+      "sourceHelp": "Um link que o confirme, de preferência do site da marca."
+    },
+    "verification": {
+      "title": "Pedir o selo de verificação",
+      "intro": "O selo diz que alguém do projeto confirmou, por um meio independente do site da marca, que a produção é em Portugal. Não se paga e não se compra.",
+      "brand": "Marca",
+      "brandHelp": "O endereço da ficha, se a marca já estiver listada.",
+      "details": "Como podemos confirmar?",
+      "detailsHelp": "Não publiques aqui documentos com dados pessoais; diz-nos que os tens e combinamos outra via.",
+      "confirm": "Trabalho na marca ou sou dono."
+    },
+    "contact": {
+      "title": "Contactar",
+      "intro": "Uma dúvida, uma ideia ou outra coisa qualquer.",
+      "message": "Mensagem"
+    }
+  },
+  "thanks": {
+    "title": "Obrigado!",
+    "body": "A tua submissão chegou. Quem mantém o projeto vai revê-la antes de a publicar.",
+    "backHome": "Voltar ao início",
+    "another": "Fazer outra submissão"
+  }
+}

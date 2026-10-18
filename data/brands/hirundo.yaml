@@ -1,0 +1,53 @@
+slug: hirundo
+status: published
+name: Hirundo
+description:
+  pt: >-
+    Sapatilhas de desenho minimalista feitas à mão no Porto, com materiais escolhidos
+    para durar e solas que podem ser substituídas.
+  en: >-
+    Minimalist sneakers handmade in Porto, from hard-wearing materials and with soles
+    that can be replaced.
+website: https://hirundo.pt
+category: calcado
+subcategory: sapatilhas
+tags: [feito-a-mao, minimalista, pequena-serie]
+products: [sapatilhas]
+production:
+  scope: total
+location:
+  district: porto
+  municipality: porto
+price_range: 3
+typical_price:
+  product: sapatilhas
+  eur: 159
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://hirundo.pt
+  physical_stores:
+    - name: Hirundo Embaixada
+      city: Lisboa
+      address: Praça do Príncipe Real 26, 1250-184 Lisboa
+    - name: Hirundo Porto
+      city: Porto
+      address: Largo dos Lóios 73, 4050-338 Porto
+    - name: Hirundo Boavista
+      city: Lisboa
+      address: Rua da Boavista 166, 1200-177 Lisboa
+    - name: Hirundo Príncipe Real
+      city: Lisboa
+      address: Rua Dom Pedro V 69, 1250-096 Lisboa
+    - name: Hirundo LX Factory
+      city: Lisboa
+      address: Rua Rodrigues de Faria 103, Piso 3, Loja 1.22, 1300-501 Lisboa
+social:
+  instagram: hirundo
+media:
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

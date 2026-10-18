@@ -1,0 +1,33 @@
+slug: galula
+status: published
+name: Galula
+description:
+  pt: >-
+    Mobiliário e iluminação em cortiça e madeira, feitos à mão por artesãos da região do
+    Porto.
+  en: >-
+    Cork and wood furniture and lighting, handmade by craftspeople in the Porto region.
+website: https://galulastudio.com
+category: mobiliario
+tags: [cortica, madeira]
+products: [candeeiros, mesas]
+production:
+  scope: total
+price_range: 2
+typical_price:
+  product: candeeiros
+  eur: 83
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://galulastudio.com
+social:
+  instagram: galulastudio
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

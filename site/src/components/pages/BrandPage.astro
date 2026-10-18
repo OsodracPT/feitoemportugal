@@ -1,0 +1,1208 @@
+---
+import type { Brand } from '@fep/schema';
+import { getImage, Image, Picture } from 'astro:assets';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
+import DistrictMap from '~/components/DistrictMap.astro';
+import PriceRange from '~/components/PriceRange.astro';
+import { SITE } from '~/lib/config.ts';
+import {
+  getCategory,
+  getCertification,
+  getMunicipality,
+  getPractice,
+  getProduct,
+  getRegion,
+  getSubcategory,
+  getTag,
+  hasLandingPage,
+  hasProductPage,
+  hasRegionPage,
+  hasTagPage,
+  brandsInDistrict,
+  relatedBrands,
+} from '~/lib/data.ts';
+import { initials } from '~/lib/brand-initials.ts';
+import { categoryTile, trustLevel } from '~/lib/card-art.ts';
+import { formatDate, inPlaceParts, inRegion, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import { brandLogo, brandPhotos } from '~/lib/media.ts';
+import {
+  brandDescription,
+  brandJsonLd,
+  brandOgImagePath,
+  brandTitle,
+  breadcrumbJsonLd,
+  socialLinks,
+  storeAddress,
+  storeMapUrl,
+  type Crumb,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  brand: Brand;
+}
+
+const { lang, brand } = Astro.props;
+const logo = brandLogo(brand);
+const photos = brandPhotos(brand);
+// The lightbox reuses the 800 px webp the grid's <Picture> already emits, so it
+// opens a crisp copy without adding a new file to the build.
+const photoFull = await Promise.all(
+  photos.map((photo) => getImage({ src: photo, width: 800, format: 'webp' })),
+);
+// Structured data wants a stable, crawlable file: SVG logos pass through as they
+// are (Astro does not rasterise SVG by default), rasters get a PNG copy.
+const logoFile = logo
+  ? await getImage(logo.format === 'svg' ? { src: logo, format: 'svg' } : { src: logo, format: 'png', height: 256 })
+  : undefined;
+
+const category = getCategory(brand.category);
+const subcategory = brand.subcategory ? getSubcategory(brand.category, brand.subcategory) : undefined;
+const region = brand.location ? getRegion(brand.location.district) : undefined;
+const municipality =
+  brand.location?.municipality && region
+    ? getMunicipality(region.id, brand.location.municipality)
+    : undefined;
+
+const alternates = {
+  pt: paths.brand('pt', brand.slug),
+  en: paths.brand('en', brand.slug),
+};
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'brands.title'), path: paths.brands(lang) },
+  ...(category && hasLandingPage(category)
+    ? [{ name: localized(category.label, lang), path: paths.category(lang, category.slug[lang]) }]
+    : []),
+  { name: brand.name },
+];
+
+// "Também em Braga" when the district is known and has others; otherwise the
+// closest brands by category and tags.
+const neighbours = region ? brandsInDistrict(region.id).filter((other) => other.slug !== brand.slug) : [];
+const related = neighbours.length > 0 ? neighbours.slice(0, 3) : relatedBrands(brand, 3);
+const regionName = region ? localized(region.label, lang) : '';
+const regionPlace = region ? inRegion(lang, region.id, regionName) : '';
+const regionHref = region && hasRegionPage(region.id) ? paths.region(lang, region.slug[lang]) : undefined;
+// "Produção no <Porto>" / "na <Maia>, Porto": the preposition follows the place named first.
+const madeAt = municipality
+  ? inPlaceParts(lang, municipality.id, municipality.name)
+  : region
+    ? inPlaceParts(lang, region.id, regionName)
+    : undefined;
+
+const trust = trustLevel(brand);
+const partial = brand.production.scope === 'parcial';
+const label = subcategory ?? category;
+const tile = categoryTile(brand.category);
+const stores = brand.where_to_buy;
+const shopRows = [
+  ...(stores?.online_store
+    ? [{ href: stores.online_store, title: t(lang, 'brand.onlineStore'), detail: host(stores.online_store) }]
+    : []),
+  ...(stores?.marketplaces ?? []).map((url) => ({ href: url, title: host(url), detail: t(lang, 'brand.marketplaces') })),
+  // A shop with an address opens the map: the address is what the row shows, and the
+  // brand's own site already has a row of its own. Without one, its page if listed.
+  ...(stores?.physical_stores ?? []).map((store) => {
+    const map = storeMapUrl(store);
+    return {
+      href: map ?? store.url,
+      title: store.name,
+      detail: map ? `${storeAddress(store)} · ${t(lang, 'brand.viewOnMap')}` : store.city,
+    };
+  }),
+];
+const jsonUrl = `/api/v1/brands/${brand.slug}.json`;
+const pageUrl = new URL(paths.brand(lang, brand.slug), SITE.origin).href;
+const proofUrl = `${SITE.repo}/issues/new?labels=verificacao&template=pedido-verificacao.yml&brand=${encodeURIComponent(pageUrl)}`;
+function host(url: string): string {
+  return new URL(url).host.replace(/^www\./, '');
+}
+const social = socialLinks(brand);
+const practices = brand.sustainability?.practices.map(getPractice).filter(Boolean) ?? [];
+const certifications = brand.sustainability?.certifications ?? [];
+const notes = brand.production.notes ? localized(brand.production.notes, lang) : '';
+const products = brand.products.flatMap((id) => {
+  const product = getProduct(id);
+  return product ? [product] : [];
+});
+const evidenceUrl = `${SITE.repo}/tree/main/docs/leads`;
+
+const correctionUrl = `${paths.submit(lang)}?brand=${encodeURIComponent(brand.slug)}#correction`;
+
+// A municipality that shares its district's name (Porto, Lisboa) names it once.
+const sameAsDistrict = municipality?.id === region?.id;
+const locationLabel = [municipality?.name, region && !sameAsDistrict ? localized(region.label, lang) : null]
+  .filter(Boolean)
+  .join(', ');
+---
+
+<Layout
+  lang={lang}
+  title={brandTitle(brand, { category, subcategory, regionLabel: region ? localized(region.label, lang) : undefined }, lang)}
+  description={brandDescription(brand, lang)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  ogImage={brandOgImagePath(lang, brand.slug)}
+  jsonLd={[
+    brandJsonLd(brand, lang, {
+      category,
+      subcategory,
+      districtLabel: region ? localized(region.label, lang) : undefined,
+      logoPath: logoFile?.src,
+    }),
+    breadcrumbJsonLd(crumbs),
+  ]}
+>
+  <!-- The category tile, as a band; the medallion below overlaps its lower edge. -->
+  <div class="hero" style={`--tile: var(--fep-tile-${tile})`} aria-hidden="true"></div>
+
+  <div class="container brand">
+    <div class="brand__top">
+      {
+        logo ? (
+          <span class="medallion medallion--logo">
+            <Image src={logo} alt="" height={128} densities={[1]} loading="eager" />
+          </span>
+        ) : (
+          <span class="medallion" aria-hidden="true">
+            {initials(brand.name)}
+          </span>
+        )
+      }
+      <Breadcrumbs lang={lang} crumbs={crumbs} />
+    </div>
+
+    <div class="brand__layout">
+      <div class="brand__main">
+        <header class="brand__header">
+          <h1>{brand.name}</h1>
+          <p class="brand__meta">
+            {label && localized(label.label, lang)}
+            {locationLabel && <> · {locationLabel}</>}
+            {brand.founded && <> · {t(lang, 'brand.since', { year: brand.founded })}</>}
+            {
+              brand.price_range && (
+                <>
+                  {' · '}
+                  <PriceRange lang={lang} value={brand.price_range} category={category} typical={brand.typical_price} />
+                </>
+              )
+            }
+          </p>
+          <ul class="brand__pills">
+            <li class="trust-pill" style={`--trust: var(--fep-trust-${trust})`}>
+              {t(lang, 'brand.trustStep', { label: t(lang, `card.trust${trust}`), level: trust })}
+            </li>
+            {partial && <li class="partial-pill">{t(lang, 'card.partial')}</li>}
+          </ul>
+          <p class="brand__actions">
+            <a class="button button--big" href={brand.website} rel="nofollow noopener">
+              {t(lang, 'brand.visitWebsite')} <span aria-hidden="true">↗</span>
+              <span class="visually-hidden"> ({t(lang, 'common.externalLink')})</span>
+            </a>
+            {
+              shopRows.length > 0 && (
+                <a class="button button--quiet button--big" href="#comprar">
+                  {t(lang, 'brand.whereToBuy')}
+                </a>
+              )
+            }
+          </p>
+          <p class="lede">{localized(brand.description, lang)}</p>
+        </header>
+
+        {
+          (products.length > 0 || brand.tags.length > 0) && (
+            <section class="brand__makes" aria-labelledby="makes-title">
+              <h2 class="eyebrow" id="makes-title">{t(lang, 'brand.whatItMakes')}</h2>
+              <ul class="chips">
+                {products.map((product) => (
+                  <li>
+                    {hasProductPage(product.id) ? (
+                      <a class="chip-link" href={paths.product(lang, product.slug[lang])}>
+                        {localized(product.label, lang)}
+                      </a>
+                    ) : (
+                      <span class="chip-link">{localized(product.label, lang)}</span>
+                    )}
+                  </li>
+                ))}
+                {brand.tags.map((tagId) => {
+                  const tag = getTag(tagId);
+                  if (!tag) return null;
+                  return (
+                    <li>
+                      {hasTagPage(tag.id) ? (
+                        <a class="chip-link chip-link--tag" href={paths.tag(lang, tag.id)}>
+                          {localized(tag.label, lang)}
+                        </a>
+                      ) : (
+                        <span class="chip-link chip-link--tag">{localized(tag.label, lang)}</span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          photos.length > 0 && (
+            <figure
+              class="brand__photos"
+              data-lightbox
+              data-label-close={t(lang, 'brand.lightboxClose')}
+              data-label-prev={t(lang, 'brand.lightboxPrev')}
+              data-label-next={t(lang, 'brand.lightboxNext')}
+              data-label-counter={t(lang, 'brand.lightboxCounter')}
+            >
+              <ul>
+                {photos.map((photo, index) => (
+                  <li>
+                    <button
+                      type="button"
+                      class="brand__photo-zoom"
+                      data-full={photoFull[index]?.src}
+                      aria-label={t(lang, 'brand.photoZoom', { n: String(index + 1) })}
+                    >
+                      <Picture
+                        src={photo}
+                        alt={t(lang, 'brand.photoAlt', { name: brand.name, n: String(index + 1) })}
+                        formats={['avif', 'webp']}
+                        widths={[400, 800]}
+                        sizes="(min-width: 52rem) 25vw, 50vw"
+                        loading="lazy"
+                      />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <figcaption>{t(lang, 'brand.photoCredit', { name: brand.name })}</figcaption>
+            </figure>
+          )
+        }
+
+        <!-- Trust content wears the stitch (design/README.md §4). -->
+        <section class="origin" aria-labelledby="origin-title">
+          <div class="origin__intro">
+            <div class="origin__head">
+              <span class="origin__shield" style={`--trust: var(--fep-trust-${trust})`} aria-hidden="true"></span>
+              <div>
+                <p class="eyebrow origin__eyebrow">{t(lang, 'brand.originCard')}</p>
+                <h2 id="origin-title">{t(lang, 'brand.howWeKnowShort')}</h2>
+              </div>
+            </div>
+
+            <ol class="ladder" aria-label={t(lang, 'brand.ladder')}>
+              {([1, 2, 3] as const).map((step) => (
+                <li class:list={{ 'ladder--on': step <= trust }} aria-current={step === trust ? 'step' : undefined}>
+                  {t(lang, `card.trust${step}`)}
+                </li>
+              ))}
+            </ol>
+
+            <dl class="origin__made">
+              <div>
+                <dt>{t(lang, 'brand.madeHere')}</dt>
+                <dd>{notes || (partial ? t(lang, 'brand.productionPartial') : t(lang, 'brand.madeHereTotal'))}</dd>
+              </div>
+              {
+                partial && (
+                  <div>
+                    <dt>{t(lang, 'brand.madeAbroad')}</dt>
+                    <dd>{t(lang, 'brand.madeAbroadPartial')}</dd>
+                  </div>
+                )
+              }
+            </dl>
+          </div>
+
+          <div class="origin__proofs">
+            <h3 class="eyebrow">{t(lang, 'brand.proofs')}</h3>
+            <ul class="proofs">
+              <li class="proof">
+                <span class="proof__mark" aria-hidden="true">✓</span>
+                <span class="proof__body">
+                  {brand.meta.source === 'maintainer' ? (
+                    <>
+                      <span class="proof__kind">{t(lang, 'brand.proofMaintainer')}</span>
+                      <span>{t(lang, 'brand.howMaintainer')}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span class="proof__kind">{t(lang, 'brand.proofBrand')}</span>
+                      <span>{t(lang, 'brand.howImport')}</span>
+                      <a href={brand.website} rel="nofollow noopener">{t(lang, 'brand.proofBrandLink')}</a>
+                      <a href={evidenceUrl} rel="noopener">{t(lang, 'brand.evidenceLink')}</a>
+                    </>
+                  )}
+                </span>
+              </li>
+              {
+                (brand.verification?.sources?.length ?? 0) > 0 && (
+                  <li class="proof">
+                    <span class="proof__mark" aria-hidden="true">✓</span>
+                    <span class="proof__body">
+                      <span class="proof__kind">{t(lang, 'brand.proofSources')}</span>
+                      <span>{t(lang, 'brand.proofSourcesText')}</span>
+                      {brand.verification!.sources.map((source) => (
+                        <a href={source.url} rel="nofollow noopener">{source.publisher}</a>
+                      ))}
+                    </span>
+                  </li>
+                )
+              }
+              {
+                brand.verification?.verified && brand.verification.date ? (
+                  <li class="proof">
+                    <span class="proof__mark" aria-hidden="true">✓</span>
+                    <span class="proof__body">
+                      <span class="proof__kind">{t(lang, 'brand.proofVerified')}</span>
+                      <span>{t(lang, 'brand.verifiedHelp')}</span>
+                      <a href={paths.badge(lang)}>
+                        {t(lang, 'brand.verifiedOn', { date: formatDate(brand.verification.date, lang) })}
+                      </a>
+                    </span>
+                  </li>
+                ) : (
+                  <li class="proof proof--missing">
+                    <span class="proof__mark" aria-hidden="true"></span>
+                    <span class="proof__body">
+                      <span class="proof__kind">{t(lang, 'brand.proofMissing')}</span>
+                      <span>{t(lang, 'brand.proofMissingText')}</span>
+                      <a href={proofUrl} rel="noopener">{t(lang, 'brand.proofMissingLink')}</a>
+                    </span>
+                  </li>
+                )
+              }
+            </ul>
+            <a class="button button--outline origin__fix" href={correctionUrl} rel="nofollow noopener">
+              {t(lang, 'brand.correction')}
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="brand__aside">
+        <div class="brand__visit">
+          <a class="button button--big" href={brand.website} rel="nofollow noopener">
+            {t(lang, 'brand.visitWebsite')} <span aria-hidden="true">↗</span>
+            <span class="visually-hidden"> ({t(lang, 'common.externalLink')})</span>
+          </a>
+          <p class="brand__links">
+            {t(lang, 'brand.links')}:{' '}
+            {social.map((link) => (
+              <>
+                <a href={link.url} rel="nofollow noopener">{link.network}</a>
+                {' · '}
+              </>
+            ))}
+            <a href={jsonUrl}>{t(lang, 'brand.jsonData')}</a>
+          </p>
+        </div>
+
+        {
+          region && (
+            <section class="panel where" aria-labelledby="where-title">
+              <h2 id="where-title">{t(lang, 'brand.whereMade')}</h2>
+              <div class="where__body">
+                <div class="where__map">
+                  <DistrictMap lang={lang} mode="spot" counts={new Map()} current={region.id} />
+                </div>
+                <p>
+                  {t(lang, 'brand.madeIn')} {madeAt?.prep} <strong>{madeAt?.name}</strong>
+                  {municipality && !sameAsDistrict && <>, {regionName}</>}.
+                  {regionHref && neighbours.length > 0 && (
+                    <>
+                      <br />
+                      <a href={regionHref}>{t(lang, 'brand.moreFrom', { place: regionPlace })}</a>
+                    </>
+                  )}
+                </p>
+              </div>
+            </section>
+          )
+        }
+
+        {
+          shopRows.length > 0 && (
+            <section class="buy" id="comprar" aria-labelledby="buy-title">
+              <h2 id="buy-title">{t(lang, 'brand.whereToBuy')}</h2>
+              <ul class="rows">
+                {shopRows.map((row) => (
+                  <li>
+                    {row.href ? (
+                      <a class="row" href={row.href} rel="nofollow noopener">
+                        <span class="row__text">
+                          <span class="row__title">{row.title}</span>
+                          <span class="row__detail">{row.detail}</span>
+                        </span>
+                        <span class="row__arrow" aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <span class="row">
+                        <span class="row__text">
+                          <span class="row__title">{row.title}</span>
+                          <span class="row__detail">{row.detail}</span>
+                        </span>
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          (practices.length > 0 || certifications.length > 0) && (
+            <section class="sustain" aria-labelledby="sustain-title">
+              <h2 id="sustain-title">{t(lang, 'brand.sustainability')}</h2>
+              {practices.length > 0 && (
+                <ul class="chips">
+                  {practices.map((practice) => (
+                    <li class="chip-link">{practice && localized(practice.label, lang)}</li>
+                  ))}
+                </ul>
+              )}
+              {certifications.length > 0 && (
+                <ul class="plain">
+                  {certifications.map((certification) => {
+                    const definition = getCertification(certification.id);
+                    return (
+                      <li>
+                        {definition ? localized(definition.label, lang) : certification.id}
+                        {certification.proof_url && (
+                          <>
+                            {' '}
+                            <a href={certification.proof_url} rel="nofollow noopener">
+                              ({t(lang, 'brand.proof')})
+                            </a>
+                          </>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </section>
+          )
+        }
+
+        {
+          related.length > 0 && (
+            <section class="also" aria-labelledby="also-title">
+              <h2 id="also-title">
+                {neighbours.length > 0 ? t(lang, 'brand.alsoFrom', { place: regionPlace }) : t(lang, 'brand.related')}
+              </h2>
+              <BrandGrid lang={lang} brands={related} />
+            </section>
+          )
+        }
+
+        <p class="brand__dates">
+          {t(lang, 'brand.addedOn', { date: formatDate(brand.meta.added, lang) })}<br />
+          {t(lang, 'brand.updatedOn', { date: formatDate(brand.meta.updated, lang) })}
+        </p>
+      </aside>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Bundled to its own file (assetsInlineLimit: 0), so the production CSP's
+  // script-src 'self' allows it where an inline script would be blocked.
+  import { initLightbox } from '~/lib/lightbox.ts';
+  initLightbox();
+</script>
+
+<style>
+  /* --- Tile band and medallion --- */
+  .hero {
+    height: 150px;
+    background: var(--fep-surface-2) var(--tile) 0 0 / 60px 60px repeat;
+    /* <main> pads its top; the band sits straight under the header. */
+    margin-top: calc(-1 * var(--space-6));
+  }
+
+  .brand__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--fep-space-2) var(--fep-space-5);
+    margin-top: -42px;
+  }
+
+  .brand__top :global(.breadcrumbs) {
+    margin: 0;
+    padding-bottom: var(--fep-space-1);
+  }
+
+  /* Text never sits on the tile: initials and logos stand on a solid medallion. */
+  .medallion {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    height: 84px;
+    border: 3px solid var(--fep-accent);
+    border-radius: var(--fep-radius-lg);
+    background: var(--fep-surface);
+    color: var(--fep-heading);
+    font-family: var(--fep-font-display);
+    font-size: 2.125rem;
+    line-height: 1;
+  }
+
+  /* Logos are drawn for light grounds, so the plate stays light in both themes. */
+  .medallion--logo {
+    max-width: min(16rem, 100%);
+    padding: 8px 12px;
+    background: var(--fep-logo-plate);
+  }
+
+  /* A definite height: SVG logos with only a viewBox have no natural size. */
+  .medallion--logo :global(img) {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* --- Head --- */
+  .brand__layout {
+    display: grid;
+    gap: var(--fep-space-8);
+    margin-top: var(--fep-space-5);
+  }
+
+  .brand__main,
+  .brand__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fep-space-6);
+    min-width: 0;
+  }
+
+  .brand__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .brand__header h1 {
+    margin: 0;
+    font-size: clamp(2.625rem, 1.8rem + 3.2vw, 4.5rem);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  .brand__meta {
+    margin: 0;
+    font-size: var(--fep-text-sm);
+    color: var(--fep-ink-2);
+  }
+
+  .brand__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fep-space-2);
+    margin: 0;
+    padding: 4px 0 0;
+    list-style: none;
+  }
+
+  .trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px 4px 6px;
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface-2);
+    font-size: var(--fep-text-meta);
+    font-weight: 600;
+  }
+
+  .trust-pill::before {
+    content: '';
+    width: 16px;
+    height: 19px;
+    background: var(--trust) center / contain no-repeat;
+  }
+
+  .partial-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border: 1.5px dashed var(--fep-ink);
+    border-radius: var(--fep-radius-pill);
+    font-size: var(--fep-text-meta);
+    font-weight: 600;
+  }
+
+  .brand__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--fep-space-2);
+    margin: 0;
+    padding-top: 10px;
+  }
+
+  .brand__actions .button {
+    padding-inline: var(--fep-space-2);
+  }
+
+  .brand__actions .button:only-child {
+    grid-column: 1 / -1;
+  }
+
+  .button--big {
+    min-height: 50px;
+    font-size: var(--fep-text);
+    font-weight: 700;
+  }
+
+  .brand__header .lede {
+    margin: 10px 0 0;
+    max-width: 42.5rem;
+    font-size: var(--fep-text-md);
+    line-height: 1.55;
+    color: var(--fep-ink);
+  }
+
+  /* --- What it makes --- */
+  .brand__makes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fep-space-2);
+  }
+
+  .brand__makes .eyebrow {
+    margin: 0;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .chip-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 13px;
+    border: 1px solid var(--fep-line);
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    font-size: var(--fep-text-xs);
+    text-decoration: none;
+  }
+
+  a.chip-link:hover {
+    border-color: var(--fep-accent);
+    color: var(--fep-accent);
+  }
+
+  /* Tags are qualities, products are things: tags go quieter. */
+  .chip-link--tag {
+    background: transparent;
+    color: var(--fep-ink-2);
+  }
+
+  /* --- Photos --- */
+  .brand__photos {
+    margin: 0;
+  }
+
+  .brand__photos ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--fep-space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Each thumbnail is a button that opens the lightbox and clips the hover zoom. */
+  .brand__photo-zoom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface-2);
+    cursor: zoom-in;
+  }
+
+  .brand__photos :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--fep-surface-2);
+    transition: transform 150ms ease;
+  }
+
+  .brand__photo-zoom:hover :global(img),
+  .brand__photo-zoom:focus-visible :global(img) {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand__photos :global(img) {
+      transition: none;
+    }
+
+    .brand__photo-zoom:hover :global(img),
+    .brand__photo-zoom:focus-visible :global(img) {
+      transform: none;
+    }
+  }
+
+  .brand__photos figcaption {
+    margin-top: var(--fep-space-2);
+    font-size: var(--fep-label);
+    color: var(--fep-ink-2);
+  }
+
+  /* The lightbox overlay is built in the browser (lib/lightbox.ts), so its
+     nodes carry no scoped attribute — style them globally. */
+  :global(.lightbox) {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--fep-space-6);
+    background: var(--fep-scrim);
+  }
+
+  :global(.lightbox.is-open) {
+    display: flex;
+  }
+
+  :global(.lightbox__img) {
+    max-width: min(92vw, 1100px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+  }
+
+  :global(.lightbox__close),
+  :global(.lightbox__nav) {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    cursor: pointer;
+  }
+
+  :global(.lightbox__close) {
+    top: var(--fep-space-4);
+    right: var(--fep-space-4);
+  }
+
+  :global(.lightbox__nav--prev) {
+    left: var(--fep-space-4);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :global(.lightbox__nav--next) {
+    right: var(--fep-space-4);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  :global(.lightbox__close svg),
+  :global(.lightbox__nav svg) {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :global(.lightbox__counter) {
+    position: absolute;
+    bottom: var(--fep-space-4);
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: var(--fep-space-1) var(--fep-space-3);
+    border-radius: var(--fep-radius-pill);
+    background: var(--fep-surface);
+    color: var(--fep-ink-2);
+    font-size: var(--fep-label);
+  }
+
+  /* --- Como sabemos: stitched, on a solid surface --- */
+  .origin {
+    display: grid;
+    gap: var(--fep-space-4);
+    margin-inline: calc(-1 * var(--fep-space-1));
+    padding: var(--fep-space-5) var(--fep-space-4);
+    border: var(--fep-stitch);
+    border-radius: 14px;
+    background: var(--fep-surface);
+  }
+
+  .origin__intro,
+  .origin__proofs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fep-space-4);
+    min-width: 0;
+  }
+
+  .origin__head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .origin__shield {
+    flex: none;
+    width: 56px;
+    height: 65px;
+    background: var(--trust) center / contain no-repeat;
+  }
+
+  .origin__eyebrow {
+    margin: 0 0 2px;
+  }
+
+  .origin h2 {
+    margin: 0;
+    font-size: 1.625rem;
+    line-height: 1.1;
+  }
+
+  /* The ladder: the reached steps are filled, the current one is aria-current. */
+  .ladder {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ladder li {
+    padding: 8px 6px;
+    border: 1.5px solid var(--fep-line);
+    border-radius: var(--fep-radius-sm);
+    color: var(--fep-ink-2);
+    font-size: var(--fep-label);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .ladder li.ladder--on {
+    border-color: var(--fep-accent);
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+  }
+
+  .origin__made {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    font-size: var(--fep-text-sm);
+    line-height: 1.45;
+  }
+
+  .origin__made dt {
+    font-weight: 700;
+  }
+
+  .origin__made dd {
+    margin: 2px 0 0;
+  }
+
+  .origin__proofs .eyebrow {
+    margin: 0 0 calc(-1 * var(--fep-space-3));
+  }
+
+  .proofs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .proof {
+    display: flex;
+    gap: var(--fep-space-3);
+    padding: var(--fep-space-3) 0;
+    border-bottom: 1px solid var(--fep-line);
+  }
+
+  .proof__mark {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--fep-accent);
+    border-radius: 50%;
+    background: var(--fep-accent);
+    color: var(--fep-on-accent);
+    font-size: 0.8125rem;
+    font-weight: 800;
+  }
+
+  /* Missing proof is drawn dashed and empty, like an unfilled stitch. */
+  .proof--missing .proof__mark {
+    border-style: dashed;
+    background: transparent;
+  }
+
+  .proof__body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    font-size: var(--fep-text-sm);
+    line-height: 1.4;
+  }
+
+  .proof__kind {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: var(--fep-label-tracking);
+    text-transform: uppercase;
+    color: var(--fep-ink-2);
+  }
+
+  .proof__body a {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    font-weight: 600;
+  }
+
+  .button--outline {
+    border-color: var(--fep-ink);
+    background: transparent;
+    color: var(--fep-ink);
+    font-weight: 600;
+  }
+
+  .origin__fix {
+    min-height: 48px;
+    text-align: center;
+  }
+
+  /* --- Aside --- */
+  .brand__aside h2 {
+    margin: 0 0 var(--fep-space-2);
+    font-size: 1.625rem;
+  }
+
+  /* The phone has the button in the head already. */
+  .brand__visit .button {
+    display: none;
+  }
+
+  .brand__links {
+    margin: 0;
+    font-size: var(--fep-text-xs);
+    color: var(--fep-ink-2);
+  }
+
+  .panel {
+    padding: var(--fep-space-5);
+    border-radius: 14px;
+    background: var(--fep-surface-2);
+  }
+
+  .where__body {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: var(--fep-space-4);
+    align-items: center;
+  }
+
+  .where__body p {
+    margin: 0;
+    font-size: var(--fep-text-sm);
+    line-height: 1.5;
+  }
+
+  .where__body a {
+    font-weight: 600;
+  }
+
+  .where__map :global(svg) {
+    max-height: none;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 56px;
+    padding: var(--fep-space-2) 14px;
+    border: 1px solid var(--fep-line);
+    border-radius: var(--fep-radius);
+    background: var(--fep-surface);
+    color: var(--fep-ink);
+    text-decoration: none;
+  }
+
+  a.row:hover {
+    border-color: var(--fep-accent);
+  }
+
+  .row__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .row__title {
+    font-size: var(--fep-text-sm);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .row__detail {
+    font-size: var(--fep-text-meta);
+    color: var(--fep-ink-2);
+  }
+
+  .row__arrow {
+    color: var(--fep-accent);
+    font-size: 1.125rem;
+  }
+
+  .plain {
+    margin: var(--fep-space-3) 0 0;
+    padding-left: 1.1rem;
+    font-size: var(--fep-text-sm);
+  }
+
+  .brand__dates {
+    margin: 0;
+    font-size: var(--fep-text-meta);
+    color: var(--fep-ink-2);
+  }
+
+  /* --- Desktop --- */
+  @media (min-width: 60rem) {
+    .hero {
+      height: 220px;
+      background-size: 72px 72px;
+    }
+
+    .brand__top {
+      margin-top: -64px;
+    }
+
+    .medallion {
+      min-width: 128px;
+      height: 128px;
+      border-radius: 16px;
+      font-size: 3.125rem;
+    }
+
+    .medallion--logo {
+      padding: 12px 18px;
+    }
+
+    .brand__layout {
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 22.5rem);
+      gap: var(--fep-space-12);
+      align-items: start;
+    }
+
+    .brand__aside {
+      padding-top: var(--fep-space-8);
+    }
+
+    .brand__header .lede {
+      font-size: var(--fep-text-lg);
+      line-height: 1.6;
+    }
+
+    /* The head's buttons move to the top of the aside. */
+    .brand__actions {
+      display: none;
+    }
+
+    .brand__visit {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fep-space-2);
+    }
+
+    .brand__visit .button {
+      display: flex;
+      min-height: 54px;
+      font-size: var(--fep-text-md);
+    }
+
+    .brand__links {
+      text-align: center;
+    }
+
+    .origin {
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: var(--fep-space-8);
+      margin: var(--fep-space-4) 0 0;
+      padding: var(--fep-space-8);
+      border-radius: var(--fep-radius-xl);
+    }
+
+    .origin__shield {
+      width: 76px;
+      height: 89px;
+    }
+
+    .origin h2 {
+      font-size: 2.25rem;
+    }
+
+    .brand__photos ul {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,33 @@
+slug: strelitzia
+status: published
+name: Strelitzia
+description:
+  pt: >-
+    Calçado de mulher produzido em pequena escala em Portugal por artesãos experientes.
+  en: >-
+    Women's shoes made in small runs in Portugal by experienced craftspeople.
+website: https://www.strelitzia.pt
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, pequena-serie]
+products: [sapatos]
+founded: 2021
+production:
+  scope: total
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 160
+  checked: 2026-10-10
+where_to_buy:
+  online_store: https://www.strelitzia.pt
+social:
+  instagram: strelitziabrand
+media:
+  logo: logo.png
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-10
+  source: import

@@ -1,0 +1,59 @@
+slug: fora
+status: published
+name: FORA
+description:
+  pt: >-
+    Óculos de sol e armações graduadas montados à mão em Portugal, a partir de acetato
+    italiano e lentes Zeiss, por uma marca de Lisboa fundada em 2014.
+  en: >-
+    Sunglasses and optical frames hand-assembled in Portugal from Italian acetate and
+    Zeiss lenses, by a Lisbon label founded in 2014.
+website: https://fora.pt
+category: acessorios
+subcategory: oculos
+tags: [feito-a-mao]
+products: [oculos]
+founded: 2014
+production:
+  scope: parcial
+  notes:
+    pt: A maioria dos modelos é feita numa fábrica no norte do país; alguns são feitos fora de Portugal.
+    en: Most frames are made in a factory in northern Portugal; some are made abroad.
+price_range: 3
+typical_price:
+  product: oculos
+  eur: 168
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://fora.pt
+  physical_stores:
+    - name: Chiado Store
+      city: Lisboa
+      address: Rua da Misericórdia 90, 1200-273 Lisboa
+    - name: Campo de Ourique Store
+      city: Lisboa
+      address: Rua Coelho da Rocha 102B, 1350-079 Lisboa
+    - name: Prata Store
+      city: Lisboa
+      address: Rua da Prata 169, 1100-416 Lisboa
+    - name: Mouzinho Store
+      city: Porto
+      address: Rua de Mouzinho da Silveira 280, 4050-418 Porto
+social:
+  instagram: fora_sunglasses
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://www.nit.pt/compras/lojas-e-marcas/os-oculos-de-sol-intemporais-da-fora-sunglasses-chegaram-campo-de-ourique
+      publisher: NiT
+      date: 2024-05-15
+    - url: https://observador.pt/2015/05/15/fora-seja-bem-vindo-a-marca-de-oculos-de-sol-feitos-em-portugal/
+      publisher: Observador
+      date: 2015-05-15
+meta:
+  added: 2026-10-10
+  updated: 2026-10-18
+  source: import

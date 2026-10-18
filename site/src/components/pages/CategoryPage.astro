@@ -1,0 +1,211 @@
+---
+import type { Category, Subcategory } from '@fep/schema';
+import Layout from '~/layouts/Layout.astro';
+import BrandGrid from '~/components/BrandGrid.astro';
+import LandingHead from '~/components/LandingHead.astro';
+import {
+  brandsInCategory,
+  brandsInDistrictCategory,
+  brandsInSubcategory,
+  categoryLandingRegions,
+  landingSubcategories,
+  landingCategories,
+} from '~/lib/data.ts';
+import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
+import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
+import {
+  breadcrumbJsonLd,
+  faqJsonLd,
+  itemListJsonLd,
+  pageTitle,
+  truncate,
+  type Crumb,
+  type JsonLdNode,
+} from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+  category: Category;
+  /** Set on a subcategory page. */
+  subcategory?: Subcategory;
+}
+
+const { lang, category, subcategory } = Astro.props;
+
+const brands = subcategory
+  ? brandsInSubcategory(category.id, subcategory.id)
+  : brandsInCategory(category.id);
+
+const label = localized((subcategory ?? category).label, lang);
+const headline = t(lang, 'category.brandsIn', { category: labelInSentence(label, lang) });
+const intro = localized((subcategory?.intro ?? category.intro), lang);
+// Mid-sentence, English drops the capital too ("23 footwear brands").
+const inSentence = lang === 'en' ? label.toLocaleLowerCase('en-GB') : labelInSentence(label, lang);
+const lede = t(lang, 'category.lede', { count: brands.length, category: inSentence });
+
+const filters = emptyFilters();
+filters.cat = [category.id];
+if (subcategory) filters.sub = [subcategory.id];
+const catalogueLink = `${paths.brands(lang)}${serializeListingState({ q: '', sort: 'relevance', filters })}`;
+
+const alternates = subcategory
+  ? {
+      pt: paths.subcategory('pt', category.slug.pt, subcategory.slug.pt),
+      en: paths.subcategory('en', category.slug.en, subcategory.slug.en),
+    }
+  : {
+      pt: paths.category('pt', category.slug.pt),
+      en: paths.category('en', category.slug.en),
+    };
+
+const crumbs: Crumb[] = [
+  { name: t(lang, 'breadcrumbs.home'), path: paths.home(lang) },
+  { name: t(lang, 'nav.categories'), path: paths.categories(lang) },
+  ...(subcategory
+    ? [
+        { name: localized(category.label, lang), path: paths.category(lang, category.slug[lang]) },
+        { name: localized(subcategory.label, lang) },
+      ]
+    : [{ name: localized(category.label, lang) }]),
+];
+
+const faq = subcategory
+  ? []
+  : category.faq.map((entry) => ({
+      question: localized(entry.question, lang),
+      answer: localized(entry.answer, lang),
+    }));
+
+const subcategoryLinks = subcategory ? [] : landingSubcategories(category);
+const regionLinks = subcategory ? [] : categoryLandingRegions(category);
+const otherCategories = landingCategories().filter((other) => other.id !== category.id);
+
+const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
+const faqNode = faqJsonLd(faq);
+if (faqNode) jsonLd.push(faqNode);
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(headline, lang)}
+  description={truncate(intro || t(lang, 'site.description'), 155)}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <LandingHead
+    lang={lang}
+    crumbs={crumbs}
+    title={label}
+    eyebrow={subcategory ? localized(category.label, lang) : t(lang, 'landing.category')}
+    lede={lede}
+    intro={intro}
+    refine={{ href: catalogueLink, label: t(lang, 'category.refine') }}
+    category={category.id}
+  />
+  <div class="container">
+    {
+      subcategoryLinks.length > 0 && (
+        <nav class="links" aria-label={t(lang, 'category.subcategories')}>
+          <h2 class="eyebrow">{t(lang, 'category.subcategories')}</h2>
+          <ul class="pill-list">
+            {subcategoryLinks.map((sub) => (
+              <li>
+                <a class="pill" href={paths.subcategory(lang, category.slug[lang], sub.slug[lang])}>
+                  {localized(sub.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      regionLinks.length > 0 && (
+        <nav class="links" aria-label={t(lang, 'category.byRegion')}>
+          <h2 class="eyebrow">{t(lang, 'category.byRegion')}</h2>
+          <ul class="pill-list">
+            {regionLinks.map((region) => (
+              <li>
+                <a
+                  class="pill"
+                  href={paths.regionCategory(lang, region.slug[lang], category.slug[lang])}
+                >
+                  {localized(region.label, lang)}{' '}
+                  <span class="muted">{brandsInDistrictCategory(region.id, category.id).length}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    <div class="section">
+      <BrandGrid lang={lang} brands={brands} />
+    </div>
+
+    {
+      faq.length > 0 && (
+        <section class="section faq">
+          <h2>{t(lang, 'category.faq')}</h2>
+          <dl>
+            {faq.map((entry) => (
+              <>
+                <dt>{entry.question}</dt>
+                <dd>{entry.answer}</dd>
+              </>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+
+    {
+      otherCategories.length > 0 && (
+        <nav class="section" aria-label={t(lang, 'category.otherCategories')}>
+          <h2 class="eyebrow">{t(lang, 'category.otherCategories')}</h2>
+          <ul class="pill-list">
+            {otherCategories.map((other) => (
+              <li>
+                <a class="pill" href={paths.category(lang, other.slug[lang])}>
+                  {localized(other.label, lang)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .links {
+    margin-bottom: var(--fep-space-5);
+  }
+
+  .links + .section {
+    margin-top: var(--fep-space-6);
+  }
+
+  .faq {
+    max-width: var(--measure);
+  }
+
+  .faq h2 {
+    font-size: var(--fep-display-3);
+  }
+
+  .faq dt {
+    margin-top: var(--fep-space-4);
+    font-weight: 650;
+    color: var(--fep-heading);
+  }
+
+  .faq dd {
+    margin: var(--fep-space-2) 0 0;
+    color: var(--fep-ink-2);
+  }
+</style>

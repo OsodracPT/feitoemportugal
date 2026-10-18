@@ -1,0 +1,38 @@
+slug: cucawik
+status: published
+name: Cucawik
+description:
+  pt: >-
+    Bolsas, estojos e papelaria com padrões exclusivos, artesanais e produzidos em
+    Portugal.
+  en: >-
+    Pouches, pencil cases and stationery in exclusive prints, handmade in Portugal.
+website: https://cucawik.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [feito-a-mao]
+products: [malas, cadernos]
+production:
+  scope: total
+price_range: 1
+typical_price:
+  product: malas
+  eur: 43.9
+  checked: 2026-10-10
+where_to_buy:
+  online_store: https://cucawik.com
+  physical_stores:
+    - name: Cucawik
+      city: Lisboa
+      address: Rua Castilho 39, Edifício Castil, Loja 7, 1250-068 Lisboa
+social:
+  instagram: cucawik
+media:
+  logo: logo.jpg
+  photos: [foto-1.webp, foto-2.webp, foto-3.webp]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

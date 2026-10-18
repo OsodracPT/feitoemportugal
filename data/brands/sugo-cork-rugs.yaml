@@ -1,0 +1,30 @@
+slug: sugo-cork-rugs
+status: published
+name: Sugo Cork Rugs
+description:
+  pt: >-
+    Tapetes de cortiça tecidos em teares de tapeçaria, desenhados por Susana Godinho e
+    feitos na fábrica da marca em Santa Maria da Feira.
+  en: >-
+    Cork rugs woven on tapestry looms, designed by Susana Godinho and made at the
+    brand's own factory in Santa Maria da Feira.
+website: https://sugocorkrugs.com
+category: texteis-lar
+subcategory: tapetes
+tags: [cortica, tecido-em-tear]
+products: [tapetes]
+production:
+  scope: total
+location:
+  district: aveiro
+  municipality: santa-maria-da-feira
+social:
+  instagram: sugocorkrugs
+media:
+  logo: logo.png
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-09
+  source: import

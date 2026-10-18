@@ -1,0 +1,46 @@
+slug: chule
+status: published
+name: Chulé Socks
+description:
+  pt: >-
+    Meias fabricadas em Portugal com algodão orgânico certificado, de padrões próprios e
+    com versões para criança.
+  en: >-
+    Socks made in Portugal from certified organic cotton, with the brand's own patterns
+    and versions for children.
+website: https://chule.pt
+category: moda-e-vestuario
+subcategory: roupa-interior-e-meias
+tags: [algodao, contemporaneo, presente]
+products: [meias]
+production:
+  scope: total
+price_range: 2
+typical_price:
+  product: meias
+  eur: 12
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://chule.pt
+social:
+  instagram: chule_socks
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg, foto-2.webp, foto-3.webp]
+sustainability:
+  practices: [fibras-naturais]
+  certifications:
+    - id: gots
+verification:
+  verified: false
+  sources:
+    - url: https://www.forbespt.com/?p=176982
+      publisher: Forbes Portugal
+      date: 2025-12-18
+    - url: https://echoboomer.pt/chule-levas-meias-sustentaveis-porto/
+      publisher: Echo Boomer
+      date: 2025-12-03
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

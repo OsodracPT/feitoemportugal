@@ -1,0 +1,59 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { paths, t, type Lang } from '~/lib/i18n.ts';
+import { pageTitle } from '~/lib/seo.ts';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const alternates = { pt: '/404', en: '/en/404' };
+---
+
+<Layout
+  lang={lang}
+  title={pageTitle(t(lang, 'notFound.title'), lang)}
+  description={t(lang, 'notFound.intro')}
+  canonical={alternates[lang]}
+  alternates={alternates}
+  noindex
+>
+  <div class="container narrow">
+    <h1>{t(lang, 'notFound.title')}</h1>
+    <p class="lede">{t(lang, 'notFound.intro')}</p>
+    <form class="search" role="search" method="get" action={paths.brands(lang)}>
+      <label class="visually-hidden" for="q">{t(lang, 'home.searchPlaceholder')}</label>
+      <input id="q" name="q" type="search" placeholder={t(lang, 'home.searchPlaceholder')} />
+      <button class="button" type="submit">{t(lang, 'home.searchButton')}</button>
+    </form>
+    <p>
+      <a href={paths.home(lang)}>{t(lang, 'notFound.backHome')}</a> ·
+      <a href={paths.brands(lang)}>{t(lang, 'notFound.browseBrands')}</a>
+    </p>
+  </div>
+</Layout>
+
+<style>
+  .narrow {
+    max-width: var(--container-narrow);
+    padding-block: var(--space-7);
+  }
+
+  .search {
+    display: flex;
+    gap: var(--space-2);
+    margin-block: var(--space-5);
+    flex-wrap: wrap;
+  }
+
+  .search input {
+    flex: 1 1 16rem;
+    padding: var(--space-3) var(--space-4);
+    font: inherit;
+    color: inherit;
+    background: var(--bg-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+  }
+</style>

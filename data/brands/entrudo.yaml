@@ -1,0 +1,46 @@
+slug: entrudo
+status: published
+name: Entrudo
+description:
+  pt: >-
+    Cestos e malas inspirados nas máscaras e no carnaval português, pintados à mão e
+    produzidos em Portugal por encomenda.
+  en: >-
+    Baskets and bags inspired by Portuguese carnival masks, hand-painted and made to
+    order in Portugal.
+website: https://www.entrudo.com
+category: acessorios
+subcategory: malas-e-mochilas
+tags: [pintado-a-mao, producao-por-encomenda]
+products: [malas]
+founded: 2017
+production:
+  scope: total
+location:
+  district: porto
+  municipality: felgueiras
+price_range: 4
+typical_price:
+  product: malas
+  eur: 400
+  checked: 2026-10-13
+where_to_buy:
+  online_store: https://www.entrudo.com
+social:
+  instagram: entrudopt
+media:
+  logo: logo.jpg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://www.nit.pt/compras/moda/entrudo-sapatos-em-pele-caretos
+      publisher: NiT
+      date: 2017-06-22
+    - url: https://visao.pt/visaose7e/comprar/2021-02-16-o-carnaval-sao-tres-dias-mas-com-a-entrudo-dura-o-ano-inteiro/
+      publisher: Visão
+      date: 2021-02-16
+meta:
+  added: 2026-10-08
+  updated: 2026-10-13
+  source: import

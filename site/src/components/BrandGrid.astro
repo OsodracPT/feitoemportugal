@@ -1,0 +1,54 @@
+---
+import type { Brand } from '@fep/schema';
+import BrandCard from './BrandCard.astro';
+import EmptyState from './EmptyState.astro';
+import { t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  brands: Brand[];
+}
+
+const { lang, brands } = Astro.props;
+---
+
+{
+  brands.length === 0 ? (
+    <EmptyState lang={lang} title={t(lang, 'empty.listTitle')} text={t(lang, 'brands.empty')} />
+  ) : (
+    // The wrapper is the query container: a card is a list row in a narrow
+    // column and a tile once there is room for a grid, wherever it is placed.
+    <div class="brands" data-brand-view>
+      <div class="brands__grid" data-brand-grid>
+        {brands.map((brand) => (
+          <BrandCard lang={lang} brand={brand} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .brands {
+    container: brands / inline-size;
+  }
+
+  .brands__grid {
+    display: grid;
+    gap: 10px;
+  }
+
+  /* Columns once there is room, unless the reader picked "Lista"
+     (data-view, set by listing-controller.ts); always for "Painel". */
+  @container brands (min-width: 36rem) {
+    .brands:not([data-view='list']) .brands__grid {
+      gap: var(--fep-space-4);
+      grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+    }
+  }
+
+  .brands[data-view='panel'] .brands__grid {
+    gap: var(--fep-space-4);
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  }
+</style>

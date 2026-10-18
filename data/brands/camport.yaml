@@ -1,0 +1,32 @@
+slug: camport
+status: published
+name: Camport
+description:
+  pt: >-
+    Calçado de homem e de mulher feito à mão em Portugal, herdeiro da antiga fábrica
+    Campeão Português, que nos anos 70 foi pioneira na sola injetada em poliuretano.
+  en: >-
+    Men's and women's footwear handmade in Portugal, successor to the old Campeão
+    Português factory, a 1970s pioneer of injected polyurethane soles.
+website: https://camport.pt
+category: calcado
+tags: [feito-a-mao, classico]
+products: [sapatos]
+production:
+  scope: total
+location:
+  district: braga
+  municipality: guimaraes
+where_to_buy:
+  online_store: https://camport.pt
+social:
+  instagram: camport_pt
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-13
+  source: import

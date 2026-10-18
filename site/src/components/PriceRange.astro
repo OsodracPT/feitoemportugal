@@ -1,0 +1,54 @@
+---
+import type { Brand, Category } from '@fep/schema';
+import { getProduct } from '~/lib/data.ts';
+import { formatPrice, localized, t, type Lang } from '~/lib/i18n.ts';
+
+interface Props {
+  lang: Lang;
+  value: number;
+  category?: Category | undefined;
+  typical?: Brand['typical_price'];
+}
+
+const { lang, value, category, typical } = Astro.props;
+// A typical price says what the symbols are based on; the category's band
+// labels are the fallback for brands rated before product bands existed.
+const product = typical ? getProduct(typical.product) : undefined;
+const level = category?.price_levels.find((entry) => entry.level === value);
+const label =
+  typical && product
+    ? t(lang, 'brand.typicalPrice', {
+        item: localized(product.price_bands?.item ?? product.label, lang),
+        price: formatPrice(typical.eur, lang),
+      })
+    : level
+      ? localized(level.label, lang)
+      : undefined;
+---
+
+<!-- Filled euros plus dim ones out of four; the symbols are read as "Preço 2 de 4". -->
+<span class="price">
+  <span class="price__symbols" aria-hidden="true">
+    {'€'.repeat(value)}<span class="price__off">{'€'.repeat(4 - value)}</span>
+  </span>
+  <span class="visually-hidden">{t(lang, 'card.priceOf', { level: value })}</span>
+  {label && <span class="price__label">({label})</span>}
+</span>
+
+<style>
+  .price {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--fep-space-1);
+  }
+
+  .price__symbols {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--fep-ink);
+  }
+
+  .price__off {
+    color: var(--fep-ink-dim);
+  }
+</style>

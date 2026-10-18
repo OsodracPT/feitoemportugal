@@ -1,0 +1,45 @@
+slug: torres-novas
+status: published
+name: Torres Novas
+description:
+  pt: >-
+    Marca de toalhas e roupa de banho com origem numa das primeiras linhas de produção de
+    turcos do país, instalada em Torres Novas desde o século XIX.
+  en: >-
+    Towel and bath linen brand grown from one of the country's first terry weaving lines,
+    based in Torres Novas since the 19th century.
+website: https://www.torresnovas.com
+category: texteis-lar
+subcategory: toalhas
+tags: [algodao, classico, fabrica-centenaria]
+products: [toalhas]
+production:
+  scope: total
+location:
+  district: santarem
+  municipality: torres-novas
+price_range: 3
+typical_price:
+  product: toalhas
+  eur: 51.49
+  checked: 2026-10-18
+where_to_buy:
+  online_store: https://www.torresnovas.com
+  physical_stores:
+    - name: Torres Novas Campo de Ourique
+      city: Lisboa
+      address: Rua Tomás da Anunciação 38A, 1350-321 Lisboa
+    - name: Torres Novas Restelo
+      city: Lisboa
+      address: Edifício Brasil, R. Gregório Lopes 1638, 1400-407 Lisboa
+social:
+  instagram: torresnovas1845
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-04
+  updated: 2026-10-18
+  source: maintainer

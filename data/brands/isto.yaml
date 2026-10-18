@@ -1,0 +1,57 @@
+slug: isto
+status: published
+name: ISTO
+description:
+  pt: >-
+    Marca de Lisboa que produz vestuário essencial em Portugal e publica a estrutura de
+    custos de cada peça. Trabalha sobretudo algodão, lã e ganga, em cortes simples.
+  en: >-
+    Lisbon label making essential clothing in Portugal and publishing the cost breakdown
+    of every garment. Works mostly in cotton, wool and denim, in plain cuts.
+website: https://isto.pt
+category: moda-e-vestuario
+tags: [algodao, minimalista, contemporaneo]
+products: [t-shirts]
+production:
+  scope: total
+price_range: 3
+typical_price:
+  product: t-shirts
+  eur: 55
+  checked: 2026-10-10
+where_to_buy:
+  online_store: https://isto.pt
+  physical_stores:
+    - name: ISTO. Amoreiras
+      city: Lisboa
+      address: Av. Eng. Duarte Pacheco, Piso 2, 1070-103 Lisboa
+    - name: ISTO. Campo de Ourique
+      city: Lisboa
+      address: Rua Tenente Ferreira Durão 70, 1350-318 Lisboa
+    - name: ISTO. Chiado
+      city: Lisboa
+      address: Rua Nova da Trindade 22E, 1200-235 Lisboa
+    - name: ISTO. Porto
+      city: Porto
+      address: Rua 31 de Janeiro 221, 4000-101 Porto
+    - name: ISTO. Príncipe Real
+      city: Lisboa
+      address: Praça do Príncipe Real 26
+social:
+  instagram: isto.pt
+media:
+  logo: logo.svg
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+  sources:
+    - url: https://observador.pt/2017/06/29/isto-e-a-marca-de-moda-mais-honesta-do-momento/
+      publisher: Observador
+      date: 2017-06-29
+    - url: https://www.publico.pt/2020/09/26/impar/noticia/marca-roupa-portuguesa-the-n55-tambem-ambas-sao-intemporais-sustentaveis-1932856
+      publisher: Público
+      date: 2020-09-26
+meta:
+  added: 2026-10-04
+  updated: 2026-10-18
+  source: import

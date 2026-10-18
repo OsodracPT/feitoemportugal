@@ -1,0 +1,33 @@
+slug: azeite-caixeiro
+status: published
+name: Azeite Caixeiro
+description:
+  pt: >-
+    Azeite de produção própria, da apanha à garrafa, em Santa Maria de Émeres, no
+    concelho de Valpaços.
+  en: >-
+    Olive oil produced from harvest to bottle on its own land in Santa Maria de Émeres,
+    Valpaços.
+website: https://azeitecaixeiro.pt
+category: alimentacao
+subcategory: azeite-e-vinagre
+products: [azeite]
+production:
+  scope: total
+location:
+  district: vila-real
+  municipality: valpacos
+where_to_buy:
+  physical_stores:
+    - name: Loja SORESA
+      city: Valpaços
+      address: Rua do Prado 1, 5445-052 Santa Maria de Émeres
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-08
+  updated: 2026-10-18
+  source: import

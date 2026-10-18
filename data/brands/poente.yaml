@@ -1,0 +1,30 @@
+slug: poente
+status: published
+name: Poente
+description:
+  pt: >-
+    Óculos de sol e armações graduadas desenhados e feitos à mão em Portugal, com
+    estilos de edição limitada.
+  en: >-
+    Sunglasses and optical frames designed and handmade in Portugal, with
+    limited-edition styles.
+website: https://www.poente.pt
+category: acessorios
+subcategory: oculos
+tags: [feito-a-mao]
+products: [oculos]
+production:
+  scope: total
+where_to_buy:
+  online_store: https://www.poente.pt
+social:
+  instagram: poente.pt
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
+verification:
+  verified: false
+meta:
+  added: 2026-10-10
+  updated: 2026-10-18
+  source: import
