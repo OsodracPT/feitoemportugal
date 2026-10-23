@@ -40,6 +40,7 @@ function gaps(brand: Brand): string[] {
     !brand.location?.municipality && 'location',
     brand.production.scope === 'parcial' && 'parcial',
     !brand.media?.logo && 'logo',
+    !brand.media?.photos?.length && 'photos',
     brand.price_range === undefined && 'price',
   ].filter((gap): gap is string => Boolean(gap));
 }
