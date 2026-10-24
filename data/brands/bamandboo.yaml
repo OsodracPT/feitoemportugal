@@ -18,6 +18,11 @@ production:
 location:
   district: acores
   municipality: lagoa-acores
+price_range: 4
+typical_price:
+  product: cremes
+  eur: 71.95
+  checked: 2026-10-23
 where_to_buy:
   online_store: https://thebamandboo.com
 social:
@@ -29,5 +34,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

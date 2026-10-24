@@ -19,6 +19,11 @@ production:
 location:
   district: porto
   municipality: pacos-de-ferreira
+price_range: 4
+typical_price:
+  product: camisas
+  eur: 180
+  checked: 2026-10-09
 where_to_buy:
   online_store: https://alineclothing.com
 social:
@@ -30,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

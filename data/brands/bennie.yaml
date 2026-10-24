@@ -18,6 +18,11 @@ production:
 location:
   district: braga
   municipality: barcelos
+price_range: 2
+typical_price:
+  product: roupa-de-crianca
+  eur: 20.95
+  checked: 2026-10-09
 where_to_buy:
   online_store: https://www.bennie.pt
 social:
@@ -29,5 +34,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

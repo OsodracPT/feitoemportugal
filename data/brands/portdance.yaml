@@ -14,6 +14,11 @@ tags: [pele]
 products: [sapatos, sapatilhas]
 production:
   scope: total
+price_range: 2
+typical_price:
+  product: sapatos
+  eur: 124
+  checked: 2026-10-23
 where_to_buy:
   online_store: https://www.portdance.pt
 social:
@@ -25,5 +30,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

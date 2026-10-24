@@ -18,6 +18,11 @@ production:
 location:
   district: lisboa
   municipality: lisboa
+price_range: 3
+typical_price:
+  product: cerveja
+  eur: 5.5
+  checked: 2026-10-23
 where_to_buy:
   online_store: https://www.oitavacolina.pt
   physical_stores:
@@ -36,5 +41,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-23
+  updated: 2026-10-24
   source: import

@@ -23,6 +23,11 @@ production:
       The brand states Portuguese manufacturing in general terms without naming
       factories; part of the range (knitwear, jewellery, perfume) carries no stated
       origin.
+price_range: 2
+typical_price:
+  product: fatos
+  eur: 299
+  checked: 2026-10-23
 where_to_buy:
   online_store: https://cavemenstore.com
   physical_stores:
@@ -44,5 +49,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-14
+  updated: 2026-10-24
   source: import

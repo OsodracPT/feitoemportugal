@@ -17,6 +17,11 @@ production:
   scope: total
 location:
   district: santarem
+price_range: 4
+typical_price:
+  product: snacks
+  eur: 9.85
+  checked: 2026-10-10
 where_to_buy:
   online_store: https://www.trincabio.com
 social:
@@ -34,5 +39,5 @@ verification:
       date: 2017-05-26
 meta:
   added: 2026-10-08
-  updated: 2026-10-11
+  updated: 2026-10-24
   source: import

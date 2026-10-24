@@ -16,6 +16,11 @@ products: [sapatos]
 founded: 2010
 production:
   scope: total
+price_range: 3
+typical_price:
+  product: sapatos
+  eur: 149.95
+  checked: 2026-10-09
 where_to_buy:
   online_store: https://www.appleofedenshoes.com
 social:
@@ -26,5 +31,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-24
   source: import
