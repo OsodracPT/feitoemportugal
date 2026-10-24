@@ -2,6 +2,7 @@
 # Lista fixa: só muda por PR revisto.
 # `price_levels` define a referência de cada nível (1-4) dentro da categoria,
 # para a classificação ser consistente entre marcas.
+# `synonyms` (categoria ou subcategoria) alimenta a pesquisa e não é mostrado.
 
 - id: moda-e-vestuario
   label: { pt: Moda e vestuário, en: Fashion and clothing }
@@ -63,6 +64,9 @@
 - id: calcado
   label: { pt: Calçado, en: Footwear }
   slug: { pt: calcado, en: footwear }
+  synonyms:
+    pt: [sapatos, sapato]
+    en: [shoes]
   intro:
     pt: >-
       O calçado é a indústria portuguesa mais conhecida fora do país. Em São João
@@ -125,6 +129,9 @@
     - id: calcado-crianca
       label: { pt: Calçado de criança, en: Kids' footwear }
       slug: { pt: calcado-crianca, en: kids-footwear }
+      synonyms:
+        pt: [sapatos de criança, sapatos infantis, calçado infantil, sapatinhos]
+        en: [kids shoes, children's shoes]
 
 - id: acessorios
   label: { pt: Acessórios, en: Accessories }

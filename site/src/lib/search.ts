@@ -47,11 +47,17 @@ function docFor(brand: Brand): SearchDoc {
     id: brand.slug,
     name: join([brand.name, brand.slug.replace(/-/g, ' ')]),
     tags: join([...tags, ...productTerms]),
+    // Category synonyms let a query mix a product word with an audience:
+    // "sapato de criança" finds a brand filed under Calçado de criança.
     category: join([
       category?.label.pt,
       category?.label.en,
+      ...(category?.synonyms.pt ?? []),
+      ...(category?.synonyms.en ?? []),
       subcategory?.label.pt,
       subcategory?.label.en,
+      ...(subcategory?.synonyms.pt ?? []),
+      ...(subcategory?.synonyms.en ?? []),
     ]),
     region: join([region?.label.pt, region?.label.en, municipality?.name]),
     description: join([brand.description.pt, brand.description.en]),

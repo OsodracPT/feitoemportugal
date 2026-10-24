@@ -60,6 +60,13 @@ describe('brand search', () => {
     expect(hits('manteigas', 20)).toContain('ecola');
   });
 
+  it('uses category synonyms, so a product word and an audience combine', () => {
+    // zas-tras is filed under Calçado de criança; no word in it says "sapato".
+    for (const query of ['sapato de criança', 'sapatos infantis', 'kids shoes']) {
+      expect(hits(query, 20)).toContain('zas-tras');
+    }
+  });
+
   it('combines words with AND', () => {
     const results = hits('meias portugal', 20);
     expect(results.length).toBeGreaterThan(0);

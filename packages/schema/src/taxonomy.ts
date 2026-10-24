@@ -17,11 +17,20 @@ const priceLevelSchema = z.object({
   label: localizedSchema,
 });
 
+/** Search-only alternative words; never shown in the interface. */
+const synonymsSchema = z
+  .object({
+    pt: z.array(z.string().min(1)).default([]),
+    en: z.array(z.string().min(1)).default([]),
+  })
+  .default({ pt: [], en: [] });
+
 const subcategorySchema = z.object({
   id: idSchema,
   label: localizedSchema,
   slug: localizedSchema,
   intro: localizedSchema.optional(),
+  synonyms: synonymsSchema,
 });
 
 export const categorySchema = z.object({
@@ -32,6 +41,7 @@ export const categorySchema = z.object({
   faq: z.array(faqEntrySchema).default([]),
   price_levels: z.array(priceLevelSchema).length(4),
   subcategories: z.array(subcategorySchema).default([]),
+  synonyms: synonymsSchema,
 });
 
 export const categoriesFileSchema = z.array(categorySchema).min(1);
@@ -39,12 +49,7 @@ export const categoriesFileSchema = z.array(categorySchema).min(1);
 export const tagSchema = z.object({
   id: idSchema,
   label: localizedSchema,
-  synonyms: z
-    .object({
-      pt: z.array(z.string().min(1)).default([]),
-      en: z.array(z.string().min(1)).default([]),
-    })
-    .default({ pt: [], en: [] }),
+  synonyms: synonymsSchema,
 });
 
 export const tagsFileSchema = z.array(tagSchema).min(1);
@@ -73,12 +78,7 @@ export const productSchema = z.object({
   label: localizedSchema,
   slug: localizedSchema,
   price_bands: priceBandsSchema.optional(),
-  synonyms: z
-    .object({
-      pt: z.array(z.string().min(1)).default([]),
-      en: z.array(z.string().min(1)).default([]),
-    })
-    .default({ pt: [], en: [] }),
+  synonyms: synonymsSchema,
 });
 
 export const productsFileSchema = z.array(productSchema).min(1);
