@@ -14,6 +14,11 @@ interface Props {
   crumbs: Crumb[];
   title: string;
   eyebrow?: string | undefined;
+  /**
+   * The page's h1, a full phrase people search for ("Marcas de botas feitas em
+   * Portugal"). It takes the eyebrow's place, and the plate keeps the short label.
+   */
+  heading?: string | undefined;
   /** The count sentence under the plate ("23 marcas fabricam…"). */
   lede?: string | undefined;
   intro?: string | undefined;
@@ -22,7 +27,7 @@ interface Props {
   category?: string | undefined;
 }
 
-const { lang, crumbs, title, eyebrow, lede, intro, refine, category } = Astro.props;
+const { lang, crumbs, title, eyebrow, heading, lede, intro, refine, category } = Astro.props;
 const hasMap = Astro.slots.has('map');
 ---
 
@@ -37,8 +42,19 @@ const hasMap = Astro.slots.has('map');
   <Breadcrumbs lang={lang} crumbs={crumbs} />
   <header class:list={['landing', { 'landing--map': hasMap }]}>
     <div class="landing__title">
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <h1 class="plate">{title}</h1>
+      {
+        heading ? (
+          <>
+            <h1 class="eyebrow">{heading}</h1>
+            <p class="plate">{title}</p>
+          </>
+        ) : (
+          <>
+            {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+            <h1 class="plate">{title}</h1>
+          </>
+        )
+      }
       {lede && <p class="landing__lede">{lede}</p>}
     </div>
     <div class="landing__body">

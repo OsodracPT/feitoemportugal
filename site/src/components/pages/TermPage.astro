@@ -9,6 +9,7 @@ import Layout from '~/layouts/Layout.astro';
 import BrandGrid from '~/components/BrandGrid.astro';
 import LandingHead from '~/components/LandingHead.astro';
 import { brandsWithProduct, brandsWithTag, landingProducts, landingTags } from '~/lib/data.ts';
+import { brandsSummary } from '~/lib/landing.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import {
@@ -39,6 +40,8 @@ const headline = isProduct
 const lede = isProduct
   ? t(lang, 'products.lede', { count: brands.length, product: inSentence })
   : t(lang, 'tags.lede', { count: brands.length });
+
+const summary = brandsSummary(brands, lang);
 
 const pagePath = (target: Lang): string =>
   kind === 'product'
@@ -73,7 +76,7 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
 <Layout
   lang={lang}
   title={pageTitle(headline, lang)}
-  description={truncate(lede, 155)}
+  description={truncate(`${lede} ${summary}`, 155)}
   canonical={alternates[lang]}
   alternates={alternates}
   jsonLd={jsonLd}
@@ -82,8 +85,9 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
     lang={lang}
     crumbs={crumbs}
     title={label}
-    eyebrow={t(lang, isProduct ? 'landing.product' : 'landing.tag')}
+    heading={headline}
     lede={lede}
+    intro={summary}
     refine={{ href: catalogueLink, label: t(lang, isProduct ? 'products.refine' : 'tags.refine') }}
     category={isProduct ? (term as Product).category : undefined}
   />

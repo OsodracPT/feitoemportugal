@@ -49,7 +49,9 @@
     "trust1": "A marca diz, no seu site, que fabrica cá. Ainda sem fonte independente.",
     "trust2": "Há provas públicas: morada da fábrica, certificação, reportagem.",
     "trust3": "Confirmado por um responsável do projeto, com documento ou visita.",
-    "trustLink": "Como funciona a verificação"
+    "trustLink": "Como funciona a verificação",
+    "popularProducts": "Produtos com mais marcas",
+    "allProducts": "Todos os produtos"
   },
   "brands": {
     "title": "Marcas",
@@ -143,7 +145,8 @@
     "noPage": "Esta categoria ainda não tem marcas suficientes para ter página própria.",
     "byRegion": "Por região",
     "lede": "{count} marcas de {category} feitas em Portugal.",
-    "refine": "Filtrar estas marcas no catálogo"
+    "refine": "Filtrar estas marcas no catálogo",
+    "subBrandsIn": "Marcas de {category}: {subcategory}"
   },
   "products": {
     "title": "Produtos",
@@ -168,8 +171,6 @@
     "located": "{count} de {total} marcas têm local de produção conhecido."
   },
   "region": {
-    "district": "Distrito",
-    "autonomous": "Região autónoma",
     "title": "Marcas feitas {inRegion}",
     "lede": "{count} marcas produzem aqui.",
     "other": "Outras regiões",
@@ -476,9 +477,8 @@
     "panel": "Painel"
   },
   "landing": {
-    "category": "Categoria",
-    "product": "Tipo de produto",
-    "tag": "Etiqueta"
+    "madeIn": "Sobretudo em {places}.",
+    "including": "Entre elas: {names}."
   },
   "empty": {
     "title": "Nenhuma marca encontrada",

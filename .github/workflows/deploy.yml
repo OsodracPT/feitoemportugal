@@ -157,3 +157,23 @@ jobs:
             echo "live '$live' != expected '$expected' (attempt $attempt)"; sleep 10
           done
           exit 1
+
+      # Tells Bing (and the other IndexNow engines) that the pages changed, so
+      # they recrawl now instead of on their own schedule. The key is public by
+      # design: the engines check it against site/public/<key>.txt. Best effort.
+      - name: Notify search engines (IndexNow)
+        if: steps.target.outputs.enabled == 'true'
+        env:
+          INDEXNOW_KEY: dadffaf752659ec4184226dd25d8fedb
+        run: |
+          node -e '
+            const site = process.env.SITE_URL;
+            const xml = require("fs").readFileSync("site/dist/sitemap.xml", "utf8");
+            const urlList = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]).slice(0, 10000);
+            const body = { host: new URL(site).host, key: process.env.INDEXNOW_KEY,
+              keyLocation: `${site}/${process.env.INDEXNOW_KEY}.txt`, urlList };
+            fetch("https://api.indexnow.org/indexnow", { method: "POST",
+              headers: { "content-type": "application/json; charset=utf-8" }, body: JSON.stringify(body) })
+              .then((r) => console.log(`IndexNow: HTTP ${r.status} for ${urlList.length} URLs`))
+              .catch((e) => console.log(`IndexNow failed: ${e.message}`));
+          '

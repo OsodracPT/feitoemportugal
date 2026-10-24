@@ -49,7 +49,9 @@
     "trust1": "The brand says on its own website that it makes things here. No independent source yet.",
     "trust2": "There is public proof: the factory's address, a certification, a press report.",
     "trust3": "Confirmed by a project maintainer, with a document or a visit.",
-    "trustLink": "How verification works"
+    "trustLink": "How verification works",
+    "popularProducts": "Products with the most brands",
+    "allProducts": "All products"
   },
   "brands": {
     "title": "Brands",
@@ -143,7 +145,8 @@
     "noPage": "This category does not have enough brands yet to get its own page.",
     "byRegion": "By region",
     "lede": "{count} {category} brands made in Portugal.",
-    "refine": "Filter these brands in the catalogue"
+    "refine": "Filter these brands in the catalogue",
+    "subBrandsIn": "{category} brands: {subcategory}"
   },
   "products": {
     "title": "Products",
@@ -168,8 +171,6 @@
     "located": "{count} of {total} brands have a known production site."
   },
   "region": {
-    "district": "District",
-    "autonomous": "Autonomous region",
     "title": "Brands made {inRegion}",
     "lede": "{count} brands make their products here.",
     "other": "Other regions",
@@ -417,9 +418,8 @@
     "panel": "Panel"
   },
   "landing": {
-    "category": "Category",
-    "product": "Product type",
-    "tag": "Tag"
+    "madeIn": "Mostly in {places}.",
+    "including": "Among them: {names}."
   },
   "empty": {
     "title": "No brands found",

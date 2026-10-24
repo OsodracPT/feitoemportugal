@@ -6,9 +6,11 @@ import {
   brands,
   brandsInCategory,
   brandsInDistrict,
+  brandsWithProduct,
   categories,
   hasLandingPage,
   hasRegionPage,
+  landingProducts,
   recentBrands,
   regions,
 } from '~/lib/data.ts';
@@ -33,6 +35,14 @@ const counted = categories
 const panel = TILES.flatMap((tile) => counted.find(({ category }) => categoryTile(category.id) === tile) ?? []).sort(
   (a, b) => b.count - a.count,
 );
+
+// What people search for is a product ("botas", "azeite"), so the home page
+// links the product pages with the most brands directly.
+const POPULAR_PRODUCTS = 16;
+const popular = landingProducts()
+  .map((product) => ({ product, count: brandsWithProduct(product.id).length }))
+  .sort((a, b) => b.count - a.count)
+  .slice(0, POPULAR_PRODUCTS);
 
 const withBrands = regions
   .map((region) => ({ region, count: brandsInDistrict(region.id).length }))
@@ -107,6 +117,24 @@ const byName = [...withBrands].sort((a, b) =>
   </div>
 
   <div class="band" aria-hidden="true"></div>
+
+  <nav class="container popular" aria-labelledby="popular-title">
+    <div class="tiles__head">
+      <h2 id="popular-title">{t(lang, 'home.popularProducts')}</h2>
+      <a href={paths.products(lang)}>{t(lang, 'home.allProducts')}</a>
+    </div>
+    <ul class="pill-list">
+      {
+        popular.map(({ product, count }) => (
+          <li>
+            <a class="pill" href={paths.product(lang, product.slug[lang])}>
+              {localized(product.label, lang)} <span class="muted">{count}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 
   <section class="container regions" aria-labelledby="regions-title">
     <div class="regions__text">
@@ -257,6 +285,10 @@ const byName = [...withBrands].sort((a, b) =>
     font-family: var(--fep-font-body);
     font-size: var(--fep-text);
     font-weight: 700;
+  }
+
+  .popular {
+    padding-block: var(--fep-space-6) var(--fep-space-8);
   }
 
   /* --- The panel: tiles with grout, each labelled by an enamel plate --- */

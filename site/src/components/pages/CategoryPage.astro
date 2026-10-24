@@ -11,6 +11,7 @@ import {
   landingSubcategories,
   landingCategories,
 } from '~/lib/data.ts';
+import { brandsSummary } from '~/lib/landing.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import {
@@ -37,8 +38,18 @@ const brands = subcategory
   : brandsInCategory(category.id);
 
 const label = localized((subcategory ?? category).label, lang);
-const headline = t(lang, 'category.brandsIn', { category: labelInSentence(label, lang) });
-const intro = localized((subcategory?.intro ?? category.intro), lang);
+// A subcategory often shares its label with a product type ("Botas"); naming the
+// category keeps the two pages from competing for the same title.
+const headline = subcategory
+  ? t(lang, 'category.subBrandsIn', {
+      category: labelInSentence(localized(category.label, lang), lang),
+      subcategory: labelInSentence(label, lang),
+    })
+  : t(lang, 'category.brandsIn', { category: labelInSentence(label, lang) });
+// Never the parent's intro on a subcategory: that would duplicate its text.
+const intro = subcategory
+  ? (subcategory.intro ? localized(subcategory.intro, lang) : brandsSummary(brands, lang))
+  : localized(category.intro, lang);
 // Mid-sentence, English drops the capital too ("23 footwear brands").
 const inSentence = lang === 'en' ? label.toLocaleLowerCase('en-GB') : labelInSentence(label, lang);
 const lede = t(lang, 'category.lede', { count: brands.length, category: inSentence });
@@ -88,7 +99,7 @@ if (faqNode) jsonLd.push(faqNode);
 <Layout
   lang={lang}
   title={pageTitle(headline, lang)}
-  description={truncate(intro || t(lang, 'site.description'), 155)}
+  description={truncate(subcategory ? `${lede} ${intro}` : intro || t(lang, 'site.description'), 155)}
   canonical={alternates[lang]}
   alternates={alternates}
   jsonLd={jsonLd}
@@ -97,7 +108,7 @@ if (faqNode) jsonLd.push(faqNode);
     lang={lang}
     crumbs={crumbs}
     title={label}
-    eyebrow={subcategory ? localized(category.label, lang) : t(lang, 'landing.category')}
+    heading={headline}
     lede={lede}
     intro={intro}
     refine={{ href: catalogueLink, label: t(lang, 'category.refine') }}

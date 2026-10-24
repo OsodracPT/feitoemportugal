@@ -15,6 +15,7 @@ import {
   regionLandingCategories,
   regions,
 } from '~/lib/data.ts';
+import { brandsSummary } from '~/lib/landing.ts';
 import { emptyFilters, serializeListingState } from '~/lib/filters.ts';
 import { inRegion, labelInSentence, localized, paths, t, type Lang } from '~/lib/i18n.ts';
 import { municipalityDots } from '~/lib/map.ts';
@@ -67,6 +68,9 @@ const crumbs: Crumb[] = [
   { name: categoryName },
 ];
 
+// The category intro is the same on every region; the summary is not.
+const summary = brandsSummary(brands, lang);
+
 const otherCategories = regionLandingCategories(region).filter((other) => other.id !== category.id);
 const otherRegions = categoryLandingRegions(category).filter((other) => other.id !== region.id);
 const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
@@ -75,7 +79,7 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
 <Layout
   lang={lang}
   title={pageTitle(headline, lang)}
-  description={truncate(`${lede} ${localized(category.intro, lang)}`, 155)}
+  description={truncate(`${lede} ${summary}`, 155)}
   canonical={alternates[lang]}
   alternates={alternates}
   jsonLd={jsonLd}
@@ -84,8 +88,9 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
     lang={lang}
     crumbs={crumbs}
     title={t(lang, 'regionCategory.plate', { category: categoryName, inRegion: place })}
-    eyebrow={t(lang, 'landing.category')}
+    heading={headline}
     lede={lede}
+    intro={summary}
     refine={{ href: catalogueLink, label: t(lang, 'regionCategory.refine') }}
     category={category.id}
   >

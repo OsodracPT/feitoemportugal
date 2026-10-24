@@ -58,13 +58,15 @@ const crumbs: Crumb[] = [
   { name },
 ];
 
+const headline = t(lang, 'region.title', { inRegion: inRegion(lang, region.id, name) });
+
 const others = landingRegions().filter((other) => other.id !== region.id);
 const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(crumbs)];
 ---
 
 <Layout
   lang={lang}
-  title={pageTitle(t(lang, 'region.title', { inRegion: inRegion(lang, region.id, name) }), lang)}
+  title={pageTitle(headline, lang)}
   description={truncate(intro || t(lang, 'site.description'), 155)}
   canonical={alternates[lang]}
   alternates={alternates}
@@ -74,7 +76,7 @@ const jsonLd: JsonLdNode[] = [itemListJsonLd(brands, lang), breadcrumbJsonLd(cru
     lang={lang}
     crumbs={crumbs}
     title={name}
-    eyebrow={t(lang, region.type === 'regiao-autonoma' ? 'region.autonomous' : 'region.district')}
+    heading={headline}
     lede={t(lang, 'region.lede', { count: brands.length })}
     intro={intro}
     refine={{ href: catalogueLink, label: t(lang, 'region.refine') }}
