@@ -10,8 +10,9 @@ description:
     of every garment. Works mostly in cotton, wool and denim, in plain cuts.
 website: https://isto.pt
 category: moda-e-vestuario
-tags: [algodao, minimalista, contemporaneo]
-products: [t-shirts]
+subcategory: roupa-homem
+tags: [algodao, minimalista, contemporaneo, linho, la, denim]
+products: [t-shirts, camisas, calcas, casacos, jeans, meias]
 production:
   scope: total
 price_range: 3
@@ -53,5 +54,5 @@ verification:
       date: 2020-09-26
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

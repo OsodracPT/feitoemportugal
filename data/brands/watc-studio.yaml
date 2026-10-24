@@ -1,6 +1,7 @@
 slug: watc-studio
 status: published
 name: WATC Studio
+alt_names: [WATC]
 description:
   pt: >-
     Peças básicas em algodão orgânico, sem logótipos, produzidas nos ateliers próprios da
@@ -9,7 +10,8 @@ description:
     Organic cotton basics without logos, produced in the brand's own ateliers in Portugal.
 website: https://watc-studio.com
 category: moda-e-vestuario
-tags: [algodao, minimalista, unissexo]
+tags: [algodao, minimalista, unissexo, personalizavel]
+products: [t-shirts, camisolas, calcas]
 production:
   scope: total
 price_range: 2
@@ -26,5 +28,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

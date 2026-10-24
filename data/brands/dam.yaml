@@ -9,8 +9,8 @@ description:
     Design furniture, lighting and accessories, handmade to order in Portugal.
 website: https://damportugal.com
 category: mobiliario
-tags: [madeira, producao-por-encomenda]
-products: [cadeiras, mesas, candeeiros]
+tags: [madeira, producao-por-encomenda, cortica, la, algodao]
+products: [cadeiras, mesas, candeeiros, estantes]
 production:
   scope: total
 where_to_buy:
@@ -31,5 +31,5 @@ verification:
       date: 2014-06-20
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

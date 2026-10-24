@@ -11,7 +11,7 @@ description:
 website: https://www.companhiaatlantica.pt
 category: ceramica-e-vidro
 subcategory: louca-de-mesa
-tags: [ceramica]
+tags: [ceramica, presente]
 products: [loica-de-mesa, pecas-decorativas]
 founded: 2017
 production:
@@ -39,5 +39,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

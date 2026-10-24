@@ -1,6 +1,7 @@
 slug: lobo-apparel
 status: published
 name: Lobo Apparel
+alt_names: [Lobo, To Last]
 description:
   pt: >-
     Botas e calçado feitos em Portugal, em materiais escolhidos pela resistência e com
@@ -10,8 +11,9 @@ description:
     casual and sporty.
 website: https://loboapparel.pt
 category: calcado
-tags: [contemporaneo]
-products: [botas]
+subcategory: botas
+tags: [contemporaneo, pele, cortica, la, upcycling, feito-a-mao, unissexo]
+products: [botas, sapatos, sandalias, meias, t-shirts, camisolas, mochilas]
 production:
   scope: total
 price_range: 2
@@ -37,5 +39,5 @@ verification:
       date: 2019-11-26
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

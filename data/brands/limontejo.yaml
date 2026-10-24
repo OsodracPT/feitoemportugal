@@ -11,6 +11,7 @@ description:
 website: https://www.limontejo.com
 category: bebidas
 subcategory: licores-e-destilados
+tags: [feito-a-mao]
 products: [licores]
 production:
   scope: total
@@ -24,5 +25,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-09
+  updated: 2026-10-24
   source: import

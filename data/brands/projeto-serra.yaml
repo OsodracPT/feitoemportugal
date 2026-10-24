@@ -1,6 +1,7 @@
 slug: projeto-serra
 status: published
 name: Projeto Serra
+alt_names: [projetoserraoficial]
 description:
   pt: >-
     Casacos e malhas polares produzidos em Portugal, com peças sem género ligadas às
@@ -11,8 +12,8 @@ description:
 website: https://projetoserra.com
 category: desporto-e-outdoor
 subcategory: montanha-e-trail
-tags: [unissexo, contemporaneo]
-products: [casacos, polares]
+tags: [unissexo, contemporaneo, algodao, producao-por-encomenda, feito-a-mao, tradicional]
+products: [casacos, polares, t-shirts, meias, camisolas]
 production:
   scope: total
 location:
@@ -34,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

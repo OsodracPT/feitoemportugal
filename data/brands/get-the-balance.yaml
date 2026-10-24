@@ -1,6 +1,7 @@
 slug: get-the-balance
 status: published
 name: Get The Balance
+alt_names: [GTB, Get The Balance GTB, gtbalance]
 description:
   pt: >-
     Projeto de calçado do Porto, desenhado e produzido em Portugal, com sapatilhas em
@@ -11,6 +12,7 @@ description:
 website: https://gtbalance.com
 category: calcado
 subcategory: sapatilhas
+tags: [pele, feito-a-mao, cortica]
 products: [sapatilhas]
 production:
   scope: total
@@ -30,5 +32,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

@@ -11,8 +11,8 @@ description:
 website: https://mariajoaobahia.com
 category: joalharia
 subcategory: ouro
-tags: [feito-a-mao, personalizavel]
-products: [joias]
+tags: [feito-a-mao, personalizavel, metal]
+products: [joias, talheres, loica-de-mesa]
 production:
   scope: total
 location:
@@ -34,5 +34,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

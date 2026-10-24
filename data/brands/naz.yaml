@@ -1,6 +1,7 @@
 slug: naz
 status: published
 name: Näz
+alt_names: [Naz]
 description:
   pt: >-
     Marca de roupa de mulher produzida em Portugal, com malhas, vestidos e peças de
@@ -11,8 +12,8 @@ description:
 website: https://naz.pt
 category: moda-e-vestuario
 subcategory: roupa-mulher
-tags: [malha, contemporaneo]
-products: [camisolas, vestidos]
+tags: [malha, contemporaneo, la, linho, algodao, denim]
+products: [camisolas, vestidos, calcas, jeans, polos, casacos]
 production:
   scope: total
 price_range: 3
@@ -27,5 +28,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

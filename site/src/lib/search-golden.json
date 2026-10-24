@@ -23,5 +23,12 @@
   {"q": "olive oil", "expect": ["azeite-caixeiro"]},
   {"q": "socks for men", "expect": ["pedemeia"]},
   {"q": "chá", "absent": ["adico", "wewood"]},
-  {"q": "café", "absent": ["musa-natural-cosmetics", "biovo"]}
+  {"q": "café", "absent": ["musa-natural-cosmetics", "biovo"]},
+  {"q": "gin", "expect": ["sharish-gin"], "absent": ["baby-gi"]},
+  {"q": "coleira cão", "expect": ["malu-pet-wear"]},
+  {"q": "shampoo", "expect": ["8950"]},
+  {"q": "saias", "expect": ["ferrache"]},
+  {"q": "cinto", "expect": ["nae-vegan"]},
+  {"q": "chá", "expect": ["hands-on-earth"]},
+  {"q": "papel higiénico", "expect": ["renova"]}
 ]

@@ -1,6 +1,7 @@
 slug: sharish-gin
 status: published
 name: Sharish Gin
+alt_names: [Sharish]
 description:
   pt: >-
     Gin destilado lentamente no Alentejo desde 2014, com versões aromatizadas com fruta
@@ -11,7 +12,8 @@ description:
 website: https://sharishgin.pt
 category: bebidas
 subcategory: licores-e-destilados
-products: [licores]
+tags: [pequena-serie, personalizavel]
+products: [licores, gin]
 founded: 2014
 production:
   scope: total

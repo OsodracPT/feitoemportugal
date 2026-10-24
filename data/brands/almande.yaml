@@ -10,7 +10,8 @@ description:
 website: https://almande.com
 category: moda-e-vestuario
 subcategory: banho
-products: [vestidos, roupa-de-banho]
+tags: [linho, algodao]
+products: [vestidos, roupa-de-banho, camisas, calcas]
 production:
   scope: parcial
   notes:

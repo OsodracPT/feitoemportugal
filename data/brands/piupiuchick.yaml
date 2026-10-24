@@ -11,7 +11,8 @@ description:
 website: https://www.piupiuchick.com
 category: bebe-e-crianca
 subcategory: roupa-crianca
-products: [roupa-de-crianca]
+tags: [algodao, denim]
+products: [roupa-de-crianca, jardineiras]
 production:
   scope: parcial
   notes:

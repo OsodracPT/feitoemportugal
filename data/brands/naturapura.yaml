@@ -1,6 +1,7 @@
 slug: naturapura
 status: published
 name: NaturaPura
+alt_names: [Natura Pura]
 description:
   pt: >-
     Roupa e enxovais de recém-nascido em algodão biológico sem tingimento, concebidos e
@@ -11,8 +12,8 @@ description:
 website: https://naturapura.com
 category: bebe-e-crianca
 subcategory: roupa-bebe
-tags: [algodao]
-products: [roupa-de-crianca]
+tags: [algodao, personalizavel, presente, malha]
+products: [roupa-de-crianca, meias, toalhas, mantas]
 founded: 1999
 production:
   scope: total

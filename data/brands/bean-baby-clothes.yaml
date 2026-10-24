@@ -11,8 +11,8 @@ description:
 website: https://www.bean.pt
 category: bebe-e-crianca
 subcategory: roupa-bebe
-tags: [classico]
-products: [roupa-de-crianca]
+tags: [classico, algodao, malha]
+products: [roupa-de-crianca, meias, jardineiras, vestidos, casacos, babygrows]
 production:
   scope: total
 price_range: 2

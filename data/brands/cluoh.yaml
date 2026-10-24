@@ -11,8 +11,8 @@ description:
 website: https://www.cluoh.com
 category: acessorios
 subcategory: malas-e-mochilas
-tags: [feito-a-mao]
-products: [malas]
+tags: [feito-a-mao, pele, personalizavel, crianca]
+products: [malas, carteiras, mochilas]
 production:
   scope: total
 price_range: 1
@@ -42,5 +42,5 @@ verification:
       date: 2018-10-31
 meta:
   added: 2026-10-08
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

@@ -1,6 +1,7 @@
 slug: wayz
 status: published
 name: Wayz
+alt_names: [Wayz for Life]
 description:
   pt: >-
     Ténis unissexo em pele de curtimenta vegetal, desenhados e fabricados no Porto, com
@@ -11,8 +12,8 @@ description:
 website: https://wayzforlife.com
 category: calcado
 subcategory: sapatilhas
-tags: [pele, unissexo]
-products: [sapatilhas]
+tags: [pele, unissexo, feito-a-mao]
+products: [sapatilhas, carteiras, meias]
 production:
   scope: total
 location:
@@ -41,5 +42,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

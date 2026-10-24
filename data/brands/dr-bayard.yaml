@@ -1,6 +1,7 @@
 slug: dr-bayard
 status: published
 name: Dr. Bayard
+alt_names: [Dr Bayard]
 description:
   pt: >-
     Rebuçados de mel e eucalipto feitos segundo uma receita antiga, produzidos na
@@ -10,7 +11,8 @@ description:
 website: https://www.drbayard.com
 category: alimentacao
 subcategory: doces-e-chocolate
-tags: [tradicional]
+tags: [tradicional, empresa-familiar]
+products: [rebucados]
 production:
   scope: total
 location:
@@ -27,5 +29,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-23
+  updated: 2026-10-24
   source: import

@@ -1,6 +1,7 @@
 slug: pedemeia
 status: published
 name: Pedemeia
+alt_names: [PDM, Pedemeia A. J. Gonçalves]
 description:
   pt: >-
     Meias para mulher, homem e criança de uma empresa familiar nascida em Braga em 1966,
@@ -11,8 +12,8 @@ description:
 website: https://pedemeia.pt
 category: moda-e-vestuario
 subcategory: roupa-interior-e-meias
-tags: [empresa-familiar]
-products: [meias]
+tags: [empresa-familiar, algodao, la, crianca, presente]
+products: [meias, collants]
 founded: 1966
 production:
   scope: total
@@ -99,5 +100,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

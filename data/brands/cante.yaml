@@ -1,6 +1,7 @@
 slug: cante
 status: published
 name: Cantê
+alt_names: [Cante Lisboa, Cantê Lisboa]
 description:
   pt: >-
     Biquínis, trikinis e fatos de banho para mulher, homem e criança, confecionados em
@@ -11,7 +12,8 @@ description:
 website: https://www.cantelisboa.com
 category: moda-e-vestuario
 subcategory: banho
-products: [roupa-de-banho]
+tags: [crianca]
+products: [roupa-de-banho, vestidos, malas, mochilas]
 founded: 2011
 production:
   scope: total

@@ -1,6 +1,7 @@
 slug: mesh
 status: published
 name: MESH
+alt_names: [Mesh Label, Mesh Jewellery]
 description:
   pt: >-
     Joias em prata 925 reciclada, com banho de ouro ou ródio, feitas à mão no Porto pela
@@ -11,7 +12,7 @@ description:
 website: https://www.meshlabel.com
 category: joalharia
 subcategory: prata
-tags: [feito-a-mao, personalizavel]
+tags: [feito-a-mao, personalizavel, upcycling, metal, presente]
 products: [joias]
 founded: 2016
 production:
@@ -42,5 +43,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

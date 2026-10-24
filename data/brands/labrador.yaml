@@ -11,8 +11,8 @@ description:
 website: https://labrador.pt
 category: moda-e-vestuario
 subcategory: roupa-homem
-tags: [classico, la]
-products: [camisas, fatos, casacos]
+tags: [classico, la, algodao, linho, pele]
+products: [camisas, fatos, casacos, sapatos, camisolas, gravatas, lencos-de-bolso]
 founded: 1991
 production:
   scope: total
@@ -37,5 +37,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

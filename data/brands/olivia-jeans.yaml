@@ -1,6 +1,7 @@
 slug: olivia-jeans
 status: published
 name: Olivia Jeans
+alt_names: [Olivia, Olivia Jeans Lisbon]
 description:
   pt: >-
     Marca de vestuário feminino com cada peça produzida em Portugal em pequenas
@@ -11,8 +12,8 @@ description:
 website: https://oliviajeanslisbon.com
 category: moda-e-vestuario
 subcategory: roupa-mulher
-tags: [pequena-serie, contemporaneo]
-products: [jardineiras]
+tags: [pequena-serie, contemporaneo, linho]
+products: [jardineiras, vestidos, calcas, casacos, camisas]
 production:
   scope: total
 price_range: 2
@@ -31,5 +32,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

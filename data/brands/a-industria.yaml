@@ -1,6 +1,7 @@
 slug: a-industria
 status: published
 name: A Indústria
+alt_names: [A INDUSTRIA]
 description:
   pt: >-
     Marca de Lisboa de vestuário e artigos em pele para homem, feitos à mão na cidade
@@ -11,8 +12,8 @@ description:
 website: https://www.aindustria.pt
 category: acessorios
 subcategory: malas-e-mochilas
-tags: [pele, feito-a-mao]
-products: [mochilas, malas]
+tags: [pele, feito-a-mao, producao-por-encomenda]
+products: [mochilas, malas, carteiras]
 production:
   scope: total
 location:

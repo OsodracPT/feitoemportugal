@@ -1,6 +1,7 @@
 slug: nyos
 status: published
 name: NYOS
+alt_names: [NYOS Swimwear]
 description:
   pt: >-
     Fatos de banho, biquínis e moda de praia desenhados e feitos em Portugal, por uma
@@ -11,7 +12,7 @@ description:
 website: https://nyosswimwear.com
 category: moda-e-vestuario
 subcategory: banho
-products: [roupa-de-banho]
+products: [roupa-de-banho, vestidos]
 founded: 2014
 production:
   scope: total

@@ -1,6 +1,7 @@
 slug: desculpa-babe
 status: published
 name: Desculpa Babe
+alt_names: [desculpababe]
 description:
   pt: >-
     Marca de vestuário com produção inteiramente nacional, de linhas simples e para usar
@@ -10,8 +11,8 @@ description:
     wear.
 website: https://desculpababe.pt
 category: moda-e-vestuario
-tags: [contemporaneo]
-products: [t-shirts]
+tags: [contemporaneo, algodao, unissexo]
+products: [t-shirts, camisolas, meias]
 founded: 2018
 production:
   scope: total
@@ -38,5 +39,5 @@ verification:
       date: 2018-08-29
 meta:
   added: 2026-10-04
-  updated: 2026-10-13
+  updated: 2026-10-24
   source: import

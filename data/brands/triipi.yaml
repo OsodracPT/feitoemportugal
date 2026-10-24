@@ -1,6 +1,7 @@
 slug: triipi
 status: published
 name: triipi
+alt_names: [triipi Lisboa]
 description:
   pt: >-
     Almofadas inclinadas para leitura e pufes de exterior e interior, feitos à mão em
@@ -10,8 +11,8 @@ description:
     2014.
 website: https://www.triipi.com
 category: texteis-lar
-tags: [feito-a-mao]
-products: [almofadas]
+tags: [feito-a-mao, presente]
+products: [almofadas, pufes, malas-de-praia]
 founded: 2014
 production:
   scope: total
@@ -37,5 +38,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-10
+  updated: 2026-10-24
   source: import

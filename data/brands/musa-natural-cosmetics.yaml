@@ -1,6 +1,7 @@
 slug: musa-natural-cosmetics
 status: published
 name: Musa Natural Cosmetics
+alt_names: [Musa, Musa Cosmetics]
 description:
   pt: >-
     Sabonetes, champôs sólidos e cuidados de rosto e lábios artesanais, feitos com
@@ -11,7 +12,8 @@ description:
 website: https://musanaturalcosmetics.com
 category: cosmetica-e-higiene
 subcategory: cabelo
-products: [sabonetes, cremes]
+tags: [feito-a-mao, pequena-serie]
+products: [sabonetes, cremes, champos]
 production:
   scope: total
 location:

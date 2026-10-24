@@ -1,6 +1,7 @@
 slug: carolina-machado
 status: published
 name: Carolina Machado
+alt_names: [Carolina Machado Official]
 description:
   pt: >-
     Roupa de mulher contemporânea confecionada em três pequenos ateliers do Porto que a
@@ -11,8 +12,8 @@ description:
 website: https://www.carolina-machado.com
 category: moda-e-vestuario
 subcategory: roupa-mulher
-tags: [pequena-serie]
-products: [vestidos, calcas, casacos]
+tags: [pequena-serie, contemporaneo, linho, la, algodao, malha]
+products: [vestidos, calcas, casacos, camisas, malas, saias]
 production:
   scope: total
 location:
@@ -34,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

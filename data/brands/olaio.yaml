@@ -1,6 +1,7 @@
 slug: olaio
 status: published
 name: Olaio
+alt_names: [Olaio Furniture Makers]
 description:
   pt: >-
     Mobiliário em madeira produzido localmente em Portugal por artesãos especializados,
@@ -11,6 +12,7 @@ description:
 website: https://www.olaio.pt
 category: mobiliario
 tags: [madeira, feito-a-mao, vintage, tradicional]
+products: [cadeiras, mesas, estantes]
 production:
   scope: total
 social:
@@ -22,5 +24,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-23
+  updated: 2026-10-24
   source: import

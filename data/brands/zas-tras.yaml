@@ -1,6 +1,7 @@
 slug: zas-tras
 status: published
 name: Zás Trás
+alt_names: [Zástrás, Zastras]
 description:
   pt: >-
     Pantufas e calçado de bebé em matérias-primas biológicas, confecionados à mão em
@@ -10,7 +11,7 @@ description:
 website: https://www.zastrasforbabies.com
 category: calcado
 subcategory: calcado-crianca
-tags: [feito-a-mao]
+tags: [feito-a-mao, algodao]
 products: [pantufas]
 founded: 2020
 production:
@@ -31,5 +32,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

@@ -1,6 +1,7 @@
 slug: biovo
 status: published
 name: BioVó
+alt_names: [BioVo]
 description:
   pt: >-
     Cosmética natural feita à mão em Alcanena por uma bióloga, numa unidade de produção
@@ -11,7 +12,8 @@ description:
 website: https://www.biovo.pt
 category: cosmetica-e-higiene
 subcategory: corpo
-products: [sabonetes, cremes]
+tags: [feito-a-mao]
+products: [sabonetes, cremes, velas]
 production:
   scope: total
 location:
@@ -33,5 +35,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-08
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

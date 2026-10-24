@@ -11,8 +11,8 @@ description:
 website: https://fora.pt
 category: acessorios
 subcategory: oculos
-tags: [feito-a-mao]
-products: [oculos]
+tags: [feito-a-mao, unissexo, crianca]
+products: [oculos, fitas-para-oculos, t-shirts, camisolas]
 founded: 2014
 production:
   scope: parcial
@@ -55,5 +55,5 @@ verification:
       date: 2015-05-15
 meta:
   added: 2026-10-10
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import

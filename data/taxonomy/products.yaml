@@ -151,6 +151,34 @@
   synonyms:
     pt: [laços, lenços de bolso]
     en: [bow ties, pocket squares]
+- id: collants
+  category: moda-e-vestuario
+  label: { pt: Collants, en: Tights }
+  slug: { pt: collants, en: tights }
+  synonyms:
+    pt: [meias-calças, meia-calça, meias de vidro]
+    en: [pantyhose, stockings]
+- id: cuecas
+  category: moda-e-vestuario
+  label: { pt: Cuecas, en: Underwear }
+  slug: { pt: cuecas, en: underwear }
+  synonyms:
+    pt: [roupa interior, boxers, lingerie]
+    en: [underpants, briefs, boxers, knickers]
+- id: saias
+  category: moda-e-vestuario
+  label: { pt: Saias, en: Skirts }
+  slug: { pt: saias, en: skirts }
+  synonyms:
+    pt: [saia, minissaia]
+    en: [skirt, miniskirt]
+- id: tops
+  category: moda-e-vestuario
+  label: { pt: Tops, en: Tops }
+  slug: { pt: tops, en: tops }
+  synonyms:
+    pt: [top, croptop, blusas]
+    en: [top, crop top, blouses]
 
 # --- Calçado ---
 - id: sapatos
@@ -286,6 +314,55 @@
   synonyms:
     pt: [cordões para óculos, correntes para óculos]
     en: [glasses chains, eyeglass cords]
+- id: bones
+  category: acessorios
+  label: { pt: Bonés e gorros, en: Caps and beanies }
+  slug: { pt: bones, en: caps-and-beanies }
+  synonyms:
+    pt: [boné, gorro, gorros]
+    en: [cap, caps, beanie, baseball cap]
+- id: cachecois
+  category: acessorios
+  label: { pt: Cachecóis, en: Scarves }
+  slug: { pt: cachecois, en: scarves }
+  synonyms:
+    pt: [cachecol, lenços de pescoço, echarpes]
+    en: [scarf]
+- id: chapeus
+  category: acessorios
+  label: { pt: Chapéus, en: Hats }
+  slug: { pt: chapeus, en: hats }
+  synonyms:
+    pt: [chapéu]
+    en: [hat]
+- id: cintos
+  category: acessorios
+  label: { pt: Cintos, en: Belts }
+  slug: { pt: cintos, en: belts }
+  synonyms:
+    pt: [cinto]
+    en: [belt]
+- id: lacos
+  category: acessorios
+  label: { pt: Laços, en: Bow ties }
+  slug: { pt: lacos, en: bow-ties }
+  synonyms:
+    pt: [laço, papillon]
+    en: [bow tie, bowtie]
+- id: lencos-de-bolso
+  category: acessorios
+  label: { pt: Lenços de bolso, en: Pocket squares }
+  slug: { pt: lencos-de-bolso, en: pocket-squares }
+  synonyms:
+    pt: [lenço de bolso]
+    en: [pocket square, handkerchiefs]
+- id: malas-de-praia
+  category: acessorios
+  label: { pt: Malas de praia, en: Beach bags }
+  slug: { pt: malas-de-praia, en: beach-bags }
+  synonyms:
+    pt: [saco de praia, cestos de praia]
+    en: [beach bag, beach tote]
 
 # --- Casa ---
 - id: talheres
@@ -349,6 +426,34 @@
   synonyms:
     pt: [iluminação, candeeiro]
     en: [lighting, lamp]
+- id: guardanapos-de-papel
+  category: casa-e-decoracao
+  label: { pt: Guardanapos de papel, en: Paper napkins }
+  slug: { pt: guardanapos-de-papel, en: paper-napkins }
+  synonyms:
+    pt: [guardanapos]
+    en: [napkins, serviettes]
+- id: kits-de-cultivo
+  category: casa-e-decoracao
+  label: { pt: Kits de cultivo, en: Grow kits }
+  slug: { pt: kits-de-cultivo, en: grow-kits }
+  synonyms:
+    pt: [kit de plantas, horta, sementes]
+    en: [plant kit, seeds, gardening kit]
+- id: papel-higienico
+  category: casa-e-decoracao
+  label: { pt: Papel higiénico, en: Toilet paper }
+  slug: { pt: papel-higienico, en: toilet-paper }
+  synonyms:
+    pt: [rolos de papel]
+    en: [toilet roll, loo roll]
+- id: tabuas-de-corte
+  category: casa-e-decoracao
+  label: { pt: Tábuas de corte, en: Cutting boards }
+  slug: { pt: tabuas-de-corte, en: cutting-boards }
+  synonyms:
+    pt: [tábua de cozinha, tábuas de servir]
+    en: [chopping boards, serving boards]
 
 # --- Têxteis-lar ---
 - id: mantas
@@ -402,6 +507,13 @@
   synonyms:
     pt: [carpetes, tapete]
     en: [carpets, rug]
+- id: pufes
+  category: texteis-lar
+  label: { pt: Pufes, en: Bean bags }
+  slug: { pt: pufes, en: bean-bags }
+  synonyms:
+    pt: [puff, pufe, pouf]
+    en: [beanbag, pouf]
 
 # --- Mobiliário ---
 - id: cadeiras
@@ -445,6 +557,20 @@
   synonyms:
     pt: [aparadores, estante, móveis de arrumação]
     en: [bookcases, sideboards, storage]
+- id: aparadores
+  category: mobiliario
+  label: { pt: Aparadores, en: Sideboards }
+  slug: { pt: aparadores, en: sideboards }
+  synonyms:
+    pt: [aparador, cómodas, consolas]
+    en: [sideboard, credenza, buffet]
+- id: camas
+  category: mobiliario
+  label: { pt: Camas, en: Beds }
+  slug: { pt: camas, en: beds }
+  synonyms:
+    pt: [cama, cabeceiras]
+    en: [bed, bed frames]
 
 # --- Cerâmica ---
 - id: loica-de-mesa
@@ -529,6 +655,13 @@
   synonyms:
     pt: [lâminas de barbear, máquina de barbear]
     en: [razors, double edge razor]
+- id: champos
+  category: cosmetica-e-higiene
+  label: { pt: Champôs e condicionadores, en: Shampoos and conditioners }
+  slug: { pt: champos, en: shampoos-and-conditioners }
+  synonyms:
+    pt: [champô, shampoo, condicionador, champô sólido, champôs sólidos]
+    en: [shampoo, conditioner, solid shampoo, shampoo bar]
 
 # --- Bebé e criança ---
 - id: roupa-de-crianca
@@ -552,6 +685,13 @@
   synonyms:
     pt: [brinquedo, jogos]
     en: [toy, games]
+- id: babygrows
+  category: bebe-e-crianca
+  label: { pt: Babygrows, en: Babygrows }
+  slug: { pt: babygrows, en: babygrows }
+  synonyms:
+    pt: [babygrow, macacão de bebé, bodies]
+    en: [onesie, sleepsuit, bodysuit]
 
 # --- Desporto ---
 - id: polares
@@ -617,6 +757,20 @@
   synonyms:
     pt: [pastéis, material de desenho]
     en: [pastels, drawing supplies]
+- id: albuns-de-fotografias
+  category: papelaria-e-livros
+  label: { pt: Álbuns de fotografias, en: Photo albums }
+  slug: { pt: albuns-de-fotografias, en: photo-albums }
+  synonyms:
+    pt: [álbum de fotografias, álbum de bebé]
+    en: [photo album, scrapbook]
+- id: posters
+  category: papelaria-e-livros
+  label: { pt: Posters, en: Prints }
+  slug: { pt: posters, en: prints }
+  synonyms:
+    pt: [poster, ilustrações, quadros]
+    en: [posters, art prints, wall art]
 
 # --- Tecnologia ---
 - id: bicicletas
@@ -683,6 +837,20 @@
   synonyms:
     pt: [néctares, sumo]
     en: [nectar, juice]
+- id: gin
+  category: bebidas
+  label: { pt: Gin, en: Gin }
+  slug: { pt: gin, en: gin }
+  synonyms:
+    pt: [gin tónico]
+    en: [gin and tonic]
+- id: infusoes
+  category: bebidas
+  label: { pt: Infusões e chás, en: Herbal teas and infusions }
+  slug: { pt: infusoes, en: herbal-teas-and-infusions }
+  synonyms:
+    pt: [chá, chás, tisanas, ervas aromáticas]
+    en: [tea, herbal tea, tisane]
 
 # --- Alimentação ---
 - id: chocolate
@@ -725,3 +893,75 @@
   synonyms:
     pt: [granola, barras, chips, frutos secos]
     en: [granola, bars, chips, nuts]
+- id: amendoas
+  category: alimentacao
+  label: { pt: Amêndoas, en: Almonds }
+  slug: { pt: amendoas, en: almonds }
+  synonyms:
+    pt: [amêndoa, frutos secos]
+    en: [almond, nuts]
+- id: compotas
+  category: alimentacao
+  label: { pt: Compotas e doces, en: Jams and preserves }
+  slug: { pt: compotas, en: jams-and-preserves }
+  synonyms:
+    pt: [compota, doce de fruta, geleias, marmelada]
+    en: [jam, marmalade, preserves, jelly]
+- id: conservas-de-vegetais
+  category: alimentacao
+  label: { pt: Conservas de vegetais, en: Canned vegetables }
+  slug: { pt: conservas-de-vegetais, en: canned-vegetables }
+  synonyms:
+    pt: [legumes em conserva, enlatados, polpa de tomate]
+    en: [canned tomatoes, preserved vegetables]
+- id: cremes-de-barrar
+  category: alimentacao
+  label: { pt: Cremes de barrar, en: Spreads }
+  slug: { pt: cremes-de-barrar, en: spreads }
+  synonyms:
+    pt: [manteiga de amendoim, creme de avelã]
+    en: [peanut butter, nut butter, spread]
+- id: granola
+  category: alimentacao
+  label: { pt: Granola, en: Granola }
+  slug: { pt: granola, en: granola }
+  synonyms:
+    pt: [muesli, cereais]
+    en: [muesli, cereal]
+- id: pao
+  category: alimentacao
+  label: { pt: Pão, en: Bread }
+  slug: { pt: pao, en: bread }
+  synonyms:
+    pt: [padaria, broa]
+    en: [bakery, loaf]
+- id: rebucados
+  category: alimentacao
+  label: { pt: Rebuçados, en: Boiled sweets }
+  slug: { pt: rebucados, en: boiled-sweets }
+  synonyms:
+    pt: [rebuçado, caramelos, doces]
+    en: [candy, sweets, hard candy, lozenges]
+
+# --- Animais ---
+- id: coleiras
+  category: animais
+  label: { pt: Coleiras, en: Collars }
+  slug: { pt: coleiras, en: collars }
+  synonyms:
+    pt: [coleira]
+    en: [dog collar, collar]
+- id: peitorais
+  category: animais
+  label: { pt: Peitorais, en: Harnesses }
+  slug: { pt: peitorais, en: harnesses }
+  synonyms:
+    pt: [peitoral, arnês]
+    en: [harness, dog harness]
+- id: trelas
+  category: animais
+  label: { pt: Trelas, en: Leads }
+  slug: { pt: trelas, en: leads }
+  synonyms:
+    pt: [trela]
+    en: [leash, leashes, lead]

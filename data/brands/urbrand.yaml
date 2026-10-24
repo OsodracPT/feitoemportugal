@@ -10,7 +10,7 @@ description:
     from recycled fabrics and leftover stock from Portuguese production.
 website: https://urbrandonline.com
 category: moda-e-vestuario
-tags: [upcycling, feito-a-mao, pequena-serie]
+tags: [upcycling, feito-a-mao, pequena-serie, vintage]
 products: [roupa-de-banho]
 production:
   scope: parcial
@@ -42,5 +42,5 @@ verification:
   verified: false
 meta:
   added: 2026-10-04
-  updated: 2026-10-18
+  updated: 2026-10-24
   source: import
