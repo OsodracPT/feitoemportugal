@@ -1,0 +1,43 @@
+slug: alicouro
+status: draft
+name: Alicouro
+description:
+  pt: >-
+    Botas, sapatos, chinelos e cintos de pele feitos à mão no Norte de Portugal, com couro
+    de curtimento vegetal de curtumes portugueses. Na loja online vende também
+    artigos de outras marcas.
+  en: >-
+    Handmade leather boots, shoes, slippers and belts from the north of Portugal, cut from
+    vegetable-tanned leather from Portuguese tanneries. Its online shop also stocks
+    goods from other brands.
+website: https://www.alicouro.pt
+category: calcado
+subcategory: botas
+tags: [pele, feito-a-mao, empresa-familiar]
+products: [botas, sapatos, chinelos, sandalias, cintos]
+founded: 1991
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      O calçado e os cintos da marca são feitos em Portugal; a loja vende também carteiras de
+      clubes, pantufas e mochilas de outros fabricantes.
+    en: >-
+      The brand's own footwear and belts are made in Portugal; the shop also sells club
+      wallets, slippers and backpacks from other makers.
+price_range: 2
+typical_price:
+  product: botas
+  eur: 127.5
+  checked: 2026-10-24
+where_to_buy:
+  online_store: https://www.alicouro.pt/loja/
+social:
+  instagram: alicouro
+  facebook: alicouro
+verification:
+  verified: false
+meta:
+  added: 2026-10-24
+  updated: 2026-10-24
+  source: maintainer
