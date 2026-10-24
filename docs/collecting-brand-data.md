@@ -104,7 +104,7 @@ superlatives, and do not promise things you have not verified.
 | `tags` | recommended | `data/taxonomy/tags.yaml`, 2 to 5 ids |
 | `products` | recommended | `data/taxonomy/products.yaml`: every kind of product the brand makes, from any category |
 | `founded` | no | The year the brand (or the workshop it continues) was founded, as the brand states it |
-| `alt_names` | no | Other spellings people search for: a short form, the logo's wording, the social handle. Search only, never shown |
+| `alt_names` | no | Other spellings people search for: a short form, the logo's wording, the social handle, a former name. Search only, never shown. Not a case or accent variant of `name`: search already ignores both |
 
 ```bash
 grep -n "^- id:" data/taxonomy/categories.yaml          # categories
@@ -130,6 +130,21 @@ Rules:
 - Prefer tags that someone would actually search: material (`pele`, `cortica`,
   `la`), technique (`feito-a-mao`, `tecido-em-tear`), and at most one or two
   about style or values.
+- **List every product line, main one first.** The first entry in `products` is
+  the one that gets priced (§3.6). Add a type only when the brand sells it as a
+  real line on its own shop, not one or two items in a mixed catalogue.
+- **Tag the audience when the category hides it.** A shoe or clothing brand that
+  also makes a kids' line gets `crianca`, so "sapatos de criança" finds it; brands
+  in `bebe-e-crianca` do not need it.
+- **Check the catalogue, not the home page.** A Shopify shop lists everything at
+  `<site>/products.json?limit=250`, WooCommerce at `/wp-json/wc/store/v1/products`.
+  The product types and tags there are the cheapest evidence for `products`.
+- **Before proposing a new product type, look for a near-duplicate.** "Bonés" and
+  "gorros e bonés", or "champôs" and "champôs sólidos", are one type with synonyms.
+  A new type comes with PT and EN labels, its category and search `synonyms`.
+- **Watch for products made elsewhere.** A catalogue with "Made in India" items, or
+  with another label's goods for resale, is not a reason to tag those products; it
+  goes in the report so the maintainer can reconsider `production.scope`.
 
 ### 3.4 Production: the core claim
 

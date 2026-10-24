@@ -64,6 +64,19 @@ the main session appends it from your report, since you do not write files.
    a second, independent source backs it. When the signs stack up, say so plainly —
    the brand stays a lead, not an entry.
 
+8. **Search coverage.** People search for what they want to buy ("sapatos de
+   criança", "anel prata", "gin"), so check that the YAML would let them find the
+   brand. From the brand's own catalogue (see `docs/collecting-brand-data.md` §3.3
+   for the Shopify and WooCommerce listings), propose additions only, each with a
+   URL and quote: `products` ids for every real product line, main one first;
+   `tags` for materials, techniques and audience (`crianca` when a non-kids brand
+   has a kids' line); a missing `subcategory`; `alt_names` only for spellings that
+   are really different from `name` (a short form, the logo's wording, a former
+   name; never a case or accent variant). If no product type fits, propose a new
+   one with PT and EN labels, category and synonyms, after checking that no
+   existing type covers it. A blocked or down site is a result: report the status
+   code and move on.
+
 ## Where to look, in order
 
 1. The brand's own site: home, about / "sobre" / "a nossa história", FAQ, product
@@ -116,6 +129,8 @@ Shops: apply:
        ask:
          - <name — address, city — why it needs a decision — url>
        (or: none)
+Search: tags +[<id> — "<quote>" — <url>], products +[...], subcategory <id or none>,
+        alt_names +[...], new product types: <id, label pt/en, category, synonyms> (or: none)
 Other: <contradictions, office vs workshop, anything the maintainer should check>
 Proposed YAML: <the exact fields to change, or "none">
 ```
