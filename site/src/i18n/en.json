@@ -215,6 +215,7 @@
     "resultsOne": "1 brand found",
     "empty": "No brand matches \"{query}\".",
     "emptyHint": "Try another word, or browse by category.",
+    "partial": "No brand has every word of \"{query}\"; showing those with some.",
     "loading": "Loading search…",
     "error": "Search could not be loaded. Reload the page, or browse by category."
   },

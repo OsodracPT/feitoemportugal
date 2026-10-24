@@ -52,9 +52,13 @@ export function loadIndex(): Promise<MiniSearchType<SearchDoc>> {
   return pending;
 }
 
-/** Ranked matches, best first. Throws if the index cannot be loaded. */
-export async function searchBrands(query: string): Promise<SearchHit[]> {
+/**
+ * Ranked matches, best first; `partial` when they match only some words.
+ * Throws if the index cannot be loaded.
+ */
+export async function searchBrands(query: string): Promise<{ hits: SearchHit[]; partial: boolean }> {
   const loaded = await loadIndex();
   const module = client ?? (await import('./search-client.ts'));
-  return module.searchBrands(loaded, query) as unknown as SearchHit[];
+  const { hits, partial } = module.searchBrands(loaded, query);
+  return { hits: hits as unknown as SearchHit[], partial };
 }

@@ -94,6 +94,8 @@ export function initListing(): void {
   }
   /** Search positions, or null when there is no active query. */
   let rank: Map<string, number> | null = null;
+  /** The ranked brands match only some of the query's words. */
+  let partial = false;
   /** The filter the reader turned on last: what "no results" offers to undo. */
   let lastAdded: { key: FilterKey; value: string } | null = null;
 
@@ -123,7 +125,8 @@ export function initListing(): void {
       return;
     }
     if (state.q) {
-      status.textContent = count === 1 ? strings.resultsOne : fill(strings.results, { count });
+      const found = count === 1 ? strings.resultsOne : fill(strings.results, { count });
+      status.textContent = partial ? `${fill(strings.searchPartial, { query: state.q })} ${found}` : found;
     } else {
       status.textContent =
         count === 1
@@ -347,22 +350,40 @@ export function initListing(): void {
   }
 
   let timer: number | undefined;
+  let emptyTimer: number | undefined;
+
+  /**
+   * Tells the site's analytics which searches found nothing, so missing brands
+   * and missing words can be added. Waits until typing stops, so "sap" on the
+   * way to "sapatos" is not counted.
+   */
+  function reportEmpty(query: string) {
+    emptyTimer = window.setTimeout(() => {
+      (window as { umami?: { track(event: string, data: object): void } }).umami?.track('search-empty', {
+        q: query.toLowerCase().slice(0, 80),
+      });
+    }, 2000);
+  }
 
   async function runSearch(query: string) {
     state.q = query;
     clearSearch.hidden = query.length === 0;
 
+    window.clearTimeout(emptyTimer);
     if (!query) {
       rank = null;
+      partial = false;
       render();
       return;
     }
     if (!isReady()) status.textContent = strings.loading;
     try {
-      const hits = await searchBrands(query);
+      const outcome = await searchBrands(query);
       // A later keystroke already took over.
       if (state.q !== query) return;
-      rank = new Map(hits.map((hit, index) => [hit.id, index]));
+      rank = new Map(outcome.hits.map((hit, index) => [hit.id, index]));
+      partial = outcome.partial;
+      if (outcome.hits.length === 0) reportEmpty(query);
     } catch (error) {
       console.error('[search] index failed to load', error);
       status.textContent = strings.error;
@@ -450,6 +471,7 @@ export function initListing(): void {
     clearSearch.hidden = true;
     state.q = '';
     rank = null;
+    partial = false;
     clearFilters();
   });
 

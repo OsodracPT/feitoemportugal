@@ -104,6 +104,7 @@ superlatives, and do not promise things you have not verified.
 | `tags` | recommended | `data/taxonomy/tags.yaml`, 2 to 5 ids |
 | `products` | recommended | `data/taxonomy/products.yaml`: every kind of product the brand makes, from any category |
 | `founded` | no | The year the brand (or the workshop it continues) was founded, as the brand states it |
+| `alt_names` | no | Other spellings people search for: a short form, the logo's wording, the social handle. Search only, never shown |
 
 ```bash
 grep -n "^- id:" data/taxonomy/categories.yaml          # categories

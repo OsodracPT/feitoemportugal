@@ -1,11 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { createIndex, fold, searchBrands } from './search-client.ts';
 import { searchDocs } from './search.ts';
+import golden from './search-golden.json' with { type: 'json' };
+
+interface GoldenQuery {
+  q: string;
+  expect?: string[];
+  absent?: string[];
+}
 
 const index = createIndex(searchDocs());
 const hits = (query: string, limit = 10): string[] =>
   searchBrands(index, query)
-    .slice(0, limit)
+    .hits.slice(0, limit)
     .map((result) => result.id as string);
 
 describe('fold', () => {
@@ -69,10 +76,31 @@ describe('brand search', () => {
     }
   });
 
+  it('does not let a typo turn one word into another', () => {
+    // linho, pinho, care: one letter away, and wrong.
+    expect(hits('vinho', 50)).not.toContain('vibae');
+    expect(hits('gin', 50)).not.toContain('baby-gi');
+    expect(hits('café', 50)).not.toContain('bamandboo');
+  });
+
+  it('ignores joining words', () => {
+    expect(hits('sapatos de criança')).toEqual(hits('sapatos criança'));
+    expect(hits('socks for men')).toEqual(hits('socks men'));
+  });
+
+  it('falls back to brands with some of the words, and says so', () => {
+    const outcome = searchBrands(index, 'meias zzzzqqq');
+    expect(outcome.partial).toBe(true);
+    expect(outcome.hits.map((hit) => hit.id)).toContain('chule');
+    expect(searchBrands(index, 'meias').partial).toBe(false);
+    expect(searchBrands(index, 'zzzzqqq')).toEqual({ hits: [], partial: false });
+  });
+
   it('combines words with AND', () => {
     const results = hits('meias portugal', 20);
     expect(results.length).toBeGreaterThan(0);
-    expect(hits('citadin manteigas')).toHaveLength(0);
+    // No brand is both: the fallback shows brands with either word, marked partial.
+    expect(searchBrands(index, 'citadin manteigas').partial).toBe(true);
   });
 
   it('returns nothing for an empty or unmatched query', () => {
@@ -85,4 +113,18 @@ describe('brand search', () => {
     // "porto" appears in many descriptions; the brand named Claus Porto should win.
     expect(hits('claus porto')[0]).toBe('claus-porto');
   });
+});
+
+/**
+ * Queries people actually typed (site analytics) and what they must find.
+ * Add one whenever a real search disappoints; `absent` guards against noise.
+ */
+describe('real searches', () => {
+  for (const { q, expect: wanted = [], absent = [] } of golden as GoldenQuery[]) {
+    it(q, () => {
+      const found = hits(q, 30);
+      for (const slug of wanted) expect(found, `${q} → ${slug}`).toContain(slug);
+      for (const slug of absent) expect(found, `${q} ↛ ${slug}`).not.toContain(slug);
+    });
+  }
 });

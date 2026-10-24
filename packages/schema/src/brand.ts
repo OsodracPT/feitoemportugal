@@ -125,6 +125,8 @@ export const brandSchema = z.object({
   slug: idSchema,
   status: z.enum(BRAND_STATUSES).default('draft'),
   name: z.string().min(2).max(120),
+  /** Other ways people write the name ("by mz", "8ª Colina"); search only. */
+  alt_names: z.array(z.string().min(1).max(60)).max(10).optional(),
   description: localizedRequiredPtSchema,
   website: httpsUrlSchema,
   category: idSchema,

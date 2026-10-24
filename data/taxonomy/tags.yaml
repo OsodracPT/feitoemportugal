@@ -182,7 +182,7 @@
 - id: crianca
   label: { pt: Também para criança, en: Also for kids }
   synonyms:
-    pt: [criança, crianças, infantil, miúdos]
+    pt: [criança, crianças, infantil, infantis, miúdos]
     en: [kids, children, child]
 - id: presente
   label: { pt: Presente, en: Gift }

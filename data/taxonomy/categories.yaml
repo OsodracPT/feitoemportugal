@@ -7,6 +7,9 @@
 - id: moda-e-vestuario
   label: { pt: Moda e vestuário, en: Fashion and clothing }
   slug: { pt: moda-e-vestuario, en: fashion-and-clothing }
+  synonyms:
+    pt: [roupa, roupas, vestuário, moda]
+    en: [clothes, clothing, apparel, fashion]
   intro:
     pt: >-
       Marcas portuguesas de roupa que produzem no país, da malha do Vale do Ave
@@ -54,9 +57,15 @@
     - id: roupa-interior-e-meias
       label: { pt: Roupa interior e meias, en: Underwear and socks }
       slug: { pt: roupa-interior-e-meias, en: underwear-and-socks }
+      synonyms:
+        pt: [meias, cuecas, lingerie, pijama, pijamas]
+        en: [underwear, socks, pyjamas, pajamas, nightwear]
     - id: banho
       label: { pt: Moda de banho, en: Swimwear }
       slug: { pt: moda-de-banho, en: swimwear }
+      synonyms:
+        pt: [biquini, biquíni, fato de banho, calções de banho]
+        en: [swimwear, bikini, swimsuit, swim shorts]
     - id: trabalho-e-uniformes
       label: { pt: Vestuário de trabalho, en: Workwear }
       slug: { pt: vestuario-de-trabalho, en: workwear }
@@ -136,6 +145,9 @@
 - id: acessorios
   label: { pt: Acessórios, en: Accessories }
   slug: { pt: acessorios, en: accessories }
+  synonyms:
+    pt: [acessório]
+    en: [accessory]
   intro:
     pt: >-
       Malas, carteiras, cintos, chapéus e óculos feitos em Portugal, de oficinas de pele
@@ -156,9 +168,15 @@
     - id: malas-e-mochilas
       label: { pt: Malas e mochilas, en: Bags and backpacks }
       slug: { pt: malas-e-mochilas, en: bags-and-backpacks }
+      synonyms:
+        pt: [mala, mochila, bolsa, bolsas]
+        en: [bag, bags, handbag, backpack]
     - id: carteiras-e-cintos
       label: { pt: Carteiras e cintos, en: Wallets and belts }
       slug: { pt: carteiras-e-cintos, en: wallets-and-belts }
+      synonyms:
+        pt: [carteira, cinto]
+        en: [wallet, wallets, belt, belts]
     - id: chapeus
       label: { pt: Chapéus, en: Hats }
       slug: { pt: chapeus, en: hats }
@@ -168,6 +186,9 @@
     - id: oculos
       label: { pt: Óculos, en: Eyewear }
       slug: { pt: oculos, en: eyewear }
+      synonyms:
+        pt: [óculos de sol, armações]
+        en: [sunglasses, glasses, eyewear]
     - id: guarda-chuvas
       label: { pt: Guarda-chuvas, en: Umbrellas }
       slug: { pt: guarda-chuvas, en: umbrellas }
@@ -175,6 +196,9 @@
 - id: joalharia
   label: { pt: Joalharia, en: Jewellery }
   slug: { pt: joalharia, en: jewellery }
+  synonyms:
+    pt: [joias, jóias, joia, anel, anéis, colar, colares, brincos, pulseira, pulseiras, ourivesaria]
+    en: [jewelry, jewellery, jewels, ring, rings, necklace, earrings, bracelet]
   intro:
     pt: >-
       Joalharia e ourivesaria produzidas em Portugal, com destaque para a filigrana
@@ -195,15 +219,24 @@
     - id: prata
       label: { pt: Prata, en: Silver }
       slug: { pt: prata, en: silver }
+      synonyms:
+        pt: [prata]
+        en: [silver]
     - id: ouro
       label: { pt: Ouro, en: Gold }
       slug: { pt: ouro, en: gold }
+      synonyms:
+        pt: [ouro]
+        en: [gold]
     - id: filigrana
       label: { pt: Filigrana, en: Filigree }
       slug: { pt: filigrana, en: filigree }
     - id: relogios
       label: { pt: Relógios, en: Watches }
       slug: { pt: relogios, en: watches }
+      synonyms:
+        pt: [relógio, relógios]
+        en: [watch, watches]
     - id: bijuteria
       label: { pt: Bijuteria, en: Costume jewellery }
       slug: { pt: bijuteria, en: costume-jewellery }
@@ -211,6 +244,9 @@
 - id: casa-e-decoracao
   label: { pt: Casa e decoração, en: Home and decor }
   slug: { pt: casa-e-decoracao, en: home-and-decor }
+  synonyms:
+    pt: [casa, decoração, lar]
+    en: [home, decor, homeware]
   intro:
     pt: >-
       Objetos para a casa feitos em Portugal: cutelaria, iluminação, cestaria,
@@ -231,9 +267,15 @@
     - id: cutelaria-e-mesa
       label: { pt: Cutelaria e mesa, en: Cutlery and tableware }
       slug: { pt: cutelaria-e-mesa, en: cutlery-and-tableware }
+      synonyms:
+        pt: [talheres, facas]
+        en: [cutlery, knives, tableware]
     - id: iluminacao
       label: { pt: Iluminação, en: Lighting }
       slug: { pt: iluminacao, en: lighting }
+      synonyms:
+        pt: [candeeiro, candeeiros, luz, luminária]
+        en: [lamp, lamps, lighting]
     - id: cortica
       label: { pt: Cortiça, en: Cork }
       slug: { pt: cortica, en: cork }
@@ -243,6 +285,9 @@
     - id: velas-e-aromas
       label: { pt: Velas e aromas, en: Candles and scents }
       slug: { pt: velas-e-aromas, en: candles-and-scents }
+      synonyms:
+        pt: [vela, velas, difusor]
+        en: [candle, candles, home fragrance]
     - id: decoracao
       label: { pt: Peças decorativas, en: Decorative objects }
       slug: { pt: pecas-decorativas, en: decorative-objects }
@@ -250,6 +295,9 @@
 - id: texteis-lar
   label: { pt: Têxteis-lar, en: Home textiles }
   slug: { pt: texteis-lar, en: home-textiles }
+  synonyms:
+    pt: [têxteis, roupa de casa]
+    en: [home textiles, linens]
   intro:
     pt: >-
       Toalhas, roupa de cama, mantas e tapetes tecidos em Portugal. A região de
@@ -272,12 +320,21 @@
     - id: roupa-de-cama
       label: { pt: Roupa de cama, en: Bed linen }
       slug: { pt: roupa-de-cama, en: bed-linen }
+      synonyms:
+        pt: [lençóis, edredão, fronhas]
+        en: [bedding, bed linen, sheets]
     - id: toalhas
       label: { pt: Toalhas, en: Towels }
       slug: { pt: toalhas, en: towels }
+      synonyms:
+        pt: [toalha]
+        en: [towel, towels]
     - id: mantas-e-plaids
       label: { pt: Mantas e plaids, en: Blankets and throws }
       slug: { pt: mantas-e-plaids, en: blankets-and-throws }
+      synonyms:
+        pt: [manta, mantas]
+        en: [blanket, blankets, throw]
     - id: tapetes
       label: { pt: Tapetes, en: Rugs }
       slug: { pt: tapetes, en: rugs }
@@ -288,6 +345,9 @@
 - id: mobiliario
   label: { pt: Mobiliário, en: Furniture }
   slug: { pt: mobiliario, en: furniture }
+  synonyms:
+    pt: [móveis, moveis, móvel]
+    en: [furniture]
   intro:
     pt: >-
       Mobiliário desenhado e fabricado em Portugal, de pequenas carpintarias a
@@ -324,6 +384,9 @@
 - id: ceramica-e-vidro
   label: { pt: Cerâmica e vidro, en: Ceramics and glass }
   slug: { pt: ceramica-e-vidro, en: ceramics-and-glass }
+  synonyms:
+    pt: [cerâmica, loiça, louça]
+    en: [ceramics, pottery, glass]
   intro:
     pt: >-
       Louça, porcelana, faiança, azulejo e vidro produzidos em Portugal. Caldas da
@@ -359,6 +422,9 @@
     - id: louca-de-mesa
       label: { pt: Louça de mesa, en: Tableware }
       slug: { pt: louca-de-mesa, en: tableware }
+      synonyms:
+        pt: [pratos, chávenas, canecas, taças]
+        en: [plates, dinnerware, mugs, cups]
     - id: porcelana
       label: { pt: Porcelana, en: Porcelain }
       slug: { pt: porcelana, en: porcelain }
@@ -371,6 +437,9 @@
     - id: vidro
       label: { pt: Vidro, en: Glass }
       slug: { pt: vidro, en: glass }
+      synonyms:
+        pt: [copos, copo, jarras, cristal]
+        en: [glasses, glassware, crystal]
     - id: ceramica-de-autor
       label: { pt: Cerâmica de autor, en: Studio ceramics }
       slug: { pt: ceramica-de-autor, en: studio-ceramics }
@@ -378,6 +447,9 @@
 - id: alimentacao
   label: { pt: Alimentação, en: Food }
   slug: { pt: alimentacao, en: food }
+  synonyms:
+    pt: [comida, gourmet, mercearia]
+    en: [food, groceries]
   intro:
     pt: >-
       Produtores e marcas de alimentos feitos em Portugal: conservas, azeite, queijo,
@@ -398,25 +470,43 @@
     - id: conservas
       label: { pt: Conservas, en: Tinned food }
       slug: { pt: conservas, en: tinned-food }
+      synonyms:
+        pt: [sardinhas, atum, peixe enlatado, lata, latas]
+        en: [canned fish, tinned fish, sardines, tuna]
     - id: azeite-e-vinagre
       label: { pt: Azeite e vinagre, en: Olive oil and vinegar }
       slug: { pt: azeite-e-vinagre, en: olive-oil-and-vinegar }
+      synonyms:
+        pt: [azeite, vinagre]
+        en: [olive oil, vinegar]
     - id: queijo-e-lacteos
       label: { pt: Queijo e lácteos, en: Cheese and dairy }
       slug: { pt: queijo-e-lacteos, en: cheese-and-dairy }
+      synonyms:
+        pt: [queijo, queijos, iogurte, manteiga]
+        en: [cheese, dairy]
     - id: doces-e-chocolate
       label: { pt: Doces e chocolate, en: Sweets and chocolate }
       slug: { pt: doces-e-chocolate, en: sweets-and-chocolate }
+      synonyms:
+        pt: [chocolate, chocolates, bolachas, biscoitos, rebuçados, doces]
+        en: [chocolate, sweets, candy, cookies, biscuits]
     - id: mercearia
       label: { pt: Mercearia, en: Pantry }
       slug: { pt: mercearia, en: pantry }
     - id: mel-e-compotas
       label: { pt: Mel e compotas, en: Honey and preserves }
       slug: { pt: mel-e-compotas, en: honey-and-preserves }
+      synonyms:
+        pt: [mel, compota, compotas, doce de fruta]
+        en: [honey, jam, jams]
 
 - id: bebidas
   label: { pt: Bebidas, en: Drinks }
   slug: { pt: bebidas, en: drinks }
+  synonyms:
+    pt: [bebida]
+    en: [drinks, beverages]
   intro:
     pt: >-
       Bebidas produzidas em Portugal, do café torrado no país às cervejas
@@ -437,18 +527,30 @@
     - id: cafe
       label: { pt: Café, en: Coffee }
       slug: { pt: cafe, en: coffee }
+      synonyms:
+        pt: [café]
+        en: [coffee]
     - id: cerveja
       label: { pt: Cerveja, en: Beer }
       slug: { pt: cerveja, en: beer }
     - id: vinho
       label: { pt: Vinho, en: Wine }
       slug: { pt: vinho, en: wine }
+      synonyms:
+        pt: [vinho, vinhos, vinho verde, tinto, branco]
+        en: [wine, wines]
     - id: licores-e-destilados
       label: { pt: Licores e destilados, en: Spirits and liqueurs }
       slug: { pt: licores-e-destilados, en: spirits-and-liqueurs }
+      synonyms:
+        pt: [licor, gin, aguardente, ginja]
+        en: [liqueur, spirits, gin]
     - id: cha-e-infusoes
       label: { pt: Chá e infusões, en: Tea and infusions }
       slug: { pt: cha-e-infusoes, en: tea-and-infusions }
+      synonyms:
+        pt: [chá, chás, infusões, tisanas]
+        en: [tea, herbal tea]
     - id: refrigerantes-e-aguas
       label: { pt: Refrigerantes e águas, en: Soft drinks and water }
       slug: { pt: refrigerantes-e-aguas, en: soft-drinks-and-water }
@@ -456,6 +558,9 @@
 - id: cosmetica-e-higiene
   label: { pt: Cosmética e higiene, en: Cosmetics and personal care }
   slug: { pt: cosmetica-e-higiene, en: cosmetics-and-personal-care }
+  synonyms:
+    pt: [cosméticos, beleza, cuidados]
+    en: [cosmetics, beauty, skincare, toiletries]
   intro:
     pt: >-
       Sabões, cremes, perfumes e produtos de higiene fabricados em Portugal. A região do
@@ -491,6 +596,9 @@
     - id: sabonetes-e-banho
       label: { pt: Sabonetes e banho, en: Soap and bath }
       slug: { pt: sabonetes-e-banho, en: soap-and-bath }
+      synonyms:
+        pt: [sabonete, sabão, gel de banho]
+        en: [soap, soaps, body wash]
     - id: rosto
       label: { pt: Cuidado de rosto, en: Face care }
       slug: { pt: cuidado-de-rosto, en: face-care }
@@ -503,13 +611,22 @@
     - id: perfumes
       label: { pt: Perfumes, en: Perfume }
       slug: { pt: perfumes, en: perfume }
+      synonyms:
+        pt: [perfume, fragrância, colónia]
+        en: [perfume, fragrance, cologne]
     - id: barba
       label: { pt: Barba, en: Shaving }
       slug: { pt: barba, en: shaving }
+      synonyms:
+        pt: [barbear, lâmina, máquina de barbear]
+        en: [shaving, razor, beard]
 
 - id: bebe-e-crianca
   label: { pt: Bebé e criança, en: Baby and kids }
   slug: { pt: bebe-e-crianca, en: baby-and-kids }
+  synonyms:
+    pt: [criança, crianças, bebé, bebe, infantil, infantis, miúdos]
+    en: [baby, kids, children, child]
   intro:
     pt: >-
       Roupa, brinquedos, puericultura e mobiliário infantil feitos em Portugal, muitas
@@ -536,6 +653,9 @@
     - id: brinquedos
       label: { pt: Brinquedos, en: Toys }
       slug: { pt: brinquedos, en: toys }
+      synonyms:
+        pt: [brinquedo, jogos]
+        en: [toys, toy]
     - id: puericultura
       label: { pt: Puericultura, en: Nursery }
       slug: { pt: puericultura, en: nursery }
@@ -546,6 +666,9 @@
 - id: desporto-e-outdoor
   label: { pt: Desporto e outdoor, en: Sports and outdoor }
   slug: { pt: desporto-e-outdoor, en: sports-and-outdoor }
+  synonyms:
+    pt: [desporto, ar livre]
+    en: [sport, sports, outdoor]
   intro:
     pt: >-
       Equipamento e vestuário desportivo feito em Portugal, incluindo surf, ciclismo,
@@ -566,9 +689,15 @@
     - id: surf-e-mar
       label: { pt: Surf e mar, en: Surf and sea }
       slug: { pt: surf-e-mar, en: surf-and-sea }
+      synonyms:
+        pt: [surf, prancha]
+        en: [surfboard, surfing]
     - id: ciclismo
       label: { pt: Ciclismo, en: Cycling }
       slug: { pt: ciclismo, en: cycling }
+      synonyms:
+        pt: [bicicleta, bicicletas]
+        en: [bike, bicycle, cycling]
     - id: montanha-e-trail
       label: { pt: Montanha e trail, en: Hiking and trail }
       slug: { pt: montanha-e-trail, en: hiking-and-trail }
@@ -582,6 +711,9 @@
 - id: papelaria-e-livros
   label: { pt: Papelaria e livros, en: Stationery and books }
   slug: { pt: papelaria-e-livros, en: stationery-and-books }
+  synonyms:
+    pt: [papelaria, livros]
+    en: [stationery, books]
   intro:
     pt: >-
       Cadernos, agendas, material de escrita, cartazes e edições impressas em Portugal,
@@ -602,9 +734,15 @@
     - id: cadernos-e-agendas
       label: { pt: Cadernos e agendas, en: Notebooks and diaries }
       slug: { pt: cadernos-e-agendas, en: notebooks-and-diaries }
+      synonyms:
+        pt: [caderno, agenda, bloco]
+        en: [notebook, notebooks, planner, journal]
     - id: escrita
       label: { pt: Material de escrita, en: Writing tools }
       slug: { pt: material-de-escrita, en: writing-tools }
+      synonyms:
+        pt: [lápis, canetas, caneta]
+        en: [pencil, pencils, pens]
     - id: impressao-e-cartazes
       label: { pt: Impressão e cartazes, en: Prints and posters }
       slug: { pt: impressao-e-cartazes, en: prints-and-posters }
@@ -618,6 +756,9 @@
 - id: tecnologia
   label: { pt: Tecnologia, en: Technology }
   slug: { pt: tecnologia, en: technology }
+  synonyms:
+    pt: [tech]
+    en: [technology, tech]
   intro:
     pt: >-
       Hardware desenhado e montado em Portugal: áudio, bicicletas e veículos elétricos,
@@ -654,6 +795,9 @@
 - id: animais
   label: { pt: Animais, en: Pets }
   slug: { pt: animais, en: pets }
+  synonyms:
+    pt: [cão, cães, cao, gato, gatos, animal, animais de estimação, pet]
+    en: [pet, pets, dog, dogs, cat, cats]
   intro:
     pt: >-
       Produtos para animais de companhia feitos em Portugal: camas, trelas, coleiras,
@@ -677,6 +821,9 @@
     - id: trelas-e-coleiras
       label: { pt: Trelas e coleiras, en: Leads and collars }
       slug: { pt: trelas-e-coleiras, en: leads-and-collars }
+      synonyms:
+        pt: [coleira, trela]
+        en: [collar, leash, lead]
     - id: brinquedos-animais
       label: { pt: Brinquedos, en: Toys }
       slug: { pt: brinquedos, en: toys }

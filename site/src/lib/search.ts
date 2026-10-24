@@ -7,9 +7,13 @@ import {
   getMunicipality,
   getRegion,
   getSubcategory,
+  getCertification,
+  getPractice,
   getProduct,
   getTag,
 } from './data.ts';
+
+const SUSTAINABILITY_WORDS = ['sustentável', 'sustentabilidade', 'ecológico', 'sustainable', 'sustainability', 'eco'];
 
 const join = (parts: (string | undefined | null)[]): string =>
   parts.filter(Boolean).join(' ');
@@ -43,10 +47,26 @@ function docFor(brand: Brand): SearchDoc {
     ];
   });
 
+  // Practices and certifications are what "sustentável" or "reciclado" mean
+  // here; any of them makes the brand answer the general word too.
+  const practices = brand.sustainability?.practices ?? [];
+  const certifications = brand.sustainability?.certifications ?? [];
+  const sustainabilityTerms = [
+    ...practices.flatMap((id) => {
+      const practice = getPractice(id);
+      return practice ? [practice.label.pt, practice.label.en] : [];
+    }),
+    ...certifications.flatMap(({ id }) => {
+      const certification = getCertification(id);
+      return certification ? [certification.label.pt, certification.label.en] : [];
+    }),
+  ];
+  if (sustainabilityTerms.length > 0) sustainabilityTerms.push(...SUSTAINABILITY_WORDS);
+
   return {
     id: brand.slug,
-    name: join([brand.name, brand.slug.replace(/-/g, ' ')]),
-    tags: join([...tags, ...productTerms]),
+    name: join([brand.name, brand.slug.replace(/-/g, ' '), ...(brand.alt_names ?? [])]),
+    tags: join([...tags, ...productTerms, ...sustainabilityTerms]),
     // Category synonyms let a query mix a product word with an audience:
     // "sapato de criança" finds a brand filed under Calçado de criança.
     category: join([
