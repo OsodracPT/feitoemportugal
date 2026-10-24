@@ -1,0 +1,45 @@
+slug: tapadas
+status: draft
+name: Tapadas
+description:
+  pt: >-
+    Sapatos, botas e botins de senhora, com linhas de homem e de criança, de uma cadeia
+    de sapatarias da zona de Lisboa cujos modelos da marca são fabricados em Portugal.
+  en: >-
+    Women's shoes, boots and ankle boots, with men's and kids' lines, from a Lisbon-area
+    shoe-shop chain whose own-label models are made in Portugal.
+website: https://www.tapadas.com
+category: calcado
+subcategory: sapatos-mulher
+tags: [pele, crianca]
+products: [sapatos, botas, sabrinas, sapatilhas]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      O calçado da marca é fabricado em Portugal; as lojas vendem também malas e artigos
+      de outras marcas.
+    en: >-
+      The own-label footwear is made in Portugal; the shops also sell bags and goods from
+      other brands.
+where_to_buy:
+  online_store: https://www.tapadas.com
+  physical_stores:
+    - name: Tapadas Rio de Mouro
+      city: Rio de Mouro
+      address: Avenida Irene Lisboa, Lote 19, Piso 1, Armazém D, 2635-001 Rio de Mouro
+    - name: Tapadas Almada
+      city: Almada
+      address: Avenida Afonso Henriques 31, Almada
+    - name: Tapadas Caldas da Rainha
+      city: Caldas da Rainha
+      address: Estrada Nacional 8, nº 77, 2500-294 Caldas da Rainha
+social:
+  instagram: tapadas_oficial
+  facebook: oficialtapadas
+verification:
+  verified: false
+meta:
+  added: 2026-10-24
+  updated: 2026-10-24
+  source: maintainer
