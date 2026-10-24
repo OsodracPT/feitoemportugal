@@ -37,6 +37,9 @@ where_to_buy:
 social:
   instagram: tapadas_oficial
   facebook: oficialtapadas
+media:
+  logo: logo.png
+  photos: [foto-1.jpg, foto-2.jpg, foto-3.jpg]
 verification:
   verified: false
 meta:

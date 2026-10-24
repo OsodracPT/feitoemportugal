@@ -30,6 +30,9 @@ where_to_buy:
 social:
   instagram: itsgreenboots
   facebook: itsgreenboots
+media:
+  logo: logo.png
+  photos: [foto-1.webp, foto-2.jpg, foto-3.webp]
 sustainability:
   practices: [materiais-reciclados, reparacao]
 verification:

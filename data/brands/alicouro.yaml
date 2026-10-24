@@ -35,6 +35,9 @@ where_to_buy:
 social:
   instagram: alicouro
   facebook: alicouro
+media:
+  logo: logo.webp
+  photos: [foto-1.webp, foto-2.webp, foto-3.webp]
 verification:
   verified: false
 meta:

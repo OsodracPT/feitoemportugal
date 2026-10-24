@@ -25,6 +25,9 @@ where_to_buy:
   online_store: https://www.dornellasboots.com
 social:
   instagram: dornellasboots
+media:
+  logo: logo.svg
+  photos: [foto-1.webp, foto-2.webp, foto-3.webp]
 verification:
   verified: false
 meta:
