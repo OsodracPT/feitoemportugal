@@ -179,6 +179,11 @@
   synonyms:
     pt: [unissexo, sem género]
     en: [unisex, genderless]
+- id: crianca
+  label: { pt: Também para criança, en: Also for kids }
+  synonyms:
+    pt: [criança, crianças, infantil, miúdos]
+    en: [kids, children, child]
 - id: presente
   label: { pt: Presente, en: Gift }
   synonyms:

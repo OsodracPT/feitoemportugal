@@ -60,10 +60,12 @@ describe('brand search', () => {
     expect(hits('manteigas', 20)).toContain('ecola');
   });
 
-  it('uses category synonyms, so a product word and an audience combine', () => {
-    // zas-tras is filed under Calçado de criança; no word in it says "sapato".
+  it('combines a product word with an audience', () => {
+    // zas-tras is filed under Calçado de criança and sanjo is tagged
+    // `crianca`; neither says "sapato" in its own words.
     for (const query of ['sapato de criança', 'sapatos infantis', 'kids shoes']) {
       expect(hits(query, 20)).toContain('zas-tras');
+      expect(hits(query, 20)).toContain('sanjo');
     }
   });
 
