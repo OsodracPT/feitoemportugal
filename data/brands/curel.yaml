@@ -1,0 +1,42 @@
+slug: curel
+status: published
+name: Curel
+description:
+  pt: >-
+    Fábrica de cutelaria de Santa Catarina, nas Caldas da Rainha, que faz facas de
+    cozinha, canivetes tradicionais e utensílios em aço inox, com o afiamento final
+    feito à mão.
+  en: >-
+    A cutlery factory in Santa Catarina, Caldas da Rainha, making kitchen knives,
+    traditional pocket knives and stainless steel utensils, with the final sharpening
+    done by hand.
+website: https://curel.pt
+category: casa-e-decoracao
+subcategory: cutelaria-e-mesa
+tags: [metal, tradicional]
+products: [facas, utensilios-de-cozinha]
+founded: 1977
+production:
+  scope: total
+location:
+  district: leiria
+  municipality: caldas-da-rainha
+price_range: 2
+typical_price:
+  product: facas
+  eur: 46
+  checked: 2026-11-16
+where_to_buy:
+  online_store: https://curel.pt/loja/
+social:
+  instagram: curelcutelarias
+  facebook: Curel.PT
+media:
+  logo: logo.svg
+  photos: [foto-1.webp, foto-2.webp, foto-3.webp]
+verification:
+  verified: false
+meta:
+  added: 2026-11-16
+  updated: 2026-11-16
+  source: maintainer

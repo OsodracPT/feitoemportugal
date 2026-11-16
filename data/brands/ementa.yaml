@@ -1,0 +1,59 @@
+slug: ementa
+status: published
+name: Ementa
+alt_names: [Ementa SB]
+description:
+  pt: >-
+    Marca de roupa e acessórios nascida de um grupo de skaters de Lisboa: t-shirts,
+    sweats, casacos, bonés, carteiras e mochilas, com lojas próprias em Lisboa e no
+    Porto.
+  en: >-
+    Clothing and accessories from a Lisbon skate crew: T-shirts, sweatshirts,
+    jackets, caps, wallets and backpacks, sold in its own shops in Lisbon and Porto.
+website: https://ementasb.com
+category: moda-e-vestuario
+tags: [unissexo, contemporaneo]
+products: [t-shirts, camisolas, casacos, calcas, bones, carteiras, mochilas, malas, meias]
+production:
+  scope: parcial
+  notes:
+    pt: >-
+      A maioria das peças da loja online indica "Made in Portugal", sem nomear a
+      fábrica; parte dos bonés, algumas t-shirts e camisas e as tábuas de skate não
+      indicam origem.
+    en: >-
+      Most items in the online shop say "Made in Portugal", without naming the
+      factory; some caps, a few T-shirts and shirts, and the skate decks give no
+      origin.
+price_range: 3
+typical_price:
+  product: t-shirts
+  eur: 65
+  checked: 2026-11-16
+where_to_buy:
+  online_store: https://ementasb.com
+  physical_stores:
+    - name: Ementa LX Factory
+      city: Lisboa
+      address: R. Rodrigues de Faria 103, 1300-501 Lisboa
+    - name: Ementa Chiado
+      city: Lisboa
+      address: R. Nova do Almada 96, 1200-290 Lisboa
+    - name: Ementa Boavista
+      city: Lisboa
+      address: Rua da Boavista 162, 1200-070 Lisboa
+    - name: Ementa Porto
+      city: Porto
+      address: R. de Sá da Bandeira 120, 4000-381 Porto
+social:
+  instagram: ementasb
+  facebook: EMENTASB
+media:
+  logo: logo.png
+  photos: [foto-1.webp, foto-2.webp, foto-3.webp]
+verification:
+  verified: false
+meta:
+  added: 2026-11-16
+  updated: 2026-11-16
+  source: maintainer
