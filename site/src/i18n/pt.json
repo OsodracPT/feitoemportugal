@@ -400,7 +400,7 @@
       },
       "badge": {
         "title": "O selo de verificação",
-        "body": "O selo quer dizer que alguém do projeto confirmou a produção por outro meio além do site da marca: uma visita, um certificado ou o contacto com o fabricante. Ainda nenhuma marca o tem. O selo não se paga e não se compra."
+        "body": "O selo quer dizer que alguém do projeto confirmou a produção por outro meio além do site da marca: uma visita, um certificado ou o contacto com o fabricante. O selo não se paga e não se compra."
       },
       "contribute": {
         "title": "Como ajudar",
@@ -416,7 +416,7 @@
       },
       "privacy": {
         "title": "Privacidade",
-        "body": "O site não usa cookies nem cria perfis de quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso a localização fica sempre pelo concelho."
+        "body": "O site não usa cookies nem cria perfis de quem o visita. Não publicamos dados pessoais: muitos produtores trabalham a partir de casa, por isso nunca indicamos onde uma marca produz com mais detalhe do que o concelho."
       }
     },
     "links": {
@@ -444,7 +444,7 @@
       },
       "process": {
         "title": "Como pedir o selo",
-        "body": "A marca preenche o formulário de pedido no GitHub e indica como podemos confirmar a produção. Um responsável pelo projeto analisa o pedido, combina os passos que faltarem e, se a confirmação for feita, atribui o selo. O selo não se paga e não se compra."
+        "body": "A marca preenche o formulário de pedido aqui no site (ou no GitHub) e indica como podemos confirmar a produção. Um responsável pelo projeto analisa o pedido, combina os passos que faltarem e, se a confirmação for feita, atribui o selo. O selo não se paga e não se compra."
       },
       "revoke": {
         "title": "Quando o selo sai",

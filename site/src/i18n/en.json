@@ -341,7 +341,7 @@
       },
       "badge": {
         "title": "The verified badge",
-        "body": "The badge means someone on the project confirmed production by some means other than the brand's website: a visit, a certificate or contact with the manufacturer. No brand has it yet. It is free and cannot be bought."
+        "body": "The badge means someone on the project confirmed production by some means other than the brand's website: a visit, a certificate or contact with the manufacturer. It is free and cannot be bought."
       },
       "contribute": {
         "title": "How to help",
@@ -357,7 +357,7 @@
       },
       "privacy": {
         "title": "Privacy",
-        "body": "The site uses no cookies and builds no profile of its visitors. We publish no personal data: many makers work from home, so location always stops at the municipality."
+        "body": "The site uses no cookies and builds no profile of its visitors. We publish no personal data: many makers work from home, so we never show where a brand makes its products more precisely than the municipality."
       }
     },
     "links": {
@@ -385,7 +385,7 @@
       },
       "process": {
         "title": "How to ask for it",
-        "body": "The brand fills in the request form on GitHub and says how we can confirm production. A project maintainer reviews the request, arranges whatever else is needed and, once production is confirmed, awards the badge. It is free and cannot be bought."
+        "body": "The brand fills in the request form here on the site (or on GitHub) and says how we can confirm production. A project maintainer reviews the request, arranges whatever else is needed and, once production is confirmed, awards the badge. It is free and cannot be bought."
       },
       "revoke": {
         "title": "When the badge is removed",

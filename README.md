@@ -19,18 +19,19 @@
 ---
 
 **Feito em Portugal** is a bilingual website and a public JSON API that answer one
-question: *which brands actually make their products in Portugal?* Not "designed
-here", not "Portuguese-owned". Made here, with evidence. Anyone can use it, anyone
-can add to it, and the whole dataset is open.
+question: *which brands make their products in Portugal?* "Designed here" and
+"Portuguese-owned" do not count: a brand needs evidence that it makes its products
+here. Anyone can use it, anyone can add to it, and the whole dataset is open.
 
-👉 **Visit [feitoemportugal.org](https://feitoemportugal.org)**, or
+**Visit [feitoemportugal.org](https://feitoemportugal.org)**, or
 [feitoemportugal.org/en](https://feitoemportugal.org/en) in English.
 
-## 🔎 What you'll find
+## What you'll find
 
-- **Brands you can trust.** A brand is listed only because its own website says it
-  manufactures in Portugal, and we keep the quote on file.
-- **Search and filters that just work.** Search shrugs off accents and typos.
+- **Brands with evidence.** A brand is listed only when its own website says it
+  manufactures in Portugal. We keep the quote on file and look for an independent
+  source to back it.
+- **Search and filters.** Search shrugs off accents and typos.
   Eleven filters (category, region, product, price, tags…) combine, and the whole
   state lives in the URL, so any view is a link you can share.
 - **A map of the country.** See where things are made, district by district.
@@ -39,7 +40,7 @@ can add to it, and the whole dataset is open.
 
 No accounts, no cookies, no ads.
 
-## 🙌 Help out (no account needed)
+## Help out (no account needed)
 
 The list stays good because people add to it. The easiest way is right on the site,
 a plain web form, no GitHub and no login:
@@ -58,7 +59,7 @@ Portugal, and you paste the sentence that proves it. "Portuguese brand" or "desi
 in Portugal" is not enough; a foreign brand qualifies when most of its range is made
 here. That rule is what keeps the list honest, and the data ours to license.
 
-## 💻 Run it locally
+## Run it locally
 
 You need **Node.js 22.18 or newer** (24 recommended). The repository pins its
 pnpm version in `package.json`; Corepack, bundled with Node, installs it for you.
@@ -104,12 +105,13 @@ Two optional environment variables are read at build time:
 SITE_URL=http://localhost:4321 pnpm build
 ```
 
-## 🗂️ How it's built
+## How it's built
 
-No database and no server code: every brand is **one YAML file** in `data/`,
+No database behind the catalogue: every brand is **one YAML file** in `data/`,
 validated by a shared [Zod](https://zod.dev) schema, and the site is a static
 [Astro](https://astro.build) build any web server can host. Search and filters run
-entirely in the browser.
+entirely in the browser. The only server code is `submit-api/`, the optional
+service behind the contribution forms.
 
 ```
 data/brands/<slug>.yaml     one brand per file, the source of truth
@@ -126,7 +128,7 @@ docs/                       contributor guides, design notes, research evidence
 .github/workflows/          CI (validate.yml) and the optional deploy (deploy.yml)
 ```
 
-## ✏️ Adding or editing a brand (with the files)
+## Adding or editing a brand (with the files)
 
 1. Copy an existing file in `data/brands/` and edit it. The file name must equal
    its `slug`.
@@ -150,7 +152,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the suggest / correct / verify flow
 and [`docs/collecting-brand-data.md`](docs/collecting-brand-data.md) for how to
 research and fill in one brand.
 
-## 📦 Using the data
+## Using the data
 
 The site publishes the dataset as static JSON, open to any origin:
 
@@ -174,7 +176,7 @@ by the Direção-Geral do Território, published under CC BY 4.0. They are gener
 not edited by hand: when a new CAOP is released, run `node scripts/import-caop.ts`
 (it needs the network and runs mapshaper through `pnpm dlx`) and commit the result.
 
-## 🚀 Deploying your own copy
+## Deploying your own copy
 
 `pnpm build` produces plain files; serve `site/dist/` from any static host or web
 server. A few server rules matter: clean URLs, the 404 page for each language,
@@ -183,14 +185,14 @@ CORS on the API, caching and security headers.
 the optional contribution service (`submit-api/`), and automatic deploys from
 GitHub Actions.
 
-## 📚 Further reading
+## Further reading
 
 - [`docs/design-notes.md`](docs/design-notes.md): why things are built this way,
   and the decisions still open
 - [`AGENTS.md`](AGENTS.md): working notes for AI coding assistants, with useful
   architecture traps for humans too
 
-## 📄 Licence
+## Licence
 
 The data in `data/` is licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (see
