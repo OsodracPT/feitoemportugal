@@ -7,6 +7,8 @@
  *
  * Spam defence is layered so the noscript path is still protected: a honeypot
  * field, per-IP rate limiting in SQLite, and (when solved) Altcha verification.
+ * Only a new-brand submission that solved Altcha opens a public GitHub PR on
+ * its own; without it the maintainer gets the same YAML by email.
  */
 import { createServer as createHttpServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http';
 import { randomUUID } from 'node:crypto';
@@ -57,7 +59,7 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
   async function intake(
     req: IncomingMessage,
     res: ServerResponse,
-  ): Promise<{ fields: Record<string, string>; lang: string; json: boolean; ipHash: string } | null> {
+  ): Promise<{ fields: Record<string, string>; lang: string; json: boolean; ipHash: string; solvedAltcha: boolean } | null> {
     const contentType = req.headers['content-type'] ?? '';
     const json = wantsJson(contentType);
     let fields: Record<string, string>;
@@ -74,7 +76,8 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
       finish(res, json, 200, config, lang, { ok: true });
       return null;
     }
-    if (config.altchaRequired && !verifySolution(fields.altcha, config.secretKey)) {
+    const solvedAltcha = verifySolution(fields.altcha, config.secretKey);
+    if (config.altchaRequired && !solvedAltcha) {
       finish(res, json, 400, config, lang, { ok: false, errors: ['A verificação anti-robôs falhou. / The anti-bot check failed.'] });
       return null;
     }
@@ -85,7 +88,7 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
       finish(res, json, 429, config, lang, { ok: false, errors: ['Demasiadas submissões. Tenta mais tarde. / Too many submissions. Try again later.'] });
       return null;
     }
-    return { fields, lang, json, ipHash };
+    return { fields, lang, json, ipHash, solvedAltcha };
   }
 
   /** The contact / correction / verification flows: validate, store, email. */
@@ -120,7 +123,13 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
   async function handleBrand(req: IncomingMessage, res: ServerResponse): Promise<void> {
     const got = await intake(req, res);
     if (!got) return;
-    const outcome = await processBrand(got.fields, { config, store, mailer, ipHash: got.ipHash });
+    const outcome = await processBrand(got.fields, {
+      config,
+      store,
+      mailer,
+      ipHash: got.ipHash,
+      solvedAltcha: got.solvedAltcha,
+    });
     return finish(res, got.json, outcome.status, config, got.lang, { ok: outcome.ok, ...(outcome.errors ? { errors: outcome.errors } : {}) });
   }
 
@@ -128,7 +137,9 @@ export async function createApp(config: Config, overrides: Overrides = {}): Prom
     const url = new URL(req.url ?? '/', 'http://localhost');
     const path = url.pathname.replace(/\/+$/, '') || '/';
 
-    if (req.method === 'GET' && path === '/api/submit/health') return sendJson(res, 200, { ok: true });
+    if (req.method === 'GET' && path === '/api/submit/health') {
+      return sendJson(res, 200, { ok: true, ...(config.commit ? { commit: config.commit } : {}) });
+    }
     if (req.method === 'GET' && path === '/api/submit/challenge') {
       return sendJson(res, 200, createChallenge(config.secretKey));
     }

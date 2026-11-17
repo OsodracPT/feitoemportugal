@@ -2,8 +2,13 @@
  * The new-brand flow. It feeds the form fields through the shared converter
  * (@fep/schema, the same one the GitHub issue path uses), then stores the
  * submission, emails the maintainer the ready-made YAML, and — when a GitHub
- * token is configured — opens the draft-brand PR. The PR is best-effort: if it
- * fails the submission is still stored and emailed, so nothing is lost.
+ * token is configured and the submitter solved Altcha — opens the draft-brand
+ * PR. The PR is best-effort: if it fails the submission is still stored and
+ * emailed, so nothing is lost.
+ *
+ * The PR lands on a public repository, so it needs the proof-of-work: a script
+ * that skips JavaScript (and so Altcha) only reaches the maintainer's inbox,
+ * where the YAML can be turned into a PR by hand.
  */
 import { randomUUID } from 'node:crypto';
 import { brandToYaml, submissionFromForm } from '@fep/schema';
@@ -18,6 +23,8 @@ export interface BrandDeps {
   store: Store;
   mailer: Mailer;
   ipHash: string;
+  /** The submission carried a valid Altcha solution. */
+  solvedAltcha: boolean;
 }
 
 export interface BrandOutcome {
@@ -57,7 +64,7 @@ function toFieldMap(fields: Record<string, string>): Map<string, string> {
 }
 
 export async function processBrand(fields: Record<string, string>, deps: BrandDeps): Promise<BrandOutcome> {
-  const { config, store, mailer, ipHash } = deps;
+  const { config, store, mailer, ipHash, solvedAltcha } = deps;
   const today = new Date().toISOString().slice(0, 10);
 
   let existing;
@@ -87,7 +94,11 @@ export async function processBrand(fields: Record<string, string>, deps: BrandDe
   });
 
   let prLine = 'Nenhum PR aberto (sem token do GitHub). / No PR opened (no GitHub token).';
-  if (config.github) {
+  if (config.github && !solvedAltcha) {
+    prLine =
+      'Nenhum PR aberto (submissão sem Altcha); abre-o a partir do YAML abaixo. / ' +
+      'No PR opened (no Altcha solution); open it from the YAML below.';
+  } else if (config.github) {
     try {
       const pr = await openBrandPr(config.github, {
         slug: brand.slug,

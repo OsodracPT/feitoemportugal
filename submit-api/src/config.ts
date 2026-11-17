@@ -37,8 +37,13 @@ export interface Config {
   trustProxy: boolean;
   rateLimit: { windowSeconds: number; max: number };
   retentionDays: number;
-  /** Reject a POST that carries no valid Altcha solution. Off keeps noscript working. */
+  /**
+   * Reject a POST that carries no valid Altcha solution. Off keeps noscript
+   * working; a new-brand submission still opens a GitHub PR only when solved.
+   */
   altchaRequired: boolean;
+  /** The commit this build runs (GIT_SHA build arg), shown by the health check. Empty when unknown. */
+  commit: string;
   mail: MailConfig | null;
   github: GithubConfig | null;
 }
@@ -80,6 +85,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     rateLimit: { windowSeconds: num(env.RATE_WINDOW_SECONDS, 3600), max: num(env.RATE_MAX, 5) },
     retentionDays: num(env.RETENTION_DAYS, 90),
     altchaRequired: bool(env.ALTCHA_REQUIRED, false),
+    commit: /^[0-9a-f]{7,40}$/i.test(env.GIT_SHA ?? '') ? (env.GIT_SHA as string) : '',
     mail,
     github,
   };

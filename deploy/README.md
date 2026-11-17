@@ -148,8 +148,11 @@ so this deploy needs a checkout. From a clone on the server:
 ```bash
 cp .env.example deploy/.env      # then fill in the submit-* values
 cd deploy
-docker compose --profile submit up -d --build
+GIT_SHA=$(git rev-parse HEAD) docker compose --profile submit up -d --build
 ```
+
+`GIT_SHA` is optional; with it, `/api/submit/health` reports the commit the
+service runs (`{"ok":true,"commit":"…"}`), so you can confirm a deploy landed.
 
 What to set in `.env` (see [`.env.example`](../.env.example) for the full list):
 
@@ -158,7 +161,7 @@ What to set in `.env` (see [`.env.example`](../.env.example) for the full list):
 | `SECRET_KEY` | **Required.** Signs Altcha challenges and hashes stored IPs. `openssl rand -hex 32` |
 | `SITE_ORIGIN` | The public origin, for the thank-you redirect and reading `/api/v1/brands.json` |
 | `SMTP_*`, `MAIL_TO` | The maintainer mailbox (nodemailer). Unset ⇒ mail is only logged. See the email section below |
-| `GITHUB_TOKEN`, `GITHUB_REPO` | A token (repo contents + PR) to auto-open draft-brand PRs. Unset ⇒ email only |
+| `GITHUB_TOKEN`, `GITHUB_REPO` | A **fine-grained** token for this one repository, with only *Contents* and *Pull requests* read/write, to auto-open draft-brand PRs (only for submissions that solved Altcha). Never a classic token: it reaches every repo you own. Unset ⇒ email only |
 | `RATE_MAX`, `RETENTION_DAYS` | Per-IP hourly limit (5) and how long a row is kept (90 days) |
 
 Storage is one SQLite file on the `submit-data` volume. The service sweeps rows

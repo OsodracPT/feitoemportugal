@@ -51,10 +51,18 @@ export function parseBody(contentType: string, raw: string): Record<string, stri
 export const wantsJson = (contentType: string): boolean =>
   contentType.split(';')[0]?.trim().toLowerCase() === 'application/json';
 
-/** Salted hash of the client IP, so the raw address is never stored. */
+/**
+ * Salted hash of the client IP, so the raw address is never stored.
+ *
+ * Behind nginx the address is the LAST X-Forwarded-For entry: the one our own
+ * proxy wrote. Earlier entries come from the client or from proxies we do not
+ * control, so a client could put a fresh address there on every request and
+ * never hit the rate limit. (The reference nginx.conf also sends only its
+ * resolved client address, so there is normally a single entry.)
+ */
 export function clientIpHash(req: IncomingMessage, trustProxy: boolean, salt: string): string {
   const forwarded = trustProxy ? (req.headers['x-forwarded-for'] as string | undefined) : undefined;
-  const ip = (forwarded?.split(',')[0]?.trim() || req.socket.remoteAddress) ?? 'unknown';
+  const ip = (forwarded?.split(',').at(-1)?.trim() || req.socket.remoteAddress) ?? 'unknown';
   return createHash('sha256').update(`${salt}:${ip}`).digest('hex').slice(0, 32);
 }
 

@@ -22,8 +22,13 @@ COPY packages/schema packages/schema
 COPY submit-api submit-api
 COPY data data
 
+# The commit being built, reported by /api/submit/health so a deploy can be
+# checked. docker-compose.yml passes it from the GIT_SHA environment variable.
+ARG GIT_SHA=""
+
 # DATA_DIR points at the bundled taxonomy; the SQLite file lives on a volume.
-ENV NODE_ENV=production \
+ENV GIT_SHA=$GIT_SHA \
+    NODE_ENV=production \
     DATA_DIR=/app/data \
     DB_PATH=/data/submissions.db \
     PORT=8787

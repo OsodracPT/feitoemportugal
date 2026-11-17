@@ -1,5 +1,7 @@
 import { createServer, type Server } from 'node:http';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { createHash } from 'node:crypto';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
+import { createChallenge } from './altcha.ts';
 import { loadConfig, type Config } from './config.ts';
 import { openStore } from './db.ts';
 import { createApp } from './server.ts';
@@ -140,4 +142,75 @@ describe('submit-api server', () => {
     expect((await post()).status).toBe(429);
     srv.close();
   });
+
+  it('reports the running commit on the health check when it is known', async () => {
+    const stamped = await createApp({ ...config, commit: 'a3f1279' }, { store: openStore(':memory:'), mailer });
+    const srv = createServer(stamped.handler);
+    await new Promise<void>((resolve) => srv.listen(0, '127.0.0.1', resolve));
+    const address = srv.address();
+    const port = typeof address === 'object' && address ? address.port : 0;
+    expect(await (await fetch(`http://127.0.0.1:${port}/api/submit/health`)).json()).toEqual({ ok: true, commit: 'a3f1279' });
+    srv.close();
+    expect(await (await fetch(`${base}/api/submit/health`)).json()).toEqual({ ok: true });
+  });
+
+  it('opens the public GitHub PR only for a brand submission that solved Altcha', async () => {
+    const withGithub = await createApp(
+      { ...config, github: { token: 't', repo: 'example/repo', base: 'main' } },
+      { store: openStore(':memory:'), mailer },
+    );
+    const srv = createServer(withGithub.handler);
+    await new Promise<void>((resolve) => srv.listen(0, '127.0.0.1', resolve));
+    const address = srv.address();
+    const url = `http://127.0.0.1:${typeof address === 'object' && address ? address.port : 0}/api/submit/brand`;
+    // Stand in for the GitHub API: record the calls, answer 500 so no PR is "opened".
+    const realFetch = globalThis.fetch;
+    const githubCalls: string[] = [];
+    const spy = vi.spyOn(globalThis, 'fetch').mockImplementation((input, init) => {
+      const target = String(input instanceof Request ? input.url : input);
+      if (target.startsWith('https://api.github.com')) {
+        githubCalls.push(target);
+        return Promise.resolve(new Response('{}', { status: 500 }));
+      }
+      return realFetch(input, init);
+    });
+    const brand = (name: string, altcha?: string) =>
+      realFetch(url, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          website: `https://${name.toLowerCase().replace(/\s+/g, '-')}.example.pt`,
+          evidence_url: `https://${name.toLowerCase().replace(/\s+/g, '-')}.example.pt/sobre`,
+          evidence_quote: 'Fabricamos tudo na nossa oficina em Guimarães.',
+          scope: 'total',
+          category: 'calcado',
+          description_pt: 'Pequena marca de calçado cosido à mão.',
+          ...(altcha ? { altcha } : {}),
+        }),
+      });
+    try {
+      expect((await brand('Sem Altcha')).status).toBe(200);
+      expect(githubCalls).toEqual([]);
+      expect(sent.at(-1)?.text).toMatch(/No PR opened \(no Altcha solution\)/);
+
+      expect((await brand('Com Altcha', solve(createChallenge(config.secretKey, 2000)))).status).toBe(200);
+      expect(githubCalls.length).toBeGreaterThan(0);
+      expect(sent.at(-1)?.text).toMatch(/Falhou abrir o PR/);
+    } finally {
+      spy.mockRestore();
+      srv.close();
+    }
+  });
 });
+
+/** Brute-forces an Altcha challenge the way the browser widget does. */
+function solve(challenge: ReturnType<typeof createChallenge>): string {
+  for (let number = 0; number <= challenge.maxnumber; number++) {
+    if (createHash('sha256').update(challenge.salt + number).digest('hex') === challenge.challenge) {
+      const { algorithm, salt, signature } = challenge;
+      return Buffer.from(JSON.stringify({ algorithm, challenge: challenge.challenge, number, salt, signature })).toString('base64');
+    }
+  }
+  throw new Error('unsolvable challenge');
+}

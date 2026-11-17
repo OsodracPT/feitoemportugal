@@ -52,6 +52,9 @@ services:
       # The repository root: the image needs @fep/schema and data/ too.
       context: ..
       dockerfile: submit-api/Dockerfile
+      args:
+        # Shown by /api/submit/health. Build with GIT_SHA=$(git rev-parse HEAD).
+        GIT_SHA: ${GIT_SHA:-}
     restart: unless-stopped
     # Secrets (SMTP, GITHUB_TOKEN, SECRET_KEY) live only in this .env, never in
     # the repository. See .env.example at the repository root.
