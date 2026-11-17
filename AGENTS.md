@@ -176,6 +176,9 @@ CONTRIBUTING.md           how to suggest, correct and verify brands (PT/EN)
 Code, file names and comments in English; content and UI in PT and EN. Strict
 TypeScript. Conventional Commits. pnpm workspaces. Comments explain *why*, not what.
 
+Commit messages are short: one subject line, plus at most two or three lines of body
+when the why is not obvious. No `Co-Authored-By` or other agent attribution lines.
+
 ## State
 
 Phases 1 and 2 are done: schema and taxonomy, the first 90 published brands, the bilingual
