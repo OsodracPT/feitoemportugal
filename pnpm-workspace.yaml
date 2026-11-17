@@ -7,3 +7,14 @@ packages:
 allowBuilds:
   esbuild: true
   sharp: true
+
+# Security floors for transitive dependencies whose parents pin an older patch
+# (pnpm audit, 2026-11-17). Drop each line once the parent ships the fix.
+overrides:
+  undici@>=8.0.0 <8.12.2: ^8.12.2
+  fflate@>=0.7.0 <0.7.5: ^0.7.5
+  fast-uri@>=3.0.0 <3.1.9: ^3.1.9
+  # rolldown's wasm binding pulls a 2.0 beta of @emnapi/runtime, which then pairs
+  # with @emnapi/core 1.x inside `astro check` and crashes it. Stay on stable.
+  '@emnapi/runtime': ^1.11.3
+  '@emnapi/core': ^1.11.3

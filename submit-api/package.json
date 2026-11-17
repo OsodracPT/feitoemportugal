@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@fep/schema": "workspace:*",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^10.6.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",
-    "@types/nodemailer": "^6.4.17",
+    "@types/nodemailer": "^8.0.2",
     "typescript": "^7.0.2",
     "vitest": "^5.0.3"
   }
