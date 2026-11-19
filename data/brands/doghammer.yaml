@@ -1,0 +1,27 @@
+slug: doghammer
+status: published
+name: Doghammer
+description:
+  pt: >-
+    Marca alemã de Rosenheim, criada em 2015, cujo calçado barefoot é feito à mão por
+    uma fábrica familiar no norte de Portugal. Faz sapatilhas, botas de caminhada,
+    chinelos de dedo para o exterior e pantufas, com cortiça reciclada em quase todas
+    as peças.
+  en: >-
+    German brand from Rosenheim, started in 2015, whose barefoot footwear is handmade
+    by a family-run factory in northern Portugal. It makes sneakers, hiking boots,
+    outdoor toe-post sandals and hut slippers, with recycled cork in almost every part.
+website: https://www.doghammer.de
+category: calcado
+subcategory: sapatilhas
+tags: [barefoot, cortica, feito-a-mao, crianca]
+products: [sapatilhas, botas, chinelos, pantufas]
+founded: 2015
+production:
+  scope: total
+verification:
+  verified: false
+meta:
+  added: 2026-11-19
+  updated: 2026-11-19
+  source: import

@@ -132,6 +132,11 @@
   synonyms:
     pt: [retro, antigo]
     en: [vintage, retro]
+- id: barefoot
+  label: { pt: Barefoot, en: Barefoot }
+  synonyms:
+    pt: [calçado barefoot, pé descalço, descalço, calçado minimalista, sola fina, drop zero]
+    en: [barefoot shoes, minimalist shoes, zero drop, wide toe box, thin sole]
 
 # --- Produção e valores ---
 - id: pequena-serie
