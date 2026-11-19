@@ -1,0 +1,26 @@
+slug: blusun
+status: published
+name: BLUSUN
+description:
+  pt: >-
+    Marca alemã de calçado barefoot, com sede em Pirmasens e criada em 2024, cujos
+    sapatos são montados em pequenas fábricas familiares em Portugal. Faz sapatilhas e
+    botas de inverno de sola fina e flexível, sem salto e com biqueira larga.
+  en: >-
+    German barefoot footwear brand based in Pirmasens and started in 2024, whose shoes
+    are put together by small family factories in Portugal. It makes sneakers and
+    winter boots with a thin, flexible, heel-free sole and a roomy toe box.
+website: https://blusun.shoes
+category: calcado
+subcategory: sapatilhas
+tags: [barefoot, pele]
+products: [sapatilhas, botas]
+founded: 2024
+production:
+  scope: total
+verification:
+  verified: false
+meta:
+  added: 2026-11-19
+  updated: 2026-11-19
+  source: import
